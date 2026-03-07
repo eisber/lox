@@ -259,11 +259,17 @@ enum Cmd {
     Run { scene: String },
     /// Manage scenes
     Scene { #[command(subcommand)] action: SceneCmd },
-    /// Start the automation daemon (WebSocket)
+    /// Start the automation daemon
     Daemon {
         /// Print all state changes
         #[arg(long)]
         verbose: bool,
+        /// Use HTTP polling instead of WebSocket (needed without Monitor rights)
+        #[arg(long)]
+        poll: bool,
+        /// Poll interval in seconds (default 3, only with --poll)
+        #[arg(long, default_value = "3")]
+        interval: u64,
     },
     /// Manage automation rules
     Automation { #[command(subcommand)] action: AutomationCmd },
@@ -559,11 +565,15 @@ fn main() -> Result<()> {
             },
         },
 
-        Cmd::Daemon { verbose } => {
+        Cmd::Daemon { verbose, poll, interval } => {
             let cfg = Config::load()?;
             println!("🏠 lox daemon starting...");
             let rt = tokio::runtime::Runtime::new()?;
-            rt.block_on(daemon::run_daemon(cfg, verbose))?;
+            if poll {
+                rt.block_on(daemon::run_polling_daemon(cfg, verbose, interval))?;
+            } else {
+                rt.block_on(daemon::run_daemon(cfg, verbose))?;
+            }
         },
 
         Cmd::Automation { action } => match action {

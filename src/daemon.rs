@@ -196,17 +196,15 @@ pub async fn run_daemon(cfg: Config, verbose: bool) -> Result<()> {
 
     // Fetch structure for name→uuid mapping
     let structure = {
-        let cfg2 = cfg.clone();
-        tokio::task::spawn_blocking(move || {
-            let client = reqwest::blocking::Client::builder()
-                .danger_accept_invalid_certs(true)
-                .timeout(std::time::Duration::from_secs(15))
-                .build()?;
-            let url = format!("{}/data/LoxApp3.json", cfg2.host);
-            client.get(&url)
-                .basic_auth(&cfg2.user, Some(&cfg2.pass))
-                .send()?.json::<serde_json::Value>()
-        }).await??
+        let client = reqwest::Client::builder()
+            .danger_accept_invalid_certs(true)
+            .timeout(std::time::Duration::from_secs(15))
+            .build()?;
+        let url = format!("{}/data/LoxApp3.json", cfg.host);
+        client.get(&url)
+            .basic_auth(&cfg.user, Some(&cfg.pass))
+            .send().await?
+            .json::<serde_json::Value>().await?
     };
 
     let registry = Arc::new(RwLock::new(StateRegistry::default()));
@@ -303,4 +301,116 @@ pub async fn run_daemon(cfg: Config, verbose: bool) -> Result<()> {
         }
     }
     Ok(())
+}
+
+// ── HTTP Polling Daemon (Fallback wenn WS nicht geht) ────────────────────────
+
+pub async fn run_polling_daemon(cfg: Config, verbose: bool, interval_secs: u64) -> Result<()> {
+    let automations = Automations::load()?;
+    println!("Loaded {} rule(s)", automations.rules.len());
+
+    let structure = {
+        let client = reqwest::Client::builder()
+            .danger_accept_invalid_certs(true)
+            .timeout(std::time::Duration::from_secs(15))
+            .build()?;
+        let url = format!("{}/data/LoxApp3.json", cfg.host);
+        client.get(&url)
+            .basic_auth(&cfg.user, Some(&cfg.pass))
+            .send().await?
+            .json::<serde_json::Value>().await?
+    };
+
+    let registry = Arc::new(RwLock::new(StateRegistry::default()));
+    {
+        let mut reg = registry.write().unwrap();
+        reg.populate_from_structure(&structure);
+        println!("Loaded {} controls", reg.name_to_uuid.len());
+    }
+
+    // Pre-resolve rule UUIDs
+    let rule_uuids: Vec<Option<String>> = {
+        let reg = registry.read().unwrap();
+        automations.rules.iter().map(|rule| {
+            let uuid = reg.resolve_name(&rule.when);
+            if uuid.is_none() { eprintln!("  ⚠  Not found: '{}'", rule.when); }
+            uuid
+        }).collect()
+    };
+
+    let cooldowns: Arc<RwLock<HashMap<usize, u64>>> = Arc::new(RwLock::new(HashMap::new()));
+    let rules = Arc::new(automations.rules);
+
+    // Collect all UUIDs we need to poll
+    let watch_uuids: Vec<String> = rule_uuids.iter()
+        .filter_map(|u| u.clone())
+        .collect::<std::collections::HashSet<_>>()
+        .into_iter().collect();
+
+    println!("\n🔄 Polling {} controls every {}s  (Ctrl+C to stop)\n",
+        watch_uuids.len(), interval_secs);
+
+    let client = reqwest::Client::builder()
+        .danger_accept_invalid_certs(true)
+        .timeout(std::time::Duration::from_secs(10))
+        .build()?;
+
+    loop {
+        for uuid in &watch_uuids {
+            let url = format!("{}/dev/sps/io/{}/all", cfg.host, uuid);
+            let xml = match client.get(&url)
+                .basic_auth(&cfg.user, Some(&cfg.pass))
+                .send().await.and_then(|r| Ok(r))
+            {
+                Ok(resp) => match resp.text().await {
+                    Ok(x) => x,
+                    Err(e) => { eprintln!("Poll error {}: {}", &uuid[..8], e); continue; }
+                },
+                Err(e) => { eprintln!("Poll error {}: {}", &uuid[..8], e); continue; }
+            };
+
+            // Extract value from XML attr
+            fn xml_val(xml: &str) -> Option<f64> {
+                let key = "value=\"";
+                let start = xml.find(key)? + key.len();
+                let end = xml[start..].find('"')? + start;
+                xml[start..end].parse().ok()
+            }
+
+            let Some(new_val) = xml_val(&xml) else { continue; };
+
+            let old_val = {
+                let mut reg = registry.write().unwrap();
+                reg.update(uuid, new_val)
+            };
+
+            if verbose && old_val != Some(new_val) {
+                let reg = registry.read().unwrap();
+                println!("[{}] {} = {}", now_ts(), reg.name_for(uuid), new_val);
+            }
+
+            let now_secs = std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH).unwrap().as_secs();
+
+            for (i, rule) in rules.iter().enumerate() {
+                let Some(ref rule_uuid) = rule_uuids[i] else { continue; };
+                if rule_uuid != uuid { continue; }
+                if !eval_rule(rule, old_val, new_val) { continue; }
+                let last = cooldowns.read().unwrap().get(&i).copied().unwrap_or(0);
+                if now_secs - last < rule.cooldown_secs { continue; }
+                cooldowns.write().unwrap().insert(i, now_secs);
+                let reg = registry.read().unwrap();
+                println!("\n⚡ Rule triggered: {} = {}", reg.name_for(uuid), new_val);
+                fire_rule(rule);
+            }
+        }
+
+        tokio::time::sleep(Duration::from_secs(interval_secs)).await;
+    }
+}
+
+fn now_ts() -> String {
+    use std::time::{SystemTime, UNIX_EPOCH};
+    let s = SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_secs();
+    format!("{:02}:{:02}:{:02}", (s%86400)/3600, (s%3600)/60, s%60)
 }
