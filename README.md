@@ -26,6 +26,13 @@ lox ls --type LightControllerV2 --json | jq '.[].name'
 lox mood "Wohnzimmer" off
 lox status --json | jq '.plc_running'
 
+# Disambiguate sensors with the same name using --room or bracket syntax
+lox get "Temperatur" --room "Schlafzimmer"
+lox get "Temperatur [OG Kinderzimmer Bastian]"
+
+# Quick energy overview
+lox status --energy
+
 # Conditionally close blinds
 lox if "Temperatur Außen" gt 28 && lox blind "Beschattung Süd" pos 70
 ```
@@ -39,6 +46,7 @@ This CLI was designed for AI agent integration. Every command:
 - Exits `0` on success, non-zero on error
 - Has `--json` flag for structured output
 - Uses fuzzy name matching — agents don't need UUIDs
+- Supports `--room` flag and `[Room]` bracket syntax to resolve ambiguous names
 - Returns readable errors with suggestions
 
 **Example: give an LLM a shell tool**
@@ -47,14 +55,14 @@ This CLI was designed for AI agent integration. Every command:
   "name": "lox",
   "description": "Control Loxone smart home. Returns JSON on --json flag.",
   "parameters": {
-    "command": { "type": "string", "description": "e.g. 'on Wohnzimmer', 'blind Südseite pos 50', 'status --json'" }
+    "command": { "type": "string", "description": "e.g. 'on Wohnzimmer', 'blind Südseite pos 50', 'status --energy'" }
   }
 }
 ```
 
 The agent calls `lox <command>` as a shell tool and reads stdout. That's it.
 
-An agent can discover your home (`lox ls --json`), read sensor values (`lox get "Temperatur Außen"`), control devices, and check conditions — all without any custom integration layer.
+An agent can discover your home (`lox ls --json`), read sensor values, control devices, and check conditions — all without any custom integration layer.
 
 ---
 
@@ -80,6 +88,21 @@ lox config set --host https://192.168.1.100 --user USER --pass PASS --serial YOU
 
 Config: `~/.lox/config.yaml`
 
+### Aliases
+
+Add short names for frequently-used controls in `~/.lox/config.yaml`:
+
+```yaml
+host: https://192.168.1.100
+user: admin
+pass: secret
+aliases:
+  wz: "1d8af56e-036e-e9ad-ffffed57184a04d2"   # Lichtsteuerung Wohnzimmer
+  kueche: "20236c09-0055-6e94-ffffed57184a04d2" # Licht Küche Insel
+```
+
+Then use short names directly: `lox on wz`, `lox off kueche`
+
 ---
 
 ## Commands
@@ -87,14 +110,23 @@ Config: `~/.lox/config.yaml`
 ```bash
 # ── System ────────────────────────────────────────────────────────
 lox status                              # Miniserver health: firmware, PLC, memory
+lox status --energy                     # + live energy panel (PV, grid, battery, consumption)
 lox status --json
 
 # ── Discovery ─────────────────────────────────────────────────────
 lox ls                                  # All controls
 lox ls --type Jalousie                  # Filter by type
+lox ls --room "Wohnzimmer"              # Filter by room
+lox ls --values                         # Include current values (slower)
 lox ls --type LightControllerV2 --json  # JSON for agents/scripts
 lox rooms                               # List all rooms
 lox get "Lichtsteuerung Wohnzimmer"     # Full state of one control
+
+# ── Resolving ambiguous names ─────────────────────────────────────
+# When multiple controls share the same name (e.g. "Temperatur"):
+lox get "Temperatur" --room "Schlafzimmer"          # --room flag
+lox get "Temperatur [OG Schlafzimmer]"              # bracket syntax
+lox off "Lichtsteuerung" --room "Büro Christoph"    # works on all commands
 
 # ── Lights ────────────────────────────────────────────────────────
 lox on  "Lichtsteuerung Wohnzimmer"
@@ -159,12 +191,12 @@ YAML files in `~/.lox/scenes/`:
 name: Abend
 steps:
   - control: "Lichtsteuerung Wohnzimmer"
-    command: on
+    cmd: on
   - control: "Beschattung Südseite"
-    command: "pos 70"
-  - delay: 500
+    cmd: "pos 70"
   - control: "LED Küche"
-    command: off
+    cmd: off
+    delay_ms: 500
 ```
 
 ---
@@ -203,6 +235,7 @@ Structure cache at `~/.lox/cache/structure.json` (24h TTL):
 |-----------|------|------|
 | `lox on "Licht"` | ~1.2s | ~80ms |
 | `lox ls` | ~1.2s | ~80ms |
+| `lox ls --values` | ~1.2s + N×req | slower (one HTTP request per control) |
 | `lox status` | ~120ms | ~120ms |
 
 ---
@@ -224,7 +257,7 @@ Structure cache at `~/.lox/cache/structure.json` (24h TTL):
 
 ```
 ~/.lox/
-  config.yaml          # Host, credentials, serial
+  config.yaml          # Host, credentials, serial, aliases
   cache/
     structure.json     # LoxApp3.json (24h TTL, ~150KB)
   token.json           # Token auth (optional)
