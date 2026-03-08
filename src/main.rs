@@ -1647,8 +1647,11 @@ fn main() -> Result<()> {
             if data.is_empty() {
                 println!("No statistics data available for this period.");
             } else {
-                // Parse binary: Uint32 timestamp + N x Float64
-                let entry_size = 4 + num_outputs * 8;
+                // Parse binary statistics format:
+                // Header: u32 valueCount | u32 controlType | u32 nameLength
+                // Then: nameLength bytes of name string
+                // Entries: 4 bytes UUID prefix + u32 timestamp + N × f64 values
+                let entry_size = 4 + 4 + num_outputs * 8; // UUID(4) + ts(4) + values
                 let lox_epoch = chrono::NaiveDate::from_ymd_opt(2009, 1, 1)
                     .unwrap()
                     .and_hms_opt(0, 0, 0)
@@ -1672,8 +1675,26 @@ fn main() -> Result<()> {
                 }
 
                 let mut json_arr = Vec::new();
-                let mut cursor = Cursor::new(&data);
+                let mut cursor = Cursor::new(data.as_slice());
+
+                // Skip binary statistics header if present:
+                // u32 valueCount | u32 controlType | u32 nameLength | name bytes
+                if data.len() > 12 {
+                    let value_count = cursor.read_u32::<LittleEndian>().unwrap_or(0);
+                    let _control_type = cursor.read_u32::<LittleEndian>().unwrap_or(0);
+                    let name_length = cursor.read_u32::<LittleEndian>().unwrap_or(0);
+                    // Mask off version flag bit from valueCount
+                    let _vc = value_count & 0x7FFF_FFFF;
+                    // Skip name string
+                    let skip = name_length as usize;
+                    if cursor.position() as usize + skip <= data.len() {
+                        cursor.set_position(cursor.position() + skip as u64);
+                    }
+                }
+
                 while cursor.position() as usize + entry_size <= data.len() {
+                    // Each entry: 4 bytes UUID prefix + u32 timestamp + N × f64
+                    let _uuid_part = cursor.read_u32::<LittleEndian>().unwrap_or(0);
                     let ts = cursor.read_u32::<LittleEndian>().unwrap_or(0);
                     let dt = lox_epoch + chrono::Duration::seconds(ts as i64);
                     let mut values = Vec::new();
@@ -1722,31 +1743,37 @@ fn main() -> Result<()> {
                     match reqwest::blocking::get(&url) {
                         Ok(resp) => {
                             let body = resp.text().unwrap_or_default();
-                            if let Some(new_ver) = xml_attr(&body, "Version") {
-                                if cli.json {
-                                    println!(
-                                        "{}",
-                                        serde_json::json!({
-                                            "current": ver,
-                                            "available": new_ver,
-                                            "update_available": new_ver != ver,
-                                        })
-                                    );
-                                } else if new_ver != ver {
-                                    println!("Update available: {}", new_ver);
-                                } else {
-                                    println!("✓ Firmware is up to date");
-                                }
-                            } else if cli.json {
+                            // Try multiple XML attributes for the version
+                            let new_ver = xml_attr(&body, "Firmware")
+                                .or_else(|| xml_attr(&body, "version"))
+                                .or_else(|| {
+                                    // Only use "Version" if it looks like a version string (contains dots)
+                                    xml_attr(&body, "Version")
+                                        .filter(|v| v.contains('.'))
+                                });
+                            let update_available = xml_attr(&body, "Version")
+                                .or_else(|| xml_attr(&body, "update"))
+                                .map(|v| v != "0" && v != ver)
+                                .unwrap_or(false);
+                            if cli.json {
                                 println!(
                                     "{}",
                                     serde_json::json!({
                                         "current": ver,
-                                        "update_available": false,
+                                        "available": new_ver.unwrap_or(if update_available { "yes" } else { ver }),
+                                        "update_available": update_available || new_ver.map(|v| v != ver).unwrap_or(false),
                                     })
                                 );
+                            } else if let Some(nv) = new_ver {
+                                if nv != ver {
+                                    println!("Update available: {}", nv);
+                                } else {
+                                    println!("✓ Firmware is up to date");
+                                }
+                            } else if update_available {
+                                println!("Update available (check Loxone Config for details)");
                             } else {
-                                println!("✓ No update information available");
+                                println!("✓ Firmware is up to date");
                             }
                         }
                         Err(e) => {
@@ -1855,37 +1882,68 @@ fn main() -> Result<()> {
         Cmd::Extensions => {
             let mut lox = LoxClient::new(Config::load()?);
             let structure = lox.get_structure()?.clone();
-            // Check for extensions in msInfo
-            if let Some(ms_info) = structure.get("msInfo").and_then(|m| m.as_object()) {
-                if cli.json {
-                    println!("{}", serde_json::to_string_pretty(&serde_json::json!(ms_info))?);
-                } else {
-                    println!("Miniserver Info:");
-                    for (key, val) in ms_info {
-                        println!(
-                            "  {:<24} {}",
-                            key,
-                            val.as_str()
-                                .unwrap_or(&val.to_string())
-                        );
-                    }
+
+            // Collect extension devices from the structure file
+            let mut ext_list: Vec<serde_json::Value> = Vec::new();
+
+            // Check for dedicated "extensions" key in structure
+            if let Some(exts) = structure.get("extensions").and_then(|e| e.as_object()) {
+                for (uuid, ext) in exts {
+                    let name = ext.get("name").and_then(|n| n.as_str()).unwrap_or("?");
+                    let typ = ext.get("type").and_then(|t| t.as_str()).unwrap_or("?");
+                    let serial = ext.get("serial").and_then(|s| s.as_str()).unwrap_or("");
+                    let online = ext.get("online").and_then(|o| o.as_bool());
+                    ext_list.push(serde_json::json!({
+                        "uuid": uuid, "name": name, "type": typ,
+                        "serial": serial, "online": online,
+                    }));
                 }
             }
-            // List controls with extension-like types
-            let ext_types = ["Extension", "TreeDevice", "AirDevice"];
+
+            // Also check controls with extension-like types
             let all_controls = lox.list_controls(None, None)?;
-            let extensions: Vec<_> = all_controls
+            let ext_controls: Vec<_> = all_controls
                 .iter()
-                .filter(|c| ext_types.iter().any(|t| c.typ.contains(t)))
+                .filter(|c| {
+                    c.typ.contains("Extension")
+                        || c.typ.contains("TreeDevice")
+                        || c.typ.contains("AirDevice")
+                })
                 .collect();
-            if !extensions.is_empty() {
-                if !cli.json {
-                    println!("\nExtension Controls:");
+
+            if cli.json {
+                let mut all = ext_list.clone();
+                for c in &ext_controls {
+                    all.push(serde_json::json!({
+                        "name": c.name, "uuid": c.uuid, "type": c.typ,
+                        "room": c.room,
+                    }));
+                }
+                println!("{}", serde_json::to_string_pretty(&all)?);
+            } else if ext_list.is_empty() && ext_controls.is_empty() {
+                println!("No extensions found in structure.");
+            } else {
+                if !ext_list.is_empty() {
+                    println!("{:<40} {:<22} {:<16} UUID", "NAME", "TYPE", "SERIAL");
+                    println!("{}", "─".repeat(100));
+                    for ext in &ext_list {
+                        println!(
+                            "{:<40} {:<22} {:<16} {}",
+                            ext["name"].as_str().unwrap_or("?"),
+                            ext["type"].as_str().unwrap_or("?"),
+                            ext["serial"].as_str().unwrap_or(""),
+                            ext["uuid"].as_str().unwrap_or("?"),
+                        );
+                    }
+                    println!("\n{} extensions", ext_list.len());
+                }
+                if !ext_controls.is_empty() {
+                    if !ext_list.is_empty() {
+                        println!();
+                    }
                     println!("{:<40} {:<22} UUID", "NAME", "TYPE");
                     println!("{}", "─".repeat(100));
-                }
-                for c in &extensions {
-                    if !cli.json {
+                    for c in &ext_controls {
                         println!("{:<40} {:<22} {}", c.name, c.typ, c.uuid);
                     }
                 }
@@ -1894,10 +1952,16 @@ fn main() -> Result<()> {
 
         Cmd::Time => {
             let lox = LoxClient::new(Config::load()?);
-            let date = lox.get_text("/jdev/sys/date")?;
-            let time = lox.get_text("/jdev/sys/time")?;
-            let date_val = xml_attr(&date, "value").unwrap_or("?");
-            let time_val = xml_attr(&time, "value").unwrap_or("?");
+            let date_resp = lox.get_json("/jdev/sys/date")?;
+            let time_resp = lox.get_json("/jdev/sys/time")?;
+            let date_val = date_resp
+                .pointer("/LL/value")
+                .and_then(|v| v.as_str())
+                .unwrap_or("?");
+            let time_val = time_resp
+                .pointer("/LL/value")
+                .and_then(|v| v.as_str())
+                .unwrap_or("?");
             if cli.json {
                 println!(
                     "{}",
@@ -2269,6 +2333,13 @@ fn main() -> Result<()> {
         Cmd::Log { lines } => {
             let lox = LoxClient::new(Config::load()?);
             let log = lox.get_text("/dev/fsget/log/def.log")?;
+            if log.contains("<errorcode>403</errorcode>") || log.contains("<errorcode>401</errorcode>") {
+                bail!("Access denied. The Miniserver log requires admin privileges.");
+            }
+            if log.trim_start().starts_with('<') && log.contains("<errorcode>") {
+                let code = xml_attr(&log, "errorcode").unwrap_or("?");
+                bail!("Miniserver returned error code {}", code);
+            }
             let all: Vec<&str> = log.lines().collect();
             for line in &all[all.len().saturating_sub(lines)..] {
                 println!("{}", line);
@@ -2305,34 +2376,52 @@ fn parse_weather_entry(
     cursor: &mut Cursor<&[u8]>,
     lox_epoch: &chrono::DateTime<chrono::Local>,
 ) -> Option<serde_json::Value> {
+    // Weather entry: 108 bytes total (mixed i32 + f64 fields)
+    // Offset  0: u32 timestamp (seconds since Loxone epoch 2009-01-01)
     let ts = cursor.read_u32::<LittleEndian>().ok()?;
-    // Weather entry: 108 bytes total
-    // Bytes 0-3: timestamp (u32)
-    // Bytes 4-11: temperature (f64)
-    // Bytes 12-19: humidity (f64)
-    // Bytes 20-27: wind speed (f64)
-    // Bytes 28-35: wind direction (f64)
-    // Bytes 36-43: rain (f64)
-    // Bytes 44-51: barometric pressure (f64)
-    // ... remaining fields
+    // Offset  4: i32 weather type (picto-code)
+    let _weather_type = cursor.read_i32::<LittleEndian>().ok()?;
+    // Offset  8: i32 wind direction (degrees)
+    let wind_dir = cursor.read_i32::<LittleEndian>().ok()?;
+    // Offset 12: i32 solar radiation (UV index)
+    let _radiation = cursor.read_i32::<LittleEndian>().ok()?;
+    // Offset 16: i32 relative humidity (%)
+    let humidity = cursor.read_i32::<LittleEndian>().ok()?;
+    // Offset 20: f64 temperature (°C)
     let temperature = cursor.read_f64::<LittleEndian>().ok()?;
-    let humidity = cursor.read_f64::<LittleEndian>().ok()?;
-    let wind_speed = cursor.read_f64::<LittleEndian>().ok()?;
-    let wind_dir = cursor.read_f64::<LittleEndian>().ok()?;
-    let rain = cursor.read_f64::<LittleEndian>().ok()?;
-    let pressure = cursor.read_f64::<LittleEndian>().ok()?;
-    // Skip to cloud cover at offset 68 (read 2 more f64s = 16 bytes)
-    let _solar = cursor.read_f64::<LittleEndian>().ok()?;
+    // Offset 28: f64 felt temperature (°C)
+    let _felt_temp = cursor.read_f64::<LittleEndian>().ok()?;
+    // Offset 36: f64 dewpoint (°C)
     let _dewpoint = cursor.read_f64::<LittleEndian>().ok()?;
-    let clouds = cursor.read_f64::<LittleEndian>().ok()?;
-    // Skip remaining bytes to complete 108
+    // Offset 44: f64 precipitation (mm)
+    let rain = cursor.read_f64::<LittleEndian>().ok()?;
+    // Offset 52: f64 wind speed (m/s)
+    let wind_speed = cursor.read_f64::<LittleEndian>().ok()?;
+    // Offset 60: f64 barometric pressure (hPa)
+    let pressure = cursor.read_f64::<LittleEndian>().ok()?;
+    // Offset 68: i32 low clouds (%)
+    let low_clouds = cursor.read_i32::<LittleEndian>().ok()?;
+    // Offset 72: i32 medium clouds (%)
+    let med_clouds = cursor.read_i32::<LittleEndian>().ok()?;
+    // Offset 76: i32 high clouds (%)
+    let high_clouds = cursor.read_i32::<LittleEndian>().ok()?;
+    // Offset 80: i32 precipitation probability
+    let _precip_prob = cursor.read_i32::<LittleEndian>().ok()?;
+    // Offset 84: f64 absolute radiation
+    let _abs_radiation = cursor.read_f64::<LittleEndian>().ok()?;
+    // Offset 92: f64 snow fraction
+    let _snow_fraction = cursor.read_f64::<LittleEndian>().ok()?;
+    // Offset 100: f64 CAPE
+    let _cape = cursor.read_f64::<LittleEndian>().ok()?;
+
+    let clouds = ((low_clouds + med_clouds + high_clouds) as f64 / 3.0).round();
     let dt = *lox_epoch + chrono::Duration::seconds(ts as i64);
     Some(serde_json::json!({
         "timestamp": dt.format("%Y-%m-%d %H:%M").to_string(),
         "temperature": temperature,
-        "humidity": humidity,
+        "humidity": humidity as f64,
         "wind_speed": wind_speed,
-        "wind_direction": wind_dir,
+        "wind_direction": wind_dir as f64,
         "rain": rain,
         "pressure": pressure,
         "clouds": clouds,
@@ -2353,8 +2442,13 @@ fn eval_op(current: &str, op: &str, target: &str) -> Result<bool> {
 }
 
 fn parse_f(s: &str) -> Result<f64> {
-    s.parse::<f64>()
-        .with_context(|| format!("Not a number: '{}'", s))
+    // Try direct parse first, then strip non-numeric suffix (e.g. "21.5°", "100%")
+    s.parse::<f64>().or_else(|_| {
+        let stripped = s.trim_end_matches(|c: char| !c.is_ascii_digit() && c != '.' && c != '-');
+        stripped
+            .parse::<f64>()
+            .with_context(|| format!("Not a number: '{}'", s))
+    })
 }
 
 /// Percent-encode characters that would corrupt an HTTP path segment.
@@ -2438,6 +2532,21 @@ mod tests {
         assert_eq!(encode_path_value("a+b"), "a%2Bb");
     }
 
+    // ── parse_f (unit suffix stripping) ─────────────────────────────────────
+
+    #[test]
+    fn test_parse_f_plain() {
+        assert_eq!(parse_f("21.5").unwrap(), 21.5);
+        assert_eq!(parse_f("-3.0").unwrap(), -3.0);
+    }
+
+    #[test]
+    fn test_parse_f_with_unit_suffix() {
+        assert_eq!(parse_f("21.5°").unwrap(), 21.5);
+        assert_eq!(parse_f("100%").unwrap(), 100.0);
+        assert_eq!(parse_f("15.3°C").unwrap(), 15.3);
+    }
+
     // ── rgb_to_hsv ────────────────────────────────────────────────────────────
 
     #[test]
@@ -2492,26 +2601,35 @@ mod tests {
             .and_local_timezone(chrono::Local)
             .unwrap();
         let mut data = Vec::new();
-        data.write_u32::<LittleEndian>(3600).unwrap(); // 1 hour after epoch
-        data.write_f64::<LittleEndian>(21.5).unwrap(); // temp
-        data.write_f64::<LittleEndian>(65.0).unwrap(); // humidity
-        data.write_f64::<LittleEndian>(10.0).unwrap(); // wind
-        data.write_f64::<LittleEndian>(180.0).unwrap(); // wind dir
-        data.write_f64::<LittleEndian>(0.0).unwrap(); // rain
-        data.write_f64::<LittleEndian>(1013.0).unwrap(); // pressure
-        data.write_f64::<LittleEndian>(500.0).unwrap(); // solar
+        // 108-byte weather entry: u32 ts + 4×i32 + 6×f64 + 4×i32 + 3×f64
+        data.write_u32::<LittleEndian>(3600).unwrap(); // timestamp
+        data.write_i32::<LittleEndian>(1).unwrap(); // weather type
+        data.write_i32::<LittleEndian>(180).unwrap(); // wind direction
+        data.write_i32::<LittleEndian>(5).unwrap(); // radiation
+        data.write_i32::<LittleEndian>(65).unwrap(); // humidity
+        data.write_f64::<LittleEndian>(21.5).unwrap(); // temperature
+        data.write_f64::<LittleEndian>(19.0).unwrap(); // felt temp
         data.write_f64::<LittleEndian>(15.0).unwrap(); // dewpoint
-        data.write_f64::<LittleEndian>(50.0).unwrap(); // clouds
-        // Pad to 108 bytes
-        while data.len() < 108 {
-            data.push(0);
-        }
+        data.write_f64::<LittleEndian>(0.5).unwrap(); // precipitation
+        data.write_f64::<LittleEndian>(10.0).unwrap(); // wind speed
+        data.write_f64::<LittleEndian>(1013.0).unwrap(); // pressure
+        data.write_i32::<LittleEndian>(30).unwrap(); // low clouds
+        data.write_i32::<LittleEndian>(60).unwrap(); // med clouds
+        data.write_i32::<LittleEndian>(90).unwrap(); // high clouds
+        data.write_i32::<LittleEndian>(40).unwrap(); // precip probability
+        data.write_f64::<LittleEndian>(500.0).unwrap(); // abs radiation
+        data.write_f64::<LittleEndian>(0.0).unwrap(); // snow fraction
+        data.write_f64::<LittleEndian>(100.0).unwrap(); // CAPE
+        assert_eq!(data.len(), 108);
         let mut cursor = Cursor::new(data.as_slice());
         let entry = parse_weather_entry(&mut cursor, &lox_epoch).unwrap();
         assert_eq!(entry["temperature"].as_f64().unwrap(), 21.5);
         assert_eq!(entry["humidity"].as_f64().unwrap(), 65.0);
         assert_eq!(entry["wind_speed"].as_f64().unwrap(), 10.0);
-        assert_eq!(entry["clouds"].as_f64().unwrap(), 50.0);
+        assert_eq!(entry["wind_direction"].as_f64().unwrap(), 180.0);
+        assert_eq!(entry["rain"].as_f64().unwrap(), 0.5);
+        assert_eq!(entry["pressure"].as_f64().unwrap(), 1013.0);
+        assert_eq!(entry["clouds"].as_f64().unwrap(), 60.0); // avg(30,60,90)
     }
 
     // ── is_uuid ──────────────────────────────────────────────────────────────
