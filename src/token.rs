@@ -60,6 +60,19 @@ fn recv_text(
     }
 }
 
+/// Hash a token using HMAC-SHA256 with the token key, as required by
+/// checktoken/refreshtoken/killtoken endpoints.
+pub fn hash_token(token: &str, key: &str) -> String {
+    let key_bytes = hex::decode(key).unwrap_or_default();
+    if key_bytes.is_empty() {
+        // Fallback: use token directly if key is not hex
+        return token.to_string();
+    }
+    let mut mac = HmacSha256::new_from_slice(&key_bytes).unwrap();
+    mac.update(token.as_bytes());
+    hex::encode(mac.finalize().into_bytes())
+}
+
 pub async fn acquire_token(cfg: &Config) -> Result<TokenStore> {
     // 1. Fetch RSA public key via HTTP
     let cfg2 = cfg.clone();
@@ -282,6 +295,23 @@ mod tests {
     fn test_token_store_expired() {
         let ts = make_store(0);
         assert!(!ts.is_valid());
+    }
+
+    #[test]
+    fn test_hash_token() {
+        // Known HMAC-SHA256 test
+        let key_hex = hex::encode(b"test-key-1234567890abcdef");
+        let hash = hash_token("my-token", &key_hex);
+        // Just verify it produces a 64-char hex string (256 bits)
+        assert_eq!(hash.len(), 64);
+        assert!(hash.chars().all(|c| c.is_ascii_hexdigit()));
+    }
+
+    #[test]
+    fn test_hash_token_empty_key_fallback() {
+        // Non-hex key should fall back to returning the token
+        let hash = hash_token("my-token", "not-hex!");
+        assert_eq!(hash, "my-token");
     }
 
     #[test]
