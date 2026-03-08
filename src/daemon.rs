@@ -516,7 +516,7 @@ pub async fn run_polling_daemon(cfg: Config, verbose: bool, interval_secs: u64) 
 }
 
 fn now_ts() -> String {
-    use std::time::{SystemTime, UNIX_EPOCH};
-    let s = SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_secs();
-    format!("{:02}:{:02}:{:02}", (s%86400)/3600, (s%3600)/60, s%60)
+    use chrono::Timelike;
+    let now = chrono::Local::now();
+    format!("{:02}:{:02}:{:02}", now.hour(), now.minute(), now.second())
 }

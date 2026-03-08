@@ -194,6 +194,9 @@ impl LoxWsClient {
                         Some(Ok(Message::Binary(bin))) => {
                             let buf = bin.as_ref();
                             if let Some((typ, _)) = parse_header(buf) {
+                                if pending_type.is_some() {
+                                    eprintln!("ws: header frame displaced pending payload — dropping");
+                                }
                                 pending_type = Some(typ);
                             } else if let Some(MsgType::ValueEventTable) = &pending_type {
                                 let events = parse_value_table(buf);
@@ -215,44 +218,6 @@ impl LoxWsClient {
         }
     }
 
-    async fn hmac_auth(&self) -> Result<String> {
-        use hmac::{Hmac, Mac};
-        use sha2::{Digest, Sha256};
-        type HmacSha256 = Hmac<Sha256>;
-
-        let cfg = self.cfg.clone();
-        tokio::task::spawn_blocking(move || {
-            let client = reqwest::blocking::Client::builder()
-                .danger_accept_invalid_certs(true)
-                .timeout(Duration::from_secs(10))
-                .build()?;
-            let resp: serde_json::Value = client
-                .get(format!("{}/jdev/sys/getkey2", cfg.host))
-                .basic_auth(&cfg.user, Some(&cfg.pass))
-                .send()?.json()?;
-
-            let val = resp.pointer("/LL/value").ok_or_else(|| anyhow::anyhow!("no value"))?;
-            let key_hex = val.get("key").and_then(|v| v.as_str()).unwrap_or("");
-            let salt_hex = val.get("salt").and_then(|v| v.as_str()).unwrap_or("");
-
-            let key = hex::decode(key_hex)?;
-            let salt = String::from_utf8(hex::decode(salt_hex)?)?;
-
-            let mut sha1 = sha1::Sha1::new();
-            sha1.update(cfg.pass.as_bytes());
-            let pass_sha1 = format!("{:X}", sha1.finalize());
-
-            let visu = {
-                let mut h = Sha256::new();
-                h.update(format!("{}:{}", pass_sha1, salt).as_bytes());
-                format!("{:X}", h.finalize())
-            };
-
-            let mut mac = HmacSha256::new_from_slice(&key)?;
-            mac.update(format!("{}:{}", cfg.user, visu).as_bytes());
-            Ok(hex::encode(mac.finalize().into_bytes()))
-        }).await?
-    }
 }
 
 fn generate_ws_key() -> String {
