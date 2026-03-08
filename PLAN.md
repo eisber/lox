@@ -29,11 +29,9 @@ cfg.save()?;
 
 ### 1.2 Token auth acquired but never used
 - [ ] Add `LoxClient::auth()` helper that applies token auth if a valid token is saved, falling back to Basic Auth.
-- [ ] Wire the same logic into the async daemon HTTP client.
 
 `lox token fetch` acquires and persists a token via RSA+AES handshake, but every HTTP
-request in `LoxClient` and the daemon still uses Basic Auth. The token subsystem is
-inert.
+request in `LoxClient` still uses Basic Auth. The token subsystem is inert.
 
 ### 1.3 Hardcoded energy meter UUIDs
 - [ ] Auto-discover energy meters from structure by type (`Meter`, `EnergyManager`) instead of hardcoding UUIDs.
@@ -59,18 +57,10 @@ Both commands use `find_control()` instead of `resolve_with_room()`. The README 
 `format!("{}/jdev/sps/io/{}/{}", host, uuid, value)` — values containing `/`, `%`,
 or spaces produce a malformed request.
 
-### 1.6 Automation time windows are UTC-only
-- [ ] Add `chrono` dependency and use `chrono::Local` for time window evaluation.
-- [ ] Add optional `timezone` field to `config.yaml`; if set, parse with `chrono-tz`.
-
-`in_time_window()` uses raw UTC seconds. German/Austrian users are UTC+1/UTC+2 — an
-`"10:00-18:00"` rule fires 1–2 hours late. The code comments this as "good enough" —
-it is not.
-
-### 1.7 Debug `eprintln!` left in `token.rs`
+### 1.6 Debug `eprintln!` left in `token.rs`
 - [ ] Remove the debug line at `token.rs:84`: `eprintln!("[debug] normalized pem[..80]: ...")`.
 
-### 1.8 Weak WebSocket nonce entropy
+### 1.7 Weak WebSocket nonce entropy (token auth)
 - [ ] Replace `generate_ws_key()` with a proper 16-byte random nonce:
 
 ```rust
@@ -93,12 +83,6 @@ fn generate_ws_key() -> String {
 ### 2.2 Remove dead code in `ws.rs`
 - [ ] Delete `hmac_auth()` (never called; superseded by Basic Auth over the Upgrade header), or wire it up as an explicit fallback.
 
-### 2.3 Deduplicate `now_ts()` / `now_hms()`
-- [ ] Consolidate the two identical UTC timestamp formatters from `daemon.rs` and `main.rs` into a single shared function.
-
-### 2.4 Harden the WS `pending_type` state machine
-- [ ] Log a warning when a header frame is displaced by another message before its payload arrives, rather than silently dropping the payload.
-
 ---
 
 ## 3. Testing
@@ -106,8 +90,6 @@ fn generate_ws_key() -> String {
 Currently zero tests. A published project needs a baseline.
 
 ### 3.1 Unit tests (no network required)
-- [ ] `ws.rs` — `parse_lox_uuid`, `parse_value_table`, `parse_header`: feed known byte sequences, assert correct UUID strings and f64 values.
-- [ ] `daemon.rs` — `eval_rule`, `cmp_value`, `in_time_window`: pure functions, table-test against known inputs.
 - [ ] `main.rs` / `client.rs` — `eval_op`, fuzzy name matching with and without room qualifier.
 - [ ] `token.rs` — `TokenStore::is_valid()`.
 
@@ -196,15 +178,11 @@ These aren't bugs but the tool doesn't work well for new users without them.
 - [ ] Implement `lox alias remove <name>`.
 - [ ] Implement `lox alias list`.
 
-### 7.2 Timezone configuration
-- [ ] Add optional `timezone` field to `config.yaml` (e.g. `"Europe/Vienna"`).
-- [ ] Use it in `in_time_window()`; fall back to `chrono::Local` if unset.
-
-### 7.3 `lox config set` should not require all fields
+### 7.2 `lox config set` should not require all fields
 - [ ] Make `--host`, `--user`, `--pass` optional in `config set` so individual fields can be updated.
 - [ ] Or add `lox config edit` that opens `~/.lox/config.yaml` in `$EDITOR`.
 
-### 7.4 Better `lox status --energy`
+### 7.3 Better `lox status --energy`
 - [ ] Implement auto-discovery of energy meters from structure (covered in §1.3).
 
 ---
@@ -219,11 +197,6 @@ These aren't bugs but the tool doesn't work well for new users without them.
 
 ### 8.2 `lox --help` completeness
 - [ ] Add or improve description strings for `Rooms`, `Watch`, and `Log` in the clap derive macros.
-
-### 8.3 Document the `automations.yaml` format fully
-- [ ] Document all fields: `when`, `op`, `value`, `also`, `only_between`, `cooldown_secs`, `run`, `description`.
-- [ ] Document all operators including `changes` semantics (triggers on any value transition).
-- [ ] Add to README or create `docs/automations.md`.
 
 ---
 
@@ -254,8 +227,7 @@ fs::set_permissions(&path, fs::Permissions::from_mode(0o600))?;
 | 5 | §1.7 Debug eprintln | Unprofessional in release |
 | 6 | §3 Tests + §4.1 CI | Required before public promotion |
 | 7 | §4.2 Release binary builds | Required for non-Rust users |
-| 8 | §1.6 Timezone | Wrong for all non-UTC users |
-| 9 | §6 OSS hygiene | CONTRIBUTING, CHANGELOG, issue templates |
+| 8 | §6 OSS hygiene | CONTRIBUTING, CHANGELOG, issue templates |
 | 10 | §1.5 URL encoding for set | Edge case but correctness |
 | 11 | §7 General usability features | Quality of life |
 | 12 | §2 Code organisation | Maintainability |
