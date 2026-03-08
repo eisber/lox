@@ -10,6 +10,7 @@ use std::process::Command;
 use std::sync::{Arc, RwLock};
 
 use crate::config::Config;
+use crate::token::TokenStore;
 use crate::ws::{LoxWsClient, StateEvent};
 
 // ── Automation rule ───────────────────────────────────────────────────────────
@@ -277,8 +278,12 @@ pub async fn run_daemon(cfg: Config, verbose: bool) -> Result<()> {
             .timeout(std::time::Duration::from_secs(15))
             .build()?;
         let url = format!("{}/data/LoxApp3.json", cfg.host);
+        let pass = TokenStore::load()
+            .filter(|t| t.is_valid())
+            .map(|t| t.token)
+            .unwrap_or_else(|| cfg.pass.clone());
         client.get(&url)
-            .basic_auth(&cfg.user, Some(&cfg.pass))
+            .basic_auth(&cfg.user, Some(&pass))
             .send().await?
             .json::<serde_json::Value>().await?
     };
@@ -386,6 +391,10 @@ pub async fn run_polling_daemon(cfg: Config, verbose: bool, interval_secs: u64) 
     let automations = Automations::load()?;
     println!("Loaded {} rule(s)", automations.rules.len());
 
+    let pass = TokenStore::load()
+        .filter(|t| t.is_valid())
+        .map(|t| t.token)
+        .unwrap_or_else(|| cfg.pass.clone());
     let structure = {
         let client = reqwest::Client::builder()
             .danger_accept_invalid_certs(true)
@@ -393,7 +402,7 @@ pub async fn run_polling_daemon(cfg: Config, verbose: bool, interval_secs: u64) 
             .build()?;
         let url = format!("{}/data/LoxApp3.json", cfg.host);
         client.get(&url)
-            .basic_auth(&cfg.user, Some(&cfg.pass))
+            .basic_auth(&cfg.user, Some(&pass))
             .send().await?
             .json::<serde_json::Value>().await?
     };
@@ -438,7 +447,7 @@ pub async fn run_polling_daemon(cfg: Config, verbose: bool, interval_secs: u64) 
         for uuid in &watch_uuids {
             let url = format!("{}/dev/sps/io/{}/all", cfg.host, uuid);
             let xml = match client.get(&url)
-                .basic_auth(&cfg.user, Some(&cfg.pass))
+                .basic_auth(&cfg.user, Some(&pass))
                 .send().await.and_then(|r| Ok(r))
             {
                 Ok(resp) => match resp.text().await {

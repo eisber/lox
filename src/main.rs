@@ -88,18 +88,22 @@ impl LoxClient {
         }
     }
 
+    fn apply_auth(&self, rb: reqwest::blocking::RequestBuilder) -> reqwest::blocking::RequestBuilder {
+        if let Some(ts) = token::TokenStore::load().filter(|t| t.is_valid()) {
+            rb.basic_auth(&self.cfg.user, Some(&ts.token))
+        } else {
+            rb.basic_auth(&self.cfg.user, Some(&self.cfg.pass))
+        }
+    }
+
     fn get_text(&self, path: &str) -> Result<String> {
         let url = format!("{}/{}", self.cfg.host, path.trim_start_matches('/'));
-        Ok(self.client.get(&url)
-            .basic_auth(&self.cfg.user, Some(&self.cfg.pass))
-            .send()?.text()?)
+        Ok(self.apply_auth(self.client.get(&url)).send()?.text()?)
     }
 
     fn get_json(&self, path: &str) -> Result<Value> {
         let url = format!("{}/{}", self.cfg.host, path.trim_start_matches('/'));
-        Ok(self.client.get(&url)
-            .basic_auth(&self.cfg.user, Some(&self.cfg.pass))
-            .send()?.json::<Value>()?)
+        Ok(self.apply_auth(self.client.get(&url)).send()?.json::<Value>()?)
     }
 
     fn get_structure(&mut self) -> Result<&Value> {
@@ -132,8 +136,12 @@ impl LoxClient {
         }
         // Fetch fresh
         let url = format!("{}/data/LoxApp3.json", cfg.host);
+        let pass = token::TokenStore::load()
+            .filter(|t| t.is_valid())
+            .map(|t| t.token)
+            .unwrap_or_else(|| cfg.pass.clone());
         let resp = client.get(&url)
-            .basic_auth(&cfg.user, Some(&cfg.pass))
+            .basic_auth(&cfg.user, Some(&pass))
             .send()?.bytes()?;
         let v: Value = serde_json::from_slice(&resp)?;
         // Save cache
