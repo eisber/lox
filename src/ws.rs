@@ -225,3 +225,85 @@ fn generate_ws_key() -> String {
     rand::thread_rng().fill_bytes(&mut bytes);
     base64::Engine::encode(&base64::engine::general_purpose::STANDARD, bytes)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_parse_lox_uuid_known_value() {
+        // UUID bytes for "1fbc668c-005c-7471-ffffed57184a04d2" in Loxone binary format:
+        // u32le 0x8c66bc1f, u16le 0x5c00, u16le 0x7174, then 8 raw bytes ff ff ed 57 18 4a 04 d2
+        let mut buf = vec![0u8; 16];
+        buf[0..4].copy_from_slice(&0x1fbc668cu32.to_le_bytes());
+        buf[4..6].copy_from_slice(&0x005cu16.to_le_bytes());
+        buf[6..8].copy_from_slice(&0x7471u16.to_le_bytes());
+        buf[8..16].copy_from_slice(&[0xff, 0xff, 0xed, 0x57, 0x18, 0x4a, 0x04, 0xd2]);
+        let uuid = parse_lox_uuid(&buf);
+        assert_eq!(uuid, "1fbc668c-005c-7471-ffffed57184a04d2");
+    }
+
+    #[test]
+    fn test_parse_header_valid() {
+        let mut buf = [0u8; 8];
+        buf[0] = 0x03;
+        buf[1] = 0x02; // ValueEventTable
+        buf[4..8].copy_from_slice(&48u32.to_le_bytes());
+        let result = parse_header(&buf);
+        assert!(result.is_some());
+        let (typ, len) = result.unwrap();
+        assert_eq!(typ, MsgType::ValueEventTable);
+        assert_eq!(len, 48);
+    }
+
+    #[test]
+    fn test_parse_header_wrong_magic() {
+        let buf = [0u8; 8];
+        assert!(parse_header(&buf).is_none());
+    }
+
+    #[test]
+    fn test_parse_header_too_short() {
+        let buf = [0x03u8; 4];
+        assert!(parse_header(&buf).is_none());
+    }
+
+    #[test]
+    fn test_parse_value_table_empty() {
+        let events = parse_value_table(&[]);
+        assert!(events.is_empty());
+    }
+
+    #[test]
+    fn test_parse_value_table_one_record() {
+        let mut buf = vec![0u8; 24];
+        // UUID: all zeros → "00000000-0000-0000-0000000000000000"
+        // Value: 1.5 as f64le
+        buf[16..24].copy_from_slice(&1.5f64.to_le_bytes());
+        let events = parse_value_table(&buf);
+        assert_eq!(events.len(), 1);
+        assert!((events[0].value - 1.5).abs() < 1e-12);
+    }
+
+    #[test]
+    fn test_parse_value_table_truncated_ignored() {
+        // 23 bytes — not a complete record, should produce no events
+        let buf = vec![0u8; 23];
+        let events = parse_value_table(&buf);
+        assert!(events.is_empty());
+    }
+
+    #[test]
+    fn test_generate_ws_key_length() {
+        // Base64 of 16 bytes = 24 chars (with padding)
+        let key = generate_ws_key();
+        assert_eq!(key.len(), 24);
+    }
+
+    #[test]
+    fn test_generate_ws_key_unique() {
+        let k1 = generate_ws_key();
+        let k2 = generate_ws_key();
+        assert_ne!(k1, k2);
+    }
+}

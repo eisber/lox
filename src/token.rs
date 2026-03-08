@@ -197,3 +197,40 @@ pub async fn acquire_token(cfg: &Config) -> Result<TokenStore> {
     ts.save()?;
     Ok(ts)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn make_store(valid_until: u64) -> TokenStore {
+        TokenStore {
+            token: "test_token".into(),
+            key: "test_key".into(),
+            valid_until,
+        }
+    }
+
+    #[test]
+    fn test_token_store_valid() {
+        let now = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH).unwrap().as_secs();
+        // Valid until 1 hour from now (well past the 300s margin)
+        let ts = make_store(now + 3600);
+        assert!(ts.is_valid());
+    }
+
+    #[test]
+    fn test_token_store_expired() {
+        let ts = make_store(0);
+        assert!(!ts.is_valid());
+    }
+
+    #[test]
+    fn test_token_store_expiring_soon() {
+        let now = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH).unwrap().as_secs();
+        // Expires in 100s — within the 300s margin
+        let ts = make_store(now + 100);
+        assert!(!ts.is_valid());
+    }
+}

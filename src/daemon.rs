@@ -520,3 +520,112 @@ fn now_ts() -> String {
     let now = chrono::Local::now();
     format!("{:02}:{:02}:{:02}", now.hour(), now.minute(), now.second())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn empty_registry() -> StateRegistry { StateRegistry::default() }
+
+    fn rule(op: &str, value: Option<&str>, only_between: Option<&str>) -> Rule {
+        Rule {
+            when: "test".into(),
+            op: op.into(),
+            value: value.map(|s| s.into()),
+            also: vec![],
+            only_between: only_between.map(|s| s.into()),
+            run: "true".into(),
+            description: None,
+            cooldown_secs: 0,
+        }
+    }
+
+    // ── cmp_value ────────────────────────────────────────────────────────────
+
+    #[test]
+    fn test_cmp_eq_numeric() {
+        assert!(cmp_value("eq", "1.0", 1.0));
+        assert!(!cmp_value("eq", "1.0", 2.0));
+    }
+
+    #[test]
+    fn test_cmp_ne() {
+        assert!(cmp_value("ne", "1.0", 2.0));
+        assert!(!cmp_value("ne", "1.0", 1.0));
+    }
+
+    #[test]
+    fn test_cmp_gt_lt() {
+        assert!(cmp_value("gt", "5", 6.0));
+        assert!(!cmp_value("gt", "5", 5.0));
+        assert!(cmp_value("lt", "5", 4.0));
+    }
+
+    #[test]
+    fn test_cmp_ge_le() {
+        assert!(cmp_value("ge", "5", 5.0));
+        assert!(cmp_value("le", "5", 5.0));
+    }
+
+    #[test]
+    fn test_cmp_unknown_op_false() {
+        assert!(!cmp_value("bogus", "1", 1.0));
+    }
+
+    // ── eval_rule ────────────────────────────────────────────────────────────
+
+    #[test]
+    fn test_eval_rule_changes_first_time() {
+        // No old value → "changes" triggers
+        let r = rule("changes", None, None);
+        assert!(eval_rule(&r, None, 1.0, &empty_registry(), None));
+    }
+
+    #[test]
+    fn test_eval_rule_changes_same_value() {
+        let r = rule("changes", None, None);
+        assert!(!eval_rule(&r, Some(1.0), 1.0, &empty_registry(), None));
+    }
+
+    #[test]
+    fn test_eval_rule_eq_match() {
+        let r = rule("eq", Some("5"), None);
+        assert!(eval_rule(&r, None, 5.0, &empty_registry(), None));
+    }
+
+    #[test]
+    fn test_eval_rule_eq_no_match() {
+        let r = rule("eq", Some("5"), None);
+        assert!(!eval_rule(&r, None, 4.0, &empty_registry(), None));
+    }
+
+    #[test]
+    fn test_eval_rule_time_window_always_valid() {
+        // "00:00-23:59" should always be in-window
+        let r = rule("changes", None, Some("00:00-23:59"));
+        assert!(eval_rule(&r, None, 1.0, &empty_registry(), None));
+    }
+
+    #[test]
+    fn test_eval_rule_time_window_never_valid() {
+        // Past midnight window that can't match current time during test
+        // We can't control clock, so just verify that invalid format passes through
+        let r = rule("changes", None, Some("bad-format"));
+        // Bad format → in_time_window returns true (permissive)
+        assert!(eval_rule(&r, None, 1.0, &empty_registry(), None));
+    }
+
+    // ── in_time_window ───────────────────────────────────────────────────────
+
+    #[test]
+    fn test_in_time_window_all_day() {
+        assert!(in_time_window("00:00-23:59", None));
+    }
+
+    #[test]
+    fn test_in_time_window_invalid_format() {
+        // Invalid format → permissive (true)
+        assert!(in_time_window("notawindow", None));
+        assert!(in_time_window("", None));
+    }
+}

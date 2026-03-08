@@ -1062,3 +1062,75 @@ fn encode_path_value(s: &str) -> String {
         c   => vec![c],
     }).collect()
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    // ── eval_op ──────────────────────────────────────────────────────────────
+
+    #[test]
+    fn test_eval_op_eq() {
+        assert!(eval_op("1", "eq", "1").unwrap());
+        assert!(!eval_op("1", "eq", "2").unwrap());
+        assert!(eval_op("hello", "==", "hello").unwrap());
+    }
+
+    #[test]
+    fn test_eval_op_ne() {
+        assert!(eval_op("1", "ne", "2").unwrap());
+        assert!(!eval_op("1", "!=", "1").unwrap());
+    }
+
+    #[test]
+    fn test_eval_op_numeric_comparisons() {
+        assert!(eval_op("10", "gt", "5").unwrap());
+        assert!(eval_op("5", "lt", "10").unwrap());
+        assert!(eval_op("5", "ge", "5").unwrap());
+        assert!(eval_op("5", "le", "5").unwrap());
+        assert!(!eval_op("4", ">", "5").unwrap());
+    }
+
+    #[test]
+    fn test_eval_op_contains() {
+        assert!(eval_op("hello world", "contains", "world").unwrap());
+        assert!(!eval_op("hello", "contains", "world").unwrap());
+    }
+
+    #[test]
+    fn test_eval_op_unknown_returns_err() {
+        assert!(eval_op("1", "bogus", "1").is_err());
+    }
+
+    // ── encode_path_value ────────────────────────────────────────────────────
+
+    #[test]
+    fn test_encode_path_value_plain() {
+        assert_eq!(encode_path_value("on"), "on");
+        assert_eq!(encode_path_value("manualPosition/0.5"), "manualPosition/0.5");
+    }
+
+    #[test]
+    fn test_encode_path_value_space() {
+        assert_eq!(encode_path_value("hello world"), "hello%20world");
+    }
+
+    #[test]
+    fn test_encode_path_value_percent() {
+        assert_eq!(encode_path_value("50%"), "50%25");
+    }
+
+    #[test]
+    fn test_encode_path_value_plus() {
+        assert_eq!(encode_path_value("a+b"), "a%2Bb");
+    }
+
+    // ── is_uuid ──────────────────────────────────────────────────────────────
+
+    #[test]
+    fn test_is_uuid() {
+        assert!(is_uuid("1fbc668c-005c-7471-ffffed57184a04d2"));
+        assert!(!is_uuid("Licht Wohnzimmer"));
+        assert!(!is_uuid("short-str"));
+    }
+}
