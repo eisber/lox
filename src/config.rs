@@ -1,6 +1,7 @@
 use anyhow::{Context, Result};
 use dirs::home_dir;
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 use std::fs;
 use std::path::PathBuf;
 
@@ -11,6 +12,8 @@ pub struct Config {
     pub pass: String,
     #[serde(default)]
     pub serial: String,
+    #[serde(default)]
+    pub aliases: HashMap<String, String>,
 }
 
 impl Config {

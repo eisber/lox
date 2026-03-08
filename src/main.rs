@@ -183,10 +183,36 @@ impl LoxClient {
     }
 
     fn resolve(&mut self, name_or_uuid: &str) -> Result<String> {
+        self.resolve_with_room(name_or_uuid, None)
+    }
+
+    fn resolve_with_room(&mut self, name_or_uuid: &str, room_filter: Option<&str>) -> Result<String> {
         if is_uuid(name_or_uuid) { return Ok(name_or_uuid.to_string()); }
+        // Check aliases first
+        if let Some(uuid) = self.cfg.aliases.get(name_or_uuid) {
+            return Ok(uuid.clone());
+        }
+        // Parse bracket room qualifier: "Name [Room]"
+        let (name_part, room_part) = if let Some(idx) = name_or_uuid.rfind('[') {
+            if name_or_uuid.ends_with(']') {
+                let name = name_or_uuid[..idx].trim();
+                let room = &name_or_uuid[idx+1..name_or_uuid.len()-1];
+                (name, Some(room))
+            } else {
+                (name_or_uuid, None)
+            }
+        } else {
+            (name_or_uuid, None)
+        };
+        let effective_room = room_part.or(room_filter);
         let controls = self.list_controls(None, None)?;
         let matches: Vec<&Control> = controls.iter()
-            .filter(|c| c.name.to_lowercase().contains(&name_or_uuid.to_lowercase()))
+            .filter(|c| c.name.to_lowercase().contains(&name_part.to_lowercase()))
+            .filter(|c| {
+                if let Some(rf) = effective_room {
+                    c.room.as_deref().unwrap_or("").to_lowercase().contains(&rf.to_lowercase())
+                } else { true }
+            })
             .collect();
         match matches.len() {
             0 => bail!("No control matching '{}'", name_or_uuid),
@@ -195,7 +221,7 @@ impl LoxClient {
                 for c in &matches {
                     eprintln!("  {:40} [{}]  {}", c.name, c.room.as_deref().unwrap_or("-"), c.uuid);
                 }
-                bail!("Ambiguous: '{}'", name_or_uuid)
+                bail!("Ambiguous: '{}'. Use [Room] qualifier or --room flag.", name_or_uuid)
             }
         }
     }
@@ -270,21 +296,21 @@ enum Cmd {
     /// Configure connection
     Config { #[command(subcommand)] action: ConfigCmd },
     /// Miniserver health
-    Status,
+    Status { #[arg(long)] energy: bool },
     /// List controls
-    Ls { #[arg(long)] r#type: Option<String>, #[arg(long)] room: Option<String> },
+    Ls { #[arg(long)] r#type: Option<String>, #[arg(long)] room: Option<String>, #[arg(long)] values: bool },
     /// List rooms
     Rooms,
     /// Get full state of a control
-    Get { name_or_uuid: String },
+    Get { name_or_uuid: String, #[arg(long)] room: Option<String> },
     /// Send raw command
-    Send { name_or_uuid: String, command: String },
+    Send { name_or_uuid: String, command: String, #[arg(long)] room: Option<String> },
     /// Turn on
-    On { name_or_uuid: String },
+    On { name_or_uuid: String, #[arg(long)] room: Option<String> },
     /// Turn off
-    Off { name_or_uuid: String },
+    Off { name_or_uuid: String, #[arg(long)] room: Option<String> },
     /// Momentary pulse
-    Pulse { name_or_uuid: String },
+    Pulse { name_or_uuid: String, #[arg(long)] room: Option<String> },
     /// Control blind: up | down | stop | shade | full-up | full-down | pos <0-100>
     Blind { name_or_uuid: String, action: String, #[arg(allow_hyphen_values = true)] pos: Option<f64> },
     /// Control light moods: plus | minus | off | <mood-id>
@@ -400,7 +426,7 @@ fn main() -> Result<()> {
     match cli.cmd {
         Cmd::Config { action } => match action {
             ConfigCmd::Set { host, user, pass, serial } => {
-                Config { host, user, pass, serial }.save()?;
+                Config { host, user, pass, serial, aliases: Default::default() }.save()?;
             }
             ConfigCmd::Show => {
                 let cfg = Config::load()?;
@@ -411,7 +437,7 @@ fn main() -> Result<()> {
             }
         },
 
-        Cmd::Status => {
+        Cmd::Status { energy } => {
             let lox = LoxClient::new(Config::load()?);
             let version = lox.get_text("/dev/cfg/version")?;
             let heap    = lox.get_text("/dev/sys/heap")?;
@@ -453,15 +479,51 @@ fn main() -> Result<()> {
                 println!("│  Connections: {}", conn);
                 println!("└─────────────────────────────────────────────────────");
             }
+            if energy {
+                let energy_meters = [
+                    ("PV-Strom",      "1fbc668c-005c-7471-ffffed57184a04d2"),
+                    ("Netzbezug",     "1fbc68d8-01e9-a417-ffffed57184a04d2"),
+                    ("Speicher",      "1fbc6b89-006b-d72f-ffffed57184a04d2"),
+                    ("Stromverbrauch","1fbc6901-03cb-6c41-ffffed57184a04d2"),
+                ];
+                println!("┌─ Energie ───────────────────────────────────────────");
+                for (label, uuid) in &energy_meters {
+                    let val = lox.get_json(&format!("/jdev/sps/io/{}/all", uuid))
+                        .ok()
+                        .and_then(|v| v.pointer("/LL/value").and_then(|x| x.as_str()).map(|s| s.to_string()))
+                        .unwrap_or_else(|| "-".to_string());
+                    let v: f64 = val.parse().unwrap_or(0.0);
+                    let suffix = if *label == "Speicher" {
+                        if v < 0.0 { " (lädt)" } else if v > 0.0 { " (gibt ab)" } else { "" }
+                    } else { "" };
+                    println!("│  {:<16} {:>8.3} kW{}", label, v, suffix);
+                }
+                println!("└─────────────────────────────────────────────────────");
+            } else {
+                // dummy block — real closing handled above
+                let _ = ();
+            }
         },
 
-        Cmd::Ls { r#type, room } => {
+        Cmd::Ls { r#type, room, values } => {
             let mut lox = LoxClient::new(Config::load()?);
             let controls = lox.list_controls(r#type.as_deref(), room.as_deref())?;
             if cli.json {
                 println!("{}", serde_json::to_string_pretty(&controls.iter().map(|c| serde_json::json!({
                     "name": c.name, "uuid": c.uuid, "type": c.typ, "room": c.room
                 })).collect::<Vec<_>>())?);
+            } else if values {
+                println!("{:<40} {:<24} {:<22} {:<20} {}", "NAME", "ROOM", "TYPE", "VALUE", "UUID");
+                println!("{}", "─".repeat(140));
+                for c in &controls {
+                    let val = lox.get_all(&c.uuid)
+                        .ok()
+                        .and_then(|xml| xml_attr(&xml, "value").map(|s| s.to_string()))
+                        .unwrap_or_else(|| "-".to_string());
+                    println!("{:<40} {:<24} {:<22} {:<20} {}",
+                        c.name, c.room.as_deref().unwrap_or("─"), c.typ, val, c.uuid);
+                }
+                println!("\n{} controls", controls.len());
             } else {
                 println!("{:<40} {:<24} {:<22} {}", "NAME", "ROOM", "TYPE", "UUID");
                 println!("{}", "─".repeat(120));
@@ -484,9 +546,10 @@ fn main() -> Result<()> {
             }
         },
 
-        Cmd::Get { name_or_uuid } => {
+        Cmd::Get { name_or_uuid, room } => {
             let mut lox = LoxClient::new(Config::load()?);
-            let ctrl = lox.find_control(&name_or_uuid)?;
+            let uuid_resolved = lox.resolve_with_room(&name_or_uuid, room.as_deref())?;
+            let ctrl = lox.find_control(&uuid_resolved)?;
             let xml = lox.get_all(&ctrl.uuid)?;
             let val = xml_attr(&xml, "value").unwrap_or("?");
             let code = xml_attr(&xml, "Code").unwrap_or("?");
@@ -521,27 +584,27 @@ fn main() -> Result<()> {
             }
         },
 
-        Cmd::Send { name_or_uuid, command } => {
+        Cmd::Send { name_or_uuid, command, room } => {
             let mut lox = LoxClient::new(Config::load()?);
-            let uuid = lox.resolve(&name_or_uuid)?;
+            let uuid = lox.resolve_with_room(&name_or_uuid, room.as_deref())?;
             let resp = lox.send_cmd(&uuid, &command)?;
             print_resp(&resp, cli.json, &name_or_uuid, &command);
         },
-        Cmd::On { name_or_uuid } => {
+        Cmd::On { name_or_uuid, room } => {
             let mut lox = LoxClient::new(Config::load()?);
-            let uuid = lox.resolve(&name_or_uuid)?;
+            let uuid = lox.resolve_with_room(&name_or_uuid, room.as_deref())?;
             let resp = lox.send_cmd(&uuid, "on")?;
             print_resp(&resp, cli.json, &name_or_uuid, "on");
         },
-        Cmd::Off { name_or_uuid } => {
+        Cmd::Off { name_or_uuid, room } => {
             let mut lox = LoxClient::new(Config::load()?);
-            let uuid = lox.resolve(&name_or_uuid)?;
+            let uuid = lox.resolve_with_room(&name_or_uuid, room.as_deref())?;
             let resp = lox.send_cmd(&uuid, "off")?;
             print_resp(&resp, cli.json, &name_or_uuid, "off");
         },
-        Cmd::Pulse { name_or_uuid } => {
+        Cmd::Pulse { name_or_uuid, room } => {
             let mut lox = LoxClient::new(Config::load()?);
-            let uuid = lox.resolve(&name_or_uuid)?;
+            let uuid = lox.resolve_with_room(&name_or_uuid, room.as_deref())?;
             let resp = lox.send_cmd(&uuid, "pulse")?;
             print_resp(&resp, cli.json, &name_or_uuid, "pulse");
         },
