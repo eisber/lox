@@ -13,7 +13,6 @@ The Loxone app is great for humans tapping on phones. It's useless for everythin
 
 - **Script your home** — bash, Python, cron, whatever
 - **Connect AI agents** — Claude, GPT, or any LLM tool can control your home via shell commands
-- **Build automations** — rule engine with conditions, time windows, edge detection
 - **Chain commands** — `lox if "Temperatur" gt 25 && lox blind "Südseite" pos 80`
 - **Integrate with anything** — exit codes, JSON output, stdin/stdout
 
@@ -159,11 +158,6 @@ lox scene list
 lox scene show abend
 lox scene new abend
 
-# ── Automation Daemon ─────────────────────────────────────────────
-lox daemon                              # WebSocket (needs Monitor rights)
-lox daemon --poll                       # HTTP polling fallback
-lox automation list
-
 # ── Cache ─────────────────────────────────────────────────────────
 lox cache info
 lox cache refresh
@@ -198,32 +192,6 @@ steps:
     cmd: off
     delay_ms: 500
 ```
-
----
-
-## Automation Rules
-
-`~/.lox/automations.yaml` — evaluated by the daemon:
-
-```yaml
-rules:
-  - name: "Sonnenschutz bei Hitze"
-    when:
-      control: "Temperatur Außen"
-      op: gt
-      value: 28
-    also:
-      - control: "Windgeschwindigkeit"
-        op: lt
-        value: 10
-    only_between: "10:00-18:00"
-    then:
-      - control: "Beschattung Süd"
-        command: "pos 80"
-```
-
-**Operators:** `eq`, `ne`, `gt`, `lt`, `gte`, `lte`, `changes`  
-**Conditions:** `also` (AND), `only_between` (time window)
 
 ---
 
@@ -262,21 +230,9 @@ Structure cache at `~/.lox/cache/structure.json` (24h TTL):
     structure.json     # LoxApp3.json (24h TTL, ~150KB)
   token.json           # Token auth (optional)
   scenes/*.yaml        # Your scenes
-  automations.yaml     # Automation rules
 ```
 
 Single static Rust binary ~4MB. TLS via rustls (no OpenSSL). Self-signed certs accepted.
-
----
-
-## Systemd Service
-
-```bash
-lox service install    # Install automation daemon as systemd user service
-lox service status
-lox service logs
-lox service uninstall
-```
 
 ---
 
@@ -284,7 +240,6 @@ lox service uninstall
 
 - Loxone Miniserver Gen 1/2, firmware 12.0+
 - Local network access (or DynDNS)
-- For `lox daemon` (WebSocket): Monitor rights enabled in Loxone Config
 - For `lox log`: Admin user
 
 ---
