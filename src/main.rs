@@ -404,7 +404,8 @@ enum ConfigCmd {
     Set {
         #[arg(long)] host: String,
         #[arg(long)] user: String,
-        #[arg(long)] pass: String,
+        /// Password (or set LOX_PASS env var to avoid it appearing in the process table)
+        #[arg(long, env = "LOX_PASS")] pass: String,
         #[arg(long, default_value = "")] serial: String,
     },
     Show,

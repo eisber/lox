@@ -4,6 +4,8 @@ use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::fs;
 use std::path::PathBuf;
+#[cfg(unix)]
+use std::os::unix::fs::PermissionsExt;
 
 #[derive(Debug, Serialize, Deserialize, Clone, Default)]
 pub struct Config {
@@ -34,6 +36,8 @@ impl Config {
         let path = Self::path();
         fs::create_dir_all(path.parent().unwrap())?;
         fs::write(&path, serde_yaml::to_string(self)?)?;
+        #[cfg(unix)]
+        let _ = fs::set_permissions(&path, fs::Permissions::from_mode(0o600));
         println!("✓  Config saved to {:?}", path);
         Ok(())
     }
