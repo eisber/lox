@@ -303,6 +303,8 @@ struct Cli {
 enum Cmd {
     /// Configure connection
     Config { #[command(subcommand)] action: ConfigCmd },
+    /// Manage control name aliases
+    Alias { #[command(subcommand)] action: AliasCmd },
     /// Miniserver health
     Status { #[arg(long)] energy: bool },
     /// List controls
@@ -401,14 +403,27 @@ enum CacheCmd {
 
 #[derive(Subcommand)]
 enum ConfigCmd {
+    /// Set one or more config fields (omitted fields are preserved)
     Set {
-        #[arg(long)] host: String,
-        #[arg(long)] user: String,
+        #[arg(long)] host: Option<String>,
+        #[arg(long)] user: Option<String>,
         /// Password (or set LOX_PASS env var to avoid it appearing in the process table)
-        #[arg(long, env = "LOX_PASS")] pass: String,
-        #[arg(long, default_value = "")] serial: String,
+        #[arg(long, env = "LOX_PASS")] pass: Option<String>,
+        #[arg(long)] serial: Option<String>,
+        /// IANA timezone (e.g. Europe/Vienna) for automation time windows
+        #[arg(long)] timezone: Option<String>,
     },
     Show,
+}
+
+#[derive(Subcommand)]
+enum AliasCmd {
+    /// Add or update an alias
+    Add { name: String, uuid: String },
+    /// Remove an alias
+    Remove { name: String },
+    /// List all aliases
+    List,
 }
 
 #[derive(Subcommand)]
@@ -435,12 +450,13 @@ fn main() -> Result<()> {
 
     match cli.cmd {
         Cmd::Config { action } => match action {
-            ConfigCmd::Set { host, user, pass, serial } => {
+            ConfigCmd::Set { host, user, pass, serial, timezone } => {
                 let mut cfg = Config::load().unwrap_or_default();
-                cfg.host = host;
-                cfg.user = user;
-                cfg.pass = pass;
-                if !serial.is_empty() { cfg.serial = serial; }
+                if let Some(h) = host { cfg.host = h; }
+                if let Some(u) = user { cfg.user = u; }
+                if let Some(p) = pass { cfg.pass = p; }
+                if let Some(s) = serial { cfg.serial = s; }
+                if let Some(tz) = timezone { cfg.timezone = Some(tz); }
                 cfg.save()?;
             }
             ConfigCmd::Show => {
@@ -449,6 +465,43 @@ fn main() -> Result<()> {
                 println!("user:   {}", cfg.user);
                 println!("pass:   {}", "*".repeat(cfg.pass.len()));
                 if !cfg.serial.is_empty() { println!("serial: {}", cfg.serial); }
+                if let Some(tz) = &cfg.timezone { println!("timezone: {}", tz); }
+                if !cfg.aliases.is_empty() {
+                    println!("aliases:");
+                    let mut aliases: Vec<_> = cfg.aliases.iter().collect();
+                    aliases.sort_by_key(|(k, _)| k.as_str());
+                    for (name, uuid) in aliases { println!("  {}: {}", name, uuid); }
+                }
+            }
+        },
+
+        Cmd::Alias { action } => {
+            let mut cfg = Config::load()?;
+            match action {
+                AliasCmd::Add { name, uuid } => {
+                    cfg.aliases.insert(name.clone(), uuid.clone());
+                    cfg.save()?;
+                    println!("✓  alias '{}' → {}", name, uuid);
+                }
+                AliasCmd::Remove { name } => {
+                    if cfg.aliases.remove(&name).is_some() {
+                        cfg.save()?;
+                        println!("✓  removed alias '{}'", name);
+                    } else {
+                        println!("No alias named '{}'", name);
+                    }
+                }
+                AliasCmd::List => {
+                    if cfg.aliases.is_empty() {
+                        println!("No aliases. Add with: lox alias add <name> <uuid>");
+                    } else {
+                        let mut aliases: Vec<_> = cfg.aliases.iter().collect();
+                        aliases.sort_by_key(|(k, _)| k.as_str());
+                        println!("{:<24} {}", "ALIAS", "UUID");
+                        println!("{}", "─".repeat(60));
+                        for (name, uuid) in aliases { println!("{:<24} {}", name, uuid); }
+                    }
+                }
             }
         },
 
