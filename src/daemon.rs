@@ -173,6 +173,7 @@ impl StateRegistry {
         old
     }
 
+    #[allow(dead_code)]
     pub fn get(&self, uuid: &str) -> Option<f64> {
         self.values.get(uuid).copied()
     }
@@ -461,7 +462,7 @@ pub async fn run_polling_daemon(cfg: Config, verbose: bool, interval_secs: u64) 
             let url = format!("{}/dev/sps/io/{}/all", cfg.host, uuid);
             let xml = match client.get(&url)
                 .basic_auth(&cfg.user, Some(&pass))
-                .send().await.and_then(|r| Ok(r))
+                .send().await
             {
                 Ok(resp) => match resp.text().await {
                     Ok(x) => x,

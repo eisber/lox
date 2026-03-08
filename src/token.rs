@@ -1,11 +1,10 @@
 //! Loxone token authentication via WS + RSA/AES command encryption
 
 use anyhow::{bail, Result};
-use cbc::cipher::{BlockDecryptMut, BlockEncryptMut, KeyIvInit};
+use cbc::cipher::{BlockEncryptMut, KeyIvInit};
 use hmac::{Hmac, Mac};
 use rand::RngCore;
-use rsa::{pkcs8::DecodePublicKey, pkcs1::DecodeRsaPublicKey, Pkcs1v15Encrypt, RsaPublicKey};
-use x509_cert::{Certificate, der::{Decode, pem::PemLabel}};
+use rsa::{pkcs8::DecodePublicKey, Pkcs1v15Encrypt, RsaPublicKey};
 use sha1::Sha1 as Sha1Digest;
 use sha2::{Digest, Sha256};
 use std::time::Duration;
@@ -45,6 +44,7 @@ fn aes_encrypt(key: &[u8], iv: &[u8], plaintext: &[u8]) -> Vec<u8> {
         .encrypt_padded_vec_mut::<cbc::cipher::block_padding::Pkcs7>(plaintext)
 }
 
+#[allow(dead_code)]
 fn recv_text(msg: Option<Result<Message, tokio_tungstenite::tungstenite::Error>>) -> Option<String> {
     match msg? {
         Ok(Message::Text(t)) => Some(t.to_string()),
@@ -91,7 +91,7 @@ pub async fn acquire_token(cfg: &Config) -> Result<TokenStore> {
     rand::thread_rng().fill_bytes(&mut aes_key);
     rand::thread_rng().fill_bytes(&mut aes_iv);
     // Loxone expects key:iv as HEX strings (not base64)
-    let key_info = format!("{}:{}", hex::encode(&aes_key), hex::encode(&aes_iv));
+    let key_info = format!("{}:{}", hex::encode(aes_key), hex::encode(aes_iv));
 
     // 3. RSA-PKCS1v15 encrypt key info
     let encrypted_b64 = {
@@ -127,7 +127,7 @@ pub async fn acquire_token(cfg: &Config) -> Result<TokenStore> {
     // 5. WS connect + key exchange
     let ws_client = LoxWsClient::new(cfg.clone());
     let (mut ws, _) = ws_client.connect_raw().await?;
-    ws.send(Message::Text(format!("jdev/sys/keyexchange/{}", encrypted_b64).into())).await?;
+    ws.send(Message::Text(format!("jdev/sys/keyexchange/{}", encrypted_b64))).await?;
 
     // Read keyexchange response (may get binary header first)
     for _ in 0..5 {
@@ -149,7 +149,7 @@ pub async fn acquire_token(cfg: &Config) -> Result<TokenStore> {
     let cmd = format!("jdev/sys/gettoken/{}/{}/4/{}/lox-cli", sig, cfg.user, client_uuid);
     let enc_cmd_b64 = base64::Engine::encode(
         &base64::engine::general_purpose::STANDARD,
-        &aes_encrypt(&aes_key, &aes_iv, cmd.as_bytes()),
+        aes_encrypt(&aes_key, &aes_iv, cmd.as_bytes()),
     );
     // URL-encode the base64 (+ and / need encoding in WS commands)
     let enc_cmd_url: String = enc_cmd_b64.chars().map(|c| match c {
@@ -158,24 +158,23 @@ pub async fn acquire_token(cfg: &Config) -> Result<TokenStore> {
         '=' => "%3D".to_string(),
         c   => c.to_string(),
     }).collect();
-    ws.send(Message::Text(format!("jdev/sys/enc/{}", enc_cmd_url).into())).await?;
+    ws.send(Message::Text(format!("jdev/sys/enc/{}", enc_cmd_url))).await?;
 
     // 7. Read token response
-    let token_resp: serde_json::Value = 'outer: loop {
-        for _ in 0..10 {
-            match tokio::time::timeout(Duration::from_secs(5), ws.next()).await {
-                Ok(Some(Ok(Message::Text(t)))) => {
-                    if let Ok(v) = serde_json::from_str::<serde_json::Value>(&t) {
-                        if v.pointer("/LL/Code").is_some() { break 'outer v; }
-                    }
+    let mut token_resp: Option<serde_json::Value> = None;
+    for _ in 0..10 {
+        match tokio::time::timeout(Duration::from_secs(5), ws.next()).await {
+            Ok(Some(Ok(Message::Text(t)))) => {
+                if let Ok(v) = serde_json::from_str::<serde_json::Value>(&t) {
+                    if v.pointer("/LL/Code").is_some() { token_resp = Some(v); break; }
                 }
-                Ok(Some(Ok(Message::Binary(_)))) => continue,
-                Ok(Some(Err(e))) => bail!("WS: {}", e),
-                _ => bail!("WS timeout waiting for token"),
             }
+            Ok(Some(Ok(Message::Binary(_)))) => continue,
+            Ok(Some(Err(e))) => bail!("WS: {}", e),
+            _ => bail!("WS timeout waiting for token"),
         }
-        bail!("no token response after 10 messages");
-    };
+    }
+    let token_resp = token_resp.ok_or_else(|| anyhow::anyhow!("no token response after 10 messages"))?;
 
     let code = token_resp.pointer("/LL/Code").and_then(|c| c.as_str()).unwrap_or("0");
     if code != "200" { bail!("gettoken failed ({}): {}", code, token_resp); }

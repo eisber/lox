@@ -72,15 +72,19 @@ impl LoxClient {
 
     pub fn load_or_fetch_structure(cfg: &Config, client: &Client) -> Result<Value> {
         let cache = Self::cache_path(cfg);
-        if let Ok(meta) = cache.metadata() {
-            if let Ok(modified) = meta.modified() {
-                let age = std::time::SystemTime::now()
-                    .duration_since(modified)
-                    .unwrap_or_default();
-                if age.as_secs() < 86400 {
-                    if let Ok(data) = fs::read_to_string(&cache) {
-                        if let Ok(v) = serde_json::from_str::<Value>(&data) {
-                            return Ok(v);
+        // Skip disk cache for localhost hosts (used in tests with mock servers)
+        let use_cache = !cfg.host.contains("127.0.0.1") && !cfg.host.contains("localhost");
+        if use_cache {
+            if let Ok(meta) = cache.metadata() {
+                if let Ok(modified) = meta.modified() {
+                    let age = std::time::SystemTime::now()
+                        .duration_since(modified)
+                        .unwrap_or_default();
+                    if age.as_secs() < 86400 {
+                        if let Ok(data) = fs::read_to_string(&cache) {
+                            if let Ok(v) = serde_json::from_str::<Value>(&data) {
+                                return Ok(v);
+                            }
                         }
                     }
                 }
@@ -95,10 +99,12 @@ impl LoxClient {
             .basic_auth(&cfg.user, Some(&pass))
             .send()?.bytes()?;
         let v: Value = serde_json::from_slice(&resp)?;
-        if let Some(parent) = cache.parent() {
-            let _ = fs::create_dir_all(parent);
+        if use_cache {
+            if let Some(parent) = cache.parent() {
+                let _ = fs::create_dir_all(parent);
+            }
+            let _ = fs::write(&cache, &resp);
         }
-        let _ = fs::write(&cache, &resp);
         Ok(v)
     }
 
