@@ -5,9 +5,9 @@ mod scene;
 mod token;
 mod ws;
 
-use anyhow::{bail, Result};
+use anyhow::{bail, Context, Result};
 use clap::{Parser, Subcommand};
-use client::{is_uuid, LoxClient};
+use client::LoxClient;
 use config::Config;
 use daemon::Automations;
 use reqwest::blocking::Client;
@@ -264,7 +264,7 @@ fn main() -> Result<()> {
                     } else {
                         let mut aliases: Vec<_> = cfg.aliases.iter().collect();
                         aliases.sort_by_key(|(k, _)| k.as_str());
-                        println!("{:<24} {}", "ALIAS", "UUID");
+                        println!("{:<24} UUID", "ALIAS");
                         println!("{}", "─".repeat(60));
                         for (name, uuid) in aliases { println!("{:<24} {}", name, uuid); }
                     }
@@ -347,7 +347,7 @@ fn main() -> Result<()> {
                     "name": c.name, "uuid": c.uuid, "type": c.typ, "room": c.room
                 })).collect::<Vec<_>>())?);
             } else if values {
-                println!("{:<40} {:<24} {:<22} {:<20} {}", "NAME", "ROOM", "TYPE", "VALUE", "UUID");
+                println!("{:<40} {:<24} {:<22} {:<20} UUID", "NAME", "ROOM", "TYPE", "VALUE");
                 println!("{}", "─".repeat(140));
                 for c in &controls {
                     let val = lox.get_all(&c.uuid)
@@ -359,7 +359,7 @@ fn main() -> Result<()> {
                 }
                 println!("\n{} controls", controls.len());
             } else {
-                println!("{:<40} {:<24} {:<22} {}", "NAME", "ROOM", "TYPE", "UUID");
+                println!("{:<40} {:<24} {:<22} UUID", "NAME", "ROOM", "TYPE");
                 println!("{}", "─".repeat(120));
                 for c in &controls {
                     println!("{:<40} {:<24} {:<22} {}",
@@ -623,7 +623,7 @@ fn main() -> Result<()> {
                     println!("{} rule(s) in {:?}:", auto.rules.len(), Automations::path());
                     for (i, r) in auto.rules.iter().enumerate() {
                         let cond = if r.op == "changes" {
-                            format!("changes")
+                            "changes".to_string()
                         } else {
                             format!("{} {} {}", r.op, r.value.as_deref().unwrap_or("?"), "")
                         };
@@ -759,7 +759,7 @@ User service written to: {:?}", user_path);
                     let rt = tokio::runtime::Runtime::new()?;
                     match rt.block_on(token::acquire_token(&cfg)) {
                         Ok(ts) => {
-                            let exp = std::time::UNIX_EPOCH + std::time::Duration::from_secs(ts.valid_until);
+                            let _exp = std::time::UNIX_EPOCH + std::time::Duration::from_secs(ts.valid_until);
                             let days = ts.valid_until.saturating_sub(
                                 std::time::SystemTime::now()
                                     .duration_since(std::time::UNIX_EPOCH).unwrap().as_secs()
@@ -887,6 +887,7 @@ fn encode_path_value(s: &str) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use client::is_uuid;
 
     // ── eval_op ──────────────────────────────────────────────────────────────
 
