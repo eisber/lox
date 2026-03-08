@@ -67,6 +67,12 @@ An agent can discover your home (`lox ls --json`), read sensor values, control d
 
 ## Install
 
+**Homebrew (macOS/Linux):**
+```bash
+brew install discostu105/lox/lox
+```
+
+**Build from source:**
 ```bash
 git clone https://github.com/discostu105/lox
 cd lox
@@ -74,7 +80,7 @@ cargo build --release
 cp target/release/lox ~/.local/bin/
 ```
 
-**Requirements:** Rust 1.75+. No OpenSSL. No runtime dependencies.
+**Requirements (source):** Rust 1.75+. No OpenSSL. No runtime dependencies.
 
 ## Setup
 
