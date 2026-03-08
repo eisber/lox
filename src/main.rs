@@ -1,6 +1,5 @@
 mod client;
 mod config;
-mod daemon;
 mod scene;
 mod token;
 mod ws;
@@ -9,12 +8,10 @@ use anyhow::{bail, Context, Result};
 use clap::{Parser, Subcommand};
 use client::LoxClient;
 use config::Config;
-use daemon::Automations;
 use reqwest::blocking::Client;
 use scene::Scene;
 use serde_json::Value;
 use std::fs;
-use std::path::PathBuf;
 use std::thread;
 use std::time::Duration;
 
@@ -177,23 +174,6 @@ enum Cmd {
         #[command(subcommand)]
         action: SceneCmd,
     },
-    /// Start the automation daemon
-    Daemon {
-        /// Print all state changes
-        #[arg(long)]
-        verbose: bool,
-        /// Use HTTP polling instead of WebSocket (needed without Monitor rights)
-        #[arg(long)]
-        poll: bool,
-        /// Poll interval in seconds (default 3, only with --poll)
-        #[arg(long, default_value = "3")]
-        interval: u64,
-    },
-    /// Manage automation rules
-    Automation {
-        #[command(subcommand)]
-        action: AutomationCmd,
-    },
     /// Fetch the Miniserver system log (tail)
     Log {
         #[arg(long, default_value = "50", help = "Number of lines to show")]
@@ -206,11 +186,6 @@ enum Cmd {
         /// Value to send (numeric or text)
         value: String,
     },
-    /// Manage systemd daemon service
-    Service {
-        #[command(subcommand)]
-        action: ServiceCmd,
-    },
     /// Manage local cache
     Cache {
         #[command(subcommand)]
@@ -221,18 +196,6 @@ enum Cmd {
         #[command(subcommand)]
         action: TokenCmd,
     },
-}
-
-#[derive(Subcommand)]
-enum ServiceCmd {
-    /// Install systemd service
-    Install,
-    /// Show service status
-    Status,
-    /// Show service logs
-    Logs,
-    /// Uninstall service
-    Uninstall,
 }
 
 #[derive(Subcommand)]
@@ -268,9 +231,6 @@ enum ConfigCmd {
         pass: Option<String>,
         #[arg(long)]
         serial: Option<String>,
-        /// IANA timezone (e.g. Europe/Vienna) for automation time windows
-        #[arg(long)]
-        timezone: Option<String>,
     },
     /// Show current config (password redacted)
     Show,
@@ -296,16 +256,6 @@ enum SceneCmd {
     New { name: String },
 }
 
-#[derive(Subcommand)]
-enum AutomationCmd {
-    /// List loaded rules
-    List,
-    /// Create/show the automations file
-    Edit,
-    /// Test: print what events would trigger (dry run, no WS)
-    Check,
-}
-
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 fn main() -> Result<()> {
@@ -318,7 +268,6 @@ fn main() -> Result<()> {
                 user,
                 pass,
                 serial,
-                timezone,
             } => {
                 let mut cfg = Config::load().unwrap_or_default();
                 if let Some(h) = host {
@@ -337,9 +286,6 @@ fn main() -> Result<()> {
                 if let Some(s) = serial {
                     cfg.serial = s;
                 }
-                if let Some(tz) = timezone {
-                    cfg.timezone = Some(tz);
-                }
                 cfg.save()?;
             }
             ConfigCmd::Show => {
@@ -349,9 +295,6 @@ fn main() -> Result<()> {
                 println!("pass:   {}", "*".repeat(cfg.pass.len()));
                 if !cfg.serial.is_empty() {
                     println!("serial: {}", cfg.serial);
-                }
-                if let Some(tz) = &cfg.timezone {
-                    println!("timezone: {}", tz);
                 }
                 if !cfg.aliases.is_empty() {
                     println!("aliases:");
@@ -867,64 +810,6 @@ fn main() -> Result<()> {
             }
         },
 
-        Cmd::Daemon {
-            verbose,
-            poll,
-            interval,
-        } => {
-            let cfg = Config::load()?;
-            println!("🏠 lox daemon starting...");
-            let rt = tokio::runtime::Runtime::new()?;
-            if poll {
-                rt.block_on(daemon::run_polling_daemon(cfg, verbose, interval))?;
-            } else {
-                rt.block_on(daemon::run_daemon(cfg, verbose))?;
-            }
-        }
-
-        Cmd::Automation { action } => match action {
-            AutomationCmd::List => {
-                let auto = Automations::load()?;
-                if auto.rules.is_empty() {
-                    println!("No rules. Edit: {:?}", Automations::path());
-                } else {
-                    println!("{} rule(s) in {:?}:", auto.rules.len(), Automations::path());
-                    for (i, r) in auto.rules.iter().enumerate() {
-                        let cond = if r.op == "changes" {
-                            "changes".to_string()
-                        } else {
-                            format!("{} {} {}", r.op, r.value.as_deref().unwrap_or("?"), "")
-                        };
-                        println!("  {}. when '{}' {}→ {}", i + 1, r.when, cond, r.run);
-                        if let Some(d) = &r.description {
-                            println!("     ({})", d);
-                        }
-                    }
-                }
-            }
-            AutomationCmd::Edit => {
-                let path = Automations::path();
-                if !path.exists() {
-                    fs::create_dir_all(path.parent().unwrap())?;
-                    fs::write(&path, Automations::template())?;
-                    println!("✓  Created {:?}", path);
-                }
-                println!("Edit: {}", path.display());
-            }
-            AutomationCmd::Check => {
-                let auto = Automations::load()?;
-                println!("Checking {} rule(s)...", auto.rules.len());
-                let mut lox = LoxClient::new(Config::load()?);
-                for rule in &auto.rules {
-                    let uuid = lox.resolve(&rule.when);
-                    match uuid {
-                        Ok(u) => println!("  ✓  '{}' → {}", rule.when, u),
-                        Err(e) => println!("  ✗  '{}' → {}", rule.when, e),
-                    }
-                }
-            }
-        },
-
         Cmd::Set {
             name_or_uuid,
             value,
@@ -944,103 +829,6 @@ fn main() -> Result<()> {
                 println!("✓  {} = {}", name_or_uuid, val);
             } else {
                 bail!("Error {}: {}", code, val);
-            }
-        }
-        Cmd::Service { action } => {
-            let binary = std::env::current_exe().unwrap_or_else(|_| PathBuf::from("lox"));
-            match action {
-                ServiceCmd::Install => {
-                    let unit = format!(
-                        r#"[Unit]
-Description=Loxone Automation Daemon
-After=network-online.target
-Wants=network-online.target
-
-[Service]
-ExecStart={bin} daemon --poll
-Restart=always
-RestartSec=5
-Environment=HOME={home}
-
-[Install]
-WantedBy=multi-user.target
-"#,
-                        bin = binary.display(),
-                        home = dirs::home_dir().unwrap_or_default().display(),
-                    );
-                    let unit_path = PathBuf::from("/etc/systemd/system/lox-daemon.service");
-                    if unit_path.exists() {
-                        bail!("Service already installed at {:?}. Remove first with: lox service uninstall", unit_path);
-                    }
-                    // Write to tmp, then ask to move with sudo
-                    let tmp = PathBuf::from("/tmp/lox-daemon.service");
-                    fs::write(&tmp, &unit)?;
-                    println!("Service file written to {:?}", tmp);
-                    println!(
-                        "
-To install (requires sudo):"
-                    );
-                    println!("  sudo mv /tmp/lox-daemon.service /etc/systemd/system/");
-                    println!("  sudo systemctl daemon-reload");
-                    println!("  sudo systemctl enable --now lox-daemon");
-                    println!(
-                        "
-Or run as user service:"
-                    );
-                    let user_dir = dirs::home_dir()
-                        .unwrap_or_default()
-                        .join(".config/systemd/user");
-                    fs::create_dir_all(&user_dir)?;
-                    let user_path = user_dir.join("lox-daemon.service");
-                    fs::write(&user_path, &unit)?;
-                    println!("  systemctl --user daemon-reload");
-                    println!("  systemctl --user enable --now lox-daemon");
-                    println!(
-                        "
-User service written to: {:?}",
-                        user_path
-                    );
-                }
-                ServiceCmd::Status => {
-                    let out = std::process::Command::new("systemctl")
-                        .args(["--user", "status", "lox-daemon"])
-                        .output();
-                    match out {
-                        Ok(o) => print!("{}", String::from_utf8_lossy(&o.stdout)),
-                        Err(_) => println!("systemctl not available"),
-                    }
-                }
-                ServiceCmd::Logs => {
-                    let out = std::process::Command::new("journalctl")
-                        .args(["--user", "-u", "lox-daemon", "-n", "50", "--no-pager"])
-                        .output();
-                    match out {
-                        Ok(o) => print!("{}", String::from_utf8_lossy(&o.stdout)),
-                        Err(_) => println!("journalctl not available"),
-                    }
-                }
-                ServiceCmd::Uninstall => {
-                    let user_path = dirs::home_dir()
-                        .unwrap_or_default()
-                        .join(".config/systemd/user/lox-daemon.service");
-                    if user_path.exists() {
-                        let _ = std::process::Command::new("systemctl")
-                            .args(["--user", "stop", "lox-daemon"])
-                            .status();
-                        let _ = std::process::Command::new("systemctl")
-                            .args(["--user", "disable", "lox-daemon"])
-                            .status();
-                        fs::remove_file(&user_path)?;
-                        let _ = std::process::Command::new("systemctl")
-                            .args(["--user", "daemon-reload"])
-                            .status();
-                        println!("✓ User service removed");
-                    } else {
-                        println!("No user service found. For system service, remove manually:");
-                        println!("  sudo systemctl disable --now lox-daemon");
-                        println!("  sudo rm /etc/systemd/system/lox-daemon.service");
-                    }
-                }
             }
         }
         Cmd::Token { action } => match action {
