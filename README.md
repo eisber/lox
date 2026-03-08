@@ -7,7 +7,7 @@ Single binary. No runtime. No cloud. Works in scripts, cron jobs, and AI agent p
 
 ## Why this exists
 
-The Loxone app is great for humans tapping on phones. It's useless for everything else.
+The Loxone app is great for everyday use — but it offers no API or scripting support for automation, CI/CD pipelines, or headless environments.
 
 `lox` gives you a proper CLI so you can:
 
