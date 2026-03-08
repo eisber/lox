@@ -1,25 +1,25 @@
 class Lox < Formula
   desc "Loxone Miniserver CLI — control lights, blinds, and automations from your terminal"
-  homepage "https://github.com/chrisb/lox"
+  homepage "https://github.com/discostu105/lox"
   version "0.1.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/chrisb/lox/releases/download/v#{version}/lox-macos-aarch64"
+      url "https://github.com/discostu105/lox/releases/download/v#{version}/lox-macos-aarch64"
       sha256 "PLACEHOLDER"
     else
-      url "https://github.com/chrisb/lox/releases/download/v#{version}/lox-macos-x86_64"
+      url "https://github.com/discostu105/lox/releases/download/v#{version}/lox-macos-x86_64"
       sha256 "PLACEHOLDER"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/chrisb/lox/releases/download/v#{version}/lox-linux-aarch64"
+      url "https://github.com/discostu105/lox/releases/download/v#{version}/lox-linux-aarch64"
       sha256 "PLACEHOLDER"
     else
-      url "https://github.com/chrisb/lox/releases/download/v#{version}/lox-linux-x86_64"
+      url "https://github.com/discostu105/lox/releases/download/v#{version}/lox-linux-x86_64"
       sha256 "PLACEHOLDER"
     end
   end
