@@ -7,20 +7,20 @@ class Lox < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/discostu105/lox/releases/download/v#{version}/lox-macos-aarch64"
-      sha256 "6566ea8eeb7da3767e0e409b51370a4805a66468a476c4ca477006e3dd2599e7"
+      sha256 "7f059e419c1bfa899247753f68a4f7d463a7803f2a47a85cae85914a34d8cc2b"
     else
       url "https://github.com/discostu105/lox/releases/download/v#{version}/lox-macos-x86_64"
-      sha256 "6a8580246ff84025611866ec512808e5eb4b552218f91db1f1b7e854cab5337e"
+      sha256 "76900a826d4228847b6296f457b84ad93a252b03a991d7c8e224d28ae211474e"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
       url "https://github.com/discostu105/lox/releases/download/v#{version}/lox-linux-aarch64"
-      sha256 "5ba3e49d1bef935e98cc8c0d7b3dde241a2062f0bd8f82c09fb468e0d38cf3ec"
+      sha256 "12e0c974f5b050ed34234583cd6cb7ecb549e0264b1579b18423a27bad0e4592"
     else
       url "https://github.com/discostu105/lox/releases/download/v#{version}/lox-linux-x86_64"
-      sha256 "35221c872e480973c1b42f69c912199559a462e4a0f0292b47facf8a1f00eb42"
+      sha256 "2184705bb6ce870b2a9773448f7161ae4f2b6498f53e6df75c320cf83dd214d6"
     end
   end
 
