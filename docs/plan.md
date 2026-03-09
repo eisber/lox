@@ -1,5 +1,7 @@
 # CLI Feature Plan — Prioritized Roadmap
 
+> **Status: ~95% IMPLEMENTED** — All Priority 1–4 features are implemented. **Remaining:** `lox config diff`, `lox config users`, `lox config devices` (see [design-backup-inspect.md](design-backup-inspect.md)).
+
 Based on [API research](api-research.md) and current CLI capabilities.
 
 ---

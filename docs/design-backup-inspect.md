@@ -1,5 +1,7 @@
 # Design: `lox config` — Loxone Config Inspection
 
+> **Status: PARTIALLY IMPLEMENTED** — Renames done (PR #29). `download`, `list`, `extract`, `upload` implemented. **Not yet implemented:** `lox config users`, `lox config devices`, `lox config diff`.
+
 ## Command Rename
 
 "Loxone Config" is the well-known desktop application for programming Miniservers.
