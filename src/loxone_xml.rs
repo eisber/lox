@@ -180,8 +180,7 @@ pub fn parse_devices(xml: &[u8]) -> Result<Vec<LoxDevice>> {
                 let type_val = attr_value(e, b"Type");
                 match type_val.as_deref() {
                     Some("TreeDevice") => {
-                        let sub = attr_value(e, b"SubType")
-                            .and_then(|s| s.parse::<u32>().ok());
+                        let sub = attr_value(e, b"SubType").and_then(|s| s.parse::<u32>().ok());
                         devices.push(LoxDevice {
                             name: attr_value_or(e, b"Title", ""),
                             bus: DeviceBus::Tree,
@@ -193,8 +192,7 @@ pub fn parse_devices(xml: &[u8]) -> Result<Vec<LoxDevice>> {
                         });
                     }
                     Some("LoxAIRDevice") => {
-                        let sub = attr_value(e, b"SubType")
-                            .and_then(|s| s.parse::<u32>().ok());
+                        let sub = attr_value(e, b"SubType").and_then(|s| s.parse::<u32>().ok());
                         devices.push(LoxDevice {
                             name: attr_value_or(e, b"Title", ""),
                             bus: DeviceBus::Air,
@@ -210,8 +208,7 @@ pub fn parse_devices(xml: &[u8]) -> Result<Vec<LoxDevice>> {
                             name: attr_value_or(e, b"Title", ""),
                             bus: DeviceBus::Network,
                             serial: None,
-                            sub_type: attr_value(e, b"SubType")
-                                .and_then(|s| s.parse::<u32>().ok()),
+                            sub_type: attr_value(e, b"SubType").and_then(|s| s.parse::<u32>().ok()),
                             type_label: "Network device".to_string(),
                             mac: attr_value(e, b"MAC"),
                             address: attr_value(e, b"Addr"),
@@ -410,10 +407,22 @@ pub fn diff_configs(old: &ConfigSummary, new: &ConfigSummary) -> ConfigDiff {
     }
 
     // Rooms
-    diff_named_map(&old.rooms, &new.rooms, &mut diff.rooms_added, &mut diff.rooms_removed, &mut diff.rooms_renamed);
+    diff_named_map(
+        &old.rooms,
+        &new.rooms,
+        &mut diff.rooms_added,
+        &mut diff.rooms_removed,
+        &mut diff.rooms_renamed,
+    );
 
     // Categories
-    diff_named_map(&old.categories, &new.categories, &mut diff.categories_added, &mut diff.categories_removed, &mut diff.categories_renamed);
+    diff_named_map(
+        &old.categories,
+        &new.categories,
+        &mut diff.categories_added,
+        &mut diff.categories_removed,
+        &mut diff.categories_renamed,
+    );
 
     // Users (compare by name since they have UUIDs but name is more meaningful)
     let old_users: std::collections::HashSet<&String> = old.users.iter().collect();
@@ -552,8 +561,20 @@ mod tests {
             version: "1".into(),
             date: "2026-01-01".into(),
             controls: HashMap::from([
-                ("a".into(), ControlEntry { name: "Light".into(), control_type: "Switch".into() }),
-                ("b".into(), ControlEntry { name: "Blind".into(), control_type: "Jalousie".into() }),
+                (
+                    "a".into(),
+                    ControlEntry {
+                        name: "Light".into(),
+                        control_type: "Switch".into(),
+                    },
+                ),
+                (
+                    "b".into(),
+                    ControlEntry {
+                        name: "Blind".into(),
+                        control_type: "Jalousie".into(),
+                    },
+                ),
             ]),
             rooms: HashMap::from([("r1".into(), "Kitchen".into())]),
             categories: HashMap::new(),
@@ -563,8 +584,20 @@ mod tests {
             version: "2".into(),
             date: "2026-02-01".into(),
             controls: HashMap::from([
-                ("a".into(), ControlEntry { name: "Light Renamed".into(), control_type: "Switch".into() }),
-                ("c".into(), ControlEntry { name: "Outlet".into(), control_type: "Switch".into() }),
+                (
+                    "a".into(),
+                    ControlEntry {
+                        name: "Light Renamed".into(),
+                        control_type: "Switch".into(),
+                    },
+                ),
+                (
+                    "c".into(),
+                    ControlEntry {
+                        name: "Outlet".into(),
+                        control_type: "Switch".into(),
+                    },
+                ),
             ]),
             rooms: HashMap::from([("r1".into(), "Wohnküche".into())]),
             categories: HashMap::new(),
