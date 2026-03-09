@@ -1,4 +1,36 @@
-# Design: `lox backup users` / `lox backup devices` — Config Inspection
+# Design: `lox config` — Loxone Config Inspection
+
+## Command Rename
+
+"Loxone Config" is the well-known desktop application for programming Miniservers.
+The `lox config` namespace should map to that concept — operating on Loxone Config
+project files — rather than managing CLI connection settings.
+
+### Rename plan
+
+| Before | After | Rationale |
+|--------|-------|-----------|
+| `lox config set/show` | **`lox setup set/show`** | CLI connection settings → `setup` (run-once onboarding feel) |
+| `lox backup download` | **`lox config download`** | Downloading a Loxone Config from the Miniserver |
+| `lox backup list` | **`lox config list`** | Listing Loxone Configs on the Miniserver |
+| `lox backup extract` | **`lox config extract`** | Decompressing LoxCC → `.Loxone` XML |
+| `lox backup restore` | **`lox config upload`** | FTP upload; `upload` says what happens without implying automatic activation (still needs `lox reboot`) |
+| *(new)* | **`lox config users`** | List user accounts from `.Loxone` file |
+| *(new)* | **`lox config devices`** | List hardware inventory from `.Loxone` file |
+
+### Full command tree after rename
+
+```
+lox setup set --host ... --user ... --pass ... --serial ...
+lox setup show
+
+lox config download [--output <file>] [--extract]
+lox config list
+lox config extract <file.zip> [--output <file>]
+lox config upload <file.zip> --force
+lox config users <file.Loxone>
+lox config devices <file.Loxone>
+```
 
 ## Background
 
@@ -31,7 +63,7 @@ only option is the Windows app or the `.Loxone` file.
 
 ## Data Source
 
-Both commands parse the `.Loxone` XML file produced by `lox backup extract`. The XML
+Both commands parse the `.Loxone` XML file produced by `lox config extract`. The XML
 uses `<C Type="...">` elements throughout:
 
 ### User entries
@@ -96,12 +128,12 @@ Key attributes:
 
 ## New Commands
 
-### `lox backup users <file>`
+### `lox config users <file>`
 
 List user accounts from an extracted `.Loxone` config file.
 
 ```
-$ lox backup users sps_0259_20260301111229.Loxone
+$ lox config users sps_0259_20260301111229.Loxone
 
   Name                      NFC    Description
   admin                     -
@@ -126,12 +158,12 @@ With `--json`:
 ]
 ```
 
-### `lox backup devices <file>`
+### `lox config devices <file>`
 
 List physical hardware devices from an extracted `.Loxone` config file.
 
 ```
-$ lox backup devices sps_0259_20260301111229.Loxone
+$ lox config devices sps_0259_20260301111229.Loxone
 
   Tree devices (8)
   Name                          Serial      Type
@@ -165,11 +197,11 @@ With `--json`: flat array with `"bus"` field (`"tree"`, `"air"`, `"network"`).
 
 ### File input
 
-Both commands accept a `.Loxone` file path. This is the XML produced by `lox backup
+Both commands accept a `.Loxone` file path. This is the XML produced by `lox config
 extract`, not the raw `.zip`. If the argument ends in `.zip`, print a hint:
 
 ```
-Error: Expected a .Loxone XML file. Run `lox backup extract <file>.zip` first.
+Error: Expected a .Loxone XML file. Run `lox config extract <file>.zip` first.
 ```
 
 ### Parsing
@@ -209,22 +241,35 @@ pulling in a heavy dependency — this is simple attribute reading.
 
 ### CLI integration (src/main.rs)
 
-Add two new variants to the existing `BackupCmd` enum:
+Rename existing `ConfigCmd` → `SetupCmd`, then add new `ConfigCmd` enum:
 
 ```rust
-/// List user accounts from a .Loxone config file
-Users {
-    /// Path to a .Loxone XML file
-    file: String,
-},
-/// List hardware devices from a .Loxone config file
-Devices {
-    /// Path to a .Loxone XML file
-    file: String,
-},
+/// Loxone Config operations — download, inspect, upload project files
+#[derive(Subcommand)]
+enum ConfigCmd {
+    /// Download the latest config from the Miniserver via FTP
+    Download { ... },
+    /// List configs on the Miniserver
+    List,
+    /// Decompress a backup ZIP to .Loxone XML
+    Extract { ... },
+    /// Upload a config to the Miniserver via FTP (dangerous — requires --force)
+    Upload { ... },
+    /// List user accounts from a .Loxone config file
+    Users { file: String },
+    /// List hardware devices from a .Loxone config file
+    Devices { file: String },
+}
+
+/// CLI connection settings
+#[derive(Subcommand)]
+enum SetupCmd {
+    Set { ... },
+    Show,
+}
 ```
 
-Both support the existing global `--json` flag.
+Both `users` and `devices` support the existing global `--json` flag.
 
 ### SubType label mapping
 
