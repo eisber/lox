@@ -328,6 +328,9 @@ enum Cmd {
         name_or_uuid: String,
         op: String,
         value: String,
+        /// Room qualifier to disambiguate controls with the same name
+        #[arg(long)]
+        room: Option<String>,
     },
     /// Run a scene
     Run { scene: String },
@@ -1737,13 +1740,15 @@ fn main() -> Result<()> {
                                 .or_else(|| xml_attr(&body, "update"))
                                 .map(|v| v != "0" && v != ver)
                                 .unwrap_or(false);
+                            let is_update_available =
+                                update_available || new_ver.map(|v| v != ver).unwrap_or(false);
                             if cli.json {
                                 println!(
                                     "{}",
                                     serde_json::json!({
                                         "current": ver,
-                                        "available": new_ver.unwrap_or(if update_available { "yes" } else { ver }),
-                                        "update_available": update_available || new_ver.map(|v| v != ver).unwrap_or(false),
+                                        "available": new_ver.unwrap_or(if is_update_available { "yes" } else { ver }),
+                                        "update_available": is_update_available,
                                     })
                                 );
                             } else if let Some(nv) = new_ver {
@@ -1752,7 +1757,7 @@ fn main() -> Result<()> {
                                 } else {
                                     println!("✓ Firmware is up to date");
                                 }
-                            } else if update_available {
+                            } else if is_update_available {
                                 println!("Update available (check Loxone Config for details)");
                             } else {
                                 println!("✓ Firmware is up to date");
@@ -1922,20 +1927,21 @@ fn main() -> Result<()> {
 
         Cmd::Time => {
             let lox = LoxClient::new(Config::load()?);
-            let date_resp = lox.get_json("/jdev/sys/date")?;
-            let time_resp = lox.get_json("/jdev/sys/time")?;
-            let date_val = date_resp
-                .pointer("/LL/value")
-                .and_then(|v| v.as_str())
-                .unwrap_or("?");
-            let time_val = time_resp
-                .pointer("/LL/value")
-                .and_then(|v| v.as_str())
-                .unwrap_or("?");
+            // /jdev/sys/date and /jdev/sys/time require admin rights.
+            // /data/status is accessible to all users and contains the Miniserver
+            // timestamp in the "Modified" XML attribute (e.g. "2026-03-08 23:32:30").
+            let status_xml = lox.get_text("/data/status")?;
+            let datetime_val = xml_attr(&status_xml, "Modified").unwrap_or("?");
+            let (date_val, time_val) = if datetime_val.contains(' ') {
+                let mut parts = datetime_val.splitn(2, ' ');
+                (parts.next().unwrap_or("?"), parts.next().unwrap_or("?"))
+            } else {
+                (datetime_val, "?")
+            };
             if cli.json {
                 println!(
                     "{}",
-                    serde_json::json!({"date": date_val, "time": time_val})
+                    serde_json::json!({"date": date_val, "time": time_val, "datetime": datetime_val})
                 );
             } else {
                 println!("Miniserver date: {}", date_val);
@@ -1970,9 +1976,11 @@ fn main() -> Result<()> {
             name_or_uuid,
             op,
             value,
+            room,
         } => {
             let mut lox = LoxClient::new(Config::load()?);
-            let ctrl = lox.find_control(&name_or_uuid)?;
+            let uuid_resolved = lox.resolve_with_room(&name_or_uuid, room.as_deref())?;
+            let ctrl = lox.find_control(&uuid_resolved)?;
             let xml = lox.get_all(&ctrl.uuid)?;
             let current = xml_attr(&xml, "value").unwrap_or("").to_string();
             let matches = eval_op(&current, &op, &value)?;
@@ -2394,8 +2402,17 @@ fn parse_weather_entry(
 
 fn eval_op(current: &str, op: &str, target: &str) -> Result<bool> {
     Ok(match op {
-        "eq" | "==" => current == target,
-        "ne" | "!=" => current != target,
+        "eq" | "==" => {
+            // Try numeric comparison first; fall back to string
+            match (current.parse::<f64>(), target.parse::<f64>()) {
+                (Ok(a), Ok(b)) => (a - b).abs() < f64::EPSILON * a.abs().max(b.abs()).max(1.0),
+                _ => current == target,
+            }
+        }
+        "ne" | "!=" => match (current.parse::<f64>(), target.parse::<f64>()) {
+            (Ok(a), Ok(b)) => (a - b).abs() >= f64::EPSILON * a.abs().max(b.abs()).max(1.0),
+            _ => current != target,
+        },
         "contains" => current.contains(target),
         "gt" | ">" => parse_f(current)? > parse_f(target)?,
         "lt" | "<" => parse_f(current)? < parse_f(target)?,
@@ -2442,6 +2459,10 @@ mod tests {
         assert!(eval_op("1", "eq", "1").unwrap());
         assert!(!eval_op("1", "eq", "2").unwrap());
         assert!(eval_op("hello", "==", "hello").unwrap());
+        // Numeric string formatting differences (Loxone API returns trailing zeros)
+        assert!(eval_op("200002700", "==", "200002700.000").unwrap());
+        assert!(eval_op("21.5", "==", "21.500000").unwrap());
+        assert!(!eval_op("21.5", "==", "21.6").unwrap());
     }
 
     #[test]

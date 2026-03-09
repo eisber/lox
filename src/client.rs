@@ -71,11 +71,13 @@ impl LoxClient {
 
     pub fn get_bytes(&self, path: &str) -> Result<Vec<u8>> {
         let url = format!("{}/{}", self.cfg.host, path.trim_start_matches('/'));
-        Ok(self
-            .apply_auth(self.client.get(&url))
-            .send()?
-            .bytes()?
-            .to_vec())
+        let resp = self.apply_auth(self.client.get(&url)).send()?;
+        let status = resp.status();
+        let bytes = resp.bytes()?.to_vec();
+        if !status.is_success() {
+            anyhow::bail!("HTTP {}: {}", status.as_u16(), path);
+        }
+        Ok(bytes)
     }
 
     pub fn get_structure(&mut self) -> Result<&Value> {
