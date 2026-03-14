@@ -11,7 +11,7 @@ cargo build           # debug
 cargo build --release # production binary (~4MB)
 
 # Run
-cargo run -- <args>   # e.g. cargo run -- ls --json
+cargo run -- <args>   # e.g. cargo run -- ls -o json
 ./target/release/lox <args>
 
 # Check / Lint

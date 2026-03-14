@@ -1,6 +1,7 @@
 # Agent Instructions
 
 See [CLAUDE.md](CLAUDE.md) for build commands, architecture, non-interactive shell rules, and session completion protocol.
+See [API_DESIGN_GUIDELINES.md](API_DESIGN_GUIDELINES.md) for CLI command naming, flag conventions, and output format rules.
 
 ## Pre-push CI Checklist
 
