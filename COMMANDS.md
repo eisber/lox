@@ -68,13 +68,13 @@ lox discover --timeout 5
 ```bash
 lox on "Licht Wohnzimmer"
 lox off "Licht Wohnzimmer"
-lox mood "Licht Wohnzimmer" plus      # next mood
-lox mood "Licht Wohnzimmer" minus     # previous mood
-lox mood "Licht Wohnzimmer" off       # turn off (mood 778)
-lox mood "Licht Wohnzimmer" 704       # set by mood ID
-lox dimmer "Stehlampe" 75             # set dimmer 0-100%
-lox color "LED Strip" "#FF0000"       # hex RGB
-lox color "LED Strip" "hsv(120,100,100)"  # HSV
+lox light mood "Licht Wohnzimmer" plus      # next mood
+lox light mood "Licht Wohnzimmer" minus     # previous mood
+lox light mood "Licht Wohnzimmer" off       # turn off (mood 778)
+lox light mood "Licht Wohnzimmer" 704       # set by mood ID
+lox light dim "Stehlampe" 75                # set dimmer 0-100%
+lox light color "LED Strip" "#FF0000"       # hex RGB
+lox light color "LED Strip" "hsv(120,100,100)"  # HSV
 ```
 
 ---
@@ -106,9 +106,10 @@ lox gate "Garagentor" stop
 ## Climate
 
 ```bash
-lox thermostat "Heizung" --temp 22.5               # set comfort temp
-lox thermostat "Heizung" --mode auto                # auto|manual|comfort|eco
-lox thermostat "Heizung" --override 24 --duration 120  # override for N minutes
+lox thermostat "Heizung" temp 22.5                 # set comfort temp
+lox thermostat "Heizung" mode auto                  # auto|manual|comfort|eco
+lox thermostat "Heizung" override 24 120            # override 24°C for 120 min
+lox thermostat "Heizung"                            # show current state
 lox weather                                         # current weather data
 lox weather --forecast                              # 7-day forecast
 ```
@@ -156,9 +157,9 @@ Operators: `eq`, `ne`, `gt`, `ge`, `lt`, `le`
 ## Analog / Virtual Inputs
 
 ```bash
-lox set "Sollwert Heizung" 21.5
-lox set "Sollwert Heizung" 21.5 -r "Wohnzimmer"  # disambiguate with room
-lox pulse "Taster"
+lox input set "Sollwert Heizung" 21.5
+lox input set "Sollwert Heizung" 21.5 -r "Wohnzimmer"  # disambiguate with room
+lox input pulse "Taster"
 ```
 
 ---

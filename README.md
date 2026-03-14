@@ -22,7 +22,7 @@ lox off "Licht Wohnzimmer Zentral" && lox blind "Südseite" full-up
 
 # AI agent can call these:
 lox ls --type LightControllerV2 --json | jq '.[].name'
-lox mood "Wohnzimmer" off
+lox light mood "Wohnzimmer" off
 lox status --json | jq '.plc_running'
 
 # Disambiguate sensors with the same name using --room or bracket syntax
@@ -122,8 +122,8 @@ lox get "Temperatur [Schlafzimmer]"     # Read a control's state
 lox on "Licht Wohnzimmer"              # Turn on
 lox off "Licht Wohnzimmer"             # Turn off
 lox blind "Beschattung Süd" pos 50     # Blind to 50%
-lox mood "Licht" plus                  # Next light mood
-lox thermostat "Heizung" --temp 22.5   # Set temperature
+lox light mood "Licht" plus            # Next light mood
+lox thermostat "Heizung" temp 22.5     # Set temperature
 lox alarm "Alarmanlage" arm            # Arm alarm
 lox if "Temperatur" gt 25 && echo hot  # Conditional logic
 lox status --energy                    # Energy dashboard

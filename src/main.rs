@@ -100,9 +100,10 @@ fn now_hms() -> String {
 {usage-heading} {usage}
 
 Control:
-  on, off, set, pulse          Basic control (on/off/set/pulse)
-  blind, gate, dimmer          Blinds, gates, dimmers
-  mood, color                  Light moods, colors
+  on, off                      Turn controls on/off
+  input                        Set/pulse analog & virtual inputs
+  light                        Moods, dimmer, color
+  blind, gate                  Blinds, gates
   thermostat, alarm            Climate, security
   door, intercom, charger     Door locks, intercoms, EV chargers
   music                        Music server zones
@@ -149,6 +150,11 @@ struct Cli {
 #[derive(Subcommand)]
 enum Cmd {
     // ── Control ──────────────────────────────────────────────────────────────
+    /// Control analog/virtual inputs: set | pulse
+    Input {
+        #[command(subcommand)]
+        action: InputCmd,
+    },
     /// Turn on
     On {
         name_or_uuid: Option<String>,
@@ -167,7 +173,8 @@ enum Cmd {
         #[arg(long)]
         all_in_room: Option<String>,
     },
-    /// Set analog/virtual input value
+    /// Set analog/virtual input value (use `lox input set` instead)
+    #[command(hide = true)]
     Set {
         /// Control name or UUID
         name_or_uuid: String,
@@ -176,7 +183,8 @@ enum Cmd {
         #[arg(long, short = 'r')]
         room: Option<String>,
     },
-    /// Momentary pulse
+    /// Momentary pulse (use `lox input pulse` instead)
+    #[command(hide = true)]
     Pulse {
         name_or_uuid: String,
         #[arg(long, short = 'r')]
@@ -191,7 +199,13 @@ enum Cmd {
         #[arg(long, short = 'r')]
         room: Option<String>,
     },
+    /// Control lights: mood | dim | color
+    Light {
+        #[command(subcommand)]
+        action: LightCmd,
+    },
     /// Control light moods: plus | minus | off | <mood-id>
+    #[command(hide = true)]
     Mood {
         name_or_uuid: String,
         /// Mood action: plus, minus, off, or numeric mood ID
@@ -200,6 +214,7 @@ enum Cmd {
         room: Option<String>,
     },
     /// Set dimmer level (0-100)
+    #[command(hide = true)]
     Dimmer {
         name_or_uuid: String,
         /// Brightness level 0-100
@@ -216,6 +231,7 @@ enum Cmd {
         room: Option<String>,
     },
     /// Set color on ColorPickerV2 (hex RGB e.g. #FF0000 or hsv(h,s,v))
+    #[command(hide = true)]
     Color {
         name_or_uuid: String,
         /// Color value: hex RGB (#FF0000) or hsv(h,s,v)
@@ -223,21 +239,16 @@ enum Cmd {
         #[arg(long, short = 'r')]
         room: Option<String>,
     },
-    /// Control thermostat (IRoomControllerV2)
+    /// Control thermostat: temp <°C> | mode <auto|eco|comfort|manual> | override <°C> [minutes]
     Thermostat {
         name_or_uuid: String,
-        /// Set comfort temperature
-        #[arg(long)]
-        temp: Option<f64>,
-        /// Set operating mode: auto|manual|comfort|eco
-        #[arg(long)]
-        mode: Option<String>,
-        /// Override temperature
-        #[arg(long)]
-        r#override: Option<f64>,
-        /// Override duration in minutes
-        #[arg(long, default_value = "60")]
-        duration: u64,
+        /// Action: temp, mode, override (omit to show current state)
+        action: Option<String>,
+        /// Value for the action (temperature or mode name)
+        value: Option<String>,
+        /// Duration in minutes (for override, default: 60)
+        #[arg(allow_hyphen_values = true)]
+        duration: Option<u64>,
         #[arg(long, short = 'r')]
         room: Option<String>,
     },
@@ -530,6 +541,54 @@ enum TokenCmd {
     Refresh,
     /// Revoke token on the Miniserver
     Revoke,
+}
+
+#[derive(Subcommand)]
+enum LightCmd {
+    /// Set light mood: plus | minus | off | <mood-id>
+    Mood {
+        name_or_uuid: String,
+        /// Mood action: plus, minus, off, or numeric mood ID
+        action: String,
+        #[arg(long, short = 'r')]
+        room: Option<String>,
+    },
+    /// Set dimmer level (0-100)
+    #[command(alias = "dimmer")]
+    Dim {
+        name_or_uuid: String,
+        /// Brightness level 0-100
+        level: f64,
+        #[arg(long, short = 'r')]
+        room: Option<String>,
+    },
+    /// Set color (hex RGB e.g. #FF0000 or hsv(h,s,v))
+    Color {
+        name_or_uuid: String,
+        /// Color value: hex RGB (#FF0000) or hsv(h,s,v)
+        value: String,
+        #[arg(long, short = 'r')]
+        room: Option<String>,
+    },
+}
+
+#[derive(Subcommand)]
+enum InputCmd {
+    /// Set analog/virtual input value
+    Set {
+        /// Control name or UUID
+        name_or_uuid: String,
+        /// Value to send (numeric or text)
+        value: String,
+        #[arg(long, short = 'r')]
+        room: Option<String>,
+    },
+    /// Momentary pulse
+    Pulse {
+        name_or_uuid: String,
+        #[arg(long, short = 'r')]
+        room: Option<String>,
+    },
 }
 
 #[derive(Subcommand)]
@@ -1543,6 +1602,129 @@ fn main() -> Result<()> {
             }
         }
 
+        Cmd::Light { action } => match action {
+            LightCmd::Mood {
+                name_or_uuid,
+                action,
+                room,
+            } => {
+                let mut lox = LoxClient::new(Config::load()?);
+                let uuid = lox.resolve_with_room(&name_or_uuid, room.as_deref())?;
+                let ctrl = lox.find_control(&uuid)?;
+                if !matches!(ctrl.typ.as_str(), "LightControllerV2" | "LightController") {
+                    bail!(
+                        "'{}' is type '{}', not a LightController",
+                        ctrl.name,
+                        ctrl.typ
+                    );
+                }
+                let cmd_owned: String;
+                let cmd: &str = match action.to_lowercase().as_str() {
+                    "plus" | "next" | "+" => "plus",
+                    "minus" | "prev" | "-" => "minus",
+                    "off" => "setMood/778",
+                    other => {
+                        if let Ok(id) = other.parse::<u32>() {
+                            cmd_owned = format!("setMood/{}", id);
+                            &cmd_owned
+                        } else {
+                            bail!(
+                                "Unknown mood action '{}'. Use: plus, minus, off, or a numeric mood ID",
+                                other
+                            )
+                        }
+                    }
+                };
+                let resp = lox.send_cmd(&ctrl.uuid, cmd)?;
+                if cli.json {
+                    print_resp(&resp, true, quiet, &ctrl.name, cmd);
+                } else if !quiet {
+                    println!("✓  {} → mood {}", ctrl.name, action);
+                }
+            }
+            LightCmd::Dim {
+                name_or_uuid,
+                level,
+                room,
+            } => {
+                let mut lox = LoxClient::new(Config::load()?);
+                let uuid = lox.resolve_with_room(&name_or_uuid, room.as_deref())?;
+                let ctrl = lox.find_control(&uuid)?;
+                if !(0.0..=100.0).contains(&level) {
+                    bail!("Dimmer level must be 0-100");
+                }
+                let resp = lox.send_cmd(&ctrl.uuid, &format!("{}", level))?;
+                print_resp(
+                    &resp,
+                    cli.json,
+                    quiet,
+                    &ctrl.name,
+                    &format!("dim={}", level),
+                );
+            }
+            LightCmd::Color {
+                name_or_uuid,
+                value,
+                room,
+            } => {
+                let mut lox = LoxClient::new(Config::load()?);
+                let uuid = lox.resolve_with_room(&name_or_uuid, room.as_deref())?;
+                let ctrl = lox.find_control(&uuid)?;
+                if !matches!(ctrl.typ.as_str(), "ColorPickerV2" | "ColorPicker") {
+                    bail!("'{}' is type '{}', not a ColorPicker", ctrl.name, ctrl.typ);
+                }
+                let cmd = if value.starts_with('#') {
+                    let hex = value.trim_start_matches('#');
+                    if hex.len() != 6 {
+                        bail!("Hex color must be 6 digits: #RRGGBB");
+                    }
+                    let r = u8::from_str_radix(&hex[0..2], 16)?;
+                    let g = u8::from_str_radix(&hex[2..4], 16)?;
+                    let b = u8::from_str_radix(&hex[4..6], 16)?;
+                    let (h, s, v) = rgb_to_hsv(r, g, b);
+                    format!("hsv({},{},{})", h, s, v)
+                } else {
+                    value
+                };
+                let resp = lox.send_cmd(&ctrl.uuid, &cmd)?;
+                print_resp(&resp, cli.json, quiet, &ctrl.name, &cmd);
+            }
+        },
+
+        Cmd::Input { action } => match action {
+            InputCmd::Set {
+                name_or_uuid,
+                value,
+                room,
+            } => {
+                let mut lox = LoxClient::new(Config::load()?);
+                let uuid = lox.resolve_with_room(&name_or_uuid, room.as_deref())?;
+                let resp = lox.send_cmd(&uuid, &encode_path_value(&value))?;
+                let code = resp
+                    .pointer("/LL/Code")
+                    .and_then(|v| v.as_str())
+                    .unwrap_or("?");
+                let val = resp
+                    .pointer("/LL/value")
+                    .and_then(|v| v.as_str())
+                    .unwrap_or("?");
+                if code == "200" {
+                    if !quiet {
+                        println!("✓  {} = {}", name_or_uuid, val);
+                    }
+                } else {
+                    bail!("Error {}: {}", code, val);
+                }
+            }
+            InputCmd::Pulse { name_or_uuid, room } => {
+                let mut lox = LoxClient::new(Config::load()?);
+                let uuid = lox.resolve_with_room(&name_or_uuid, room.as_deref())?;
+                let resp = lox.send_cmd(&uuid, "pulse")?;
+                print_resp(&resp, cli.json, quiet, &name_or_uuid, "pulse");
+            }
+        },
+
+        // Legacy aliases — hidden but still functional
         Cmd::Mood {
             name_or_uuid,
             action,
@@ -1754,9 +1936,8 @@ fn main() -> Result<()> {
 
         Cmd::Thermostat {
             name_or_uuid,
-            temp,
-            mode,
-            r#override,
+            action,
+            value,
             duration,
             room,
         } => {
@@ -1773,33 +1954,65 @@ fn main() -> Result<()> {
                     ctrl.typ
                 );
             }
-            if let Some(t) = temp {
-                let resp = lox.send_cmd(&ctrl.uuid, &format!("setComfortTemperature/{}", t))?;
-                print_resp(&resp, cli.json, quiet, &ctrl.name, &format!("temp={}", t));
-            } else if let Some(m) = mode {
-                let lower = m.to_lowercase();
-                let mode_id = match lower.as_str() {
-                    "auto" | "automatic" => "0",
-                    "manual" => "1",
-                    "comfort" => "2",
-                    "eco" | "economy" => "3",
-                    "building-protection" | "building" => "4",
-                    other => other,
-                };
-                let resp = lox.send_cmd(&ctrl.uuid, &format!("setOperatingMode/{}", mode_id))?;
-                print_resp(&resp, cli.json, quiet, &ctrl.name, &format!("mode={}", m));
-            } else if let Some(temp_override) = r#override {
-                let resp = lox.send_cmd(
-                    &ctrl.uuid,
-                    &format!("override/{}/{}", temp_override, duration),
-                )?;
-                print_resp(
-                    &resp,
-                    cli.json,
-                    quiet,
-                    &ctrl.name,
-                    &format!("override={}°/{}min", temp_override, duration),
-                );
+            if let Some(act) = action {
+                match act.to_lowercase().as_str() {
+                    "temp" | "temperature" => {
+                        let t: f64 = value
+                            .as_deref()
+                            .ok_or_else(|| {
+                                anyhow::anyhow!("Usage: lox thermostat <name> temp <°C>")
+                            })?
+                            .parse()
+                            .context("Temperature must be a number")?;
+                        let resp =
+                            lox.send_cmd(&ctrl.uuid, &format!("setComfortTemperature/{}", t))?;
+                        print_resp(&resp, cli.json, quiet, &ctrl.name, &format!("temp={}", t));
+                    }
+                    "mode" => {
+                        let m = value.as_deref().ok_or_else(|| {
+                            anyhow::anyhow!(
+                                "Usage: lox thermostat <name> mode <auto|manual|comfort|eco>"
+                            )
+                        })?;
+                        let lower = m.to_lowercase();
+                        let mode_id = match lower.as_str() {
+                            "auto" | "automatic" => "0",
+                            "manual" => "1",
+                            "comfort" => "2",
+                            "eco" | "economy" => "3",
+                            "building-protection" | "building" => "4",
+                            other => other,
+                        };
+                        let resp =
+                            lox.send_cmd(&ctrl.uuid, &format!("setOperatingMode/{}", mode_id))?;
+                        print_resp(&resp, cli.json, quiet, &ctrl.name, &format!("mode={}", m));
+                    }
+                    "override" => {
+                        let temp_override: f64 = value
+                            .as_deref()
+                            .ok_or_else(|| {
+                                anyhow::anyhow!(
+                                    "Usage: lox thermostat <name> override <°C> [minutes]"
+                                )
+                            })?
+                            .parse()
+                            .context("Override temperature must be a number")?;
+                        let dur = duration.unwrap_or(60);
+                        let resp = lox
+                            .send_cmd(&ctrl.uuid, &format!("override/{}/{}", temp_override, dur))?;
+                        print_resp(
+                            &resp,
+                            cli.json,
+                            quiet,
+                            &ctrl.name,
+                            &format!("override={}°/{}min", temp_override, dur),
+                        );
+                    }
+                    other => bail!(
+                        "Unknown thermostat action '{}'. Use: temp, mode, override",
+                        other
+                    ),
+                }
             } else {
                 // Show current thermostat state
                 let xml = lox.get_all(&ctrl.uuid)?;
