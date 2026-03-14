@@ -4,6 +4,7 @@ mod ftp;
 mod loxcc;
 mod loxone_xml;
 mod scene;
+mod stream;
 mod token;
 mod ws;
 
@@ -111,7 +112,8 @@ Control:
   run, send                    Run scenes, send raw commands
 
 Inspect:
-  ls, get, info, watch, if     List, query, monitor controls
+  ls, get, info, watch, stream  List, query, monitor, stream controls
+  if                            Conditional state check
   rooms, categories, modes     Structure metadata
   globals, sensors, energy     Global states, sensor & energy readings
   weather, stats, history      Weather, statistics
@@ -381,6 +383,21 @@ enum Cmd {
             help = "Poll interval in seconds"
         )]
         interval: u64,
+    },
+    /// Stream real-time state changes via WebSocket (Ctrl+C to stop)
+    Stream {
+        /// Filter by control type
+        #[arg(long, short = 't')]
+        r#type: Option<String>,
+        /// Filter by room
+        #[arg(long, short = 'r')]
+        room: Option<String>,
+        /// Filter by control name (fuzzy match)
+        #[arg(long, short = 'c')]
+        control: Option<String>,
+        /// Include initial state snapshot
+        #[arg(long)]
+        initial: bool,
     },
     /// Check state (exit 0=match, 1=no match)
     If {
@@ -2657,6 +2674,95 @@ fn main() -> Result<()> {
             }
         }
 
+        Cmd::Stream {
+            r#type,
+            room,
+            control,
+            initial,
+        } => {
+            let cfg = Config::load()?;
+            let mut lox = LoxClient::new(cfg.clone());
+            let structure = lox.get_structure()?.clone();
+            let state_map = stream::build_state_uuid_map(&structure);
+            let json = cli.json;
+
+            if !quiet {
+                eprintln!("Streaming state changes (Ctrl+C to stop)...");
+            }
+
+            let type_filter = r#type;
+            let room_filter = room;
+            let control_filter = control;
+            let mut initial_done = false;
+
+            let rt = tokio::runtime::Runtime::new()?;
+            rt.block_on(stream::stream_events(&cfg, |events| {
+                for event in &events {
+                    match event {
+                        stream::StateEvent::ValueState { uuid, value } => {
+                            if !initial && !initial_done {
+                                continue;
+                            }
+                            if let Some(info) = state_map.get(uuid) {
+                                if !matches_filters(
+                                    info,
+                                    type_filter.as_deref(),
+                                    room_filter.as_deref(),
+                                    control_filter.as_deref(),
+                                ) {
+                                    continue;
+                                }
+                                print_stream_event(
+                                    json,
+                                    &info.control_name,
+                                    &info.state_name,
+                                    &format!("{}", value),
+                                    info.room.as_deref(),
+                                    &info.control_type,
+                                    uuid,
+                                );
+                            }
+                        }
+                        stream::StateEvent::TextState { uuid, text, .. } => {
+                            if !initial && !initial_done {
+                                continue;
+                            }
+                            if let Some(info) = state_map.get(uuid) {
+                                if !matches_filters(
+                                    info,
+                                    type_filter.as_deref(),
+                                    room_filter.as_deref(),
+                                    control_filter.as_deref(),
+                                ) {
+                                    continue;
+                                }
+                                print_stream_event(
+                                    json,
+                                    &info.control_name,
+                                    &info.state_name,
+                                    text,
+                                    info.room.as_deref(),
+                                    &info.control_type,
+                                    uuid,
+                                );
+                            }
+                        }
+                        stream::StateEvent::OutOfService => {
+                            if !quiet {
+                                eprintln!("Miniserver going offline (firmware update?). Exiting.");
+                            }
+                            std::process::exit(0);
+                        }
+                        _ => {} // Keepalive, Daytimer, Weather — skip for now
+                    }
+                }
+                if !initial_done {
+                    initial_done = true;
+                }
+                Ok(())
+            }))?;
+        }
+
         Cmd::If {
             name_or_uuid,
             op,
@@ -3515,6 +3621,80 @@ fn main() -> Result<()> {
     }
 
     Ok(())
+}
+
+// ── Stream helpers ────────────────────────────────────────────────────────────
+
+fn matches_filters(
+    info: &stream::StateUuidInfo,
+    type_filter: Option<&str>,
+    room_filter: Option<&str>,
+    control_filter: Option<&str>,
+) -> bool {
+    if let Some(tf) = type_filter {
+        if !info
+            .control_type
+            .to_lowercase()
+            .contains(&tf.to_lowercase())
+        {
+            return false;
+        }
+    }
+    if let Some(rf) = room_filter {
+        if !info
+            .room
+            .as_deref()
+            .unwrap_or("")
+            .to_lowercase()
+            .contains(&rf.to_lowercase())
+        {
+            return false;
+        }
+    }
+    if let Some(cf) = control_filter {
+        if !info
+            .control_name
+            .to_lowercase()
+            .contains(&cf.to_lowercase())
+        {
+            return false;
+        }
+    }
+    true
+}
+
+fn print_stream_event(
+    json: bool,
+    control: &str,
+    state: &str,
+    value: &str,
+    room: Option<&str>,
+    control_type: &str,
+    uuid: &str,
+) {
+    if json {
+        println!(
+            "{}",
+            serde_json::json!({
+                "timestamp": chrono::Local::now().to_rfc3339(),
+                "control": control,
+                "state": state,
+                "value": value,
+                "room": room,
+                "type": control_type,
+                "uuid": uuid,
+            })
+        );
+    } else {
+        println!(
+            "[{}]  {} ({}) = {}  [{}]",
+            now_hms(),
+            control,
+            state,
+            value,
+            room.unwrap_or("-"),
+        );
+    }
 }
 
 fn rgb_to_hsv(r: u8, g: u8, b: u8) -> (u16, u16, u16) {
