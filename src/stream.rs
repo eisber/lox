@@ -261,23 +261,19 @@ fn build_name_map(structure: &Value, key: &str) -> HashMap<String, String> {
 }
 
 /// Extract the unit suffix from a Loxone printf-style format string.
-/// e.g. "%.1f°C" → "Cel", "%.0fppm" → "ppm", "%.3fkW" → "kW", "%.0f%%" → "%"
+/// e.g. "%.1f°C" → "°C", "%.0fppm" → "ppm", "%.3fkW" → "kW"
+/// Returns the raw suffix without normalization — the Loxone format
+/// is the most accurate source and conversion could lose information
+/// (e.g. "kW" for instantaneous power vs "kWh" for energy totals).
 fn extract_unit(ctrl: &Value) -> Option<String> {
     let details = ctrl.get("details")?;
-    // Try format keys in order of specificity
     for key in &["format", "actualFormat"] {
         if let Some(fmt) = details.get(*key).and_then(|v| v.as_str()) {
             // Find the last format specifier (e.g. %d, %f, %s) and take what's after it
             if let Some(pos) = fmt.rfind(|c: char| "dfs".contains(c)) {
                 let suffix = fmt[pos + 1..].trim();
                 if !suffix.is_empty() {
-                    // Normalize common units to UCUM (OTel convention)
-                    let unit = match suffix {
-                        "°C" | "°" => "Cel",
-                        "%%" | "%" => "%",
-                        _ => suffix,
-                    };
-                    return Some(unit.to_string());
+                    return Some(suffix.to_string());
                 }
             }
         }
@@ -1028,13 +1024,13 @@ mod tests {
         assert_eq!(active.control_type, "LightControllerV2");
         assert_eq!(active.room.as_deref(), Some("Kitchen"));
         assert_eq!(active.category.as_deref(), Some("Lighting"));
-        assert_eq!(active.unit.as_deref(), Some("Cel"));
+        assert_eq!(active.unit.as_deref(), Some("°C"));
 
         // Sub-control states (inherit parent unit)
         let dimmer = map.get("state-dimmer-pos").unwrap();
         assert_eq!(dimmer.control_name, "Kitchen Light/Dimmer");
         assert_eq!(dimmer.state_name, "position");
-        assert_eq!(dimmer.unit.as_deref(), Some("Cel"));
+        assert_eq!(dimmer.unit.as_deref(), Some("°C"));
 
         // Global states (no unit)
         let global = map.get("global-op-mode-uuid").unwrap();

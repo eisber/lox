@@ -146,81 +146,88 @@ fn build_provider(
 /// Shared state for the latest values from WebSocket streaming.
 type StateStore = Arc<Mutex<HashMap<String, (StateUuidInfo, f64)>>>;
 
-/// Record system diagnostics (CPU, heap, tasks, etc.) as metrics.
+/// Tracks previous cumulative values for delta computation.
+type PrevValues = HashMap<String, f64>;
+
+/// Record system diagnostics as metrics.
 fn record_system_metrics(lox: &LoxClient, meter: &opentelemetry::metrics::Meter) -> Result<()> {
-    if let Ok(text) = lox.get_text("/dev/sys/heap") {
-        if let Some(val) = extract_lox_value(&text) {
-            meter
-                .f64_gauge("loxone.system.heap")
-                .with_unit("kBy")
-                .build()
-                .record(val, &[]);
-        }
-    }
-    if let Ok(text) = lox.get_text("/jdev/sys/lastcpu") {
-        if let Some(val) = extract_lox_value(&text) {
-            meter
-                .f64_gauge("loxone.system.cpu")
-                .with_unit("%")
-                .build()
-                .record(val, &[]);
-        }
-    }
-    if let Ok(text) = lox.get_text("/jdev/sys/numtasks") {
-        if let Some(val) = extract_lox_value(&text) {
-            meter
-                .f64_gauge("loxone.system.tasks")
-                .with_unit("{tasks}")
-                .build()
-                .record(val, &[]);
-        }
-    }
-    if let Ok(text) = lox.get_text("/jdev/sys/contextswitches") {
-        if let Some(val) = extract_lox_value(&text) {
-            meter
-                .f64_gauge("loxone.system.context_switches")
-                .with_unit("{switches}")
-                .build()
-                .record(val, &[]);
+    let gauge_metrics: &[(&str, &str, &str)] = &[
+        ("/dev/sys/heap", "loxone.system.heap", "kBy"),
+        ("/jdev/sys/lastcpu", "loxone.system.cpu", "%"),
+        ("/jdev/sys/numtasks", "loxone.system.tasks", "{tasks}"),
+    ];
+    for (path, name, unit) in gauge_metrics {
+        if let Ok(text) = lox.get_text(path) {
+            if let Some(val) = extract_lox_value(&text) {
+                meter
+                    .f64_gauge(*name)
+                    .with_unit(*unit)
+                    .build()
+                    .record(val, &[]);
+            }
         }
     }
 
     Ok(())
 }
 
+/// Fetch a cumulative value from the Miniserver and record it as a gauge.
+/// When `delta` is true, computes and records the difference since the last call.
+fn record_cumulative(
+    lox: &LoxClient,
+    meter: &opentelemetry::metrics::Meter,
+    prev: &mut PrevValues,
+    path: &str,
+    name: &str,
+    delta: bool,
+) {
+    if let Ok(text) = lox.get_text(path) {
+        if let Some(current) = extract_lox_value(&text) {
+            let val = if delta {
+                let prev_val = prev.get(name).copied().unwrap_or(current);
+                let d = current - prev_val;
+                prev.insert(name.to_string(), current);
+                if d < 0.0 {
+                    current
+                } else {
+                    d
+                } // handle counter reset
+            } else {
+                current
+            };
+            meter.f64_gauge(name.to_string()).build().record(val, &[]);
+        }
+    }
+}
+
 /// Record CAN bus and LAN network metrics.
-fn record_network_metrics(lox: &LoxClient, meter: &opentelemetry::metrics::Meter) -> Result<()> {
-    let can_metrics = [
+/// These are cumulative counters — with `delta` mode, only the increment
+/// since the last cycle is reported.
+fn record_network_metrics(
+    lox: &LoxClient,
+    meter: &opentelemetry::metrics::Meter,
+    prev: &mut PrevValues,
+    delta: bool,
+) -> Result<()> {
+    let counters: &[(&str, &str)] = &[
         ("/jdev/bus/packetssent", "loxone.can.packets_sent"),
         ("/jdev/bus/packetsreceived", "loxone.can.packets_received"),
         ("/jdev/bus/receiveerrors", "loxone.can.receive_errors"),
         ("/jdev/bus/frameerrors", "loxone.can.frame_errors"),
         ("/jdev/bus/overruns", "loxone.can.overruns"),
-    ];
-    for (path, name) in &can_metrics {
-        if let Ok(text) = lox.get_text(path) {
-            if let Some(val) = extract_lox_value(&text) {
-                let gauge = meter.f64_gauge(*name).build();
-                gauge.record(val, &[]);
-            }
-        }
-    }
-
-    let lan_metrics = [
         ("/jdev/lan/txp", "loxone.lan.tx_packets"),
         ("/jdev/lan/txe", "loxone.lan.tx_errors"),
         ("/jdev/lan/txc", "loxone.lan.tx_collisions"),
         ("/jdev/lan/rxp", "loxone.lan.rx_packets"),
         ("/jdev/lan/rxo", "loxone.lan.rx_overflow"),
         ("/jdev/lan/eof", "loxone.lan.eof_errors"),
+        (
+            "/jdev/sys/contextswitches",
+            "loxone.system.context_switches",
+        ),
     ];
-    for (path, name) in &lan_metrics {
-        if let Ok(text) = lox.get_text(path) {
-            if let Some(val) = extract_lox_value(&text) {
-                let gauge = meter.f64_gauge(*name).build();
-                gauge.record(val, &[]);
-            }
-        }
+    for (path, name) in counters {
+        record_cumulative(lox, meter, prev, path, name, delta);
     }
 
     Ok(())
@@ -373,12 +380,11 @@ pub fn serve(
     let quiet_sys = quiet;
     std::thread::spawn(move || {
         let lox = LoxClient::new(cfg_sys);
+        let mut prev = PrevValues::new();
         loop {
-            // Record system diagnostics
             let _ = record_system_metrics(&lox, &meter_sys);
-            let _ = record_network_metrics(&lox, &meter_sys);
+            let _ = record_network_metrics(&lox, &meter_sys, &mut prev, delta);
 
-            // Record control state gauges from the shared store
             let control_count = store_sys.lock().unwrap().len();
             record_control_metrics(&store_sys, &meter_sys, tf_sys.as_deref(), rf_sys.as_deref());
 
@@ -491,42 +497,20 @@ pub fn push(
         Err(_) => {} // Timeout — collected what we could
     }
 
-    // Pre-create gauge instruments on the main thread so the SDK registers
-    // them before the first PeriodicReader collection cycle. Values are
-    // then recorded on a blocking thread via the same instrument handles.
-    let heap_gauge = meter.f64_gauge("loxone.system.heap_bytes").build();
-    let cpu_gauge = meter.f64_gauge("loxone.system.cpu_percent").build();
-    let tasks_gauge = meter.f64_gauge("loxone.system.tasks_count").build();
-    let ctx_gauge = meter.f64_gauge("loxone.system.context_switches").build();
-
-    // Fetch values on a std::thread (reqwest::blocking) and record via pre-created gauges
+    // Record system metrics on a std::thread (reqwest::blocking can't
+    // run inside a tokio runtime context without panicking).
     {
         let cfg_sys = cfg.clone();
+        let meter_sys = meter.clone();
         std::thread::spawn(move || {
             let lox_sys = LoxClient::new(cfg_sys);
-            if let Ok(text) = lox_sys.get_text("/dev/sys/heap") {
-                if let Some(v) = extract_lox_value(&text) {
-                    heap_gauge.record(v, &[]);
-                }
-            }
-            if let Ok(text) = lox_sys.get_text("/jdev/sys/lastcpu") {
-                if let Some(v) = extract_lox_value(&text) {
-                    cpu_gauge.record(v, &[]);
-                }
-            }
-            if let Ok(text) = lox_sys.get_text("/jdev/sys/numtasks") {
-                if let Some(v) = extract_lox_value(&text) {
-                    tasks_gauge.record(v, &[]);
-                }
-            }
-            if let Ok(text) = lox_sys.get_text("/jdev/sys/contextswitches") {
-                if let Some(v) = extract_lox_value(&text) {
-                    ctx_gauge.record(v, &[]);
-                }
-            }
+            let mut prev = PrevValues::new();
+            let _ = record_system_metrics(&lox_sys, &meter_sys);
+            // For push mode, delta=false since there's no previous value
+            let _ = record_network_metrics(&lox_sys, &meter_sys, &mut prev, false);
         })
         .join()
-        .unwrap();
+        .ok();
     }
 
     // Record control metrics from collected state
