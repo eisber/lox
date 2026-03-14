@@ -125,7 +125,8 @@ lox blind "Beschattung Süd" pos 50     # Blind to 50%
 lox light mood "Licht" plus            # Next light mood
 lox thermostat "Heizung" temp 22.5     # Set temperature
 lox alarm "Alarmanlage" arm            # Arm alarm
-lox stream --room "Kitchen" --json     # Real-time WebSocket state stream
+lox stream --room "Kitchen" -o json    # Real-time WebSocket state stream
+lox otel serve --endpoint http://..   # Push metrics via OpenTelemetry
 lox if "Temperatur" gt 25 && echo hot  # Conditional logic
 lox status --energy                    # Energy dashboard
 lox config download --extract          # Download & extract Loxone Config

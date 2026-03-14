@@ -3,6 +3,7 @@ mod config;
 mod ftp;
 mod loxcc;
 mod loxone_xml;
+mod otel;
 mod scene;
 mod stream;
 mod token;
@@ -124,6 +125,7 @@ System:
   discover, extensions         Find Miniservers, list extensions
   update, reboot               Firmware updates, reboot
   files                        Browse Miniserver filesystem
+  otel                         Export metrics via OpenTelemetry (OTLP)
 
 Configuration:
   setup, alias, scene          Connection settings, aliases, scenes
@@ -514,6 +516,12 @@ enum Cmd {
         action: FilesCmd,
     },
 
+    /// Export metrics & logs to OpenTelemetry backends
+    Otel {
+        #[command(subcommand)]
+        action: OtelCmd,
+    },
+
     // ── Configuration ────────────────────────────────────────────────────────
     /// Configure connection settings
     Setup {
@@ -706,6 +714,43 @@ enum FilesCmd {
         /// Local output path (defaults to filename)
         #[arg(long, value_name = "PATH")]
         save_as: Option<String>,
+    },
+}
+
+#[derive(Subcommand)]
+enum OtelCmd {
+    /// Continuously push metrics to an OTLP endpoint
+    Serve {
+        /// OTLP HTTP endpoint URL (e.g. http://localhost:4318)
+        #[arg(long, default_value = "http://localhost:4318")]
+        endpoint: String,
+        /// Push interval (e.g. 30s, 1m, 5m)
+        #[arg(long, short = 'i', default_value = "30s")]
+        interval: String,
+        /// Filter by control type
+        #[arg(long, short = 't')]
+        r#type: Option<String>,
+        /// Filter by room
+        #[arg(long, short = 'r')]
+        room: Option<String>,
+        /// Additional header for auth (e.g. "Authorization=Bearer xxx")
+        #[arg(long)]
+        header: Vec<String>,
+    },
+    /// One-shot: push current state and exit
+    Push {
+        /// OTLP HTTP endpoint URL
+        #[arg(long, default_value = "http://localhost:4318")]
+        endpoint: String,
+        /// Filter by control type
+        #[arg(long, short = 't')]
+        r#type: Option<String>,
+        /// Filter by room
+        #[arg(long, short = 'r')]
+        room: Option<String>,
+        /// Additional header for auth
+        #[arg(long)]
+        header: Vec<String>,
     },
 }
 
@@ -2684,10 +2729,11 @@ fn main() -> Result<()> {
             let mut lox = LoxClient::new(cfg.clone());
             let structure = lox.get_structure()?.clone();
             let state_map = stream::build_state_uuid_map(&structure);
-            let json = cli.json;
-
             if !quiet {
                 eprintln!("Streaming state changes (Ctrl+C to stop)...");
+            }
+            if csv && !no_header {
+                println!("timestamp,control,state,value,room,type,uuid");
             }
 
             let type_filter = r#type;
@@ -2714,6 +2760,7 @@ fn main() -> Result<()> {
                                 }
                                 print_stream_event(
                                     json,
+                                    csv,
                                     &info.control_name,
                                     &info.state_name,
                                     &format!("{}", value),
@@ -2738,6 +2785,7 @@ fn main() -> Result<()> {
                                 }
                                 print_stream_event(
                                     json,
+                                    csv,
                                     &info.control_name,
                                     &info.state_name,
                                     text,
@@ -3618,6 +3666,45 @@ fn main() -> Result<()> {
                 println!("{}", line);
             }
         }
+
+        Cmd::Otel { action } => {
+            let cfg = Config::load()?;
+            match action {
+                OtelCmd::Serve {
+                    endpoint,
+                    interval,
+                    r#type,
+                    room,
+                    header,
+                } => {
+                    let interval = otel::parse_interval(&interval)?;
+                    otel::serve(
+                        &cfg,
+                        &endpoint,
+                        interval,
+                        r#type.as_deref(),
+                        room.as_deref(),
+                        &header,
+                        quiet,
+                    )?;
+                }
+                OtelCmd::Push {
+                    endpoint,
+                    r#type,
+                    room,
+                    header,
+                } => {
+                    otel::push(
+                        &cfg,
+                        &endpoint,
+                        r#type.as_deref(),
+                        room.as_deref(),
+                        &header,
+                        quiet,
+                    )?;
+                }
+            }
+        }
     }
 
     Ok(())
@@ -3663,8 +3750,10 @@ fn matches_filters(
     true
 }
 
+#[allow(clippy::too_many_arguments)]
 fn print_stream_event(
     json: bool,
+    csv: bool,
     control: &str,
     state: &str,
     value: &str,
@@ -3684,6 +3773,17 @@ fn print_stream_event(
                 "type": control_type,
                 "uuid": uuid,
             })
+        );
+    } else if csv {
+        println!(
+            "{},{},{},{},{},{},{}",
+            chrono::Local::now().to_rfc3339(),
+            control,
+            state,
+            value,
+            room.unwrap_or(""),
+            control_type,
+            uuid,
         );
     } else {
         println!(
