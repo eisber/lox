@@ -300,6 +300,25 @@ lox stream --json                      # output as NDJSON (one JSON object per l
 
 ---
 
+## OpenTelemetry Export
+
+```bash
+# Continuous daemon — push metrics via OTLP every 30s
+lox otel serve --endpoint http://localhost:4318 --interval 30s
+
+# With auth header (Dynatrace, Datadog, etc.)
+lox otel serve --endpoint https://otlp.example.com:4318 \
+  --header "Authorization=Bearer xxx" --interval 1m
+
+# Filter by room or control type
+lox otel serve --endpoint ... --room "Kitchen" --type LightControllerV2
+
+# One-shot push (for cron jobs)
+lox otel push --endpoint http://localhost:4318
+```
+
+---
+
 ## Firmware Update
 
 ```bash
