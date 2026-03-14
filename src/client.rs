@@ -8,6 +8,21 @@ use std::fs;
 use std::path::PathBuf;
 use std::time::Duration;
 
+/// HTTP error with status code preserved for structured matching in retry logic.
+#[derive(Debug)]
+pub struct HttpStatusError {
+    pub status: u16,
+    pub path: String,
+}
+
+impl std::fmt::Display for HttpStatusError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "HTTP {}: {}", self.status, self.path)
+    }
+}
+
+impl std::error::Error for HttpStatusError {}
+
 use crate::config::Config;
 use crate::token::TokenStore;
 
@@ -94,7 +109,11 @@ impl LoxClient {
             let status = resp.status();
             let bytes = resp.bytes()?.to_vec();
             if !status.is_success() {
-                anyhow::bail!("HTTP {}: {}", status.as_u16(), path);
+                return Err(HttpStatusError {
+                    status: status.as_u16(),
+                    path: path.to_string(),
+                }
+                .into());
             }
             Ok(bytes)
         })
@@ -116,15 +135,16 @@ impl LoxClient {
                 Ok(val) => return Ok(val),
                 Err(e) => {
                     // Don't retry on 4xx client errors
-                    let msg = format!("{}", e);
-                    if msg.contains("HTTP 4") {
-                        return Err(e);
+                    if let Some(http_err) = e.downcast_ref::<HttpStatusError>() {
+                        if (400..500).contains(&http_err.status) {
+                            return Err(e);
+                        }
                     }
                     last_err = Some(e);
                 }
             }
         }
-        Err(last_err.unwrap())
+        Err(last_err.expect("retry loop must execute at least once"))
     }
 
     pub fn get_structure(&mut self) -> Result<&Value> {

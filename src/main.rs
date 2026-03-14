@@ -1776,6 +1776,9 @@ fn main() -> Result<()> {
             let mut lox = LoxClient::new(Config::load()?);
             let uuid = lox.resolve_with_room(&name_or_uuid, room.as_deref())?;
             let ctrl = lox.find_control(&uuid)?;
+            if !ctrl.typ.contains("Charger") && !ctrl.typ.contains("EV") {
+                bail!("'{}' is type '{}', not a Charger", ctrl.name, ctrl.typ);
+            }
             let cmd_owned: String;
             let cmd: &str = match action.to_lowercase().as_str() {
                 "start" => {
