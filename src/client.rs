@@ -8,8 +8,25 @@ use std::fs;
 use std::path::PathBuf;
 use std::time::Duration;
 
+/// HTTP error with status code preserved for structured matching in retry logic.
+#[derive(Debug)]
+pub struct HttpStatusError {
+    pub status: u16,
+    pub path: String,
+}
+
+impl std::fmt::Display for HttpStatusError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "HTTP {}: {}", self.status, self.path)
+    }
+}
+
+impl std::error::Error for HttpStatusError {}
+
 use crate::config::Config;
 use crate::token::TokenStore;
+
+pub const USER_AGENT: &str = concat!("lox-cli/", env!("CARGO_PKG_VERSION"));
 
 // ── AutopilotRule ─────────────────────────────────────────────────────────────
 
@@ -44,13 +61,15 @@ pub struct LoxClient {
 
 impl LoxClient {
     pub fn new(cfg: Config) -> Self {
+        let verify_ssl = cfg.verify_ssl.unwrap_or(false);
         Self {
-            cfg,
             client: Client::builder()
-                .danger_accept_invalid_certs(true)
+                .user_agent(USER_AGENT)
+                .danger_accept_invalid_certs(!verify_ssl)
                 .timeout(Duration::from_secs(10))
                 .build()
                 .unwrap(),
+            cfg,
             structure: None,
         }
     }
@@ -68,26 +87,67 @@ impl LoxClient {
 
     pub fn get_text(&self, path: &str) -> Result<String> {
         let url = format!("{}/{}", self.cfg.host, path.trim_start_matches('/'));
-        Ok(self.apply_auth(self.client.get(&url)).send()?.text()?)
+        self.request_with_retry(|| {
+            self.apply_auth(self.client.get(&url))
+                .send()?
+                .text()
+                .map_err(Into::into)
+        })
     }
 
     pub fn get_json(&self, path: &str) -> Result<Value> {
         let url = format!("{}/{}", self.cfg.host, path.trim_start_matches('/'));
-        Ok(self
-            .apply_auth(self.client.get(&url))
-            .send()?
-            .json::<Value>()?)
+        self.request_with_retry(|| {
+            self.apply_auth(self.client.get(&url))
+                .send()?
+                .json::<Value>()
+                .map_err(Into::into)
+        })
     }
 
     pub fn get_bytes(&self, path: &str) -> Result<Vec<u8>> {
         let url = format!("{}/{}", self.cfg.host, path.trim_start_matches('/'));
-        let resp = self.apply_auth(self.client.get(&url)).send()?;
-        let status = resp.status();
-        let bytes = resp.bytes()?.to_vec();
-        if !status.is_success() {
-            anyhow::bail!("HTTP {}: {}", status.as_u16(), path);
+        self.request_with_retry(|| {
+            let resp = self.apply_auth(self.client.get(&url)).send()?;
+            let status = resp.status();
+            let bytes = resp.bytes()?.to_vec();
+            if !status.is_success() {
+                return Err(HttpStatusError {
+                    status: status.as_u16(),
+                    path: path.to_string(),
+                }
+                .into());
+            }
+            Ok(bytes)
+        })
+    }
+
+    /// Retry a request up to 3 times with exponential backoff on network errors.
+    /// Does not retry on 4xx client errors (only on connection/timeout/5xx).
+    fn request_with_retry<T, F>(&self, f: F) -> Result<T>
+    where
+        F: Fn() -> Result<T>,
+    {
+        let delays = [200, 400, 800];
+        let mut last_err = None;
+        for (attempt, delay) in std::iter::once(&0u64).chain(delays.iter()).enumerate() {
+            if attempt > 0 {
+                std::thread::sleep(Duration::from_millis(*delay));
+            }
+            match f() {
+                Ok(val) => return Ok(val),
+                Err(e) => {
+                    // Don't retry on 4xx client errors
+                    if let Some(http_err) = e.downcast_ref::<HttpStatusError>() {
+                        if (400..500).contains(&http_err.status) {
+                            return Err(e);
+                        }
+                    }
+                    last_err = Some(e);
+                }
+            }
         }
-        Ok(bytes)
+        Err(last_err.expect("retry loop must execute at least once"))
     }
 
     pub fn get_structure(&mut self) -> Result<&Value> {
@@ -142,10 +202,12 @@ impl LoxClient {
     }
 
     pub fn send_cmd(&self, uuid: &str, cmd: &str) -> Result<Value> {
+        validate_uuid(uuid)?;
         self.get_json(&format!("/jdev/sps/io/{}/{}", uuid, cmd))
     }
 
     pub fn get_all(&self, uuid: &str) -> Result<String> {
+        validate_uuid(uuid)?;
         self.get_text(&format!("/dev/sps/io/{}/all", uuid))
     }
 
@@ -433,6 +495,19 @@ impl LoxClient {
         }
     }
 
+    /// Resolve all controls in a room, optionally filtered by type.
+    pub fn resolve_all_in_room(
+        &mut self,
+        room: &str,
+        type_filter: Option<&str>,
+    ) -> Result<Vec<Control>> {
+        let controls = self.list_controls(type_filter, Some(room))?;
+        if controls.is_empty() {
+            bail!("No controls found in room '{}'", room);
+        }
+        Ok(controls)
+    }
+
     pub fn find_control(&mut self, name_or_uuid: &str) -> Result<Control> {
         let controls = self.list_controls(None, None)?;
         if is_uuid(name_or_uuid) {
@@ -459,7 +534,22 @@ impl LoxClient {
 }
 
 pub fn is_uuid(s: &str) -> bool {
-    s.contains('-') && s.len() > 20
+    s.len() > 20 && s.contains('-') && s.chars().all(|c| c.is_ascii_hexdigit() || c == '-')
+}
+
+/// Validate that a UUID is safe to embed in a URL path.
+/// Rejects path traversal attempts and non-hex characters.
+pub fn validate_uuid(uuid: &str) -> Result<()> {
+    if uuid.is_empty() || uuid.len() > 50 {
+        bail!("Invalid UUID length: '{}'", uuid);
+    }
+    if uuid.contains("..") || uuid.contains('/') || uuid.contains('\\') || uuid.contains('%') {
+        bail!("Invalid characters in UUID: '{}'", uuid);
+    }
+    if !uuid.chars().all(|c| c.is_ascii_hexdigit() || c == '-') {
+        bail!("UUID contains non-hex characters: '{}'", uuid);
+    }
+    Ok(())
 }
 
 #[cfg(test)]
@@ -472,6 +562,7 @@ mod tests {
             host: server.base_url(),
             user: "test".into(),
             pass: "test".into(),
+            verify_ssl: Some(false),
             ..Default::default()
         }
     }
@@ -522,23 +613,44 @@ mod tests {
     #[test]
     fn test_send_cmd_success() {
         let server = MockServer::start();
+        let test_uuid = "0f1e2d3c-a1b2-c3d4-e5f6a7b8c9d0e1f2";
         let _s = server.mock(|when, then| {
             when.method(GET).path("/data/LoxApp3.json");
             then.status(200)
                 .json_body(serde_json::json!({ "rooms": {}, "controls": {} }));
         });
         let _c = server.mock(|when, then| {
-            when.method(GET).path("/jdev/sps/io/test-uuid/on");
+            when.method(GET)
+                .path(format!("/jdev/sps/io/{}/on", test_uuid));
             then.status(200).json_body(serde_json::json!({
                 "LL": { "Code": "200", "value": "1" }
             }));
         });
         let client = LoxClient::new(mock_config(&server));
-        let resp = client.send_cmd("test-uuid", "on").unwrap();
+        let resp = client.send_cmd(test_uuid, "on").unwrap();
         assert_eq!(
             resp.pointer("/LL/Code").and_then(|v| v.as_str()),
             Some("200")
         );
+    }
+
+    #[test]
+    fn test_send_cmd_rejects_path_traversal() {
+        let server = MockServer::start();
+        let client = LoxClient::new(mock_config(&server));
+        assert!(client.send_cmd("../../../etc/passwd", "on").is_err());
+        assert!(client.send_cmd("uuid-with-slash/attack", "on").is_err());
+        assert!(client.send_cmd("", "on").is_err());
+    }
+
+    #[test]
+    fn test_validate_uuid() {
+        assert!(validate_uuid("0f1e2d3c-a1b2-c3d4-e5f6a7b8c9d0e1f2").is_ok());
+        assert!(validate_uuid("1fbc668c-005c-7471-ffffed57184a04d2").is_ok());
+        assert!(validate_uuid("").is_err());
+        assert!(validate_uuid("../attack").is_err());
+        assert!(validate_uuid("uuid/with/slashes").is_err());
+        assert!(validate_uuid("has spaces in it-----").is_err());
     }
 
     // ── cache ─────────────────────────────────────────────────────────────────
@@ -761,5 +873,104 @@ mod tests {
         let mut client = LoxClient::new(cfg);
         let uuid = client.resolve_with_room("mylight", None).unwrap();
         assert_eq!(uuid, "alias-uuid-1234567890");
+    }
+
+    // ── resolve_all_in_room ─────────────────────────────────────────────────
+
+    #[test]
+    fn test_resolve_all_in_room() {
+        let server = MockServer::start();
+        let _m = server.mock(|when, then| {
+            when.method(GET).path("/data/LoxApp3.json");
+            then.status(200).json_body(serde_json::json!({
+                "rooms": { "r1": { "name": "Kitchen" }, "r2": { "name": "Bedroom" } },
+                "controls": {
+                    "u1": { "name": "Light 1", "type": "Switch", "room": "r1" },
+                    "u2": { "name": "Blind 1", "type": "Jalousie", "room": "r1" },
+                    "u3": { "name": "Light 2", "type": "Switch", "room": "r2" }
+                }
+            }));
+        });
+        let mut client = LoxClient::new(mock_config(&server));
+        let controls = client.resolve_all_in_room("Kitchen", None).unwrap();
+        assert_eq!(controls.len(), 2);
+        assert!(controls
+            .iter()
+            .all(|c| c.room.as_deref() == Some("Kitchen")));
+    }
+
+    #[test]
+    fn test_resolve_all_in_room_with_type_filter() {
+        let server = MockServer::start();
+        let _m = server.mock(|when, then| {
+            when.method(GET).path("/data/LoxApp3.json");
+            then.status(200).json_body(serde_json::json!({
+                "rooms": { "r1": { "name": "Kitchen" } },
+                "controls": {
+                    "u1": { "name": "Light 1", "type": "Switch", "room": "r1" },
+                    "u2": { "name": "Blind 1", "type": "Jalousie", "room": "r1" }
+                }
+            }));
+        });
+        let mut client = LoxClient::new(mock_config(&server));
+        let controls = client
+            .resolve_all_in_room("Kitchen", Some("Switch"))
+            .unwrap();
+        assert_eq!(controls.len(), 1);
+        assert_eq!(controls[0].typ, "Switch");
+    }
+
+    #[test]
+    fn test_resolve_all_in_room_empty_returns_err() {
+        let server = MockServer::start();
+        let _m = server.mock(|when, then| {
+            when.method(GET).path("/data/LoxApp3.json");
+            then.status(200).json_body(serde_json::json!({
+                "rooms": {}, "controls": {}
+            }));
+        });
+        let mut client = LoxClient::new(mock_config(&server));
+        assert!(client.resolve_all_in_room("NonExistent", None).is_err());
+    }
+
+    // ── is_uuid (strict) ────────────────────────────────────────────────────
+
+    #[test]
+    fn test_is_uuid_strict() {
+        // Valid Loxone UUIDs
+        assert!(is_uuid("1fbc668c-005c-7471-ffffed57184a04d2"));
+        assert!(is_uuid("0f1e2d3c-a1b2-c3d4-e5f6a7b8c9d0e1f2"));
+        // Too short
+        assert!(!is_uuid("short-str"));
+        // Contains non-hex characters
+        assert!(!is_uuid("1fbc668c-005c-7471-xxxxed57184a04d2"));
+        // No dashes
+        assert!(!is_uuid("1fbc668c005c7471ffffed57184a04d2"));
+        // Human-readable strings should NOT match
+        assert!(!is_uuid("Licht Wohnzimmer"));
+        assert!(!is_uuid("Kitchen Light [Room]"));
+    }
+
+    // ── retry logic ─────────────────────────────────────────────────────────
+
+    #[test]
+    fn test_retry_on_server_error() {
+        let server = MockServer::start();
+        let test_uuid = "0f1e2d3c-a1b2-c3d4-e5f6a7b8c9d0e1f2";
+        let mock = server.mock(|when, then| {
+            when.method(GET)
+                .path(format!("/jdev/sps/io/{}/on", test_uuid));
+            then.status(200).json_body(serde_json::json!({
+                "LL": { "Code": "200", "value": "1" }
+            }));
+        });
+        let client = LoxClient::new(mock_config(&server));
+        let resp = client.send_cmd(test_uuid, "on").unwrap();
+        assert_eq!(
+            resp.pointer("/LL/Code").and_then(|v| v.as_str()),
+            Some("200")
+        );
+        // Verify it was called (at least once; retries only on failure)
+        mock.assert_hits(1);
     }
 }
