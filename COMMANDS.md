@@ -287,6 +287,19 @@ lox watch "Temperatur" -i 5            # custom poll interval in seconds
 
 ---
 
+## Streaming
+
+```bash
+lox stream                             # stream all state changes via WebSocket (NDJSON with --json)
+lox stream --room "Kitchen"            # filter by room
+lox stream --type LightControllerV2    # filter by control type
+lox stream --control "Kitchen Light"   # filter by control name
+lox stream --initial                   # include initial state snapshot
+lox stream --json                      # output as NDJSON (one JSON object per line)
+```
+
+---
+
 ## Firmware Update
 
 ```bash
