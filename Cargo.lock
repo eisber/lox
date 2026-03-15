@@ -1609,7 +1609,7 @@ dependencies = [
 
 [[package]]
 name = "lox"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "aes",
  "anyhow",
@@ -1625,6 +1625,7 @@ dependencies = [
  "hmac",
  "httpmock",
  "opentelemetry",
+ "opentelemetry-http",
  "opentelemetry-otlp",
  "opentelemetry_sdk",
  "quick-xml",
