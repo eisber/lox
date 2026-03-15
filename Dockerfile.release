@@ -1,4 +1,5 @@
 FROM scratch
 ARG TARGETARCH
 COPY docker/linux/${TARGETARCH}/lox /lox
+ENV HOME=/root
 ENTRYPOINT ["/lox"]

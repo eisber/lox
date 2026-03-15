@@ -24,4 +24,5 @@ RUN case "${TARGETARCH}" in \
 
 FROM scratch
 COPY --from=builder /lox /lox
+ENV HOME=/root
 ENTRYPOINT ["/lox"]
