@@ -109,6 +109,23 @@ aliases:
 
 Then use short names directly: `lox on wz`, `lox off kueche`
 
+### Shell Completions
+
+```bash
+# Bash (add to ~/.bashrc)
+eval "$(lox completions bash)"
+
+# Zsh (add to ~/.zshrc)
+eval "$(lox completions zsh)"
+
+# Fish
+lox completions fish | source
+# To persist: lox completions fish > ~/.config/fish/completions/lox.fish
+
+# PowerShell (add to $PROFILE)
+lox completions powershell | Invoke-Expression
+```
+
 ---
 
 ## Commands
