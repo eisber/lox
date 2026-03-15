@@ -26,6 +26,7 @@ class Lox < Formula
 
   def install
     binary = Dir.glob("lox-*").first || "lox"
+    chmod 0755, binary
     bin.install binary => "lox"
 
     generate_completions_from_executable(bin/"lox", "completions")
