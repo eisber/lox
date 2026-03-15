@@ -24,7 +24,6 @@ impl std::fmt::Display for HttpStatusError {
 impl std::error::Error for HttpStatusError {}
 
 use crate::config::Config;
-use crate::token::TokenStore;
 
 pub const USER_AGENT: &str = concat!("lox-cli/", env!("CARGO_PKG_VERSION"));
 
@@ -181,14 +180,11 @@ impl LoxClient {
             }
         }
         let url = format!("{}/data/LoxApp3.json", cfg.host);
-        let pass = TokenStore::load()
-            .filter(|t| t.is_valid())
-            .map(|t| t.token)
-            .unwrap_or_else(|| cfg.pass.clone());
         let resp = client
             .get(&url)
-            .basic_auth(&cfg.user, Some(&pass))
+            .basic_auth(&cfg.user, Some(&cfg.pass))
             .send()?
+            .error_for_status()?
             .bytes()?;
         let v: Value = serde_json::from_slice(&resp)?;
         if use_cache {
