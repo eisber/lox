@@ -87,6 +87,10 @@ fn otlp_signal_url(endpoint: &str, signal_path: &str) -> String {
 }
 
 /// Build an OTLP metric exporter with the given endpoint and headers.
+///
+/// Uses the async reqwest client so the PeriodicReader's tokio task can
+/// drive exports without blocking. Log/trace exporters use the default
+/// blocking client which works on the BatchProcessor's std threads.
 fn build_metric_exporter(
     endpoint: &str,
     headers: &[String],
@@ -95,6 +99,7 @@ fn build_metric_exporter(
     let header_map = parse_headers(headers)?;
     let mut builder = MetricExporter::builder()
         .with_http()
+        .with_http_client(reqwest::Client::new())
         .with_protocol(Protocol::HttpBinary)
         .with_endpoint(otlp_metrics_url(endpoint));
     if !header_map.is_empty() {
