@@ -3305,6 +3305,7 @@ fn main() -> Result<()> {
                     let client = Client::builder()
                         .user_agent(client::USER_AGENT)
                         .danger_accept_invalid_certs(true)
+                        .redirect(LoxClient::same_origin_redirect_policy(&cfg.host))
                         .timeout(Duration::from_secs(15))
                         .build()?;
                     if cache.exists() {

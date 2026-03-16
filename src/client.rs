@@ -59,12 +59,44 @@ pub struct LoxClient {
 }
 
 impl LoxClient {
+    /// Build a redirect policy that blocks cross-origin redirects.
+    /// Loxone Miniserver Gen 2 redirects local HTTP requests to a cloud
+    /// DynDNS URL (e.g. `https://{IP}.{serial}.dyndns.loxonecloud.com`).
+    /// Following such redirects causes 401 errors because credentials
+    /// are for the local Miniserver, not the cloud gateway.
+    pub fn same_origin_redirect_policy(host: &str) -> reqwest::redirect::Policy {
+        let configured_host = host.to_string();
+        reqwest::redirect::Policy::custom(move |attempt| {
+            let is_cross_origin = attempt
+                .url()
+                .host_str()
+                .and_then(|target_host| {
+                    reqwest::Url::parse(&configured_host)
+                        .ok()
+                        .and_then(|u| u.host_str().map(|h| h.to_string()))
+                        .map(|cfg_host| (target_host.to_string(), cfg_host))
+                })
+                .filter(|(target, cfg)| target != cfg);
+            if let Some((target_host, cfg_host)) = is_cross_origin {
+                return attempt.error(std::io::Error::other(format!(
+                    "Blocked cross-origin redirect from {} to {}. \
+                     If using a local IP, ensure your config uses https:// \
+                     or check your Miniserver's network settings.",
+                    cfg_host, target_host
+                )));
+            }
+            attempt.follow()
+        })
+    }
+
     pub fn new(cfg: Config) -> Self {
         let verify_ssl = cfg.verify_ssl.unwrap_or(false);
+        let redirect_policy = Self::same_origin_redirect_policy(&cfg.host);
         Self {
             client: Client::builder()
                 .user_agent(USER_AGENT)
                 .danger_accept_invalid_certs(!verify_ssl)
+                .redirect(redirect_policy)
                 .timeout(Duration::from_secs(10))
                 .build()
                 .unwrap(),
@@ -967,5 +999,47 @@ mod tests {
         );
         // Verify it was called (at least once; retries only on failure)
         mock.assert_hits(1);
+    }
+
+    // ── cross-origin redirect blocking ──────────────────────────────────────
+
+    #[test]
+    fn test_cross_origin_redirect_blocked() {
+        // Simulate Miniserver Gen 2 redirecting to cloud DynDNS URL
+        let server = MockServer::start();
+        let _m = server.mock(|when, then| {
+            when.method(GET).path("/data/LoxApp3.json");
+            then.status(302).header(
+                "Location",
+                "https://192-168-10-222.504f94d08fa8.dyndns.loxonecloud.com/data/LoxApp3.json",
+            );
+        });
+        let mut client = LoxClient::new(mock_config(&server));
+        let result = client.get_structure();
+        assert!(result.is_err(), "Cross-origin redirect should be blocked");
+        let err_msg = result.unwrap_err().to_string();
+        assert!(
+            err_msg.contains("Blocked cross-origin redirect") || err_msg.contains("redirect"),
+            "Error should mention redirect blocking, got: {}",
+            err_msg
+        );
+    }
+
+    #[test]
+    fn test_same_origin_redirect_allowed() {
+        let server = MockServer::start();
+        // Redirect to same host (different path) should be followed
+        let _redirect = server.mock(|when, then| {
+            when.method(GET).path("/old-path");
+            then.status(302)
+                .header("Location", &format!("{}/new-path", server.base_url()));
+        });
+        let _target = server.mock(|when, then| {
+            when.method(GET).path("/new-path");
+            then.status(200).body("ok");
+        });
+        let client = LoxClient::new(mock_config(&server));
+        let result = client.get_text("/old-path").unwrap();
+        assert_eq!(result, "ok");
     }
 }
