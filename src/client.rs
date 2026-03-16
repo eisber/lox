@@ -6,13 +6,67 @@ use serde_json::Value;
 use std::collections::HashMap;
 use std::fs;
 use std::path::PathBuf;
+use std::sync::atomic::{AtomicU8, Ordering};
 use std::time::Duration;
+
+// ── Global verbosity ─────────────────────────────────────────────────────────
+
+static VERBOSE: AtomicU8 = AtomicU8::new(0);
+
+/// Set the global verbosity level (0 = off, 1 = -v, 2 = -vv).
+pub fn set_verbose(level: u8) {
+    VERBOSE.store(level, Ordering::Relaxed);
+}
+
+fn verbose() -> u8 {
+    VERBOSE.load(Ordering::Relaxed)
+}
+
+/// Redact credentials from a URL string for safe logging.
+/// Removes basic-auth passwords and known sensitive query parameters.
+pub(crate) fn redact_url(url: &str) -> String {
+    // Redact userinfo password (http://user:pass@host → http://user:***@host)
+    let mut result = if let Ok(mut parsed) = reqwest::Url::parse(url) {
+        if parsed.password().is_some() {
+            let _ = parsed.set_password(Some("***"));
+        }
+        parsed.to_string()
+    } else {
+        url.to_string()
+    };
+    // Redact all occurrences of known sensitive query params
+    for param in &["token", "key", "pass", "password", "autht"] {
+        let pattern = format!("{}=", param);
+        let mut search_from = 0;
+        while let Some(idx) = result[search_from..].find(&pattern) {
+            let abs_idx = search_from + idx;
+            let start = abs_idx + pattern.len();
+            let end = result[start..]
+                .find('&')
+                .map_or(result.len(), |i| start + i);
+            result.replace_range(start..end, "***");
+            search_from = start + 3; // skip past "***"
+        }
+    }
+    result
+}
 
 /// HTTP error with status code preserved for structured matching in retry logic.
 #[derive(Debug)]
 pub struct HttpStatusError {
     pub status: u16,
     pub path: String,
+}
+
+/// Log a response body at -vv level, truncating large responses.
+fn log_body(body: &str) {
+    if body.len() > 500 {
+        // Find a UTF-8 safe truncation point at or before byte 500
+        let truncated = &body[..body.floor_char_boundary(500)];
+        eprintln!("  body: {}… ({} bytes total)", truncated, body.len());
+    } else {
+        eprintln!("  body: {}", body);
+    }
 }
 
 impl std::fmt::Display for HttpStatusError {
@@ -59,12 +113,46 @@ pub struct LoxClient {
 }
 
 impl LoxClient {
+    /// Build a redirect policy that blocks cross-origin redirects.
+    /// Loxone Miniserver Gen 2 redirects local HTTP requests to a cloud
+    /// DynDNS URL (e.g. `https://{IP}.{serial}.dyndns.loxonecloud.com`).
+    /// Following such redirects causes 401 errors because credentials
+    /// are for the local Miniserver, not the cloud gateway.
+    pub fn same_origin_redirect_policy(host: &str) -> reqwest::redirect::Policy {
+        // Extract the host string from the configured URL.  Try parsing as a
+        // full URL first; fall back to treating bare hostnames/IPs by
+        // prepending a dummy scheme so Url::parse succeeds.
+        let configured_host = reqwest::Url::parse(host)
+            .or_else(|_| reqwest::Url::parse(&format!("http://{}", host)))
+            .ok()
+            .and_then(|u| u.host_str().map(|h| h.to_string()))
+            .unwrap_or_default();
+        reqwest::redirect::Policy::custom(move |attempt| {
+            if configured_host.is_empty() {
+                // Could not determine configured host — allow redirect
+                return attempt.follow();
+            }
+            let target_host = attempt.url().host_str().unwrap_or_default().to_string();
+            if target_host != configured_host {
+                return attempt.error(std::io::Error::other(format!(
+                    "Blocked cross-origin redirect from {} to {}. \
+                     If using a local IP, ensure your config uses https:// \
+                     or check your Miniserver's network settings.",
+                    configured_host, target_host
+                )));
+            }
+            attempt.follow()
+        })
+    }
+
     pub fn new(cfg: Config) -> Self {
         let verify_ssl = cfg.verify_ssl.unwrap_or(false);
+        let redirect_policy = Self::same_origin_redirect_policy(&cfg.host);
         Self {
             client: Client::builder()
                 .user_agent(USER_AGENT)
                 .danger_accept_invalid_certs(!verify_ssl)
+                .redirect(redirect_policy)
                 .timeout(Duration::from_secs(10))
                 .build()
                 .unwrap(),
@@ -85,30 +173,69 @@ impl LoxClient {
 
     pub fn get_text(&self, path: &str) -> Result<String> {
         let url = format!("{}/{}", self.cfg.host, path.trim_start_matches('/'));
+        if verbose() >= 1 {
+            eprintln!("GET {}", redact_url(&url));
+        }
         self.request_with_retry(|| {
-            self.apply_auth(self.client.get(&url))
-                .send()?
-                .text()
-                .map_err(Into::into)
+            let resp = self.apply_auth(self.client.get(&url)).send()?;
+            if verbose() >= 1 {
+                eprintln!(
+                    "  → {} {}",
+                    resp.status().as_u16(),
+                    resp.status().canonical_reason().unwrap_or("")
+                );
+            }
+            let body = resp.text()?;
+            if verbose() >= 2 {
+                log_body(&body);
+            }
+            Ok(body)
         })
     }
 
     pub fn get_json(&self, path: &str) -> Result<Value> {
         let url = format!("{}/{}", self.cfg.host, path.trim_start_matches('/'));
+        if verbose() >= 1 {
+            eprintln!("GET {}", redact_url(&url));
+        }
         self.request_with_retry(|| {
-            self.apply_auth(self.client.get(&url))
-                .send()?
-                .json::<Value>()
-                .map_err(Into::into)
+            let resp = self.apply_auth(self.client.get(&url)).send()?;
+            if verbose() >= 1 {
+                eprintln!(
+                    "  → {} {}",
+                    resp.status().as_u16(),
+                    resp.status().canonical_reason().unwrap_or("")
+                );
+            }
+            if verbose() >= 2 {
+                let text = resp.text()?;
+                log_body(&text);
+                serde_json::from_str::<Value>(&text).map_err(Into::into)
+            } else {
+                resp.json::<Value>().map_err(Into::into)
+            }
         })
     }
 
     pub fn get_bytes(&self, path: &str) -> Result<Vec<u8>> {
         let url = format!("{}/{}", self.cfg.host, path.trim_start_matches('/'));
+        if verbose() >= 1 {
+            eprintln!("GET {}", redact_url(&url));
+        }
         self.request_with_retry(|| {
             let resp = self.apply_auth(self.client.get(&url)).send()?;
             let status = resp.status();
+            if verbose() >= 1 {
+                eprintln!(
+                    "  → {} {}",
+                    status.as_u16(),
+                    status.canonical_reason().unwrap_or("")
+                );
+            }
             let bytes = resp.bytes()?.to_vec();
+            if verbose() >= 2 {
+                eprintln!("  body: <{} bytes>", bytes.len());
+            }
             if !status.is_success() {
                 return Err(HttpStatusError {
                     status: status.as_u16(),
@@ -172,6 +299,13 @@ impl LoxClient {
                     if age.as_secs() < 86400 {
                         if let Ok(data) = fs::read_to_string(&cache) {
                             if let Ok(v) = serde_json::from_str::<Value>(&data) {
+                                if verbose() >= 1 {
+                                    eprintln!(
+                                        "Using cached structure ({} bytes, age {}s)",
+                                        data.len(),
+                                        age.as_secs()
+                                    );
+                                }
                                 return Ok(v);
                             }
                         }
@@ -180,12 +314,24 @@ impl LoxClient {
             }
         }
         let url = format!("{}/data/LoxApp3.json", cfg.host);
+        if verbose() >= 1 {
+            eprintln!("GET {}", redact_url(&url));
+        }
         let resp = client
             .get(&url)
             .basic_auth(&cfg.user, Some(&cfg.pass))
-            .send()?
-            .error_for_status()?
-            .bytes()?;
+            .send()?;
+        if verbose() >= 1 {
+            eprintln!(
+                "  → {} {}",
+                resp.status().as_u16(),
+                resp.status().canonical_reason().unwrap_or("")
+            );
+        }
+        let resp = resp.error_for_status()?.bytes()?;
+        if verbose() >= 2 {
+            eprintln!("  body: <{} bytes>", resp.len());
+        }
         let v: Value = serde_json::from_slice(&resp)?;
         if use_cache {
             if let Some(parent) = cache.parent() {
@@ -967,5 +1113,87 @@ mod tests {
         );
         // Verify it was called (at least once; retries only on failure)
         mock.assert_hits(1);
+    }
+
+    // ── cross-origin redirect blocking ──────────────────────────────────────
+
+    #[test]
+    fn test_cross_origin_redirect_blocked() {
+        // Simulate Miniserver Gen 2 redirecting to cloud DynDNS URL
+        let server = MockServer::start();
+        let _m = server.mock(|when, then| {
+            when.method(GET).path("/data/LoxApp3.json");
+            then.status(302).header(
+                "Location",
+                "https://192-168-10-222.504f94d08fa8.dyndns.loxonecloud.com/data/LoxApp3.json",
+            );
+        });
+        let mut client = LoxClient::new(mock_config(&server));
+        let result = client.get_structure();
+        assert!(result.is_err(), "Cross-origin redirect should be blocked");
+        let err_msg = result.unwrap_err().to_string();
+        assert!(
+            err_msg.contains("Blocked cross-origin redirect") || err_msg.contains("redirect"),
+            "Error should mention redirect blocking, got: {}",
+            err_msg
+        );
+    }
+
+    #[test]
+    fn test_same_origin_redirect_allowed() {
+        let server = MockServer::start();
+        // Redirect to same host (different path) should be followed
+        let _redirect = server.mock(|when, then| {
+            when.method(GET).path("/old-path");
+            then.status(302)
+                .header("Location", &format!("{}/new-path", server.base_url()));
+        });
+        let _target = server.mock(|when, then| {
+            when.method(GET).path("/new-path");
+            then.status(200).body("ok");
+        });
+        let client = LoxClient::new(mock_config(&server));
+        let result = client.get_text("/old-path").unwrap();
+        assert_eq!(result, "ok");
+    }
+
+    // ── redact_url ──────────────────────────────────────────────────────────
+
+    #[test]
+    fn test_redact_url_plain() {
+        let url = "https://192.168.1.5/data/LoxApp3.json";
+        assert_eq!(redact_url(url), url);
+    }
+
+    #[test]
+    fn test_redact_url_basic_auth_password() {
+        assert_eq!(
+            redact_url("https://admin:secret@192.168.1.5/data/LoxApp3.json"),
+            "https://admin:***@192.168.1.5/data/LoxApp3.json"
+        );
+    }
+
+    #[test]
+    fn test_redact_url_query_token() {
+        assert_eq!(
+            redact_url("https://host/path?token=abc123&other=ok"),
+            "https://host/path?token=***&other=ok"
+        );
+    }
+
+    #[test]
+    fn test_redact_url_query_password() {
+        assert_eq!(
+            redact_url("https://host/path?pass=secret"),
+            "https://host/path?pass=***"
+        );
+    }
+
+    #[test]
+    fn test_redact_url_duplicate_params() {
+        assert_eq!(
+            redact_url("https://host/path?token=abc&other=ok&token=def"),
+            "https://host/path?token=***&other=ok&token=***"
+        );
     }
 }
