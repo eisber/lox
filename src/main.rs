@@ -266,7 +266,12 @@ pub(crate) fn detect_shell() -> Option<Shell> {
 }
 
 pub(crate) fn install_completions(shell: Shell, cmd: &mut clap::Command) -> Result<()> {
-    let home = home_dir().unwrap_or_default();
+    // Check LOX_HOME first (for testing), then HOME, then dirs::home_dir()
+    let home = std::env::var("LOX_HOME")
+        .ok()
+        .map(std::path::PathBuf::from)
+        .or_else(home_dir)
+        .unwrap_or_default();
     let (path, label) = match shell {
         Shell::Bash => {
             let dir = home.join(".local/share/bash-completion/completions");
@@ -2388,19 +2393,13 @@ mod tests {
         let _ = fs::remove_dir_all(&tmp);
         fs::create_dir_all(&tmp).unwrap();
 
-        // Override HOME (Unix) / USERPROFILE (Windows) to use temp dir
-        let prev_home = std::env::var("HOME").ok();
-        let prev_userprofile = std::env::var("USERPROFILE").ok();
-        // SAFETY: Test runs serially; no other threads access these env vars here.
-        unsafe {
-            std::env::set_var("HOME", tmp.to_str().unwrap());
-            std::env::set_var("USERPROFILE", tmp.to_str().unwrap());
-        }
+        // Use LOX_HOME to override home directory for the test (works on all platforms)
+        // SAFETY: Test runs serially; no other threads access this env var here.
+        unsafe { std::env::set_var("LOX_HOME", tmp.to_str().unwrap()) };
 
         let mut cmd = Cli::command();
 
         if cfg!(windows) {
-            // On Windows, test PowerShell completions
             let result = install_completions(Shell::PowerShell, &mut cmd);
             assert!(
                 result.is_ok(),
@@ -2412,7 +2411,6 @@ mod tests {
                 "powershell completion file should be created"
             );
         } else {
-            // On Unix, test Bash completions
             let result = install_completions(Shell::Bash, &mut cmd);
             assert!(
                 result.is_ok(),
@@ -2427,13 +2425,7 @@ mod tests {
             );
         }
 
-        // Restore env vars
-        if let Some(h) = prev_home {
-            unsafe { std::env::set_var("HOME", h) };
-        }
-        if let Some(h) = prev_userprofile {
-            unsafe { std::env::set_var("USERPROFILE", h) };
-        }
+        unsafe { std::env::remove_var("LOX_HOME") };
         let _ = fs::remove_dir_all(&tmp);
     }
 }
