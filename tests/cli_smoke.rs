@@ -54,6 +54,7 @@ subcmd_help!(help_input_pulse, "input", "pulse");
 // Light subcommands
 subcmd_help!(help_light, "light");
 subcmd_help!(help_light_mood, "light", "mood");
+subcmd_help!(help_light_moods, "light", "moods");
 subcmd_help!(help_light_dim, "light", "dim");
 subcmd_help!(help_light_color, "light", "color");
 

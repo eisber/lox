@@ -228,10 +228,28 @@ fn ensure_light_on_for_mood(lox: &LoxClient, uuid: &str, cmd: &str, dry_run: boo
 }
 
 /// Mood entry parsed from the moodList TextState JSON.
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 struct MoodEntry {
     id: u64,
     name: String,
+}
+
+/// Parse the moodList JSON array into sorted MoodEntry vec.
+fn parse_mood_list(json: &str) -> Result<Vec<MoodEntry>> {
+    let entries: Vec<serde_json::Value> = serde_json::from_str(json)
+        .map_err(|e| anyhow::anyhow!("Failed to parse moodList JSON: {}", e))?;
+
+    let mut moods: Vec<MoodEntry> = entries
+        .iter()
+        .filter_map(|v| {
+            let id = v.get("id").and_then(|i| i.as_u64())?;
+            let name = v.get("name").and_then(|n| n.as_str())?.to_string();
+            Some(MoodEntry { id, name })
+        })
+        .collect();
+
+    moods.sort_by_key(|m| m.id);
+    Ok(moods)
 }
 
 /// Fetch the list of available moods for a LightControllerV2 via WebSocket.
@@ -283,21 +301,7 @@ pub fn cmd_light_moods(ctx: &RunContext, name_or_uuid: String, room: Option<Stri
         .map_err(|_| anyhow::anyhow!("Timeout waiting for moodList state (10s)"))?
     })?;
 
-    // Parse the JSON array
-    let entries: Vec<serde_json::Value> = serde_json::from_str(&moods_json)
-        .map_err(|e| anyhow::anyhow!("Failed to parse moodList JSON: {}", e))?;
-
-    let mut moods: Vec<MoodEntry> = entries
-        .iter()
-        .filter_map(|v| {
-            let id = v.get("id").and_then(|i| i.as_u64())?;
-            let name = v.get("name").and_then(|n| n.as_str())?.to_string();
-            Some(MoodEntry { id, name })
-        })
-        .collect();
-
-    // Sort by id for consistent output
-    moods.sort_by_key(|m| m.id);
+    let moods = parse_mood_list(&moods_json)?;
 
     if ctx.json {
         let json_moods: Vec<serde_json::Value> = moods
@@ -1245,4 +1249,61 @@ pub fn cmd_music(ctx: &RunContext, action: MusicCmd) -> Result<()> {
         Err(e) => bail!("Music server error: {}", e),
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn parse_mood_list_typical() {
+        let json = r#"[
+            {"name":"Viel Licht","id":777,"static":false},
+            {"name":"Aus","id":778,"static":true},
+            {"name":"Gedimmt","id":1,"static":false}
+        ]"#;
+        let moods = parse_mood_list(json).unwrap();
+        assert_eq!(
+            moods,
+            vec![
+                MoodEntry {
+                    id: 1,
+                    name: "Gedimmt".into()
+                },
+                MoodEntry {
+                    id: 777,
+                    name: "Viel Licht".into()
+                },
+                MoodEntry {
+                    id: 778,
+                    name: "Aus".into()
+                },
+            ]
+        );
+    }
+
+    #[test]
+    fn parse_mood_list_empty() {
+        let moods = parse_mood_list("[]").unwrap();
+        assert!(moods.is_empty());
+    }
+
+    #[test]
+    fn parse_mood_list_skips_malformed_entries() {
+        // Missing "name" field — should be skipped, not error
+        let json = r#"[{"id":1},{"id":2,"name":"OK"}]"#;
+        let moods = parse_mood_list(json).unwrap();
+        assert_eq!(moods.len(), 1);
+        assert_eq!(moods[0].name, "OK");
+    }
+
+    #[test]
+    fn parse_mood_list_invalid_json() {
+        assert!(parse_mood_list("not json").is_err());
+    }
+
+    #[test]
+    fn mood_off_constant() {
+        assert_eq!(MOOD_OFF, "setMood/778");
+    }
 }
