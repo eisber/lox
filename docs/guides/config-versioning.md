@@ -86,6 +86,57 @@ For nightly cron-based backups:
 
 The `--quiet` flag suppresses output unless there's an error.
 
+### Push to a remote repository
+
+Pair `lox config pull` with `git push` to keep a remote backup on GitHub:
+
+```bash
+0 2 * * * cd ~/loxone-config && /usr/local/bin/lox config pull --quiet && git push
+```
+
+### Kubernetes CronJob
+
+Run config backups as a Kubernetes CronJob that pushes changes to a GitHub repository. This is useful when you already run a k8s cluster (e.g., for `lox otel serve`).
+
+{: .note }
+The `ghcr.io/discostu105/lox` Docker image is a scratch image (no shell). The CronJob uses `alpine` and downloads the `lox` binary at runtime.
+
+**Prerequisites:**
+
+1. A GitHub repository for config history
+2. A GitHub PAT with **Contents read/write** scope
+3. A PersistentVolumeClaim for the git repo (survives between runs)
+
+**Secrets:**
+
+```bash
+# Miniserver credentials (reuse from lox otel if already deployed)
+kubectl create secret generic lox-config \
+  --from-file=config.yaml=/path/to/your/config.yaml
+
+# GitHub PAT
+kubectl create secret generic loxone-config-backup-github \
+  --from-literal=token=ghp_your_token_here
+```
+
+**Deploy:**
+
+```bash
+kubectl apply -f k8s/config-backup-cronjob.yaml
+```
+
+The CronJob ([`k8s/config-backup-cronjob.yaml`](https://github.com/discostu105/lox/blob/main/k8s/config-backup-cronjob.yaml)):
+- Runs every 6 hours (configurable via `schedule`)
+- Downloads config, generates semantic diff, commits (no-op if unchanged)
+- Pushes to your GitHub remote
+- Works on both `amd64` and `arm64` nodes
+
+**Manual trigger:**
+
+```bash
+kubectl create job --from=cronjob/loxone-config-backup loxone-config-backup-manual
+```
+
 ## Config inspection
 
 You can also download and inspect configs without git versioning:
