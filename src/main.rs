@@ -46,12 +46,24 @@ pub(crate) fn xml_attr<'a>(xml: &'a str, attr: &str) -> Option<&'a str> {
         search_from = abs_pos + 1;
     }
 
-    // JSON format: "attr": "value"  (handles /jdev/ responses)
-    let json_key = format!("\"{}\": \"", attr);
+    // JSON format: "attr": value  (handles /jdev/ responses)
+    let json_key = format!("\"{}\": ", attr);
     if let Some(pos) = xml.find(&json_key) {
         let start = pos + json_key.len();
-        let end = xml[start..].find('"')? + start;
-        return Some(&xml[start..end]);
+        let rest = &xml[start..];
+        if let Some(stripped) = rest.strip_prefix('"') {
+            // String value: extract between quotes
+            let end = stripped.find('"')?;
+            return Some(&stripped[..end]);
+        }
+        // Numeric/other value: read until delimiter
+        let end = rest
+            .find([',', '}', ']'])
+            .unwrap_or(rest.len());
+        let val = rest[..end].trim();
+        if !val.is_empty() {
+            return Some(val);
+        }
     }
 
     None
@@ -2120,6 +2132,22 @@ mod tests {
     fn test_xml_attr_json_empty_value() {
         let json = r#"{"LL": { "control": "dev/sys/ints", "value": "", "Code": "200"}}"#;
         assert_eq!(xml_attr(json, "value"), Some(""));
+    }
+
+    #[test]
+    fn test_xml_attr_json_numeric_value() {
+        // Gen2 Miniservers return numeric values without quotes for counters
+        let json =
+            r#"{"LL": { "control": "dev/sys/contextswitches", "value": 123456789, "Code": "200"}}"#;
+        assert_eq!(xml_attr(json, "value"), Some("123456789"));
+        assert_eq!(xml_attr(json, "Code"), Some("200"));
+    }
+
+    #[test]
+    fn test_xml_attr_json_numeric_last_field() {
+        // Numeric value as the last field before closing brace
+        let json = r#"{"LL": { "value": 42}}"#;
+        assert_eq!(xml_attr(json, "value"), Some("42"));
     }
 
     // ── matches_filters ───────────────────────────────────────────────────────

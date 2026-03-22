@@ -681,9 +681,15 @@ fn emit_automation_trace(
 fn extract_lox_value(text: &str) -> Option<f64> {
     // Try JSON first
     if let Ok(v) = serde_json::from_str::<serde_json::Value>(text)
-        && let Some(val) = v.pointer("/LL/value").and_then(|v| v.as_str())
+        && let Some(val) = v.pointer("/LL/value")
     {
-        return parse_numeric_prefix(val);
+        // Handle both string ("123") and numeric (123) JSON values
+        if let Some(n) = val.as_f64() {
+            return Some(n);
+        }
+        if let Some(s) = val.as_str() {
+            return parse_numeric_prefix(s);
+        }
     }
     // Try XML attribute
     let key = "value=\"";
@@ -1157,6 +1163,13 @@ mod tests {
     fn test_extract_lox_value_json() {
         let text = r#"{"LL":{"value":"42.5","Code":"200"}}"#;
         assert_eq!(extract_lox_value(text), Some(42.5));
+    }
+
+    #[test]
+    fn test_extract_lox_value_json_numeric() {
+        // Gen2 Miniservers return numeric values without quotes
+        let text = r#"{"LL":{"control":"dev/sys/contextswitches","value":123456789,"Code":"200"}}"#;
+        assert_eq!(extract_lox_value(text), Some(123456789.0));
     }
 
     #[test]
