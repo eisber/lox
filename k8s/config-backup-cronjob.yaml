@@ -1,0 +1,87 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: loxone-config-backup
+spec:
+  schedule: "0 */6 * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      activeDeadlineSeconds: 300
+      template:
+        spec:
+          containers:
+            - name: lox
+              image: alpine:3
+              command: ["/bin/sh", "-c"]
+              args:
+                - |
+                  set -e
+                  apk add --no-cache git curl >/dev/null
+
+                  # Download lox binary (adjust arch: aarch64 or x86_64)
+                  ARCH=$(uname -m)
+                  case $ARCH in
+                    aarch64) LOX_ARCH="aarch64" ;;
+                    *)       LOX_ARCH="x86_64" ;;
+                  esac
+                  curl -sL -o /usr/local/bin/lox \
+                    "https://github.com/discostu105/lox/releases/latest/download/lox-linux-${LOX_ARCH}"
+                  chmod +x /usr/local/bin/lox
+
+                  # Copy lox config to writable location (lox config init writes to it)
+                  mkdir -p /root/.lox
+                  cp /tmp/lox-config/config.yaml /root/.lox/config.yaml
+
+                  REPO_DIR=/data/loxone-config
+
+                  git config --global user.email "lox-config-bot@example.com"
+                  git config --global user.name "Lox Config Bot"
+                  git config --global --add safe.directory "$REPO_DIR"
+
+                  # Init registers repo path in ~/.lox/config.yaml (idempotent)
+                  lox config init "$REPO_DIR"
+
+                  cd "$REPO_DIR"
+
+                  # Set up remote if missing
+                  if ! git remote get-url origin >/dev/null 2>&1; then
+                    git remote add origin "https://${GITHUB_TOKEN}@github.com/your-user/your-repo.git"
+                  fi
+
+                  # Download config, semantic diff, and commit (no-op if unchanged)
+                  lox config pull --quiet
+
+                  # Push to remote
+                  git push -u origin HEAD
+              env:
+                - name: GITHUB_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: loxone-config-backup-github
+                      key: token
+              volumeMounts:
+                - name: lox-config
+                  mountPath: /tmp/lox-config
+                  readOnly: true
+                - name: data
+                  mountPath: /data
+              resources:
+                requests:
+                  memory: "64Mi"
+                  cpu: "10m"
+                limits:
+                  memory: "256Mi"
+                  cpu: "200m"
+          volumes:
+            - name: lox-config
+              secret:
+                secretName: lox-config
+                items:
+                  - key: config.yaml
+                    path: config.yaml
+            - name: data
+              persistentVolumeClaim:
+                claimName: loxone-config-backup-pvc
+          restartPolicy: Never
+      backoffLimit: 3
