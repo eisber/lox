@@ -7,6 +7,7 @@ use crate::client::{LoxClient, USER_AGENT};
 use crate::commands::RunContext;
 use crate::config::Config;
 use crate::scene::Scene;
+use crate::stream::{self, StateEvent};
 use crate::{
     InputCmd, LightCmd, MusicCmd, bar, encode_path_value, print_dry_run, print_resp, rgb_to_hsv,
     send_or_dry_run, xml_attr,
@@ -214,8 +215,145 @@ pub fn cmd_blind(
     Ok(())
 }
 
+/// Standard Loxone mood ID for "Aus" (off). System-defined, not configurable.
+const MOOD_OFF: &str = "setMood/778";
+
+/// If a specific mood is being set (not off/plus/minus), send `on` first.
+/// setMood is silently ignored by the Miniserver when the light is off.
+fn ensure_light_on_for_mood(lox: &LoxClient, uuid: &str, cmd: &str, dry_run: bool) -> Result<()> {
+    if cmd.starts_with("setMood/") && cmd != MOOD_OFF && !dry_run {
+        lox.send_cmd(uuid, "on")?;
+    }
+    Ok(())
+}
+
+/// Mood entry parsed from the moodList TextState JSON.
+#[derive(Debug, PartialEq)]
+struct MoodEntry {
+    id: u64,
+    name: String,
+}
+
+/// Parse the moodList JSON array into sorted MoodEntry vec.
+fn parse_mood_list(json: &str) -> Result<Vec<MoodEntry>> {
+    let entries: Vec<serde_json::Value> = serde_json::from_str(json)
+        .map_err(|e| anyhow::anyhow!("Failed to parse moodList JSON: {}", e))?;
+
+    let mut moods: Vec<MoodEntry> = entries
+        .iter()
+        .filter_map(|v| {
+            let id = v.get("id").and_then(|i| i.as_u64())?;
+            let name = v.get("name").and_then(|n| n.as_str())?.to_string();
+            Some(MoodEntry { id, name })
+        })
+        .collect();
+
+    moods.sort_by_key(|m| m.id);
+    Ok(moods)
+}
+
+/// Fetch the list of available moods for a LightControllerV2 via WebSocket.
+///
+/// The `moodList` state is a TextState sent as JSON during the initial state dump:
+/// `[{"name":"Viel Licht","id":777,"static":false},{"name":"Aus","id":778,"static":true}]`
+pub fn cmd_light_moods(ctx: &RunContext, name_or_uuid: String, room: Option<String>) -> Result<()> {
+    let cfg = Config::load()?;
+    let mut lox = LoxClient::new(cfg.clone())?;
+    let uuid = lox.resolve_with_room(&name_or_uuid, room.as_deref())?;
+    let ctrl = lox.find_control(&uuid)?;
+    if !matches!(ctrl.typ.as_str(), "LightControllerV2" | "LightController") {
+        bail!(
+            "'{}' is type '{}', not a LightController",
+            ctrl.name,
+            ctrl.typ
+        );
+    }
+
+    // Get the moodList state UUID from the structure
+    let structure = lox.get_structure()?.clone();
+    let mood_list_uuid = structure
+        .get("controls")
+        .and_then(|c| c.as_object())
+        .and_then(|m| m.get(&uuid))
+        .and_then(|c| c.get("states"))
+        .and_then(|s| s.as_object())
+        .and_then(|s| s.get("moodList"))
+        .and_then(|v| v.as_str())
+        .ok_or_else(|| {
+            anyhow::anyhow!(
+                "'{}' has no moodList state — is it a LightControllerV2?",
+                ctrl.name
+            )
+        })?
+        .to_string();
+
+    // Connect via WebSocket and wait for the initial moodList TextState
+    let rt = tokio::runtime::Runtime::new()?;
+    let moods_json: String = rt.block_on(async {
+        use std::time::Duration;
+        use tokio::time::timeout;
+
+        timeout(
+            Duration::from_secs(10),
+            fetch_mood_list_via_ws(&cfg, &mood_list_uuid),
+        )
+        .await
+        .map_err(|_| anyhow::anyhow!("Timeout waiting for moodList state (10s)"))?
+    })?;
+
+    let moods = parse_mood_list(&moods_json)?;
+
+    if ctx.json {
+        let json_moods: Vec<serde_json::Value> = moods
+            .iter()
+            .map(|m| {
+                serde_json::json!({
+                    "id": m.id,
+                    "name": m.name,
+                    "control": ctrl.name,
+                    "control_uuid": ctrl.uuid,
+                })
+            })
+            .collect();
+        println!("{}", serde_json::to_string_pretty(&json_moods)?);
+    } else {
+        if !ctx.no_header {
+            println!("{:<6}  NAME", "ID");
+            println!("{}", "─".repeat(30));
+        }
+        for mood in &moods {
+            println!("{:<6}  {}", mood.id, mood.name);
+        }
+        if !ctx.quiet {
+            println!("\n{} moods", moods.len());
+        }
+    }
+
+    Ok(())
+}
+
+/// Connect to the Miniserver WebSocket, subscribe to binary states,
+/// and return the text content of the moodList state UUID on first receipt.
+async fn fetch_mood_list_via_ws(cfg: &Config, mood_list_uuid: &str) -> Result<String> {
+    let target = mood_list_uuid.to_string();
+    stream::stream_events_until(cfg, |event| {
+        if let StateEvent::TextState { uuid, text, .. } = event
+            && *uuid == target
+        {
+            Some(text.clone())
+        } else {
+            None
+        }
+    })
+    .await
+    .context("moodList state not received in initial state dump")
+}
+
 pub fn cmd_light(ctx: &RunContext, action: LightCmd) -> Result<()> {
     match action {
+        LightCmd::Moods { name_or_uuid, room } => {
+            cmd_light_moods(ctx, name_or_uuid, room)?;
+        }
         LightCmd::Mood {
             name_or_uuid,
             action,
@@ -235,7 +373,7 @@ pub fn cmd_light(ctx: &RunContext, action: LightCmd) -> Result<()> {
             let cmd: &str = match action.to_lowercase().as_str() {
                 "plus" | "next" | "+" => "plus",
                 "minus" | "prev" | "-" => "minus",
-                "off" => "setMood/778",
+                "off" => MOOD_OFF,
                 other => {
                     if let Ok(id) = other.parse::<u32>() {
                         cmd_owned = format!("setMood/{}", id);
@@ -248,6 +386,7 @@ pub fn cmd_light(ctx: &RunContext, action: LightCmd) -> Result<()> {
                     }
                 }
             };
+            ensure_light_on_for_mood(&lox, &ctrl.uuid, cmd, ctx.dry_run)?;
             if let Some(resp) = send_or_dry_run(
                 &lox,
                 &ctrl.uuid,
@@ -408,7 +547,7 @@ pub fn cmd_mood(
     let cmd: &str = match action.to_lowercase().as_str() {
         "plus" | "next" | "+" => "plus",
         "minus" | "prev" | "-" => "minus",
-        "off" => "setMood/778",
+        "off" => MOOD_OFF,
         other => {
             if let Ok(id) = other.parse::<u32>() {
                 cmd_owned = format!("setMood/{}", id);
@@ -421,6 +560,7 @@ pub fn cmd_mood(
             }
         }
     };
+    ensure_light_on_for_mood(&lox, &ctrl.uuid, cmd, ctx.dry_run)?;
     if let Some(resp) = send_or_dry_run(
         &lox,
         &ctrl.uuid,
@@ -1109,4 +1249,61 @@ pub fn cmd_music(ctx: &RunContext, action: MusicCmd) -> Result<()> {
         Err(e) => bail!("Music server error: {}", e),
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn parse_mood_list_typical() {
+        let json = r#"[
+            {"name":"Viel Licht","id":777,"static":false},
+            {"name":"Aus","id":778,"static":true},
+            {"name":"Gedimmt","id":1,"static":false}
+        ]"#;
+        let moods = parse_mood_list(json).unwrap();
+        assert_eq!(
+            moods,
+            vec![
+                MoodEntry {
+                    id: 1,
+                    name: "Gedimmt".into()
+                },
+                MoodEntry {
+                    id: 777,
+                    name: "Viel Licht".into()
+                },
+                MoodEntry {
+                    id: 778,
+                    name: "Aus".into()
+                },
+            ]
+        );
+    }
+
+    #[test]
+    fn parse_mood_list_empty() {
+        let moods = parse_mood_list("[]").unwrap();
+        assert!(moods.is_empty());
+    }
+
+    #[test]
+    fn parse_mood_list_skips_malformed_entries() {
+        // Missing "name" field — should be skipped, not error
+        let json = r#"[{"id":1},{"id":2,"name":"OK"}]"#;
+        let moods = parse_mood_list(json).unwrap();
+        assert_eq!(moods.len(), 1);
+        assert_eq!(moods[0].name, "OK");
+    }
+
+    #[test]
+    fn parse_mood_list_invalid_json() {
+        assert!(parse_mood_list("not json").is_err());
+    }
+
+    #[test]
+    fn mood_off_constant() {
+        assert_eq!(MOOD_OFF, "setMood/778");
+    }
 }

@@ -169,6 +169,7 @@ lox on "Licht Wohnzimmer"              # Turn on
 lox off "Licht Wohnzimmer"             # Turn off
 lox blind "Beschattung Süd" pos 50     # Blind to 50%
 lox light mood "Licht" plus            # Next light mood
+lox light moods "Licht"                # List available moods
 lox thermostat "Heizung" temp 22.5     # Set temperature
 lox alarm "Alarmanlage" arm            # Arm alarm
 lox stream --room "Kitchen" -o json    # Real-time WebSocket state stream

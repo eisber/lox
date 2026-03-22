@@ -86,14 +86,19 @@ mod tests {
         );
     }
 
+    /// Mutex to serialize tests that mutate the LOX_CONFIG env var.
+    /// `std::env::set_var` is unsafe because it's not thread-safe;
+    /// without this lock, parallel tests race on the shared env.
+    static ENV_LOCK: std::sync::Mutex<()> = std::sync::Mutex::new(());
+
     #[test]
     fn load_from_lox_config_env_var() {
+        let _guard = ENV_LOCK.lock().unwrap();
         let dir = tempdir().unwrap();
         let cfg_path = dir.path().join("test_config.yaml");
         let yaml = "host: myhost.local\nuser: admin\npass: secret\n";
         fs::write(&cfg_path, yaml).unwrap();
 
-        // SAFETY: Test runs serially; no other threads access this env var.
         unsafe { std::env::set_var("LOX_CONFIG", cfg_path.to_str().unwrap()) };
         let cfg = Config::load().unwrap();
         unsafe { std::env::remove_var("LOX_CONFIG") };
@@ -104,6 +109,7 @@ mod tests {
 
     #[test]
     fn load_prepends_https_to_bare_hostname() {
+        let _guard = ENV_LOCK.lock().unwrap();
         let dir = tempdir().unwrap();
         let cfg_path = dir.path().join("cfg.yaml");
         fs::write(&cfg_path, "host: miniserver.local\nuser: u\npass: p\n").unwrap();
@@ -117,6 +123,7 @@ mod tests {
 
     #[test]
     fn load_preserves_explicit_http_scheme() {
+        let _guard = ENV_LOCK.lock().unwrap();
         let dir = tempdir().unwrap();
         let cfg_path = dir.path().join("cfg.yaml");
         fs::write(&cfg_path, "host: http://ms.local\nuser: u\npass: p\n").unwrap();
@@ -130,6 +137,7 @@ mod tests {
 
     #[test]
     fn save_and_load_roundtrip() {
+        let _guard = ENV_LOCK.lock().unwrap();
         let dir = tempdir().unwrap();
         // Config::save() uses the hardcoded path, so we test roundtrip via
         // manual serialization + LOX_CONFIG-based load.
