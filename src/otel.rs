@@ -1186,6 +1186,53 @@ mod tests {
     }
 
     #[test]
+    fn test_extract_lox_value_json_numeric_float() {
+        let text = r#"{"LL":{"value":3.14,"Code":"200"}}"#;
+        assert_eq!(extract_lox_value(text), Some(3.14));
+    }
+
+    #[test]
+    fn test_extract_lox_value_json_numeric_zero() {
+        let text = r#"{"LL":{"value":0,"Code":"200"}}"#;
+        assert_eq!(extract_lox_value(text), Some(0.0));
+    }
+
+    /// Regression: all OTLP diagnostic endpoints must extract values from
+    /// both Gen1 (XML, string) and Gen2 (JSON, numeric) response formats.
+    #[test]
+    fn test_extract_lox_value_all_diagnostic_formats() {
+        // Gen2 JSON numeric — the format that was broken
+        for (endpoint, num) in [
+            ("dev/sys/ints", 987654),
+            ("dev/sys/comints", 12345),
+            ("dev/sys/contextswitchesi", 98765432),
+            ("bus/parityerrors", 0),
+            ("lan/txu", 42),
+            ("lan/exh", 0),
+            ("lan/nob", 7),
+        ] {
+            let text = format!(
+                r#"{{"LL":{{"control":"{}","value":{},"Code":"200"}}}}"#,
+                endpoint, num
+            );
+            assert_eq!(
+                extract_lox_value(&text),
+                Some(num as f64),
+                "failed for endpoint {}",
+                endpoint
+            );
+        }
+
+        // Gen2 JSON string — CPU returns "CPU:12 SPS:26"
+        let text = r#"{"LL":{"value":"CPU:12 SPS:26","Code":"200"}}"#;
+        assert_eq!(extract_lox_value(text), None); // no leading number
+
+        // Gen2 JSON string with leading number — tasks
+        let text = r#"{"LL":{"value":"60","Code":"200"}}"#;
+        assert_eq!(extract_lox_value(text), Some(60.0));
+    }
+
+    #[test]
     fn test_extract_lox_value_none() {
         assert_eq!(extract_lox_value("no value here"), None);
     }
