@@ -48,6 +48,8 @@ lox light mood "Licht Wohnzimmer" plus      # next mood
 lox light mood "Licht Wohnzimmer" minus     # previous mood
 lox light mood "Licht Wohnzimmer" off       # all off (mood 778)
 lox light mood "Licht Wohnzimmer" 704       # set by mood ID
+lox light moods "Licht Wohnzimmer"          # list available moods (via WebSocket)
+lox light moods "Licht" -o json             # moods as JSON with control metadata
 ```
 
 ### Dimmer
