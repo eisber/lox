@@ -1,21 +1,27 @@
-MIT License
+This project is dual-licensed:
 
-Copyright (c) 2024 Chris
+1. **GNU General Public License v3.0 (GPL-3.0)** — see [LICENSE-GPL](LICENSE-GPL)
+2. **Commercial License** — see [LICENSE-COMMERCIAL](LICENSE-COMMERCIAL)
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+## What does this mean?
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+### Free use (GPL-3.0)
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+You can freely use, modify, and distribute this software under the terms of the
+GPL-3.0. This includes commercial use — you can use lox in your business without
+any fees. The GPL-3.0 requires that if you distribute modified versions, you must
+also release your modifications under the GPL-3.0.
+
+### Commercial License
+
+If you want to modify this software and redistribute it under proprietary /
+closed-source terms (i.e., without publishing your changes under GPL-3.0),
+you need a commercial license. Contact the author to negotiate terms.
+
+## Contact
+
+For commercial licensing inquiries, please contact the copyright holder.
+
+---
+
+Copyright (c) 2024-2026 Chris

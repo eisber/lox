@@ -8,7 +8,7 @@ repository = "https://github.com/discostu105/lox"
 homepage = "https://github.com/discostu105/lox"
 keywords = ["loxone", "smarthome", "home-automation", "cli", "miniserver"]
 categories = ["command-line-utilities", "network-programming"]
-license = "MIT"
+license = "GPL-3.0-or-later AND LicenseRef-Commercial"
 readme = "README.md"
 
 [[bin]]
