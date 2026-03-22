@@ -19,11 +19,14 @@ nav_order: 1
   </p>
 
   <div class="install-block">
-    <code>brew install discostu105/lox/lox</code>
-    <span style="color: #888; font-size: 0.9em;">&nbsp; macOS/Linux</span>
-    <br>
-    <code>irm https://raw.githubusercontent.com/discostu105/lox/main/install.ps1 | iex</code>
-    <span style="color: #888; font-size: 0.9em;">&nbsp; Windows</span>
+    <div class="install-row">
+      <span class="install-label">macOS / Linux</span>
+      <code>brew install discostu105/lox/lox</code>
+    </div>
+    <div class="install-row">
+      <span class="install-label">Windows</span>
+      <code>irm https://raw.githubusercontent.com/discostu105/lox/main/install.ps1 | iex</code>
+    </div>
   </div>
 
   <div class="hero-buttons">
@@ -80,26 +83,22 @@ nav_order: 1
     <span class="terminal-title">Terminal</span>
   </div>
   <div class="terminal-body">
+<pre><code><span class="terminal-comment"># Discover your controls</span>
+<span class="terminal-prompt">$</span> lox ls --type LightControllerV2 -o json | jq '.[].name'
 
-```bash
-# Discover your controls
-lox ls --type LightControllerV2 -o json | jq '.[].name'
+<span class="terminal-comment"># Control devices</span>
+<span class="terminal-prompt">$</span> lox on "Licht Wohnzimmer"
+<span class="terminal-prompt">$</span> lox blind "Beschattung Sud" pos 50
+<span class="terminal-prompt">$</span> lox thermostat "Heizung" temp 22.5
 
-# Control devices
-lox on "Licht Wohnzimmer"
-lox blind "Beschattung Sud" pos 50
-lox thermostat "Heizung" temp 22.5
+<span class="terminal-comment"># Conditional automation</span>
+<span class="terminal-prompt">$</span> lox if "Temperatur" gt 28 && lox blind "Beschattung Sud" pos 70
 
-# Conditional automation
-lox if "Temperatur" gt 28 && lox blind "Beschattung Sud" pos 70
+<span class="terminal-comment"># Real-time monitoring</span>
+<span class="terminal-prompt">$</span> lox stream --room "Kitchen" -o json
 
-# Real-time monitoring
-lox stream --room "Kitchen" -o json
-
-# GitOps config backup
-lox config pull
-```
-
+<span class="terminal-comment"># GitOps config backup</span>
+<span class="terminal-prompt">$</span> lox config pull</code></pre>
   </div>
 </div>
 
