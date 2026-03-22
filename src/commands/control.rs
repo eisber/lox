@@ -426,6 +426,11 @@ pub fn cmd_light(ctx: &RunContext, action: LightCmd) -> Result<()> {
                     }
                 }
             };
+            // For setMood commands (specific mood ID), send `on` first so the light
+            // turns on even if it was off. setMood alone only works on active lights.
+            if cmd.starts_with("setMood/") && cmd != "setMood/778" && !ctx.dry_run {
+                lox.send_cmd(&ctrl.uuid, "on")?;
+            }
             if let Some(resp) = send_or_dry_run(
                 &lox,
                 &ctrl.uuid,
@@ -599,6 +604,11 @@ pub fn cmd_mood(
             }
         }
     };
+    // For setMood commands (specific mood ID), send `on` first so the light
+    // turns on even if it was off. setMood alone only works on active lights.
+    if cmd.starts_with("setMood/") && cmd != "setMood/778" && !ctx.dry_run {
+        lox.send_cmd(&ctrl.uuid, "on")?;
+    }
     if let Some(resp) = send_or_dry_run(
         &lox,
         &ctrl.uuid,
