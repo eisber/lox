@@ -292,8 +292,19 @@ code.language-plaintext {
     code {
       font-size: 0.82em;
       line-height: 1.7;
+      color: #c9d1d9;
     }
   }
+}
+
+.terminal-comment {
+  color: #6e7681;
+}
+
+.terminal-prompt {
+  color: #22c55e;
+  user-select: none;
+  margin-right: 0.4em;
 }
 
 // ── Install snippet ───────────────────────────────────────────
@@ -301,18 +312,43 @@ code.language-plaintext {
 .install-block {
   background: #161b22;
   border: 1px solid #21262d;
-  border-radius: 8px;
-  padding: 1rem 1.25rem;
-  margin: 1.5rem 0;
-  text-align: center;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem auto;
+  max-width: 600px;
+  text-align: left;
 
   code {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: #22c55e;
     background: none;
     border: none;
     padding: 0;
   }
+}
+
+.install-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.4rem 0;
+
+  &:first-child {
+    border-bottom: 1px solid #21262d;
+    padding-bottom: 0.65rem;
+    margin-bottom: 0.25rem;
+  }
+}
+
+.install-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #8b949e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  min-width: 7rem;
+  text-align: right;
 }
 
 // ── Section headers ───────────────────────────────────────────
