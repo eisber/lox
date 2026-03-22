@@ -529,16 +529,7 @@ pub fn parse_binary_payload(msg_type: u8, data: &[u8]) -> Result<Vec<StateEvent>
 /// 2. Key exchange (send RSA-encrypted AES session key)
 /// 3. Request getkey2 via WS (one-time key is session-specific)
 /// 4. Compute HMAC and send encrypted authenticate command
-pub async fn ws_authenticate_pub(
-    ws: &mut tokio_tungstenite::WebSocketStream<
-        tokio_tungstenite::MaybeTlsStream<tokio::net::TcpStream>,
-    >,
-    cfg: &Config,
-) -> Result<()> {
-    ws_authenticate(ws, cfg).await
-}
-
-async fn ws_authenticate(
+pub async fn ws_authenticate(
     ws: &mut tokio_tungstenite::WebSocketStream<
         tokio_tungstenite::MaybeTlsStream<tokio::net::TcpStream>,
     >,
@@ -795,6 +786,74 @@ where
     }
 
     Ok(())
+}
+
+/// Stream events until the callback returns `Some(T)`, then return that value.
+///
+/// Like `stream_events` but supports early exit — useful when you only need
+/// a specific state value from the initial state dump (e.g. moodList).
+pub async fn stream_events_until<F, T>(cfg: &Config, mut finder: F) -> Result<T>
+where
+    F: FnMut(&StateEvent) -> Option<T>,
+{
+    let ws_client = LoxWsClient::new(cfg.clone());
+    let (mut ws_stream, _resp) = ws_client.connect_raw().await?;
+
+    ws_authenticate(&mut ws_stream, cfg).await?;
+
+    ws_stream
+        .send(Message::Text("jdev/sps/enablebinstatusupdate".to_string()))
+        .await?;
+
+    let mut pending_header: Option<BinHeader> = None;
+
+    while let Some(msg) = ws_stream.next().await {
+        let msg = msg?;
+        match msg {
+            Message::Binary(data) => {
+                if let Some(header) = pending_header.take() {
+                    let events = parse_binary_payload(header.msg_type, &data)?;
+                    for event in &events {
+                        if let Some(result) = finder(event) {
+                            return Ok(result);
+                        }
+                    }
+                } else if data.len() >= 8 && data[0] == 0x03 {
+                    let header = parse_header(&data)?;
+                    if header.estimated {
+                        continue;
+                    }
+                    if header.payload_len == 0 {
+                        let events = parse_binary_payload(header.msg_type, &[])?;
+                        for event in &events {
+                            if let Some(result) = finder(event) {
+                                return Ok(result);
+                            }
+                        }
+                    } else if data.len() > 8 {
+                        let events = parse_binary_payload(header.msg_type, &data[8..])?;
+                        for event in &events {
+                            if let Some(result) = finder(event) {
+                                return Ok(result);
+                            }
+                        }
+                    } else {
+                        pending_header = Some(header);
+                    }
+                }
+            }
+            Message::Text(_) => {}
+            Message::Ping(data) => {
+                ws_stream.send(Message::Pong(data)).await?;
+            }
+            Message::Close(_) => {
+                break;
+            }
+            _ => {}
+        }
+    }
+
+    bail!("WebSocket closed before matching event was found")
 }
 
 // ── Tests ───────────────────────────────────────────────────────────────────

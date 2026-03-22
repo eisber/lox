@@ -215,6 +215,18 @@ pub fn cmd_blind(
     Ok(())
 }
 
+/// Standard Loxone mood ID for "Aus" (off). System-defined, not configurable.
+const MOOD_OFF: &str = "setMood/778";
+
+/// If a specific mood is being set (not off/plus/minus), send `on` first.
+/// setMood is silently ignored by the Miniserver when the light is off.
+fn ensure_light_on_for_mood(lox: &LoxClient, uuid: &str, cmd: &str, dry_run: bool) -> Result<()> {
+    if cmd.starts_with("setMood/") && cmd != MOOD_OFF && !dry_run {
+        lox.send_cmd(uuid, "on")?;
+    }
+    Ok(())
+}
+
 /// Mood entry parsed from the moodList TextState JSON.
 #[derive(Debug)]
 struct MoodEntry {
@@ -319,74 +331,18 @@ pub fn cmd_light_moods(ctx: &RunContext, name_or_uuid: String, room: Option<Stri
 /// Connect to the Miniserver WebSocket, subscribe to binary states,
 /// and return the text content of the moodList state UUID on first receipt.
 async fn fetch_mood_list_via_ws(cfg: &Config, mood_list_uuid: &str) -> Result<String> {
-    use crate::stream::parse_binary_payload;
-    use crate::ws::LoxWsClient;
-    use futures_util::{SinkExt, StreamExt};
-    use tokio_tungstenite::tungstenite::Message;
-
-    let ws_client = LoxWsClient::new(cfg.clone());
-    let (mut ws_stream, _resp) = ws_client.connect_raw().await?;
-
-    // Authenticate
-    stream::ws_authenticate_pub(&mut ws_stream, cfg).await?;
-
-    // Subscribe to binary status updates
-    ws_stream
-        .send(Message::Text("jdev/sps/enablebinstatusupdate".to_string()))
-        .await?;
-
-    let target_uuid = mood_list_uuid.to_string();
-    let mut pending_header: Option<(u8, u32)> = None;
-
-    while let Some(msg_result) = ws_stream.next().await {
-        let msg = msg_result?;
-        match msg {
-            Message::Binary(data) => {
-                if let Some((msg_type, _)) = pending_header.take() {
-                    let events = parse_binary_payload(msg_type, &data)?;
-                    for event in events {
-                        if let StateEvent::TextState { uuid, text, .. } = event
-                            && uuid == target_uuid
-                        {
-                            return Ok(text);
-                        }
-                    }
-                } else if data.len() >= 8 && data[0] == 0x03 {
-                    let msg_type = data[1];
-                    let estimated = data[2] & 0x01 != 0;
-                    let payload_len = u32::from_le_bytes([data[4], data[5], data[6], data[7]]);
-                    if estimated {
-                        continue;
-                    }
-                    if payload_len == 0 {
-                        // no payload
-                    } else if data.len() > 8 {
-                        // header + payload in same frame
-                        let events = parse_binary_payload(msg_type, &data[8..])?;
-                        for event in events {
-                            if let StateEvent::TextState { uuid, text, .. } = event
-                                && uuid == target_uuid
-                            {
-                                return Ok(text);
-                            }
-                        }
-                    } else {
-                        pending_header = Some((msg_type, payload_len));
-                    }
-                }
-            }
-            Message::Text(_) => {}
-            Message::Ping(data) => {
-                ws_stream.send(Message::Pong(data)).await?;
-            }
-            Message::Close(_) => {
-                break;
-            }
-            _ => {}
+    let target = mood_list_uuid.to_string();
+    stream::stream_events_until(cfg, |event| {
+        if let StateEvent::TextState { uuid, text, .. } = event
+            && *uuid == target
+        {
+            Some(text.clone())
+        } else {
+            None
         }
-    }
-
-    bail!("moodList state not received in initial state dump")
+    })
+    .await
+    .context("moodList state not received in initial state dump")
 }
 
 pub fn cmd_light(ctx: &RunContext, action: LightCmd) -> Result<()> {
@@ -413,7 +369,7 @@ pub fn cmd_light(ctx: &RunContext, action: LightCmd) -> Result<()> {
             let cmd: &str = match action.to_lowercase().as_str() {
                 "plus" | "next" | "+" => "plus",
                 "minus" | "prev" | "-" => "minus",
-                "off" => "setMood/778",
+                "off" => MOOD_OFF,
                 other => {
                     if let Ok(id) = other.parse::<u32>() {
                         cmd_owned = format!("setMood/{}", id);
@@ -426,11 +382,7 @@ pub fn cmd_light(ctx: &RunContext, action: LightCmd) -> Result<()> {
                     }
                 }
             };
-            // For setMood commands (specific mood ID), send `on` first so the light
-            // turns on even if it was off. setMood alone only works on active lights.
-            if cmd.starts_with("setMood/") && cmd != "setMood/778" && !ctx.dry_run {
-                lox.send_cmd(&ctrl.uuid, "on")?;
-            }
+            ensure_light_on_for_mood(&lox, &ctrl.uuid, cmd, ctx.dry_run)?;
             if let Some(resp) = send_or_dry_run(
                 &lox,
                 &ctrl.uuid,
@@ -591,7 +543,7 @@ pub fn cmd_mood(
     let cmd: &str = match action.to_lowercase().as_str() {
         "plus" | "next" | "+" => "plus",
         "minus" | "prev" | "-" => "minus",
-        "off" => "setMood/778",
+        "off" => MOOD_OFF,
         other => {
             if let Ok(id) = other.parse::<u32>() {
                 cmd_owned = format!("setMood/{}", id);
@@ -604,11 +556,7 @@ pub fn cmd_mood(
             }
         }
     };
-    // For setMood commands (specific mood ID), send `on` first so the light
-    // turns on even if it was off. setMood alone only works on active lights.
-    if cmd.starts_with("setMood/") && cmd != "setMood/778" && !ctx.dry_run {
-        lox.send_cmd(&ctrl.uuid, "on")?;
-    }
+    ensure_light_on_for_mood(&lox, &ctrl.uuid, cmd, ctx.dry_run)?;
     if let Some(resp) = send_or_dry_run(
         &lox,
         &ctrl.uuid,
