@@ -1308,6 +1308,17 @@ pub(crate) enum ConfigCmd {
         #[arg(long)]
         force: bool,
     },
+    /// Upload a pre-edited .Loxone XML file to the Miniserver (recompress + upload)
+    Push {
+        /// Path to a .Loxone XML file
+        file: String,
+        /// Reboot the Miniserver after upload
+        #[arg(long)]
+        reboot: bool,
+        /// Confirm the operation (required — modifies live config)
+        #[arg(long)]
+        force: bool,
+    },
     /// Manage rooms in a .Loxone config file
     #[command(subcommand)]
     Room(RoomCmd),
@@ -1935,6 +1946,49 @@ pub(crate) fn rgb_to_hsv(r: u8, g: u8, b: u8) -> (u16, u16, u16) {
     (h.round() as u16, s.round() as u16, v.round() as u16)
 }
 
+/// Map Loxone weather picto-code to human-readable text.
+/// Codes from LoxAPP3.json weatherTypeTexts and sarnau's documentation.
+fn weather_type_text(code: i32) -> &'static str {
+    match code {
+        1 => "clear",
+        2 => "fair",
+        3 => "partly cloudy",
+        4 => "mostly cloudy",
+        5 => "overcast",
+        6 => "fog",
+        7 => "high fog",
+        8 => "light rain",
+        9 => "rain",
+        10 => "heavy rain",
+        11 => "light snow/rain",
+        12 => "snow/rain",
+        13 => "heavy snow/rain",
+        14 => "light snow",
+        15 => "snow",
+        16 => "heavy snow",
+        17 => "hail",
+        18 => "thunderstorm",
+        19 => "heavy thunderstorm",
+        20 => "storm",
+        21 => "wind",
+        22 => "clear (night)",
+        23 => "fair (night)",
+        24 => "partly cloudy (night)",
+        25 => "mostly cloudy (night)",
+        26 => "light rain (night)",
+        27 => "rain (night)",
+        28 => "snow/rain (night)",
+        29 => "light snow (night)",
+        30 => "snow (night)",
+        31 => "thunderstorm (night)",
+        32 => "wind (night)",
+        33 => "light rain (short)",
+        34 => "rain (short)",
+        35 => "light snow (short)",
+        _ => "unknown",
+    }
+}
+
 pub(crate) fn parse_weather_entry(
     cursor: &mut Cursor<&[u8]>,
     lox_epoch: &chrono::DateTime<chrono::Local>,
@@ -1943,7 +1997,7 @@ pub(crate) fn parse_weather_entry(
     // Offset  0: u32 timestamp (seconds since Loxone epoch 2009-01-01)
     let ts = cursor.read_u32::<LittleEndian>().ok()?;
     // Offset  4: i32 weather type (picto-code)
-    let _weather_type = cursor.read_i32::<LittleEndian>().ok()?;
+    let weather_type = cursor.read_i32::<LittleEndian>().ok()?;
     // Offset  8: i32 wind direction (degrees)
     let wind_dir = cursor.read_i32::<LittleEndian>().ok()?;
     // Offset 12: i32 solar radiation (UV index)
@@ -1953,7 +2007,7 @@ pub(crate) fn parse_weather_entry(
     // Offset 20: f64 temperature (°C)
     let temperature = cursor.read_f64::<LittleEndian>().ok()?;
     // Offset 28: f64 felt temperature (°C)
-    let _felt_temp = cursor.read_f64::<LittleEndian>().ok()?;
+    let felt_temp = cursor.read_f64::<LittleEndian>().ok()?;
     // Offset 36: f64 dewpoint (°C)
     let _dewpoint = cursor.read_f64::<LittleEndian>().ok()?;
     // Offset 44: f64 precipitation (mm)
@@ -1969,7 +2023,7 @@ pub(crate) fn parse_weather_entry(
     // Offset 76: i32 high clouds (%)
     let high_clouds = cursor.read_i32::<LittleEndian>().ok()?;
     // Offset 80: i32 precipitation probability
-    let _precip_prob = cursor.read_i32::<LittleEndian>().ok()?;
+    let precip_prob = cursor.read_i32::<LittleEndian>().ok()?;
     // Offset 84: f64 absolute radiation
     let _abs_radiation = cursor.read_f64::<LittleEndian>().ok()?;
     // Offset 92: f64 snow fraction
@@ -1982,12 +2036,16 @@ pub(crate) fn parse_weather_entry(
     Some(serde_json::json!({
         "timestamp": dt.format("%Y-%m-%d %H:%M").to_string(),
         "temperature": temperature,
+        "felt_temperature": felt_temp,
         "humidity": humidity as f64,
         "wind_speed": wind_speed,
         "wind_direction": wind_dir as f64,
         "rain": rain,
+        "rain_probability": precip_prob as f64,
         "pressure": pressure,
         "clouds": clouds,
+        "weather_type": weather_type,
+        "weather_text": weather_type_text(weather_type),
     }))
 }
 

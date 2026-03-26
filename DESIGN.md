@@ -271,3 +271,58 @@ Community projects that document the Loxone Miniserver internals:
 | [JoDehli/PyLoxone](https://github.com/JoDehli/PyLoxone) | WebSocket auth protocol (RSA+AES+HMAC), token management, Home Assistant integration |
 | [alladdin/node-lox-ws-api](https://github.com/alladdin/node-lox-ws-api) | Binary event table parsing, 3 auth methods (Token/AES/Hash), salt rotation |
 | [codmpm/node-red-contrib-loxone](https://github.com/codmpm/node-red-contrib-loxone) | Node-RED integration, auth method selection by firmware version |
+
+---
+
+## Authentication Protocol
+
+The Miniserver supports three authentication methods, selected by firmware version.
+Based on reverse engineering by PyLoxone and node-lox-ws-api projects.
+
+### Method 1: Token-Enc (v9+, recommended)
+
+```
+1. HTTP:  GET /jdev/sys/getPublicKey        → RSA public key (PEM)
+2. WS:    jdev/sys/keyexchange/<b64(RSA_encrypt(aes_key:iv))>
+          → Exchange AES-256-CBC session key
+3. WS:    jdev/sys/getkey2/<username>        → server_key + salt
+          pw_hash = SHA1(password:salt).toUpperCase()
+          hash = HMAC-SHA1(username:pw_hash, server_key)
+4. WS:    jdev/sys/gettoken/<hash>/<user>/2/<app_uuid>/<client_id>
+          → { token, validUntil }  (epoch from 2009-01-01)
+5. Commands encrypted: jdev/sys/enc/<b64(AES_CBC(salt/<salt>/<cmd>))>
+```
+
+Salt: 16 random bytes, regenerated every 20 uses or 30 seconds.
+Tokens refresh at 50% lifetime via `jdev/sys/refreshtoken/<hash>/<user>`.
+
+### Method 2: AES-256-CBC (v8)
+
+Same key exchange as Token-Enc, but uses session encryption for all commands
+instead of token-based auth. No persistent token.
+
+### Method 3: Hash (v7 and earlier, legacy)
+
+```
+1. WS:    jdev/sys/getkey                   → server_key
+          hash = HMAC-SHA1(username:password, server_key)
+2. WS:    authenticate/<hash>
+```
+
+No encryption of subsequent commands.
+
+### WebSocket Binary Messages
+
+```
+Header (8 bytes):
+  Byte 0:   0x03 (identifier)
+  Byte 1:   Message type
+            0 = Text, 1 = Binary, 2 = ValueStates,
+            3 = TextStates, 4 = Daytimer,
+            5 = OutOfService, 6 = Keepalive, 7 = Weather
+  Byte 2:   Flags (bit 7 = estimated/continuation)
+  Bytes 3-7: Payload length (u32_le)
+```
+
+ValueStates: 24-byte records (16-byte UUID + 8-byte f64 value).
+Keepalive: client sends "keepalive" text every 30s, server responds with type 6.

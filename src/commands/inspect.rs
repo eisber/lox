@@ -623,22 +623,23 @@ pub fn cmd_weather(ctx: &RunContext, forecast: bool) -> Result<()> {
             println!("{}", serde_json::to_string_pretty(&arr)?);
         } else {
             println!(
-                "{:<20} {:>8} {:>8} {:>8} {:>8} {:>10}",
-                "TIME", "TEMP°C", "HUM%", "WIND", "RAIN", "CLOUDS"
+                "{:<20} {:>8} {:>8} {:>8} {:>8} {:>8} {:<20}",
+                "TIME", "TEMP°C", "FEEL°C", "HUM%", "WIND", "RAIN", "WEATHER"
             );
-            println!("{}", "─".repeat(72));
+            println!("{}", "─".repeat(92));
             for i in 0..max_display {
                 let offset = i * entry_size;
                 let mut cursor = Cursor::new(&data[offset..offset + entry_size]);
                 if let Some(entry) = parse_weather_entry(&mut cursor, &epoch) {
                     println!(
-                        "{:<20} {:>8.1} {:>8.0} {:>8.1} {:>8.1} {:>10.0}",
+                        "{:<20} {:>8.1} {:>8.1} {:>8.0} {:>8.1} {:>8.1} {:<20}",
                         entry["timestamp"].as_str().unwrap_or("?"),
                         entry["temperature"].as_f64().unwrap_or(0.0),
+                        entry["felt_temperature"].as_f64().unwrap_or(0.0),
                         entry["humidity"].as_f64().unwrap_or(0.0),
                         entry["wind_speed"].as_f64().unwrap_or(0.0),
                         entry["rain"].as_f64().unwrap_or(0.0),
-                        entry["clouds"].as_f64().unwrap_or(0.0),
+                        entry["weather_text"].as_str().unwrap_or("?"),
                     );
                 }
             }

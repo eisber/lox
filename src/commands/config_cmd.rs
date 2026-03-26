@@ -903,6 +903,47 @@ pub fn cmd_config(ctx: &RunContext, action: ConfigCmd) -> Result<()> {
                 println!("Reboot the Miniserver to apply: lox reboot --yes");
             }
         }
+        ConfigCmd::Push {
+            file,
+            reboot,
+            force,
+        } => {
+            if !force {
+                eprintln!(
+                    "⚠  WARNING: This will upload a config to the live Miniserver.\n\
+                     \n\
+                     \x20  Use --force to proceed."
+                );
+                std::process::exit(1);
+            }
+            // Read the .Loxone XML
+            let xml = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let cfg = Config::load()?;
+
+            // Download current backup ZIP as a template (for LoxAPP3.json, permissions.bin, etc.)
+            let backups = ftp::list_backups(&cfg)?;
+            if backups.is_empty() {
+                bail!("No configs found on the Miniserver to use as template.");
+            }
+            let newest = &backups[0];
+            eprintln!("Downloading {} as template...", newest.filename);
+            let template_zip = ftp::download_backup(&cfg, &newest.filename)?;
+
+            // Repack with our edited XML
+            let new_zip = loxcc::repack_zip(&template_zip, &xml)?;
+            eprintln!("Uploading patched config ({} KB)...", new_zip.len() / 1024);
+            ftp::upload_backup(&cfg, &newest.filename, &new_zip)?;
+            println!("✓ Config uploaded.");
+
+            if reboot {
+                eprintln!("Rebooting Miniserver...");
+                let lox = crate::client::LoxClient::new(cfg)?;
+                lox.get_text("/dev/sys/reboot")?;
+                println!("✓ Reboot initiated.");
+            } else {
+                println!("Reboot the Miniserver to apply: lox reboot --yes");
+            }
+        }
         ConfigCmd::Room(action) => cmd_room(ctx, action)?,
         ConfigCmd::Control(action) => cmd_control(ctx, action)?,
         ConfigCmd::Mqtt(action) => cmd_mqtt_config(ctx, action)?,
