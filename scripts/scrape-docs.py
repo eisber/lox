@@ -64,16 +64,34 @@ def discover_articles(lang: str) -> list[str]:
 
 def html_to_markdown(html_content: str) -> str:
     """Convert HTML article content to clean markdown."""
-    # Extract article body
-    m = re.search(r'<div class="entry-content">(.*?)</div>\s*(?:</article>|<footer)', html_content, re.DOTALL)
+    # Extract the actual content (inside pakb-content > body, or entry-content)
+    m = re.search(r'<div class="pakb-content">\s*<body>(.*?)</body>', html_content, re.DOTALL)
     if not m:
-        m = re.search(r'<article[^>]*>(.*?)</article>', html_content, re.DOTALL)
+        m = re.search(r'<div class="pakb-content">(.*?)</div>\s*</article>', html_content, re.DOTALL)
+    if not m:
+        m = re.search(r'<div class="entry-content">(.*?)</div>\s*(?:</article>|<footer)', html_content, re.DOTALL)
     if not m:
         return ""
 
     c = m.group(1)
 
-    # Convert headings
+    # Remove search forms, breadcrumbs, and navigation noise
+    c = re.sub(r'<div class="pakb-header">.*?</div>', '', c, flags=re.DOTALL)
+    c = re.sub(r'<ul class="pakb-breadcrumb">.*?</ul>', '', c, flags=re.DOTALL)
+    c = re.sub(r'<form[^>]*>.*?</form>', '', c, flags=re.DOTALL)
+    c = re.sub(r'<!--.*?-->', '', c, flags=re.DOTALL)
+
+    # Remove back-to-top links within headings
+    c = re.sub(r'<a[^>]*href="#ToC"[^>]*>[^<]*</a>', '', c)
+
+    # Convert images to alt text
+    c = re.sub(r'<img[^>]*alt="([^"]*)"[^>]*/?\s*>', r'*[\1]*', c)
+    c = re.sub(r'<img[^>]*/?\s*>', '', c)
+
+    # Convert tables to proper markdown tables
+    c = _convert_tables(c)
+
+    # Convert headings (strip IDs)
     c = re.sub(r'<h1[^>]*>(.*?)</h1>', r'\n# \1\n', c, flags=re.DOTALL)
     c = re.sub(r'<h2[^>]*>(.*?)</h2>', r'\n## \1\n', c, flags=re.DOTALL)
     c = re.sub(r'<h3[^>]*>(.*?)</h3>', r'\n### \1\n', c, flags=re.DOTALL)
@@ -85,24 +103,21 @@ def html_to_markdown(html_content: str) -> str:
     c = re.sub(r'<em>(.*?)</em>', r'*\1*', c, flags=re.DOTALL)
     c = re.sub(r'<code>(.*?)</code>', r'`\1`', c, flags=re.DOTALL)
 
-    # Convert links
+    # Convert links (strip empty ones)
     c = re.sub(r'<a[^>]*href="([^"]+)"[^>]*>(.*?)</a>', r'[\2](\1)', c, flags=re.DOTALL)
 
     # Convert lists
-    c = re.sub(r'<li[^>]*>(.*?)</li>', r'- \1\n', c, flags=re.DOTALL)
-    c = re.sub(r'<[ou]l[^>]*>', '', c)
-    c = re.sub(r'</[ou]l>', '', c)
+    c = re.sub(r'<li[^>]*>\s*(.*?)\s*</li>', r'- \1\n', c, flags=re.DOTALL)
+    c = re.sub(r'<[ou]l[^>]*>', '\n', c)
+    c = re.sub(r'</[ou]l>', '\n', c)
+
+    # Horizontal rules
+    c = re.sub(r'<hr\s*/?>', '\n---\n', c)
 
     # Convert paragraphs and breaks
+    c = re.sub(r'<p[^>]*>\s*</p>', '', c)  # remove empty paragraphs
     c = re.sub(r'<p[^>]*>(.*?)</p>', r'\1\n\n', c, flags=re.DOTALL)
     c = re.sub(r'<br\s*/?>', '\n', c)
-
-    # Convert tables (basic)
-    c = re.sub(r'<table[^>]*>', '\n', c)
-    c = re.sub(r'</table>', '\n', c)
-    c = re.sub(r'<tr[^>]*>', '', c)
-    c = re.sub(r'</tr>', '\n', c)
-    c = re.sub(r'<t[hd][^>]*>(.*?)</t[hd]>', r'| \1 ', c, flags=re.DOTALL)
 
     # Remove remaining HTML tags
     c = re.sub(r'<[^>]+>', '', c)
@@ -111,20 +126,58 @@ def html_to_markdown(html_content: str) -> str:
     c = htmlmod.unescape(c)
 
     # Clean up whitespace
-    c = re.sub(r'\n{3,}', '\n\n', c)
-    c = re.sub(r' +', ' ', c)
+    c = re.sub(r'[ \t]+\n', '\n', c)  # trailing spaces
+    c = re.sub(r'\n{3,}', '\n\n', c)  # collapse blank lines
+    c = re.sub(r'^\s*-\s*\n\s*$', '', c, flags=re.MULTILINE)  # remove empty list items
+    c = re.sub(r'\n- \n', '\n', c)  # remove empty list items
+    # Clean up ToC-style lists (indented items with just links)
+    c = re.sub(r'\n\s+- ', '\n- ', c)  # normalize list indentation
+    c = re.sub(r'\n\n\n+', '\n\n', c)  # re-collapse after cleanup
+    lines = [line.rstrip() for line in c.split('\n')]
+    c = '\n'.join(lines)
     c = c.strip()
 
     return c
 
 
+def _convert_tables(html: str) -> str:
+    """Convert HTML tables to markdown tables."""
+    def _table_to_md(match):
+        table_html = match.group(0)
+        rows = re.findall(r'<tr[^>]*>(.*?)</tr>', table_html, re.DOTALL)
+        if not rows:
+            return ''
+
+        md_rows = []
+        for i, row in enumerate(rows):
+            cells = re.findall(r'<t[hd][^>]*>(.*?)</t[hd]>', row, re.DOTALL)
+            cells = [re.sub(r'<[^>]+>', '', c).strip().replace('\n', ' ') for c in cells]
+            if not cells:
+                continue
+            md_rows.append('| ' + ' | '.join(cells) + ' |')
+            if i == 0:
+                md_rows.append('| ' + ' | '.join(['---'] * len(cells)) + ' |')
+
+        return '\n' + '\n'.join(md_rows) + '\n'
+
+    return re.sub(r'<table[^>]*>.*?</table>', _table_to_md, html, flags=re.DOTALL)
+
+
 def extract_title(html_content: str) -> str:
-    """Extract page title."""
+    """Extract page title from the article heading or <title> tag."""
+    # Try the h1 inside the article first
+    m = re.search(r'<h1[^>]*class="entry-title[^"]*"[^>]*>(.*?)</h1>', html_content, re.DOTALL)
+    if m:
+        return htmlmod.unescape(re.sub(r'<[^>]+>', '', m.group(1)).strip())
+    # Try the breadcrumb active item
+    m = re.search(r'<li class="active">(.*?)</li>', html_content)
+    if m:
+        return htmlmod.unescape(m.group(1).strip())
+    # Fallback to <title>
     m = re.search(r'<title>(.*?)</title>', html_content)
     if m:
         title = htmlmod.unescape(m.group(1))
-        # Remove site suffix
-        title = re.sub(r'\s*[-|].*$', '', title)
+        title = re.sub(r'\s*[-|–].*$', '', title)
         return title.strip()
     return ""
 

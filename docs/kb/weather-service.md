@@ -1,34 +1,22 @@
-# Documentation
+# Weather Service
 
 Source: https://www.loxone.com/enen/kb/weather-service/
 
 ---
 
-- [Knowledge Base](https://www.loxone.com/enen/support/)
-
-- 
-
-- [Online Services](https://www.loxone.com/enen/kb-cat/online-services/)
-
-- 
-
-- [All](https://www.loxone.com/enen/kb-cat/all/)
-
-- 
-
-- Weather Service
-
-	
-
 ## SETUP
 
 The Weather Service function blocks are already in Loxne Config. All you need to do is simply activate it with a Miniserver. In order to do this, you must go to where you register a product and to the right of the registering field, you will have a licence activation field. Select the serial number of the Miniserver you want to link it to and type in the license code.
+
+*[]*
 
 In order for the weather data to be accurate to the location of the Miniserver, it is important to set a location within the properties of the project.
 
 Once entered, the Geo-coordinates will then be automatically calculated. It is important that the Miniserver has a working internet connection for this to be calculated correctly.
 
 In the same properties list, you can also specify the preferred unit type for the weather data being used.
+
+*[Changing The Location Properties In The Loxone Miniserver]*
 
 Once you have added in the Weather Service, it is important that you Save in Miniserver to ensure weather data will be received and updated.
 
@@ -54,11 +42,11 @@ Weather Type
 
 Sunshine Detection
 
-#### For information on how to use the Sunshine Detection, please see [here](https://www.loxone.com/enen/kb/sunshine-brightness-thresholds/).
+#### *[Icon Exclamation Mark Loxone]*For information on how to use the Sunshine Detection, please see [here](https://www.loxone.com/enen/kb/sunshine-brightness-thresholds/).
 
- 
 
- 
+
+
 
 1 = Clear
 
@@ -148,8 +136,16 @@ Every time the Miniserver restarts, it will immediately update its current weath
 
 It is possible to display weather forecasts with the weather server.
 
+*[]*
+
 You can add a new entry by clicking the “Weather data button” whilst the weather server is selected.
+
+*[]*
 
 Select which data type the forecast will display.
 
+*[Choosing Which Weather Information To Use In Loxone Config]*
+
 It is now possible to select the timescale of the forecast data.
+
+*[Adjusting The Offset or Time In Loxone Config For Weather Forcasting]*
