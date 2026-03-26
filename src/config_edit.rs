@@ -1128,6 +1128,11 @@ impl ConfigEditor {
         let parent_path = self.require_one(parent_selector)?;
         let block_uuid = uuid::Uuid::new_v4().to_string();
         let conn_uuid = uuid::Uuid::new_v4().to_string();
+        // Sanitize title to create a safe VIName (lowercase, underscores)
+        let vi_name: String = title
+            .chars()
+            .map(|c| if c.is_alphanumeric() { c.to_ascii_lowercase() } else { '_' })
+            .collect();
 
         let mut elem = Element::new("C");
         elem.attributes
@@ -1137,6 +1142,8 @@ impl ConfigEditor {
             .insert("U".to_string(), block_uuid.clone());
         elem.attributes
             .insert("Title".to_string(), title.to_string());
+        elem.attributes
+            .insert("VIName".to_string(), vi_name);
         elem.attributes
             .insert("Analog".to_string(), analog.to_string());
         elem.attributes.insert("Nio".to_string(), "1".to_string());
@@ -1154,8 +1161,11 @@ impl ConfigEditor {
             .insert("U".to_string(), conn_uuid.to_string());
         elem.children.push(xmltree::XMLNode::Element(co));
 
-        // Add IoData
-        let iodata = Element::new("IoData");
+        // Add IoData with St (state type: 4=analog, 1=digital)
+        let mut iodata = Element::new("IoData");
+        iodata
+            .attributes
+            .insert("St".to_string(), if analog { "4" } else { "1" }.to_string());
         elem.children.push(xmltree::XMLNode::Element(iodata));
 
         // Add Display
@@ -1176,7 +1186,7 @@ impl ConfigEditor {
 
     /// Find a connector UUID by block title and connector key.
     pub fn find_connector_uuid(&self, block_title: &str, conn_key: &str) -> Result<String> {
-        let path = self.require_one(&format!("title:{}", block_title))?;
+        let path = self.require_one(block_title)?;
         let elem = self.get_element(&path);
         elem.children
             .iter()
@@ -1195,13 +1205,27 @@ impl ConfigEditor {
     }
 
     /// Wire a connector by adding `<In Input="source_uuid"/>` to target connector.
+    /// Uses exact title match to avoid ambiguity.
     pub fn wire_connector(
         &mut self,
         block_title: &str,
         conn_key: &str,
         source_uuid: &str,
     ) -> Result<()> {
-        let path = self.require_one(&format!("title:{}", block_title))?;
+        // Find element with exact title match
+        let mut matches = Vec::new();
+        self.find_exact_title(&self.root, block_title, &mut Vec::new(), &mut matches);
+        if matches.is_empty() {
+            anyhow::bail!("No element with exact title '{}'", block_title);
+        }
+        if matches.len() > 1 {
+            anyhow::bail!(
+                "Title '{}' matches {} elements (expected 1)",
+                block_title,
+                matches.len()
+            );
+        }
+        let path = matches.into_iter().next().unwrap();
         let elem = self.get_element_mut(&path);
 
         let co = elem
@@ -1230,6 +1254,31 @@ impl ConfigEditor {
         co.children.push(xmltree::XMLNode::Element(in_elem));
 
         Ok(())
+    }
+
+    fn find_exact_title(
+        &self,
+        elem: &Element,
+        title: &str,
+        path: &mut Vec<usize>,
+        results: &mut Vec<Vec<usize>>,
+    ) {
+        if elem.name == "C"
+            && elem
+                .attributes
+                .get("Title")
+                .map(|t| t == title)
+                .unwrap_or(false)
+        {
+            results.push(path.clone());
+        }
+        for (i, child) in elem.children.iter().enumerate() {
+            if let Some(child_elem) = child.as_element() {
+                path.push(i);
+                self.find_exact_title(child_elem, title, path, results);
+                path.pop();
+            }
+        }
     }
 }
 fn remove_by_uuid(children: &mut Vec<xmltree::XMLNode>, uuid: &str) -> Result<String> {

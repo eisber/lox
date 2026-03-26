@@ -1139,7 +1139,7 @@ pub fn cmd_config(ctx: &RunContext, action: ConfigCmd) -> Result<()> {
             let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
             let mut editor = ConfigEditor::load(&data)?;
 
-            let parent_sel = parent.as_deref().unwrap_or("type:VirtualInCaption");
+            let parent_sel = parent.as_deref().unwrap_or("Type:VirtualInCaption");
             let uuid = editor.add_virtual_in(&title, analog, parent_sel)?;
             // Find the AQ/Q connector UUID
             let conn_key = if analog { "AQ" } else { "Q" };
