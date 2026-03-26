@@ -1098,6 +1098,84 @@ fn cmd_control(ctx: &RunContext, action: ControlCmd) -> Result<()> {
                 }
             }
         }
+        ControlCmd::Wire {
+            file,
+            source,
+            target,
+            save_as,
+        } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+
+            // Parse "Selector.Connector" format
+            let (src_sel, src_co) = source.rsplit_once('.').ok_or_else(|| {
+                anyhow::anyhow!("Source must be 'ElementSelector.ConnectorName', got '{}'", source)
+            })?;
+            let (tgt_sel, tgt_co) = target.rsplit_once('.').ok_or_else(|| {
+                anyhow::anyhow!("Target must be 'ElementSelector.ConnectorName', got '{}'", target)
+            })?;
+
+            let msg = editor.wire(src_sel, src_co, tgt_sel, tgt_co)?;
+            println!("✓ {}", msg);
+            save_edited(&editor, &file, save_as.as_deref())?;
+        }
+        ControlCmd::Unwire {
+            file,
+            connector,
+            save_as,
+        } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+
+            let (sel, co_name) = connector.rsplit_once('.').ok_or_else(|| {
+                anyhow::anyhow!("Must be 'ElementSelector.ConnectorName', got '{}'", connector)
+            })?;
+
+            let msg = editor.unwire(sel, co_name)?;
+            println!("✓ {}", msg);
+            save_edited(&editor, &file, save_as.as_deref())?;
+        }
+        ControlCmd::Wires { file, selector } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let editor = ConfigEditor::load(&data)?;
+            let wires = editor.list_wires(&selector)?;
+
+            if ctx.json {
+                println!("{}", serde_json::to_string_pretty(&wires)?);
+            } else {
+                let inputs: Vec<_> = wires.iter().filter(|w| w.direction == "input").collect();
+                let outputs: Vec<_> = wires.iter().filter(|w| w.direction == "output").collect();
+                let params: Vec<_> = wires.iter().filter(|w| w.direction == "parameter").collect();
+
+                if !inputs.is_empty() {
+                    println!("  Inputs:");
+                    for w in &inputs {
+                        let status = if w.connected { &w.target_uuid } else { "(unconnected)" };
+                        println!("    {:<20} ← {}", w.connector, status);
+                    }
+                }
+                if !outputs.is_empty() {
+                    println!("  Outputs:");
+                    for w in &outputs {
+                        let status = if w.connected { &w.target_uuid } else { "(unconnected)" };
+                        println!("    {:<20} → {}", w.connector, status);
+                    }
+                }
+                if !params.is_empty() {
+                    println!("  Parameters:");
+                    for w in &params {
+                        let status = if w.connected { &w.target_uuid } else { "(unconnected)" };
+                        println!("    {:<20}   {}", w.connector, status);
+                    }
+                }
+                println!(
+                    "\n{} connectors ({} connected, {} unconnected)",
+                    wires.len(),
+                    wires.iter().filter(|w| w.connected).count(),
+                    wires.iter().filter(|w| !w.connected).count(),
+                );
+            }
+        }
     }
     Ok(())
 }

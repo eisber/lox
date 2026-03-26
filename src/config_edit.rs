@@ -554,6 +554,150 @@ impl ConfigEditor {
         remove_by_uuid(&mut self.root.children, uuid)
     }
 
+    /// Wire two connectors: set source_element.connector_name → target_element's connector UUID.
+    ///
+    /// `source`: element selector (e.g. "Kitchen Light")
+    /// `source_connector`: connector name on the source (e.g. "On", "AQ1")
+    /// `target`: element selector for the target
+    /// `target_connector`: connector name on the target (e.g. "I", "Q")
+    pub fn wire(
+        &mut self,
+        source: &str,
+        source_connector: &str,
+        target: &str,
+        target_connector: &str,
+    ) -> Result<String> {
+        // Find target element and its connector UUID
+        let target_path = self.require_one(target)?;
+        let target_elem = self.get_element(&target_path);
+        let target_title = target_elem.attributes.get("Title").cloned().unwrap_or_default();
+
+        let target_co_uuid = target_elem
+            .children
+            .iter()
+            .find_map(|c| {
+                c.as_element().and_then(|e| {
+                    if e.name == "Co" && e.attributes.get("K").map(|k| k == target_connector).unwrap_or(false) {
+                        e.attributes.get("U").cloned()
+                    } else {
+                        None
+                    }
+                })
+            })
+            .ok_or_else(|| {
+                let available: Vec<String> = target_elem
+                    .children
+                    .iter()
+                    .filter_map(|c| c.as_element())
+                    .filter(|e| e.name == "Co")
+                    .filter_map(|e| e.attributes.get("K").cloned())
+                    .collect();
+                crate::errors::not_found_error(
+                    "Connector",
+                    target_connector,
+                    &available,
+                    &format!("lox config control describe <file> \"{}\"", target),
+                )
+            })?;
+
+        // Find source element and update its connector
+        let source_path = self.require_one(source)?;
+        let source_elem = self.get_element_mut(&source_path);
+        let source_title = source_elem.attributes.get("Title").cloned().unwrap_or_default();
+
+        let source_co = source_elem
+            .children
+            .iter_mut()
+            .find_map(|c| {
+                c.as_mut_element().and_then(|e| {
+                    if e.name == "Co" && e.attributes.get("K").map(|k| k == source_connector).unwrap_or(false) {
+                        Some(e)
+                    } else {
+                        None
+                    }
+                })
+            })
+            .ok_or_else(|| {
+                anyhow::anyhow!(
+                    "Connector '{}' not found on '{}'",
+                    source_connector,
+                    source_title
+                )
+            })?;
+
+        let old_target = source_co.attributes.get("U").cloned().unwrap_or_default();
+        source_co
+            .attributes
+            .insert("U".to_string(), target_co_uuid.clone());
+
+        Ok(format!(
+            "Wired {}.{} → {}.{} ({})",
+            source_title, source_connector, target_title, target_connector, target_co_uuid
+        ))
+    }
+
+    /// Disconnect a connector (set its target UUID to empty/zero).
+    pub fn unwire(&mut self, selector: &str, connector_name: &str) -> Result<String> {
+        let path = self.require_one(selector)?;
+        let elem = self.get_element_mut(&path);
+        let title = elem.attributes.get("Title").cloned().unwrap_or_default();
+
+        let co = elem
+            .children
+            .iter_mut()
+            .find_map(|c| {
+                c.as_mut_element().and_then(|e| {
+                    if e.name == "Co" && e.attributes.get("K").map(|k| k == connector_name).unwrap_or(false) {
+                        Some(e)
+                    } else {
+                        None
+                    }
+                })
+            })
+            .ok_or_else(|| anyhow::anyhow!("Connector '{}' not found on '{}'", connector_name, title))?;
+
+        let old = co.attributes.get("U").cloned().unwrap_or_default();
+        co.attributes.remove("U");
+
+        Ok(format!("Unwired {}.{} (was {})", title, connector_name, old))
+    }
+
+    /// List all connectors and their wiring for an element.
+    pub fn list_wires(&self, selector: &str) -> Result<Vec<WireInfo>> {
+        let path = self.require_one(selector)?;
+        let elem = self.get_element(&path);
+
+        let mut wires = Vec::new();
+        for child in &elem.children {
+            if let Some(co) = child.as_element() {
+                if co.name == "Co" {
+                    let name = co.attributes.get("K").cloned().unwrap_or_default();
+                    let target_uuid = co.attributes.get("U").cloned().unwrap_or_default();
+
+                    // Classify direction
+                    let direction = if name.starts_with('I') || name.starts_with("AI") || name == "Input" {
+                        "input"
+                    } else if name.starts_with('Q') || name.starts_with("AQ") || name.starts_with("Output") {
+                        "output"
+                    } else {
+                        "parameter"
+                    };
+
+                    let connected = !target_uuid.is_empty()
+                        && target_uuid != "00000000-0000-0000-0000000000000000";
+
+                    wires.push(WireInfo {
+                        connector: name,
+                        direction: direction.to_string(),
+                        target_uuid,
+                        connected,
+                    });
+                }
+            }
+        }
+        Ok(wires)
+    }
+
     /// List all MQTT topics (GenTSensor subscriptions + GenTActor publishes).
     pub fn list_mqtt_topics(&self) -> Vec<MqttTopic> {
         let mut topics = Vec::new();
@@ -705,6 +849,14 @@ pub struct ElementDescription {
 }
 
 #[derive(Debug, serde::Serialize)]
+pub struct WireInfo {
+    pub connector: String,
+    pub direction: String,
+    pub target_uuid: String,
+    pub connected: bool,
+}
+
+#[derive(Debug, serde::Serialize)]
 pub struct MqttTopic {
     pub title: String,
     pub direction: String,
@@ -729,16 +881,22 @@ mod tests {
       <mqtt_broker_port t="7" v="1883"/>
     </SET>
     <C Type="GenTSensor" U="sensor-1" Title="Temp Sub">
+      <Co K="Text" U="co-sensor1-text"/>
       <IoData Cr="cat-1" Pr="room-1"/>
     </C>
   </C>
   <C Type="WeatherData" U="wd-1" Title="Temperatur">
+    <Co K="AQ" U="co-wd1-aq"/>
     <IoData Cr="cat-1" Pr="room-1"/>
   </C>
   <C Type="WeatherData" U="wd-2" Title="Wind">
+    <Co K="AQ" U="co-wd2-aq"/>
     <IoData Cr="cat-1" Pr="room-1"/>
   </C>
   <C Type="SysVar" U="sv-1" Title="Aussentemp">
+    <Co K="AQ" U="co-sv1-aq"/>
+    <Co K="AI" U="co-sv1-ai"/>
+    <Co K="Q" U="co-sv1-q"/>
     <IoData Cr="cat-1" Pr="room-1"/>
   </C>
 </ControlList>"#;
@@ -947,5 +1105,38 @@ mod tests {
         assert_eq!(topics.len(), 2);
         let pub_topic = topics.iter().find(|t| t.direction == "publish").unwrap();
         assert_eq!(pub_topic.topic, "home/status");
+    }
+
+    #[test]
+    fn test_list_wires() {
+        let editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        // WeatherData has 1 connector (AQ)
+        let wires = editor.list_wires("uuid:wd-1").unwrap();
+        assert_eq!(wires.len(), 1);
+        assert_eq!(wires[0].connector, "AQ");
+    }
+
+    #[test]
+    fn test_wire_and_unwire() {
+        let mut editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+
+        // Wire WeatherData.AQ → SysVar (but SysVar has no Co in sample, so wire to sensor)
+        // Wire sensor.Text → WeatherData.AQ
+        let msg = editor.wire("uuid:sensor-1", "Text", "uuid:wd-1", "AQ").unwrap();
+        assert!(msg.contains("Wired"));
+
+        // Verify it's connected
+        let wires = editor.list_wires("uuid:sensor-1").unwrap();
+        let text_co = wires.iter().find(|w| w.connector == "Text").unwrap();
+        assert!(text_co.connected);
+
+        // Unwire
+        let msg = editor.unwire("uuid:sensor-1", "Text").unwrap();
+        assert!(msg.contains("Unwired"));
+
+        // Verify disconnected
+        let wires = editor.list_wires("uuid:sensor-1").unwrap();
+        let text_co = wires.iter().find(|w| w.connector == "Text").unwrap();
+        assert!(!text_co.connected);
     }
 }

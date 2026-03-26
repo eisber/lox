@@ -1399,6 +1399,30 @@ pub(crate) enum ControlCmd {
         /// Element selector (title, uuid:X, gid:X, Type:X)
         selector: String,
     },
+    /// Connect two element connectors
+    Wire {
+        file: String,
+        /// Source: "ElementSelector.ConnectorName"
+        source: String,
+        /// Target: "ElementSelector.ConnectorName"
+        target: String,
+        #[arg(long)]
+        save_as: Option<String>,
+    },
+    /// Disconnect a connector
+    Unwire {
+        file: String,
+        /// "ElementSelector.ConnectorName"
+        connector: String,
+        #[arg(long)]
+        save_as: Option<String>,
+    },
+    /// Show all connections for an element
+    Wires {
+        file: String,
+        /// Element selector
+        selector: String,
+    },
 }
 
 #[derive(clap::Subcommand, Debug)]
