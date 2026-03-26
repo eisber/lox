@@ -1654,6 +1654,7 @@ dependencies = [
  "tokio-tungstenite",
  "uuid",
  "webpki-roots 0.26.11",
+ "xmltree",
  "zip",
 ]
 
@@ -3816,6 +3817,21 @@ name = "writeable"
 version = "0.6.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9edde0db4769d2dc68579893f2306b26c6ecfbe0ef499b013d731b7b9247e0b9"
+
+[[package]]
+name = "xml"
+version = "1.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b8aa498d22c9bbaf482329839bc5620c46be275a19a812e9a22a2b07529a642a"
+
+[[package]]
+name = "xmltree"
+version = "0.12.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cbc04313cab124e498ab1724e739720807b6dc405b9ed0edc5860164d2e4ff70"
+dependencies = [
+ "xml",
+]
 
 [[package]]
 name = "xz2"

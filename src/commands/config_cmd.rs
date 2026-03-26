@@ -11,9 +11,11 @@ use crate::config::Config;
 use crate::scene::Scene;
 use crate::token;
 use crate::{
-    AliasCmd, CacheCmd, Cli, ConfigCmd, SceneCmd, SetupCmd, TokenCmd, build_schema, detect_shell,
-    ftp, gitops, install_completions, json_val_str, load_config_xml, loxcc, loxone_xml,
+    AliasCmd, CacheCmd, Cli, ConfigCmd, ControlCmd, MqttConfigCmd, RoomCmd, SceneCmd, SetupCmd,
+    TokenCmd, XmlEditCmd, build_schema, detect_shell, ftp, gitops, install_completions,
+    json_val_str, load_config_xml, loxcc, loxone_xml,
 };
+use crate::config_edit::ConfigEditor;
 
 pub fn cmd_setup(ctx: &RunContext, action: SetupCmd) -> Result<()> {
     match action {
@@ -900,6 +902,270 @@ pub fn cmd_config(ctx: &RunContext, action: ConfigCmd) -> Result<()> {
             } else {
                 println!("Reboot the Miniserver to apply: lox reboot --yes");
             }
+        }
+        ConfigCmd::Room(action) => cmd_room(ctx, action)?,
+        ConfigCmd::Control(action) => cmd_control(ctx, action)?,
+        ConfigCmd::Mqtt(action) => cmd_mqtt_config(ctx, action)?,
+        ConfigCmd::Xml(action) => cmd_xml_edit(ctx, action)?,
+    }
+    Ok(())
+}
+
+fn save_edited(editor: &ConfigEditor, original_path: &str, save_as: Option<&str>) -> Result<()> {
+    let output = editor.to_bytes()?;
+    let out_path = save_as.unwrap_or(original_path);
+    fs::write(out_path, &output)?;
+    eprintln!("✓ Saved to {}", out_path);
+    Ok(())
+}
+
+fn cmd_room(_ctx: &RunContext, action: RoomCmd) -> Result<()> {
+    match action {
+        RoomCmd::Add {
+            file,
+            name,
+            save_as,
+        } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+            let uuid = editor.add_room(&name)?;
+            println!("✓ Added room '{}' (UUID: {})", name, uuid);
+            save_edited(&editor, &file, save_as.as_deref())?;
+        }
+        RoomCmd::Rename {
+            file,
+            old_name,
+            new_name,
+            save_as,
+        } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+            // Find the room by title and rename
+            let _path = editor.require_one(&old_name)?;
+            let msg = editor.set_attribute(&format!("uuid:{}", {
+                let elem = editor.find_elements(&old_name);
+                if elem.is_empty() {
+                    bail!("Room '{}' not found", old_name);
+                }
+                // Get UUID from the element
+                let p = &elem[0];
+                let mut current = &editor.root;
+                for &idx in p {
+                    current = current.children[idx].as_element().unwrap();
+                }
+                current.attributes.get("U").cloned().unwrap_or_default()
+            }), "Title", &new_name)?;
+            println!("✓ {}", msg);
+            save_edited(&editor, &file, save_as.as_deref())?;
+        }
+    }
+    Ok(())
+}
+
+fn cmd_control(ctx: &RunContext, action: ControlCmd) -> Result<()> {
+    match action {
+        ControlCmd::Move {
+            file,
+            to_room,
+            type_filter,
+            title,
+            exclude,
+            save_as,
+        } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+
+            let exclude_refs: Vec<&str> = exclude.iter().map(|s| s.as_str()).collect();
+
+            if let Some(ref tf) = type_filter {
+                let (count, room_uuid) =
+                    editor.move_to_room(tf, &to_room, &exclude_refs)?;
+                println!(
+                    "✓ Moved {} {} items to '{}' ({})",
+                    count, tf, to_room, room_uuid
+                );
+            } else if let Some(ref t) = title {
+                // Move single element by title
+                let path = editor.require_one(t)?;
+                let room_uuid = editor.find_room_uuid(&to_room)?;
+                let elem = editor.get_element_mut(&path);
+                for child in &mut elem.children {
+                    if let Some(iodata) = child.as_mut_element() {
+                        if iodata.name == "IoData" {
+                            iodata
+                                .attributes
+                                .insert("Pr".to_string(), room_uuid.clone());
+                        }
+                    }
+                }
+                println!("✓ Moved '{}' to '{}' ({})", t, to_room, room_uuid);
+            } else {
+                bail!("Specify --type or --title to select controls to move");
+            }
+
+            save_edited(&editor, &file, save_as.as_deref())?;
+        }
+        ControlCmd::Rename {
+            file,
+            selector,
+            new_name,
+            save_as,
+        } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+            let msg = editor.set_attribute(&selector, "Title", &new_name)?;
+            println!("✓ {}", msg);
+            save_edited(&editor, &file, save_as.as_deref())?;
+        }
+        ControlCmd::Describe { file, selector } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let editor = ConfigEditor::load(&data)?;
+            let desc = editor.describe(&selector)?;
+
+            if ctx.json {
+                println!("{}", serde_json::to_string_pretty(&desc)?);
+            } else {
+                println!("  Type:     {}", desc.element_type);
+                println!("  Title:    {}", desc.title);
+                println!("  UUID:     {}", desc.uuid);
+                if !desc.gid.is_empty() {
+                    println!("  gid:      {}", desc.gid);
+                }
+                if !desc.room_uuid.is_empty() {
+                    println!("  Room:     {}", desc.room_uuid);
+                }
+                if !desc.category_uuid.is_empty() {
+                    println!("  Category: {}", desc.category_uuid);
+                }
+                if !desc.properties.is_empty() {
+                    println!("  Properties:");
+                    for (k, v) in &desc.properties {
+                        println!("    {} = '{}' (t={})", k, v.value, v.type_code);
+                    }
+                }
+                if !desc.connectors.is_empty() {
+                    println!("  Connectors:");
+                    for c in &desc.connectors {
+                        println!("    {} → {}", c.kind, c.target);
+                    }
+                }
+                if !desc.children.is_empty() {
+                    println!("  Children:");
+                    for c in &desc.children {
+                        println!("    {}", c);
+                    }
+                }
+            }
+        }
+    }
+    Ok(())
+}
+
+fn cmd_mqtt_config(ctx: &RunContext, action: MqttConfigCmd) -> Result<()> {
+    match action {
+        MqttConfigCmd::Setup {
+            file,
+            broker,
+            port,
+            user,
+            password,
+            client_id,
+            save_as,
+        } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+
+            editor.set_property("gid:Mqtt", "mqtt_broker_address", &broker, "11")?;
+            eprintln!("  Broker: {}", broker);
+            editor.set_property("gid:Mqtt", "mqtt_broker_port", &port, "7")?;
+            eprintln!("  Port: {}", port);
+            if let Some(u) = &user {
+                editor.set_property("gid:Mqtt", "mqtt_auth_user", u, "11")?;
+                eprintln!("  User: {}", u);
+            }
+            if let Some(p) = &password {
+                editor.set_property("gid:Mqtt", "mqtt_auth_pwd", p, "11")?;
+                eprintln!("  Password: (set, plaintext t=11)");
+            }
+            if let Some(c) = &client_id {
+                editor.set_property("gid:Mqtt", "mqtt_client_id", c, "11")?;
+                eprintln!("  Client ID: {}", c);
+            }
+
+            println!("✓ MQTT configured");
+            save_edited(&editor, &file, save_as.as_deref())?;
+        }
+        MqttConfigCmd::List { file } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let editor = ConfigEditor::load(&data)?;
+            let desc = editor.describe("gid:Mqtt")?;
+
+            if ctx.json {
+                println!("{}", serde_json::to_string_pretty(&desc)?);
+            } else {
+                println!("MQTT Plugin: {}", desc.title);
+                if !desc.properties.is_empty() {
+                    println!("  Configuration:");
+                    for (k, v) in &desc.properties {
+                        if k.contains("pwd") || k.contains("password") {
+                            println!("    {} = *** (t={})", k, v.type_code);
+                        } else {
+                            println!("    {} = '{}' (t={})", k, v.value, v.type_code);
+                        }
+                    }
+                }
+                if !desc.children.is_empty() {
+                    println!("  Topics ({}):", desc.children.len());
+                    for c in &desc.children {
+                        println!("    {}", c);
+                    }
+                }
+            }
+        }
+    }
+    Ok(())
+}
+
+fn cmd_xml_edit(_ctx: &RunContext, action: XmlEditCmd) -> Result<()> {
+    match action {
+        XmlEditCmd::SetProperty {
+            file,
+            selector,
+            property,
+            value,
+            r#type,
+            save_as,
+        } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+            let msg = editor.set_property(&selector, &property, &value, &r#type)?;
+            println!("✓ {}", msg);
+            save_edited(&editor, &file, save_as.as_deref())?;
+        }
+        XmlEditCmd::SetAttr {
+            file,
+            selector,
+            attr,
+            value,
+            save_as,
+        } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+            let msg = editor.set_attribute(&selector, &attr, &value)?;
+            println!("✓ {}", msg);
+            save_edited(&editor, &file, save_as.as_deref())?;
+        }
+        XmlEditCmd::Move {
+            file,
+            type_filter,
+            to_room,
+            save_as,
+        } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+            let (count, uuid) = editor.move_to_room(&type_filter, &to_room, &[])?;
+            println!("✓ Moved {} {} items to '{}' ({})", count, type_filter, to_room, uuid);
+            save_edited(&editor, &file, save_as.as_deref())?;
         }
     }
     Ok(())

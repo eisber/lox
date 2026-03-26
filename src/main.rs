@@ -1,6 +1,7 @@
 mod client;
 mod commands;
 mod config;
+mod config_edit;
 mod ftp;
 mod gitops;
 mod loxcc;
@@ -1306,6 +1307,151 @@ pub(crate) enum ConfigCmd {
         /// Confirm the operation (required — modifies live config)
         #[arg(long)]
         force: bool,
+    },
+    /// Manage rooms in a .Loxone config file
+    #[command(subcommand)]
+    Room(RoomCmd),
+    /// Manage controls in a .Loxone config file
+    #[command(subcommand)]
+    Control(ControlCmd),
+    /// Manage MQTT plugin configuration
+    #[command(subcommand)]
+    Mqtt(MqttConfigCmd),
+    /// Low-level XML editing operations (power users)
+    #[command(subcommand)]
+    Xml(XmlEditCmd),
+}
+
+#[derive(clap::Subcommand, Debug)]
+pub(crate) enum RoomCmd {
+    /// Add a new room
+    Add {
+        /// Path to a .Loxone XML file
+        file: String,
+        /// Room name
+        name: String,
+        /// Save to a different file (default: overwrite)
+        #[arg(long)]
+        save_as: Option<String>,
+    },
+    /// Rename a room
+    Rename {
+        /// Path to a .Loxone XML file
+        file: String,
+        /// Current room name
+        old_name: String,
+        /// New room name
+        new_name: String,
+        #[arg(long)]
+        save_as: Option<String>,
+    },
+}
+
+#[derive(clap::Subcommand, Debug)]
+pub(crate) enum ControlCmd {
+    /// Move controls to a different room
+    Move {
+        /// Path to a .Loxone XML file
+        file: String,
+        /// Target room name
+        #[arg(long)]
+        to_room: String,
+        /// Filter by control type (e.g. WeatherData, SysVar)
+        #[arg(short = 't', long = "type")]
+        type_filter: Option<String>,
+        /// Match controls by title (substring)
+        #[arg(long)]
+        title: Option<String>,
+        /// Exclude control types
+        #[arg(long)]
+        exclude: Vec<String>,
+        #[arg(long)]
+        save_as: Option<String>,
+    },
+    /// Rename a control
+    Rename {
+        file: String,
+        /// Current name or selector (uuid:X, gid:X)
+        selector: String,
+        /// New title
+        new_name: String,
+        #[arg(long)]
+        save_as: Option<String>,
+    },
+    /// Show detailed information about a control
+    Describe {
+        file: String,
+        /// Element selector (title, uuid:X, gid:X, Type:X)
+        selector: String,
+    },
+}
+
+#[derive(clap::Subcommand, Debug)]
+pub(crate) enum MqttConfigCmd {
+    /// Configure MQTT broker connection
+    Setup {
+        file: String,
+        /// Broker address
+        #[arg(long)]
+        broker: String,
+        /// Broker port
+        #[arg(long, default_value = "1883")]
+        port: String,
+        /// Username
+        #[arg(long)]
+        user: Option<String>,
+        /// Password (stored as plaintext t="11")
+        #[arg(long)]
+        password: Option<String>,
+        /// Client ID
+        #[arg(long)]
+        client_id: Option<String>,
+        #[arg(long)]
+        save_as: Option<String>,
+    },
+    /// List MQTT subscriptions and publishes
+    List {
+        file: String,
+    },
+}
+
+#[derive(clap::Subcommand, Debug)]
+pub(crate) enum XmlEditCmd {
+    /// Set a property in an element's SET block
+    SetProperty {
+        file: String,
+        /// Element selector
+        selector: String,
+        /// Property name
+        property: String,
+        /// Property value
+        value: String,
+        /// Property type code (11=string, 7=number, 8=int, 1=bool, 15=encrypted)
+        #[arg(long, default_value = "11")]
+        r#type: String,
+        #[arg(long)]
+        save_as: Option<String>,
+    },
+    /// Set an attribute on an element
+    SetAttr {
+        file: String,
+        selector: String,
+        attr: String,
+        value: String,
+        #[arg(long)]
+        save_as: Option<String>,
+    },
+    /// Move elements to a room by type
+    Move {
+        file: String,
+        /// Control type to move (e.g. WeatherData)
+        #[arg(long = "type")]
+        type_filter: String,
+        /// Target room name
+        #[arg(long)]
+        to_room: String,
+        #[arg(long)]
+        save_as: Option<String>,
     },
 }
 
