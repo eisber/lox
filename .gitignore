@@ -6,3 +6,13 @@
 
 # bv (beads viewer) local config and caches
 .bv/
+
+# Loxone config files (may contain credentials)
+*.Loxone
+*.LoxCC
+*.loxcc
+sps_*.zip
+
+# lox CLI config (contains credentials)
+.lox/
+config.yaml
