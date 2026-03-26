@@ -749,6 +749,9 @@ pub(crate) enum Cmd {
         /// Show datasheets instead of KB articles
         #[arg(long)]
         datasheet: bool,
+        /// Show element schema (inputs, outputs, parameters, properties)
+        #[arg(long)]
+        schema: bool,
         /// List all available articles
         #[arg(long)]
         list: bool,
@@ -1815,8 +1818,9 @@ fn run(cli: Cli) -> Result<()> {
         Cmd::Docs {
             query,
             datasheet,
+            schema,
             list,
-        } => cmd_docs(&ctx, query, datasheet, list),
+        } => cmd_docs(&ctx, query, datasheet, schema, list),
         Cmd::History {
             name_or_uuid,
             month,
@@ -2268,10 +2272,16 @@ fn cmd_docs(
     ctx: &commands::RunContext,
     query: Option<String>,
     datasheet: bool,
+    schema: bool,
     list: bool,
 ) -> Result<()> {
     // Find docs directory: try repo-relative first, then ~/.lox/docs/
     let docs_dir = find_docs_dir()?;
+
+    // Schema mode
+    if schema {
+        return cmd_docs_schema(ctx, &docs_dir, query, list);
+    }
 
     if datasheet {
         let index_path = docs_dir.join("docs").join("datasheets").join("index.json");
@@ -2441,6 +2451,242 @@ fn cmd_docs(
             }
             println!("\n  Narrow your search or run: lox docs --list");
         }
+    }
+
+    Ok(())
+}
+
+fn cmd_docs_schema(
+    ctx: &commands::RunContext,
+    docs_dir: &std::path::Path,
+    query: Option<String>,
+    list: bool,
+) -> Result<()> {
+    let schema_dir = docs_dir.join("docs").join("schemas");
+    let index_path = schema_dir.join("index.json");
+
+    if !index_path.exists() {
+        bail!("Schema index not found. Run: python3 scripts/build-schemas.py");
+    }
+
+    let index: std::collections::HashMap<String, serde_json::Value> =
+        serde_json::from_str(&std::fs::read_to_string(&index_path)?)?;
+
+    if list || query.is_none() {
+        let mut entries: Vec<_> = index
+            .iter()
+            .filter_map(|(k, v)| {
+                let title = v.get("title")?.as_str()?;
+                let inputs = v.get("inputs")?.as_u64()?;
+                let outputs = v.get("outputs")?.as_u64()?;
+                Some((k.as_str(), title, inputs, outputs))
+            })
+            .collect();
+        entries.sort_by_key(|(_, t, _, _)| t.to_lowercase());
+
+        if ctx.json {
+            println!("{}", serde_json::to_string_pretty(&index)?);
+        } else {
+            println!(
+                "  {:<40} {:>4} {:>4} {:>4} {:>4}",
+                "Type", "In", "Out", "Par", "Prop"
+            );
+            println!("  {}", "─".repeat(64));
+            for (slug, title, inp, out) in &entries {
+                let params = index[*slug]
+                    .get("parameters")
+                    .and_then(|p| p.as_u64())
+                    .unwrap_or(0);
+                let props = index[*slug]
+                    .get("properties")
+                    .and_then(|p| p.as_u64())
+                    .unwrap_or(0);
+                println!(
+                    "  {:<40} {:>4} {:>4} {:>4} {:>4}",
+                    title, inp, out, params, props
+                );
+            }
+            println!("\n{} element schemas", entries.len());
+        }
+        return Ok(());
+    }
+
+    let q = query.unwrap();
+    let q_lower = q.to_lowercase();
+
+    // Exact match
+    if index.contains_key(&q) {
+        let schema_path = schema_dir.join(format!("{}.json", q));
+        if schema_path.exists() {
+            return print_schema(&schema_path, ctx.json);
+        }
+    }
+
+    // Fuzzy search
+    let matches: Vec<_> = index
+        .iter()
+        .filter(|(k, v)| {
+            let title = v.get("title").and_then(|t| t.as_str()).unwrap_or("");
+            let xml_type = v.get("xml_type").and_then(|t| t.as_str()).unwrap_or("");
+            k.to_lowercase().contains(&q_lower)
+                || title.to_lowercase().contains(&q_lower)
+                || xml_type.to_lowercase().contains(&q_lower)
+        })
+        .collect();
+
+    match matches.len() {
+        0 => {
+            let slugs: Vec<String> = index.keys().cloned().collect();
+            let suggestion = errors::suggest(&q, &slugs);
+            let mut msg = format!("No schema matching '{}'.", q);
+            if let Some(s) = suggestion {
+                msg.push_str(&format!("\n  Did you mean '{}'?", s));
+            }
+            msg.push_str("\n  Run: lox docs --schema --list");
+            bail!(msg);
+        }
+        1 => {
+            let (slug, _) = matches[0];
+            let schema_path = schema_dir.join(format!("{}.json", slug));
+            return print_schema(&schema_path, ctx.json);
+        }
+        _ => {
+            println!("Found {} schemas matching '{}':\n", matches.len(), q);
+            for (slug, v) in &matches {
+                let title = v.get("title").and_then(|t| t.as_str()).unwrap_or(slug);
+                println!("  lox docs --schema {:<35} # {}", slug, title);
+            }
+        }
+    }
+
+    Ok(())
+}
+
+fn print_schema(path: &std::path::Path, json_output: bool) -> Result<()> {
+    let content = std::fs::read_to_string(path)?;
+    let schema: serde_json::Value = serde_json::from_str(&content)?;
+
+    if json_output {
+        println!("{}", serde_json::to_string_pretty(&schema)?);
+        return Ok(());
+    }
+
+    let title = schema.get("title").and_then(|t| t.as_str()).unwrap_or("?");
+    let xml_type = schema
+        .get("xml_type")
+        .and_then(|t| t.as_str())
+        .unwrap_or("");
+    let desc = schema
+        .get("description")
+        .and_then(|d| d.as_str())
+        .unwrap_or("");
+    let url = schema
+        .get("source_url")
+        .and_then(|u| u.as_str())
+        .unwrap_or("");
+
+    println!("# {}", title);
+    if !xml_type.is_empty() {
+        println!("XML Type: {}", xml_type);
+    }
+    println!();
+    if !desc.is_empty() {
+        println!("{}\n", desc);
+    }
+
+    // Inputs
+    if let Some(inputs) = schema.get("inputs").and_then(|i| i.as_array())
+        && !inputs.is_empty()
+    {
+        println!("## Inputs ({})", inputs.len());
+        println!("  {:<12} {:<35} {:<8} Range", "Name", "Summary", "Unit");
+        println!("  {}", "─".repeat(70));
+        for inp in inputs {
+            let name = inp
+                .get("abbreviation")
+                .or_else(|| inp.get("summary"))
+                .and_then(|n| n.as_str())
+                .unwrap_or("?");
+            let summary = inp.get("summary").and_then(|s| s.as_str()).unwrap_or("");
+            let unit = inp.get("unit").and_then(|u| u.as_str()).unwrap_or("-");
+            let range = inp
+                .get("value_range")
+                .and_then(|r| r.as_str())
+                .unwrap_or("");
+            println!("  {:<12} {:<35} {:<8} {}", name, summary, unit, range);
+        }
+        println!();
+    }
+
+    // Outputs
+    if let Some(outputs) = schema.get("outputs").and_then(|o| o.as_array())
+        && !outputs.is_empty()
+    {
+        println!("## Outputs ({})", outputs.len());
+        println!("  {:<12} {:<35} {:<8} Range", "Name", "Summary", "Unit");
+        println!("  {}", "─".repeat(70));
+        for out in outputs {
+            let name = out
+                .get("abbreviation")
+                .or_else(|| out.get("summary"))
+                .and_then(|n| n.as_str())
+                .unwrap_or("?");
+            let summary = out.get("summary").and_then(|s| s.as_str()).unwrap_or("");
+            let unit = out.get("unit").and_then(|u| u.as_str()).unwrap_or("-");
+            let range = out
+                .get("value_range")
+                .and_then(|r| r.as_str())
+                .unwrap_or("");
+            println!("  {:<12} {:<35} {:<8} {}", name, summary, unit, range);
+        }
+        println!();
+    }
+
+    // Parameters
+    if let Some(params) = schema.get("parameters").and_then(|p| p.as_array())
+        && !params.is_empty()
+    {
+        println!("## Parameters ({})", params.len());
+        println!("  {:<12} {:<35} {:<8} Range", "Name", "Summary", "Default");
+        println!("  {}", "─".repeat(70));
+        for par in params {
+            let name = par
+                .get("abbreviation")
+                .or_else(|| par.get("summary"))
+                .and_then(|n| n.as_str())
+                .unwrap_or("?");
+            let summary = par.get("summary").and_then(|s| s.as_str()).unwrap_or("");
+            let default = par
+                .get("default_value")
+                .and_then(|d| d.as_str())
+                .unwrap_or("-");
+            let range = par
+                .get("value_range")
+                .and_then(|r| r.as_str())
+                .unwrap_or("");
+            println!("  {:<12} {:<35} {:<8} {}", name, summary, default, range);
+        }
+        println!();
+    }
+
+    // Properties
+    if let Some(props) = schema.get("properties").and_then(|p| p.as_array())
+        && !props.is_empty()
+    {
+        println!("## Properties ({})", props.len());
+        for prop in props {
+            let summary = prop.get("summary").and_then(|s| s.as_str()).unwrap_or("?");
+            let default = prop
+                .get("default_value")
+                .and_then(|d| d.as_str())
+                .unwrap_or("-");
+            println!("  {:<40} [{}]", summary, default);
+        }
+        println!();
+    }
+
+    if !url.is_empty() {
+        println!("Source: {}", url);
     }
 
     Ok(())
