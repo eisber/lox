@@ -716,6 +716,9 @@ pub(crate) enum Cmd {
         /// Show 7-day forecast
         #[arg(long)]
         forecast: bool,
+        /// Stream live weather updates via WebSocket (Ctrl+C to stop)
+        #[arg(long)]
+        stream: bool,
     },
     /// List controls that have statistics enabled
     Stats,
@@ -1689,7 +1692,13 @@ fn run(cli: Cli) -> Result<()> {
         Cmd::Modes => commands::inspect::cmd_modes(&ctx),
         Cmd::Sensors { r#type, room } => commands::inspect::cmd_sensors(&ctx, r#type, room),
         Cmd::Energy { room } => commands::inspect::cmd_energy(&ctx, room),
-        Cmd::Weather { forecast } => commands::inspect::cmd_weather(&ctx, forecast),
+        Cmd::Weather { forecast, stream } => {
+            if stream {
+                commands::inspect::cmd_weather_stream(&ctx)
+            } else {
+                commands::inspect::cmd_weather(&ctx, forecast)
+            }
+        }
         Cmd::Stats => commands::inspect::cmd_stats(&ctx),
         Cmd::History {
             name_or_uuid,
@@ -1988,7 +1997,7 @@ pub(crate) fn rgb_to_hsv(r: u8, g: u8, b: u8) -> (u16, u16, u16) {
 
 /// Map Loxone weather picto-code to human-readable text.
 /// Codes from LoxAPP3.json weatherTypeTexts and sarnau's documentation.
-fn weather_type_text(code: i32) -> &'static str {
+pub(crate) fn weather_type_text(code: i32) -> &'static str {
     match code {
         1 => "clear",
         2 => "fair",

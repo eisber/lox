@@ -12,7 +12,7 @@ use crate::stream;
 use crate::{
     AutopilotCmd, eval_op, find_stats_files, lox_epoch, lox_timestamp_to_string, matches_filters,
     now_hms, parse_stats_entries, parse_weather_entry, print_stream_event, stats_data_offset,
-    stats_file_path, stats_period, xml_attr,
+    stats_file_path, stats_period, weather_type_text, xml_attr,
 };
 
 pub fn cmd_ls(
@@ -645,6 +645,62 @@ pub fn cmd_weather(ctx: &RunContext, forecast: bool) -> Result<()> {
             }
         }
     }
+    Ok(())
+}
+
+pub fn cmd_weather_stream(ctx: &RunContext) -> Result<()> {
+    let cfg = Config::load()?;
+    if !ctx.quiet {
+        eprintln!("Streaming weather updates via WebSocket (Ctrl+C to stop)...");
+    }
+    let json = ctx.json;
+    let epoch = lox_epoch();
+
+    let rt = tokio::runtime::Runtime::new()?;
+    rt.block_on(stream::stream_events(&cfg, |events| {
+        for event in &events {
+            if let stream::StateEvent::WeatherState {
+                uuid: _,
+                last_update: _,
+                entries,
+            } = event
+            {
+                if json {
+                    for e in entries {
+                        let val = serde_json::json!({
+                            "timestamp": (*&epoch + chrono::Duration::seconds(e.timestamp as i64))
+                                .format("%Y-%m-%d %H:%M").to_string(),
+                            "temperature": e.temperature,
+                            "felt_temperature": e.perceived_temperature,
+                            "humidity": e.relative_humidity,
+                            "wind_speed": e.wind_speed,
+                            "wind_direction": e.wind_direction,
+                            "rain": e.precipitation,
+                            "pressure": e.barometric_pressure,
+                            "weather_type": e.weather_type,
+                            "weather_text": weather_type_text(e.weather_type),
+                        });
+                        println!("{}", val);
+                    }
+                } else {
+                    for e in entries {
+                        let dt = epoch + chrono::Duration::seconds(e.timestamp as i64);
+                        println!(
+                            "{:<20} {:>6.1}°C  {:>5.1}°C  {:>3}%  {:>5.1}km/h  {:>5.1}mm  {}",
+                            dt.format("%Y-%m-%d %H:%M"),
+                            e.temperature,
+                            e.perceived_temperature,
+                            e.relative_humidity,
+                            e.wind_speed,
+                            e.precipitation,
+                            weather_type_text(e.weather_type),
+                        );
+                    }
+                }
+            }
+        }
+        Ok(())
+    }))?;
     Ok(())
 }
 

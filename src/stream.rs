@@ -642,6 +642,75 @@ pub async fn ws_authenticate(
     Ok(())
 }
 
+/// AES-256-CBC session for encrypting WebSocket commands.
+///
+/// After key exchange, commands can be sent encrypted:
+/// `jdev/sys/enc/<base64(AES_CBC(salt/<salt_hex>/<command>))>`
+///
+/// This prevents eavesdropping on the WebSocket connection.
+pub struct AesSession {
+    key: [u8; 32],
+    iv: [u8; 16],
+    salt_counter: u32,
+    salt: String,
+}
+
+impl AesSession {
+    /// Create a new AES session with random key and IV.
+    pub fn new() -> Self {
+        let mut key = [0u8; 32];
+        let mut iv = [0u8; 16];
+        rand::thread_rng().fill_bytes(&mut key);
+        rand::thread_rng().fill_bytes(&mut iv);
+        let salt = hex::encode(rand::random::<[u8; 8]>());
+        AesSession {
+            key,
+            iv,
+            salt_counter: 0,
+            salt,
+        }
+    }
+
+    /// Get the key:iv string for RSA key exchange.
+    pub fn key_info(&self) -> String {
+        format!("{}:{}", hex::encode(self.key), hex::encode(self.iv))
+    }
+
+    /// Encrypt a command for `jdev/sys/enc/` transport.
+    ///
+    /// Format: `jdev/sys/enc/<base64(AES_CBC_encrypt(salt/<salt>/<command>))>`
+    /// Salt rotates every 20 uses (per Loxone protocol).
+    pub fn encrypt_command(&mut self, command: &str) -> Result<String> {
+        use aes::cipher::{BlockEncryptMut, KeyIvInit};
+        type Aes256CbcEnc = cbc::Encryptor<aes::Aes256>;
+
+        // Rotate salt every 20 uses
+        self.salt_counter += 1;
+        let plaintext = if self.salt_counter > 1 && self.salt_counter % 20 == 0 {
+            let new_salt = hex::encode(rand::random::<[u8; 8]>());
+            let msg = format!("nextSalt/{}/{}/{}\0", self.salt, new_salt, command);
+            self.salt = new_salt;
+            msg
+        } else {
+            format!("salt/{}/{}\0", self.salt, command)
+        };
+
+        // PKCS7-like padding (pad to 16-byte AES block boundary with zeros)
+        let pad_len = 16 - (plaintext.len() % 16);
+        let mut data = plaintext.into_bytes();
+        data.resize(data.len() + pad_len, 0u8);
+
+        // AES-256-CBC encrypt
+        let cipher = Aes256CbcEnc::new(&self.key.into(), &self.iv.into());
+        let data_len = data.len();
+        let ct = cipher.encrypt_padded_mut::<aes::cipher::block_padding::NoPadding>(&mut data, data_len)
+            .map_err(|e| anyhow::anyhow!("AES encrypt error: {}", e))?;
+
+        let b64 = base64::Engine::encode(&base64::engine::general_purpose::STANDARD, ct);
+        Ok(format!("jdev/sys/enc/{}", b64))
+    }
+}
+
 /// Read a text response from the WS, returning the "value" field as a string.
 /// Skips binary messages. If the value is an object, returns it as JSON.
 async fn ws_read_text_value(
@@ -1148,5 +1217,36 @@ mod tests {
         let events = parse_binary_payload(MSG_OUT_OF_SERVICE, &[]).unwrap();
         assert_eq!(events.len(), 1);
         assert!(matches!(events[0], StateEvent::OutOfService));
+    }
+
+    #[test]
+    fn test_aes_session_encrypt_command() {
+        let mut session = AesSession::new();
+        let encrypted = session.encrypt_command("jdev/sps/io/uuid/on").unwrap();
+        assert!(encrypted.starts_with("jdev/sys/enc/"));
+        // Should be valid base64 after the prefix
+        let b64 = &encrypted["jdev/sys/enc/".len()..];
+        let decoded = base64::Engine::decode(
+            &base64::engine::general_purpose::STANDARD,
+            b64,
+        )
+        .unwrap();
+        // Should be a multiple of 16 (AES block size)
+        assert_eq!(decoded.len() % 16, 0);
+        assert!(decoded.len() >= 16);
+    }
+
+    #[test]
+    fn test_aes_session_salt_rotation() {
+        let mut session = AesSession::new();
+        let salt1 = session.salt.clone();
+        // Encrypt 19 commands — salt should stay the same
+        for _ in 0..19 {
+            session.encrypt_command("test").unwrap();
+        }
+        assert_eq!(session.salt, salt1);
+        // 20th command rotates the salt
+        session.encrypt_command("test").unwrap();
+        assert_ne!(session.salt, salt1);
     }
 }
