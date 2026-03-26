@@ -12,13 +12,13 @@ The Miniserver can calculate various times for you. For example, you can create 
 
 For times to be calculated precisely, enter the location where the system is installed. If you are connected to the internet, the geo-coordinates of this location will be determined automatically after entering the address. The internet connection is not required for the calculation of times.
 
-*[]*
+![EN KB Config Times](https://www.loxone.com/enus/wp-content/uploads/sites/13/2021/08/EN_KB_Config_Times.png)
 
 ### **TIME FUNCTIONS**
 
 The Time objects can be found in the Periphery tree under Times.
 
-*[]*
+![EN KB Config Times Overview](https://www.loxone.com/enus/wp-content/uploads/sites/13/2021/08/EN_KB_Config_Times_Overview.png)
 
 ### **OVERVIEW**
 
@@ -69,7 +69,7 @@ At sunrise, the pulse is transmitted to the Automatic Blinds blocks via the flag
 
 The same function was also implemented in the evening, with the “Pulse at Dusk” time object.
 
-*[]*
+![EN KB Config Times Automatic Blinds](https://www.loxone.com/enus/wp-content/uploads/sites/13/2021/08/EN_KB_Config_Times_Automatic_Blinds.png)
 
 #### **MOTION SENSOR ONLY ACTIVATES LIGHT WHEN THERE IS NO DAYLIGHT**
 
@@ -81,7 +81,7 @@ Connect the motion sensor to the Mv input and the “Daylight” time object to 
 
 If daylight is present, the motion sensor is disabled and does not trigger a lighting scene. More detailed information on the Lighting Controller block can be found [here](https://www.loxone.com/enus/kb/lighting-controller/).
 
-*[]*
+![EN KB Config Times Automatic Lights](https://www.loxone.com/enus/wp-content/uploads/sites/13/2021/08/EN_KB_Config_Times_Automatic_Lights.png)
 
 #### **OUTDOOR LIGHTING ON UNTIL MIDNIGHT**
 
@@ -95,4 +95,4 @@ At midnight, the outdoor lighting is to be switched off again. For this, the tim
 
 You can adjust the constants to adapt the behavior of this function to your requirements.
 
-*[]*
+![EN KB Config Times Automatic Lights Outside](https://www.loxone.com/enus/wp-content/uploads/sites/13/2021/08/EN_KB_Config_Times_Automatic_Lights_Outside.png)

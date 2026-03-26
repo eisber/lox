@@ -124,8 +124,18 @@ This function block monitors the current load in a building and protects against
 
 
 
+
+![loadman config](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/loadman_config.png)
+
+
+
     In this example, we control two boilers, a charging station for an electric vehicle, and the sauna. Up to 12 loads can be configured using the function block.
 The inputs and outputs of the block are then connected in programming:
+
+
+
+
+![loadman blockios](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/loadman_blockios.png)
 
 
 
@@ -154,6 +164,11 @@ After locking one or more loads, a 10-second waiting period will allow the syste
 
 
 
+![loadman visu](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/loadman_visu.png)
+
+
+
+
 ---
 
 
@@ -167,7 +182,17 @@ After locking one or more loads, a 10-second waiting period will allow the syste
 
 
 
+
+![loadman peakload](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/loadman_peakload.png)
+
+
+
     Double-click on the block to open the configuration window, where the Power, Maximum off time and Minimum on time of the respective loads can be specified:
+
+
+
+
+![loadman peakload config](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/loadman_peakload_config.png)
 
 
 
@@ -186,6 +211,11 @@ However, if the "Maximum off time" of a load has expired, it is re-enabled back 
 
 
 
+![loadman peakload ios](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/loadman_peakload_ios.png)
+
+
+
+
 ---
 
 
@@ -199,6 +229,11 @@ However, if the "Maximum off time" of a load has expired, it is re-enabled back 
 
 
 
+
+![loadman peakload overload](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/loadman_peakload-overload.png)
+
+
+
     The current total electrical power is transmitted via Input (Gpwr). The current average power (AvgP) is calculated using Input (Gi) at the start of every quarter-hour or after the last averaging interval pulse.
 
 
@@ -206,3 +241,8 @@ However, if the "Maximum off time" of a load has expired, it is re-enabled back 
 
 
     Load shedding is initiated in order of priority when the average power exceeds the set maximum (MaxP), and the "Load shedding delay" has passed. Loads are re-enabled when sufficient power becomes available or when the "Maximum off time" has passed. Re-enabling occurs in reverse order, with stabilization checks after each load is switched back on. Additionally, all loads are re-enabled at the start of a new interval if the current power (Gpwr) does not exceed the maximum technical power (MaxTp).
+
+
+
+
+![loadman peakload overload ios](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/loadman_peakload-overload_ios.png)

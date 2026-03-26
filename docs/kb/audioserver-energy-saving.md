@@ -24,7 +24,11 @@ Let’s use Loxone’s office in the UK as an example. 6 speakers in our trainin
 
 What’s more, the Audioserver uses less power to operate multiple speakers at a reasonable volume for a long period of time than a single channel on idle. For example, in the below screenshot, you can see the power draw of the Audioserver that’s operating more than 20 speakers at the same time. Plenty of class A, B or AB amplifiers on the market would consume anything between 20-300W on idle only operating up to 8 channels.
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Audioserver-Energy-1.png) [*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Audioserver-Energy-2.png)
+[
+![PH EN Use Case Audioserver Energy 1 724x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Audioserver-Energy-1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Audioserver-Energy-1.png) [
+![PH EN Use Case Audioserver Energy 2](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Audioserver-Energy-2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Audioserver-Energy-2.png)
 
 The Audioserver is not only responsible for the music, it’s a [true multiroom audio system](https://www.loxone.com/enen/kb/auto-configuration/) with versatile use. It can provide sound for alarms, announcements, reminders and more as it’s part of the Loxone building management system. A good example of this is using the Audioserver with the Presence Sensors. With a basic auto configuration, your clients can expect additional benefits such as music switching on whenever they walk in the room and turning off when they leave to ensure music is not playing without a purpose. This provides even further energy efficiency. The Audioserver also works with All Out and Night modes to ensure all devices including the speakers are turned off when no one’s around to use them.
 
@@ -37,7 +41,9 @@ Using less energy does not compromise the user experience by sacrificing sound q
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Audioserver-Energy-Config.png)
+[
+![PH EN Use Case Audioserver Energy Config 800x264](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Audioserver-Energy-Config.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Audioserver-Energy-Config.png)
 
 ## Video:
 

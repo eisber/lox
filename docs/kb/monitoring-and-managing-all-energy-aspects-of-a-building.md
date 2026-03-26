@@ -24,13 +24,17 @@ Energy monitoring and management with Loxone is the solution. It is as overarchi
 
 The Energy Flow Monitor is responsible for the visualisation of the flow of electricity in a building. To do this, it depicts consumers (appliances, lighting fixtures, air conditioners, etc), producers (solar panels and wind turbines), storage units (batteries) and the grid on one user-friendly interface. These elements are all connected to different Meter Function Blocks that record and track their power generation and usage. The power consumption can be monitored in different ways in order to be displayed in the Loxone App – this can be through using the Power Supply & Backup, using Modbus energy meters, using CT Clamps, Smart Socket Airs, etc. If the individual power consumption cannot be monitored directly, but it is a fixed load, then there are additional metering Function Blocks that can be used so that you can still identify these in the app. The amazing thing about the Energy Flow Monitor is that once this is configured in Loxone Config, the visualisation is automatically made so your customer has a user-friendly view of their entire setup.
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/EN-How-to-energy-Energy-Flow-Monitor-and-Energy-Manager-config-screenshot-3.png)
+[
+![EN How to energy Energy Flow Monitor and Energy Manager config screenshot 3 800x241](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/EN-How-to-energy-Energy-Flow-Monitor-and-Energy-Manager-config-screenshot-3.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/EN-How-to-energy-Energy-Flow-Monitor-and-Energy-Manager-config-screenshot-3.png)
 
 **Energy Manager Function Block
 
 **But…seeing all this information is only the first step. Bring in the Energy Manager for even more magic! The Energy Manager Function Block distributes excess energy in the most efficient way through automation and, consequently, the onus is no longer on the user to consciously change their behaviour. You can use the block to control up to 12 devices with different priorities. The Energy Manager prioritises devices based on their power requirements, starting with the device that has the lowest demand and therefore is the fastest to supply. The goal is to turn on the maximum number of devices when there is excess energy available. If the Grid Power input (Gpwr) in combination with Solar Power (Spwr) indicates available excess energy, the Energy Manager will automatically switch on as many loads as possible, starting with the highest priority. If the surplus is not enough to supply the power needed, the digital load is switched off. For the Energy Manager to operate effectively, real-time data on electricity production and consumption is required at all times.
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/EN-How-to-energy-Energy-Flow-Monitor-and-Energy-Manager-config-screenshot-2.png)
+[
+![EN How to energy Energy Flow Monitor and Energy Manager config screenshot 2 800x278](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/EN-How-to-energy-Energy-Flow-Monitor-and-Energy-Manager-config-screenshot-2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/EN-How-to-energy-Energy-Flow-Monitor-and-Energy-Manager-config-screenshot-2.png)
 
 As an example, let’s look at a building that has a wallbox, an immersion heater and an aircon. This is a common scenario for both commercial buildings and smart homes. Your goal will always be to proportionately control these appliances with the excess energy available. The energy manager will see that you are producing excess solar of 2kW and recognise that there is a car plugged in to the wallbox waiting for charge. As the Loxone Wallbox can charge at a rate of just 1.38kW, the Energy Manager will divert this excess to the wallbox. If there was no car plugged in, then it would automatically divert this to the next device on the list, such as an immersion heater, or battery storage, etc. Or, it can direct this surplus energy into pre-heating or pre-cooling a space to reach comfort temperate at the most affordable time. Essentially making sure you use every bit of self-produced energy as possible. Now that is real energy management!
 
@@ -39,7 +43,9 @@ As an example, let’s look at a building that has a wallbox, an immersion heate
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/EN-How-to-energy-Energy-Flow-Monitor-and-Energy-Manager-config-screenshot.png)
+[
+![EN How to energy Energy Flow Monitor and Energy Manager config screenshot 800x505](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/EN-How-to-energy-Energy-Flow-Monitor-and-Energy-Manager-config-screenshot.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/EN-How-to-energy-Energy-Flow-Monitor-and-Energy-Manager-config-screenshot.png)
 
 ### Download the sample Config file:
 

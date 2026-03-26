@@ -20,6 +20,8 @@ The outputs of the Miniserver can then be operated via the web interface or ap
 
 In the UI Virtual inputs with the names of the actuators are available for all actuators used.
 
+![File 000 1](/enen/wp-content/uploads/sites/3/2017/04/File_000-1.png)
+
 The Miniserver can therefore continue to operate. You can switch the lighting or use the blinds for example.
 
 To regain the full configuration of the Miniserver connect your Miniserver to the network. The original program is stored on the Miniserver (if you don’t have a saved offline backup of the system already).

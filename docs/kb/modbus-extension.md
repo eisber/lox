@@ -33,6 +33,11 @@ The Loxone Modbus Extension is designed to integrate up to 32 devices with a Mod
 
 
 
+
+![100124 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100124 install.png)
+
+
+
     Connect the power supply, Link communication to the Miniserver and the Modbus data lines.
 
 
@@ -59,6 +64,11 @@ For wiring, a wire pair of a Cat 5/6/7 cable is recommended, alternatively anoth
 
     Each Modbus device must be inserted in the peripheral tree, either manually or by inserting a [Template](https://www.loxone.com/help/templates).
 For each Modbus device on the same bus, a different address must be set. This must be set identically on the device itself and in Loxone Config.
+
+
+
+
+![ModB RTU AddDevice](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ModB-RTU-AddDevice.png)
 
 
 

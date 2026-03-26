@@ -27,6 +27,11 @@ Each Tree Turbo interface supports up to 10 devices with a maximum cable length 
 
 
 
+
+![tree wiring topologies](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tree wiring topologies.png)
+
+
+
     We recommend using the Loxone Audio Cable for wiring. Use the green, green-white twisted pair for the Tree Turbo data line and the orange/white-orange pair with a cross-section of 1.5 mm² (AWG 16) for the 24 V DC power supply.
 
 
@@ -38,9 +43,19 @@ Each Tree Turbo interface supports up to 10 devices with a maximum cable length 
 
 
 
+![TreeTurbo cabeling](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling.png)
+
+
+
+
 ### Detailed wiring with the Audio Cable
 
     **Master** Install Speaker (Install Speaker 7 Master, Install Speaker 10 Master, Install Sub 10 Master):
+
+
+
+
+![TreeTurbo cabeling ISM](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_ISM.png)
 
 
 
@@ -48,11 +63,26 @@ Each Tree Turbo interface supports up to 10 devices with a maximum cable length 
 
 
 
+
+![TreeTurbo cabeling ISC](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_ISC.png)
+
+
+
     **Satellite Speaker IP64 Master:**
 
 
 
+
+![TreeTurbo cabeling Sat64M](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_Sat64M.png)
+
+
+
     **Satellite Speaker IP64 Client:**
+
+
+
+
+![TreeTurbo cabeling Sat64C](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_Sat64C.png)
 
 
 
@@ -61,7 +91,12 @@ Each Tree Turbo interface supports up to 10 devices with a maximum cable length 
 
 
 
-|  | The Tree Turbo interface is based on a completely different technology than the well-known Tree interface. Therefore, the Tree and the Tree Turbo interface must not be connected! The Tree Turbo data lines should not be run together with other data or signal lines in the same cable. |
+![TreeTurbo cabeling StereoExtension](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_StereoExtension.png)
+
+
+
+
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | The Tree Turbo interface is based on a completely different technology than the well-known Tree interface. Therefore, the Tree and the Tree Turbo interface must not be connected! The Tree Turbo data lines should not be run together with other data or signal lines in the same cable. |
 | --- | --- |
 
     The Tree Turbo communication is IP based, therefore IP addresses for all Tree Turbo devices will appear on the network.
@@ -78,6 +113,11 @@ Each Tree Turbo interface supports up to 10 devices with a maximum cable length 
 
 
     The window that opens will list all connected Tree Turbo devices that are not yet part of the program:
+
+
+
+
+![treeturbo search](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/treeturbo_search.png)
 
 
 

@@ -30,7 +30,9 @@ As a further option, it is possible to integrate the [Loxone Caller Service](htt
 
 ### Configuration:
 
-[*[automatically switch off an iron - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-77-Iron-shut-down-for-safety.png)
+[
+![automatically switch off an iron - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-77-Iron-shut-down-for-safety.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-77-Iron-shut-down-for-safety.png)
 
 ### Download the sample file:
 

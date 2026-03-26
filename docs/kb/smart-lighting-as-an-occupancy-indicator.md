@@ -29,7 +29,9 @@ Tip: You have to be careful about where you install the Motion Sensors. This is 
 
 [
 
-](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-26-Customise-Lights-Occupancy-01.png)[*[lighting as an occupancy indicator config screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-26-Customise-Lights-Occupancy-01.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-26-Customise-Lights-Occupancy-01.png)[
+![lighting as an occupancy indicator config screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-26-Customise-Lights-Occupancy-01.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-26-Customise-Lights-Occupancy-01.png)
 
 ### Download the sample file:
 

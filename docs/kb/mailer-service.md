@@ -61,6 +61,11 @@ With a mailer, the Miniserver can send emails for almost any purpose.
 
 
 
+
+![CloudMailer Mailer](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/CloudMailer_Mailer.png)
+
+
+
     In the following example we name the Loxone Cloud Mailer "Energy Consumption This Month" and drag the object to the programming page.
 
 
@@ -71,7 +76,22 @@ The selected recipients will receive an email whenever the value at the output "
 
 
 
+![CloudMailer example](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/CloudMailer_example.png)
+
+
+
+
+
+![CloudMailer email](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/CloudMailer_email.png)
+
+
+
     If you use the Mailer for this example, the data of the email account are also entered.
+
+
+
+
+![Mailer world4you](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Mailer_world4you.png)
 
 
 
@@ -96,3 +116,8 @@ Therefore, the Cloud Mailer should be used if encrypted email sending does not w
     Alternatively, in the properties window of various blocks, logger, mailer, caller and tracker can be assigned.
 For this, the respective message must only be created and the recipient defined.
 The text or value defined in the block is output.
+
+
+
+
+![message aal linked](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/message_aal_linked.png)

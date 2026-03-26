@@ -86,6 +86,11 @@ Double-click on the program block to open the editing window.
 
 
 
+
+![State Menu](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/State_Menu.png)
+
+
+
     == : selected input is the same as the value
 
 
@@ -124,6 +129,11 @@ Double-click on the program block to open the editing window.
 
 
     Comparing inputs is possible by writing e.g. <v1>in the value field (similar to the Status-text field):
+
+
+
+
+![status compareInputs1](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/status_compareInputs1.png)
 
 
 

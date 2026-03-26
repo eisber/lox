@@ -40,6 +40,11 @@ The LED Spot RGBW Tree is a recessed LED spot with warm white and coloured light
 
 
 
+![treespot cabling](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/treespot cabling.png)
+
+
+
+
 ---
 
 

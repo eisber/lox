@@ -16,9 +16,10 @@ Modbus is chiefly used in industrial control applications. A wide variety of tra
 
 If you click on the Modbus Extension in the periphery tree window you will see the Properties of the extension displayed in the properties window to the far left of the screen. Here you must set the baud rate, stop bits and parity. These settings are product specific so please find the details from the manufacturer’s data sheet for the Modbus device you are using.
 
-*[Properties of the Modbus Extension]*
+![Properties of the Modbus Extension](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Modbus_Properties.png)
 
-*[Icon Exclamation Mark Loxone]*You can control up to 32 Modbus devices off one Modbus extension but all devices must have the same baud rate, stop bits, and parity settings.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+You can control up to 32 Modbus devices off one Modbus extension but all devices must have the same baud rate, stop bits, and parity settings.
 
 
 
@@ -26,7 +27,7 @@ If you click on the Modbus Extension in the periphery tree window you will see t
 
 Click again on the Modbus Extension in the periphery tree window and you will see in the top ribbon a button called ‘Sensors and Actuators’. In this menu select ‘Modbus device’, or you can choose from a list of pre-defined devices.
 
-*[Modbus Device Address]*
+![Modbus Device Address](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Modbus_Properties_ADDRESS.png)
 
 ## SENSORS AND ACTUATORS
 
@@ -38,9 +39,10 @@ In the Properties window of the sensor, you need to enter the IO address (regist
 
 The information relating to the IO address and the type of command and data will be provided by the manufacturer as it is product specific.
 
-*[Modbus Sensors Address]*
+![Modbus Sensors Address](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Modbus_Properties_Sensors.png)
 
-*[Icon Exclamation Mark Loxone]*The data the Modbus Extension receives is forwarded via the Loxone Link to the Miniserver. Please note therefore that too frequent polling cycles may tax the bus, so it is advisable to set sensible intervals (i.e. Not every change for a temperature sensor).
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+The data the Modbus Extension receives is forwarded via the Loxone Link to the Miniserver. Please note therefore that too frequent polling cycles may tax the bus, so it is advisable to set sensible intervals (i.e. Not every change for a temperature sensor).
 
 
 
@@ -50,7 +52,7 @@ Here you need to enter the IO address, choose the command type and the data type
 
 Again the information relating to the IO address and the type of command and data will be provided by the manufacturer as it is product specific.
 
-*[Modbus Device Actuators]*
+![Modbus Device Actuators](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Modbus_Properties_Actuators.png)
 
 ## SAVE AS A TEMPLATE
 
@@ -58,7 +60,7 @@ After adding all the required sensors and actuators to your Modbus device you ca
 
 Click on the Modbus Extension in the periphery tree window to highlight it, and then right click to bring up a little menu box. Choose the option ‘Save as template’.
 
-*[Modbus Save as Template]*
+![Modbus Save as Template](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Modbus_Save_As_Template.png)
 
 A Save As window will pop up and you can then replace the xxx in the file name with a name for the Modbus device.
 

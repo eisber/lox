@@ -35,7 +35,9 @@ Hardware:
 
 ### Configuration:
 
-[*[Electronic In Out Board - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-98-InOut-Board.png)
+[
+![Electronic In Out Board - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-98-InOut-Board.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-98-InOut-Board.png)
 
 ### Download the sample file:
 

@@ -113,3 +113,8 @@ Using the +/- input trigger sets an appropriate value at the output for EIB dimm
 
     This function block has a presence simulation.
 Activate and define the presence simulation in the properties window:
+
+
+
+
+![PresenceSimulation EIBDimmer](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PresenceSimulation_EIBDimmer.png)

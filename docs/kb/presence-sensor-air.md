@@ -11,7 +11,7 @@ The Loxone Presence Sensor Air is used to detect presence, motion and brightness
 
 
 
-|  | The Presence Sensor can also detect some pets. Although the sensitivity of the sensor can be reduced, there is no dedicated technology that excludes the detection of pets. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The Presence Sensor can also detect some pets. Although the sensitivity of the sensor can be reduced, there is no dedicated technology that excludes the detection of pets. |
 | --- | --- |
 
 
@@ -40,12 +40,27 @@ The Loxone Presence Sensor Air is used to detect presence, motion and brightness
 
 
 
-|  | For motion to be detected accurately, correct placement of the Presence Sensor on the ceiling is essential. The following drawings can assist with this: |
+![100190 100420 labeled back view](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100190 100420 labeled back view.png)
+
+
+
+
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | For motion to be detected accurately, correct placement of the Presence Sensor on the ceiling is essential. The following drawings can assist with this: |
 | --- | --- |
 
 
-|  | Sensitivity does not create a strict cutoff for the detection range; instead, it adjusts internal parameters that influence the range. To create blind spots or define specific detection zones, please use the stickers provided in the package. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Sensitivity does not create a strict cutoff for the detection range; instead, it adjusts internal parameters that influence the range. To create blind spots or define specific detection zones, please use the stickers provided in the package. |
 | --- | --- |
+
+
+
+![motiondetector range1](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/motiondetector_range1.jpg)
+
+
+
+
+
+![motiondetector range2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/motiondetector_range2.jpg)
 
 
 
@@ -83,6 +98,11 @@ If the supply method is changed later, the device must be deleted from the confi
 
 
 
+
+![PresenceSensor SetVolumeThresholds](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PresenceSensor_SetVolumeThresholds.png)
+
+
+
     A graph is drawn using the current ambient volume of the selected Presence Sensor. Use the graph to adjust the volume thresholds for presence and sound level alarm to the specific location. When doing so, also take into account intermittent sounds that could trigger presence or an alarm even when no one is present. For example, dishwashers (keeping presence active) or high levels of noise from outside such as construction sites, heavy traffic or the like (volume alarm).
 
 
@@ -110,11 +130,16 @@ If the supply method is changed later, the device must be deleted from the confi
 
 
 
+
+![100190 100420 battery](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100190 100420 battery.png)
+
+
+
     Shortly after that, the device flashes green 3 times once the connection to the Miniserver has been successfully established.
 
 
 
-|  | Devices with serial number 504F94FFFE-B/C..... do not flash their LED after removing and reinserting the battery.For such devices, after removing the battery, either press a button or wait for a minute to display the status after reinserting the battery. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Devices with serial number 504F94FFFE-B/C..... do not flash their LED after removing and reinserting the battery.For such devices, after removing the battery, either press a button or wait for a minute to display the status after reinserting the battery. |
 | --- | --- |
 
 

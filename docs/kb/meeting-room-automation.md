@@ -30,7 +30,9 @@ As soon as the “Conference Mode” is activated, either through a tap on a [To
 
 ### Configuration:
 
-[*[Meeting Room Automation - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-79-Automated-Conference-Room.png)
+[
+![Meeting Room Automation - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-79-Automated-Conference-Room.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-79-Automated-Conference-Room.png)
 
 
 

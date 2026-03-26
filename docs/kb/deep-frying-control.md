@@ -26,7 +26,9 @@ The hot plate is connected to the mains via Smart Socket Air (ensuring amps are 
 
 ### Configuration:
 
-[*[Deep Frying Control - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-106-Deep-frying-with-Loxone.jpg)
+[
+![Deep Frying Control - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-106-Deep-frying-with-Loxone.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-106-Deep-frying-with-Loxone.jpg)
 
 ### Download the sample file:
 

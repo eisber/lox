@@ -24,7 +24,9 @@ Source: https://www.loxone.com/enen/kb/touch-nightlight-air/
 
 ## Power Supply:
 
-			**Touch Nightlight Air***[]*The Touch Nightlight Air is powered by the supplied USB power supply. Only use the original power supply provided.
+			**Touch Nightlight Air**
+![cLoxone Touch Nightlight Air back free 300x242](https://www.loxone.com/enen/wp-content/uploads/sites/3/2019/03/cLoxone_Touch-Nightlight-Air-back-free.png)
+The Touch Nightlight Air is powered by the supplied USB power supply. Only use the original power supply provided.
 
 ## Commissioning Air:
 
@@ -58,11 +60,11 @@ To activate the pairing mode, hold down the pairing button for at least 5 second
 
 ## Functions
 
-			*[]*
+![PH Nightlight Hand.min  3 800x450](https://www.loxone.com/enen/wp-content/uploads/sites/3/2019/03/PH_Nightlight-Hand.min_-3.png)
 
 
 
-*[]*
+![TouchNightlightAir KeyAssignment](https://www.loxone.com/enen/wp-content/uploads/sites/3/2019/03/TouchNightlightAir_KeyAssignment.png)
 
 ### Alarm Clock function
 
@@ -70,7 +72,7 @@ The lower button can be used to activate and deactivate the alarm clock. The sta
 
 ### Set Alarm time
 
-*[]*
+![PH Nightlight Einstellung Weckzeit.min  3 800x367](https://www.loxone.com/enen/wp-content/uploads/sites/3/2019/03/PH_Nightlight-Einstellung-Weckzeit.min_-3.png)
 
 To change the alarm time, hold down the lower button until the display shows the current alarm time. The alarm time can now be set using the left and right buttons. Press the lower button again to confirm the alarm time.
 

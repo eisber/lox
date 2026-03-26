@@ -92,3 +92,8 @@ Uses a given input value and sets a validated value on the output
 
 
 ## Timing Diagram
+
+
+
+
+![ValueValidator timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ValueValidator-timediag.png)

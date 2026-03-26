@@ -81,3 +81,8 @@ The 3 Position Controller manipulates a controlled variable by switching two out
 
 
 ## Timing Diagram
+
+
+
+
+![3PositionController timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/3PositionController-timediag.png)

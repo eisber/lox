@@ -45,7 +45,9 @@ Hardware:
 
 With Loxone, we help create an intelligent building that automatically helps the cleaner to do their work. After entering the building the cleaning mode for the office is activated and the building is now ready to be cleaned. Various functions can be pre-defined here, such as automatically disabling of the switches, etc. The bright light helps the cleaner identify areas that need specific attention. The cleaners favourite music makes the whole process more pleasant. After the cleaner has left the building, the cleaning mode for the office is, of course, automatically turned off.
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-44-Smart-Cleaning.png)
+[
+![Use Case 44 Smart Cleaning](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-44-Smart-Cleaning.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-44-Smart-Cleaning.png)
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

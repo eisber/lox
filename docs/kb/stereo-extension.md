@@ -43,6 +43,11 @@ The Stereo Extension adds an additional stereo speaker output to the Audioserver
 
 
 
+
+![100429 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100429 install.png)
+
+
+
     Connect the power supply (orange terminal) and Tree Turbo data lines (green/white terminals). The Stereo Extension will boot its operating system over the Tree Turbo interface, after switching on the power supply. The Audioserver or Miniserver Compact must also be ready for operation. After about one minute the Stereo Extension is ready and will blink orange.
 
 
@@ -73,6 +78,11 @@ The Stereo Extension adds an additional stereo speaker output to the Audioserver
 
 
 
+
+![tree wiring topologies](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tree wiring topologies.png)
+
+
+
     We recommend using the Loxone Audio Cable for wiring. Use the green, green-white twisted pair for the Tree Turbo data line and the orange/white-orange pair with a cross-section of 1.5 mm² (AWG 16) for the 24 V DC power supply.
 
 
@@ -84,9 +94,19 @@ The Stereo Extension adds an additional stereo speaker output to the Audioserver
 
 
 
+![TreeTurbo cabeling](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling.png)
+
+
+
+
 ### Detailed wiring with the Audio Cable
 
     **Master** Install Speaker (Install Speaker 7 Master, Install Speaker 10 Master, Install Sub 10 Master):
+
+
+
+
+![TreeTurbo cabeling ISM](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_ISM.png)
 
 
 
@@ -94,11 +114,26 @@ The Stereo Extension adds an additional stereo speaker output to the Audioserver
 
 
 
+
+![TreeTurbo cabeling ISC](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_ISC.png)
+
+
+
     **Satellite Speaker IP64 Master:**
 
 
 
+
+![TreeTurbo cabeling Sat64M](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_Sat64M.png)
+
+
+
     **Satellite Speaker IP64 Client:**
+
+
+
+
+![TreeTurbo cabeling Sat64C](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_Sat64C.png)
 
 
 
@@ -107,7 +142,12 @@ The Stereo Extension adds an additional stereo speaker output to the Audioserver
 
 
 
-|  | The Tree Turbo interface is based on a completely different technology than the well-known Tree interface. Therefore, the Tree and the Tree Turbo interface must not be connected! The Tree Turbo data lines should not be run together with other data or signal lines in the same cable. |
+![TreeTurbo cabeling StereoExtension](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_StereoExtension.png)
+
+
+
+
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | The Tree Turbo interface is based on a completely different technology than the well-known Tree interface. Therefore, the Tree and the Tree Turbo interface must not be connected! The Tree Turbo data lines should not be run together with other data or signal lines in the same cable. |
 | --- | --- |
 
     The Tree Turbo communication is IP based, therefore IP addresses for all Tree Turbo devices will appear on the network.
@@ -182,6 +222,11 @@ Equalizer settings are not applied to the SPDIF Out.
 
 
 
+
+![SE speakertype](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/SE_speakertype.png)
+
+
+
     When SPDIF Out is selected for an output, the speaker outputs are disabled and the signal is output at the SPDIF Out instead.
 
 
@@ -236,6 +281,11 @@ Equalizer settings are not applied to the SPDIF Out.
 
 
 
+
+![PH Loxone Installation recommendations table](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PH-Loxone-Installation-recommendations-table.png)
+
+
+
     While an enclosure is not strictly required for fully enclosed surfaces, speakers must be installed in a rear mounting enclosure when used in open surface structures, such as acoustic ceilings.
 
 
@@ -257,6 +307,11 @@ Equalizer settings are not applied to the SPDIF Out.
 
     In main living areas, at least two speakers should be used to achieve good sound quality. For small rooms or ancillary spaces, a single speaker is usually sufficient.
 Depending on the room size, we recommend planning the following number of speakers per room:
+
+
+
+
+![RoomsizeSpkrCountChart](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/RoomsizeSpkrCountChart.png)
 
 
 

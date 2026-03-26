@@ -39,7 +39,9 @@ Tip: Recommend customers to use operating modes to easily change system behavior
 - [AC Control Air](https://shop.loxone.com/enen/product/100553-ac-control-air-for-gree)
 - [Door and Window contact Air](https://shop.loxone.com/enen/product/100210-door-window-contact-air-white)
 
-### [*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase-schedule-based-AC.jpg)
+### [
+![UseCase schedule based AC](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase-schedule-based-AC.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase-schedule-based-AC.jpg)
 
 ### Download the sample file
 

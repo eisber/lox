@@ -96,3 +96,8 @@ Optimised dimmer with double click function for single button operation.
 
     This function block has a presence simulation.
 Activate and define the presence simulation in the properties window:
+
+
+
+
+![PresenceSimulation Dimmer](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PresenceSimulation_Dimmer.png)

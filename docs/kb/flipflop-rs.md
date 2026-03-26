@@ -80,3 +80,8 @@ Flipflop with toggle input. Reset is dominant.
 
 
 ## Timing Diagram
+
+
+
+
+![RSFlipFlop timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/RSFlipFlop-timediag.png)

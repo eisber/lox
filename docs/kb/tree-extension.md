@@ -42,6 +42,11 @@ The **Loxone Tree Extension** allows the integration of various devices like sen
 
 
 
+
+![100218 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100218 install.png)
+
+
+
     Connect the power supply and Link communication to the Miniserver.
 
 
@@ -66,7 +71,17 @@ The following diagram shows the wiring of several Tree devices connected to two 
 
 
 
+
+![tree wiring example](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tree wiring example.png)
+
+
+
     The following wiring topologies are possible, at a maximum length of 500m/1640ft:
+
+
+
+
+![tree wiring topologies](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tree wiring topologies.png)
 
 
 
@@ -77,6 +92,11 @@ The following diagram shows the wiring of several Tree devices connected to two 
 
 
     The following image illustrates favorable and less favorable wiring structures within a building, based on the permitted topologies:
+
+
+
+
+![Tree Wiring Topologies Extended](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Tree Wiring Topologies Extended.png)
 
 
 
@@ -111,6 +131,11 @@ For existing installations, doubling the cross-section of the GND line is often 
 
 
 
+
+![10.5 tree search](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5 tree search.png)
+
+
+
     If you select a device here, it will **identify** itself in different ways. Devices with a status LED will flash it, lighting products pulse a white light, other devices such as the Loxone Touch emit an audible click. This allows you to assign and name the devices correctly.
 
 
@@ -137,6 +162,11 @@ For existing installations, doubling the cross-section of the GND line is often 
 
 
     Alternatively, devices can also be paired directly via their serial number. To do this, click on the Tree interface and add the desired device via "Add Tree Device". In the properties window of the respective Tree device, enter its serial number:
+
+
+
+
+![tree device sn](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tree_device_sn.png)
 
 
 
@@ -171,6 +201,11 @@ Not flashing: Normal operation (the status LED is off or was switched off, depen
 
 
 
+
+![10.5 tree diagnostics](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5 tree diagnostics.png)
+
+
+
     The Tree devices are now listed in the Tree Diagnostics window. Diagnostic data is transmitted continuously, and can be used to detect any errors. Any errors are displayed along with suggested solutions.
 Temporary errors (e.g. poor contact, potential difference) can also be detected by packet loss.
 
@@ -184,6 +219,11 @@ If errors occur only sporadically, monitor Tree Diagnostics for some time. Based
 ### Loxone Health Check
 
     The diagnostics of the Miniserver and the Loxone interfaces can be started via the Loxone Health Check:
+
+
+
+
+![HealthCheck](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/HealthCheck.png)
 
 
 

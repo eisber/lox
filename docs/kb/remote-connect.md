@@ -26,7 +26,9 @@ If Remote Connect has been deactivated on the miniserver in the meantime, access
 
 Connect to the Miniserver, open **Configure Miniserver**, and enable **Remote Connect**:
 
-[*[loxone remote connect setup]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2020/09/11.1-setup-remote-connect-en.png)
+[
+![loxone remote connect setup](https://www.loxone.com/dede/wp-content/uploads/sites/2/2020/09/11.1-setup-remote-connect-en.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2020/09/11.1-setup-remote-connect-en.png)
 
 When using “Remote Connect”, “Loxone Cloud DNS” and “Use Loxone Certificate” (in the Security tab) are automatically enabled.
 

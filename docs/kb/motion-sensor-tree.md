@@ -11,7 +11,7 @@ The Loxone Motion Detector Tree is used to detect motion and brightness in a roo
 
 
 
-|  | The Motion Sensor can also detect some pets. Although the sensitivity of the sensor can be reduced, there is no dedicated technology that excludes the detection of pets. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The Motion Sensor can also detect some pets. Although the sensitivity of the sensor can be reduced, there is no dedicated technology that excludes the detection of pets. |
 | --- | --- |
 
 
@@ -37,8 +37,23 @@ The Loxone Motion Detector Tree is used to detect motion and brightness in a roo
 
 
 
-|  | For motion to be detected accurately, correct placement of the Motion Sensor on the ceiling is essential. The following drawings can assist with this: |
+![100223 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100223 install.png)
+
+
+
+
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | For motion to be detected accurately, correct placement of the Motion Sensor on the ceiling is essential. The following drawings can assist with this: |
 | --- | --- |
+
+
+
+![motiondetector range1](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/motiondetector_range1.jpg)
+
+
+
+
+
+![motiondetector range2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/motiondetector_range2.jpg)
 
 
 

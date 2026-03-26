@@ -39,7 +39,9 @@ Since the emergency lighting tests are carried out and recorded automatically, 
 
 
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-1-Emergency-Lighting-Test.jpg)
+[
+![Use Case 1 Emergency Lighting Test](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-1-Emergency-Lighting-Test.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-1-Emergency-Lighting-Test.jpg)
 
 ### Download the sample file:
 
@@ -51,7 +53,7 @@ Since the emergency lighting tests are carried out and recorded automatically, 
 
 ### Related Video Tutorial
 
-| *[]* | Config Challenge: Automated Emergency Light Testing The facilities manager of a large office building needs a way of automatically testing the emergency lights in the building View Video >> |
+| ![IC play button CTA](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/06/IC_play-button-CTA.png) | Config Challenge: Automated Emergency Light Testing The facilities manager of a large office building needs a way of automatically testing the emergency lights in the building View Video >> |
 | --- | --- |
 
 

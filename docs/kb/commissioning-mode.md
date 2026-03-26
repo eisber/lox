@@ -22,17 +22,17 @@ STEP 1: START THE COMMISSIONING MODE
 
 The first thing to do is open Loxone Config and then connect to the Miniserver you wish to commission. Then click on the Maintenance tab and then click the commissioning mode button, it will highlight to show it is active.
 
-*[Commissioning Mode Ribbon]*
+![Commissioning Mode Ribbon](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_Commissioning_Mode.png)
 
 When you have clicked this a popup window will appear to confirm starting the commissioning mode, select OK to proceed.
 
-*[Commissioning Mode 1]*
+![Commissioning Mode 1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_Commissioning_Mode_Popout_1.png)
 
 #### STEP 2: OVERVIEW
 
 The commissioning mode will use the Loxone Link to see which extensions are connected to the Miniserver and then give you an overview of the inputs and outputs available in the system.
 
-*[Commissioning Mode Popout 2]*
+![Commissioning Mode Popout 2](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_Commissioning_Mode_Popout_2.png)
 
 #### STEP 3: TEST WITH THE USER INTERFACE
 
@@ -56,14 +56,20 @@ All outputs have either a slider (if analogue) or a switch (if digital) so you c
 
 The confirmation pushbuttons is the information that is shown in the results.
 
+![MU app Comm mode 1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/MU_app_Comm_mode_1.png)
+
+![MU app Comm mode 2.PNG](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/MU_app_Comm_mode_2.PNG.png)
+
+![MU app Comm mode 4](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/MU_app_Comm_mode_4.png)
+
 #### STEP 4: END THE COMMISSIONING MODE
 
 Once you have finished testing all the inputs and outputs you need to end the commissioning mode. To do this in Loxone Config just click on Commissioning mode again, it will no longer be highlighted and a window will popup to confirm the mode is finished.
 
-*[Commissioning Mode Popout 3]*
+![Commissioning Mode Popout 3](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_Commissioning_Mode_Popout_3.png)
 
 #### STEP 5: RESULTS
 
 When you finish the commissioning mode a text file will pop up (you may get a Windows pop up asking you how you would like to open it first). This report will contain all the confirmed input and output information.
 
-*[Commissioning Mode Results]*
+![Commissioning Mode Results](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Computer_Commissioning_Mode_Result.png)

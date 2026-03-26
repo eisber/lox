@@ -88,3 +88,8 @@ A long-click on (+) increases the value on output (O) every (Rr) seconds.
 
 
 ## Timing Diagram
+
+
+
+
+![SelectionSwitch p timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/SelectionSwitch_p-timediag.png)

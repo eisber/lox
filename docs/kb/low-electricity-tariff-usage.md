@@ -26,25 +26,33 @@ Some energy suppliers can provide electricity meters that provide information wh
 
 If the energy meter detects that electricity is available at a low tariff, the electric UFH is activated. For this purpose, relays of the Miniserver or the Relay Extension are connected to the heating circuit of the underfloor heating (we recommend the use of a coupling relay to limit the load on the Loxone devices). Electric boilers can also be activated with a relay to heat up the collected water.
 
-[*[Low electricity tariff usage - Loxone config screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-33-Low-Electricity-Tariff_2.png)
+[
+![Low electricity tariff usage - Loxone config screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-33-Low-Electricity-Tariff_2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-33-Low-Electricity-Tariff_2.png)
 
 **Electric Car Charger**
 
 The electric car is charged when electricity is available at low tariffs. Most charging stations offer an interface for communication with devices from other suppliers. For this, only the Loxone Miniserver is necessary as central control to realise low electricity tariff usage. Should a charging process be necessary when electricity is provided at the high tariff, the charging process can be started manually via the Loxone App.
 
-[*[Low electricity tariff usage car charging - Loxone config screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-33-Electricity-Tariff-Ecar_4.png)
+[
+![Low electricity tariff usage car charging - Loxone config screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-33-Electricity-Tariff-Ecar_4.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-33-Electricity-Tariff-Ecar_4.png)
 
 **Switching for appliances**
 
 Every mains-power device can be switched on automatically (where it is safe to do so) as soon as the low electricity tariff is active. To realise low electricity tariff usage for appliances, you can use either a relay output on the Miniserver or Relay Extension, or a Smart Socket Air. An example of such appliances is a washing machine. If the appliance needs to have completed a task before the power supply is disconnected again (still using the washing machine as an example here), it is necessary to use the “[Energy Manager](https://www.loxone.com/enen/kb/energy-manager/)” Function Block for additional configuration. Further optimisation can also be achieved with PV systems.
 
-[*[Low electricity tariff usage for appliances - Loxone config screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-33-Low-Electricity-Tariff_1.png)
+[
+![Low electricity tariff usage for appliances - Loxone config screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-33-Low-Electricity-Tariff_1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-33-Low-Electricity-Tariff_1.png)
 
 **Heated Pool**
 
 In the UK, if you have a swimming pool it’s not uncommon for it to be an indoor pool which can be heated. Heating a mass of water isn’t cheap, so low electricity tariff usage would obviously be a great help Depending on interoperability with the heating source, heating of the pool can be controlled via the Aquastar Air or a relay on the Miniserver. It is then possible to activate the pool’s heating source when electricity is available at a lower tariff. A great tip to keep the pool warm while saving money.
 
-[*[Heating pool with low electricity tariff - Loxone config screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-33-Low-Electricity-Tariffs-5.png)
+[
+![Heating pool with low electricity tariff - Loxone config screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-33-Low-Electricity-Tariffs-5.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-33-Low-Electricity-Tariffs-5.png)
 
 ### Hardware:
 - [Loxone Miniserver](https://shop.loxone.com/enuk/miniserver.html)

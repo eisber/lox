@@ -12,7 +12,7 @@ The transfer of users and their data is TLS encrypted, and the Loxone services R
 
 
 
-|  | Trusts require the current Miniserver, the Miniserver Gen. 1 is not supported! |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Trusts require the current Miniserver, the Miniserver Gen. 1 is not supported! |
 | --- | --- |
 
 
@@ -46,6 +46,11 @@ The transfer of users and their data is TLS encrypted, and the Loxone services R
 
 
 
+
+![trusts createtrust](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/trusts_createtrust.png)
+
+
+
     This will create a Trust with the currently connected Miniserver already set as Trust Manager.
 
 
@@ -53,7 +58,17 @@ The transfer of users and their data is TLS encrypted, and the Loxone services R
 
 
 
+
+![trusts addmember](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/trusts_addmember.png)
+
+
+
     Now, enter the serial number of the member in the properties:
+
+
+
+
+![trusts addmembersn](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/trusts_addmembersn.png)
 
 
 
@@ -66,6 +81,11 @@ Other Miniserver can be created as members in the same manner.
 
     In the next step a Trust Key has to be generated to allow the members to join the Trust.
 First click on the Trust in the periphery tree of Loxone Config, then click on "Generate Trust Key" in the menu bar at the top:
+
+
+
+
+![trusts generatekey](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/trusts_generatekey.png)
 
 
 
@@ -86,7 +106,17 @@ To do so, connect to the member Miniserver, and have the key file at hand.
 
 
 
+
+![trusts jointrust](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/trusts_jointrust.png)
+
+
+
     Selecting the key file from the file manager and click on "Join Trust":
+
+
+
+
+![trusts importkey](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/trusts_importkey.png)
 
 
 
@@ -108,7 +138,7 @@ Therefore, to complete the setup, it is necessary to load once from the Manager 
 
 
 
-|  | If external access has been set up manually, it is required to use an HTTPS port and also to set up port forwarding to this port. Otherwise, no connection via the Internet is possible. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | If external access has been set up manually, it is required to use an HTTPS port and also to set up port forwarding to this port. Otherwise, no connection via the Internet is possible. |
 | --- | --- |
 
 
@@ -123,11 +153,21 @@ To do this, select the Trust member under "User" in the Periphery tree and assig
 
 
 
+
+![trusts UserPermission](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/trusts_UserPermission.png)
+
+
+
     Alternatively, the members can also be added to a user group with this right.
 
 
     To transfer the users of another Miniserver, first click on the Trust in the periphery tree, then click on "Manage Users and Groups" in the menu bar at the top.
 The following window opens:
+
+
+
+
+![trusts adduser](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/trusts_adduser.png)
 
 
 
@@ -137,6 +177,11 @@ When we add a group, the members of that group are automatically added as well.
 
 
     The added users and groups are then displayed in the periphery tree of Loxone Config as well as in the Trust. The name of the Miniserver that a user or group originates form is also indicated. In addition, the users and groups of a Trust are marked by a different symbol:
+
+
+
+
+![trusts peripheryuserdisplay](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/trusts_peripheryuserdisplay.png)
 
 
 
@@ -151,6 +196,11 @@ All other permissions must be reassigned on the Miniserver, as they are specific
 
 
 
+
+![trusts permissionusers](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/trusts_permissionusers.png)
+
+
+
     As the final step, the program must be saved to the Miniserver.
 
 
@@ -159,11 +209,16 @@ Users of a Trust can also be added, removed, and managed within the App:
 
 
 
+
+![trusts manageusersapp](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/trusts_manageusersapp.png)
+
+
+
     To log in with a Trust user, you must specify the @Host (either the serial number or the description of the Trust Miniserver).
 
 
 
-|  | The time until a Trust Member is deregistered from all Trusts depends on the "Connection timeout" configured in that Member's settings. If the Member does not send an update within the specified timeout period, the Member is marked as offline, and the associated users are disabled. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The time until a Trust Member is deregistered from all Trusts depends on the "Connection timeout" configured in that Member's settings. If the Member does not send an update within the specified timeout period, the Member is marked as offline, and the associated users are disabled. |
 | --- | --- |
 
 
@@ -178,6 +233,11 @@ Users of a Trust can also be added, removed, and managed within the App:
 
 
 
+![trusts takeover](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/trusts_takeover.png)
+
+
+
+
 ---
 
 
@@ -188,7 +248,17 @@ Users of a Trust can also be added, removed, and managed within the App:
 
 
 
+
+![trusts IO](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/trusts_IO.png)
+
+
+
     Authorized members can find the in- and outputs via the "Periphery Search" and add it to the programming with the "+" button:
+
+
+
+
+![trust PeripherySearch](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/trust_PeripherySearch.png)
 
 
 
@@ -203,7 +273,17 @@ Users of a Trust can also be added, removed, and managed within the App:
 
 
 
+
+![trusts Intercom](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/trusts_Intercom.png)
+
+
+
     A separate bell output is now generated for each Trust member.
+
+
+
+
+![trusts IntercomBellO](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/trusts_IntercomBellO.png)
 
 
 
@@ -260,6 +340,11 @@ In the following window, groups can be created, members added and deleted. Membe
 
 
 
+![trust configure](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/trust_configure.png)
+
+
+
+
 ---
 
 
@@ -271,6 +356,11 @@ In the following window, groups can be created, members added and deleted. Membe
 
 
 
+![trust userinterface](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/trust_userinterface.png)
+
+
+
+
 ---
 
 
@@ -278,6 +368,11 @@ In the following window, groups can be created, members added and deleted. Membe
 
 
     A Trust can also be established entirely within a local network. Miniservers must be able to communicate with each other using their local IP address.
+
+
+
+
+![trust local](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/trust_local.png)
 
 
 

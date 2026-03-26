@@ -18,7 +18,7 @@ On a slightly less serious level, the fact that wood dust gets stuck in shoes an
 
 With Loxone, a workshop dust collection system can be easily implemented. First of all, a suction line is led from a central vacuum cleaner to each workstation in a kind of line topology.
 
-*[Workshop Dust Collection System Diagram ]*
+![Workshop Dust Collection System Diagram ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/IG_Absauganlage-Holzstaub-Holzspa%CC%88ne-Beispiel.png)
 
 If – as in our example – several tools are connected to a central vacuum cleaner by a suction pipe, the individual suction ends should each be equipped with an electronic shut-off valve (NC). This prevents loss of suction power through the various openings.
 
@@ -34,9 +34,13 @@ When the band saw is activated, for example, the [Smart Socket Air](https://shop
 
 ### Configuration:
 
-[*[Workshop Dust Collection - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-12-Woodworking-Dust-Collection-EN-2.png)
+[
+![Workshop Dust Collection - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-12-Woodworking-Dust-Collection-EN-2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-12-Woodworking-Dust-Collection-EN-2.png)
 
-[*[Workshop Dust Collection - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-12-Woodworking-Dust-Collection-EN-1.png)
+[
+![Workshop Dust Collection - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-12-Woodworking-Dust-Collection-EN-1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-12-Woodworking-Dust-Collection-EN-1.png)
 
 ### Download the sample file:
 

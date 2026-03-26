@@ -38,7 +38,9 @@ By using a [Nano 2 Relay](https://shop.loxone.com/enuk/nano-2-relay-tree.html) w
 
 ### Configuration:
 
-[*[Vertical Blind Automation - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-76-Vertical-Shades-Control.png)
+[
+![Vertical Blind Automation - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-76-Vertical-Shades-Control.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-76-Vertical-Shades-Control.png)
 
 ### Download the sample file:
 

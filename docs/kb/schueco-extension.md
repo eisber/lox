@@ -37,6 +37,11 @@ The **Schüco Extension** is designed to integrate up to 30 Schüco devices like
 
 
 
+
+![100457 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100457 install.png)
+
+
+
     Connect the power supply and Link communication to the Miniserver.
 
 
@@ -60,6 +65,11 @@ The **Schüco Extension** is designed to integrate up to 30 Schüco devices like
 
 
     The window that opens will list all connected Schüco devices, that are not yet part of the program:
+
+
+
+
+![10.5 schueco search](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5 schueco search.png)
 
 
 

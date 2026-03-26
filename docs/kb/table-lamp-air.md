@@ -40,6 +40,11 @@ It is controlled and programmed wirelessly via a [Miniserver](https://www.loxone
 
 
 
+![TableLamp PairingButton](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TableLamp_PairingButton.png)
+
+
+
+
 ---
 
 

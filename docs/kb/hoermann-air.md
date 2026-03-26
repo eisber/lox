@@ -35,11 +35,21 @@ Loxone Hörmann Air is a compact interface module for integrating Hörmann garag
 
 
 
+
+![hoem BusConnect](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/hoem_BusConnect.png)
+
+
+
     For HCP1 operators, the device is then ready for pairing.
 The door operator is then recognized automatically.
 
 
     For HCP2 operators, the BUS-Scan and thus the power supply for the device must first be activated at the door operator in order to be able to pair the device afterwards. Activation varies depending on the door operator:
+
+
+
+
+![hoem BusActivate](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/hoem_BusActivate.png)
 
 
 
@@ -74,6 +84,11 @@ The door operator is then recognized automatically.
 
 
 
+
+![hoem dragdrop block](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/hoem_dragdrop_block.gif)
+
+
+
     The (Po) input (partially open) of the Garage/Gate block is also supported by Hörmann Air.
 
 
@@ -101,6 +116,11 @@ The door operator is then recognized automatically.
 
 
     On the label of the Hörmann garage door operator you will find the serial number with the softwareindex, which begins with a capital letter.
+
+
+
+
+![hoem software](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/hoem_software.png)
 
 
 

@@ -81,3 +81,14 @@ The 2 Position Controller manipulates a controlled variable by switching an outp
 
 
 ## Timing Diagram
+
+
+
+
+![2PositionController normal timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/2PositionController_normal-timediag.png)
+
+
+
+
+
+![2PositionController inverted timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/2PositionController_inverted-timediag.png)

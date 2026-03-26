@@ -34,6 +34,11 @@ The Loxone Nano Dimmer Air is used for the dimming of mains voltage luminaires. 
 
 
 
+
+![100212 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100212 install.png)
+
+
+
     The device has two connection terminals, however, they are the same output, the terminals are bridged internally.
 
 
@@ -67,11 +72,11 @@ The Loxone Nano Dimmer Air is used for the dimming of mains voltage luminaires. 
 
 
 
-|  | Please observe the recommended dimming type and load limits! |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Please observe the recommended dimming type and load limits! |
 | --- | --- |
 
 
-|  | Only use luminaires that marked as dimmable! |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Only use luminaires that marked as dimmable! |
 | --- | --- |
 
 
@@ -86,19 +91,19 @@ The Loxone Nano Dimmer Air is used for the dimming of mains voltage luminaires. 
 | Low voltage lamps with magnetic transformer (MLV) | Leading edge | 200VA** | 30VA |
 
 
-|  | *The sum of the nominal load of the ballasts, LED drivers or transformers is relevant, not the nominal load of the actual light. |
+| ![critical](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/critical.png) | *The sum of the nominal load of the ballasts, LED drivers or transformers is relevant, not the nominal load of the actual light. |
 | --- | --- |
 
 
-|  | **A magnetic transformer must be loaded with at least 80% of it's capacity! |
+| ![critical](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/critical.png) | **A magnetic transformer must be loaded with at least 80% of it's capacity! |
 | --- | --- |
 
 
-|  | The ballasts, LED drivers, electronic transformers etc. used must be mains voltage dimmable! |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | The ballasts, LED drivers, electronic transformers etc. used must be mains voltage dimmable! |
 | --- | --- |
 
 
-|  | If in doubt, the manufacturer of the luminaire can provide information on the load characteristics (whether inductive or capacitive) and the recommended dimming method. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | If in doubt, the manufacturer of the luminaire can provide information on the load characteristics (whether inductive or capacitive) and the recommended dimming method. |
 | --- | --- |
 
 
@@ -115,15 +120,20 @@ The Loxone Nano Dimmer Air is used for the dimming of mains voltage luminaires. 
 
 
 
+
+![100154 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100154 install.png)
+
+
+
     When using the Touch for Nano plug-on module, it must be activated in the properties of the Nano Dimmer Air in Loxone Config. The inputs will then be available in the peripheral tree.
 
 
 
-|  | The Touch for Nano's large centre touch zone is ideal for controlling the lighting, while the corner zones are suitable for controlling music and shading. It is based on the Loxone switch standard. The buttons can also be freely used for other applications. To use the individual buttons as inputs, activate the checkboxes in the Properties window. The audible confirmation can also be disabled here. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The Touch for Nano's large centre touch zone is ideal for controlling the lighting, while the corner zones are suitable for controlling music and shading. It is based on the Loxone switch standard. The buttons can also be freely used for other applications. To use the individual buttons as inputs, activate the checkboxes in the Properties window. The audible confirmation can also be disabled here. |
 | --- | --- |
 
 
-|  | The NFC Code Touch for Nano is not compatible with the Nano Dimmer Air. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | The NFC Code Touch for Nano is not compatible with the Nano Dimmer Air. |
 | --- | --- |
 
 

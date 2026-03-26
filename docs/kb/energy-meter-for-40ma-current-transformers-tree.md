@@ -38,11 +38,26 @@ This compact, DIN rail-mounted, MID-certified energy meter enables bidirectional
 
 
 
+
+![em ct 40mA connect](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/em_ct_40mA_connect.png)
+
+
+
     When using Loxone current transformers, follow the connection diagram below:
 
 
 
+
+![em ct 40mA cts](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/em_ct_40mA_cts.png)
+
+
+
     After connecting the mains lines, the covers must be placed over the mains terminal blocks, followed by connecting the Tree and 24V lines.
+
+
+
+
+![em ct 40mA](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/em_ct_40mA.png)
 
 
 
@@ -74,7 +89,12 @@ This compact, DIN rail-mounted, MID-certified energy meter enables bidirectional
 
 
 
-|  | In the Primary Current setting of the Energy Meter, always enter the rated primary current of the connected current transformers (e.g., 25A when using 25A CTs). When "Permanently set CT ratio" is selected, the Energy Meter locks the configured ratio to ensure compliance with legal metrology standards (e.g., MID) and to guarantee accurate billing. Once set, the ratio can no longer be modified. |
+![em ct 40mA programming](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/em_ct_40mA_programming.gif)
+
+
+
+
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | In the Primary Current setting of the Energy Meter, always enter the rated primary current of the connected current transformers (e.g., 25A when using 25A CTs). When "Permanently set CT ratio" is selected, the Energy Meter locks the configured ratio to ensure compliance with legal metrology standards (e.g., MID) and to guarantee accurate billing. Once set, the ratio can no longer be modified. |
 | --- | --- |
 
     By default, the API Connector transmits the meter reading and power at the following intervals:
@@ -97,6 +117,11 @@ This setting can be selected after pairing the meter and is only available for t
 
 
 
+
+![em ct singlephmetering](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/em_ct_singlephmetering.png)
+
+
+
     For the 1P3W grid system, single-phase metering can be implemented by manually adding sensors.
 For the 3P3W grid system, single-phase metering is not possible in general.
 
@@ -109,6 +134,11 @@ For the 3P3W grid system, single-phase metering is not possible in general.
 
 
     The meter provides additional measurements through analog sensors that must first be added. Afterward, the desired measurement is selected:
+
+
+
+
+![em ct sensors](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/em_ct_sensors.gif)
 
 
 
@@ -171,6 +201,11 @@ For the 3P3W grid system, single-phase metering is not possible in general.
 
 
 
+
+![MeterDisplayCycle](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/MeterDisplayCycle.gif)
+
+
+
     If the option "Permanently set CT ratio" is selected, this will also be indicated on the display.
 
 
@@ -204,13 +239,13 @@ When the overall power is negative, energy is delivered, and thus added to the d
 
 | Status LED | Description |
 | --- | --- |
-|  | Everything OK, device is online. |
-|  | Connection to the Miniserver is okay, but the device has not been paired. |
-|  | Device cannot connect to the Miniserver via the Tree interface. |
-|  | Device was selected in Loxone Config and is identifying. |
-|  | Update is in progress. |
-|  | The connection to the Miniserver is established, but no AC mains voltage is detected. |
-|  | Internal device communication error |
+| ![StatLedBarLeftGreenFlashOnline](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedBarLeftGreenFlashOnline.gif) | Everything OK, device is online. |
+| ![StatLedBarLeftOrangeFlashOffline](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedBarLeftOrangeFlashOffline.gif) | Connection to the Miniserver is okay, but the device has not been paired. |
+| ![StatLedBarLeftRedFlashNoConn](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedBarLeftRedFlashNoConn.gif) | Device cannot connect to the Miniserver via the Tree interface. |
+| ![StatLedBarLeftRedGreenIdentify](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedBarLeftRedGreenIdentify.gif) | Device was selected in Loxone Config and is identifying. |
+| ![StatLedBarLeftOrangeRedUpdate](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedBarLeftOrangeRedUpdate.gif) | Update is in progress. |
+| ![em ct no ac mains supply](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/em_ct_no_ac_mains_supply.gif) | The connection to the Miniserver is established, but no AC mains voltage is detected. |
+| ![em ct internal device communication error](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/em_ct_internal_device_communication_error.gif) | Internal device communication error |
 
 
 ---

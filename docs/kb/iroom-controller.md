@@ -12,13 +12,14 @@ Using the iRoom Controller you can integrate your dock products from iRoom into
 
 In order to insert an iRoom controller, first select “Network devices” in the peripheral tree, then the “Add network devices” button appears at the top of the screen in the ribbon. A drop-down menu opens and you can select and insert the iRoom controller.
 
-*[iRoom controller configuration]*
+![iRoom controller configuration](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/EN_KB_Config_iroom_Controller.png)
 
 In the properties of iRoom Controller, you can enter the Network Address. The default port for communication is 13601 it will automatically be appended to the entered address so there is no need to add this manually yourself.
 
-*[iRoom Controller Properties Panel]*
+![iRoom Controller Properties Panel](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/EN_KB_Config_iroom_Controller_Properties.png)
 
-*[Icon Exclamation Mark Loxone]*The operation and installation instructions for the iRoom devices can be found [here](http://www.iroomsidock.com/download/).
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+The operation and installation instructions for the iRoom devices can be found [here](http://www.iroomsidock.com/download/).
 
 ## SENSORS AND ACTUATORS
 

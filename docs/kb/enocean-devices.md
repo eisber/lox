@@ -20,21 +20,21 @@ Source: https://www.loxone.com/enen/kb/enocean-devices/
 
 Select the Miniserver tab and check the ‘EnOcean Monitor’ box:
 
-*[en_kb_config_enocean_start_monitor]*
+![en_kb_config_enocean_start_monitor](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_EnOcean_Start_Monitor.png)
 
 #### CONFIGURE THE SENSOR
 
 The EnOcean monitor has two modes, ‘Monitor’ and ‘Learn’. In the monitor, click ‘Monitor’, this will display each individual signal:
 
-*[EnOcean Monitor Screen]*
+![EnOcean Monitor Screen](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_EnOcean_Monitor.png)
 
 Then click on ‘Learn’ in the monitor and you will see the signals from the same sensor grouped together with a count next to them. Highlight the sensor, enter a ‘Name’ and select a ‘Type’, then click ‘Create sensor’:
 
-*[EnOcean Learn Screen]*
+![EnOcean Learn Screen](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_EnOcean_Learn.png)
 
 The sensor can now be found in Periphery tree:
 
-*[EnOcean Periphery Tree]*
+![EnOcean Periphery Tree](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_EnOcean_Periphery.png)
 
 #### CONFIGURING A WINDOW CONTACT
 
@@ -42,7 +42,7 @@ Identify the sensor by magnetically initiating a change in its status.
 
 Highlight the sensor as before, enter a ‘Name’ and its ‘Type’, then click ‘Create sensor’.
 
-*[EnOcean Learn Contact]*
+![EnOcean Learn Contact](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_EnOcean_Learn_Contact.png)
 
 #### CONFIGURING A MOTION DETECTOR
 
@@ -50,7 +50,7 @@ Identify the motion detector by repeatedly pressing its configure button.
 
 Highlight the detector, enter a ‘Name’ and its ‘Type’, then click ‘Create sensor’.
 
-*[EnOcean Motion Sensor]*
+![EnOcean Motion Sensor](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_EnOcean_Learn_Motion.png)
 
 
 
@@ -60,13 +60,13 @@ Highlight the detector, enter a ‘Name’ and its ‘Type’, then click ‘Cre
 
 Add an actuator from Periphery tab:
 
-*[EnOcean Adding an Actuator]*
+![EnOcean Adding an Actuator](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_EnOcean_Learn_Actuator.png)
 
 #### PAIRING WITH THE ACTUATOR
 
 Highlight the actuator you have just added and click on ‘Learn Device’ in the context tab:
 
-*[Pairning an Enocean Actuator]*
+![Pairning an Enocean Actuator](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_EnOcean_Parining_Actuator.png)
 
 1. Push the program button on the relay (LED flashes red).
 
@@ -104,11 +104,11 @@ As a type, select each user-defined unit.
 
 The device is now created, you can add sensors and actuators.
 
-*[Creating A Custom EnOcean Device Within Loxone Config]*
+![Creating A Custom EnOcean Device Within Loxone Config](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_EnOcean_Custom_Device.png)
 
 In the Create sensors/actuators, the upper and lower bits of the value range can now, in the settings can be defined. For digital sensors/actuators, a values bit is defined. Which value range when will read their EnOcean device you can read the data sheet of the device . For sensors, you can use the EnOcean monitor to find out what data packets are sent from the device.
 
-*[Creating A Custom EnOcean Device Within Loxone Config Properties]*
+![Creating A Custom EnOcean Device Within Loxone Config Properties](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_EnOcean_Custom_Device_Properties.png)
 
 A button for example, sends the press ‘0x70’ and ‘0x00’ on release:
 

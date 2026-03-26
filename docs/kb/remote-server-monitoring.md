@@ -30,13 +30,17 @@ Hardware:
 
 ### Configuration:
 
-[*[Rremote server ping sequence - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Cases-57-Server-Monitoring-2.png)
+[
+![Rremote server ping sequence - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Cases-57-Server-Monitoring-2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Cases-57-Server-Monitoring-2.png)
 
 
 
 [
 
-](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Cases-57-Server-Monitoring-3.png)[*[Remote server monitoring - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Cases-57-Server-Monitoring-3.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Cases-57-Server-Monitoring-3.png)[
+![Remote server monitoring - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Cases-57-Server-Monitoring-3.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Cases-57-Server-Monitoring-3.png)
 
 
 

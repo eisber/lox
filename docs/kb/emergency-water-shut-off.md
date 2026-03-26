@@ -41,7 +41,9 @@ For example, the average water consumption on a working day is 50 litres per per
 
 ### Configuration:
 
-[*[Emergency Water Shut Off - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/3-emergency-water-cut-off.jpg)
+[
+![Emergency Water Shut Off - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/3-emergency-water-cut-off.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/3-emergency-water-cut-off.jpg)
 
 ### Download the sample file:
 

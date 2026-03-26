@@ -56,6 +56,11 @@ There are two ways to link this block to a Miniserver:
 
 
 
+![MiniserverShortcut trust](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/MiniserverShortcut_trust.png)
+
+
+
+
 ### Via entering the Serial number and address
 
     In the properties window, a Miniserver can be linked via the serial number and the local or external address:
@@ -63,5 +68,15 @@ There are two ways to link this block to a Miniserver:
 
 
 
+![MiniserverShortcut local](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/MiniserverShortcut_local.png)
+
+
+
+
 In the user interface, you can now connect to the linked Miniserver within the category or room.
 The user interface attempts to use existing saved access data, if none are found or they have expired, the user must enter their username and password.
+
+
+
+
+![MiniserverShortcut ui](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/MiniserverShortcut_ui.png)

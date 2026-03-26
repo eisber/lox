@@ -111,3 +111,8 @@ Up to 8 radio buttons, only one output can be active at a time. E.g. pulse at in
 
     Outputs can be labeled by double-clicking on the block.
 Labeled outputs are also displayed in the user interface and can be activated there.
+
+
+
+
+![RadioButtonLabelOut](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/RadioButtonLabelOut.png)

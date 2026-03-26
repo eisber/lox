@@ -11,7 +11,7 @@ The **KNX Extension** is designed to integrate devices with KNX interface.
 
 
 
-|  | To address and configure the KNX devices the ETS software by the KNX Association and an external KNX gateway are required. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | To address and configure the KNX devices the ETS software by the KNX Association and an external KNX gateway are required. |
 | --- | --- |
 
 
@@ -39,6 +39,11 @@ The **KNX Extension** is designed to integrate devices with KNX interface.
 
 
 
+
+![100322 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100322 install.png)
+
+
+
     Connect the power supply, Link communication to the Miniserver and the KNX data lines.
 
 
@@ -59,6 +64,11 @@ The **KNX Extension** is designed to integrate devices with KNX interface.
 
 
     To integrate KNX devices, the corresponding sensors and actuators must be created or paired in Loxone Config:
+
+
+
+
+![10.5 KNX periphery](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5 KNX periphery.png)
 
 
 

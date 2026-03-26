@@ -10,7 +10,8 @@ Pendants are one of the most common form of lighting found in our homes. In thei
 
 Pendants are not always a simple plain fitting as they can take many forms and there are some beautiful designs on the market today.
 
-*[Icon Exclamation Mark Loxone]*This section will also apply if looking to control most other types of light fitting such as **Wall Lights** or **Outside Lights.**
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+This section will also apply if looking to control most other types of light fitting such as **Wall Lights** or **Outside Lights.**
 
 
 
@@ -20,4 +21,4 @@ Depending on the type of project you are looking at the best products to use wil
 
 | New Build | Retrofit |
 | --- | --- |
-| *[Example New Build House]* | *[Example Retrofit House]* |
+| ![Example New Build House](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/Example-New-Build-House.jpg) | ![Example Retrofit House](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/Example-Retrofit-House.jpg) |

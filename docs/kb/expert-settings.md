@@ -18,4 +18,6 @@ Now the object specific properties can be edited.
 
 The changes are applied when the Expert Settings are exited.
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/app_ExpertSettings.png)
+[
+![app ExpertSettings](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/app_ExpertSettings.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/app_ExpertSettings.png)

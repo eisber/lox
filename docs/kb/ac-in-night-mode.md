@@ -33,9 +33,13 @@ The AC Unit Controller adjusts settings to improve sleep comfort:
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase-AC-NightMode-1.jpg)
+[
+![UseCase AC NightMode 1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase-AC-NightMode-1.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase-AC-NightMode-1.jpg)
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase-AC-NightMode-2.jpg)
+[
+![UseCase AC NightMode 2](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase-AC-NightMode-2.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase-AC-NightMode-2.jpg)
 
 ### Download the sample file
 

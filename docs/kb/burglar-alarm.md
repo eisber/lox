@@ -203,3 +203,10 @@ Double click on the block to bring up the configuration menu, this allows select
     When the alarm is triggered, there are 2 different options in the App:
 - **Disarm:** Disarms the alarm. To trigger the alarm again, it must be re-armed first.
 - **Acknowledge Alarm:** Acknowledges the alarm without disarming it. The alarm remains armed, so any connected sensor can trigger it immediately again.
+
+
+
+
+
+
+![Alarm DisarmAcknowledgeAlarm](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Alarm_DisarmAcknowledgeAlarm.png)

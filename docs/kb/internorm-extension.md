@@ -8,7 +8,7 @@ The **Internorm Extension** is designed to integrate I-tec devices made by Inter
 
 
 
-|  | Currently, only Internorm devices with the I-tec 1.0 radio protocol are compatible.The new protocol I-tec 2.0 is not supported!In order to integrate new Internorm I-tec 2.0 devices, they must first be reset to I-tec 1.0.To do this, follow the instructions from internorm. If you need help with this, please contact Internorm customer service.After the change to I-tec 1.0, the devices can be paired with the Internorm Extension. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Currently, only Internorm devices with the I-tec 1.0 radio protocol are compatible.The new protocol I-tec 2.0 is not supported!In order to integrate new Internorm I-tec 2.0 devices, they must first be reset to I-tec 1.0.To do this, follow the instructions from internorm. If you need help with this, please contact Internorm customer service.After the change to I-tec 1.0, the devices can be paired with the Internorm Extension. |
 | --- | --- |
 
 
@@ -37,11 +37,16 @@ The **Internorm Extension** is designed to integrate I-tec devices made by Inter
 
 
 
+
+![100232 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100232 install.png)
+
+
+
     Connect the power supply, Link communication to the Miniserver and install the SMA antenna.
 
 
 
-|  | To ensure optimal signal quality, use the optionally available rod antenna. If the enclosure is made of metal, install the antenna outside the enclosure using the SMA extension cable that is supplied with the rod antenna. Alternatively, a flat self-adhesive SMA antenna is available. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | To ensure optimal signal quality, use the optionally available rod antenna. If the enclosure is made of metal, install the antenna outside the enclosure using the SMA extension cable that is supplied with the rod antenna. Alternatively, a flat self-adhesive SMA antenna is available. |
 | --- | --- |
 
     The Extension starts after switching on the power supply, and the status LED will flash orange after a short time when the connection to the Miniserver is established.
@@ -76,6 +81,11 @@ The **Internorm Extension** is designed to integrate I-tec devices made by Inter
 
 
 
+
+![internorm search](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/internorm search.png)
+
+
+
     Select a device, assign a room and installation location and click on **Create Device**.
 
 
@@ -107,14 +117,14 @@ The **Internorm Extension** is designed to integrate I-tec devices made by Inter
 
 
 
-|  | I-tec window contacts on firmware version B11211 or higher are supported. For window contacts dated before March 2018, a firmware update by Internorm Customer Service is required. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | I-tec window contacts on firmware version B11211 or higher are supported. For window contacts dated before March 2018, a firmware update by Internorm Customer Service is required. |
 | --- | --- |
 
     **Notes:**
 
 
 
-|  | Please note that I-tec devices cannot be paired with each other and the Internorm Extension. For example, an I-tec handheld transmitter may only be paired with either an I-tec shading device, or the Internorm Extension. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Please note that I-tec devices cannot be paired with each other and the Internorm Extension. For example, an I-tec handheld transmitter may only be paired with either an I-tec shading device, or the Internorm Extension. |
 | --- | --- |
 
     I-tec devices of the same device type cannot be identified during the pairing process. Therefore, either pair the devices one by one, or do not assign to room and installation location until after pairing, e.g. by testing the shading device.

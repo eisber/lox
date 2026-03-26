@@ -41,7 +41,7 @@ The Loxone Valve Actuator Tree is a motorized valve actuator for heating systems
 
 
 
-|  | Ensure that the correct adapter is used for the specific valve type.Using an unsuitable adapter may lead to issues, such as "valve stuck" or "no valve detected" messages. The adapter also positions the valve stem correctly. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Ensure that the correct adapter is used for the specific valve type.Using an unsuitable adapter may lead to issues, such as "valve stuck" or "no valve detected" messages. The adapter also positions the valve stem correctly. |
 | --- | --- |
 
     We recommend using the Loxone Tree Cable or Panel Wire, both 0.8mm Ø, to wire the actuators.
@@ -56,15 +56,20 @@ Use the IDC tool to push the orange/white wire pair to connect the power supply 
 
 
 
-|  | Make sure that no water can drip onto the actuator.Although the actuator can be mounted in any position, it is recommended to install the actuator above the valve to prevent water dripping onto the actuator in case of a leaking valve or condensation. |
+![VA Tree Installation](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/VA Tree Installation.png)
+
+
+
+
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Make sure that no water can drip onto the actuator.Although the actuator can be mounted in any position, it is recommended to install the actuator above the valve to prevent water dripping onto the actuator in case of a leaking valve or condensation. |
 | --- | --- |
 
 
-|  | When installing the Valve Actuator, ensure that the opening for the green mounting clip does not face downward. Installing the Valve Actuator in this position may cause the clip to loosen or fall out, potentially leading to malfunction or improper operation of the valve. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | When installing the Valve Actuator, ensure that the opening for the green mounting clip does not face downward. Installing the Valve Actuator in this position may cause the clip to loosen or fall out, potentially leading to malfunction or improper operation of the valve. |
 | --- | --- |
 
 
-|  | If a large number of valve actuators share one electrical line with a small wire cross-section, significant voltage drop may occur. In such a case, it is recommended to use a larger wire cross-section for the 24V supply line and to switch to a smaller cross-section just before connecting the actuators. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | If a large number of valve actuators share one electrical line with a small wire cross-section, significant voltage drop may occur. In such a case, it is recommended to use a larger wire cross-section for the 24V supply line and to switch to a smaller cross-section just before connecting the actuators. |
 | --- | --- |
 
     A separate circuit is recommended for the power supply of the actuators. Note the inrush current of 50mA at 24VDC. In order to avoid load peaks at the moment of switch-on, a maximum of 5 actuators will start moving simultaneously.
@@ -100,15 +105,15 @@ If necessary, a [Recalibration](#test) can be triggered via Loxone Config.
 
 | LED state | Description |
 | --- | --- |
-|  | No communication to Miniserver possible. Please check the wiring. |
-|  | Tree Device was detected on Tree bus, but is not paired with Miniserver. |
-|  | 3 short flashes Communication OK, device paired. |
-|  | Device is in pairing mode, ready for pairing. |
-|  | Device was selected in Loxone Config and is identifying. |
-|  | Online, valve open more than 90%. |
-|  | Online, valve open between 10% - 90%. |
-|  | Online, valve less than 10% open. |
-|  | The error "valve stuck" or "no valve detected" is present. Please check the valve pin, it should be easily movable. |
+| ![LED VA red flashing no tree](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_VA_red_flashing_no_tree.gif) | No communication to Miniserver possible. Please check the wiring. |
+| ![LED VA orange flashing not learn](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_VA_orange_flashing_not_learn.gif) | Tree Device was detected on Tree bus, but is not paired with Miniserver. |
+| ![LED VA 3xgreen flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_VA_3xgreen_flashing.gif) | 3 short flashes Communication OK, device paired. |
+| ![LED VA red orange green flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_VA_red_orange_green_flashing.gif) | Device is in pairing mode, ready for pairing. |
+| ![LED VA red green fast flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_VA_red_green_fast_flashing.gif) | Device was selected in Loxone Config and is identifying. |
+| ![LED VA red flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_VA_red_flashing.gif) | Online, valve open more than 90%. |
+| ![LED VA orange flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_VA_orange_flashing.gif) | Online, valve open between 10% - 90%. |
+| ![LED VA green flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_VA_green_flashing.gif) | Online, valve less than 10% open. |
+| ![LED VA red fast flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_VA_red_fast_flashing.gif) | The error "valve stuck" or "no valve detected" is present. Please check the valve pin, it should be easily movable. |
 
 
 ---

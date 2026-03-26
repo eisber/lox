@@ -6,7 +6,8 @@ Source: https://www.loxone.com/enen/kb/port-forwarding/
 
 ## TECHNICAL SUPPORT
 
-*[Icon Exclamation Mark Loxone]*Please note that as Port Forwarding or Port Redirection is a feature of the router on your network the Loxone support team will be unable to assist you in setting this up. Please ensure you contact your router manufacturer or Internet Service Provider (ISP) for support in this area.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+Please note that as Port Forwarding or Port Redirection is a feature of the router on your network the Loxone support team will be unable to assist you in setting this up. Please ensure you contact your router manufacturer or Internet Service Provider (ISP) for support in this area.
 
 ## INTRODUCTION
 
@@ -32,7 +33,8 @@ Once both the port forwarding rule is created and it is assigned to the device, 
 
 At Loxone we suggest leaving the Miniserver on it’s default internal port of 80, this reduces complexity and the number of steps required in the setup. The external port can be randomly selected but we suggest something above 7000 as this reduces the risk of a conflict and give some additional security by obscurity.
 
-*[Icon Exclamation Mark Loxone]*We strongly advise against using Port 80 externally as there are many malicious internet programs that simply spam this port and this can cause communication errors with the Miniserver.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+We strongly advise against using Port 80 externally as there are many malicious internet programs that simply spam this port and this can cause communication errors with the Miniserver.
 
 
 

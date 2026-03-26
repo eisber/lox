@@ -8,7 +8,7 @@ The P1 Meter Reader Air reads DSMR P1-compatible smart meters via a plug-and-pla
 
 
 
-|  | The use of passive splitters is not recommended. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The use of passive splitters is not recommended. |
 | --- | --- |
 
 
@@ -40,6 +40,11 @@ The P1 Meter Reader Air reads DSMR P1-compatible smart meters via a plug-and-pla
 
 
 
+![P1MeterReaderAir connect](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/P1MeterReaderAir_connect.png)
+
+
+
+
 ---
 
 
@@ -66,12 +71,22 @@ The P1 Meter Reader Air reads DSMR P1-compatible smart meters via a plug-and-pla
 
 
 
+
+![P1MeterReaderAir MeterBidirect](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/P1MeterReaderAir_MeterBidirect.gif)
+
+
+
     By default, the API Connector transmits the meter reading and power at the following intervals:
 Power: Every 5 seconds, but only on value change.
 Meter readings: Every 60 seconds, but only on value change. The transmission cycles can be individually configured in the device settings.
 
 
     If additional P1 meter values are required, the corresponding sensors can be searched for and added via "Find periphery":
+
+
+
+
+![P1MeterReaderAir FindPeriphery](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/P1MeterReaderAir_FindPeriphery.gif)
 
 
 

@@ -26,7 +26,9 @@ If sufficient air exchange has taken place with the door open and the CO levels 
 
 ### Configuration:
 
-[*[Monitor CO levels in a Garage - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-81-CO-Level-Garage.png)
+[
+![Monitor CO levels in a Garage - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-81-CO-Level-Garage.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-81-CO-Level-Garage.png)
 
 ### Download the sample file:
 

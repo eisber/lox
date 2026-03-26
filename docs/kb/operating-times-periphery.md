@@ -32,6 +32,16 @@ The operating times are already linked to the respective operating mode.
 
 
 
+![opt operatingTimes](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/opt_operatingTimes.png)
+
+
+
+
+
+![opt editUS](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/opt_editUS.png)
+
+
+
     Holidays with Easter reference are calculated depending on the first full moon of spring.
 No internet connection is required for this.
 
@@ -43,4 +53,14 @@ No internet connection is required for this.
 
 
 
+
+![opt newEntry](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/opt_newEntry.png)
+
+
+
     We assign the operating mode "Vacation" to the created operating time "Winter Vacation". On the set date, the linked operating mode then becomes active:
+
+
+
+
+![opt editEntry](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/opt_editEntry.png)

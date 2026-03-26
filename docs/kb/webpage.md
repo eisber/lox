@@ -46,6 +46,11 @@ Opens the specified website in the web browser
 
 
 
+
+![Webpage Url](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Webpage_Url.jpg)
+
+
+
     URL (intern low res):
 
 

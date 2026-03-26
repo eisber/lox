@@ -12,7 +12,8 @@ Source: https://www.loxone.com/enen/kb/types-and-compatability/
 
 ** Firefox Version 4 has their websocket disabled by default. Please see below.*
 
-*[Icon Exclamation Mark Loxone]*The Android mobile browser currently does not support WebSockets. Support will come probably in a future version of the Android operating system.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+The Android mobile browser currently does not support WebSockets. Support will come probably in a future version of the Android operating system.
 
 
 
@@ -49,4 +50,5 @@ If you want to use a different port than the port 80, you will need to adjust th
 
 Add the address of the Miniserver as an exception in the network scanner on your firewall and antivirus software.
 
-*[Icon Exclamation Mark Loxone]*In the current version of the Avast!® free virus scanner, adding an exception rule has no effect. A connection is possible only with complete deactivation.In this case, we recommend using a different virus scanner.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+In the current version of the Avast!® free virus scanner, adding an exception rule has no effect. A connection is possible only with complete deactivation.In this case, we recommend using a different virus scanner.

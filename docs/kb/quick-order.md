@@ -20,9 +20,9 @@ The first method of quick ordering simply requires you to being typing in the le
 
 A dialogue will then appear which will show all of the relevant products for your search query. Show below are a few examples.
 
-*[]*
+![Placeholder 800x422](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/10/Placeholder.png)
 
-*[]*
+![Placeholder 800x422](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/10/Placeholder.png)
 
 ---
 
@@ -34,4 +34,4 @@ The format is as follows: itemnumber;quantity (E.g. 100001;3). Which each of the
 
 You can also download a CSV file containing the full list of items required for a given project through the use of the project planning tool. More information on the project planning tool can be found [here](https://www.loxone.com/enen/kb/project-planning/).
 
-*[]*
+![Placeholder 800x422](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/10/Placeholder.png)

@@ -26,7 +26,9 @@ With the “Alarm Sequence” Function Block it’s possible to set up a compreh
 
 ### Configuration
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-23-AAL-Activity-Monitoring.png)
+[
+![Use Case 23 AAL Activity Monitoring](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-23-AAL-Activity-Monitoring.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-23-AAL-Activity-Monitoring.png)
 
 ### Download the sample file:
 

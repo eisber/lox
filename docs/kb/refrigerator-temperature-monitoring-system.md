@@ -25,7 +25,9 @@ If the temperature deviates for more than 3 minutes, then a phone call will be m
 
 ### Configuration:
 
-[*[Refrigerator Temperature Monitoring System - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-103-Monitoring-and-data-logging-of-cooling-room.png)
+[
+![Refrigerator Temperature Monitoring System - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-103-Monitoring-and-data-logging-of-cooling-room.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-103-Monitoring-and-data-logging-of-cooling-room.png)
 
 ### Download the sample file:
 

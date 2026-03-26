@@ -28,7 +28,13 @@ Do not use the temperature sensors on an induction hob. Malfunction in the opera
 ## Power Supply
 
 			**Touch & Grill Air****
-***[]**[]**[]*The Touch & Grill Air has an integrated rechargeable battery for flexible use. The battery is charged via the included power adapter. Only use the original mains adapter.
+**
+![tgbackconnections 296x300](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/07/tgbackconnections.png)
+
+![cLoxone Touch and Grill back free 1024x936](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/07/cLoxone_Touch-and-Grill-back-free.png)
+
+![cLoxone Touch  Grill Air 5 300x200](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/07/cLoxone_Touch__Grill_Air_5.jpg)
+The Touch & Grill Air has an integrated rechargeable battery for flexible use. The battery is charged via the included power adapter. Only use the original mains adapter.
 
 ## Commissioning air:
 
@@ -53,17 +59,18 @@ To activate the pairing mode manually, first switch the device off with [Key 6](
 
 ## Function
 
-## *[]*
+##
+![cLoxone Touch  Grill Air 20 300x200](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/07/cLoxone_Touch__Grill_Air_20.jpg)
 
 ### Keys
 
-*[]*
+![TouchGrillAir Keys 1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2019/03/TouchGrillAir_Keys-1.png)
 
 ### Temperature Sensor
 
 The Touch & Grill Air has two temperature sensors. A distinction is made between a green and a yellow sensor. The temperature of the sensors is displayed accordingly on the device’s display. The toggle button can be used to switch between the green and yellow sensors (if connected) or the current time and the timer if it is active.
 
-*[]*
+![TouchGrillAir Sensors](https://www.loxone.com/enen/wp-content/uploads/sites/3/2019/03/TouchGrillAir_Sensors.png)
 
 ### Temperature Monitoring
 
@@ -75,7 +82,7 @@ A timer can be started via the timer button (middle bottom of the device). To ch
 
 
 
-*[]*
+![IG Touch and Grill Tastenstandard 01 1024x451](https://www.loxone.com/dede/wp-content/uploads/sites/2/2019/03/IG_Touch-and-Grill-Tastenstandard-01.png)
 
 ### Standby Mode
 

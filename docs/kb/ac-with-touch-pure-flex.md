@@ -30,9 +30,13 @@ This ensures that the desired temperature is reached more quickly and noticeably
 - [AC Control Air](https://shop.loxone.com/enen/product/100553-ac-control-air-for-gree)
 - [Touch Pure Flex Battery Air](https://shop.loxone.com/enen/product/100509-touch-pure-flex-battery-air-white)
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase-TPF-AC.jpg)
+[
+![UseCase TPF AC 300x277](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase-TPF-AC.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase-TPF-AC.jpg)
 
-### [*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/Config.jpg)
+### [
+![Config](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/Config.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/Config.jpg)
 
 ### Download the sample file
 

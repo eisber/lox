@@ -32,6 +32,11 @@ The **Relay Extension** features 14 dry contact relay outputs.
 
 
 
+
+![100038 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100038 install.png)
+
+
+
     Connect the power supply and Link communication to the Miniserver.
 
 
@@ -39,7 +44,7 @@ The **Relay Extension** features 14 dry contact relay outputs.
 
 
 
-|  | For thermal reasons the total load rating must not exceed 48A (IEC) or 45A (UL). |
+| ![critical](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/critical.png) | For thermal reasons the total load rating must not exceed 48A (IEC) or 45A (UL). |
 | --- | --- |
 
     The Extension starts after switching on the power supply, and the status LED will flash orange after a short time when the connection to the Miniserver is established.

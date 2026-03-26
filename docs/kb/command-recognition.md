@@ -155,6 +155,11 @@ This block can be used to extract values from any text. The search pattern is de
 
 
 
+
+![commrec priceoverview](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/commrec_priceoverview.png)
+
+
+
     Since the text "Natural Gas" is constant, we can jump to this position in the text. To extract the current price, we have to skip the time indication. There are several options to do so:
 
 
@@ -163,10 +168,25 @@ With \d single digits and with \a single characters can be skipped:
 
 
 
+
+![commrec var1](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/commrec_var1.png)
+
+
+
     **Variant 2 via \#\w**
 With \# a number and with \w any word can be skipped:
 
 
 
+
+![commrec var2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/commrec_var2.png)
+
+
+
     **Variant 3 via \s8**
 Since in this example the time will always have the same number of digits and characters, they can be skipped with \s8:
+
+
+
+
+![commrec var3](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/commrec_var3.png)

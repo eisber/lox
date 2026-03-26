@@ -31,6 +31,11 @@ The **AO Extension** features 4 analogue 0-10V outputs.
 
 
 
+
+![100382 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100382 install.png)
+
+
+
     Connect the power supply and Link communication to the Miniserver.
 
 

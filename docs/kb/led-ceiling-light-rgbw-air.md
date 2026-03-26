@@ -42,6 +42,11 @@ The Loxone LED Ceiling Light RGBW Air is a surface mounted fixture with warm whi
 
 
 
+
+![100286 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100286 install.png)
+
+
+
     Then place the lamp on the base plate. Make sure that the magnets are positioned correctly and that no wires are jammed.
 
 

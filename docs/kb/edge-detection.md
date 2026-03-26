@@ -80,3 +80,8 @@ This function block provides a pulse when the value of a digital signal changes.
 
 
 ## Timing Diagram
+
+
+
+
+![EdgeDetection timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/EdgeDetection-timediag.png)

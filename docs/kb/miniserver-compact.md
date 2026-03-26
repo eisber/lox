@@ -62,12 +62,17 @@ The USB interface can be used to connect storage devices with music files.
 
 
 
-|  | Installation Environment RequirementThe Miniserver configuration may contain sensitive data, such as phone numbers and email addresses.To protect this information, the Miniserver must be installed in a secure location with restricted access, ensuring that only authorized personnel can physically reach the device. Suitable installation locations include locked electrical enclosures or secured technical rooms. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Installation Environment RequirementThe Miniserver configuration may contain sensitive data, such as phone numbers and email addresses.To protect this information, the Miniserver must be installed in a secure location with restricted access, ensuring that only authorized personnel can physically reach the device. Suitable installation locations include locked electrical enclosures or secured technical rooms. |
 | --- | --- |
 
 
 
-|  | The Miniserver Compact and Air signals can negatively influence each other when in close proximity.Therefore, a distance of 2 division / breaker units should be maintained between a Miniserver Compact and an Air Base. |
+![msc install2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/msc_install2.png)
+
+
+
+
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The Miniserver Compact and Air signals can negatively influence each other when in close proximity.Therefore, a distance of 2 division / breaker units should be maintained between a Miniserver Compact and an Air Base. |
 | --- | --- |
 
     Connect the power supply, as well as needed inputs and outputs, or devices on the different interfaces.
@@ -80,7 +85,7 @@ The USB interface can be used to connect storage devices with music files.
 
 
 
-|  | Mains and SELV/PELV must not be connected to relay output at the same time. |
+| ![critical](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/critical.png) | Mains and SELV/PELV must not be connected to relay output at the same time. |
 | --- | --- |
 
 
@@ -108,6 +113,16 @@ Alternatively, you can [manually assign a static IP address](https://www.loxone.
 
 
 
+![V15 Miniserver Search](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/V15 Miniserver Search.png)
+
+
+
+
+
+![10.5 MS start search classic](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5 MS start search classic.png)
+
+
+
     **Then follow the instructions for the [Initial Setup](https://www.loxone.com/enen/kb/miniserver-setup/) to create your new project with the Miniserver.**
 
 
@@ -119,6 +134,11 @@ Alternatively, you can [manually assign a static IP address](https://www.loxone.
 
 
     Up to 30 Extensions can be connected to a Miniserver's Link interface according to the following diagram:
+
+
+
+
+![link wiring example](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/link wiring example.png)
 
 
 
@@ -149,7 +169,17 @@ The following diagram shows the wiring of several Tree devices connected to two 
 
 
 
+
+![tree wiring example](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tree wiring example.png)
+
+
+
     The following wiring topologies are possible, at a maximum length of 500m/1640ft:
+
+
+
+
+![tree wiring topologies](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tree wiring topologies.png)
 
 
 
@@ -160,6 +190,11 @@ The following diagram shows the wiring of several Tree devices connected to two 
 
 
     The following image illustrates favorable and less favorable wiring structures within a building, based on the permitted topologies:
+
+
+
+
+![Tree Wiring Topologies Extended](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Tree Wiring Topologies Extended.png)
 
 
 
@@ -191,6 +226,11 @@ For existing installations, doubling the cross-section of the GND line is often 
 
 
 
+
+![tree wiring topologies](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tree wiring topologies.png)
+
+
+
     We recommend using the Loxone Audio Cable for wiring. Use the green, green-white twisted pair for the Tree Turbo data line and the orange/white-orange pair with a cross-section of 1.5 mm² (AWG 16) for the 24 V DC power supply.
 
 
@@ -202,9 +242,19 @@ For existing installations, doubling the cross-section of the GND line is often 
 
 
 
+![TreeTurbo cabeling](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling.png)
+
+
+
+
 ### Detailed wiring with the Audio Cable
 
     **Master** Install Speaker (Install Speaker 7 Master, Install Speaker 10 Master, Install Sub 10 Master):
+
+
+
+
+![TreeTurbo cabeling ISM](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_ISM.png)
 
 
 
@@ -212,11 +262,26 @@ For existing installations, doubling the cross-section of the GND line is often 
 
 
 
+
+![TreeTurbo cabeling ISC](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_ISC.png)
+
+
+
     **Satellite Speaker IP64 Master:**
 
 
 
+
+![TreeTurbo cabeling Sat64M](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_Sat64M.png)
+
+
+
     **Satellite Speaker IP64 Client:**
+
+
+
+
+![TreeTurbo cabeling Sat64C](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_Sat64C.png)
 
 
 
@@ -225,7 +290,12 @@ For existing installations, doubling the cross-section of the GND line is often 
 
 
 
-|  | The Tree Turbo interface is based on a completely different technology than the well-known Tree interface. Therefore, the Tree and the Tree Turbo interface must not be connected! The Tree Turbo data lines should not be run together with other data or signal lines in the same cable. |
+![TreeTurbo cabeling StereoExtension](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_StereoExtension.png)
+
+
+
+
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | The Tree Turbo interface is based on a completely different technology than the well-known Tree interface. Therefore, the Tree and the Tree Turbo interface must not be connected! The Tree Turbo data lines should not be run together with other data or signal lines in the same cable. |
 | --- | --- |
 
     The Tree Turbo communication is IP based, therefore IP addresses for all Tree Turbo devices will appear on the network.
@@ -291,6 +361,11 @@ For existing installations, doubling the cross-section of the GND line is often 
 
 
 
+
+![10.5 air search](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5 air search.png)
+
+
+
     If you select a device here, it will **identify** itself in different ways. Devices with a status LED will flash it, lighting products pulse a white light, other devices such as the Loxone Touch emit an audible click. This allows you to assign and name the devices correctly.
 
 
@@ -321,6 +396,11 @@ For existing installations, doubling the cross-section of the GND line is often 
 
 
 
+![HealthCheck MS](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/HealthCheck_MS.png)
+
+
+
+
 ---
 
 
@@ -334,7 +414,17 @@ For existing installations, doubling the cross-section of the GND line is often 
 
 
 
+
+![devstat open](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/devstat_open.png)
+
+
+
     If a device is offline, currently being updated or has not yet been paired, this is highlighted in color in the status column:
+
+
+
+
+![devstat overview](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/devstat_overview.png)
 
 
 
@@ -342,6 +432,11 @@ For existing installations, doubling the cross-section of the GND line is often 
 ### Diagnostic Options
 
     With a right click on the desired device, individual information can be retrieved and actions triggered. These available options are device-dependent.
+
+
+
+
+![devstat options](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/devstat_options.png)
 
 
 
@@ -373,10 +468,10 @@ For existing installations, doubling the cross-section of the GND line is often 
 
 | Left LED | Right LED | Description |
 | --- | --- | --- |
-|  |  | Everything OK, device is online. |
-|  |  | One or more System Status messages are active. |
-|  |  | Device was selected in Loxone Config and is identifying. |
-|  |  | Update is in progress. |
+| ![LED Audio green flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_Audio_green_flashing.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | Everything OK, device is online. |
+| ![LED Audio green flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_Audio_green_flashing.gif) | ![LED MS orangered systemmessage](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MS_orangered_systemmessage.gif) | One or more System Status messages are active. |
+| ![LED MS redgreenorange identify](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MS_redgreenorange_identify.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | Device was selected in Loxone Config and is identifying. |
+| ![LED MS red flashing update](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MS_red_flashing_update.gif) | ![LED MS offorangered update](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MS_offorangered_update.gif) | Update is in progress. |
 
     **Boot Phase:**
 
@@ -384,22 +479,22 @@ For existing installations, doubling the cross-section of the GND line is often 
 
 | Left LED | Right LED | Description |
 | --- | --- | --- |
-|  |  | Miniserver is booting. |
-|  |  | Miniserver is loading the bootloader image from the SD card. |
-|  |  | Miniserver has successfully loaded the image and will unpack it as the next step. |
-|  |  | Miniserver has successfully unpacked the image. |
-|  |  | Operating system is started. |
-|  |  | Miniserver is loading the program file. |
-|  |  | SD card cannot be read. Check SD card. |
-|  |  | No compatible operating system on the SD card. |
+| ![LED orange](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_orange.gif) | ![LED orange](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_orange.gif) | Miniserver is booting. |
+| ![LED MS orange flickering loadImage](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MS_orange_flickering_loadImage.gif) | ![LED green](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_green.gif) | Miniserver is loading the bootloader image from the SD card. |
+| ![LED green](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_green.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | Miniserver has successfully loaded the image and will unpack it as the next step. |
+| ![LED green](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_green.gif) | ![LED orange](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_orange.gif) | Miniserver has successfully unpacked the image. |
+| ![LED orange](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_orange.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | Operating system is started. |
+| ![LED MS orange flashing loadFile](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MS_orange_flashing_loadFile.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | Miniserver is loading the program file. |
+| ![LED red](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_red.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | SD card cannot be read. Check SD card. |
+| ![LED MS orangered docerror](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MS_orangered_docerror.gif) | ![LED MS green docerror](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MS_green_docerror.gif) | No compatible operating system on the SD card. |
 
 
 | RJ45 Port | Description |
 | --- | --- |
-|  | Network connection |
-|  | No network connection |
-|  | Indicates data traffic |
-|  | If one or both LEDs are permanent on without a plug connected, this indicates that the interface is damaged. |
+| ![LED RJ45 MS NetworkConnection](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_RJ45_MS_NetworkConnection.gif) | Network connection |
+| ![LED RJ45 NoNetworkConnection](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_RJ45_NoNetworkConnection.png) | No network connection |
+| ![LED RJ45 MS DataTraffic](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_RJ45_MS_DataTraffic.gif) | Indicates data traffic |
+| ![LED RJ45 MS InterfaceDamaged](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_RJ45_MS_InterfaceDamaged.png) | If one or both LEDs are permanent on without a plug connected, this indicates that the interface is damaged. |
 
 
 ---
@@ -410,6 +505,11 @@ For existing installations, doubling the cross-section of the GND line is often 
 
     If a Miniserver needs to be replaced by another one, a wizard is available in Loxone Config to guide you through the necessary steps.
 Start the wizard and follow the instructions:
+
+
+
+
+![msreplace start](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/msreplace_start.png)
 
 
 

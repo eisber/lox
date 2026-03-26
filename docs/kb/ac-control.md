@@ -147,6 +147,11 @@ The AC Unit Controller function block is used to control air conditioning units.
 
 
 
+
+![ACControl eco timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ACControl_eco_timediag.png)
+
+
+
     Eco Max, Eco Min, ϑc values from the Intelligent Room Controller are used.
 
 
@@ -154,6 +159,11 @@ The AC Unit Controller function block is used to control air conditioning units.
 ### Comfort Mode
 
     In Comfort Mode, the air conditioner maintains the desired temperature with minimal noise. If the comfort temperature is exceeded, it automatically begins cooling. Once the desired temperature is reached, it runs consistently at a low level to maintain the temperature. Comfort mode is intended for times when someone is in the building.
+
+
+
+
+![ACControl comfort timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ACControl_comfort_timediag.png)
 
 
 
@@ -169,6 +179,11 @@ The AC Unit Controller function block is used to control air conditioning units.
 
 
 
+![IRC AC Integration](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/IRC_AC_Integration.gif)
+
+
+
+
 ---
 
 
@@ -178,3 +193,8 @@ The AC Unit Controller function block is used to control air conditioning units.
     In the user interface, the history of the function block can be displayed.
 A maximum of 100 entries can be shown.
 When you restart or save to the Miniserver, the history is cleared.
+
+
+
+
+![History ACUnitController](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/History_ACUnitController.png)

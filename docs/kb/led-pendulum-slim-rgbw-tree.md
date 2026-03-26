@@ -60,6 +60,11 @@ In this mode, the device indicates whether it has been connected correctly and, 
 
 
 
+
+![Tree CommissioningMode SpotRGBW](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Tree_CommissioningMode_SpotRGBW.png)
+
+
+
     This function is supported since Loxone Config 14.0.3.28, depending on the device firmware.
 
 

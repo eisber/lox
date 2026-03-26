@@ -24,7 +24,9 @@ In the example, we have used the current precipitation to send a notification (u
 
 ### Configuration:
 
-[*[Open window alert if it rains - Loxone config screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-34-Open-Window-Alarm.png)
+[
+![Open window alert if it rains - Loxone config screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-34-Open-Window-Alarm.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-34-Open-Window-Alarm.png)
 
 
 

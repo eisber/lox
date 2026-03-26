@@ -26,7 +26,9 @@ To enable the Miniserver to make calls, the Loxone Caller Service is required. A
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-104-AAL-Emergency-Button.Loxone.png)
+[
+![Use Case 104 AAL Emergency Button.Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-104-AAL-Emergency-Button.Loxone.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-104-AAL-Emergency-Button.Loxone.png)
 
 ### Download the sample file:
 

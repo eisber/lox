@@ -8,11 +8,11 @@ Allows the integration of a Tesla Powerwall and provides several status inputs.
 
 
 
-|  | A Tesla account is required for use! The Miniserver Gen. 1 is not supported. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | A Tesla account is required for use! The Miniserver Gen. 1 is not supported. |
 | --- | --- |
 
 
-|  | Currently only Tesla Powerwall 1 and Tesla Powerwall 3 are supported. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Currently only Tesla Powerwall 1 and Tesla Powerwall 3 are supported. |
 | --- | --- |
 
 
@@ -49,7 +49,7 @@ Allows the integration of a Tesla Powerwall and provides several status inputs.
 
 
 
-|  | The Tesla Powerwall calculates the energy values imbalanced (phase specific). Connect only the power input to the meter blocks to let the Meter block calculate the energy. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The Tesla Powerwall calculates the energy values imbalanced (phase specific). Connect only the power input to the meter blocks to let the Meter block calculate the energy. |
 | --- | --- |
 
 
@@ -66,13 +66,18 @@ Allows the integration of a Tesla Powerwall and provides several status inputs.
 ### Obtaining Password
 
 
-|  | Obtaining the password requires physical disassembly of the Powerwall unit. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Obtaining the password requires physical disassembly of the Powerwall unit. |
 | --- | --- |
 
     Remove the plexiglass cover by unscrewing the 6 screws.
 
 
     The full password is found on a sticker located on the memory unit inside the Powerwall.
+
+
+
+
+![Tesla powerwall3](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Tesla_powerwall3.png)
 
 
 

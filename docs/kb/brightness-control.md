@@ -111,6 +111,11 @@ Function block for constant brightness control. Requires a well-positioned senso
 
 
 
+
+![10.5 daylight harvesting basic](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5 daylight harvesting basic.png)
+
+
+
     In this configuration, the Constant Brightness Controller is only used to switch the lighting on or off, the Constant Brightness Controller adjusts the brightness of the lights.
 
 

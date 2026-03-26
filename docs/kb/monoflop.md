@@ -80,3 +80,8 @@ Provides an output pulse of duration (D) for any length of input pulse
 
 
 ## Timing Diagram
+
+
+
+
+![Monoflop timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Monoflop-timediag.png)

@@ -54,7 +54,9 @@ The fish can be fed either manually or by means of an automatic feeder that can 
 
 ### Configuration:
 
-[*[Fish Tank Automation - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-20-Aquarium-Automation.png)
+[
+![Fish Tank Automation - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-20-Aquarium-Automation.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-20-Aquarium-Automation.png)
 
 ### Download the sample file:
 

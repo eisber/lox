@@ -81,3 +81,8 @@ Creates pulses at the output with adjustable On/Off (Mark/Space) durations
 
 
 ## Timing Diagram
+
+
+
+
+![PulseGenerator timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PulseGenerator-timediag.png)

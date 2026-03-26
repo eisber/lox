@@ -93,6 +93,11 @@ Double-click on the block to open the dialogue for selecting the linked blocks
 
 
 
+
+![CentralGate Menu](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/CentralGate_Menu.png)
+
+
+
     Select the Garage / Gate blocks that you want to control from a central location. The central block will always execute the requested movement at the selected blocks, regardless of whether the doors are currently moving or not.
 
 

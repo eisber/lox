@@ -51,6 +51,60 @@ def fetch(url: str, retries: int = 2) -> str:
     return ""
 
 
+def fetch_binary(url: str, retries: int = 2) -> bytes:
+    """Fetch binary content (images) with retries."""
+    for attempt in range(retries + 1):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "lox-doc-scraper/1.0"})
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                return resp.read()
+        except (urllib.error.URLError, OSError):
+            if attempt == retries:
+                return b""
+            time.sleep(1)
+    return b""
+
+
+def _download_image(url: str, images_dir: str, slug: str) -> str:
+    """Download an image and return the relative path."""
+    os.makedirs(images_dir, exist_ok=True)
+    # Generate a filename from the URL
+    fname = url.rsplit("/", 1)[-1]
+    # Remove query strings
+    fname = fname.split("?")[0]
+    # Prefix with slug to avoid collisions
+    local_name = f"{slug}_{fname}"
+    local_path = os.path.join(images_dir, local_name)
+
+    if not os.path.exists(local_path):
+        data = fetch_binary(url)
+        if data:
+            with open(local_path, "wb") as f:
+                f.write(data)
+
+    if os.path.exists(local_path):
+        return f"images/{local_name}"
+    return ""
+
+
+def describe_image(image_path: str) -> str:
+    """Generate a text description of an image using OCR.
+    Returns extracted text or empty string."""
+    try:
+        import subprocess
+        result = subprocess.run(
+            ["tesseract", image_path, "-", "--psm", "6"],
+            capture_output=True, text=True, timeout=10,
+        )
+        text = result.stdout.strip()
+        # Only return if we got meaningful text (>10 chars, not just noise)
+        if len(text) > 10:
+            return text
+    except Exception:
+        pass
+    return ""
+
+
 def discover_articles(lang: str) -> list[str]:
     """Find all KB article URLs from the KB index page."""
     base = BASE_URL.format(lang=lang)
@@ -62,18 +116,23 @@ def discover_articles(lang: str) -> list[str]:
     return urls
 
 
-def html_to_markdown(html_content: str) -> str:
+def html_to_markdown(html_content: str, download_images: bool = False,
+                     images_dir: str = "", slug: str = "") -> str:
     """Convert HTML article content to clean markdown."""
-    # Extract the actual content (inside pakb-content > body, or entry-content)
-    m = re.search(r'<div class="pakb-content">\s*<body>(.*?)</body>', html_content, re.DOTALL)
-    if not m:
-        m = re.search(r'<div class="pakb-content">(.*?)</div>\s*</article>', html_content, re.DOTALL)
-    if not m:
-        m = re.search(r'<div class="entry-content">(.*?)</div>\s*(?:</article>|<footer)', html_content, re.DOTALL)
-    if not m:
+    # Extract the actual content — try multiple patterns
+    c = None
+    for pattern in [
+        r'<div class="pakb-content">\s*<body>(.*?)</body>',
+        r'<article class="pakb-single">\s*<div class="pakb-content">(.*?)</div>\s*</article>',
+        r'<div class="pakb-content">(.*?)</div>\s*</article>',
+        r'<div class="entry-content">(.*?)</div>\s*(?:</article>|<footer)',
+    ]:
+        m = re.search(pattern, html_content, re.DOTALL)
+        if m:
+            c = m.group(1)
+            break
+    if not c:
         return ""
-
-    c = m.group(1)
 
     # Remove search forms, breadcrumbs, and navigation noise
     c = re.sub(r'<div class="pakb-header">.*?</div>', '', c, flags=re.DOTALL)
@@ -84,9 +143,38 @@ def html_to_markdown(html_content: str) -> str:
     # Remove back-to-top links within headings
     c = re.sub(r'<a[^>]*href="#ToC"[^>]*>[^<]*</a>', '', c)
 
-    # Convert images to alt text
-    c = re.sub(r'<img[^>]*alt="([^"]*)"[^>]*/?\s*>', r'*[\1]*', c)
-    c = re.sub(r'<img[^>]*/?\s*>', '', c)
+    # Convert images to proper markdown with full URLs
+    # Skip tiny icons (width < 50) and UI chrome
+    def _img_to_md(match):
+        tag = match.group(0)
+        alt = re.search(r'alt="([^"]*)"', tag)
+        src = re.search(r'src="([^"]*)"', tag)
+        width = re.search(r'width="(\d+)"', tag)
+        alt_text = alt.group(1) if alt else ""
+        src_url = src.group(1) if src else ""
+        w = int(width.group(1)) if width else 999
+
+        # Skip tiny icons, banners, chevrons
+        if w < 50 or not src_url:
+            return ""
+        if "icon--close" in src_url or "arrow-down" in src_url:
+            return ""
+
+        # Clean alt text
+        if not alt_text or alt_text in ("", " "):
+            alt_text = src_url.rsplit("/", 1)[-1].rsplit(".", 1)[0].replace("-", " ").replace("_", " ")
+
+        # Pick highest-quality src (remove size suffix from URL)
+        src_url = re.sub(r'-\d+x\d+\.', '.', src_url)
+
+        if download_images and images_dir and slug:
+            local = _download_image(src_url, images_dir, slug)
+            if local:
+                src_url = local
+
+        return f"\n![{alt_text}]({src_url})\n"
+
+    c = re.sub(r'<img[^>]*/?\s*>', _img_to_md, c)
 
     # Convert tables to proper markdown tables
     c = _convert_tables(c)
@@ -182,7 +270,8 @@ def extract_title(html_content: str) -> str:
     return ""
 
 
-def scrape_article(url: str) -> dict:
+def scrape_article(url: str, download_images: bool = False,
+                   images_dir: str = "") -> dict:
     """Scrape a single KB article."""
     try:
         html = fetch(url)
@@ -190,12 +279,12 @@ def scrape_article(url: str) -> dict:
         return {"url": url, "error": str(e)}
 
     title = extract_title(html)
-    markdown = html_to_markdown(html)
+    slug = url.rstrip("/").rsplit("/", 1)[-1]
+    markdown = html_to_markdown(html, download_images=download_images,
+                                images_dir=images_dir, slug=slug)
 
     if not markdown:
         return {"url": url, "title": title, "error": "no content extracted"}
-
-    slug = url.rstrip("/").rsplit("/", 1)[-1]
 
     return {
         "url": url,
@@ -213,13 +302,17 @@ def main():
     parser.add_argument("--out", default=os.path.join(REPO_DIR, "docs", "kb"),
                         help="Output directory")
     parser.add_argument("--limit", type=int, help="Max articles to scrape")
+    parser.add_argument("--download-images", action="store_true",
+                        help="Download images locally to docs/kb/images/")
     args = parser.parse_args()
 
     os.makedirs(args.out, exist_ok=True)
+    images_dir = os.path.join(args.out, "images") if args.download_images else ""
 
     if args.slug:
         url = BASE_URL.format(lang=args.lang) + args.slug + "/"
-        article = scrape_article(url)
+        article = scrape_article(url, download_images=args.download_images,
+                                 images_dir=images_dir)
         if "error" in article:
             print(f"Error: {article['error']}", file=sys.stderr)
             sys.exit(1)
@@ -251,7 +344,8 @@ def main():
             index[slug] = {"title": slug, "path": f"docs/kb/{slug}.md", "url": url}
             continue
 
-        article = scrape_article(url)
+        article = scrape_article(url, download_images=args.download_images,
+                                 images_dir=images_dir)
         if "error" in article:
             print(f"  ✗ {slug}: {article['error']}", file=sys.stderr)
             errors += 1

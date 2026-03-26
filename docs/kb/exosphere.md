@@ -14,7 +14,7 @@ Exosphere offers an optional extension providing an additional level of organiza
 
 
 
-|  | Loxone Exosphere requires at least Config version 15.2.9.30 and a current Miniserver generation with Remote Connect.A Miniserver can be added to a maximum of 10 workspaces. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Loxone Exosphere requires at least Config version 15.2.9.30 and a current Miniserver generation with Remote Connect.A Miniserver can be added to a maximum of 10 workspaces. |
 | --- | --- |
 
 
@@ -38,7 +38,17 @@ Exosphere offers an optional extension providing an additional level of organiza
 
 
 
+
+![Exo login](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_login.png)
+
+
+
     Depending on the version of the Miniserver and Loxone Config, there are 2 ways to add a Miniserver to a workspace:
+
+
+
+
+![Exo addMS](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_addMS.png)
 
 
 
@@ -49,11 +59,26 @@ Exosphere offers an optional extension providing an additional level of organiza
 
 
 
+
+![Exo new](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_new.png)
+
+
+
     Now switch to Loxone Config and add Exosphere to Network Periphery:
 
 
 
+
+![Exo addNetDev](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_addNetDev.png)
+
+
+
     In the properties window, a suitable Exo user can be selected and the copied provisioning code pasted:
+
+
+
+
+![Exo properties](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_properties.png)
 
 
 
@@ -71,11 +96,26 @@ Exosphere offers an optional extension providing an additional level of organiza
 
 
 
+
+![Exo Dbcreate](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_Dbcreate.png)
+
+
+
     The database can then be exported. For the import into the Config, select "Export Schema":
 
 
 
+
+![Exo Dbexport](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_Dbexport.png)
+
+
+
     Switch to Loxone Config and click on "Insert database table":
+
+
+
+
+![Exo Dbinsert](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_Dbinsert.png)
 
 
 
@@ -86,14 +126,24 @@ Exosphere offers an optional extension providing an additional level of organiza
 
 
 
+
+![Exo DBCTConf](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_DBCTConf.png)
+
+
+
     Alternatively, columns can be added in the configuration, but they must then be added in Exosphere as well.
 
 
 
-|  | Ensure that the table ID and column ID in the configuration match the IDs in Exosphere, as otherwise, no connection will be established. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Ensure that the table ID and column ID in the configuration match the IDs in Exosphere, as otherwise, no connection will be established. |
 | --- | --- |
 
     In the configuration window, it can be defined when the data should be written to the database:
+
+
+
+
+![Exo DBCTConf session](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_DBCTConf-session.png)
 
 
 
@@ -113,7 +163,12 @@ You can define the data content, format, and the desired delivery interval indiv
 
 
 
-|  | The Exosphere Miniserver Enterprise supports the delivery of up to 10 reports per database.With the Pro version, a single report can be sent via email. |
+![Exo EmailWebhook](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_EmailWebhook.gif)
+
+
+
+
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The Exosphere Miniserver Enterprise supports the delivery of up to 10 reports per database.With the Pro version, a single report can be sent via email. |
 | --- | --- |
 
 
@@ -128,7 +183,12 @@ You can define the data content, format, and the desired delivery interval indiv
 
 
 
-|  | When sharing with the "Anyone with the link" option, no Loxone account is required to access the shared object. |
+![Exo ShareChart](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_ShareChart.png)
+
+
+
+
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | When sharing with the "Anyone with the link" option, no Loxone account is required to access the shared object. |
 | --- | --- |
 
 

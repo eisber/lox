@@ -33,6 +33,11 @@ The **AI Extension Gen. 1** features 4 analog 0-10V inputs. These can also be us
 
 
 
+
+![100381 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100381 install.png)
+
+
+
     Connect the power supply and Link communication to the Miniserver.
 
 
@@ -59,7 +64,17 @@ The **AI Extension Gen. 1** features 4 analog 0-10V inputs. These can also be us
 
 
 
+
+![conex AnalogInUni 2x0 10 1xpsu](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/conex_AnalogInUni_2x0-10_1xpsu.png)
+
+
+
     **0-10V transmitter with 2 outputs, separate power supply:**
+
+
+
+
+![conex AnalogInUni 2x0 10 2xpsu](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/conex_AnalogInUni_2x0-10_2xpsu.png)
 
 
 

@@ -31,7 +31,9 @@ The [SIP settings](#sipnewaudio) from this documentation can be followed in a si
 
 Due to the new internal electronics, the product comes with an RJ45 connector instead of an RJ45 socket:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2020/09/intercom10.2020back.jpg)
+[
+![intercom10.2020back](https://www.loxone.com/dede/wp-content/uploads/sites/2/2020/09/intercom10.2020back.jpg)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2020/09/intercom10.2020back.jpg)
 
 The Intercom XL will not have this change and the product itself is being phased out.
 
@@ -55,11 +57,15 @@ After the Intercom has been connected to the network and powered on, as describe
 - Click on “**Monitoring and Access**” in periphery.
 - Then select “**Device Search**” from the top ribbon:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/start-search-intercom.png)
+[
+![start search intercom](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/start-search-intercom.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/start-search-intercom.png)
 
 This will open the Network Device Search:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/search-intercom-network.png)
+[
+![search intercom network](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/search-intercom-network.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/search-intercom-network.png)
 - The search is started automatically, all devices detected by the Miniserver will be displayed. It can take a few minutes until all devices are found.
 - The audio module (SIP) and video module (CAM) are listed as two separate entries.
 - The modules are configured in two separate steps. (video in [Step 3](#Schritt3) and audio in [Step 5](#Schritt5))
@@ -72,7 +78,9 @@ If the Intercom video module was found as described in [Step 2](#Step2), it can 
 - Select the entry for Intercom Video.
 - Click the “Configure Device” button.
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/start-config-intercom-video.png)
+[
+![start config intercom video](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/start-config-intercom-video.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/start-config-intercom-video.png)
 
 					If the Intercom Video Module could not be found, [you can find more information here](#DiagnoseNetzwerk).
 
@@ -83,7 +91,7 @@ If the Intercom video module was found as described in [Step 2](#Step2), it can 
 
 
 
-*[]*
+![Netzwerk Video](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Netzwerk-Video.png)
 
 					The selected network settings must match the existing network (network mask, default gateway, etc.).
 The selected IP address must not be in use yet.
@@ -95,7 +103,7 @@ In the following dialog, enter the login details for the video module.
 - (Optionally, the external port for the video module can already be configured here. More information about setting up an external video connection can be found[here](#VideoExtern))
 - Confirm the configuration by clicking the “Finish” button.
 
-*[]*
+![Zugangsdaten Video](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Zugangsdaten-Video.png)
 
 					The video module applies the configuration and restarts.
 [Proceed with Step 4.](#Schritt4)
@@ -107,7 +115,7 @@ Once the configuration of the Intercom module is completed, it needs to be creat
 - Assign to a room.
 - Confirm with “Apply”.
 
-*[]*
+![Gerät erstellen](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Gerät-erstellen.png)
 
 					If the dialog shown does not appear, it is possible that a module already exists as a network device.
 [In this case, please follow the procedure described in Step 6.](#Schritt6)
@@ -122,7 +130,9 @@ If the Intercom audio module was found as described in [ Step 2](#Schritt2), it 
 - Select the entry for Intercom Audio.
 - Click the “Configure Device” button.
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/start-config-intercom-audio.png)
+[
+![start config intercom audio](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/start-config-intercom-audio.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/start-config-intercom-audio.png)
 
 					If the Intercom audio module could not be found, [you can find more information here](#DiagnoseNetzwerk).
 
@@ -133,7 +143,7 @@ If the Intercom audio module was found as described in [ Step 2](#Schritt2), it 
 
 
 
-*[]*
+![Netzwerk Audio](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Netzwerk-Audio.png)
 - The selected network settings must match the existing network (network mask, default gateway, etc.).
 - The selected IP address must not be in use yet.
 
@@ -146,7 +156,7 @@ In the following dialog, enter the login details for the audio module.
 - (Optionally, the credentials for the external audio connection can already be entered here. More information about setting up an external audio connection can be found [here](#AudioExtern) genauere Infos.)
 - Confirm the configuration by clicking the “Finish” button.
 
-*[]*
+![Zugangsdaten Audio](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Zugangsdaten-Audio.png)
 
 					The audio module applies the configuration and restarts.
 [Continue with step 6.](#Schritt6)
@@ -158,14 +168,15 @@ In the following dialog, enter the login details for the audio module.
 - Select the desired Intercom.
 - Confirm with “OK”
 
-*[]*
+![Gerät zusammenfügen](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Gerät-zusammenfügen.png)
 
 					If no network device is available, the below dialog may not appear.
 
 [If this is the case, the further procedure is described in step 4.](#Schritt4)
 
 					The configuration is now automatically applied to the existing Intercom.
-*[]*
+
+![Intercom Config Audio](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Intercom-Config-Audio.png)
 
 [Continue with step 7.](#Schritt7)
 
@@ -189,7 +200,7 @@ The remaining configuration is done automatically by [Auto-Configuration](https:
 - The assigned Intercom is automatically selected.
 - Save to the Miniserver.
 
-*[]*
+![Intercom Türsteuerung einfügen 1024x359](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Intercom-Türsteuerung-einfügen.png)
 
 					[Detailed information on how to configure the call buttons of the Intercom XL can be found here.
 ](#Ruftasten)
@@ -221,7 +232,7 @@ The remaining configuration is done automatically by [Auto-Configuration](https:
 - Then enter the username and password of the module (default username: admin, default password: admin).
 - The start page of the audio module shows the [network settings](#VideoNetzwerk).
 
-*[]*
+![Intercom Video Anmelden 1024x630](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Intercom-Video-Anmelden.png)
 
 ## Network Settings
 
@@ -236,7 +247,8 @@ The network settings can also be sent via Loxone Config to the module ([detailed
 - Click on “Send” to apply the settings.
 
 					The module restarts automatically after saving.
-*[]*
+
+![Intercom Video Startseite](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Intercom-Video-Startseite.png)
 
 ## Network Settings via Loxone Config
 
@@ -249,7 +261,7 @@ For this the MAC address of the video module is required. It can be found on the
 - Select “Network Periphery”.
 - Select “Configure Device” from the menu.
 
-*[]*
+![Loxone Config Gerät konfigurieren](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Loxone-Config-Gerät-konfigurieren.png)
 - Select Intercom Video
 - Enter the MAC address of the video module. You can find it on the back of the Intercom.
 - Enter the network settings.
@@ -261,7 +273,8 @@ For this the MAC address of the video module is required. It can be found on the
 					The video module will now restart.
 
 					If the video module does not restart, the connection to the device could not be established or the entered MAC is wrong.
-*[]*
+
+![Loxone Config Netzwerk Video](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Loxone-Config-Netzwerk-Video.png)
 
 ## Change Password
 
@@ -269,7 +282,8 @@ For this the MAC address of the video module is required. It can be found on the
 - Select “Advanced”.
 - Open “User Management”.
 
-			*[]*
+![Intercom Video Benutzerverwaltung 936x1024](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Intercom-Video-Benutzerverwaltung.png)
+
 Here you can change the current password or create new users.
 - Select “Change” user.
 - Tick the “Set new password” checkbox.
@@ -279,7 +293,8 @@ Here you can change the current password or create new users.
 					The module restarts automatically after saving.
 
 We recommend creating a new Intercom user for video display in the app. This user should only have “Viewer” rights.
-*[]*
+
+![Intercom Video Passwort ändern 1024x808](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Intercom-Video-Passwort-ändern.png)
 
 ## Set up external video
 
@@ -290,11 +305,13 @@ We recommend creating a new Intercom user for video display in the app. This use
 - Enter the external port in Loxone Config.
 - If the Host for Video Stream External is specified with “clouddns:[Port]”, the keyword “clouddns” represents the current external IP address of the connection.
 
-*[]*
+![Intercom Video Config extern](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Intercom-Video-Config-extern.png)
 
 ## Update
 
-[*[download]*Download latest firmware](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/CP_CAM_Update_Loxone_V51_RC.zip)
+[
+![download](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/01/download.png)
+Download latest firmware](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/CP_CAM_Update_Loxone_V51_RC.zip)
 - Extract the zip file after downloading.
 - Run the “*_CAM_Update.exe” contained in the folder.
 - Select the IP address of the video module. If the IP address is not listed, you can select the blank option in the drop-down menu to manually enter the correct IP address.
@@ -306,7 +323,8 @@ We recommend creating a new Intercom user for video display in the app. This use
 
 					During the update, the user settings are reset to factory settings. The user data must be reconfigured after the update.
 [Find more detailed information about customizing the user data here](#VideoPasswort).
-*[Intercom_Cam_updater]*
+
+![Intercom_Cam_updater](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/Intercom_Cam_updater.png)
 
 ## Restore Factory Settings
 
@@ -316,7 +334,7 @@ We recommend creating a new Intercom user for video display in the app. This use
 - Power off Loxone Intercom
 - Set both DIP switches on the camera module to OFF (normal state: DIP1 = ON, DIP2 = OFF).
 
-*[DIPswitch]*
+![DIPswitch](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/DIPswitch.png)
 - Restore the power supply to the intercom.
 - The IP address of the video module is now set to 10.10.10.10.
 - Now adjust the IPv4 settings of your PC.
@@ -324,7 +342,7 @@ We recommend creating a new Intercom user for video display in the app. This use
 - Subnet Mask: 255.0.0.0
 - Default Gateway: nicht angegeben
 
-*[IP]*
+![IP](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/IP1.png)
 - Connect to the web interface of the video module (Address: 10.10.10.10). [Detailed information can be found here](#Video).
 - Now configure new network settings for the video module. [Detailed information can be found here](#VideoNetzwerk).
 - Please note that the network settings must match your home network (subnet mask, default gateway, etc.).
@@ -352,7 +370,7 @@ We recommend creating a new Intercom user for video display in the app. This use
 - Then enter the username and password of the module (default username: admin, default password: admin).
 - The start page of the audio module shows the [network settings](#AudioNetzwerk).
 
-*[]*
+![Intercom Audio Anmelden 1024x705](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Intercom-Audio-Anmelden.png)
 
 ## Network Settings
 
@@ -368,7 +386,7 @@ The network settings can also be sent via Loxone Config to the module ([detailed
 
 The module restarts automatically after saving.
 
-*[]*
+![Startseite Intercom Audio](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Startseite-Intercom-Audio.png)
 
 ### Network settings with new audio module from 10/2020:
 
@@ -380,7 +398,9 @@ First click on **Main (1)**, then on **Main Settings (2).**
 
 Then configure the **IP address** **(3) **and the **network settings **:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/IP-Setup-1.png)
+[
+![IP Setup 1](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/IP-Setup-1.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/IP-Setup-1.png)
 **Finally click on “SAVE” to save the settings!**
 
 ## Network Settings via Loxone Config
@@ -396,7 +416,7 @@ For this the MAC address of the audio module is required. It can be found on the
 
 
 
-*[]*
+![Loxone Config Gerät konfigurieren](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Loxone-Config-Gerät-konfigurieren.png)
 - Select Intercom Audio
 - Enter the MAC address of the audio module. You can find it on the back of the Intercom.
 - Enter the network settings.
@@ -408,7 +428,8 @@ For this the MAC address of the audio module is required. It can be found on the
 					The audio module will now restart.
 
 					If the audio module does not restart, the connection to the device could not be established or the entered MAC is wrong.
-*[]*
+
+![Loxone Config Netzwerk Audio](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Loxone-Config-Netzwerk-Audio.png)
 
 ## Change Password
 
@@ -416,13 +437,14 @@ For this the MAC address of the audio module is required. It can be found on the
 - Select “Advanced”.
 - Open “VoIP Settings”
 
-*[]*
+![Intercom Einstellungen VoIP](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Intercom-Einstellungen-VoIP.png)
 - Select the “System” tab.
 - Enter the new password.
 - Click “Save” to accept the new password.
 
 					The module restarts automatically after saving.
-*[]*
+
+![Intercom Audio Passwort ändern](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Intercom-Audio-Passwort-ändern.png)
 
 ## Set up external audio
 
@@ -442,7 +464,7 @@ First, select the “Advanced” button, then open “VoIP Settings”.
 - Set “SIP Registration” to “Yes”.
 - Now enter the SIP account data as shown in the image. (This example uses the data of an Antisip account).
 
-*[]*
+![Intercom Audio SIP 963x1024](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Intercom-Audio-SIP.png)
 
 ## SIP settings with new audio module from 10/2020:
 
@@ -456,7 +478,9 @@ First click on **SIP Configuration** **(1)
 
 At **3** enter the SIP server, in the example **sip.antisip.com:**
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/sip-setup-1.png)
+[
+![sip setup 1](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/sip-setup-1.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/sip-setup-1.png)
 
 **Finally click on “SAVE” to save the settings!**
 
@@ -467,11 +491,13 @@ At **3** enter the SIP server, in the example **sip.antisip.com:**
 
 					After saving to the Miniserver, the configuration of the external audio connection is complete.
 
-*[]*
+![Intercom Config SIP 1024x381](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Intercom-Config-SIP.png)
 
 ## Update
 
-			**[*[download]*](http://popeye.loxone.com/tl_files/loxone/documentation/DE/zubehoer/intercom_xl/Loxone_Intercom_Sip_Update_20160829.zip)****[Download firmware for Loxone Intercom / Intercom XL](https://www.loxone.com/dede/wp-content/uploads/sites/2/2019/10/20191001_LoxoneSipUpdate.zip)**
+			**[
+![download](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/01/download.png)
+](http://popeye.loxone.com/tl_files/loxone/documentation/DE/zubehoer/intercom_xl/Loxone_Intercom_Sip_Update_20160829.zip)****[Download firmware for Loxone Intercom / Intercom XL](https://www.loxone.com/dede/wp-content/uploads/sites/2/2019/10/20191001_LoxoneSipUpdate.zip)**
 
 To update the audio module, access its web interface ([detailed information can be found here](#Audio)).
 
@@ -482,7 +508,7 @@ To update the audio module, access its web interface ([detailed information can 
 - Select the downloaded update file on your PC (*.bin).
 - The update is started by clicking on the “Start transfer” button.
 
-*[]*
+![intercom update 1024x476 1024x476](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/intercom_update-1024x476.png)
 
 					From Config Version 8.0 and App Version 7.0 on, the password for the audio module is also used for communication between App and Intercom. Older versions have to be updated (Config, App, Intercom)!
 The password for the audio module must be entered in Config in the properties of the Intercom.
@@ -495,7 +521,8 @@ The password for the audio module must be entered in Config in the properties of
 - Power off Loxone Intercom
 - Set the DIP switch on the side of the audio module to ON (normal state = OFF).
 
-*[SIPswitch]*The image shows the normal state (OFF) of the DIP switch. (right position [->]).
+![SIPswitch](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/SIPswitch.png)
+The image shows the normal state (OFF) of the DIP switch. (right position [->]).
 
 Restore the power supply to the Intercom.
 - Once the module restarted, you can return the DIP switch to the normal state (OFF).
@@ -532,19 +559,20 @@ To configure the call buttons, open the web interface of the audio module ([Deta
 -  Select the “Advanced” button.
 - Open the “Directory”.
 
-*[]*
+![Intercom XL Verzeichnis 1013x1024](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Intercom-XL-Verzeichnis.png)
 
 			Up to 100 call buttons can be configured in the directory
 - Name of the call button (shown as text on the display of the Intercom)
 
-*[]*
+![Intercom XL Ruftasten 1024x660](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Intercom-XL-Ruftasten.png)
 
 			For each call button a separate Door Controller is added in Loxone Config ([Detailed information can be found here](#Schritt8)).
 - Select desired Door Controller
 - Enter the call button ID
 
 					The configuration is completed by saving to the Miniserver.
-*[]*
+
+![Intercom XL Config Ruftasten 1024x459](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Intercom-XL-Config-Ruftasten.png)
 
 ## Learn iButton
 
@@ -553,11 +581,11 @@ iButtons can be learned directly at the Intercom XL.
 - Select the Intercom in Loxone Config
 - Select the 1-Wire Monitor button
 
-*[]*
+![Intercom XL iButton Monitor](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Intercom-XL-iButton-Monitor.png)
 - Hold the iButton to the reader of the Intercom XL.
 - Select the iButton
 
-*[]*
+![Intercom XL iButton einlernen 1024x142](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Intercom-XL-iButton-einlernen.png)
 - **Create iButton as a device**
 
 Enter a name for the device
@@ -661,7 +689,7 @@ Add the following command to the target path in the Google Chrome icon propertie
 
 To do this, right-click on the Google Chrome icon and open the properties.
 
-*[chrome_settings]*
+![chrome_settings](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/chrome_settings.jpg)
 
 Now, in the “Shortcut” tab, add ” -allow-cross-origin-auth-prompt” to the Target.
 
@@ -669,7 +697,7 @@ The target field should now contain: (may vary depending on operating system and
 
 „C:\Program Files (x86)\Google\Chrome\Application\chrome.exe“ –allow-cross-origin-auth-prompt
 
-*[chrome_add]*
+![chrome_add](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/chrome_add.jpg)
 
 ## Intercom cannot be found on the network
 

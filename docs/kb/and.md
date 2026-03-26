@@ -10,6 +10,11 @@ Multiple signals connected to the same input will also be AND-linked.
 
 
 
+![And table](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/And_table.png)
+
+
+
+
 ## Table of Contents
 - [Inputs](#Input)
 - [Outputs](#Output)
@@ -69,6 +74,11 @@ Multiple signals connected to the same input will also be AND-linked.
 
 
 
+![And timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/And-timediag.png)
+
+
+
+
 ---
 
 
@@ -79,4 +89,14 @@ Multiple signals connected to the same input will also be AND-linked.
 
 
 
+
+![And function](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/And_function.jpg)
+
+
+
     Even with a negation, the upper circuit works the same as the lower one (Attention: the negation has to be done a the right AND function block)
+
+
+
+
+![And negation](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/And_negation.jpg)

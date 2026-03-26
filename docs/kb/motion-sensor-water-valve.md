@@ -26,7 +26,9 @@ If no movement is detected for more than 5 minutes, the refill can run again if 
 
 ### Configuration:
 
-[*[Motion sensor water valve - Loxone config screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-40-Smart-Water-Supply.png)
+[
+![Motion sensor water valve - Loxone config screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-40-Smart-Water-Supply.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-40-Smart-Water-Supply.png)
 
 
 

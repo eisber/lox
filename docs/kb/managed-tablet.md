@@ -32,10 +32,20 @@ To manage Android and iPad-OS tablets with a Miniserver, these can be integrated
 
 
 
+
+![ManagedTablets add](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ManagedTablets_add.png)
+
+
+
     Adding tablets automatically creates a user for the respective tablet. Permissions can be assigned via the [User and Rights Management](https://www.loxone.com/help/usermanagement/). All elevated permission features are disabled, e.g. expert settings, Air/Tree device search, ...
 
 
     The App's display on the tablet can be adjusted in the properties window:
+
+
+
+
+![ManagedTablets properties](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ManagedTablets_properties.png)
 
 
 
@@ -44,8 +54,18 @@ Then save to the Miniserver again.
 
 
 
+
+![ManagedTablets setup](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ManagedTablets_setup.png)
+
+
+
     Open the Loxone App on the tablet, click on "Set up as Managed Tablet" and select the preferred form of setup.
 Via "Pair manually", a pre-configured tablet can be replaced or a new one added.
+
+
+
+
+![ManagedTablets app](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ManagedTablets_app.png)
 
 
 
@@ -66,6 +86,11 @@ Via "Pair manually", a pre-configured tablet can be replaced or a new one added.
 
 
     The managed tablet is further integrated using the [Tablet function block](https://www.loxone.com/help/ManagedTabletBlock) in Loxone Config:
+
+
+
+
+![ManagedTabletsBlock dragdrop](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ManagedTabletsBlock_dragdrop.gif)
 
 
 

@@ -119,6 +119,11 @@ This is where the devices to be used for emergency alarms are selected:
 
 
 
+
+![emergencyalarm deviceselection](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/emergencyalarm-deviceselection.png)
+
+
+
     When using a dedicated device like the [Button Air](https://www.loxone.com/help/button-air) or the [Wrist Button Air](https://www.loxone.com/help/wrist-button-air), the Alarm is triggered immediately when pressing it. Parameter Ta is ignored.
 
 

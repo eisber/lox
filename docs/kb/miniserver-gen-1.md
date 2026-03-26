@@ -48,12 +48,17 @@ The **Loxone Miniserver** serves as central control unit for all kinds of automa
 
 
 
-|  | Installation Environment RequirementThe Miniserver configuration may contain sensitive data, such as phone numbers and email addresses.To protect this information, the Miniserver must be installed in a secure location with restricted access, ensuring that only authorized personnel can physically reach the device. Suitable installation locations include locked electrical enclosures or secured technical rooms. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Installation Environment RequirementThe Miniserver configuration may contain sensitive data, such as phone numbers and email addresses.To protect this information, the Miniserver must be installed in a secure location with restricted access, ensuring that only authorized personnel can physically reach the device. Suitable installation locations include locked electrical enclosures or secured technical rooms. |
 | --- | --- |
 
 
 
-|  | The Miniserver Gen.1 and Air signals can negatively influence each other when in close proximity.Therefore, a distance of 2 division / breaker units should be maintained between a Miniserver Gen.1 and an Air Base. |
+![100001 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100001 install.png)
+
+
+
+
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The Miniserver Gen.1 and Air signals can negatively influence each other when in close proximity.Therefore, a distance of 2 division / breaker units should be maintained between a Miniserver Gen.1 and an Air Base. |
 | --- | --- |
 
     Connect the power supply, as well as inputs/outputs and interfaces, if applicable.
@@ -80,6 +85,16 @@ Zeroconf link-local addressing is not supported by the Miniserver Gen. 1.
 
 
 
+![V15 Miniserver Search](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/V15 Miniserver Search.png)
+
+
+
+
+
+![10.5 MS start search classic](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5 MS start search classic.png)
+
+
+
     **Then follow the instructions for the [Initial Setup](https://www.loxone.com/enen/kb/miniserver-setup/) to create your new project with the Miniserver.**
 
 
@@ -91,6 +106,11 @@ Zeroconf link-local addressing is not supported by the Miniserver Gen. 1.
 
 
     Up to 30 Extensions can be connected to a Miniserver's Link interface according to the following diagram:
+
+
+
+
+![link wiring example](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/link wiring example.png)
 
 
 
@@ -123,6 +143,11 @@ Zeroconf link-local addressing is not supported by the Miniserver Gen. 1.
 
 
 
+
+![extension search](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/extension_search.png)
+
+
+
     If you select an Extension here, it will **identify** itself by flashing its status LED. This allows you to assign and name the Extensions correctly.
 
 
@@ -150,6 +175,11 @@ Zeroconf link-local addressing is not supported by the Miniserver Gen. 1.
 
 
 
+![HealthCheck Gen1](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/HealthCheck_Gen1.png)
+
+
+
+
 ---
 
 
@@ -163,7 +193,17 @@ Zeroconf link-local addressing is not supported by the Miniserver Gen. 1.
 
 
 
+
+![devstat open](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/devstat_open.png)
+
+
+
     If a device is offline, currently being updated or has not yet been paired, this is highlighted in color in the status column:
+
+
+
+
+![devstat overview](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/devstat_overview.png)
 
 
 
@@ -171,6 +211,11 @@ Zeroconf link-local addressing is not supported by the Miniserver Gen. 1.
 ### Diagnostic Options
 
     With a right click on the desired device, individual information can be retrieved and actions triggered. These available options are device-dependent.
+
+
+
+
+![devstat options](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/devstat_options.png)
 
 
 
@@ -216,10 +261,10 @@ Gently pull the visible edge of the SD card outward with your fingernail or a sm
 
 | Left LED | Right LED | Description |
 | --- | --- | --- |
-|  |  | Everything OK, device is online. |
-|  |  | One or more System Status messages are active. |
-|  |  | Device was selected in Loxone Config and is identifying. |
-|  |  | Update is in progress. |
+| ![LED Audio green flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_Audio_green_flashing.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | Everything OK, device is online. |
+| ![LED Audio green flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_Audio_green_flashing.gif) | ![LED MS orangered systemmessage](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MS_orangered_systemmessage.gif) | One or more System Status messages are active. |
+| ![LED MS redgreenorange identify](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MS_redgreenorange_identify.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | Device was selected in Loxone Config and is identifying. |
+| ![LED MS red flashing update](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MS_red_flashing_update.gif) | ![LED MS offorangered update](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MS_offorangered_update.gif) | Update is in progress. |
 
     **Boot Phase:**
 
@@ -227,21 +272,21 @@ Gently pull the visible edge of the SD card outward with your fingernail or a sm
 
 | Left LED | Right LED | Description |
 | --- | --- | --- |
-|  |  | Miniserver is booting. |
-|  |  | Miniserver is loading the bootloader image from the SD card. |
-|  |  | Miniserver has successfully loaded the image and will unpack it as the next step. |
-|  |  | Miniserver has successfully unpacked the image. |
-|  |  | Miniserver is loading the program file. |
-|  |  | SD card cannot be read. Check SD card. |
-|  |  | No compatible operating system on the SD card. |
+| ![LED orange](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_orange.gif) | ![LED orange](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_orange.gif) | Miniserver is booting. |
+| ![LED MS orange flickering loadImage](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MS_orange_flickering_loadImage.gif) | ![LED green](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_green.gif) | Miniserver is loading the bootloader image from the SD card. |
+| ![LED green](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_green.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | Miniserver has successfully loaded the image and will unpack it as the next step. |
+| ![LED green](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_green.gif) | ![LED orange](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_orange.gif) | Miniserver has successfully unpacked the image. |
+| ![LED MS orange flashing loadFile](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MS_orange_flashing_loadFile.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | Miniserver is loading the program file. |
+| ![LED red](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_red.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | SD card cannot be read. Check SD card. |
+| ![LED MS orangered docerror](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MS_orangered_docerror.gif) | ![LED MS green docerror](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MS_green_docerror.gif) | No compatible operating system on the SD card. |
 
 
 | RJ45 Port | Description |
 | --- | --- |
-|  | Network connection |
-|  | No network connection |
-|  | Indicates data traffic |
-|  | If one or both LEDs are permanent on without a plug connected, this indicates that the interface is damaged. |
+| ![LED RJ45 MS NetworkConnection](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_RJ45_MS_NetworkConnection.gif) | Network connection |
+| ![LED RJ45 NoNetworkConnection](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_RJ45_NoNetworkConnection.png) | No network connection |
+| ![LED RJ45 MS DataTraffic](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_RJ45_MS_DataTraffic.gif) | Indicates data traffic |
+| ![LED RJ45 MS InterfaceDamaged](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_RJ45_MS_InterfaceDamaged.png) | If one or both LEDs are permanent on without a plug connected, this indicates that the interface is damaged. |
 
 
 ---
@@ -277,6 +322,11 @@ Gently pull the visible edge of the SD card outward with your fingernail or a sm
 
     If a Miniserver needs to be replaced by another one, a wizard is available in Loxone Config to guide you through the necessary steps.
 Start the wizard and follow the instructions:
+
+
+
+
+![msreplace start](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/msreplace_start.png)
 
 
 

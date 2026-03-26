@@ -26,7 +26,9 @@ Hardware:
 
 ### Configuration:
 
-[*[Garage Door Notifications - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Config-Use-Case-Garage-Door-Notification.png)
+[
+![Garage Door Notifications - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Config-Use-Case-Garage-Door-Notification.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Config-Use-Case-Garage-Door-Notification.png)
 
 
 

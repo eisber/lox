@@ -80,3 +80,8 @@ Creates random On and Off signals with varying intervals
 
 
 ## Timing Diagram
+
+
+
+
+![RandomController timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/RandomController-timediag.png)

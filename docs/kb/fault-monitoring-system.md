@@ -26,7 +26,9 @@ After a successful filter change, the interval can start again from the beginnin
 
 ### Configuration:
 
-[*[Fault Monitoring System - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-47-Fault-Monitoring.jpg)
+[
+![Fault Monitoring System - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-47-Fault-Monitoring.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-47-Fault-Monitoring.jpg)
 
 ### Download the sample file:
 

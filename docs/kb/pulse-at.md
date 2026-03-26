@@ -116,6 +116,11 @@ The pulse is executed daily, also when time functions such as sunrise are select
 
 
 
+
+![pulseat selection](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/pulseat-selection.png)
+
+
+
     Time functions, describing an interval other than daily (e.g. Minute pulse), provide the pulse at the interval of their name.
 
 
@@ -124,3 +129,8 @@ This option is not available for all time functions.
 
 
     In the following example, the function block is used to send a daily pulse to the Automatic Shading block to open the blinds in the morning:
+
+
+
+
+![pulseat blockiosbasic](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/pulseat-blockiosbasic.png)

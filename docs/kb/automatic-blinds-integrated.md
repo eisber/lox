@@ -154,7 +154,17 @@ A Loxone Touch is connected to the block via the T5 input, for operation accordi
 
 
 
+
+![10.5 autoblinds int basic](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5 autoblinds int basic.png)
+
+
+
     In addition, the compass direction is specified in parameter (Dir), to ensure that the sun position automatic is only activated when the sun is actually shining on the window. On demand, the Intelligent Room Controller requests shading via the output (Shd) to the input (Sps) of the Automatic Shading block.
+
+
+
+
+![10.5 autoblinds int irc](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5 autoblinds int irc.png)
 
 
 
@@ -187,7 +197,7 @@ A Loxone Touch is connected to the block via the T5 input, for operation accordi
 
 
 
-|  | When the sun position automatic is activated, the blinds may not adjust immediately. Shading only starts based on the position of the sun and the related parameters. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | When the sun position automatic is activated, the blinds may not adjust immediately. Shading only starts based on the position of the sun and the related parameters. |
 | --- | --- |
 
     Output (Sp) indicates whether the sun position automatic is active.
@@ -204,6 +214,11 @@ A Loxone Touch is connected to the block via the T5 input, for operation accordi
 
 
 ## Direction parameters
+
+
+
+
+![Autojalousie Parameter D DT DTe](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Autojalousie_Parameter_D_DT_DTe.jpg)
 
 
 
@@ -271,10 +286,20 @@ When the sun is setting, the value required for the following interval is calcul
 
 
 
+![AutomaticShading tilted](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AutomaticShading_tilted.png)
+
+
+
+
 ---
 
 
 ## Timing Diagram
+
+
+
+
+![AutomaticShading timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AutomaticShading-timediag.png)
 
 
 
@@ -288,3 +313,8 @@ When the sun is setting, the value required for the following interval is calcul
     In the user interface, the history of the function block can be displayed.
 A maximum of 100 entries can be shown.
 When you restart or save to the Miniserver, the history is cleared.
+
+
+
+
+![History AutoShadeIntegrated](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/History_AutoShadeIntegrated.png)

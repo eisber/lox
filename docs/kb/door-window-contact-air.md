@@ -43,6 +43,11 @@ The Loxone Door & Window Contact Air is a wireless reed-contact sensor that uses
 
 
 
+![DoorWindowContactAir conn](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/DoorWindowContactAir_conn.png)
+
+
+
+
 ---
 
 
@@ -57,7 +62,12 @@ The Loxone Door & Window Contact Air is a wireless reed-contact sensor that uses
 
 
 
-|  | When mounted to metallic surfaces, the range may be significantly reduced. |
+![DoorWindowContactAir mount](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/DoorWindowContactAir_mount.png)
+
+
+
+
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | When mounted to metallic surfaces, the range may be significantly reduced. |
 | --- | --- |
 
 
@@ -74,11 +84,16 @@ The Loxone Door & Window Contact Air is a wireless reed-contact sensor that uses
 
 
 
+
+![DoorWindowContactAir battery](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/DoorWindowContactAir_battery.png)
+
+
+
     Gen.1: Use the white button to eject the battery. Insert a new CR2032 lithium battery and ensure it is completely pushed in for proper button operation.
 
 
 
-|  | Devices with serial number 504F94FFFE-B/C..... do not flash their LED after removing and reinserting the battery.For such devices, after removing the battery, either press a button or wait for a minute to display the status after reinserting the battery. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Devices with serial number 504F94FFFE-B/C..... do not flash their LED after removing and reinserting the battery.For such devices, after removing the battery, either press a button or wait for a minute to display the status after reinserting the battery. |
 | --- | --- |
 
 

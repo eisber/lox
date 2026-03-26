@@ -40,7 +40,7 @@ The Touch Surface Air features six touch points to control the most important fu
 
 
 
-|  | It is important to avoid an air gap between the Touch Surface and the surface! |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | It is important to avoid an air gap between the Touch Surface and the surface! |
 | --- | --- |
 
     Please make sure that the device remains accessible after installation.
@@ -53,7 +53,17 @@ The Touch Surface Air features six touch points to control the most important fu
 
 
 
+
+![100284 100285 buttons](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100284_100285 buttons.png)
+
+
+
     The power supply is either via 24V connected to the orange/white terminal, optionally via a plug-in power supply or a battery pack.
+
+
+
+
+![100285 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100285 install.png)
 
 
 
@@ -87,7 +97,17 @@ The Touch Surface Air features six touch points to control the most important fu
 
 
 
+
+![tsurface decal1](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tsurface_decal1.png)
+
+
+
     Step 2: Squeegee the lines firmly on the transparent transfer paper.
+
+
+
+
+![tsurface decal2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tsurface_decal2.png)
 
 
 
@@ -95,7 +115,17 @@ The Touch Surface Air features six touch points to control the most important fu
 
 
 
+
+![tsurface decal3](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tsurface_decal3.png)
+
+
+
     Step 4: Remove the backing paper.
+
+
+
+
+![tsurface decal4](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tsurface_decal4.png)
 
 
 
@@ -103,11 +133,26 @@ The Touch Surface Air features six touch points to control the most important fu
 
 
 
+
+![tsurface decal5](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tsurface_decal5.png)
+
+
+
     Step 6: Press the contour foil firmly with a flat object.
 
 
 
+
+![tsurface decal6](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tsurface_decal6.png)
+
+
+
     Step 7: Remove the transfer paper.
+
+
+
+
+![tsurface decal7](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tsurface_decal7.png)
 
 
 
@@ -125,11 +170,26 @@ The Touch Surface Air features six touch points to control the most important fu
 
 
 
+
+![tsurface drilling1](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tsurface_drilling1.png)
+
+
+
     Step 2: Place the five optical fiber tubes directly on the Loxone Surface and insert them into the drill holes.
 
 
 
+
+![tsurface drilling2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tsurface_drilling2.png)
+
+
+
     Step 3: For a waterproof and durable operating surface, we recommend having the drill holes professionally sealed from the top. For example with epoxy resin.
+
+
+
+
+![tsurface drilling3](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tsurface_drilling3.png)
 
 
 

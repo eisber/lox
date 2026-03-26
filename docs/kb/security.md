@@ -8,11 +8,11 @@ The Loxone Smart Home protects the occupants of the house from dangers such as f
 
 In detail, we summarise the different security packages as follows:
 
-| *[]* | Protection against burglary |
+| ![IC Burglar 50x50 black](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/01/IC_Burglar-50x50-black.png) | Protection against burglary |
 | --- | --- |
-| *[]* | Protecting the occupants |
-| *[]* | Protecting the building |
-| *[]* | Reliable installations |
+| ![IC Resident 50x50 black](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/01/IC_Resident-50x50-black.png) | Protecting the occupants |
+| ![IC House 50x50 black](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/03/IC_House-50x50-black.png) | Protecting the building |
+| ![IC Plug 50x50 black](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/02/IC_Plug-50x50-black.png) | Reliable installations |
 
 ## Protection against burglary in a Loxone Smart Home
 
@@ -101,9 +101,9 @@ With the Fire and Water Alarm block, the Loxone Smart Home can protect itself fr
 
 In addition to the unwanted ingress of water, a building can also be damaged by frost and wind. In contrast, a Loxone Smart Home is protected by the Loxone Weather Station. Part of the Loxone [Auto Configuration](https://www.loxone.com/enen/kb/auto-configuration/) feature is the automatic configuration of frost and storm protection modes. The [Auto Configuration](https://www.loxone.com/enen/kb/auto-configuration/) implements the frost protection and storm protection as follows:
 
-| *[]* | Frost Protection If the outside temperature falls below 1°C and precipitation is detected by the Loxone Weather Station, a Loxone Smart Home prevents damage caused by ice. All shading elements are stopped immediately and are locked for safety reasons. The Frost Protection mode can either be canceled manually in the app or deactivated automatically when an outside temperature of more than 10°C is reached. |
+| ![APP Frost Protec](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/03/APP_Frost_Protec.png) | Frost Protection If the outside temperature falls below 1°C and precipitation is detected by the Loxone Weather Station, a Loxone Smart Home prevents damage caused by ice. All shading elements are stopped immediately and are locked for safety reasons. The Frost Protection mode can either be canceled manually in the app or deactivated automatically when an outside temperature of more than 10°C is reached. |
 | --- | --- |
-| *[]* | Storm Protection If the Loxone Weather Station detects a wind speed that could damage the shading, Storm Protection becomes active. This means that all shading elements move to the safety position and operation is locked. Storm Protection mode can either be disabled manually in the app or automatically when the wind speed drops below the specified threshold. |
+| ![APP Storm Protec.](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/03/APP_Storm_Protec..png) | Storm Protection If the Loxone Weather Station detects a wind speed that could damage the shading, Storm Protection becomes active. This means that all shading elements move to the safety position and operation is locked. Storm Protection mode can either be disabled manually in the app or automatically when the wind speed drops below the specified threshold. |
 
 
 

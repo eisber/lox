@@ -93,6 +93,11 @@ For this, the actions Switch on TV, Lower shading, and the Theater lighting mood
 
 
 
+
+![scene exampleconfig](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/scene_exampleconfig.png)
+
+
+
     Next, close the window, assign a name, room and category to the scene, and save the program to the Miniserver.
 
 
@@ -100,7 +105,17 @@ For this, the actions Switch on TV, Lower shading, and the Theater lighting mood
 
 
 
+
+![scene exampleapp](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/scene_exampleapp.png)
+
+
+
     The scene can also be opened, allowing the actions to be viewed and edited:
+
+
+
+
+![scene editapp](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/scene_editapp.png)
 
 
 

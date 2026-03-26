@@ -36,7 +36,9 @@ Default +30% is the lowest sensitivity, the sunshine threshold is increased.
 
 Default -30% is the highest sensitivity, the sunshine threshold is decreased.
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/09/sunshine_adjustment_station.png)
+[
+![sunshine adjustment station](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/09/sunshine_adjustment_station.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/09/sunshine_adjustment_station.png)
 
 **Example:**
 
@@ -69,4 +71,6 @@ Default +30% is the lowest sensitivity, the irradiance threshold is increased.
 
 Default -30% is the highest sensitivity, the irradiance threshold is reduced.
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/09/sunshine_adjustment_service.png)
+[
+![sunshine adjustment service](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/09/sunshine_adjustment_service.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/09/sunshine_adjustment_service.png)

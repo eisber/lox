@@ -22,13 +22,14 @@ The Loxone DNS Service allows you to register your Miniserver so you don’t ha
 
 Please note that if you need to port forward to a IP camera or the Intercom that our DNS Service is currently only supported on the Miniserver. The DNS Service only supports IPv4.
 
-*[Loxone Toolkit Head Providing Helpful Information ]*Remember the Loxone DNS Service is a free service that we provide so you don’t have to use another paid service provider! Please note that you will need to register your Miniserver in order to use the DNS Service.
+![Loxone Toolkit Head Providing Helpful Information ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Toolkit_Head.png)
+Remember the Loxone DNS Service is a free service that we provide so you don’t have to use another paid service provider! Please note that you will need to register your Miniserver in order to use the DNS Service.
 
 #### STEP 1: EXTERNAL URL IN LOXONE CONFIG
 
 Open Loxone Config and click on the Miniserver in the periphery tree window. Now enter the Loxone DNS Service address in the External URL field. This is dns.loxonecloud.com, please then enter the port after this in the format dns.loxonecloud.com:port. Also enter the local IP address for your Miniserver and then save in the Miniserver and you are done.
 
-*[Changing External URL For Loxone Cloud Service]*
+![Changing External URL For Loxone Cloud Service](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Miniserver_Properties_DNS.png)
 
 #### CONNECTING TO YOUR MINISERVER
 

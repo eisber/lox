@@ -36,7 +36,9 @@ If the system was activated manually, it will be automatically switched off afte
 
 ### Configuration:
 
-[*[Driveway Ice Melt System - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-80-Snow-Melt-System.png)
+[
+![Driveway Ice Melt System - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-80-Snow-Melt-System.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-80-Snow-Melt-System.png)
 
 
 

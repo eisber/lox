@@ -14,8 +14,9 @@ Please select which type of control you require below.
 
 | 230V Dimmed Lighting | 230V Switched Lighting |
 | --- | --- |
-| *[3rd Party Pendant Light 2]* | *[3rd Party Pendant Light]* |
+| ![3rd Party Pendant Light 2](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/3rd-Party-Pendant-Light-2.jpg) | ![3rd Party Pendant Light](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/03/3rd-Party-Pendant-Light.jpg) |
 
 
 
-*[Icon Exclamation Mark Loxone]*Please note that the images above are for reference only.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+Please note that the images above are for reference only.

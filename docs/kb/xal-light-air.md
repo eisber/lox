@@ -33,6 +33,11 @@ This is indicated by the power button flashing as follows:
 
 
 
+
+![XAL Pairmode](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/XAL-Pairmode.gif)
+
+
+
     **[Then follow the pairing procedure on the Air Interface.](https://www.loxone.com/help/air-interface#AirPair)**
 
 
@@ -45,6 +50,11 @@ This is indicated by the power button flashing as follows:
 
 
 
+![XAL Offline](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/XAL-Offline.gif)
+
+
+
+
 ---
 
 
@@ -53,6 +63,11 @@ This is indicated by the power button flashing as follows:
 
     There are up to 8 freely programmable buttons on the luminaire, which may be divided into up to two keypads.
 The numbered button inputs in Loxone Config correspond to these buttons starting with the first keypad in ascending order. Below are two examples:
+
+
+
+
+![XAL Keypad Inputs](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/XAL-Keypad-Inputs.png)
 
 
 

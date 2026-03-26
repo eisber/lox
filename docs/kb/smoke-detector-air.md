@@ -37,6 +37,11 @@ The Loxone Smoke Detector Air is a photo-electric smoke detector. When smoke is 
 
 
 
+![100142 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100142 install.png)
+
+
+
+
 ---
 
 
@@ -50,6 +55,11 @@ The Loxone Smoke Detector Air is a photo-electric smoke detector. When smoke is 
 
 
     To activate the pairing mode manually, hold down the pairing button for at least 5 seconds after establishing power supply. The pairing button is located on the circuit board on the back of the device.
+
+
+
+
+![100142 button](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100142 button.jpg)
 
 
 
@@ -142,7 +152,7 @@ The Loxone Smoke Detector Air is a photo-electric smoke detector. When smoke is 
 
 
 
-|  | Smoke detectors should be checked once a year. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Smoke detectors should be checked once a year. |
 | --- | --- |
 
     Remove dust and insects from the smoke detector grille if necessary. Any smoke that may occur must be able to enter the smoke detector unhindered.

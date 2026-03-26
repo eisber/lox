@@ -14,7 +14,9 @@ We reccomend where possible using the RGBW LED Spot Tree and Warm White LED Spo
 
 [Click Here](https://www.loxone.com/enen/kb/24v-spotlights-new-build-flexibility/)
 
-*[LED-Spot-WW-Tree]* *[LED-Spot-RGBW-Tree]*
+![LED-Spot-WW-Tree](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/03/LED-Spot-WW-Tree.png)
+
+![LED-Spot-RGBW-Tree](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/03/LED-Spot-RGBW-Tree.png)
 
 ### COST
 
@@ -22,4 +24,6 @@ For projects where budgetary constraints are the the driving factor there is a l
 
 [Click Here](https://www.loxone.com/enen/kb/24v-downlights-new-build-cost)
 
-*[Loxone-WW-LED-Spot.png]* *[Loxone LED Spot RGBW]*
+![Loxone-WW-LED-Spot.png](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/03/Loxone-WW-LED-Spot.png)
+
+![Loxone LED Spot RGBW](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/03/Loxone-RGBW-LED-Spot.png)

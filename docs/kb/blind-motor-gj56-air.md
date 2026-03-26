@@ -31,12 +31,15 @@ Instructions for commissioning the Venetian blind actuator GJ56 Air
 
 Here you will find useful documents for dimensioning and assembling the Venetian blind actuator.
 
-*[Loxone Download button]*[Dimensioning diagram of the drive](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/01/GJ56_Auswahldiagramm-6-10-20Nm.pdf?x48792)
+![Loxone Download button](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Icon_Download_Button.png)
+[Dimensioning diagram of the drive](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/01/GJ56_Auswahldiagramm-6-10-20Nm.pdf?x48792)
 
-*[Loxone Download button]*[Installation and start-up instructions](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/04/GEIGER_E_BAL_GJ56-AIR-F03_100W2500-001_EN.pdf)
+![Loxone Download button](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Icon_Download_Button.png)
+[Installation and start-up instructions](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/04/GEIGER_E_BAL_GJ56-AIR-F03_100W2500-001_EN.pdf)
 
 The required motor torque can be determined as follows:
-*[]*
+
+![EN KB Diagram Torque Motor 768x477 300x186](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/04/EN_KB_Diagram_Torque_Motor-768x477.jpg)
 
 ## COMISSIONING
 
@@ -54,9 +57,9 @@ Once the device has been learnt in, the device will be listed under the I/O tree
 
 To use the blind drive, simply drag it onto a program page.
 
-*[]*
+![EN KB Config Automatic Blinds Integrated 1024x160](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/04/EN_KB_Config_Automatic_Blinds_Integrated.png)
 
-*[Icon Exclamation Mark Loxone]*
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 
 Also the Geiger transmitter LC Air (wall and hand transmitter) can communicate directly with the Miniserver GO or the Air Base Extension. For this, however, the device must be placed in the Loxone mode and then into the learning mode. To do this, remove the battery and set the switch on the board inside the device to “LX”. As soon as the battery is inserted again, the learning mode starts automatically.
 The further teach-in functions as in the case of the [Remote Air](https://www.loxone.com/enen/kb/remote-air/).
@@ -65,15 +68,22 @@ The further teach-in functions as in the case of the [Remote Air](https://www.lo
 
 After the motor has been connected and learned into the Airbase, the end positions must now be defined.
 
- *[Icon Exclamation Mark Loxone]*
+
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 
 Depending on the installation of the blind drive, the direction of rotation may be different. For this reason, the blinds should be in a central position when teaching the end positions so that the blind can travel in both directions without encountering an obstacle.
 
 To learn in the end positions you will need to activate the ‘Service mode’ in the app (App version 7.4).
 
+![gj56 1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/04/gj56-1.png)
+
+![gj56 2](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/04/gj56-2.png)
+
 Once the service mode has been started, you can use the buttons in the app to change the position of your shading.
 
 Once the end position has been reached, save it using “End position”.
+
+![gj56 3](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/04/gj56-3.png)
 
 First the lower end position must be adjusted, then the upper end position. Use the service mode of the Loxone Smarthome App.
 
@@ -85,7 +95,8 @@ Once the end positions have been learned, the service mode in the app can be clo
 
 If you want to re-learn the end positions, you can restart the learning process by switching the motor off and after 30 minutes the service mode can be activated again.
 
-*[Icon Exclamation Mark Loxone]***
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+**
 
 No end positions are set in the delivery state!**
 
@@ -119,23 +130,24 @@ Loxone practice tip
 
 #### Preparation
 
-*[]*
+![EN KB Product Slat Adjustment 1024x631](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/04/EN_KB_Product_Slat_Adjustment.jpg)
 
 Before you start the correction, attach a piece of wire to one of the slats.
 
 #### STEP 1:
 
-*[]*
+![EN KB Product Slat Adjustment 2 1024x631](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/04/EN_KB_Product_Slat_Adjustment_2.jpg)
 
 Tilt the slats by approx. 45 ° (guide value). Align the previously attached wire horizontally. If necessary, check with a spirit level whether the wire is also aligned horizontally. Save the slat position.
 
 #### STEP 2:
 
-*[]*
+![EN KB Product Slat Adjustment 3 1024x631](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/04/EN_KB_Product_Slat_Adjustment_3.jpg)
 
 In step 2, place the slats in the exact same position as in step 1. The previously attached wire should be brought back into the horizontal position. If the slats are too much inclined, you can start the process again, otherwise save the slat position.
 
-*[Icon Exclamation Mark Loxone]*[>> General information about Loxone Air technology can be found here <<](https://www.loxone.com/enen/products/air/)
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+[>> General information about Loxone Air technology can be found here <<](https://www.loxone.com/enen/products/air/)
 
 Original installation and operating instructions together with EC declaration of conformity for the Venetian blind actuator GJ56 Air (pdf)
 

@@ -50,7 +50,12 @@ The **Loxone Miniserver Go** serves as central control unit for all kinds of aut
 
 
 
-|  | The Miniserver Go and Air signals can negatively influence each other when in close proximity.Therefore, a distance of 2 division / breaker units should be maintained between a Miniserver Go and an Air Base. |
+![100139 100336 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100139 100336 install.png)
+
+
+
+
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The Miniserver Go and Air signals can negatively influence each other when in close proximity.Therefore, a distance of 2 division / breaker units should be maintained between a Miniserver Go and an Air Base. |
 | --- | --- |
 
     Plug the included power supply into the Micro-USB connector.
@@ -77,6 +82,16 @@ Alternatively, you can [manually assign a static IP address](https://www.loxone.
 
 
 
+![V15 Miniserver Search](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/V15 Miniserver Search.png)
+
+
+
+
+
+![10.5 MS start search classic](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5 MS start search classic.png)
+
+
+
     **Then follow the instructions for the [Initial Setup](https://www.loxone.com/enen/kb/miniserver-setup/) to create your new project with the Miniserver.**
 
 
@@ -88,6 +103,11 @@ Alternatively, you can [manually assign a static IP address](https://www.loxone.
 
 
     Up to 30 Extensions can be connected to the Miniserver Go according to the following diagram:
+
+
+
+
+![100139 100336 connect extension](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100139 100336 connect extension.png)
 
 
 
@@ -111,6 +131,11 @@ Alternatively, you can [manually assign a static IP address](https://www.loxone.
 
 
     The window that opens will list all connected Extensions that are not yet part of the program to the left:
+
+
+
+
+![extension search](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/extension_search.png)
 
 
 
@@ -161,6 +186,11 @@ Alternatively, you can [manually assign a static IP address](https://www.loxone.
 
 
 
+
+![10.5 air search](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5 air search.png)
+
+
+
     If you select a device here, it will **identify** itself in different ways. Devices with a status LED will flash it, lighting products pulse a white light, other devices such as the Loxone Touch emit an audible click. This allows you to assign and name the devices correctly.
 
 
@@ -191,6 +221,11 @@ Alternatively, you can [manually assign a static IP address](https://www.loxone.
 
 
 
+![HealthCheck MS](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/HealthCheck_MS.png)
+
+
+
+
 ---
 
 
@@ -204,7 +239,17 @@ Alternatively, you can [manually assign a static IP address](https://www.loxone.
 
 
 
+
+![devstat open](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/devstat_open.png)
+
+
+
     If a device is offline, currently being updated or has not yet been paired, this is highlighted in color in the status column:
+
+
+
+
+![devstat overview](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/devstat_overview.png)
 
 
 
@@ -212,6 +257,11 @@ Alternatively, you can [manually assign a static IP address](https://www.loxone.
 ### Diagnostic Options
 
     With a right click on the desired device, individual information can be retrieved and actions triggered. These available options are device-dependent.
+
+
+
+
+![devstat options](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/devstat_options.png)
 
 
 
@@ -261,10 +311,10 @@ This will release and partially eject the card so it can be removed.
 
 | Top LED | Back LED | Description |
 | --- | --- | --- |
-|  |  | Everything OK, device is online. |
-|  |  | One or more System Status messages are active. |
-|  |  | Device was selected in Loxone Config and is identifying. |
-|  |  | Update is in progress. |
+| ![LED MSGo white](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_white.gif) | ![LED MSGo off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_off.gif) | Everything OK, device is online. |
+| ![LED MSGo white](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_white.gif) | ![LED MSGo orangered systemmessage](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_orangered_systemmessage.gif) | One or more System Status messages are active. |
+| ![LED MSGo white](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_white.gif) | ![LED MSGo redgreenorange identify](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_redgreenorange_identify.gif) | Device was selected in Loxone Config and is identifying. |
+| ![LED MSGo white flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_white_flashing.gif) | ![LED MSGo offorangered update](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_offorangered_update.gif) | Update is in progress. |
 
     **Boot Phase:**
 
@@ -272,12 +322,12 @@ This will release and partially eject the card so it can be removed.
 
 | Top LED | Back LED | Description |
 | --- | --- | --- |
-|  |  | Miniserver is booting. |
-|  |  | Miniserver is loading the bootloader image from the SD card. |
-|  |  | Miniserver has successfully loaded the image and will unpack it as the next step. |
-|  |  | Miniserver has successfully unpacked the image. |
-|  |  | Operating system is started. |
-|  |  | SD card cannot be read. Check SD card. |
+| ![LED MSGo white](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_white.gif) | ![LED MSGo orange](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_orange.gif) | Miniserver is booting. |
+| ![LED MSGo white](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_white.gif) | ![LED MSGo orange flickering loadImage](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_orange_flickering_loadImage.gif) | Miniserver is loading the bootloader image from the SD card. |
+| ![LED MSGo green off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_green_off.gif) | ![LED MSGo green](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_green.gif) | Miniserver has successfully loaded the image and will unpack it as the next step. |
+| ![LED MSGo white](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_white.gif) | ![LED MSGo off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_off.gif) | Miniserver has successfully unpacked the image. |
+| ![LED MSGo green off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_green_off.gif) | ![LED MSGo orange](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_orange.gif) | Operating system is started. |
+| ![LED MSGo green off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_green_off.gif) | ![LED MSGo red](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MSGo_red.gif) | SD card cannot be read. Check SD card. |
 
     The LEDs on the RJ45 port are disabled and are off during operation.
 
@@ -310,6 +360,11 @@ This will release and partially eject the card so it can be removed.
 
     If a Miniserver needs to be replaced by another one, a wizard is available in Loxone Config to guide you through the necessary steps.
 Start the wizard and follow the instructions:
+
+
+
+
+![msreplace start](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/msreplace_start.png)
 
 
 

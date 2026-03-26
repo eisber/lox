@@ -18,7 +18,7 @@ For this reason, original remote controls of the AC unit (also IR) can no longer
 
 
 
-|  | For the AC Control Air for Fujitsu, additional configuration may be required to enable the use of an external temperature sensor. Specific settings must be activated in the internal unit’s maintenance menu to allow switching to an external sensor. We recommend contacting an official Fujitsu installer or the manufacturer for assistance with this setup |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | For the AC Control Air for Fujitsu, additional configuration may be required to enable the use of an external temperature sensor. Specific settings must be activated in the internal unit’s maintenance menu to allow switching to an external sensor. We recommend contacting an official Fujitsu installer or the manufacturer for assistance with this setup |
 | --- | --- |
 
 
@@ -54,7 +54,7 @@ For this reason, original remote controls of the AC unit (also IR) can no longer
 
 
 
-|  | With some Fujitsu models there is a risk of confusion as the terminals for the mains voltage may also be labeled 1/2/3.The AC Control Air must not be connected to the mains voltage, but only to the terminals for the wired remote control! |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | With some Fujitsu models there is a risk of confusion as the terminals for the mains voltage may also be labeled 1/2/3.The AC Control Air must not be connected to the mains voltage, but only to the terminals for the wired remote control! |
 | --- | --- |
 
     Connect the AC Control Air to the terminals with the enclosed connecting cable as follows:
@@ -62,11 +62,16 @@ For this reason, original remote controls of the AC unit (also IR) can no longer
 
 
 
-|  | Some Fujitsu models require additional adapter cables or electronic modules to connect a wired remote control. Please refer to the instructions of the air conditioner for details. |
+![AcCont Connect 123](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AcCont_Connect-123.png)
+
+
+
+
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Some Fujitsu models require additional adapter cables or electronic modules to connect a wired remote control. Please refer to the instructions of the air conditioner for details. |
 | --- | --- |
 
 
-|  | On some Fujitsu models there is a DIP switch (SW1) on the circuit board. This must be set to “3WIRE” to connect the AC Control Air. Please refer to the instructions of the air conditioner for details. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | On some Fujitsu models there is a DIP switch (SW1) on the circuit board. This must be set to “3WIRE” to connect the AC Control Air. Please refer to the instructions of the air conditioner for details. |
 | --- | --- |
 
     Fasten the AC Control Air to a suitable place in the device, e.g. with a cable tie.
@@ -111,6 +116,11 @@ The AC Control Air is now supplied with voltage from the air conditioner and can
 
 
 
+![AcCont dragdrop block](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AcCont_dragdrop_block.gif)
+
+
+
+
 ---
 
 
@@ -122,9 +132,24 @@ The AC Control Air is now supplied with voltage from the air conditioner and can
 
 
 
+![AcCont DiagStart](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AcCont_DiagStart.png)
+
+
+
+
+
+![ACCont Diagnostics2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ACCont_Diagnostics2.png)
+
+
+
 
 Additionally, you can also start the AC Control Monitor for diagnostic purposes.
 1) Activate the AC Control Monitor. 2) Turn the AC unit off. 3) Turn the AC unit on. 4) Cycle through the non-working functions. The recording needs to be at least five minutes. 5) Save the AC Control Monitor data and have them ready for transmission to Loxone.
+
+
+
+
+![AC Control Monitor](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AC_Control_Monitor.png)
 
 
 

@@ -36,6 +36,11 @@ The Nano 2 Relay Tree is a compact module with 2 relay outputs, controlled via t
 
 
 
+
+![100395 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100395 install.jpg)
+
+
+
     Connect the power supply (orange/white terminal) and Tree communication wires (green/white terminals). Shortly after power-up, the status LED will blink orange if the wiring is correct (connection to Tree Extension and Miniserver is established).
 
 
@@ -43,7 +48,17 @@ The Nano 2 Relay Tree is a compact module with 2 relay outputs, controlled via t
 
 
 
+
+![N2RT Lighting](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/N2RT_Lighting.png)
+
+
+
     Wiring Example Shading:
+
+
+
+
+![N2RT Shading](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/N2RT_Shading.png)
 
 
 
@@ -71,7 +86,17 @@ The Nano 2 Relay Tree is a compact module with 2 relay outputs, controlled via t
 
 
 
+
+![N2RT Universal use](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/N2RT_Universal_use.png)
+
+
+
     Shading: Auto-Configuration will create an Automatic Shading function block
+
+
+
+
+![N2RT Shading use](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/N2RT_Shading_use.gif)
 
 
 

@@ -34,7 +34,9 @@ Last but not least, plants need enough water to grow and thrive. This process ca
 
 ### Configuration:
 
-[*[Plant Monitoring and Control System - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-35-Indoor-Gardening.png)
+[
+![Plant Monitoring and Control System - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-35-Indoor-Gardening.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-35-Indoor-Gardening.png)
 
 ### Download the sample file:
 

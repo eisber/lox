@@ -27,7 +27,9 @@ The Energy Manager processes the list according to the level of the connected lo
 
 ### Configuration:
 
-[*[Excess Solar Energy Management - Loxone Config Screenshot]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2020/04/Loxone-Use-Case-54-Energy-Management.png)
+[
+![Excess Solar Energy Management - Loxone Config Screenshot](https://www.loxone.com/dede/wp-content/uploads/sites/2/2020/04/Use-Case-No.-54-Energy-Management.jpg)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2020/04/Loxone-Use-Case-54-Energy-Management.png)
 
 ### Download the sample file:
 

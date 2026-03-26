@@ -130,6 +130,11 @@ The maximum possible charging current of the charging station is set in the prop
 
 
 
+
+![Wallbox Settings](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Wallbox_Settings.jpg)
+
+
+
     If the charging station is integrated over the network, only the inputs (Act) (Activate charging process), (Cpl) (Charging power limit), and (R) (Reset) are used.
 
 
@@ -144,6 +149,11 @@ The maximum possible charging current of the charging station is set in the prop
 
 
     Charging is active when a vehicle is connected and the (Act) input is On. In addition, the inputs (Cp) (Current charging power) and (E) (Charged energy) are now also used. These are required for the statistics.
+
+
+
+
+![Wallbox Settings Without](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Wallbox_Settings_Without.jpg)
 
 
 

@@ -4,7 +4,7 @@ Source: https://www.loxone.com/enen/kb/spot-price-optimizer/
 
 ---
 
-|  | Loxone provides direct integration with leading European spot markets, including EPEX, OTE, and ESIOS. This enables a reliable, efficient, and seamless setup without the need for additional configuration. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Loxone provides direct integration with leading European spot markets, including EPEX, OTE, and ESIOS. This enables a reliable, efficient, and seamless setup without the need for additional configuration. |
 | --- | --- |
 
     The Spot Price Optimizer function block is used to activate a load in hours when the energy price is the lowest.
@@ -160,7 +160,7 @@ Source: https://www.loxone.com/enen/kb/spot-price-optimizer/
 
 
 
-|  | Due to legal restrictions imposed by the spot market data providers, we cannot provide direct access to the raw data. However, all relevant statistics remain available in the user interface. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Due to legal restrictions imposed by the spot market data providers, we cannot provide direct access to the raw data. However, all relevant statistics remain available in the user interface. |
 | --- | --- |
 
     **Programming Example:**
@@ -168,6 +168,11 @@ Source: https://www.loxone.com/enen/kb/spot-price-optimizer/
 
     In this example, a trigger pulse is used to determine the 4 cheapest hours of the next 6 hours and the heat pump is switched on during these hours.
 If the energy price is above the calculated or set very high value, the heat pump is locked.
+
+
+
+
+![spo epex](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/spo_epex.png)
 
 
 
@@ -199,6 +204,16 @@ If the energy price is above the calculated or set very high value, the heat pum
 
 
 
+![spo properties](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/spo_properties.png)
+
+
+
+
+
+![spo relative](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/spo_relative.png)
+
+
+
 
 ---
 
@@ -217,7 +232,12 @@ Additionally, grid costs of 6.7ct were calculated, along with 20% VAT.
 
 
 
-|  | When using formulas with time boundaries (I4), >= should be used insteasd of > for the lower limit of each interval. |
+![spo pricecalc](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/spo_pricecalc.png)
+
+
+
+
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | When using formulas with time boundaries (I4), >= should be used insteasd of > for the lower limit of each interval. |
 | --- | --- |
 
 
@@ -234,6 +254,11 @@ Additionally, grid costs of 6.7ct were calculated, along with 20% VAT.
 Limit1 = Min + Diff
 Limit2 = Limit1 + Diff
 Limit3 = Limit2 + Diff
+
+
+
+
+![spo calc](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/spo_calc.png)
 
 
 

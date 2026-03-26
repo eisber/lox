@@ -46,6 +46,31 @@ Make sure that the mounting frame rests flush on the surface without any gaps.
 
 
 
+![wb mount base 32A Tree](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/wb_mount_base_32A-Tree.png)
+
+
+
+
+
+![wb mainsconnect 32A tree](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/wb_mainsconnect_32A_tree.png)
+
+
+
+
+
+![wb connect meter 32A Tree](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/wb_connect_meter_32A-Tree.png)
+
+
+
+
+
+![wb mount touch tree](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/wb_mount_touch_tree.png)
+
+
+
+
+
+![wb mount frontcovers](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/wb_mount_frontcovers.png)
 
 
 
@@ -77,6 +102,11 @@ Make sure that the mounting frame rests flush on the surface without any gaps.
 
 
 
+![wb dragdrop block](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/wb_dragdrop_block.gif)
+
+
+
+
 ---
 
 
@@ -86,13 +116,13 @@ Make sure that the mounting frame rests flush on the surface without any gaps.
 
 | Status LED | Description |
 | --- | --- |
-|  | Device has just been paired or has restarted and is now online. |
-|  | Connection to the Miniserver is okay, but the device has not been paired. |
-|  | Device cannot connect to the Miniserver via the Tree interface. |
-|  | Device was selected in Loxone Config and is identifying. |
-|  | Charging started. |
-|  | Charging paused. |
-|  | Charging Error. |
+| ![WB green flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WB_green_flashing.gif) | Device has just been paired or has restarted and is now online. |
+| ![WB orange flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WB_orange_flashing.gif) | Connection to the Miniserver is okay, but the device has not been paired. |
+| ![WB red flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WB_red_flashing.gif) | Device cannot connect to the Miniserver via the Tree interface. |
+| ![WB redgreen identify](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WB_redgreen_identify.gif) | Device was selected in Loxone Config and is identifying. |
+| ![WB blue fading](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WB_blue_fading.gif) | Charging started. |
+| ![WB orange fading](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WB_orange_fading.gif) | Charging paused. |
+| ![WB red fading](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WB_red_fading.gif) | Charging Error. |
 
 
 ---
@@ -115,6 +145,11 @@ Extending the charging cable in any other way is not permitted.
 
     The Loxone Wallbox is able to limit the charging power by transmitting the permitted maximum current to the vehicle.
 
+
+
+
+
+![WB1PH32APowerDia](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WB1PH32APowerDia.png)
 
 
 

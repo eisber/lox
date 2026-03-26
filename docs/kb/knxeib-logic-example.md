@@ -12,12 +12,12 @@ Source: https://www.loxone.com/enen/kb/knxeib-logic-example/
 
 The powerful Loxone timer is particularly popular. In this example, we’re controlling the lights on a Christmas tree. The EIB actuator (e.g. switched wall socket) is connected using a function block.
 
-*[Timer Schedule Logic Example]*
+![Timer Schedule Logic Example](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Timer_Logic.png)
 
 #### WIND MONITOR EXAMPLE
 
 An example of a wind monitor using an EIB sensor to measure wind speed, a comparator, an EIB actuator and an EIB blinds block.
 
-*[Loxone EIB Blinds Shutdown Logic Example]*
+![Loxone EIB Blinds Shutdown Logic Example](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_EIB_Blinds_Shutdown_Logic.png)
 
 You can really do anything with Loxone’s logic functions. Discover the full range of possibilities that Loxone has to offer- mathematics, logic, timer functions and much more.

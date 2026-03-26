@@ -96,5 +96,10 @@ With this function block, all Lighting Controller blocks can be controlled toget
 
 
 
+
+![CentralLight Menu](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/CentralLight_Menu.jpg)
+
+
+
     Central commands are not blocked by an active (DisPc) input at the respective function block. If a function block is used in the central block, this is indicated by the central symbol on the respective block.
 The functions that can be used on the central block depend on the linked blocks and are set via their parameters. If a function block does not support a function, it cannot be controlled.

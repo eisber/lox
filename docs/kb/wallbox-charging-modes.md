@@ -25,7 +25,9 @@ The [Loxone Wallbox](https://shop.loxone.com/enen/catalogsearch/result/?q=wallbo
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/Use-Case-109-Wallbox-Charging-Modes.png)
+[
+![Use Case 109 Wallbox Charging Modes](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/Use-Case-109-Wallbox-Charging-Modes.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/Use-Case-109-Wallbox-Charging-Modes.png)
 
 ### Download the sample file:
 

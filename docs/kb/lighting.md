@@ -14,4 +14,4 @@ Firstly, please select the below image for the type of lighting you are interest
 
 | Spots/Down Lights | LED Strip | Pendants/Other |
 | --- | --- | --- |
-| *[Loxone Spotlight (in situ)]* | *[Loxone LED Tape (In Situ)]* | *[3rd Party Pendant Light 2]* |
+| ![Loxone Spotlight (in situ)](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/Loxone-Spotlight-in-situ.jpg) | ![Loxone LED Tape (In Situ)](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/Loxone-LED-Tape-In-Situ.jpg) | ![3rd Party Pendant Light 2](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/3rd-Party-Pendant-Light-2.jpg) |

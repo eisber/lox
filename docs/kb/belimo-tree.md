@@ -35,6 +35,11 @@ The Loxone Belimo Tree is an interface to integrate up to 16 Belimo MP-Bus devic
 
 
 
+
+![belimotree connection diagram](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/belimotree_connection_diagram.png)
+
+
+
     Connect the power supply (orange/white terminal) and Tree communication wires (green/white terminal).
 
 
@@ -69,6 +74,16 @@ The Loxone Belimo Tree is an interface to integrate up to 16 Belimo MP-Bus devic
 
 
 
+![belimo add](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/belimo_add.png)
+
+
+
+
+
+![belimo addmanual](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/belimo_addmanual.png)
+
+
+
     Belimo Datapool devices are added in the following steps:
 1. Download suitable template for device from [Loxone Library](https://library.loxone.com/)
 2. [Import template](https://www.loxone.com/help/templates)
@@ -76,11 +91,26 @@ The Loxone Belimo Tree is an interface to integrate up to 16 Belimo MP-Bus devic
 
 
 
+
+![belimo addtemplate](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/belimo_addtemplate.png)
+
+
+
     Then configure / address the inserted Belimo device:
 
 
 
+
+![belimo configtemplate](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/belimo_configtemplate.png)
+
+
+
     If Belimo devices are addressed via the Belimo App, their address and serial number is entered in the properties:
+
+
+
+
+![belimo appadressing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/belimo_appadressing.png)
 
 
 

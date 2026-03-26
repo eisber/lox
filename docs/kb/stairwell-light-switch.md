@@ -91,6 +91,11 @@ The function block is suitable for lighting staircases.
 
 
 
+![StairwellLightSwitch timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StairwellLightSwitch-timediag.png)
+
+
+
+
 ---
 
 
@@ -99,3 +104,8 @@ The function block is suitable for lighting staircases.
 
     This function block has a presence simulation.
 Activate and define the presence simulation in the properties window:
+
+
+
+
+![PresenceSimulation StairwellLightSwitch](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PresenceSimulation_StairwellLightSwitch.png)

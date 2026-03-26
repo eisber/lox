@@ -80,3 +80,8 @@ Output sends a time-delayed ON signal after receiving an input
 
 
 ## Timing Diagram
+
+
+
+
+![SwitchOnDelay timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/SwitchOnDelay-timediag.png)

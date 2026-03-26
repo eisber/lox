@@ -44,20 +44,29 @@ In order to configure the Miniserver, a PC with the “**Loxone Config**” soft
 - Open Loxone Config
 - When selecting **New Project**, Loxone Config will scan the network for new Miniservers. Additionally, clicking the green plus button allows you to start a new project manually. It is important that the correct Miniserver is chosen.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Miniserver_NewProject.png)
+[
+![Miniserver NewProject](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Miniserver_NewProject.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Miniserver_NewProject.png)
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Create_New_Project.png)
+[
+![Create New Project](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Create_New_Project.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Create_New_Project.png)
 - After the project has been created, click on the **Connect -> Search** button
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Connect_Search.png)
+[
+![Connect Search](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Connect_Search.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Connect_Search.png)
 - Select Miniserver (if a Miniserver is selected, it identifies itself by “fast red/green flashing” of the left LED)[
 
+![Connect Search Miniserver](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Connect_Search_Miniserver.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Connect_Search_Miniserver.png)
 - Give in the credentials, the factory settings for user and password are: admin/admin. Afterwards click on **Connect**.
 					No Miniserver is found during the search? You can find more information [here](#ms_not_found/accessible).
 					If you get an error message stating that the login credentials are incorrect, you can find information on how to reset the password or restore the Miniserver to its factory settings [here](https://www.loxone.com/enen/kb/restore-factory-defaults-format_sd-card/).
 					You can also search for Miniservers using the “Search Local Network…” option. This will display all Miniservers on the network, not just new ones. However, we recommend using this option only if you have previously connected to the Miniserver. If you connect for the first time this way, the configuration will be loaded automatically from the Miniserver, and the file will be in German.
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Miniserver_Search.png)
+[
+![Miniserver Search](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Miniserver_Search.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Miniserver_Search.png)
 
 ## General Configuration
 
@@ -67,7 +76,9 @@ After the connection to the Miniserver is established, it can be configured.
 - In the following dialog, check and, if necessary, correct the Miniservers location data.
 - Click on the “Network” tab
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Configure_Miniserver.png)
+[
+![Configure Miniserver](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Configure_Miniserver.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Configure_Miniserver.png)
 
 ## Network Setup
 
@@ -87,7 +98,8 @@ The next step is configuring the network settings.
 - “**Enabled**” – Allows unencrypted FTP access
 - “**Enabled – TLS only**” – Only allows encrypted FTP access
 - Click on the “External Access” tab
-					The Miniserver must have its own static IP address for reliable access.*[]*
+					The Miniserver must have its own static IP address for reliable access.
+![Miniserver protocols](https://www.loxone.com/enen/wp-content/uploads/sites/3/2021/06/Miniserver_protocols.png)
 
 ## External Access Setup
 
@@ -102,7 +114,7 @@ Depending on the Miniserver, follow one of the following guides:
 					 For the Miniserver Gen. 1, use **[Manual External Access.](https://www.loxone.com/enen/kb/remote-access/)**
 Click on “Apply and send to Miniserver”:
 
-*[]*
+![ms ExternalAccess](https://www.loxone.com/dede/wp-content/uploads/sites/2/2022/08/ms_ExternalAccess.png)
 
 The new settings will be transferred to the Miniserver. The Miniserver automatically reboots with the new settings, this process may take a minute.
 
@@ -110,11 +122,15 @@ If the Config software does not automatically reconnect 1 minute after completin
 
 After the initial setup, save to the Miniserver and change the default password.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Change_Password.png)
+[
+![Change Password](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Change_Password.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Change_Password.png)
 
 As you can see in the status bar, you are now connected to your Miniserver:
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Locally_Connected.jpg)
+[
+![Locally Connected](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Locally_Connected.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Locally_Connected.jpg)
 
 					The network configuration of the Miniserver is now complete. In the status bar you can check the settings.
 
@@ -137,7 +153,9 @@ This method is used when no connection to the Miniserver has been established ye
 					Assigning an **IP address** via “Configure Device” is possible even if the **Miniserver is in a different IP range** and no connection can be established, because communication occurs via the **unique MAC address** within the **local network**, **regardless of the IP range**.
 Open the configuration software Loxone Config and follow the steps below:
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Configure_Device.png)
+[
+![Configure Device](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Configure_Device.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Configure_Device.png)
 - First click on the Miniserver in the **Periphery**.
 - Then click the **Configure Device** button in the menu bar and select Miniserver as the device.
 - The **MAC address** (serial number) of the Miniserver is copied from the current document. If it is not correct (e.g. blank document), then enter the MAC address (serial number) of the Miniserver. You can find it on the label on the back of the device.
@@ -152,7 +170,9 @@ If this does not work, the connection may have been blocked by a virus scanner o
 
 This method is used when you are already connected to the Miniserver:
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Change_Address.jpg)
+[
+![Change Address](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Change_Address.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Change_Address.jpg)
 
 
 
@@ -214,14 +234,22 @@ Therefore, the PC must be assigned an IP address matching the Miniserver in the 
 
 To do this, go to the “Network and Sharing Center” in the Control Panel. Then click on “Change adapter settings” on the left side:
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Network_Share.png)
+[
+![Network Share](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Network_Share.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Network_Share.png)
 
 Then switch to the properties of the Ethernet or LAN connection:
-- [](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Network_Connections.png)
+- [
+![Network Connections](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Network_Connections.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Network_Connections.png)
 - Now double-click on “Internet Protocol Version 4”:
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Network_IPV4png.png)
-- In this example, we have assigned the address 192.168.1.1 to the computer:Confirm with OK and a connection with the Miniserver via Loxone Config is possible.[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Network_Properties.png)
+[
+![Network IPV4png](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Network_IPV4png.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Network_IPV4png.png)
+- In this example, we have assigned the address 192.168.1.1 to the computer:Confirm with OK and a connection with the Miniserver via Loxone Config is possible.[
+![Network Properties](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Network_Properties.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Network_Properties.png)
 
 ## Adjust Miniserver configuration
 
@@ -231,8 +259,12 @@ Any changes to the Miniserver configuration after the initial setup, can also be
 
 It is recommended to always load the current project, including any user changes, from the Miniserver into Loxone Config before making changes. To do so, simply click on “Load from Miniserver”.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Load_From_Miniserver.png)
-- After making changes, you can save them to the Miniserver. Simply click on “Save to Miniserver” and the local changes made in the software will be transferred to the Miniserver and the Miniserver will automatically restart to load the changes. Once this restart is complete, the Miniserver will run with the updated configuration.[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Save_In_Miniserver.png)
+[
+![Load From Miniserver](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Load_From_Miniserver.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Load_From_Miniserver.png)
+- After making changes, you can save them to the Miniserver. Simply click on “Save to Miniserver” and the local changes made in the software will be transferred to the Miniserver and the Miniserver will automatically restart to load the changes. Once this restart is complete, the Miniserver will run with the updated configuration.[
+![Save In Miniserver](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Save_In_Miniserver.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Save_In_Miniserver.png)
 
 # Diagnostics
 

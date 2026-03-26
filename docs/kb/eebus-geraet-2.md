@@ -14,7 +14,7 @@ The devices are integrated via the network using the SHIP protocol.
 
 
 
-|  | The Miniserver Gen. 1 does not support EEBUS! |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The Miniserver Gen. 1 does not support EEBUS! |
 | --- | --- |
 
     Vaillant offers [EEBUS enabled heat pumps](https://www.vaillant-group.com/news-centre/web-special-online-press-conference/neue-regelungen-fuer-mehr-komfort-neues-gateway-fuer-ausfuehrliches-monitoring-1-1680893.html), which can be integrated as described in the configuration example.
@@ -49,7 +49,17 @@ The EEBUS feature or interface on the device is enabled and authorised.
 
 
 
+
+![vaillantEEbusActivate](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/vaillantEEbusActivate.png)
+
+
+
     Then a Network Device Search is started in Loxone Config, and once the device is found it will be listed in the search results:
+
+
+
+
+![networksearch eebus](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/networksearch_eebus.png)
 
 
 
@@ -61,8 +71,18 @@ Select the Miniserver, and then add it to the list of trusted devices:
 
 
 
+
+![vaillantEEBusTrustMS](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/vaillantEEBusTrustMS.png)
+
+
+
     The device should now be marked green in the Periphery tree of Loxone Config.
 You can then search for available inputs and outputs by clicking on the **Find periphery** button:
+
+
+
+
+![vaillantfindperiphery](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/vaillantfindperiphery.png)
 
 
 
@@ -70,11 +90,16 @@ You can then search for available inputs and outputs by clicking on the **Find p
 
 
 
+
+![vaillantperipherytree](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/vaillantperipherytree.png)
+
+
+
     The screenshot above shows the maximum number of functions currently supported. This depends on the EEBUS standard. Please note that not all of these inputs/outputs may be available, depending on the device configuration.
 
 
 
-|  | When Vaillant gateways perform an update, their configuration may change. In such cases, the Miniserver will generate a corresponding system message. It is then necessary to delete and re-add the peripheral in Loxone Config. Until this is done, the integration will not function properly. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | When Vaillant gateways perform an update, their configuration may change. In such cases, the Miniserver will generate a corresponding system message. It is then necessary to delete and re-add the peripheral in Loxone Config. Until this is done, the integration will not function properly. |
 | --- | --- |
 
 

@@ -32,9 +32,13 @@ At the same time, the current outdoor temperature is taken into account and comp
 
 ### Configuration:
 
-[*[Automated MVHR - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-4-Needs-Based-Ventilation-Room-Ventilation-Controller.png)
+[
+![Automated MVHR - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-4-Needs-Based-Ventilation-Room-Ventilation-Controller.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-4-Needs-Based-Ventilation-Room-Ventilation-Controller.png)
 
-[*[Automated MVHR - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-4-Needs-Based-Ventilation-Leaf.png)
+[
+![Automated MVHR - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-4-Needs-Based-Ventilation-Leaf.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-4-Needs-Based-Ventilation-Leaf.png)
 
 ### Download the sample file:
 

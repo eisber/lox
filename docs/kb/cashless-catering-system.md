@@ -31,7 +31,9 @@ If a new employee starts, an additional Key Fob with authorisation can be easily
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-37-Billingsystem-with-NFC-Code-Touch.png)
+[
+![Use Case 37 Billingsystem with NFC Code Touch](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-37-Billingsystem-with-NFC-Code-Touch.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-37-Billingsystem-with-NFC-Code-Touch.png)
 
 
 

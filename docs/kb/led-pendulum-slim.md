@@ -40,9 +40,11 @@ Pendulum (LxD): 300mm x 60mm
 
 The LED Pendulum Slim can be mounted directly to the ceiling with plugs and screws. However, it is also possible to mount them to a backbox to allow more space for making connections. We recommend using/specifying European style circular back-boxes for the best fitment and finish. An example of this can be seen below, [click on the image to purchase them.](https://shop.loxone.com/enuk/circular-dry-lining-box.html)
 
-[*[]*](https://shop.loxone.com/enuk/circular-dry-lining-box.html)
+[
+![Orange circular back box](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/03/Orange-circular-back-box.jpg)
+](https://shop.loxone.com/enuk/circular-dry-lining-box.html)
 
-*[]*
+![Pend Slim 214x300](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/10/Pend-Slim.png)
 
 Quick Connection Guide
 

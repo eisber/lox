@@ -19,7 +19,9 @@ http://user:password@IPAddressMiniserver/command/control/value
 					When using HTTP, the access credentials in the URL are transmitted in plain text!
 For security reasons, when using HTTP (Miniserver Gen.1), it is recommended to omit the access credentials when entering a command in the address bar. Instead, the browser will prompt you for login details in a separate window.
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/commandlogin.png)
+[
+![commandlogin](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/commandlogin.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/commandlogin.png)
 
 Some commands require a [user with full access](https://www.loxone.com/enen/kb/user-and-rights-management/).
 
@@ -27,7 +29,9 @@ Once the command is executed, the result is displayed in the browser.
 
 For example, the following command retrieves the current software version of the Miniserver:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/browserversioncommand.png)
+[
+![browserversioncommand](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/browserversioncommand.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/browserversioncommand.png)
 
 If the command is successful, the response will include the status code **“200”**, indicating that the request was accepted and processed.
 
@@ -58,19 +62,22 @@ The **Miniserver** operates using **UTF-8**, so any character supported by UTF-8
 
 Before sending a pulse into the system, your Miniserver needs a Virtual Input that will accept the command.
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Test-virtual-input.png)
+[
+![Test virtual input](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Test-virtual-input.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Test-virtual-input.png)
 
 Now once we have our Virtual Input added and saved into the Miniserver, the command will need to be sent. Below is an example of a 3rd party application* sending a pulse command into the Loxone Miniserver:
 
-*[EN_KB_Computer_Postman_HTT_Command]*
+![EN_KB_Computer_Postman_HTT_Command](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Screen-Shot-2017-03-08-at-08.42.24.png)
 
 In this example we have the default credentials (username: admin, password: admin) and the virtual input in the command which has the name ‘Test Input’. By pressing the ‘Send’ button in the application, the string will use the IP address to find the Miniserver on the network, login and then process the command.
 
 If the send command is accepted, the returned response in an XML format will be:
 
-*[EN_KB_Computer_Postman_HTT_Command_XML_Response]*
+![EN_KB_Computer_Postman_HTT_Command_XML_Response](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Screen-Shot-2017-03-08-at-09.40.12.png)
 
-You will also see in Loxone Config the Virtual Input light up for a split second if ‘Live View’ is active: *[EN_KB_Config_Virtual_Input_On]*
+You will also see in Loxone Config the Virtual Input light up for a split second if ‘Live View’ is active:
+![EN_KB_Config_Virtual_Input_On](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Screen-Shot-2017-03-08-at-09.26.10-1.png)
 
 **In these examples, Postman is the 3rd party app being used to send the commands.*
 
@@ -92,7 +99,8 @@ You will also see in Loxone Config the Virtual Input light up for a split second
 | Function | Lists all the devices that are connected to the Miniserver, along with status |
 | Answer | <Status Modified=” “> <Miniserver Name=”LoxMiniserver” Internalname=” ” IP=” ” Mask=” ” Gateway=” ” DHCP=” ” DNS1=” ” DNS2=” ” MAC=” ” Device=” ” Version=” “><Extension Name=” ” Internalname=” ” Serial=” ” Version=” ” Online=” “/></Miniserver></Status> |
 
-*[Icon Exclamation Mark Loxone]*Status requests via web service are only possible with inputs and outputs and are not possible with function blocks.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+Status requests via web service are only possible with inputs and outputs and are not possible with function blocks.
 
 #### PUSH BUTTON
 
@@ -105,23 +113,27 @@ You will also see in Loxone Config the Virtual Input light up for a split second
 
 Before sending a command into the system, your Miniserver needs a Push Button function block that will accept the command.
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Pushbutton.png)
+[
+![Pushbutton](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Pushbutton.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Pushbutton.png)
 
 Now once we have our Push Button added and saved into the Miniserver, the command will need to be sent. Below is an example of a 3rd party application* sending an ‘On’ command into the Loxone Miniserver:
 
-*[EN_KB_Computer_Postman_HTTP_Command]*
+![EN_KB_Computer_Postman_HTTP_Command](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Screen-Shot-2017-03-08-at-10.01.45.png)
 
 In this example we have the default credentials (username: admin, password: admin) and the Push Button in the command which has the name ‘Push-Button’. By pressing the ‘Send’ button in the application, the string will use the IP address to find the Miniserver on the network, login and then process the command. We can change the last part of the command to be ‘On’ or ‘Off’, depending on different situations.
 
 If the send command is accepted, the returned response in an XML format will be:
 
-*[EN_KB_Computer_Postman_HTT_Command_XML_Response]*
+![EN_KB_Computer_Postman_HTT_Command_XML_Response](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Screen-Shot-2017-03-08-at-10.17.58.png)
 
 Code “200” means the command was accepted and processed.
 
 You will also see in the Loxone Interface the Push Button will change state depending on which command is sent (on/off).
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/pushbuttonapp.png)
+[
+![pushbuttonapp](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/pushbuttonapp.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/pushbuttonapp.png)
 
 **In these examples, Postman is the 3rd party app being used to send the commands.*
 

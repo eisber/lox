@@ -94,8 +94,18 @@ To manage Android and iPad-OS tablets with a Miniserver, these can be integrated
 
 
 
+
+![ManagedTabletsBlock properties](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ManagedTabletsBlock_properties.png)
+
+
+
     In this example, the tablet switches back to the defined standard screen when the user leaves the room and closes the door.
 If the defined operating mode "Do not disturb" is active, notifications on the tablet are muted and the screensaver is activated as long as it is not being operated.
+
+
+
+
+![ManagedTabletBlock example](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ManagedTabletBlock_example.png)
 
 
 

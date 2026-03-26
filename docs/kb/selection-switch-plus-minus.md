@@ -89,3 +89,8 @@ A long-click on (+) / (-) increases / decreases the value on output (O) every (R
 
 
 ## Timing Diagram
+
+
+
+
+![SelectionSwitch pm timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/SelectionSwitch_pm-timediag.png)

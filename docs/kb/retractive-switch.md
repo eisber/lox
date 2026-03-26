@@ -10,7 +10,7 @@ The Retractive Switch function block can be used to generate pulses via the vi
 
 ## BASIC CONFIGURATION
 
-*[]*
+![Retactive](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/08/Retactive.png)
 
 A pulse at the output (Q) can be generated via the button in the visualization or via a preceding logic. The duration of the pulse is determined by parameter T, pressing the button in the user interface or having another trigger input (Tr) will reset the timer.
 

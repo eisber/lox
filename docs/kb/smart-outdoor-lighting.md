@@ -43,7 +43,9 @@ Hardware:
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Nr.-56-Smart-Outdoor-Lighting.jpg)
+[
+![Nr. 56 Smart Outdoor Lighting](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Nr.-56-Smart-Outdoor-Lighting.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Nr.-56-Smart-Outdoor-Lighting.jpg)
 
 
 

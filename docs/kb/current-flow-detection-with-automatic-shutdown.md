@@ -26,7 +26,9 @@ In Loxone Config, the inputs of the Nano 2 Relay Tree provide the information on
 
 ### Configuration:
 
-[*[Current Flow Detection with Automatic Shutdown - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-63-Current-Flow-Detection-Central-Ventilation-Shut-down.jpg)
+[
+![Current Flow Detection with Automatic Shutdown - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-63-Current-Flow-Detection-Central-Ventilation-Shut-down.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-63-Current-Flow-Detection-Central-Ventilation-Shut-down.jpg)
 
 ### Download the sample file:
 

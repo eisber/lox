@@ -82,3 +82,8 @@ With the stepper, an analog value can be increased or decreased by a defined ste
 
 
 ## Timing Diagram
+
+
+
+
+![Stepper timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Stepper-timediag.png)

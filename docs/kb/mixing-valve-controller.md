@@ -132,12 +132,22 @@ The setpoint and actual temperature are connected to the block's inputs.
 
 
 
+
+![mixvalve basic](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mixvalve basic.png)
+
+
+
     The block is provided with the setpoint value at input (ϑt) and the actual value for the flow temperature at input (ϑc). Relay outputs for controlling the mixing valve are connected to the outputs..
 In addition, the block can be stopped via the (Off) input when it is not in use.
 
 
     Usually the block is used in combination with other blocks and logic, and further devices like pumps have to be controlled.
 The following picture shows an example:
+
+
+
+
+![mixvalve extended](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mixvalve extended.png)
 
 
 

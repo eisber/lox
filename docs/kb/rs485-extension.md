@@ -41,6 +41,11 @@ The **RS485 Extension** is designed to integrate devices with RS485 interface.
 
 
 
+
+![100011 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100011 install.png)
+
+
+
     Connect the power supply, Link communication to the Miniserver and the RS485 data lines.
 
 

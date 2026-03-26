@@ -39,6 +39,11 @@ The **DMX Extension** is designed to integrate devices with DMX interface.
 
 
 
+
+![100012 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100012 install.png)
+
+
+
     Connect the power supply, Link communication to the Miniserver and the DMX data lines.
 
 
@@ -91,6 +96,11 @@ For wiring, a wire pair of a Cat 5/6/7 cable is recommended, alternatively anoth
 
 
     Actuators need to be added to control other DMX devices. To do this, first click on the DMX Extension, and then on **Add DMX Device:**
+
+
+
+
+![10.5 DMX templates](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5_DMX_templates.png)
 
 
 

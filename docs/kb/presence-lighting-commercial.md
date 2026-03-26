@@ -18,7 +18,11 @@ For Ambient Assisted Living, the goal is to support independence while ensuring 
 
 You can save your commercial customers money through intelligent lighting based on presence and brightness detection. Loxone can help reduce energy consumption and costs while improving comfort and employee productivity via automation.
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-Presence-Lighting-Commercial.png) [*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-Presence-Lighting-Commercial-2.png)
+[
+![PH EN UseCase Presence Lighting Commercial 656x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-Presence-Lighting-Commercial.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-Presence-Lighting-Commercial.png) [
+![PH EN UseCase Presence Lighting Commercial 2 644x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-Presence-Lighting-Commercial-2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-Presence-Lighting-Commercial-2.png)
 
 ## Solution: Loxone’s intelligent lighting with presence-based illumination and adaptive brightness control.
 
@@ -79,11 +83,15 @@ LED Ceiling Light RGBW Tree (can be [White](https://shop.loxone.com/enuk/led-cei
 
 ### Configuration:
 
-### [*[]* ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-Presence-Based-Lighting-Config-1.jpg)
+### [
+![PH EN UseCase Presence Based Lighting Config 1 800x472](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-Presence-Based-Lighting-Config-1.jpg)
+ ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-Presence-Based-Lighting-Config-1.jpg)
 
 ###
 
-### [*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-Presence-Based-Lighting-Config-2.jpg)
+### [
+![PH EN UseCase Presence Based Lighting Config 2 800x276](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-Presence-Based-Lighting-Config-2.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-Presence-Based-Lighting-Config-2.jpg)
 
 ### Download the sample Config file:
 

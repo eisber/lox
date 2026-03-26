@@ -8,7 +8,9 @@ Source: https://www.loxone.com/enen/kb/user-interface-configuration/
 
 Start the configuration software and click on any input, output or function block (e.g. blinds, burglar alarm, etc.) to select it and set it up for use in the user interface.
 
-***[Icon Exclamation Mark Loxone]*Block functions**
+**
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+Block functions**
 
 For the so-called block functions there may be extra properties available for the user interface.
 
@@ -18,7 +20,9 @@ Each input and output, as well as each object, has a name and description. These
 
 The name of the object is used by default as the label in the user interface. If you want to use an alternative name for an object in the user interface, then enter it in the description field.
 
-***[Icon Exclamation Mark Loxone]*Tip**:
+**
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+Tip**:
 
 In the configuration software, it is always the name of an object that is displayed. You could therefore use this field for information such as terminal arrangement, location in the consumer unit, cable ID or KNX address to help keep track of things. The description, on the other hand, is used only in the user interface (and only if set).
 
@@ -36,7 +40,8 @@ In the ‘User Interface’ section of the properties window, you can also assig
 
 You can apply ratings not just to inputs, outputs and functional blocks, but also to categories and rooms. These can be found in the periphery tree. Click on a category or room and then look at the properties window to set its rating.
 
-*[Icon Exclamation Mark Loxone]*On the home screen of the user interface, the 6 highest rated entries in room and category, as well as the 8 highest rated entries out of the inputs, outputs and functional blocks will be displayed.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+On the home screen of the user interface, the 6 highest rated entries in room and category, as well as the 8 highest rated entries out of the inputs, outputs and functional blocks will be displayed.
 
 #### SET PASSWORDS ON UI
 
@@ -44,7 +49,8 @@ You can also use the user passwords on specific blocks to make the user interfac
 
 Then in a block’s Properties check the tick box next to “User interface password”. This will then enable the block to prompt a password when opened.
 
-*[Icon Exclamation Mark Loxone]*So you can, for example, protect the control of the garage door or electric front door lock by adding password protection to the blocks to stop accidental opening or operation.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+So you can, for example, protect the control of the garage door or electric front door lock by adding password protection to the blocks to stop accidental opening or operation.
 
 
 

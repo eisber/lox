@@ -139,6 +139,11 @@ Travel times are defined via parameters (Opd) and (Cld). The gate type can be se
 
 
 
+![DoorDirect](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/DoorDirect.jpg)
+
+
+
+
 ---
 
 
@@ -147,6 +152,11 @@ Travel times are defined via parameters (Opd) and (Cld). The gate type can be se
 
     In this configuration, the outputs (Op) and (Cl) operate as pulse signals, with an optional (Tg) output for single-relay control.
 Travel times are defined via parameters (Opd) and (Cld). The gate type can be set via the Type parameter for correct display in the user interface and limit switches or light barriers can be connected to the inputs.
+
+
+
+
+![DoorAlternativ](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/DoorAlternativ.jpg)
 
 
 
@@ -160,3 +170,8 @@ Travel times are defined via parameters (Opd) and (Cld). The gate type can be se
     In the user interface, the history of the function block can be displayed.
 A maximum of 100 entries can be shown.
 When you restart or save to the Miniserver, the history is cleared.
+
+
+
+
+![History Garage](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/History_Garage.png)

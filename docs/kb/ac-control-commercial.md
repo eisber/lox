@@ -26,9 +26,13 @@ Air conditioner automation with Loxone provides convenient comfort and energy ef
 
 The Loxone home and building automation system offers a unified, holistic solution that can offer even more energy efficiency when combined with other functionality of the building. For example, if the blinds in a commercial building are also controlled by Loxone, these could raise in the morning to let in natural warmth, putting less demand on the aircon units. Likewise, lowering the blinds on a very warm day puts less pressure on the AC units to cool the commercial building by blocking some of the solar irradiation.
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/AC-Control-Air-App.png)
+[
+![AC Control Air App](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/AC-Control-Air-App.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/AC-Control-Air-App.png)
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/AC-Control-Large-Office-IRC.jpeg)
+[
+![AC Control Large Office IRC 369x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/AC-Control-Large-Office-IRC.jpeg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/AC-Control-Large-Office-IRC.jpeg)
 
 ### Hardware:
 - Miniserver (can be [Miniserver](https://shop.loxone.com/enuk/miniserver.html), [Miniserver Compact](https://shop.loxone.com/enuk/miniserver-compact.html) or [Miniserver Go](https://shop.loxone.com/enuk/miniserver-go.html))
@@ -37,7 +41,9 @@ The Loxone home and building automation system offers a unified, holistic soluti
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-Config-AC-Commercial-UseCase.png)
+[
+![PH EN Config AC Commercial UseCase 800x377](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-Config-AC-Commercial-UseCase.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-Config-AC-Commercial-UseCase.png)
 
 ### Download the sample Config file:
 

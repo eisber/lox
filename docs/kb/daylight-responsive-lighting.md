@@ -31,7 +31,9 @@ In order to avoid excessively unsteady lighting conditions (even flickering), th
 
 ### Configuration:
 
-[*[Daylight responsive lighting - Loxone config screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Config-Use-Case-36-Constant-Light-Control.png)
+[
+![Daylight responsive lighting - Loxone config screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Config-Use-Case-36-Constant-Light-Control.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Config-Use-Case-36-Constant-Light-Control.png)
 
 
 

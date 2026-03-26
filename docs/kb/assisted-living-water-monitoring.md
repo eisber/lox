@@ -27,7 +27,9 @@ Detecting water leaks as early as possible is great, however, (in an ambient ass
 
 ### Configuration:
 
-[*[Assisted Living Water Monitoring - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-88-Bathtub.png)
+[
+![Assisted Living Water Monitoring - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-88-Bathtub.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-88-Bathtub.png)
 
 ### Download the sample file:
 

@@ -53,6 +53,11 @@ Mount the device by snapping it onto the mounting frame.
 
 
 
+![100396 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100396 install.png)
+
+
+
+
 ---
 
 

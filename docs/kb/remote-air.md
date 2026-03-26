@@ -40,6 +40,11 @@ The Remote Air is a wireless remote control with 12 buttons, including 5 buttons
 
 
 
+![RemoteAir comm](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/RemoteAir_comm.png)
+
+
+
+
 ---
 
 
@@ -50,11 +55,26 @@ The Remote Air is a wireless remote control with 12 buttons, including 5 buttons
 
 
 
+
+![RemoteAir progT5](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/RemoteAir_progT5.gif)
+
+
+
     Additionally, there are three buttons for audio configuration, one button dedicated to the Leave room function, and three freely configurable buttons.
 
 
 
+
+![RemoteAir buttons](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/RemoteAir_buttons.png)
+
+
+
     In Simulation/LiveView a representation of the Remote Air can be opened.
+
+
+
+
+![RemoteAir simulation](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/RemoteAir_simulation.png)
 
 
 
@@ -69,7 +89,17 @@ The Remote Air is a wireless remote control with 12 buttons, including 5 buttons
 
 
 
+
+![RemoteAir T5DI](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/RemoteAir_T5DI.png)
+
+
+
     The assignment of the T5 inputs is as follows:
+
+
+
+
+![RemoteAir T5buttons](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/RemoteAir_T5buttons.png)
 
 
 

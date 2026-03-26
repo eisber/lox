@@ -43,6 +43,11 @@ The Loxone Touch Pure Air features five touch points on a glass surface to contr
 
 
 
+![100206 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100206 install.png)
+
+
+
+
 ---
 
 
@@ -69,7 +74,7 @@ The Loxone Touch Pure Air features five touch points on a glass surface to contr
 
 
 
-|  | Please only use the lithium battery provided by Loxone, as these will ensure an exact fit! |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Please only use the lithium battery provided by Loxone, as these will ensure an exact fit! |
 | --- | --- |
 
 

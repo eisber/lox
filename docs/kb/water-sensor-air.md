@@ -43,6 +43,11 @@ The Loxone Water Sensor Air is a wireless sensor with two contacts on the bottom
 
 
 
+![WaterSensorAir conn](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WaterSensorAir_conn.png)
+
+
+
+
 ---
 
 
@@ -53,11 +58,11 @@ The Loxone Water Sensor Air is a wireless sensor with two contacts on the bottom
 
 
 
-|  | If the sensor was submerged in water, it will no longer operate and must be replaced by a new sensor. When installing the sensor, make sure that it is not subjected to water in everyday use, for example when cleaning the floor. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | If the sensor was submerged in water, it will no longer operate and must be replaced by a new sensor. When installing the sensor, make sure that it is not subjected to water in everyday use, for example when cleaning the floor. |
 | --- | --- |
 
 
-|  | When mounted to metallic surfaces, the range may be significantly reduced. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | When mounted to metallic surfaces, the range may be significantly reduced. |
 | --- | --- |
 
 
@@ -74,11 +79,16 @@ The Loxone Water Sensor Air is a wireless sensor with two contacts on the bottom
 
 
 
+
+![WaterSensorAir battery](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WaterSensorAir_battery.png)
+
+
+
     Gen.1: Use the white button to eject the battery. Insert a new CR2032 lithium battery and ensure it is completely pushed in for proper button operation.
 
 
 
-|  | Devices with serial number 504F94FFFE-B/C..... do not flash their LED after removing and reinserting the battery.For such devices, after removing the battery, either press a button or wait for a minute to display the status after reinserting the battery. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Devices with serial number 504F94FFFE-B/C..... do not flash their LED after removing and reinserting the battery.For such devices, after removing the battery, either press a button or wait for a minute to display the status after reinserting the battery. |
 | --- | --- |
 
 

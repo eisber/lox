@@ -29,7 +29,9 @@ The versatility of Loxone can also give you additional functionality. We can giv
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-29-Access-Control-Elevators.png)
+[
+![Use Case 29 Access Control Elevators](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-29-Access-Control-Elevators.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-29-Access-Control-Elevators.png)
 
 ### Download the sample file:
 

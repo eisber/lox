@@ -20,11 +20,13 @@ A schematic diagram will help create a simple visual representation of a complex
 
 ### Configuration:
 
-[*[Schematic Diagrams - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Create-System-Shematics-EN.png)
+[
+![Schematic Diagrams - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Create-System-Shematics-EN.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Create-System-Shematics-EN.png)
 
 ### Related Video Tutorial
 
-| *[]* | Focus Series: System Schematic Take a look at the new System Schematic Function Block within Loxone Config which allows the graphical visualisation of systems, floor plans and more in the Loxone App. View Video >> |
+| ![IC play button CTA](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/06/IC_play-button-CTA.png) | Focus Series: System Schematic Take a look at the new System Schematic Function Block within Loxone Config which allows the graphical visualisation of systems, floor plans and more in the Loxone App. View Video >> |
 | --- | --- |
 
 

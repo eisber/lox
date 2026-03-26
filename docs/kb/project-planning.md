@@ -4,7 +4,7 @@ Source: https://www.loxone.com/enen/kb/project-planning/
 
 ---
 
-*[]*
+![IC Planning 5100x100](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/02/IC_Planning.png)
 
 ## The next dimension in Project Planning
 
@@ -20,7 +20,7 @@ With the new version of Loxone Config, we’re introducing the next level of our
 
 When you open Loxone Config, you will likely be greeted with a window that looks similar to this. To start a new project plan, simply select Project Planning.
 
-*[]*
+![ProjectManagementProjPlan 1 800x430](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/10/ProjectManagementProjPlan-1.png)
 
 ---
 
@@ -36,7 +36,7 @@ Additionally, ‘Display Prices’ simply dictates whether you want to see the p
 
 Finally, Currency & Language dictates the shop from which prices are retrieved, the currency, and the general language for the plan itself.
 
-*[]*
+![ProjPlan ProjectDetails 800x471](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/10/ProjPlan-ProjectDetails.png)
 
 ---
 
@@ -52,7 +52,7 @@ There are three options; Spots, Shading Controls, and Heating Actuators. Using t
 
 **Heating Actuators**: You can either select Valve Actuators Air or Tree.
 
-*[]*
+![ProjPlan Globals 800x471](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/10/ProjPlan-Globals.png)
 
 ---
 
@@ -62,7 +62,7 @@ There are three options; Spots, Shading Controls, and Heating Actuators. Using t
 
 On this screen you are greeted with a lot of information but it’s simpler than you may think.
 
-*[]*
+![ProjPlan NumberedMain 800x471](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/10/ProjPlan-NumberedMain.png)
 
 **1**: This is simply the name of the Room, this is how it will appear in both Loxone Config and on the various visualisations.
 
@@ -101,9 +101,9 @@ Default Specification per Room Type
 
 **7**: This menu allows to swap out any given product for any other product available. You can filter by category, pick the device you want to swap, the device you want to swap it with, and finally you can select the rooms in which you want the swap to occur.
 
-*[]*
+![ProductSearchReplace 800x471](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/09/ProductSearchReplace.png)
 
-*[]*
+![ProductSearchReplace2](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/09/ProductSearchReplace2.png)
 
 **8**: In order to add a new room to the list, simply double-click the triple dot box, enter a name and then press enter.
 
@@ -113,7 +113,7 @@ Default Specification per Room Type
 
 #### Room Breakdown
 
-*[]*
+![ProjPlan NumberedRoom 800x256](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/10/ProjPlan-NumberedRoom.png)
 
 **1: **List of all product available for the selected type. In this example it is lighting.
 
@@ -145,7 +145,7 @@ The calculation is broken down to show the total available power, the requiremen
 
 For more information on Power Supplies and panel layout, see [here](https://www.loxone.com/enen/kb/wiring-basics/#Cabinet-Layout).
 
-*[]*
+![ProjPlan PowerSupply 800x471](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/10/ProjPlan-PowerSupply.png)
 
 ---
 
@@ -153,7 +153,7 @@ For more information on Power Supplies and panel layout, see [here](https://www.
 
 On the final page of the Project Planning dialogue, you are presented with 4 options.
 
-*[]*
+![ProjPlan EndPage 800x471](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/10/ProjPlan-EndPage.png)
 
 **Option 1:** This option allows you to export your full parts list as an excel spreadsheet. This is saved as a full list of parts as well as a room-by-room breakdown.
 

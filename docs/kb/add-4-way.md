@@ -12,6 +12,11 @@ Adds several analog values and makes the result available at output (O).
 
 
 
+![MIM Add4x](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/MIM_Add4x.png)
+
+
+
+
 ## Table of Contents
 - [Outputs](#Output)
 - [Parameters](#Parameter)

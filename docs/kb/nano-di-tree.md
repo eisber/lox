@@ -32,6 +32,11 @@ The Nano DI Tree is a compact module that adds 6 digital inputs via the Loxone T
 
 
 
+
+![100242 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100242 install.png)
+
+
+
     Connect the power supply (orange/white terminal) and Tree communication wires (green/white terminals). Shortly after power-up, the status LED will blink orange if the wiring is correct (connection to Tree Extension and Miniserver is established).
 
 

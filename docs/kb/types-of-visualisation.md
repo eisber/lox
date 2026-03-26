@@ -5,6 +5,7 @@ Source: https://www.loxone.com/enen/kb/types-of-visualisation/
 ---
 
 ##
+![MU app one for all](/enen/wp-content/uploads/sites/3/2017/09/MU_app-one-for-all.jpg)
 
 ## WEB INTERFACE
 
@@ -38,4 +39,5 @@ SCREENLAYOUT_SIZE_XLARGE
 
 HD App
 
-*[Icon Exclamation Mark Loxone]*You can only use 64 units at the same time on the visualisation!
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+You can only use 64 units at the same time on the visualisation!

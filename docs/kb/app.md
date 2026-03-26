@@ -48,6 +48,11 @@ With the function block App, an app installed on the smartphone or tablet can be
 
 
 
+![App characteristics](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/App_characteristics.jpg)
+
+
+
+
 ---
 
 

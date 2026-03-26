@@ -18,7 +18,12 @@ An Audio Player Group can be used to combine multiple Audio Player blocks. This 
 
 
 
-|  | In contrast to the fixed player group in Loxone Config, dynamic groups of individual players can also be created, edited and removed by users of the Loxone App or Webinterface. |
+![11.1 audiogroup fixed](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/11.1 audiogroup fixed.png)
+
+
+
+
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | In contrast to the fixed player group in Loxone Config, dynamic groups of individual players can also be created, edited and removed by users of the Loxone App or Webinterface. |
 | --- | --- |
 
 

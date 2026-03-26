@@ -17,6 +17,11 @@ A timer is available for scheduling the set temperatures.
 
 
 
+![irc visudefault](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/irc-visudefault.png)
+
+
+
+
 ## Table of Contents
 - [Inputs](#Input)
 - [Outputs](#Output)
@@ -187,6 +192,11 @@ Some default values vary, as they depend on the type of room set.
 
 
 
+
+![irc blockiosbasic](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/irc-blockiosbasic.png)
+
+
+
     The current room temperature is transmitted to the function block via input (ϑc). A window contact at (Dwc) allows the function block to respond to open windows. A presence sensor is connected to the (P) input to activate the comfort temperature without a schedule.
 
 
@@ -302,6 +312,11 @@ If (Hs) or (Cs) are set back to automatic (value 0), the learned values are used
 
 
 
+![IRC AC Integration](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/IRC_AC_Integration.gif)
+
+
+
+
 ---
 
 
@@ -346,3 +361,8 @@ For temperature inputs and parameters, the symbol for temperature (ϑ) is now us
     In the user interface, the history of the function block can be displayed.
 A maximum of 100 entries can be shown.
 When you restart or save to the Miniserver, the history is cleared.
+
+
+
+
+![History IntRoomContr](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/History_IntRoomContr.png)

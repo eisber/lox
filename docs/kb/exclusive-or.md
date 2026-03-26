@@ -10,6 +10,11 @@ Note that multiple signal connected to same input will be OR-linked.
 
 
 
+![Xor table](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Xor_table.png)
+
+
+
+
 ## Table of Contents
 - [Inputs](#Input)
 - [Outputs](#Output)
@@ -64,3 +69,8 @@ Note that multiple signal connected to same input will be OR-linked.
 
 
     Logical XOR operation based on a truth table.
+
+
+
+
+![XOR timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/XOR-timediag.png)

@@ -8,7 +8,7 @@ This product will not be available for purchase after 15th June 2019.
 There is a Gen. 2 version of the LED Spot designed specifically for the UK.
 The [LED Spot RGBW Tree White (UK)](https://shop.loxone.com/enuk/led-spot-rgbw-tree-white-uk.html) is fire-rated and offers directional warm white light and diffuse coloured light to provide an incomparable lighting experience in a Real Smart Home.
 
-*[]*
+![IC attention exclamation mark green](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/IC_attention-exclamation-mark-green.png)
 
 For information on specifying and designing Loxone lighting take a look at our lighting guide **[here](https://www.loxone.com/enen/kb/lighting/)**.
 
@@ -39,7 +39,7 @@ Red: 2.0W
 
 ## WIRING
 
-*[]*
+![EN KB Diagram RGBW Spot.png@4x 1024x495](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/EN_KB_Diagram_RGBW_Spot.png@4x.png)
 
 Quick Connection Guide for the LED Spot RGBW (pdf)
 

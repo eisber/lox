@@ -93,7 +93,17 @@ The two threshold values form a hysteresis, which prevents frequent toggling of 
 
 
 
+
+![ThresholdSwitch timediag Vnormal](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ThresholdSwitch-timediag-Vnormal.png)
+
+
+
     Von below Voff: The output (O) is deactivated as soon as the value of the input (V) exceeds the threshold (Voff) and activated when (V) falls below the threshold (Von):
+
+
+
+
+![ThresholdSwitch timediag Vreversed](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ThresholdSwitch-timediag-Vreversed.png)
 
 
 

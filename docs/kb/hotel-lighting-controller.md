@@ -130,3 +130,8 @@ Hotel lighting controller for dimming, switching and RGB lighting
 
     This function block has a presence simulation.
 Activate and define the presence simulation in the properties window:
+
+
+
+
+![PresenceSimulation HotelLightingContr](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PresenceSimulation_HotelLightingContr.png)

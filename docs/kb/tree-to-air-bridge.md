@@ -37,14 +37,19 @@ The Tree to Air Bridge is used to integrate various devices that are equipped wi
 
 
 
-|  | The Miniserver (no matter which generation or model is used) and Air signals can negatively influence each other when in close proximity.Therefore, a distance of 2 division / breaker units should be maintained between a Miniserver and an Air Base. |
+![100451 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100451 install.png)
+
+
+
+
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The Miniserver (no matter which generation or model is used) and Air signals can negatively influence each other when in close proximity.Therefore, a distance of 2 division / breaker units should be maintained between a Miniserver and an Air Base. |
 | --- | --- |
 
     Connect the power supply and Tree communication wires.
 
 
 
-|  | For best signal performance, make sure that the device is not in close range of metal objects. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | For best signal performance, make sure that the device is not in close range of metal objects. |
 | --- | --- |
 
     The Tree to Air Bridge starts after switching on the power supply, and the status LED will flash orange after a short time when the connection to the Miniserver is established.

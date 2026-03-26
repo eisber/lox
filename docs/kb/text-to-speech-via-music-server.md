@@ -12,11 +12,11 @@ The first item you will need is a state block. More information on this can be f
 
 With the state block, you will need to setup trigger logic and then have a text output for that line. The easiest and one of the most common ways is to simply use a switch/button that triggers input 1 of the state block that then emits a text signal.
 
-*[]*
+![tts 1 300x187](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/02/tts-1.png)
 
 By then using the TQ output (dedicated text output), you can then forward the text signal out to anything that can accept one. The TTS input on a Music Server is the best for this, as you will then get direct feedback for how it behaves.
 
-*[]*
+![tts 2 300x60](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/02/tts-2.png)
 
 
 
@@ -24,11 +24,11 @@ You can also use memory flags to transfer this same text signal across multiple 
 
 
 
-*[]*
+![tts3 300x157](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/02/tts3.png)
 
 The final edit that needs to be made is in the Music Server block itself. There is a parameter called Vt and this is the %age volume that TTS will play at. By setting this to a number you want (0-100), the TTS will play at that volume and so it does not adopt the volume of the zone, it has its own volume.
 
-*[]*
+![tts4 300x104](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/02/tts4.png)
 
 
 

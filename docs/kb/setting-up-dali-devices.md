@@ -16,7 +16,7 @@ Once your DALI extension and DALI BUS are online and sound, you can begin the de
 
 Select the DALI extension in the periphery tree and click the ‘DALI search’ button.
 
-*[]*
+![DALIaddD 239x300](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/10/DALIaddD.jpg)
 
 Additional functions in the search of DALI devices (tick boxes to the right of the search button. Please also note that these are greyed out due to the fact that I do not have a DALI Extension learned into this Miniserver):
 - “Load factory settings” – The DALI devices in the search are reset to the factory settings.
@@ -51,17 +51,18 @@ When programming the DALI devices existing group assignments will automatically 
 
 To create a new group you must first learn in the new DALI devices.
 
-*[]*
+![EN KB Config Dali Device Groups 1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Dali_Device_Groups_1.png)
 
 In the properties of the group you can select all learned DALI devices OR select the groups from the DALI device itself:
 
-*[]*
+![EN KB Config Dali Device Groups 2 1024x944](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Dali_Device_Groups_2.png)
 
 The group actuator can now be used in programming – this will provide control over all the actuators
 
-*[]*
+![EN KB Config Dali Device Groups Lighting Controller 1024x693](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Dali_Device_Groups_Lighting_Controller.png)
 
-*[Icon Exclamation Mark Loxone]*If several DALI luminaires are controlled at the same time, a DALI group is recommended. This offers the advantage that the programming is clearer and there is no time delay when dimming the lights.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+If several DALI luminaires are controlled at the same time, a DALI group is recommended. This offers the advantage that the programming is clearer and there is no time delay when dimming the lights.
 
 ####
 
@@ -69,6 +70,6 @@ The group actuator can now be used in programming – this will provide control 
 
 With the DALI monitor, you can trace the communication between the DALI devices and the DALI extension. To activate the monitor, click the checkbox “Launch DALI monitor and display”
 
-*[]*
+![EN KB Config Dali Monitor 1 1024x732](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Dali_Monitor-1.png)
 
 Once this has been turned on, a DALI monitor will appear and you can see what is being sent to each DALI device, and also the values being sent out (DALI utilises 8-bit communication so 255 is the maximum – 100% brightness)

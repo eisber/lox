@@ -37,8 +37,13 @@ The GEIGER SOLIDline Air is a tubular motor for roller shutters and awnings, con
 
 
 
-|  | Please ensure that the power cable plug is fully inserted into the tubular motor, as shown in the following image: |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Please ensure that the power cable plug is fully inserted into the tubular motor, as shown in the following image: |
 | --- | --- |
+
+
+
+![solidline insertplugfully](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/solidline-insertplugfully.jpg)
+
 
 
 
@@ -71,6 +76,11 @@ The GEIGER SOLIDline Air is a tubular motor for roller shutters and awnings, con
 
 
     To set the end limits, activate the service mode in the App. Then use the buttons in the app to adjust the position of your shading. Once the end position has been reached, save it by clinking "Save end position".
+
+
+
+
+![Solidline SetEndLimits](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Solidline-SetEndLimits.png)
 
 
 

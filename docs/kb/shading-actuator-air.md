@@ -33,7 +33,17 @@ The Shading Actuator Air is a wireless device for mains voltage controlled via L
 
 
 
+
+![100290 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100290 install.png)
+
+
+
     Wiring Example Shading:
+
+
+
+
+![ShadingActuatorAir Shading](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ShadingActuatorAir_Shading.png)
 
 
 
@@ -42,11 +52,16 @@ The Shading Actuator Air is a wireless device for mains voltage controlled via L
 
 
 
-|  | Install the device and cables in a way that they will not be damaged by the shading device. |
+![ShadingActuatorAir Lighting](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ShadingActuatorAir_Lighting.png)
+
+
+
+
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Install the device and cables in a way that they will not be damaged by the shading device. |
 | --- | --- |
 
 
-|  | In order to prevent water ingress, careful assembly is necessary. Make sure that the gaskets on both connectors are properly positioned, the safety brackets are locked, and the cable glands are tight. If possible, position the device so that the Loxone logo faces up and the device is protected from heavy rain, submersion and standing water. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | In order to prevent water ingress, careful assembly is necessary. Make sure that the gaskets on both connectors are properly positioned, the safety brackets are locked, and the cable glands are tight. If possible, position the device so that the Loxone logo faces up and the device is protected from heavy rain, submersion and standing water. |
 | --- | --- |
 
     Finally, switch on the power supply.

@@ -39,6 +39,11 @@ The Loxone Energy Meter for DIN rail mounting features MID certified bidirection
 
 
 
+
+![EnergyMeterGridConnect 3phDefault](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/EnergyMeterGridConnect-3phDefault.png)
+
+
+
     The neutral conductor from the grid is either routed through the meter or connected only on the input.
 If necessary, the [wiring direction](#MeterWiringDirection) can be changed, and the meter wired from bottom to top.
 
@@ -48,11 +53,16 @@ If necessary, the [wiring direction](#MeterWiringDirection) can be changed, and 
 
 
 
-|  | The meter is powered by mains voltage. The +24V terminal is not connected internally but is present to allow for easy daisy-chaining of the +24V line. The GND must be connected for the proper function of the Tree interface. |
+![EnergyMeterTreeConnect 3ph](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/EnergyMeterTreeConnect-3ph.png)
+
+
+
+
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The meter is powered by mains voltage. The +24V terminal is not connected internally but is present to allow for easy daisy-chaining of the +24V line. The GND must be connected for the proper function of the Tree interface. |
 | --- | --- |
 
 
-|  | Do not install power supplies directly next to the Energy Meter, as this can lead to inaccurate measurements. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Do not install power supplies directly next to the Energy Meter, as this can lead to inaccurate measurements. |
 | --- | --- |
 
 
@@ -99,6 +109,11 @@ The meter readings themselves and their inputs are not interchanged.
 
 
 
+
+![Meter3phDragDrop](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Meter3phDragDrop.gif)
+
+
+
     By default, the API Connector transmits the meter reading and power at the following intervals:
 Power: Every 5 seconds, but only on value change.
 Meter readings: Every 60 seconds, but only on value change. The transmission cycles can be individually configured in the device settings.
@@ -119,6 +134,11 @@ This setting can be selected after pairing the meter and is only available for t
 
 
 
+
+![select singlephasemetering](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/select-singlephasemetering.png)
+
+
+
     For the 1P3W grid system, single-phase metering can be implemented by manually adding sensors.
 For the 3P3W grid system, single-phase metering is not possible in general.
 
@@ -134,6 +154,11 @@ For the 3P3W grid system, single-phase metering is not possible in general.
 
 
 
+
+![MeterAddSensor](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/MeterAddSensor.gif)
+
+
+
     The number of available sensors depends on the type of meter and the configured Type of use.
 
 
@@ -145,6 +170,11 @@ For the 3P3W grid system, single-phase metering is not possible in general.
 
 
     The display alternately shows the following values:
+
+
+
+
+![MeterDisplayCycle](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/MeterDisplayCycle.gif)
 
 
 
@@ -181,13 +211,13 @@ When the overall power is negative, energy is delivered, and thus added to the d
 
 | Status LED | Description |
 | --- | --- |
-|  | Everything OK, device is online. |
-|  | Connection to the Miniserver is okay, but the device has not been paired. |
-|  | Device cannot connect to the Miniserver via the Tree interface. |
-|  | Device was selected in Loxone Config and is identifying. |
-|  | Update is in progress. |
-|  | No AC mains supply ornormal operation (if Status LED is switched off) |
-|  | Internal device communication error |
+| ![StatLedBarLeftGreenFlashOnline](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedBarLeftGreenFlashOnline.gif) | Everything OK, device is online. |
+| ![StatLedBarLeftOrangeFlashOffline](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedBarLeftOrangeFlashOffline.gif) | Connection to the Miniserver is okay, but the device has not been paired. |
+| ![StatLedBarLeftRedFlashNoConn](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedBarLeftRedFlashNoConn.gif) | Device cannot connect to the Miniserver via the Tree interface. |
+| ![StatLedBarLeftRedGreenIdentify](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedBarLeftRedGreenIdentify.gif) | Device was selected in Loxone Config and is identifying. |
+| ![StatLedBarLeftOrangeRedUpdate](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedBarLeftOrangeRedUpdate.gif) | Update is in progress. |
+| ![StatLedBarBothGreyOff](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedBarBothGreyOff.png) | No AC mains supply ornormal operation (if Status LED is switched off) |
+| ![EnergyMeter Internal device communication error](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/EnergyMeter_Internal_device_communication_error.png) | Internal device communication error |
 
 
 ---

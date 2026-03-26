@@ -14,7 +14,7 @@ If the two status LEDs of the Miniserver do not flash, this means that the Minis
 
 This behaviour indicates that the Miniserver does not recognise the SD card. Please check whether the SD card is inserted correctly into the slot on the lower left hand side of the Miniserver as depicted below.
 
-*[]*
+![EN KB Product Miniserver SD Card](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Product_Miniserver_SD_Card.png)
 
 If the SD Card is properly inserted then it suggests that the Miniserver is unable to read the operating system from the SD Card. In order for the SD card to be recognised, loaded from and used by the Miniserver, this must first be formatted with Loxone Config. Instructions for formatting the SD card in the Loxone Config are available [here](https://www.loxone.com/enen/kb/restore-factory-defaults-format_sd-card/) .
 

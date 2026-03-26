@@ -25,7 +25,7 @@ The codes can be assigned completely freely and, if necessary, after speaking wi
 - [NFC Code Touch](https://shop.loxone.com/enuk/nfc-code-touch.html)
 - Electrical Door Lock
 
-*[Keyless Door Lock - Loxone NFC Code Touch]*
+![Keyless Door Lock - Loxone NFC Code Touch](https://www.loxone.com/enen/wp-content/uploads/sites/3/2019/08/PH-using-nfc-code-touch.jpg)
 
 ## Why you and your customer should consider implementing a keyless door lock?
 

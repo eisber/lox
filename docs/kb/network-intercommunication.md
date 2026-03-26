@@ -62,6 +62,11 @@ In the following example we will use the ID MS_A for our Miniserver:
 
 
 
+![Net IC ID MS A](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Net IC ID MS A.png)
+
+
+
+
 ### Create Remote System
 
     Next, select Create Remote System from the menu bar.
@@ -70,6 +75,11 @@ To accept packets from or send packets to all Intercommunication members, use '*
 
 
     In the following example, we want to send data only to a specific Remote System, in this case the Miniserver with the ID MS_B, so we specify its IP address in the network address field:
+
+
+
+
+![Net IC remotesys send ip](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Net IC remotesys send ip.png)
 
 
 
@@ -111,6 +121,11 @@ By setting a **Type**, you define whether it is a digital value, analogue value 
 
 
 
+![Net IC output encrypted](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Net IC output encrypted.png)
+
+
+
+
 ### Receiving a Value
 
     We now switch to another Miniserver and also assign a **Own ID** for **Network Intercommunication**, that is different from the other members.
@@ -123,6 +138,11 @@ If encryption is not used, the address field on the receiving Miniserver can be 
 
 
 
+
+![Net IC remotesys receive ip](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Net IC remotesys receive ip.png)
+
+
+
     Next, we select **Add Input**. which creates a sensor.
 For identification we use the **Packet ID** Temp1, which we defined earlier on the sending Miniserver.
 For **Data type** we again select Analog, since it is a simple analogue value.
@@ -132,8 +152,18 @@ For **Data type** we again select Analog, since it is a simple analogue value.
 
 
 
+
+![Net IC input encrypted](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Net IC input encrypted.png)
+
+
+
     Alternatively, incoming packets can also be learned without having to enter the settings manually. To do this, click the **Search for incoming packets** button in the menu bar.
 A window will open and incoming packets will be displayed on the left. Select a packet, and add it to the programming as an input using the + button:
+
+
+
+
+![Net IC learn packets encrypted](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Net IC learn packets encrypted.png)
 
 
 

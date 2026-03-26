@@ -44,13 +44,13 @@ The Wireless Speaker is an audio solution designed for both standalone use and s
 
 | Status LED | Description |
 | --- | --- |
-|  | Booting |
-|  | Wi-Fi pairing active |
-|  | Paired, no communication with system or network |
-|  | LOXONE pairing mode |
-|  | Error |
-|  | Firmware updating |
-|  | Standby / playing |
+| ![dot orange fast flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/dot_orange_fast_flashing.gif) | Booting |
+| ![dot orange](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/dot_orange.png) | Wi-Fi pairing active |
+| ![dot orange flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/dot_orange_flashing.gif) | Paired, no communication with system or network |
+| ![dot red orange green flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/dot_red_orange_green_flashing.gif) | LOXONE pairing mode |
+| ![dot red fast flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/dot_red_fast_flashing.gif) | Error |
+| ![dot red flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/dot_red_flashing.gif) | Firmware updating |
+| ![dot gray](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/dot_gray.png) | Standby / playing |
 
     **Wi-Fi standalone mode**
 
@@ -58,8 +58,8 @@ The Wireless Speaker is an audio solution designed for both standalone use and s
 
 | Status LED | Description | LED States |
 | --- | --- | --- |
-|  | Blue flashing for 10 seconds | Bluetooth connected |
-|  | Green flashing for 10 seconds | AirPlay / Spotify Connect playback |
+| ![dot blue flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/dot_blue_flashing.gif) | Blue flashing for 10 seconds | Bluetooth connected |
+| ![dot green flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/dot_green_flashing.gif) | Green flashing for 10 seconds | AirPlay / Spotify Connect playback |
 
 
 ---
@@ -76,7 +76,12 @@ The Wireless Speaker is an audio solution designed for both standalone use and s
 
 
 
-|  | Without these steps a previously paired Wireless Speaker cannot be paired with another Miniserver! |
+![wireless speaker resetbutton](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/wireless_speaker_resetbutton.png)
+
+
+
+
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Without these steps a previously paired Wireless Speaker cannot be paired with another Miniserver! |
 | --- | --- |
 
     The **web interface** of the Wireless Speaker provides access to network settings, status information, and diagnostic tools. You can access the interface using either the speaker’s IP address or its hostname. When searching for audio devices in Loxone Config, the search results include the IP address or hostname of the Wireless Speaker.

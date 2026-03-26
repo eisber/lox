@@ -39,11 +39,11 @@ Diameter: 80mm
 
 The LED Ceiling Spot RGBW has an RGBW connector built-in.
 
-*[LED-Ceiling-Spot-Magnet-Mount-768x687]*
+![LED-Ceiling-Spot-Magnet-Mount-768x687](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/03/LED-Ceiling-Spot-Magnet-Mount.png)
 
 ## WIRING
 
-*[]*
+![EN KB Diagram RGBW Spot.png@4x 1024x495](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/EN_KB_Diagram_RGBW_Spot.png@4x.png)
 
 ##
 

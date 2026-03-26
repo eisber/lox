@@ -82,3 +82,8 @@ The Analogue MinMax Limiter can be used to limit analogue values to the set rang
 
 
     The following timing diagram explains how the function block operates:
+
+
+
+
+![AnalogMinMaxLimiter timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AnalogMinMaxLimiter-timediag.png)

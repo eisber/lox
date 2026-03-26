@@ -36,6 +36,11 @@ The Weather Station Air is used to capture data relevant for building automation
 
 
 
+
+![100245 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100245 install.jpg)
+
+
+
     The device is mounted as shown either to a post with the enclosed accessories, or directly to a wall. Ensure exact horizontal alignment.
 
 
@@ -49,6 +54,11 @@ The Weather Station Air is used to capture data relevant for building automation
 
 
     Make sure the Weather Station cover is properly seated. Otherwise, the rain sensor functionality might be affected.
+
+
+
+
+![100245 cabling](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100245 cabling.png)
 
 
 

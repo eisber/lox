@@ -18,7 +18,7 @@ For this reason, original remote controls of the AC unit (also IR) can no longer
 
 
 
-|  | If the AC Unit is turned back on after a power interruption, it will be reinitialized. Depending on the device, this can take a few seconds or up to 15 or 30 minutes. During this time, the AC Unit cannot be controlled with the AC Control Air. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | If the AC Unit is turned back on after a power interruption, it will be reinitialized. Depending on the device, this can take a few seconds or up to 15 or 30 minutes. During this time, the AC Unit cannot be controlled with the AC Control Air. |
 | --- | --- |
 
 
@@ -54,6 +54,11 @@ For this reason, original remote controls of the AC unit (also IR) can no longer
 
 
     Connect the AC Control Air to the terminals with the enclosed connecting cable as follows:
+
+
+
+
+![AcCont Connect XY](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AcCont_Connect-XY.png)
 
 
 
@@ -102,6 +107,11 @@ The AC Control Air is now supplied with voltage from the air conditioner and can
 
 
 
+![AcCont dragdrop block](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AcCont_dragdrop_block.gif)
+
+
+
+
 ---
 
 
@@ -113,9 +123,24 @@ The AC Control Air is now supplied with voltage from the air conditioner and can
 
 
 
+![AcCont DiagStart](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AcCont_DiagStart.png)
+
+
+
+
+
+![ACCont Diagnostics2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ACCont_Diagnostics2.png)
+
+
+
 
 Additionally, you can also start the AC Control Monitor for diagnostic purposes.
 1) Activate the AC Control Monitor. 2) Turn the AC unit off. 3) Turn the AC unit on. 4) Cycle through the non-working functions. The recording needs to be at least five minutes. 5) Save the AC Control Monitor data and have them ready for transmission to Loxone.
+
+
+
+
+![AC Control Monitor](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AC_Control_Monitor.png)
 
 
 

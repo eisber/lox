@@ -164,6 +164,11 @@ It supports switched and dimmed lighting as well as coloured light and luminaire
 
 
 
+
+![lightcontrol basic](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/lightcontrol basic.png)
+
+
+
     A Loxone Touch is connected to the block's input (T5/1) for operation. A Presence Sensor is connected to input (P). In addition, the block is provided with the brightness value from the Presence Sensor at (Br).
 
 
@@ -180,6 +185,11 @@ The Presence block is then connected to the (P) input of the Lighting Controller
 
 
 
+![presenceblock lightcontroller](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/presenceblock-lightcontroller.png)
+
+
+
+
 ---
 
 
@@ -189,6 +199,11 @@ The Presence block is then connected to the (P) input of the Lighting Controller
     Double-click on the block to access the settings for the light circuits.
 Here you can define the names for the individual lights, which are used in the user interface.
 The actuator type is automatically selected to match the connected actuator.
+
+
+
+
+![LightController2 LightCircuits](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LightController2_LightCircuits.jpg)
 
 
 
@@ -224,6 +239,11 @@ The actuator type is automatically selected to match the connected actuator.
 
 
 
+
+![LightController2 moods](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LightController2_moods.jpg)
+
+
+
     Under the tab Moods, which you can reach by double-clicking on the light control, you have the ability to create up to 89 different lighting moods. Moods can be activated via input (Mood). A total of 8 moods can be assigned to the Loxone Touch inputs (T5/1-8). The inputs (Buzzer), (On) and (Off) can also be configured here.
 
 
@@ -235,6 +255,11 @@ The actuator type is automatically selected to match the connected actuator.
 
 
 ## Automatic on Presence/Motion
+
+
+
+
+![LightController2 Automatic](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LightController2_Automatic.jpg)
 
 
 
@@ -255,6 +280,11 @@ The actuator type is automatically selected to match the connected actuator.
 
 
     Inputs T5/1-8 can be configured as presence inputs by ticking the box for presence in the mood settings. This changes the input name to P/1-P/8
+
+
+
+
+![set presence input](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/set presence input.png)
 
 
 
@@ -295,10 +325,20 @@ This function is supported by illuminants whose light color is adjustable.
 
 
 
+
+![DaylgtCtrl Activate](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/DaylgtCtrl-Activate.png)
+
+
+
     In the Daylight Control Settings, the progression is set based on the length of the day or by a time. Furthermore, for each actuator is selected whether it is direct or indirect lighting.
 
 
     The coldest and warmest color temperature used is set via two parameters of the function block:
+
+
+
+
+![DaylgtCtrl Setup](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/DaylgtCtrl-Setup.png)
 
 
 
@@ -315,6 +355,11 @@ Activate and define the presence simulation in the properties window:
 
 
 
+![PresenceSimulation LightingContr](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PresenceSimulation_LightingContr.png)
+
+
+
+
 ---
 
 
@@ -324,3 +369,8 @@ Activate and define the presence simulation in the properties window:
     In the user interface, the history of the function block can be displayed.
 A maximum of 100 entries can be shown.
 When you restart or save to the Miniserver, the history is cleared.
+
+
+
+
+![History LightingContr](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/History_LightingContr.png)

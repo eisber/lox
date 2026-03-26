@@ -12,7 +12,7 @@ Miele@home allows the integration of compatible Miele@home household appliances.
 
 
 
-|  | A Miele@home account is required for use! The Miniserver Gen. 1 is not supported. The Miele@home devices and the Miniserver must have an active internet connection. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | A Miele@home account is required for use! The Miniserver Gen. 1 is not supported. The Miele@home devices and the Miniserver must have an active internet connection. |
 | --- | --- |
 
 

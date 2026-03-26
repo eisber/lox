@@ -20,7 +20,7 @@ First install and configure the DMX extension.
 
 Add a DMX actuator found in the Periphery tab. If you operate the PWM dimmer in mode 5 (DMX – Single Colour), add a ‘DMX actuator’. If you operate the dimmer in mode 6 (DMX – RGB), add a ‘DMX RGB actuator’.
 
-*[Loxone Config PWM DMX Actuator ]*
+![Loxone Config PWM DMX Actuator ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_Inset_DMX_PWM_Actuator.png)
 
 SELECT AN OPERATING MODE FOR THE DMX DIMMER
 
@@ -37,25 +37,25 @@ Option: Reassign the DMX Channel
 
 If you want to reassign the channel selection, go to the appropriate (DMX actuator / DMX RGB actuator) ‘Properties’ window, and enter your selection. Then save the program in the Miniserver.
 
-*[Loxone Config PWM DMX Actuator Periphery]*
+![Loxone Config PWM DMX Actuator Periphery](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_DMX_PWM_Periphery.png)
 
 #### CONFIGURE THE DEVICE
 
 After saving your program in the Miniserver, the ‘Learn device’ field becomes selectable and is no longer greyed out. Click on this field and you should see the pop up below come up. To continue click OK.
 
-*[Loxone Config PWM DMX Popup Configuration]*
+![Loxone Config PWM DMX Popup Configuration](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_DMX_PWM_Popup.png)
 
 #### COMPLETING THE CONFIGURATION
 
 After clicking OK in the pop-up in the previous step press and hold the dimmer program button for at least 5 seconds. The LED on the dimmer unit will flash rapidly and if you have an LED strip connected this will flash briefly as well. If you are using an RGB strip you should see that the strip lights up in RED after this step, indicating that the address has been successfully programmed.
 
-*[Loxone Config PWM DMX Popup Configuration]*
+![Loxone Config PWM DMX Popup Configuration](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_DMX_PWM_Popup_2.png)
 
 You can now close the dialog box in the Loxone Config Software, by clicking OK, and you will see the LED strip go off, which completes the configuration of the PWM Dimmer.
 
 [Download: DMX LED controlled example](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/dmx_rgb.zip)
 
-*[Icon Exclamation Mark Loxone]*
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 
 The PWM dimmer should be placed as close as possible to the LED strip. If this is not possible, a wire should be chosen with a cross section large enough that the voltage drop is no greater than 1V.
 
@@ -87,4 +87,4 @@ Your DMX dimmer is now configured for analogue use.
 
 The colour sequence can be found on the [datasheet](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Diagram_PWM_Datasheet.pdf).
 
-*[PWM Dimmer Controller Loxone Config DMX Analogue Multiplexer]*
+![PWM Dimmer Controller Loxone Config DMX Analogue Multiplexer](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_DMX_PWM_Function.png)

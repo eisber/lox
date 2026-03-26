@@ -33,9 +33,13 @@ Hardware:
 
 ### Configuration:
 
-[*[Automatic Blind Control - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-61-Automatic-Blinds-Close-Recreational.png)
+[
+![Automatic Blind Control - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-61-Automatic-Blinds-Close-Recreational.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-61-Automatic-Blinds-Close-Recreational.png)
 
-[*[Automatic Blind Control - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-61-Automatic-Blinds-Close-Bedrooms.png)
+[
+![Automatic Blind Control - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-61-Automatic-Blinds-Close-Bedrooms.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-61-Automatic-Blinds-Close-Bedrooms.png)
 
 
 

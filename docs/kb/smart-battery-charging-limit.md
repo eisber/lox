@@ -20,7 +20,9 @@ At the same time, you can switch the charger on and off manually using a physica
 
 ### Configuration:
 
-[*[Smart Battery Charging Limit - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-11-Automatic-Power-off_2020-06-19.png)
+[
+![Smart Battery Charging Limit - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-11-Automatic-Power-off_2020-06-19.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-11-Automatic-Power-off_2020-06-19.png)
 
 ### Download the sample file:
 

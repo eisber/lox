@@ -24,7 +24,9 @@ To reduce this risk, we can configure the backlight to only come on when a visit
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-86-Secure-your-NFC-Code-Touch.png)
+[
+![Use Case 86 Secure your NFC Code Touch](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-86-Secure-your-NFC-Code-Touch.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-86-Secure-your-NFC-Code-Touch.png)
 
 
 

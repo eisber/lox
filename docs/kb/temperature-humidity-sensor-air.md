@@ -20,7 +20,8 @@ Source: https://www.loxone.com/enen/kb/temperature-humidity-sensor-air/
 - Dimensions: 21 x 21 x 27mm
 - Protection: IP20
 
-*[Icon Exclamation Mark Loxone]*Being a battery operated device the Temperature and Humidity Sensor Air is only able to act as an end device in the Air mesh and not as a repeater.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+Being a battery operated device the Temperature and Humidity Sensor Air is only able to act as an end device in the Air mesh and not as a repeater.
 
 
 
@@ -28,7 +29,7 @@ Source: https://www.loxone.com/enen/kb/temperature-humidity-sensor-air/
 
 In order for the Temperature and Humidity Sensor Air to be learned by the Miniserver, it must first be set to learning mode.
 
-*[Loxone Temperature and Humidity Sensor Air ]*
+![Loxone Temperature and Humidity Sensor Air ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Product_Temp_Humidity_Button.png)
 
 **First Time:**
 
@@ -50,7 +51,7 @@ The Learn button is located inside the device next to one of the batteries, so t
 
 To replace the battery, remove the cover of the Temperature and Humidity Sensor Air. On the board are 2 AAA batteries which are easy to remove. After inserting the new batteries and the device will restart and the LED of the Temperature and Humidity Sensor Air will flash green 3 times.
 
-*[Loxone Temperature and Humidity Sensor Air Battery Change.]*
+![Loxone Temperature and Humidity Sensor Air Battery Change.](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Temperature_Humidity_Sensor_Air_Battery.png)
 
 Brief guide of the temperature and humidity sensor Air (pdf)
 

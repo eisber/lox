@@ -26,7 +26,9 @@ Hardware:
 
 ### Configuration:
 
-[*[Limit TV screen time for kids - Loxone config screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-43-Smart-TV-Times-1.png)
+[
+![Limit TV screen time for kids - Loxone config screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-43-Smart-TV-Times-1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-43-Smart-TV-Times-1.png)
 
 
 

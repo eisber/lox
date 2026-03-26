@@ -61,6 +61,11 @@ The communication is encrypted using IPSec AES 128bit, with a different encrypti
 
 
 
+
+![10.5 air search](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5 air search.png)
+
+
+
     If you select a device here, it will **identify** itself in different ways. Devices with a status LED will flash it, lighting products pulse a white light, other devices such as the Loxone Touch emit an audible click. This allows you to assign and name the devices correctly.
 
 
@@ -90,8 +95,18 @@ The communication is encrypted using IPSec AES 128bit, with a different encrypti
 
 
 
+
+![AirBase AutoPairingUntil](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AirBase_AutoPairingUntil.png)
+
+
+
     To pair Air devices automatically, the Air device must be added in the Config. Therefore click on the Air interface and select a device via "Add Air Device".
 In the properties window of the respective Air device, the serial number must now be entered:
+
+
+
+
+![AirDevice SerialNumber](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AirDevice_SerialNumber.png)
 
 
 
@@ -152,6 +167,11 @@ Battery powered Air devices must be [awake](#AirWake) for this.
 
 
 
+![UnpairAirDev](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/UnpairAirDev.png)
+
+
+
+
 ---
 
 
@@ -162,6 +182,11 @@ Battery powered Air devices must be [awake](#AirWake) for this.
 
 
     To wake up a battery powered Air device, right click on it in **Device Status** and select **Keep device awake**:
+
+
+
+
+![11.1 airwakeup](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/11.1 airwakeup.png)
 
 
 
@@ -205,6 +230,11 @@ Green flashing (continuous or 3 times, then off): Everything okay, Extension is 
 
 
 
+![10.5 device status air](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5 device status air.png)
+
+
+
+
 ---
 
 
@@ -220,6 +250,11 @@ The Air Base Extension itself can act as a repeater if it is on the same frequen
     Note that communication via repeaters leads to time delays.
 If an Air device requires more than two repeaters in succession, we recommend an additional Air Base Extension or Tree to Air Bridge near the low-signal device.
 The number of hops (number of repeaters to the Air Base Extension) is limited to a maximum of 5, and can be seen in the Device Status:
+
+
+
+
+![AirMeshHops](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AirMeshHops.png)
 
 
 
@@ -257,11 +292,26 @@ This way, a lower utilization per channel is achieved, but the meshing across de
 
 
 
+![AirDiagButton](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AirDiagButton.png)
+
+
+
+
 It displays the last received signal strength indicator (RSSI) value in dB, where values closer to zero indicate a stronger signal.
 
 
 
+
+![AirDiagScreen](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AirDiagScreen.png)
+
+
+
     Signal quality limits explained:
+
+
+
+
+![Signal quality](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Signal_quality.png)
 
 
 
@@ -273,6 +323,11 @@ It displays the last received signal strength indicator (RSSI) value in dB, wher
 
     **Material:** The signal weakens as it passes through different materials, with the attenuation depending on the material type and thickness.
 For reference, below is a list of common materials and their approximate signal attenuation.
+
+
+
+
+![Air material sheet](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Air_material_sheet.png)
 
 
 
@@ -288,9 +343,19 @@ Typically, our devices feature an omni/dipole antenna. However, nearby metallic 
 
 
 
+![antenna types](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/antenna_types.png)
+
+
+
+
 ### Loxone Health Check
 
     The diagnostics of the Miniserver and the Loxone interfaces can be started via the Loxone Health Check:
+
+
+
+
+![HealthCheck](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/HealthCheck.png)
 
 
 
@@ -316,8 +381,18 @@ For this reason, the channels can be checked and changed for each Air interface 
 
 
 
+![AirChannelCheckStart](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AirChannelCheckStart.png)
+
+
+
+
 After a few seconds, a text file is opened with the report. Search for the Channel-Check information in the report.
 In the following example, the current Channel 0 is occupied by 12%. Channel 100 on the other hand is occupied by only 1 %. A change to Channel 100 would improve the situation.
+
+
+
+
+![AirChannelCheckReport](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AirChannelCheckReport.png)
 
 
 
@@ -332,14 +407,29 @@ In the following example, the current Channel 0 is occupied by 12%. Channel 100 
 
 
 
+![AirChannelSet](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AirChannelSet.png)
+
+
+
+
 Then a window opens with the Air devices, and their status.
 Follow the instructions, and then click on Change frequency:
 
 
 
 
+![AirChannelChange](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AirChannelChange.png)
+
+
+
+
 Devices that are already online will then start applying the change.
 Finally, click Save in Miniserver to apply the changed channel to the program:
+
+
+
+
+![AirChannelSave](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AirChannelSave.png)
 
 
 

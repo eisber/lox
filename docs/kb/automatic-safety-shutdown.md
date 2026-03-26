@@ -29,7 +29,9 @@ When the [Presence Sensor](https://shop.loxone.com/enuk/presence-sensor-tree.htm
 
 ### Configuration:
 
-[*[Automatic Safety Shutdown - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-108-Automated-Safety-Shutdown.png)
+[
+![Automatic Safety Shutdown - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-108-Automated-Safety-Shutdown.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-108-Automated-Safety-Shutdown.png)
 
 ### Download the sample file:
 

@@ -132,6 +132,11 @@ It determines the heating or cooling requirements of all rooms of a mixing circu
 
 
 
+
+![tempcontrol basic](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tempcontrol basic.png)
+
+
+
     The block is provided with the outdoor temperature at input **ϑo**. The output **AQf** is used to transmit the flow setpoint temperature to the [Mixing Valve Controller](https://www.loxone.com/help/mixing-valve-controller) block.
 The Mixing Valve Controller and the relay output for the circulation pump are controlled together via the output **Qp**.
 Please note that further logic must be added here if mixing valves or pumps may only operate under certain conditions.
@@ -142,7 +147,17 @@ Here, all rooms that are supplied by this mixing circuit are selected. An [Intel
 
 
 
+
+![tempcontrol assign](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tempcontrol assign.png)
+
+
+
     Whether the mixing circuit is used for **heating or cooling** is specified in the block settings:
+
+
+
+
+![tempcontrol setup heat cool](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tempcontrol setup heat cool.png)
 
 
 

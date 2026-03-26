@@ -27,7 +27,9 @@ If a critical water level is reached (below 50%), the owner is informed via push
 
 ### Configuration:
 
-[*[Automatic Liquid Level Measurement - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-64-Liquid-Levels.png)
+[
+![Automatic Liquid Level Measurement - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-64-Liquid-Levels.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-64-Liquid-Levels.png)
 
 ### Download the sample file:
 

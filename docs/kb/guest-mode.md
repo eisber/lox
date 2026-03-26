@@ -33,7 +33,9 @@ And the operating mode has even more effects:
 
 ### Configuration:
 
-[*[Guest Mode - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-95-Guest-Mode.png)
+[
+![Guest Mode - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-95-Guest-Mode.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-95-Guest-Mode.png)
 
 ### Download the sample file:
 

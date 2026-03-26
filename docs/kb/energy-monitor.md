@@ -10,7 +10,7 @@ In addition, the block can visualize production data, financial savings and a ba
 
 
 
-|  | This function block is no longer being developed further and has been replaced by the Energy Flow Monitor in combination with the Meter blocks. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | This function block is no longer being developed further and has been replaced by the Energy Flow Monitor in combination with the Meter blocks. |
 | --- | --- |
 
 
@@ -191,6 +191,11 @@ Further templates are available on [Loxone Library](https://library.loxone.com/)
 
 
 
+![Fronius Random](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Fronius_Random.jpg)
+
+
+
+
 ---
 
 
@@ -198,6 +203,11 @@ Further templates are available on [Loxone Library](https://library.loxone.com/)
 
 
     To receive the data of your inverter, you must select "Fronius" or "Kostal" as the data source in the properties window and enter the IP address and the device number. The data is polled cyclically every minute.
+
+
+
+
+![Fronius Inverter](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Fronius_Inverter.jpg)
 
 
 
@@ -234,6 +244,11 @@ Further templates are available on [Loxone Library](https://library.loxone.com/)
 
 
     The currency can be set in the document properties.
+
+
+
+
+![Fronius Calc](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Fronius_Calc.jpg)
 
 
 

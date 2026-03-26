@@ -8,7 +8,7 @@ The Husqvarna plugin allows the integration of compatible [Husqvarna Automower®
 
 
 
-|  | A Husqvarna account is required for use! Please note the Miniserver Gen. 1 is not supported. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | A Husqvarna account is required for use! Please note the Miniserver Gen. 1 is not supported. |
 | --- | --- |
 
     The status of the lawnmower is transmitted to the Miniserver every 15 minutes, in the Husqvarna App it is displayed live.
@@ -88,7 +88,7 @@ The Husqvarna plugin allows the integration of compatible [Husqvarna Automower®
 
 
 
-|  | Avoid configuration that changes actuator state frequently. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Avoid configuration that changes actuator state frequently. |
 | --- | --- |
 
 

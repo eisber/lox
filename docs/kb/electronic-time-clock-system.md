@@ -23,7 +23,9 @@ Whenever the employer needs the data for tracking, the data can be downloaded in
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-27-Intelligent-Time-Recording-of-Employees.png)
+[
+![Use Case 27 Intelligent Time Recording of Employees](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-27-Intelligent-Time-Recording-of-Employees.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-27-Intelligent-Time-Recording-of-Employees.png)
 
 ### Download the sample file:
 

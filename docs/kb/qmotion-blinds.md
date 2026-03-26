@@ -31,7 +31,9 @@ Important: This, and any other command strings in this integration guide or atta
 
 Press enter, and you will receive a response from the server. The information between the speech marks, covered in **red** below, is your token. Copy this somewhere and keep it secure.
 
-[*[Command Prompt QMotion]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Command-Prompt.png)
+[
+![Command Prompt QMotion](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Command-Prompt.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Command-Prompt.png)
 
 **Finding the IDs of your devices**
 
@@ -44,11 +46,13 @@ In command prompt, enter and send the following command, replacing **<Token> **w
 curl -X GET "http://prod-bcs-qm-shadecloud-app.azurewebsites.net/devices?includeMetrics=false" -H "accept: application/json" -H "Authorization: **<Token>**"
 This will return a list of all of your devices, as well as their IDs. In the image below, the Gateway ID is in **blue**, and the ID of the blinds are in **green:**
 
-[*[Gateway ID QMotion]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Gateway-ID.png)
+[
+![Gateway ID QMotion](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Gateway-ID.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Gateway-ID.png)
 
 **Note: **If you’re having difficulty picking out the information you need from the returned string in the command prompt, you can copy and paste it into a website such as [JSONLint](https://jsonlint.com/). This will then validate it, making it easier to read:
 
-*[]*
+![JSONLint](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/JSONLint.png)
 
 **Important: **If you have paired multiple devices they will all show in this response. Ensure you name your devices uniquely and appropriately so you know which one is which.
 
@@ -57,7 +61,7 @@ If you wish to control groups of devices, you will also need to get the relevant
 curl -X GET "http://prod-bcs-qm-shadecloud-app.azurewebsites.net/groups" -H "accept: */*" -H "Authorization: **<Token>**"
 Similar to last time, you’ll get a response listing any groups you have created, with their IDs shown in **orange:**
 
-*[]*
+![Groups 800x172](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Groups.png)
 
 **Important: **If blinds are always going to be controlled together, we would strongly recommend controlling them as a group rather than individually. The fewer messages are sent to the server, the quicker the response will be.
 
@@ -67,13 +71,13 @@ The first thing we will need to do is to add the template for the virtual output
 
 In Config, under the Miniserver in the Periphery Tree, select “Virtual Outputs”. Then, on the top ribbon, select “Device Templates”, and then “Import Template”
 
-*[]*
+![Periphery Tree 523x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Periphery-Tree.png)
 
 In the window that pops up, navigate to and open the file you just downloaded. Then, go back into the same menu again, and in the dropdown you should now see “QMotion Blinds”. Click this to add it to your project, and click “ok” on the window that pops up regarding the IP address – this is nothing to be concerned about.
 
 This will add a virtual output for QMotion blinds, which contains four example outputs; an up and down command for both a single device and a device group. The first thing to do is to rename these outputs and add them to the correct rooms and categories:
 
-*[]*
+![Virtual Outputs](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Virtual-Outputs.jpg)
 
 
 
@@ -87,11 +91,11 @@ Now we need to adjust the commands in the template to match your groups and devi
 
 **Note: When editing these fields, it is easiest to click the three small dots to the right of the field to open up the full editor window. As mentioned earlier, be careful when editing these, as any small changes in syntax, spacing, or line breaks can cause them to not function as expected.**
 
-*[]*
+![Settings QMotion](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Settings-QMotion.png)
 
 Once the outputs have been edited, create and name an Automatic Blinds block, drag the required outputs onto the page, and connect them to the Q↑ and Q↓ outputs respectively.
 
-*[]*
+![Automatic Blinds Function Block QMotion](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Automatic-Blinds-Function-Block-QMotion.png)
 
 **Important: **Don’t forget to set the D parameter on your Automatic Blinds block! Even if you’re not using automatic shading, the block will not function without this parameter.
 

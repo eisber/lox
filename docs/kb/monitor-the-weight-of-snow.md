@@ -20,7 +20,9 @@ To monitor the weight of snow on the roof with the Miniserver, a 0-10V sensor is
 
 ### Configuration:
 
-[*[monitor the weight of snow - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-48-Snow-Load-Monitoring.jpg)
+[
+![monitor the weight of snow - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-48-Snow-Load-Monitoring.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-48-Snow-Load-Monitoring.jpg)
 
 ### Download the sample file:
 

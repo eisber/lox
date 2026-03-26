@@ -80,3 +80,8 @@ Following a pulse at the input the output switches ON with a delay until reset
 
 
 ## Timing Diagram
+
+
+
+
+![SavingSwitchOnDelay timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/SavingSwitchOnDelay-timediag.png)

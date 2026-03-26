@@ -38,7 +38,9 @@ Workstations must have sufficient brightness and good lighting conditions to max
 
 Lights that can change colour temperature are very expensive and therefore are rarely used in offices and households. With the [Loxone LED spots RGBW](https://shop.loxone.com/enuk/led-spot-rgbw-tree-white-uk.html) or the[ LED Ceiling Light RGBW](https://shop.loxone.com/enuk/led-ceiling-light-rgbw.html), similar effects are created by mixing warm white light and coloured light without increasing the excessive costs. The Loxone App offers its own daylight spectrum, with which you can choose the light colour from bluish to yellow/reddish daylight and define colour sequences.
 
-** *[Increasing productivity in the workplace with automation]***
+**
+![Increasing productivity in the workplace with automation](https://www.loxone.com/enen/wp-content/uploads/sites/3/2019/02/PH_Traeumeland-Office-Gallery-02.jpg)
+**
 
 [Get some inspiration from this smart office case study >>](https://www.loxone.com/enen/dreamland/)
 

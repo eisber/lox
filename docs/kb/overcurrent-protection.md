@@ -26,7 +26,9 @@ If someone tries to turn on the sauna while the car charger is on, for example, 
 
 ### Configuration:
 
-[*[Overcurrent Protection - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-105-Overload-Protection.png)
+[
+![Overcurrent Protection - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-105-Overload-Protection.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-105-Overload-Protection.png)
 
 ### Download the sample file:
 

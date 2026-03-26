@@ -14,7 +14,7 @@ The MQTT plugin enables communication with an MQTT broker (server) within a netw
 
 
 
-|  | Please note that the Miniserver Gen. 1 is not supported. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Please note that the Miniserver Gen. 1 is not supported. |
 | --- | --- |
 
 
@@ -36,7 +36,17 @@ The MQTT plugin enables communication with an MQTT broker (server) within a netw
 
 
 
+
+![mqtt addNetDev](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mqtt_addNetDev.png)
+
+
+
     A plugin instance can only connect to one broker instance at a time and therefore has the following settings:
+
+
+
+
+![mqtt settings](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mqtt_settings.png)
 
 
 
@@ -51,12 +61,22 @@ The MQTT plugin enables communication with an MQTT broker (server) within a netw
 
 
 
+
+![mqtt PublishSubscription](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mqtt_PublishSubscription.png)
+
+
+
     Sending/receiving always operates on so-called topics, which represent a path/address to data identity. Subscriptions can listen to multiple topics simultaneously ([Wildcards](https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901241))), while Publish does not support wildcards.
 
 
     **Example of a Topic:**
 If data needs to be sent to a temperature sensor in the living room, the corresponding topic could look like this:
 haus/wohnzimmer/temperatur
+
+
+
+
+![mqtt topic](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mqtt_topic.png)
 
 
 
@@ -72,7 +92,7 @@ Another device or application can subscribe to this topic to receive the transmi
 
 
 
-|  | Value changes of a subscription are evaluated at most every 2 seconds. If the last value change was received less than 2 seconds ago, additional changes will be cached. After the 2-second interval, the most recently received change will be processed. This measure is designed to relieve the Miniserver, especially when multiple changes per second are sent to a topic. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Value changes of a subscription are evaluated at most every 2 seconds. If the last value change was received less than 2 seconds ago, additional changes will be cached. After the 2-second interval, the most recently received change will be processed. This measure is designed to relieve the Miniserver, especially when multiple changes per second are sent to a topic. |
 | --- | --- |
 
     **Wildcards in Subscriptions:**
@@ -105,7 +125,7 @@ home/garage/car/battery
 
 
 
-|  | Wildcards can only be used when subscribing (Subscribe), not when publishing (Publish). This means that a device can only send messages to a specific topic, not to multiple topics simultaneously. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Wildcards can only be used when subscribing (Subscribe), not when publishing (Publish). This means that a device can only send messages to a specific topic, not to multiple topics simultaneously. |
 | --- | --- |
 
 

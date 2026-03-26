@@ -29,7 +29,9 @@ We are using a threshold control, so the Miniserver is able to increase or decre
 
 [
 
-](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-22-Wine-Cellar-Humidity-Control-2.png)[*[Wine Cellar Humidity Control - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-22-Wine-Cellar-Humidity-Control-2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-22-Wine-Cellar-Humidity-Control-2.png)[
+![Wine Cellar Humidity Control - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-22-Wine-Cellar-Humidity-Control-2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-22-Wine-Cellar-Humidity-Control-2.png)
 
 ### Download the sample file:
 

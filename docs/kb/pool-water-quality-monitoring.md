@@ -29,9 +29,13 @@ Via 2 temperature sensors (1x in the pool and 1x in the filter pump) the tempera
 
 ### Configuration:
 
-[*[Pool Water Quality Monitoring - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-16-Water-Quality-Control-1.png)
+[
+![Pool Water Quality Monitoring - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-16-Water-Quality-Control-1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-16-Water-Quality-Control-1.png)
 
-[*[Pool Water Quality Monitoring - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-16-Water-Quality-Control-2.png)
+[
+![Pool Water Quality Monitoring - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-16-Water-Quality-Control-2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-16-Water-Quality-Control-2.png)
 
 ### Download the sample file:
 

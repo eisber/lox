@@ -12,6 +12,7 @@ Parameter M allows you to set how long the interval between the two pulses needs
 
 A pulse at the input R causes the output to be reset to 0.
 
-*[Diagram of a Double Click Block]*
+![Diagram of a Double Click Block](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Diagram_Double_Click.png)
 
-*[Icon Exclamation Mark Loxone]*Triple clicks and quadruple clicks can be used in your program through the Multiclick block.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+Triple clicks and quadruple clicks can be used in your program through the Multiclick block.

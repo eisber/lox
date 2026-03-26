@@ -20,6 +20,11 @@ The Nano Motor Controller Air is a compact module with DC outputs, controlled vi
 
 
 
+
+![100472 picture](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100472 picture.png)
+
+
+
     An internal H-bridge is used to switch the outputs and reverse their polarity. Motor speed and dimming are controlled through pulse-width modulation.
 
 
@@ -48,6 +53,11 @@ The Nano Motor Controller Air is a compact module with DC outputs, controlled vi
 
 
     Install the device in a suitable installation box.
+
+
+
+
+![100472 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100472 install.png)
 
 
 
@@ -94,6 +104,11 @@ The rotation direction can be changed by the Nano Motor Controller by reversing 
 
 
 
+
+![NMCmodeBidir](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/NMCmodeBidir.png)
+
+
+
     This is useful for applications where a change of rotation direction is required, e.g. motors for shades, curtains, or motorized windows.
 
 
@@ -105,6 +120,11 @@ The rotation direction is determined by the connection:
 
 
 
+
+![NMCmodeUnidir](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/NMCmodeUnidir.png)
+
+
+
     This is useful for applications where two motors are to be controlled separately.
 
 
@@ -112,6 +132,11 @@ The rotation direction is determined by the connection:
 ### Dimmer
 
     This operating mode provides one output for dimming low voltage LED lights:
+
+
+
+
+![NMCmodeDimmer](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/NMCmodeDimmer.png)
 
 
 
@@ -158,6 +183,11 @@ If coasting to a stop without a braking force is desired, the value for decelera
 
 
     From the Nano Motor Controller's properties you can open a diagram for setting the current thresholds:
+
+
+
+
+![nmcdiag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/nmcdiag.png)
 
 
 

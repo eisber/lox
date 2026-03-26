@@ -175,6 +175,11 @@ With the Audio Player function block you can define an Audio Zone. This is usual
 
 
 
+
+![11.1 audioplayer example](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/11.1 audioplayer example.png)
+
+
+
     The first Audio Player block in the living room uses the 2 stereo speaker outputs of the Audioserver, i.e. 2 pairs of speakers. Since it is the same room or area, only one Audio Player block is used. The (Stereo LR) output provides both channels and the combined actuator (ALR) passes them on to the Audioserver. On the device itself, the channels are output at the corresponding terminals for the left and right speakers.
 
 
@@ -204,8 +209,18 @@ The stereo output can be [separated](https://www.loxone.com/help/audioserver#Sep
 
 
 
+
+![11.1 audioplayer LR example1](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/11.1 audioplayer LR example1.png)
+
+
+
     **Example 2:** An odd number (3,5,7...) of speakers is used in a room.
 The additional speaker could be provided with the full stereo signal, but if it is located on the left side of the room, for example, it makes sense to provide it with the left signal only:
+
+
+
+
+![11.1 audioplayer LR example2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/11.1 audioplayer LR example2.png)
 
 
 
@@ -214,8 +229,18 @@ The additional speaker could be provided with the full stereo signal, but if it 
 
 
 
+
+![11.1 audioplayer LR example3](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/11.1 audioplayer LR example3.png)
+
+
+
     **Example 4:** A large room is equipped with many speakers.
  It may be beneficial to install the Stereo Extensions on the side of the room where the speakers are located. Connect all outputs of the Stereo Extensions on the left side to the (Stereo L) output of the Audio Player block. The same is done for the right side:
+
+
+
+
+![11.1 audioplayer LR example4](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/11.1 audioplayer LR example4.png)
 
 
 
@@ -230,6 +255,11 @@ The additional speaker could be provided with the full stereo signal, but if it 
 
 
     Options for music selection are available by clicking on the block in the app or the user interface:
+
+
+
+
+![11.1 audioplayer visu](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/11.1 audioplayer visu.png)
 
 
 
@@ -266,6 +296,11 @@ The additional speaker could be provided with the full stereo signal, but if it 
 
 
 
+![radiosearch](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/radiosearch.png)
+
+
+
+
 ---
 
 
@@ -285,6 +320,11 @@ The additional speaker could be provided with the full stereo signal, but if it 
 
 
 
+
+![BBC RadioStream](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/BBC_RadioStream.png)
+
+
+
     **2. Add the Stream to the Loxone App:**
 - Open the Loxone App and navigate to the desired Audio Player.
 - Go to Internet Radio.
@@ -293,10 +333,25 @@ The additional speaker could be provided with the full stereo signal, but if it 
 
 
 
+![Internet Radio](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Internet_Radio.png)
+
+
+
+
+
+![Add Custom URL](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Add_Custom_URL.png)
+
+
+
     **3. Enter Stream Details:**
 - In the new window, paste the copied URL.
 - Optionally, add a custom name and an image for the stream.
 - Click the checkmark icon in the top right corner to confirm.
+
+
+
+
+![Add Radio Station](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Add_Radio_Station.png)
 
 
 
@@ -313,6 +368,11 @@ The additional speaker could be provided with the full stereo signal, but if it 
     The integration with Spotify allows playback of Spotify music or playlists. A **Spotify Premium** account is required.
 One Premium account supports a single stream to one or multiple zones at once, using **Fixed** or **Dynamic Groups**.
 To stream different content to multiple zones simultaneously, multiple **Premium** accounts are required. These do not need to be part of a Family plan.
+
+
+
+
+![spotifyadd](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/spotifyadd.png)
 
 
 
@@ -338,8 +398,18 @@ A [Soundsuit account](https://soundsuit.fm/loxone-audio-for-business/) is requir
 
 
 
+
+![audioplayer soundsuit](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/audioplayer_soundsuit.png)
+
+
+
     The service can then be used.
 Click on the cogwheel at Schedule to open Soundsuit, where music can be set for different target groups at the defined times.
+
+
+
+
+![audioplayer soundsuit schedule](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/audioplayer_soundsuit_schedule.png)
 
 
 
@@ -351,6 +421,11 @@ Click on the cogwheel at Schedule to open Soundsuit, where music can be set for 
 
 
     The library is visible when audio files are available on local drives or devices on the network:
+
+
+
+
+![library](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/library.png)
 
 
 
@@ -391,6 +466,11 @@ If you want to access your music files on multiple Audioservers/Miniserver Compa
 
 
     In Windows, you can access them by entering the IP address or hostname of the Audioserver/Miniserver Compact in the File Explorer using this format: \\192.168.1.7 or \\hostname
+
+
+
+
+![AS share exp ip](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AS share exp ip.png)
 
 
 
@@ -435,6 +515,11 @@ If you want to access your music files on multiple Audioservers/Miniserver Compa
 
 
 
+
+![regsmb](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/regsmb.png)
+
+
+
     Also ensure that **RequireSecuritySignature** is visible and that it is set as a DWORD with a value of 0.
 
 
@@ -471,6 +556,11 @@ To do this, click on Library in the App, then on the menu icon in the top right 
 
 
 
+
+![setup share pre](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/setup share pre.png)
+
+
+
     Finally, click Add, after which the files will be imported and are then ready to be played from the library.
 
 
@@ -489,6 +579,11 @@ To do this, click on Library in the App, then on the menu icon in the top right 
 
 
 
+![linein](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/linein.png)
+
+
+
+
 ---
 
 
@@ -500,6 +595,11 @@ Each output will be available as an AirPlay receiver, and can be selected as a s
 
 
     Streaming via AirPlay is independent of the Audio Player function block and takes priority as long as the Apple device is connected. Any playback from another source that is already in progress will be interrupted when AirPlay streaming is started.
+
+
+
+
+![airplayiphone](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/airplayiphone.jpg)
 
 
 
@@ -545,7 +645,7 @@ To achieve this, a text is input to the function block (TTS) input, which is the
 
 
 
-|  | An Internet connection is required for the TTS function.Texts of up to 300 characters each (including spaces) are supported. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | An Internet connection is required for the TTS function.Texts of up to 300 characters each (including spaces) are supported. |
 | --- | --- |
 
     By default, a TTS output is generated in the system language.
@@ -594,6 +694,11 @@ tr Turkish
 
 
 
+
+![Soundcheck](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Soundcheck.png)
+
+
+
     Next, create the logic in Loxone Config to trigger this custom sound.
 
 
@@ -603,6 +708,11 @@ Remember to specify the playback volume by adding it at the end of the file path
 
 
     Configure the logic to specify when the custom sound should play. For example, you could link it to the intercom’s bell output to play a specific bell sound in a designated room.
+
+
+
+
+![CustomSoundLogic](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/CustomSoundLogic.png)
 
 
 
@@ -625,6 +735,11 @@ Activate and define the presence simulation in the properties window:
 
 
 
+![PresenceSimulation AudioPlayer](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PresenceSimulation_AudioPlayer.png)
+
+
+
+
 ---
 
 
@@ -634,3 +749,8 @@ Activate and define the presence simulation in the properties window:
     In the user interface, the history of the function block can be displayed.
 A maximum of 100 entries can be shown.
 When you restart or save to the Miniserver, the history is cleared.
+
+
+
+
+![History AudioPlayer](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/History_AudioPlayer.png)

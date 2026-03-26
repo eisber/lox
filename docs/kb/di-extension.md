@@ -35,6 +35,11 @@ The **DI Extension** features 20 digital inputs.
 
 
 
+
+![100283 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100283 install.png)
+
+
+
     Connect the power supply and Link communication to the Miniserver.
 
 

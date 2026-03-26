@@ -9,7 +9,9 @@ The LED Spot WW PWM is available in different variants:
 
 [**Datasheet LED Ceiling Spot WW PWM**](https://www.loxone.com/wp-content/uploads/datasheets/Datasheet_LEDCeilingSpotWW-PWM_100505,100506.pdf)
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2023/01/spots_back_combined.png)
+[
+![spots back combined](https://www.loxone.com/dede/wp-content/uploads/sites/2/2023/01/spots_back_combined.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2023/01/spots_back_combined.png)
 
 
 

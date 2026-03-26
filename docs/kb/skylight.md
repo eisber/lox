@@ -122,3 +122,8 @@ Controls a window.
     In the user interface, the history of the function block can be displayed.
 A maximum of 100 entries can be shown.
 When you restart or save to the Miniserver, the history is cleared.
+
+
+
+
+![History Window](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/History_Window.png)

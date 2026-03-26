@@ -52,6 +52,11 @@ The NFC Code Touch provides access control via encrypted or unencrypted NFC tags
 
 
 
+![100299 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100299 install.png)
+
+
+
+
 ---
 
 
@@ -120,7 +125,7 @@ If the supply method is changed later, the device must be deleted from the confi
 
 
 
-|  | Please only use the lithium battery provided by Loxone, as these will ensure an exact fit! |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Please only use the lithium battery provided by Loxone, as these will ensure an exact fit! |
 | --- | --- |
 
 

@@ -102,7 +102,17 @@ These could be manually added objects like function blocks in various rooms, but
 
 
 
+
+![autorule insertblock](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/autorule insertblock.png)
+
+
+
     A double click on the block opens the window where a rule can be created:
+
+
+
+
+![autorule add condition](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/autorule add condition.png)
 
 
 
@@ -125,6 +135,11 @@ One or more actions can be selected.
 
 
 
+![autodesign rights](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/autodesign rights.png)
+
+
+
+
 ---
 
 
@@ -138,8 +153,23 @@ One or more actions can be selected.
 
 
 
+
+![autorule block name](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/autorule block name.png)
+
+
+
     After double-clicking on the block we select **Add condition**, then under Times - Time of day we select the Pulse at sunrise and add it to the conditions with the plus button:
 
+
+
+
+![autorule add sunrise](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/autorule add sunrise.png)
+
+
+
+
+
+![autorule sunrise added](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/autorule sunrise added.png)
 
 
 
@@ -147,11 +177,26 @@ One or more actions can be selected.
 
 
 
+
+![autorule add temp](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/autorule add temp.png)
+
+
+
     Next, we also add this condition with the plus sign. Now the two objects sunrise AND the set temperature are linked as a condition:
 
 
 
+
+![autorule conditions linked](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/autorule conditions linked.png)
+
+
+
     Then we switch to **Add action**, and navigate to Functions - Rooms - Kitchen and select the Automatic Shading East block:
+
+
+
+
+![autorule choose shading](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/autorule choose shading.png)
 
 
 
@@ -160,7 +205,22 @@ One or more actions can be selected.
 
 
 
+![autorule add blinds open](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/autorule add blinds open.png)
+
+
+
+
+
+![autorule shades added](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/autorule shades added.png)
+
+
+
     Now that we have created the automatic rule, we can close the window and save the program to the Miniserver.
 
 
     The created rule can now be viewed and edited in the Automatic Designer in the Loxone App:
+
+
+
+
+![autodesign rule edit](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/autodesign rule edit.png)

@@ -68,6 +68,11 @@ Source: https://www.loxone.com/enen/kb/audio-cabling/
 
 
 
+
+![100428 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100428 install.png)
+
+
+
     Connect the power supply, the speakers and audio in/outputs as needed. The LAN port is used to connect the Audioserver to the local network or a WiFi router. Connect the Stereo Extensions to the Tree Turbo interface.
 The [wiring examples](#wiringexample) provide a brief overview.
 
@@ -95,6 +100,11 @@ The [wiring examples](#wiringexample) provide a brief overview.
 
 
     The window that opens will list all Audioservers that are ready for pairing. This can take a few minutes:
+
+
+
+
+![11.1 AS pairing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/11.1 AS pairing.png)
 
 
 
@@ -133,7 +143,7 @@ The [wiring examples](#wiringexample) provide a brief overview.
 
 
 
-|  | Without these steps a previously paired Audioserver cannot be paired with another Miniserver! |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Without these steps a previously paired Audioserver cannot be paired with another Miniserver! |
 | --- | --- |
 
     The **web interface** of the Audioserver allows network configuration, status display and diagnostic options. You can access it via the IP address or the hostname of the Audioserver. When searching for Audioservers in Loxone Config, the search result includes the IP address or hostname of the Audioserver.
@@ -170,6 +180,11 @@ This way a connection to the Audioserver is possible even without a network. Alt
 
 
 
+
+![tree wiring topologies](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tree wiring topologies.png)
+
+
+
     We recommend using the Loxone Audio Cable for wiring. Use the green, green-white twisted pair for the Tree Turbo data line and the orange/white-orange pair with a cross-section of 1.5 mm² (AWG 16) for the 24 V DC power supply.
 
 
@@ -181,9 +196,19 @@ This way a connection to the Audioserver is possible even without a network. Alt
 
 
 
+![TreeTurbo cabeling](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling.png)
+
+
+
+
 ### Detailed wiring with the Audio Cable
 
     **Master** Install Speaker (Install Speaker 7 Master, Install Speaker 10 Master, Install Sub 10 Master):
+
+
+
+
+![TreeTurbo cabeling ISM](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_ISM.png)
 
 
 
@@ -191,11 +216,26 @@ This way a connection to the Audioserver is possible even without a network. Alt
 
 
 
+
+![TreeTurbo cabeling ISC](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_ISC.png)
+
+
+
     **Satellite Speaker IP64 Master:**
 
 
 
+
+![TreeTurbo cabeling Sat64M](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_Sat64M.png)
+
+
+
     **Satellite Speaker IP64 Client:**
+
+
+
+
+![TreeTurbo cabeling Sat64C](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_Sat64C.png)
 
 
 
@@ -204,7 +244,12 @@ This way a connection to the Audioserver is possible even without a network. Alt
 
 
 
-|  | The Tree Turbo interface is based on a completely different technology than the well-known Tree interface. Therefore, the Tree and the Tree Turbo interface must not be connected! The Tree Turbo data lines should not be run together with other data or signal lines in the same cable. |
+![TreeTurbo cabeling StereoExtension](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TreeTurbo_cabeling_StereoExtension.png)
+
+
+
+
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | The Tree Turbo interface is based on a completely different technology than the well-known Tree interface. Therefore, the Tree and the Tree Turbo interface must not be connected! The Tree Turbo data lines should not be run together with other data or signal lines in the same cable. |
 | --- | --- |
 
     The Tree Turbo communication is IP based, therefore IP addresses for all Tree Turbo devices will appear on the network.
@@ -221,6 +266,11 @@ This way a connection to the Audioserver is possible even without a network. Alt
 
 
     The window that opens will list all connected Tree Turbo devices that are not yet part of the program:
+
+
+
+
+![treeturbo search](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/treeturbo_search.png)
 
 
 
@@ -311,6 +361,11 @@ Equalizer settings are not applied to the SPDIF Out.
 
 
     The Line Out and the SPDIF Out can be activated in the properties of the respective output:
+
+
+
+
+![AS speakertype](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AS_speakertype.png)
 
 
 
@@ -422,6 +477,11 @@ This will release and partially eject the card so it can be removed.
 
 
 
+![audioserver wiringexample](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/audioserver-wiringexample.png)
+
+
+
+
 ---
 
 
@@ -431,13 +491,13 @@ This will release and partially eject the card so it can be removed.
 
 | Left LED | Right LED | Description |
 | --- | --- | --- |
-|  |  | Device is in pairing mode, ready for pairing. |
-|  |  | Audioserver is booting, or no connection to the paired Miniserver is possible. |
-|  |  | No network connection |
-|  |  | Everything OK, device is online. |
-|  |  | Device was selected in Loxone Config and is identifying. |
-|  |  | Check power supply and SD card. At first start-up: File system on SD card is unpacking, wait for the process to complete. |
-|  |  | No compatible operating system on the SD card. |
+| ![LED Audio redgreenorange changing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_Audio_redgreenorange_changing.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | Device is in pairing mode, ready for pairing. |
+| ![LED Audio orange flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_Audio_orange_flashing.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | Audioserver is booting, or no connection to the paired Miniserver is possible. |
+| ![LED Audio red flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_Audio_red_flashing.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | No network connection |
+| ![LED Audio green flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_Audio_green_flashing.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | Everything OK, device is online. |
+| ![LED Audio redgreen identify](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_Audio_redgreen_identify.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | Device was selected in Loxone Config and is identifying. |
+| ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | Check power supply and SD card. At first start-up: File system on SD card is unpacking, wait for the process to complete. |
+| ![LED Audio red wrongopsytem](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_Audio_red_wrongopsytem.gif) | ![LED Audio greenorange wrongopsytem](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_Audio_greenorange_wrongopsytem.gif) | No compatible operating system on the SD card. |
 
     For the first few seconds after switching on the power supply, both status LEDs flash red and orange alternately.
 
@@ -445,9 +505,9 @@ This will release and partially eject the card so it can be removed.
 
 | RJ45 Port | Description |
 | --- | --- |
-|  | Network connection, indicates data traffic. |
-|  | No network connection or the device was unable to start. |
-|  | If one or both LEDs are permanent on without a plug connected, this indicates that the interface is damaged. |
+| ![LED RJ45 NetworkConnection](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_RJ45_NetworkConnection.gif) | Network connection, indicates data traffic. |
+| ![LED RJ45 NoNetworkConnection](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_RJ45_NoNetworkConnection.png) | No network connection or the device was unable to start. |
+| ![LED RJ45 InterfaceDamaged](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_RJ45_InterfaceDamaged.png) | If one or both LEDs are permanent on without a plug connected, this indicates that the interface is damaged. |
 
 
 ---
@@ -496,6 +556,11 @@ This will release and partially eject the card so it can be removed.
 
 
 
+
+![PH Loxone Installation recommendations table](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PH-Loxone-Installation-recommendations-table.png)
+
+
+
     While an enclosure is not strictly required for fully enclosed surfaces, speakers must be installed in a rear mounting enclosure when used in open surface structures, such as acoustic ceilings.
 
 
@@ -517,6 +582,11 @@ This will release and partially eject the card so it can be removed.
 
     In main living areas, at least two speakers should be used to achieve good sound quality. For small rooms or ancillary spaces, a single speaker is usually sufficient.
 Depending on the room size, we recommend planning the following number of speakers per room:
+
+
+
+
+![RoomsizeSpkrCountChart](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/RoomsizeSpkrCountChart.png)
 
 
 

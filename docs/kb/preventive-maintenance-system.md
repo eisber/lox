@@ -28,7 +28,9 @@ In the event of excessive deviations from the “basic vibration” of engines a
 
 ### Configuration:
 
-[*[Preventive Maintenance System - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-100-Service-Monitoring-Vibration-Sensor.png)
+[
+![Preventive Maintenance System - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-100-Service-Monitoring-Vibration-Sensor.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-100-Service-Monitoring-Vibration-Sensor.png)
 
 ### Download the sample file:
 

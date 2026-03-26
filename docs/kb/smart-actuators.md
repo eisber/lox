@@ -27,16 +27,16 @@ In the properties panel of supported devices, you will see “Actuator type” h
 - Standard – Creates either standard RGB and W channels or a single standard WW channel
 - Standard Individual Channels – Creates 4 standard individual channels (only on RGBW Dimmer Tree/Air)
 
-*[]*
+![Windows 8 1 1 2](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/10/Windows_8_1_1-2.png)
 
 ## USE
 
 Smart Actuators can ONLY be connected to the Lighting Controller NOT the legacy Lighting Controller V1 block.
 
-*[]*
+![Windows 8 1 1 3](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/10/Windows_8_1_1-3.png)
 
 In the configuration of the Lighting Controller, the Smart Actuator type is selected under the Light Circuits tab.
 
-*[]*
+![Windows 8 1 1 4](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/10/Windows_8_1_1-4.png)
 
 #### For information on how to use the smart actuators with the new lighting controller, please see the page about our [Lighting Controller](https://www.loxone.com/enen/kb/lighting-controller/).

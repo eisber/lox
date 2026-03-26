@@ -34,11 +34,16 @@ The Loxone Window Handle Air detects whether a window is open, closed or tilted 
 
 
 
-|  | The detection of the handle position is based on gravity. Therefore, the device can only be used on conventional windows that are aligned vertically/straight when closed. The detection of the handle position does not work on slanted windows, e.g. on roof windows. |
+![100177 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100177 install.png)
+
+
+
+
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | The detection of the handle position is based on gravity. Therefore, the device can only be used on conventional windows that are aligned vertically/straight when closed. The detection of the handle position does not work on slanted windows, e.g. on roof windows. |
 | --- | --- |
 
 
-|  | On windows for handles with 12mm cams, a cam slip-on ring from 10mm to 12mm must be used so that the housing of the window handle is positioned correctly and the function is ensured. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | On windows for handles with 12mm cams, a cam slip-on ring from 10mm to 12mm must be used so that the housing of the window handle is positioned correctly and the function is ensured. |
 | --- | --- |
 
 
@@ -68,7 +73,7 @@ The Loxone Window Handle Air detects whether a window is open, closed or tilted 
 
 
 
-|  | Please note that correct detection of the handle's position is only possible when the handle is mounted and the "Closed position" setting is correct. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Please note that correct detection of the handle's position is only possible when the handle is mounted and the "Closed position" setting is correct. |
 | --- | --- |
 
 

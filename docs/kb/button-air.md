@@ -38,7 +38,17 @@ When the Button Air is pressed, freely configurable actions can be carried out. 
 
 
 
+
+![100465 mountplate](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100465 mountplate.png)
+
+
+
     To commission the device, open it by turning the top red section anticlockwise and then removing it. Then remove the green pull tab from the batteries.
+
+
+
+
+![100465 battopenclose](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100465 battopenclose.png)
 
 
 
@@ -90,6 +100,11 @@ In order to control the LED without delay, the wake-up function is activated in 
 
 
     To replace the batteries, open the device by turning the top red section anticlockwise and then removing it. Remove the two AA batteries and insert the new batteries.
+
+
+
+
+![100465 battopenclose](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100465 battopenclose.png)
 
 
 

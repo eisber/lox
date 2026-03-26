@@ -12,6 +12,11 @@ This function block calculates the average of analog values at the output (Avg)
 
 
 
+![MIM Average](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/MIM_Average.png)
+
+
+
+
 ## Table of Contents
 - [Outputs](#Output)
 - [Parameters](#Parameter)

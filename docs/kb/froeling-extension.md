@@ -55,6 +55,11 @@ Target flow temperature
 
 
 
+
+![100158 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100158 install.png)
+
+
+
     Connect the power supply and Link communication to the Miniserver.
 
 
@@ -62,7 +67,7 @@ Target flow temperature
 
 
 
-|  | The interface of the Fröling control has earth potential at GND. In order to avoid potential differences, GND must be connected from the Fröling Extension to the Fröling control. Furthermore, the Loxone installation must also be grounded at GND, this is done directly at the power supply. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | The interface of the Fröling control has earth potential at GND. In order to avoid potential differences, GND must be connected from the Fröling Extension to the Fröling control. Furthermore, the Loxone installation must also be grounded at GND, this is done directly at the power supply. |
 | --- | --- |
 
     The Extension starts after switching on the power supply, and the status LED will flash orange after a short time when the connection to the Miniserver is established.
@@ -82,10 +87,20 @@ Target flow temperature
 
 
 
+
+![10.5 froeling config](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5 froeling config.png)
+
+
+
     First set the control address (default: 2), as well as the number of heating circuits, boilers and storage tanks.
 
 
     By default, sensors and actuators are inserted for only one heating circuit, boiler and buffer tank. You can create additional actuators and sensors with **Add Fröling Device**, and then assign the intended function in the settings of the actuator/sensor:
+
+
+
+
+![10.5 froeling addactor](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5 froeling addactor.png)
 
 
 

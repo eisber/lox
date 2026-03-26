@@ -12,11 +12,15 @@ Auto Configuration creates To-dos based on specific criteria. For more details o
 
 A To-do is essentially just a note. To create one by yourself, simply search (F5) for note.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/To-Do_Note.png)
+[
+![To Do Note](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/To-Do_Note.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/To-Do_Note.png)
 
 Ticking this To-Do box will recolour the note to orange so it is more obvious and it will then be considered a “To-do” by Loxone Config.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/To-Do_Example.png)
+[
+![To Do Example](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/To-Do_Example.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/To-Do_Example.png)
 
 
 
@@ -24,8 +28,12 @@ Ticking this To-Do box will recolour the note to orange so it is more obvious an
 
 There are two ways to locate and manage To-dos. One method is to use the ‘Show To-Do’s’ button in the top ribbon under the ‘My Project’ tab. This will display a list of your To-dos along with the corresponding pages they are on.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/To-Do_Show.png)
+[
+![To Do Show](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/To-Do_Show.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/To-Do_Show.png)
 
 The other way to view and manage your To-dos is through the Project Validation tool. The Project Validation window displays a list of active To-dos and provides options to either ‘Show’ or ‘Delete’ them. Selecting ‘Show’ will navigate to the page containing the note, while ‘Delete’ will remove the note from both the project validation list and the project itself.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/To-Do_ProjectValidation.png)
+[
+![To Do ProjectValidation](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/To-Do_ProjectValidation.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/To-Do_ProjectValidation.png)

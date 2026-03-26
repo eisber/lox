@@ -10,7 +10,7 @@ After a rising edge at input Tr, the output Q is active for the duration of TH. 
 
 The block can be set to be retentive, this is done by clicking on the battery symbol   to set the red NOT dot on the block (input is by default inactive).
 
-*[Diagram Wiping Relay]*
+![Diagram Wiping Relay](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Diagram_Wiping_Relay.png)
 
 |  | Description | Default |
 | --- | --- | --- |

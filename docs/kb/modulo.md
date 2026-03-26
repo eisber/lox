@@ -65,5 +65,10 @@ Divides analogue values as integers or decimals and outputs the remainder of the
 
 
 
+
+![modulo calc](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/modulo_calc.png)
+
+
+
     (Int): 13 mod 5 = 3
 (Dec): 13.3 mod 5.2 = 2.9

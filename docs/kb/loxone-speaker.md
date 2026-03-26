@@ -32,7 +32,8 @@ This page is no longer updated. The information on this page was created for the
 | Mass | N/A | 3.4Kg |
 | Impedence | 8 Ohms | 8 Ohms |
 
-*[Icon To Represent Downloading Files For Loxone]*[Datasheet for the Loxone Speaker](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Diagram_Loxone_Speaker_Datasheet.pdf)
+![Icon To Represent Downloading Files For Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Download.png)
+[Datasheet for the Loxone Speaker](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Diagram_Loxone_Speaker_Datasheet.pdf)
 
 [Datasheet for the Loxone Wall Speaker](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/200153-Loxone-Wall-Speaker.pdf?x16511)
 
@@ -42,7 +43,7 @@ This page is no longer updated. The information on this page was created for the
 
 ## Wiring the Loxone Speaker
 
-*[Wiring Diagram For Loxone Speakers]*
+![Wiring Diagram For Loxone Speakers](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Diagram_Loxone_Speaker.png)
 - Cable cross-section between a speaker and the music server: up to 20m should be 1.5 mm², from 20 to 50m should be 2.5mm². If the cable length is more than 50m, the cross-section rule must be adapted accordingly. You can use any standard speaker wire.
 - Speaker installation boxes for cast concrete ceilings should have a volume of 7-10l as well as suitable options for mounting the speaker.
 

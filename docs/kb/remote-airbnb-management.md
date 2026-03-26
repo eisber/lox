@@ -30,7 +30,9 @@ In our example, we assume that the Airbnb is occupied from Friday 11 am to Sunda
 
 ### Configuration:
 
-[*[Remote Airbnb Management - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-97-AirBnB-Sleep-Mode.jpg)
+[
+![Remote Airbnb Management - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-97-AirBnB-Sleep-Mode.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-97-AirBnB-Sleep-Mode.jpg)
 
 ### Download the sample file:
 

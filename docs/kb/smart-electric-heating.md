@@ -34,7 +34,9 @@ What you get: Perfect temperature in every room which can be adjusted through th
 
 [
 
-](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-25-Electric-Heating-Control-1.png)[*[Smart electric heating]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-25-Electric-Heating-Control-1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-25-Electric-Heating-Control-1.png)[
+![Smart electric heating](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-25-Electric-Heating-Control-1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-25-Electric-Heating-Control-1.png)
 
 ### Download the sample file:
 

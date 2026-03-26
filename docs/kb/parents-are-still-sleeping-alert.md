@@ -28,7 +28,9 @@ Then when the parents also deactivate “Night Mode” mode, the lighting turns 
 
 ### Configuration:
 
-[*[Parents are still sleeping alert - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-84-Let-us-sleep.png)
+[
+![Parents are still sleeping alert - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-84-Let-us-sleep.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-84-Let-us-sleep.png)
 
 ### Download the sample file:
 

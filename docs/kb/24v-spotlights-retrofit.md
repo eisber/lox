@@ -29,22 +29,23 @@ When fitting in with the wiring already available in the home the best place to 
 
 The RGBW 24V Dimmer Air can be used in two forms to allow it to control either single colour Warm White Spotlights, these two modes are referred to as “Individual dimming channels” or “RGBW dimming”. In the diagram below we can see an example of the “Individual dimming channels” with each group of 2 spots being controlled separately to each other group.
 
-*[Wiring Loxone Warm White Spot Downlight]*
+![Wiring Loxone Warm White Spot Downlight](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Diagram_WW_Spot.png)
 
 For “RGBW dimming” we need to use all 4 channels in order to have full RGBW (Red, Green, Blue, White) control on each circuit. In the diagram below we can see how each RGBW spot is connected with each channel wired in parallel.
 
-*[Wiring RGBW Spot]*
+![Wiring RGBW Spot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Diagram_RGBW_Spot.png)
 
 The Touch/Touch Pure Air and Motion Sensor Air require no wiring as they are battery powered and can simply be fitted to the wall/ceiling.
 
-*[Icon Exclamation Mark Loxone]*If you have unsure at any point when wiring up any of our devices, please contact a suitably qualified electrician. Alternatively you can [contact us](https://www.loxone.com/enen/about-us/contact/) for more technical data if required.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+If you have unsure at any point when wiring up any of our devices, please contact a suitably qualified electrician. Alternatively you can [contact us](https://www.loxone.com/enen/about-us/contact/) for more technical data if required.
 
 ## CONFIGURE AIR DEVICE
-
-*[IC_loxone-air@2x-1]*
 
 [Click here to see documentation on how to learn a Loxone Air Device in to Loxone config](https://www.loxone.com/enen/kb/setting-up-air-devices/).
 
 ## CONFIGURE LIGHTING CONTROLLER
 
-[*[FS_notebook-on-table-loxone-config]*](https://www.loxone.com/enen/kb/lighting-solutions-config/)
+[
+![FS_notebook-on-table-loxone-config](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/FS_notebook-on-table-loxone-config.jpg)
+](https://www.loxone.com/enen/kb/lighting-solutions-config/)

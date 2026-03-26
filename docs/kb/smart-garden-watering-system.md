@@ -35,7 +35,9 @@ Additionally, if there’s a risk of frost, the water in the pipes is blown out 
 
 ### Configuration:
 
-[*[Smart Garden Watering System - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-15-Garden-Watering-EN-1_V2.png)
+[
+![Smart Garden Watering System - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-15-Garden-Watering-EN-1_V2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-15-Garden-Watering-EN-1_V2.png)
 
 
 

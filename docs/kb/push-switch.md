@@ -84,3 +84,8 @@ Converts a switch to a push button and generates a pulse on each edge (switch op
 
 
 ## Timing Diagram
+
+
+
+
+![Switch2Button Timechart](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Switch2Button_Timechart.jpg)

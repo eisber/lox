@@ -14,7 +14,7 @@ If you are using a Loxone RGBW 24v DMX driver (highly recommended as they have b
 
 To do so, please select your DMX extension in the periphery tree and then hit the DMX device search button at the top.
 
-*[]*
+![Screenshot 102717 092333 AM 251x300](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/10/Screenshot_102717_092333_AM.jpg)
 
 Once you have found your DMX device in the search, simply name it and create the device and it will appear in your periphery tree for use within Loxone Config.
 
@@ -24,7 +24,7 @@ Once you have found your DMX device in the search, simply name it and create the
 
 If you are not using a Loxone RGBW 24v DMX driver, but a different, 3rd party driver that isn’t an RGBW driver, you can add devices manually and also specify their channels.
 
-*[]*
+![dmx 2 219x300](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/10/dmx-2.png)
 
 Here you can see the numerous actuator types that are on offer. You would pick which one you require depending on:
 - Your type of driver – an RGBW one would warrant the use of an RGB and W actuator if you want the coloured lighting
@@ -45,7 +45,7 @@ Adding DMX actuators will automatically assign channels, so for example if you a
 
 To reassign the DMX channel go to the appropriate (DMX actuator / DMX RGB actuator) ‘Properties’ window, and enter your selection. Then save the program in the Miniserver.
 
-*[Loxone DMX Properties]*
+![Loxone DMX Properties](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_DMX_Actuator_Properties.png)
 
 ## ADDING OTHER DMX DEVICES
 

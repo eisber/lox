@@ -11,7 +11,9 @@ Additional features and tools are also available.
 
 ## Project Management
 
-[*[]*](https://www.loxone.com/enen/kb/project-management/project-management-15-5/)
+[
+![Project Management 15.5](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/03/Project-Management-15.5.png)
+](https://www.loxone.com/enen/kb/project-management/project-management-15-5/)
 - Displays all saved Loxone projects along with their details.
 - Create a new project.
 - Launches the Project Planning tool.
@@ -33,7 +35,7 @@ Additional features and tools are also available.
 
 To create a new program, simply select the type of Miniserver:
 
-*[]*
+![Project Assistant new project 15.5](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/03/Project-Assistant-new-project-15.5.png)
 
 The new project will then open, allowing you to begin programming.
 
@@ -45,23 +47,23 @@ You can later select a backup and restore the project to this state.
 
 First select the project in the periphery tree, and click on **Project Backups**:
 
-*[]*
+![Project Backups 15.5.](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/03/Project-Backups-15.5..png)
 
 The Project Backups window enables you to open, delete, restore, and create backups:
 
-*[]*
+![Project Backups 15.5. 2](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/03/Project-Backups-15.5.-2.png)
 
 To create a new backup:
 - Click **Create new backup**.
 - Add a note describing the current project status.
 - Click **Create**.
 
-*[]*
+![Project Backups 15.5. 3](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/03/Project-Backups-15.5.-3.png)
 
 When a backup is opened, it appears as a grayed-out project page in Loxone Config.
 
 Click on **Restore** to restore the project to this backup state:
 
-*[]*
+![Project Backups 15.5. 4](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/03/Project-Backups-15.5.-4.png)
 
 The backup is then imported into the open project, and you can continue working with it.

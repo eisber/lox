@@ -26,11 +26,17 @@ The following morning when the first person arrives back at the office, the alar
 
 ### Configuration:
 
-[*[Central Security Alarm - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-93-Communal-Alarm-01.png)
+[
+![Central Security Alarm - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-93-Communal-Alarm-01.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-93-Communal-Alarm-01.png)
 
-[*[Central Security Alarm - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-93-Communal-Alarm-02.png)
+[
+![Central Security Alarm - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-93-Communal-Alarm-02.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-93-Communal-Alarm-02.png)
 
-[*[Central Security Alarm - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-93-Communal-Alarm-03.png)
+[
+![Central Security Alarm - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-93-Communal-Alarm-03.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-93-Communal-Alarm-03.png)
 
 ### Download the sample file:
 

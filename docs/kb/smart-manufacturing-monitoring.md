@@ -32,11 +32,15 @@ Hardware:
 
 [
 
-](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-65-Smart-Manufacturing-Process-1.png)[*[Assembly line notification - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-65-Smart-Manufacturing-Process-1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-65-Smart-Manufacturing-Process-1.png)[
+![Assembly line notification - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-65-Smart-Manufacturing-Process-1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-65-Smart-Manufacturing-Process-1.png)
 
 [
 
-](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-65-Smart-Manufacturing-Process-2.png)[*[Smart manufacturing monitoring - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-65-Smart-Manufacturing-Process-2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-65-Smart-Manufacturing-Process-2.png)[
+![Smart manufacturing monitoring - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-65-Smart-Manufacturing-Process-2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-65-Smart-Manufacturing-Process-2.png)
 
 
 

@@ -39,6 +39,11 @@ The LED Spot WW Tree is a recessed LED spot with warm white light for 24VDC supp
 
 
 
+![treespot cabling](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/treespot cabling.png)
+
+
+
+
 ---
 
 

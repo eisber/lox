@@ -26,7 +26,9 @@ To activate the monitor, first click the **Diagnostics** tab in Loxone Config an
 
 In the next window, set the target, detail level and duration of the monitor data:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/debug-activate.png)
+[
+![debug activate](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/debug-activate.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/debug-activate.png)
 
 **Send data to:** specifies the destination for the sent data.
 
@@ -56,7 +58,9 @@ It shows running services and connections, and provides information and statisti
 
 about the Miniserver’s CPU, memory and interfaces usage:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/debug-monitor.png)
+[
+![debug monitor](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/debug-monitor.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/debug-monitor.png)
 
 **Here is a brief explanation of some of the terms:**
 
@@ -79,7 +83,9 @@ A new file is created every 50,000 lines.
 
 Features:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/debug-monitor-annotations.png)
+[
+![debug monitor annotations](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/debug-monitor-annotations.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/debug-monitor-annotations.png)
 
 1. Open saved monitor file
 
@@ -103,7 +109,7 @@ Features:
 
 **Data:**
 
-*[CAN_Merr]*
+![CAN_Merr](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/CAN_Merr.png)
 
 Column 1: consecutive number of the line from 0 to 50 000
 
@@ -125,7 +131,7 @@ For example, if you want to filter information from a particular Extension, ente
 
 BUS value of “Extension serial number”
 
-*[Extension_IO_action]*
+![Extension_IO_action](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/Extension_IO_action.png)
 
 #### ERROR ON LOXONE LINK
 
@@ -133,7 +139,7 @@ CAN MERR:
 
 Check the wiring and termination of the Loxone Link. (2-pole blue connector).
 
-*[error_CAN]*
+![error_CAN](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/error_CAN.png)
 
 #### PROBLEM WITH SENDING MAIL
 
@@ -141,12 +147,13 @@ Possibly the mail server uses SSL (not supported by Miniserver), an incorrect ma
 
 A filter has been set here: “mail”.
 
-*[error_Mailer]*
+![error_Mailer](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/error_Mailer.jpg)
 
 #### WEBSERVICE REQUEST
 
 Access via a web service. A list of web services can be found [here](https://www.loxone.com/enen/kb/web-services/).
-*[webservice_request]*
+
+![webservice_request](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/webservice_request.png)
 
 #### PROBLEM WITH WEATHER SERVICE
 
@@ -156,7 +163,7 @@ Presumably, you have not yet activated the weather services.
 
 A filter was used here: “ubimet”
 
-*[error_ubimet]*
+![error_ubimet](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/error_ubimet.jpg)
 
 #### LOG FILE IS WRITTEN
 
@@ -164,7 +171,7 @@ SPS Virtualoutput to /log/def.log:
 
 An event was written to the file def.log.
 
-*[output_deflog]*
+![output_deflog](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/output_deflog.png)
 
 #### ERROR WHILE WRITING TO SD CARD
 
@@ -172,7 +179,7 @@ SDC Card locked:
 
 SD card is full or access denied.
 
-*[error_SDCard]*
+![error_SDCard](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/error_SDCard.png)
 
 #### WRITE ACCESS TO SD CARD
 
@@ -182,21 +189,21 @@ Means “File System Transaction”, i.e. something is written to the SD card.
 
 Moreover, writing time is indicated. The times in this example are a good guideline for a fast write time.
 
-*[FS_transactions]*
+![FS_transactions](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/FS_transactions.png)
 
 #### SYSTEM START
 
 The system starts normally but an error has occurred at the end, forcing the system to reboot.
 
-*[Sys_startup]*
+![Sys_startup](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/Sys_startup.png)
 
 #### WATCHDOG PROBLEM
 
 If a system error occurs, the watchdog starts running. The system now has 20 seconds to correct the error. If the problem persists beyond 20 seconds, a reboot is performed.
 
-*[error_watchdog]*
+![error_watchdog](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/error_watchdog.png)
 
-*[watchdog_ok]*
+![watchdog_ok](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/watchdog_ok.png)
 
 ##
 

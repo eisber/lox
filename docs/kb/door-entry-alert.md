@@ -27,7 +27,9 @@ Tip: If you prefer a different or additional type of door entry alert, there are
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-45-Access-Control.png)
+[
+![Use Case 45 Access Control](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-45-Access-Control.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-45-Access-Control.png)
 
 ### Download the sample file:
 

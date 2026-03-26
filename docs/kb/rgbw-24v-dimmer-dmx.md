@@ -29,7 +29,7 @@ The diagram below shows how you wire up the RGBW Dimmer DMX. It is the same DMX 
 
 You can, of course, have multiple locations for the RGBW Dimmer DMX’s, the maximum length of the bus is 500m. The maximum distance from the dimmer and the tape is 30m.
 
-*[Wiring Diagram of RGBW Dimmer DMX Loxone]*
+![Wiring Diagram of RGBW Dimmer DMX Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Diagram_RGBW_DMX_Dimmer.png)
 
 If you have selected PWM in the device properties using the ‘Dimmer individual channels’, then the channel assignments are as follows:
 
@@ -49,7 +49,8 @@ Once you have wired up the RGBW Dimmer’s to the DMX Extension then you can now
 
 Now all your dimmers are connected you can search for them using the DMX Extension. Click on the DMX Extension in the periphery tree and then in the Context menu in the top bar click on DMX Extension Search.
 
-[Loxone English](https://www.loxone.com/enen/wp-admin/)*[Loxone Config DMX Device Search]*
+[Loxone English](https://www.loxone.com/enen/wp-admin/)
+![Loxone Config DMX Device Search](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_RGBW_Dimmer_DMX_Search.png)
 
 #### STEP 2: ADD THE RGBW DIMMER
 
@@ -57,19 +58,19 @@ You will see all the RGBW Dimmer’s listed in the DMX search window now. To add
 
 The type can either be DMX RGBW actuator (for controlling RGBW LED strip) or DMX 4 actuators (you can control 4 outputs separately for example 4 single colour white strips).
 
-*[Loxone Config DMX Device Search and Found]*
+![Loxone Config DMX Device Search and Found](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_RGBW_Dimmer_DMX_Found.png)
 
 #### STEP 3: SAVE IN MINISERVER
 
 Now save the program in the Miniserver and you will see when you do the DMX Extension search again that the channel has now been learnt in.
 
-*[Loxone Config DMX Device Search Save]*
+![Loxone Config DMX Device Search Save](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_RGBW_Dimmer_DMX_Save.png)
 
 #### STEP 4: USE THE OUTPUTS
 
 The dimmer is now listed in the periphery tree window so you can drag and drop the outputs into pages to use in your program.
 
-*[Loxone Config DMX Device Outputs]*
+![Loxone Config DMX Device Outputs](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_RGBW_Dimmer_DMX_Outputs.png)
 
 ## DIAGNOSTIC CHECKLIST
 

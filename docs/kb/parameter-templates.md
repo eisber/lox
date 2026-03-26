@@ -11,7 +11,7 @@ BASIC PROGRAMMING
 
 The parameter templates for the relevant block type can be managed in the block properties.
 
-*[Parameter Templates]*
+![Parameter Templates](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/12/Windows_8_1_1-4.png)
 
 All the parameter templates created so far are listed for the selected block type. You can create new templates with Save As and existing templates can be deleted and reloaded and renamed here.
 

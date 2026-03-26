@@ -4,7 +4,7 @@ Source: https://www.loxone.com/enen/kb/fronius/
 
 ---
 
-|  | The Miniserver Gen. 1 is not supported. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The Miniserver Gen. 1 is not supported. |
 | --- | --- |
 
 
@@ -33,7 +33,7 @@ Source: https://www.loxone.com/enen/kb/fronius/
 
 
 
-|  | For questions regarding the Fronius plugin in the Loxone Config, please contact: [email protected] |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | For questions regarding the Fronius plugin in the Loxone Config, please contact: [email protected] |
 | --- | --- |
 
 

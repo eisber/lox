@@ -60,17 +60,18 @@ White  -> Dimmer 4
 
 For “RGBW dimming” we need to use all 4 channels in order to have full RGBW (Red, Green, Blue, White) control on each circuit. In the diagram below we can see how each RGBW LED Strip is connected with each channel wired in parallel.
 
-*[Wiring Loxone RGBW Tree Dimmer]*
+![Wiring Loxone RGBW Tree Dimmer](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/EN_KB_Diagram_RGBW_Tree_Wiring.png)
 
 Wiring for the Motion Sensor Tree and Touch/Touch Pure Tree couldn’t be simpler. These two devices require a Tree connection and a 24VDC power supply that is provided on a CAT7 cable. The topology of Tree allows you to run almost any network except a complete loop and save up to 80% on cabling over a basic STAR wiring layout, see below image for an example.
 
-*[IG_tree-wiring-overview]*
+![IG_tree-wiring-overview](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/IG_tree-wiring-overview.png)
 
 The RGBW Dimmer Tree, Motion Sensor Tree and Touch/Touch Pure Tree all simply need a Tree connection and a power supply as per the below diagram.
 
-*[Loxone Tree Wiring]*
+![Loxone Tree Wiring](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Diagram_Tree_Wiring.png)
 
-*[Icon Exclamation Mark Loxone]*If you are unsure at any point when wiring up any of our devices, please contact a suitably qualified electrician. Alternatively you can [contact us ](https://www.loxone.com/enen/about-us/contact/)for more technical data if required.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+If you are unsure at any point when wiring up any of our devices, please contact a suitably qualified electrician. Alternatively you can [contact us ](https://www.loxone.com/enen/about-us/contact/)for more technical data if required.
 
 ## DESIGN CONSIDERATIONS
 
@@ -80,8 +81,11 @@ When designing a key thing to consider is the overall loading for the system. Th
 
 ## CONFIGURE TREE DEVICE
 
-*[IC_tree@2x-1]*For information on how to connect your Tree Device with Loxone config then [click here!](https://www.loxone.com/enen/kb/tree-cabling-setup/)
+![IC_tree@2x-1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/IC_tree@2x-1.png)
+For information on how to connect your Tree Device with Loxone config then [click here!](https://www.loxone.com/enen/kb/tree-cabling-setup/)
 
 ## CONFIGURE LIGHTING CONTROLLER
 
-[*[FS_notebook-on-table-loxone-config]*](https://www.loxone.com/enen/kb/lighting-solutions-config/)
+[
+![FS_notebook-on-table-loxone-config](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/FS_notebook-on-table-loxone-config.jpg)
+](https://www.loxone.com/enen/kb/lighting-solutions-config/)

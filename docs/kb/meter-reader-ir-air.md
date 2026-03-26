@@ -8,11 +8,11 @@ The Loxone IR Meter Reader Air allows the direct reading of compatible electroni
 
 
 
-|  | List of supported meters |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | List of supported meters |
 | --- | --- |
 
 
-|  | The IR Meter Air supports the measurement of current, voltage, and power, and supports OBIS IDs 1.8.x and 2.8.x. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | The IR Meter Air supports the measurement of current, voltage, and power, and supports OBIS IDs 1.8.x and 2.8.x. |
 | --- | --- |
 
     **[Datasheet IR Meter Reader Air](https://pim.loxone.com/datasheet/100151-ir-meter-reader-air)**
@@ -37,6 +37,11 @@ The Loxone IR Meter Reader Air allows the direct reading of compatible electroni
 
 
     The IR Meter Reader Air magnetically attaches to the circular infrared interface of the meter. The device is supplied with power (12-24VDC) either by using the enclosed Micro USB power adapter or via the terminals. Position the device on the meter so that the USB port points downwards and the Loxone logo is displayed correctly.
+
+
+
+
+![100151 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100151 install.png)
 
 
 

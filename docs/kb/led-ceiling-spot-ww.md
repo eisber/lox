@@ -35,11 +35,12 @@ Diameter: 80mm
 
 The LED Ceiling Spot WW has a 24V and Negative connector built in.
 
-*[LED-Ceiling-Spot-WW_Magnet-Mount-768x668]*
+![LED-Ceiling-Spot-WW_Magnet-Mount-768x668](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/03/LED-Ceiling-Spot-WW_Magnet-Mount.png)
 
 ## WIRING
 
-##  *[]*
+##
+![EN KB Diagram ww Spot.png](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/EN_KB_Diagram_ww_Spot.png.png)
 
 Quick Connection Guide LED Ceiling Spot WW (pdf)
 

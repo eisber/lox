@@ -26,6 +26,11 @@ The Loxone Link Interface allows connecting Extensions, and is provided from eve
 
 
 
+
+![link wiring example](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/link wiring example.png)
+
+
+
     Connect the Extensions to a Miniserver by daisy-chaining the Link interfaces. If any of the Extensions are connected to a separate power supply, then all power supply's GND (negative) have to be interconnected. This connection is crucial for reliable data transmission.
 
 
@@ -52,6 +57,11 @@ The Loxone Link Interface allows connecting Extensions, and is provided from eve
 
 
     The window that opens will list all connected Extensions that are not yet part of the program to the left:
+
+
+
+
+![extension search](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/extension_search.png)
 
 
 
@@ -99,6 +109,11 @@ Not flashing: Check power supply.
 
 
 
+
+![10.5 link diagnostics](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5 link diagnostics.png)
+
+
+
     The Extensions are now listed in the Link Diagnostics window. Diagnostic data is transmitted continuously, and can be used to detect any errors. Any errors are displayed accordingly. Please monitor the Link Diagnostics for a while, even temporary errors (e.g. poor contact, potential difference) can be detected by packet loss.
 
 
@@ -109,6 +124,11 @@ Not flashing: Check power supply.
 ### Loxone Health Check
 
     The diagnostics of the Miniserver and the Loxone interfaces can be started via the Loxone Health Check:
+
+
+
+
+![HealthCheck](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/HealthCheck.png)
 
 
 

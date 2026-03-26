@@ -31,10 +31,30 @@ With Lighting Groups, several lights can be combined into a group and controlled
 
 
 
+![lightgroup create](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/lightgroup_create.png)
+
+
+
+
+
+![lightgroup edit](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/lightgroup_edit.png)
+
+
+
     The lighting group can be assigned in the properties of the respective devices:
+
+
+
+
+![lightgroup dev](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/lightgroup_dev.png)
 
 
 
     The assigned devices are listed under the lighting group in the periphery tree.
 The lighting group can be dragged onto the programming page and connected to the respective function block.
 All lights in this group are switched together.
+
+
+
+
+![lightgroup example](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/lightgroup_example.png)

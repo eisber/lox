@@ -141,6 +141,11 @@ Controls the shading for a roof window.
 
 
 
+
+![Autojalousie Parameter D DT DTe](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Autojalousie_Parameter_D_DT_DTe.jpg)
+
+
+
     Dir: Compass direction of the shading device relative to the geographical north. (0 = North, 90 = east, 180 = south, 270 = West)
 
 
@@ -186,10 +191,20 @@ This is relevant for windows that may be affected by the sun prior to sunset.
 
 
 
+![AutomaticShading tilted](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AutomaticShading_tilted.png)
+
+
+
+
 ---
 
 
 ## Timing Diagram
+
+
+
+
+![AutomaticShading timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AutomaticShading-timediag.png)
 
 
 
@@ -203,3 +218,8 @@ This is relevant for windows that may be affected by the sun prior to sunset.
     In the user interface, the history of the function block can be displayed.
 A maximum of 100 entries can be shown.
 When you restart or save to the Miniserver, the history is cleared.
+
+
+
+
+![History RoofWindowShading](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/History_RoofWindowShading.png)

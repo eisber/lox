@@ -44,20 +44,35 @@ This active loudspeaker features a woofer with a coaxially integrated tweeter.
 
 
 
+![InstSpkMasterPCB](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/InstSpkMasterPCB.png)
+
+
+
+
 To a Master Speaker, up to 20 Client Speakers can be connected in a line via the Master-Client Interface (MCI):
 
 
 
 
-|  | The audio signal is transmitted digitally from speaker to speaker. The system compensates for differences in signal transit time and therefore only works with the wiring shown in a linear configuration.On the MCI data lines, there must be no branching or parallel connection to additional speakers! |
+![MCISystemWiring](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/MCISystemWiring.png)
+
+
+
+
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The audio signal is transmitted digitally from speaker to speaker. The system compensates for differences in signal transit time and therefore only works with the wiring shown in a linear configuration.On the MCI data lines, there must be no branching or parallel connection to additional speakers! |
 | --- | --- |
 
 
-|  | When only a few speakers are used, the power lines can also be run in a linear fashion.When using many speakers in a line, voltage drop becomes the limiting factor. This can be addressed by using wires with a larger cross-section, shorter cables, or additional 24V power lines. It is essential to always connect the grounds of different power lines. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | When only a few speakers are used, the power lines can also be run in a linear fashion.When using many speakers in a line, voltage drop becomes the limiting factor. This can be addressed by using wires with a larger cross-section, shorter cables, or additional 24V power lines. It is essential to always connect the grounds of different power lines. |
 | --- | --- |
 
 
 The connection cable must be secured to the metal bridge of the speaker basket with the cable tie for strain relief:
+
+
+
+
+![InstSpkStrainRelief](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/InstSpkStrainRelief.png)
 
 
 
@@ -94,11 +109,21 @@ If the Master Speaker cannot reconnect to its previously paired Audioserver or M
 
 
 
+
+![InstSpkMasterPCB](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/InstSpkMasterPCB.png)
+
+
+
     The SD card can be removed as follows:
 - Slide the hinge type slot towards the center of PCB with your finger.
 - Open the hinge and remove the SD card.
 
 
+
+
+
+
+![InstSpkMastersdc](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/InstSpkMastersdc.png)
 
 
 
@@ -116,6 +141,11 @@ If the Master Speaker cannot reconnect to its previously paired Audioserver or M
 
 
     Suitable **[mounting enclosures for drywall or concrete installation](https://shop.loxone.com/enus/audio.html/?c=install-box)** are available in the Loxone Shop.
+
+
+
+
+![PH Loxone Installation recommendations table](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PH-Loxone-Installation-recommendations-table.png)
 
 
 
@@ -140,6 +170,11 @@ If the Master Speaker cannot reconnect to its previously paired Audioserver or M
 
     In main living areas, at least two speakers should be used to achieve good sound quality. For small rooms or ancillary spaces, a single speaker is usually sufficient.
 Depending on the room size, we recommend planning the following number of speakers per room:
+
+
+
+
+![RoomsizeSpkrCountChart](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/RoomsizeSpkrCountChart.png)
 
 
 
@@ -185,6 +220,11 @@ A room with limited space
 
 
 
+
+![ori ex1](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ori_ex1.png)
+
+
+
     **Result:**
 The speakers always behave identically in terms of selected source and volume.
 
@@ -205,6 +245,11 @@ Small restaurant with a bar, the two areas are acoustically adjacent
 
     **Programming:**
 2 Audio Player function blocks, 1x for restaurant, 1x for bar, both combined in a fixed group:
+
+
+
+
+![ori ex2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ori_ex2.png)
 
 
 
@@ -231,6 +276,11 @@ One Client Speaker is connected to each respective Master Speaker per room and p
 
     **Programming:**
 1 Audio Player function block per room:
+
+
+
+
+![ori ex3](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ori_ex3.png)
 
 
 
@@ -306,12 +356,12 @@ Both rooms can be operated completely independently in terms of source and volum
 
 | Status LED | Description |
 | --- | --- |
-|  | Device is in pairing mode. |
-|  | Device was selected in Loxone Config and is identifying. |
-|  | Connection to Audioserver or Miniserver Compact is okay, but the device has not yet been paired. |
-|  | Device operational, paired and online. |
-|  | Device cannot connect to the Audioserver or Miniserver Compact via Tree Turbo. |
-|  | SD card cannot be read. Check SD card. |
+| ![StateLEDDotRedOrangeGreenPairing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StateLEDDotRedOrangeGreenPairing.gif) | Device is in pairing mode. |
+| ![StatLedDotRedGreenIdentify](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedDotRedGreenIdentify.gif) | Device was selected in Loxone Config and is identifying. |
+| ![StatLedDotOrangeFlashOffline](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedDotOrangeFlashOffline.gif) | Connection to Audioserver or Miniserver Compact is okay, but the device has not yet been paired. |
+| ![StatLedDotGreenFlashOnlineConstant](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedDotGreenFlashOnlineConstant.gif) | Device operational, paired and online. |
+| ![StatLedDotRedFlashNoConn](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedDotRedFlashNoConn.gif) | Device cannot connect to the Audioserver or Miniserver Compact via Tree Turbo. |
+| ![StatLedDotOrangeRedErrSD](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedDotOrangeRedErrSD.gif) | SD card cannot be read. Check SD card. |
 
 
 ---

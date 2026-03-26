@@ -5,7 +5,9 @@ Source: https://www.loxone.com/enen/kb/connection-of-the-ultrasonic-sensor/
 ---
 
 The ultrasonic sensor is supplied with 24V DC via the brown connection wire. Blue is connected to ground. The 0-10V analogue value is output on the white wire.
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/ultrasonicwiring.png)
+[
+![ultrasonicwiring](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/ultrasonicwiring.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/ultrasonicwiring.png)
 
 #### Setting the limits
 - Place the object at Position 1 (lower limit).

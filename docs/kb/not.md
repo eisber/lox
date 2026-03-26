@@ -58,3 +58,8 @@ Inverts input value.
 
 
 ## Timing Diagram
+
+
+
+
+![Not timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Not-timediag.png)

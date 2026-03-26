@@ -29,11 +29,17 @@ More than one person can be notified in an emergency. In addition, the [Caller S
 
 ### Configuration:
 
-[*[Inputs for Fall Detection for Elderly - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-73-Fall-Detection-1.png)
+[
+![Inputs for Fall Detection for Elderly - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-73-Fall-Detection-1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-73-Fall-Detection-1.png)
 
-[*[Fall Detection for Elderly Smart Alarm - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-73-Fall-Detection-2.png)
+[
+![Fall Detection for Elderly Smart Alarm - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-73-Fall-Detection-2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-73-Fall-Detection-2.png)
 
-[*[Fall Detection for Elderly Alarm Sequence - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-73-Fall-Detection-3.png)
+[
+![Fall Detection for Elderly Alarm Sequence - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-73-Fall-Detection-3.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-73-Fall-Detection-3.png)
 
 ### Download the sample file:
 

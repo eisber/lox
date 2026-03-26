@@ -17,7 +17,8 @@ They can be used in a variety of situations, but there are three main scenarios 
 
 You can combine EIB with Loxone to benefit from the flexibility and power of the Miniserver. It is guaranteed to open up many more options for you.
 
-*[Icon Exclamation Mark Loxone]*The Loxone Miniserver Gen. 1  also has a full IP Gateway, which can be useful when programming directly on the network with ETS.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+The Loxone Miniserver Gen. 1  also has a full IP Gateway, which can be useful when programming directly on the network with ETS.
 
 
 
@@ -29,4 +30,5 @@ In these pages you will find our recommendations and guidelines for using EIB wi
 - [EIB sensor scenario](https://www.loxone.com/enen/kb/knxeib-sensor-example/): Using EIB sensors in combination with the Loxone Miniserver
 - [Logic scenario](https://www.loxone.com/enen/kb/knxeib-logic-example/): Get more out of your EIB/KNX installation logic with the Loxone Miniserver
 
-*[Icon Exclamation Mark Loxone]*Take a look at our [sample configurations](https://www.loxone.com/enen/kb/videos-sample-files/), some of which use KNX components.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+Take a look at our [sample configurations](https://www.loxone.com/enen/kb/videos-sample-files/), some of which use KNX components.

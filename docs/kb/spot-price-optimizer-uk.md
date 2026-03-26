@@ -25,7 +25,9 @@ We’ve prepared this walkthrough video showing you the setup documented below.
 
 **Step 1. To get started, we need to add a Spot Price Optimizer function block to our Loxone Config file.**
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/Config-Spot-Price-Optimizer-30-minute-UK-C.png)
+[
+![Config Spot Price Optimizer 30 minute UK C 800x450](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/Config-Spot-Price-Optimizer-30-minute-UK-C.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/Config-Spot-Price-Optimizer-30-minute-UK-C.png)
 
 ##
 
@@ -35,9 +37,11 @@ We’ve prepared this walkthrough video showing you the setup documented below.
 - Mode → ‘Spot market’
 - Market Area → ‘GB 30-minutes (Epex, £/kWh)’
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/SPO-Parameters-Spot-Price-Optimizer-30-minute-UK-C-1.png)
+[
+![SPO Parameters Spot Price Optimizer 30 minute UK C 1 800x450](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/SPO-Parameters-Spot-Price-Optimizer-30-minute-UK-C-1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/SPO-Parameters-Spot-Price-Optimizer-30-minute-UK-C-1.png)
 
-*[]*
+![SPO Formula Spot Price Optimizer UK EPEX 800x79](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/SPO-Formula-Spot-Price-Optimizer-UK-EPEX.png)
 
 
 
@@ -46,9 +50,10 @@ We’ve prepared this walkthrough video showing you the setup documented below.
 **Step 3. Enter the formula for calculating your energy price**
 
 					The formula for the Octopus Agile tariff is **MIN(1;(I1*I2+IF(I4>=960;IF(I4<1140;I3;0);0))*1.05)**
-*[]*
 
-*[Loxone Loxone Spot Price Optimizer Epex Octopus Formula]*
+![SPO Formula Spot Price Optimizer 30 minute UK C 1 800x450](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/SPO-Formula-Spot-Price-Optimizer-30-minute-UK-C-1.png)
+
+![Loxone Loxone Spot Price Optimizer Epex Octopus Formula](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/SPO-Formula-Spot-Price-Optimizer-UK-Formula.png)
 
 
 
@@ -81,7 +86,7 @@ After the = sign, you need to add the customers post code, e.g.[https://api.octo
 
 This will return the customer’s region code, as shown in this image:
 
-*[]*
+![Region Code Spot Price Optimizer 30 minute UK 1 800x193](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/Region-Code-Spot-Price-Optimizer-30-minute-UK-1.png)
 
 Based on the result, confirm which region they are in:
 
@@ -117,20 +122,23 @@ Based on the region, refer to this Octopus’ “Agile pricing explained” blog
 
 [https://octopus.energy/blog/agile-pricing-explained/](https://octopus.energy/blog/agile-pricing-explained/)
 
-[*[]*](https://octopus.energy/blog/agile-pricing-explained/)
+[
+![DandP Value Spot Price Optimizer 30 minute UK 800x608](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/DandP-Value-Spot-Price-Optimizer-30-minute-UK.png)
+](https://octopus.energy/blog/agile-pricing-explained/)
 
 **Step 5. Input the D value (distribution cost) into the Input 2 parameter (I2), and the P value (peak time premium) into the Input 3 parameter (I3).**
 
 					Note: It is important that you add a decimal place to the peak time premium, e.g. 12 should be inputted as 0.12 to ensure you are adding 12p/kWh, rather than £12/kWh.
-*[]*
 
-*[Loxone Loxone Spot Price Optimizer Epex Octopus Inputs]*
+![I2 I3 Spot Price Optimizer 30 minute UK C 1 800x450](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/I2-I3-Spot-Price-Optimizer-30-minute-UK-C-1.png)
+
+![Loxone Loxone Spot Price Optimizer Epex Octopus Inputs](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/SPO-Formula-Spot-Price-Optimizer-UK-I2-I3.png)
 
 **Step 6. Save in to the Miniserver**
 
 View the Spot Price Optimizer within the Loxone App, and enjoy!
 
-| *[Loxone Spot Price Optimizer Epex Octopus Mobile App]* | *[Loxone Spot Price Optimizer Epex Octopus Tablet]* | *[Loxone Spot Price Optimizer Epex Octopus Laptop]* |
+| ![Loxone Spot Price Optimizer Epex Octopus Mobile App](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/iPhone-Spot-Price-Optimizer-30-minute-UK-C.png) | ![Loxone Spot Price Optimizer Epex Octopus Tablet](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/iPad-Spot-Price-Optimizer-30-minute-UK-C.png) | ![Loxone Spot Price Optimizer Epex Octopus Laptop](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/Mac-SPO-Spot-Price-Optimizer-30-minute-UK-C.png) |
 | --- | --- | --- |
 
 

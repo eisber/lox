@@ -24,6 +24,7 @@ Hardware:
 
 [
 
+![Loxone Use Case 53 Humidor Monitoring 1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-53-Humidor-Monitoring-1.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-53-Humidor-Monitoring-1.png)
 
 

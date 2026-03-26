@@ -30,7 +30,9 @@ Hardware:
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-46-Passive-monitoring-for-assisted-living.png)
+[
+![Use Case 46 Passive monitoring for assisted living](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-46-Passive-monitoring-for-assisted-living.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-46-Passive-monitoring-for-assisted-living.png)
 
 ### Download the sample file:
 

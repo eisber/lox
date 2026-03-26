@@ -51,7 +51,9 @@ This value can, of course, be adjusted at any time by consulting the documentati
 
 ### Configuration:
 
-[*[Change light colour based on the weather - Loxone config screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-41-Smart-Weather-Forecast-2.jpg)
+[
+![Change light colour based on the weather - Loxone config screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-41-Smart-Weather-Forecast-2.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-41-Smart-Weather-Forecast-2.jpg)
 
 
 

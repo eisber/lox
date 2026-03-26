@@ -81,3 +81,8 @@ With this block you can re-scale Analogue Values.
 
 
 ## Timing Diagram
+
+
+
+
+![Scaler timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Scaler-timediag.png)

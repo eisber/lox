@@ -42,6 +42,11 @@ DALI Air is a compact Interface to wirelessly integrate up to 10 DALI devices, e
 
 
 
+
+![100570 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100570-install.png)
+
+
+
     Connect the AC mains supply (brown/blue wire), as well as the DALI data lines (grey screw terminal).
 
 
@@ -72,10 +77,20 @@ DALI Air is a compact Interface to wirelessly integrate up to 10 DALI devices, e
 
 
 
+
+![DALIsearch](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/DALIsearch.png)
+
+
+
     It will then search for devices and display the discovered devices. By clicking the right arrow, selected devices are added to the programming.
 
 
     After that, the added devices are available in the periphery tree, and can be used on the programming page:
+
+
+
+
+![DALIAir DeviceActor](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/DALIAir-DeviceActor.png)
 
 
 
@@ -92,6 +107,11 @@ When using DALI broadcast, DALI sensors cannot be added.
 
 
 
+![DALIAir BroadcastActor](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/DALIAir-BroadcastActor.png)
+
+
+
+
 ---
 
 
@@ -99,6 +119,11 @@ When using DALI broadcast, DALI sensors cannot be added.
 
 
     If an **address conflict** is detected, e.g. if two or more devices have the same address, the function "Resolve Address Conflict" can be used:
+
+
+
+
+![dali AddressConflict](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/dali_AddressConflict.png)
 
 
 
@@ -139,6 +164,11 @@ This offers the advantage that the programming is simpler and there is no time d
 
 
     With the function "Activate all" all connected DALI lights are set to full brightness, so the wiring can be checked.
+
+
+
+
+![dali ActivateAll](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/dali_ActivateAll.png)
 
 
 

@@ -166,6 +166,11 @@ In order to use the "Music Server Zone" function block, a Music Server must firs
 
 
 
+
+![MusicServer Menu](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/MusicServer_Menu.jpg)
+
+
+
     If a zone is renamed, this change will be applied for AirPlay and other services at the latest after a reboot of the Music Server.
 
 
@@ -177,6 +182,11 @@ In order to use the "Music Server Zone" function block, a Music Server must firs
 
 
     Although UPnP / DLNA is a defined standard, some additional parameters must be considered.
+
+
+
+
+![MusicServer UPNP](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/MusicServer_UPNP.jpg)
 
 
 
@@ -329,6 +339,11 @@ In order to use the "Music Server Zone" function block, a Music Server must firs
 
 
 
+
+![MusicServer Event](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/MusicServer_Event.jpg)
+
+
+
     If you would like to set your own event sound, copy it into the folder. For the doorbell it is named as follows: "1-doorbell.mp3"
 
 
@@ -360,3 +375,8 @@ audio/grouped/alarm/off/1,2,3
 
     This function block has a presence simulation.
 Activate and define the presence simulation in the properties window:
+
+
+
+
+![PresenceSimulation MusicServerZone](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PresenceSimulation_MusicServerZone.png)

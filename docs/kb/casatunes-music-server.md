@@ -22,7 +22,7 @@ Speaker installation boxes for cast concrete ceilings should have a volume of 7-
 
 Below is a diagram of how speakers would be connected either in mono or stereo setup. You also need to run a CAT cable from the Music Server to your router.
 
-*[Loxone Music Server Wiring]*
+![Loxone Music Server Wiring](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Product_Music_Server_Wiring.png)
 
 ## CONNECT TO SETUP
 
@@ -46,7 +46,7 @@ Click on the below menu options to see how to configure each part of CasaSetup f
 
 Once you are connected to CasaSetup you will be greeted with the screen below. You can change the language with the drop down list in the top right hand corner.
 
-*[Casatunes UI Language]*
+![Casatunes UI Language](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_UI_CT_Music_Server_Language.png)
 
 ## SELECT CONTROLLER
 
@@ -54,7 +54,7 @@ You will be on the Select Controller page of the menu and here the controller ty
 
 For the option ‘Enable muting or paging when triggered?’ you can set this to Disable. This option allows you to use the trigger inputs to play a doorbell sound or mute pages. The trigger inputs require a voltage to trigger them.
 
-*[Casatunes Select Controller]*
+![Casatunes Select Controller](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_UI_CT_Music_Server_Controller.png)
 
 ## THIRD PARTY CONTROL
 
@@ -64,7 +64,7 @@ Tick the box next to ‘Enable third party control of CasaTunes’ under the Set
 
 The TCP/IP port should remain as 23.
 
-*[Casatunes UI 3rd Party Control]*
+![Casatunes UI 3rd Party Control](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_UI_CT_Music_Server_3rd_Party.png)
 
 ## SOURCES
 
@@ -72,27 +72,27 @@ Next up is the Sources, in this menu you can give the sources names. There will 
 
 If you don’t want to show all the sources you can hide them by ticking the ‘Hide Source’ box.
 
-*[Casatunes UI Sources]*
+![Casatunes UI Sources](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_UI_CT_Music_Server_3rd_Sources.png)
 
 There are also 1-2 external sources on the Music Server which can have CD players or AM/FM tuners connected to. They are the 3.5mm jack inputs on the back of the Music Server:
 
-*[Music Server External Inputs]*
+![Music Server External Inputs](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Product_Music_Server_External_inputs.png)
 
 Now you can edit the external source in CasaSetup as well. You can choose the type of source that is connected if available and you can also edit the gain.
 
-*[Casatunes Music Server Sources 2]*
+![Casatunes Music Server Sources 2](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_UI_CT_Music_Server_Sources_2.png)
 
 ## ROOMS
 
 Similar to the Sources menu you can also edit the rooms. There will either be 8 or 12 rooms depending on the Music Server you have bought (8 or 12 zone). You can choose to hide the room if necessary and you can choose all the volume settings for each room. You can either enable all sources for a room or choose a particular source.
 
-*[Casatunes MS Rooms]*
+![Casatunes MS Rooms](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_UI_CT_Music_Server_Rooms.png)
 
 ## ROOM GROUPS
 
 You can also create combinations of rooms called Room Groups. This then allows you to play a particular source to a room group, for example ‘Downstairs’ play the party source!
 
-*[Casatunes Music Server UI Room Groups]*
+![Casatunes Music Server UI Room Groups](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_UI_CT_Music_Server_Room_Groups.png)
 
 ## AIRPLAY
 
@@ -100,7 +100,7 @@ The Loxone Music Server also supports Airplay. Make sure you have ticked the box
 
 If you have also ticked the box “Enable transmitting CasaTunes music to AirPlay speakers” you can play music from the server through the speakers of an Airplay device.
 
-*[Casatunes Music Server UI Airplay]*
+![Casatunes Music Server UI Airplay](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_UI_CT_Music_Server_Room_Airplay.png)
 
 ## MUSIC SERVICES
 
@@ -116,7 +116,7 @@ If you see a song or album showing up without any information it is important to
 
 If incorrect album art is displayed this can be caused by a problem with the folder structure of iTunes. To fix this in the Settings menu in the Advanced tab in iTunes tick the option ‘Keep iTunes Media folder organized’. Then select File – Library – Organize Library, and tick the option ‘Consolidate files’.
 
-*[Casatunes Music Server UI Sync]*
+![Casatunes Music Server UI Sync](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_UI_CT_Music_Server_Room_Sync.png)
 
 ## SETUP IN LOXONE CONFIG
 
@@ -132,7 +132,7 @@ Give the server a name for example ‘My House Music Server’ and then enter th
 
 So for example put in the box Address: http://192.168.1.90:8731. The port must be entered!
 
-*[Casatunes Config Adding]*
+![Casatunes Config Adding](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_CT_Music_Server_Adding.png)
 
 ## THEN MUSIC SERVER ZONE BLOCKS
 
@@ -142,7 +142,7 @@ You can see the Music Server has already been assigned to the block. If you had 
 
 Finally give the block a name such as ‘Kitchen Music’ as this shows on the user interface.
 
-*[Casatunes Music Server Zone Blocks]*
+![Casatunes Music Server Zone Blocks](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_CT_Music_Server_Block.png)
 
 #### LEGACY
 
@@ -162,7 +162,7 @@ Adjust the command depending on which zone of your multi room music system you w
 
 You can play radio stations in the same way by saving the radio station as a playlist first in the CasaTunes webinterface.
 
-*[Casatunes Music Server VO Commands]*
+![Casatunes Music Server VO Commands](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_CT_Music_Server_VO.png)
 
 ## WEB COMMANDS
 
@@ -179,10 +179,10 @@ The following web commands can be used on a browser to control the Music Server,
 
 If you experience a problem with your Music Server this can usually be resolved by restarting the CasaTunes service. To do this go to CasaSetup web interface. Then you can click on the button that stops the CasaTunes service.
 
-*[Trouble Shooting Casatunes 1]*
+![Trouble Shooting Casatunes 1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_UI_CT_Music_Server_Room_Troubleshooting.png)
 
 This may take a minute and then once you see the button to restart the service click on this. The Music Server will then restart.
 
-*[Casatunes Troubleshooting 2]*
+![Casatunes Troubleshooting 2](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_UI_CT_Music_Server_Room_Troubleshooting_2.png)
 
 Finally if needed you can reset the Music Server to factory defaults. To do this you need to connect a screen and mouse or keyboard to the Music Server (it runs Windows). Navigate to C: \ ProgramData \ CasaTools \ CasaTunes \ 2.0.0.0 \ Factory and then double click on the FactoryReset.cmd file and follow the instructions. Then do a restart of the Music Server.

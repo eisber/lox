@@ -24,11 +24,17 @@ When the children’s night mode is activated, the lights, music and Motion/[Pre
 
 ### Configuration:
 
-[*[Children's Night Mode - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-92-Children-Night-Mode-1.png)
+[
+![Children's Night Mode - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-92-Children-Night-Mode-1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-92-Children-Night-Mode-1.png)
 
-[*[Children's Night Mode - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-92-Children-Night-Mode-2.png)
+[
+![Children's Night Mode - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-92-Children-Night-Mode-2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-92-Children-Night-Mode-2.png)
 
-[*[Children's Night Mode - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-92-Children-Night-Mode-3.png)
+[
+![Children's Night Mode - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-92-Children-Night-Mode-3.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-92-Children-Night-Mode-3.png)
 
 ### Download the sample file:
 

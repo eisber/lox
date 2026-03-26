@@ -127,6 +127,11 @@ This function block is used to control a solar thermal system. The solar pump is
 
 
 
+![SolarGrundprogrammierung](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/SolarGrundprogrammierung.PNG)
+
+
+
+
 ---
 
 
@@ -134,6 +139,11 @@ This function block is used to control a solar thermal system. The solar pump is
 
 
     By double-clicking the block, the configuration dialog opens where the numbers and names of the puffer storages can be assgined.
+
+
+
+
+![SolarDlg](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/SolarDlg.PNG)
 
 
 

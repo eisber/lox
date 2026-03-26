@@ -42,7 +42,7 @@ The Loxone Valve Actuator Air is a wireless motorized valve actuator for heating
 
 
 
-|  | Ensure that the correct adapter is used for the specific valve type.Using an unsuitable adapter may lead to issues, such as "valve stuck" or "no valve detected" messages. The adapter also positions the valve stem correctly. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Ensure that the correct adapter is used for the specific valve type.Using an unsuitable adapter may lead to issues, such as "valve stuck" or "no valve detected" messages. The adapter also positions the valve stem correctly. |
 | --- | --- |
 
     Then use either the supplied batteries or connect an external 24VDC power supply.
@@ -58,15 +58,20 @@ Use the IDC tool to push the orange/white wire pair to connect the power supply.
 
 
 
-|  | Make sure that no water can drip onto the actuator.Although the actuator can be mounted in any position, it is recommended to install the actuator above the valve to prevent water dripping onto the actuator in case of a leaking valve or condensation. |
+![VA Air Installation](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/VA Air Installation.png)
+
+
+
+
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Make sure that no water can drip onto the actuator.Although the actuator can be mounted in any position, it is recommended to install the actuator above the valve to prevent water dripping onto the actuator in case of a leaking valve or condensation. |
 | --- | --- |
 
 
-|  | When installing the Valve Actuator, ensure that the opening for the green mounting clip does not face downward. Installing the Valve Actuator in this position may cause the clip to loosen or fall out, potentially leading to malfunction or improper operation of the valve. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | When installing the Valve Actuator, ensure that the opening for the green mounting clip does not face downward. Installing the Valve Actuator in this position may cause the clip to loosen or fall out, potentially leading to malfunction or improper operation of the valve. |
 | --- | --- |
 
 
-|  | If a large number of valve actuators share one electrical line with a small wire cross-section, significant voltage drop may occur. In such a case, it is recommended to use a larger wire cross-section for the 24V supply line and to switch to a smaller cross-section just before connecting the actuators. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | If a large number of valve actuators share one electrical line with a small wire cross-section, significant voltage drop may occur. In such a case, it is recommended to use a larger wire cross-section for the 24V supply line and to switch to a smaller cross-section just before connecting the actuators. |
 | --- | --- |
 
 
@@ -105,10 +110,10 @@ If the supply method is changed later, the device must be deleted from the confi
 
 | LED state | Description |
 | --- | --- |
-|  | Device is in pairing mode, ready for pairing. |
-|  | 3 short flashes Device was successfully paired. |
-|  | Air device is offline. |
-|  | Device was selected in Loxone Config and is identifying (if powered with 24V). |
+| ![LED VA red orange green flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_VA_red_orange_green_flashing.gif) | Device is in pairing mode, ready for pairing. |
+| ![LED VA 3xgreen flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_VA_3xgreen_flashing.gif) | 3 short flashes Device was successfully paired. |
+| ![LED VA orange flashing noair](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_VA_orange_flashing_noair.gif) | Air device is offline. |
+| ![LED VA red green fast flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_VA_red_green_fast_flashing.gif) | Device was selected in Loxone Config and is identifying (if powered with 24V). |
 
 
 ---

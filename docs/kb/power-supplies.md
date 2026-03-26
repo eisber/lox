@@ -31,11 +31,13 @@ Shop links to the power supplies:
 
 When assembling the panel we recommend keeping the panel organized into layers with the terminal blocks at the top, main modules in the middle and the power supplies at the bottom. If setup properly this allows room for growth and also groups each component into function blocks. Furthermore, by keeping the power supplies nearby each other, it makes it far easier to setup common grounds between the power supplies which should be done to prevent floating voltage. As always ensure that you have slightly more wattage than what you need to compensate for any fluctuations that might occur. Using the dedicated [Project Planning](https://www.loxone.com/enen/kb/project-planning/) feature in Loxone Config will help you determine the power supplies you will require. An example of a properly setup panel can be here or on the [wiring basics page](https://www.loxone.com/enen/kb/wiring-basics/) (note setup designs may vary depending on free space within the panel).
 
+![EN KB Wiring Cabinet Layout 1080x874](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Wiring_Cabinet_Layout.png)
+
 It is also important to split up the modules on the 2nd row into different groups and power each group individually. By segregating the modules and therefore, splitting up the power supply, you can ensure that if one power supply fails and it’s not connected to the Miniserver, you avoid total failure. Our setup recommendation is to group the Miniserver and Extensions together and dimmer modules together.  A final note is that only the TDK DRF240-24-1 power supply unit is suitable for parallel operation. More information about this topic can be found [here](https://www.loxone.com/enen/kb/connecting-power-supplies-parallel/).
 
 Illustration for the cabling required to set up a Miniserver and Extension with multiple power supplies (for the GND we recommend a cross-section of 2.5mm2).
 
-*[Loxone Miniserver Being Connected To Multiple 24V Power Supply]*
+![Loxone Miniserver Being Connected To Multiple 24V Power Supply](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Wiring_Miniserver_Multiple_PSU.png)
 
 #### Further Links
 

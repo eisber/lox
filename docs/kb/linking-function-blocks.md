@@ -20,11 +20,15 @@ In the following example, we link the kitchen’s Intelligent Room Controller wi
 
 First we select the block, then we click on **Select** linked function blocks in the properties:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/linkedblocks-open-selection.png)
+[
+![linkedblocks open selection](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/linkedblocks-open-selection.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/linkedblocks-open-selection.png)
 
 No blocks are linked yet, so we click on the **Add** button:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/linkedblocks-add-blocks.png)
+[
+![linkedblocks add blocks](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/linkedblocks-add-blocks.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/linkedblocks-add-blocks.png)
 
 This opens a window in which all existing objects are listed.
 
@@ -34,11 +38,15 @@ In our example, we search for the room, and only the objects assigned to that ro
 
 We then select the humidity, CO2 value and the Room Ventilation Controller of the kitchen, and click on **Apply**:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/linkedblocks-select-objects.png)
+[
+![linkedblocks select objects](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/linkedblocks-select-objects.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/linkedblocks-select-objects.png)
 
 Now the selected objects are linked and if desired their order can be changed using the arrow buttons:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/linkedblocks-objects-linked.png)
+[
+![linkedblocks objects linked](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/linkedblocks-objects-linked.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/linkedblocks-objects-linked.png)
 
 Finally, we again click on **Apply**, and save the program to the Miniserver.
 
@@ -48,7 +56,9 @@ In the Loxone App or the web interface, we now open the Intelligent Room Control
 
 The objects that were linked to the Intelligent Room Controller are now displayed below the functions of the block:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/linkedblocks-linked-visu.png)
+[
+![linkedblocks linked visu](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/linkedblocks-linked-visu.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/linkedblocks-linked-visu.png)
 
 As a result, all the values and controls relevant to the room climate are combined in the Intelligent Room Controller block.
 

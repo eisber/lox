@@ -14,4 +14,4 @@ If an input of the Min Max function block is not connected then the value of 0 w
 
 #### EXAMPLE
 
-*[]*
+![Screenshot 091417 084429 AM 300x74](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/Screenshot_091417_084429_AM.jpg)

@@ -82,3 +82,8 @@ On/Off push-button
 
 
 ## Timing Diagram
+
+
+
+
+![PushButton timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PushButton-timediag.png)

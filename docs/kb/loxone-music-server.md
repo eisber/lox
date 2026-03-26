@@ -53,7 +53,7 @@ Music Server setup](#server setup)
 
 [Troubleshooting](#troubleshooting)
 
-*[]*
+![EN Icon Attention](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/02/EN_Icon_Attention.png)
 
 **Please note, in order to use the Loxone Music server; a [Miniserver](https://www.loxone.com/enen/products/miniserver-extensions/) will also be required for control.
 
@@ -75,7 +75,7 @@ To do this open Loxone Config and connect to your Miniserver. Load the current c
 
 This will open the search dialog box. In the “Network” tab (1) all Loxone devices on the network will now be listed. Select the Music Server (2) and click “Configure” (3). Here you can select the general settings, such as location, once done change to the “Network” tab (4) to set the desired IP address (5) and click on “Save” (6).
 
-*[Loxone config Configure Network Device]*
+![Loxone config Configure Network Device](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_Confiigure_Network_Device.png)
 
 It is also possible to set the IP address of the Music Server via a browser (Google Chrome, Mozilla Firefox, …).
 
@@ -83,11 +83,11 @@ To do so type the current IP address of your Music Server in the address bar of 
 
 The most crucial part here is the network settings, these must be correct for proper operation please check that these are correct, to change them simply click on the small spanner icon.
 
-*[]*
+![Loxone Music Server](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Loxone_Music_Server.png)
 
 Apart from the IP settings you can also reboot the Music Server through this web interface, simply go to Actions – then there is a list of options.
 
-*[]*
+![Menubar and Loxone Music Server and Computers   Contacts](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Menubar_and_Loxone_Music_Server_and_Computers___Contacts.png)
 
 **Check for Updates** Updates usually get installed automatically (update-check daily at 3:00 am). If the Music Server is regularly switched off at that time you can start the update manually by clicking this button.
 
@@ -121,11 +121,11 @@ For Music Servers that are operated without an internet connection, we recommend
 
 When the Music Server is added to your configuration outputs for each zone are created automatically. Which can then be dragged into your configuration.
 
-*[Music Server Popout Window]*
+![Music Server Popout Window](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_Music_Server_Popout.png)
 
 The only mandatory setting that has to be made in the properties of the function block is to set a room name, which will be used for the user interface and apps.
 
-*[]*
+![Screenshot 090517 102743 AM 300x107](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Screenshot_090517_102743_AM.jpg)
 
 [>>> You can find a full description of the Music Server Zone function block here. <<<](https://www.loxone.com/enen/kb/music-server-zone/)
 
@@ -145,17 +145,19 @@ The displayed frequency bands are displayed in the order of depth, mid-range and
 
 – Treble: 4 kHz to 16 kHz
 
+![MU app Music Server Equalizer](/enen/wp-content/uploads/sites/3/2016/10/MU_app_Music_Server_Equalizer.png)
+
 ## ADD UPNP DEVICES
 
 To add UPnP devices select the music server in the periphery tree and in the top ribbon, a button “Configure Loxone Music Server” will appear. Upon clicking that button a window will appear with 3 tabs (General, Network, Zomes) and in the “Zones” tab, you will be able to see all your music server zones.
 
-*[]*
+![configure 300x174](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/configure.jpg)
 
 
 
 Once the window is open, your network will be scanned to find any UPnP devices and they will be automatically added to the Music server.
 
-*[]*
+![musicserver 300x189](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/musicserver.jpg)
 
 Do note that some zones are disabled. This is because they are not in use by the current Config program (some spare ones for example).
 
@@ -226,15 +228,15 @@ For this purpose, we have created prefabricated UPNP modes for known devices:
 
 There are predefined commands for the Loxone Music Server in the Loxone Config Software available. To add them simply highlight “Virtual outputs” in the periphery tree, then you will find the drop-down menu “Predefined devices” on the upper right side. In this drop-down menu you can find the Loxone Music Server.
 
-*[]*
+![Vitrual 300x233](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Vitrual.png)
 
 Now the following message will pop up:
 
-*[Virtual Outputs Popout]*
+![Virtual Outputs Popout](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_VO_Popout.png)
 
 Highlight “Loxone Music Server” in the virtual output section in the periphery tree and adjust your IP address. Take care, you must not change the port “:7091”.
 
-*[Music Server VO Properties]*
+![Music Server VO Properties](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_Music_Server_VO_Periphery.png)
 
 ## FEATURES
 
@@ -361,7 +363,8 @@ Spotify accounts with a **+** (Plus) in the email address cannot be used.
 
 Up to 6 accounts can be added to a Musicserver using Spotify Family User Accounts. The accounts are visible to all in the app and you can decide which account you want to use in which zone, whereby an account can only be used in 1 zone at a time. If an account is used in two zones, you will be prompted by the app with an appropriate message.
 
-*[Icon Exclamation Mark Loxone]*Please note that it is not possible to have 1 Spotify stream grouped to more than 10 music zones. This means that you can’t have 1 Spotify account playing in 10 zones at the same time.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+Please note that it is not possible to have 1 Spotify stream grouped to more than 10 music zones. This means that you can’t have 1 Spotify account playing in 10 zones at the same time.
 
 
 
@@ -373,7 +376,7 @@ The Music Server can be integrated as a network drive on your local area network
 
 To add network on windows open “My Computer”, in newer Windows versions also known as “This PC”. Now right-click on ‘network’ option on left hand side, and then click on “Map network drive”.
 
-*[Adding Music To Music Server]*
+![Adding Music To Music Server](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Computer_Adding_Music_Windows_1.png)
 
 Now enter the IP address of the Music Server in the following format:
 
@@ -385,7 +388,7 @@ Click ‘finish’
 
 Now you can copy your music to the network folder. This music will now be available on the music server.
 
-*[Adding Music To Music Server]*
+![Adding Music To Music Server](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Computer_Adding_Music_Windows_2.png)
 
 #### OSX
 
@@ -393,7 +396,7 @@ If using a Mac the Music Server is also inserted as a network folder.
 
 First open up ‘finder’, Then click ‘go’ in the top bar. Finally Select ‘connect to server…’
 
-*[Adding Music To Music Server]*
+![Adding Music To Music Server](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Computer_Adding_Music_Mac_1.png)
 
 Now enter the IP address of the Music Server in the following format :
 
@@ -401,17 +404,17 @@ smb://[IP Address]/AUDIO
 
 e.g. smb://192.163.1.56/audio
 
-*[Adding Music To Music Server]*
+![Adding Music To Music Server](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Computer_Adding_Music_Mac_2.png)
 
 ## ADDING CUSTOM EVENT SOUNDS
 
 In order to add custom event sounds the process is similar to the above but with some differences. Rather than mounting the “audio” folder on the music server instead mount the “event_sounds” folder. An example of this would be: \\192.168.1.253\event_sounds and you will be greeted by a window that will have a list of all the event sounds. These names are crucial as the music server plays the sound based on a lookup of the name of the file it is after.
 
-*[]*
+![eventsounds 300x283](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/eventsounds.png)
 
 In order to add your own event sound (will be using 4-firealarm) you have to add your own audio file into this folder and rename it to be exactly the same as what you want it to replace. In the example’s instance, the new file has been added, the original 4-firealarm was renamed to 4-firealarm-OLD (it is good practice to rename them to something else rather than delete them so you still have them there) and the file that was added (firealarm sound) was renamed to 4-firealarm.
 
-*[]*
+![renamed 300x282](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/renamed.png)
 
 ###
 
@@ -486,7 +489,7 @@ ATTENTION! When an event is triggered, existing zone groups are canceled so that
 
 ## CONNECTIONS
 
-*[]*
+![loxone music server back March 2018 800x413](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/loxone-music-server-back-March-2018.png)
 
 ## RACK MOUNTING
 

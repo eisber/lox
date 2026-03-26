@@ -20,7 +20,7 @@ Controller for various types of HVAC systems. This block is optimized to work wi
 
 
 
-|  | The HVAC Controller is primarily designed for North American HVAC systems. However, it is not limited to this application and can also be used with a wide range of other system types, depending on the project requirements. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | The HVAC Controller is primarily designed for North American HVAC systems. However, it is not limited to this application and can also be used with a wide range of other system types, depending on the project requirements. |
 | --- | --- |
 
 

@@ -17,11 +17,11 @@ The Miniserver update can be performed in 3 different ways:
 
 1. [Connect to the Miniserver](https://www.loxone.com/enen/kb/initial-setup-miniserver/#connect_to_ms) and select “Miniserver” in the periphery tree. Click on “Miniserver Firmware Update” in the menu bar:
 
-*[]*
+![update firmware](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/07/update_firmware.png)
 
 2. You can now choose which data should be saved from your Miniserver. Click on “Install Update” to start the update:
 
-*[]*
+![update install](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/07/update_install.png)
 
 After the update, the Miniserver reboots and the update is complete.
 
@@ -36,7 +36,7 @@ Certain versions of the software are also published by Loxone via the app with a
 
 Users with the right “Miniserver Update via App” will then receive a notification via the system status, and after confirmation they can start the Miniserver update via the app.
 
-*[]*
+![update app](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/07/update_app.png)
 
 ## Update via formatting the SD card
 

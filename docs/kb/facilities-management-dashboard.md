@@ -25,9 +25,13 @@ The central Miniserver displays all relevant information, which is output in var
 
 ### Configuration:
 
-[*[Facilities Management Dashboard - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-7-Facilities-Management-Dashboard-1.png)
+[
+![Facilities Management Dashboard - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-7-Facilities-Management-Dashboard-1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-7-Facilities-Management-Dashboard-1.png)
 
-[*[Building Management Dashboard - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-7-Facilities-Management-Dashboard-2.png)
+[
+![Building Management Dashboard - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-7-Facilities-Management-Dashboard-2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-7-Facilities-Management-Dashboard-2.png)
 
 ### Download the sample file:
 

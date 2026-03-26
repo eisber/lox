@@ -44,6 +44,11 @@ Ensure heat dissipation by mounting horizontally in the lower area of the enclos
 
 
 
+
+![psb connection diagram](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/psb_connection_diagram.png)
+
+
+
     To use the optional backup function, a [36V battery is connected](#battery).
 
 
@@ -84,6 +89,11 @@ Drag the power supply from the periphery tree to the programming page to insert 
 
 
 ## Connect Batteries
+
+
+
+
+![psb connection battery](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/psb_connection_battery.png)
 
 
 
@@ -142,11 +152,16 @@ Connecting multiple Power Supply & Backup units to one battery pack is not permi
 
 
 
+
+![psb replace fuse](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/psb_replace_fuse.png)
+
+
+
     Remove the fuse puller from the front panel and use it to pull out the blown fuse.
 
 
 
-|  | Before replacing the fuse, ensure that there is no short circuit at the affected output. Contact a qualified electrician or Loxone partner for assistance. If testing is not possible, the fuse replacement must only be carried out when the device is completely de-energized. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Before replacing the fuse, ensure that there is no short circuit at the affected output. Contact a qualified electrician or Loxone partner for assistance. If testing is not possible, the fuse replacement must only be carried out when the device is completely de-energized. |
 | --- | --- |
 
     Replacement fuses are located on the right side of the front panel. Replace a blown fuse only with one of the same value / color!
@@ -170,13 +185,18 @@ In this case, consult a Loxone partner or qualified electrician.
 
 | Left LED | Right LED | Description |
 | --- | --- | --- |
-|  |  | Everything OK, device is online. |
-|  |  | Connection to the Miniserver is okay, but the device has not been paired. |
-|  |  | Device cannot connect to the Miniserver via the Tree interface. |
-|  |  | Device was selected in Loxone Config and is identifying. |
-|  |  | Update is in progress. |
-|  |  | No battery detectedBattery service recommended |
-|  |  | Emergency power supply activeBattery almost emptyFuse has failedThermal shutdownRisk of overheatingBattery defective |
+| ![LED PSB green flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_PSB_green_flashing.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | Everything OK, device is online. |
+| ![LED PSB orange flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_PSB_orange_flashing.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | Connection to the Miniserver is okay, but the device has not been paired. |
+| ![LED PSB red flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_PSB_red_flashing.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | Device cannot connect to the Miniserver via the Tree interface. |
+| ![LED PSB greenred identify](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_PSB_greenred_identify.gif) | ![LED off](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_off.gif) | Device was selected in Loxone Config and is identifying. |
+| ![LED PSB redorange flashing update](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_PSB_redorange_flashing_update.gif) | ![LED MS offorangered update](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_MS_offorangered_update.gif) | Update is in progress. |
+| ![LED PSB green flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_PSB_green_flashing.gif) | ![LED orange](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_orange.gif) | No battery detectedBattery service recommended |
+| ![LED PSB green flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_PSB_green_flashing.gif) | ![LED red](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LED_red.gif) | Emergency power supply activeBattery almost emptyFuse has failedThermal shutdownRisk of overheatingBattery defective |
+
+
+
+![PSB Fuses](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PSB_Fuses.png)
+
 
 
     If all PSB fuses are red and there is no 24V output, the mains voltage is too low.

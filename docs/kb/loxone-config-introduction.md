@@ -15,7 +15,7 @@ Our software is designed to map control tasks for the Miniserver in the form of 
 - Test the program in online mode with the Miniserver in a real time view
 - Options to print out hard copies
 
-*[Icon Exclamation Mark Loxone]*
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 
 The size of a Loxone Config file must not exceed 5 MB.
 
@@ -35,9 +35,10 @@ Our configuration software provides you with a detailed help manual which you ca
 
 The Object Help window can be moved around the screen or pinned to the side as desired.
 
-*[Icon Exclamation Mark Loxone]*You may also find our [example configurations](https://www.loxone.com/enen/kb/videos-sample-files/) useful.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+You may also find our [example configurations](https://www.loxone.com/enen/kb/videos-sample-files/) useful.
 
-*[Loxone Config Information Button]*
+![Loxone Config Information Button](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Information_Popout.png)
 
 
 
@@ -49,6 +50,6 @@ The Object Help window can be moved around the screen or pinned to the side as d
 
 In Windows Explorer folder options select “Hidden files, folders and drives show”. This will make the folder ProgramData visible so you can save templates to Loxone Config so they show in the pre-defined devices menu. Select C:/ProgramData/Loxone/Loxone Config current version/ENG. The templates for RS485, RS232 and Modbus are saved in the Comm folder and virtual outputs are saved in the folder VirtualOut. Remote control templates are saved in the RC folder.
 
-*[Icon Exclamation Mark Loxone]*
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 
 You should backup this folder ENG as installing new versions of Loxone Config in the future will overwrite this folder.

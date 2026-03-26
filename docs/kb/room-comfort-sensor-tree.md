@@ -43,6 +43,11 @@ The Room Comfort Sensor Tree is used to measure temperature, humidity and CO2 in
 
 
 
+![100276 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100276 install.png)
+
+
+
+
 ---
 
 

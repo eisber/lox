@@ -11,7 +11,7 @@ The Loxone Motion Detector Air is used to detect motion and brightness in a room
 
 
 
-|  | The Motion Sensor can also detect some pets. Although the sensitivity of the sensor can be reduced, there is no dedicated technology that excludes the detection of pets. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The Motion Sensor can also detect some pets. Although the sensitivity of the sensor can be reduced, there is no dedicated technology that excludes the detection of pets. |
 | --- | --- |
 
 
@@ -38,8 +38,23 @@ The Loxone Motion Detector Air is used to detect motion and brightness in a room
 
 
 
-|  | For motion to be detected accurately, correct placement of the Motion Sensor on the ceiling is essential. The following drawings can assist with this: |
+![100190 100420 labeled back view](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100190 100420 labeled back view.png)
+
+
+
+
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | For motion to be detected accurately, correct placement of the Motion Sensor on the ceiling is essential. The following drawings can assist with this: |
 | --- | --- |
+
+
+
+![motiondetector range1](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/motiondetector_range1.jpg)
+
+
+
+
+
+![motiondetector range2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/motiondetector_range2.jpg)
 
 
 
@@ -74,6 +89,11 @@ If the supply method is changed later, the device must be deleted from the confi
 
 
     To replace the batteries, remove the unit from its base by briefly turning it anticlockwise. Remove the batteries from the back of the unit and insert new AA batteries. The device will restart and the status LED will flash green 3 times.
+
+
+
+
+![100190 100420 battery](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100190 100420 battery.png)
 
 
 

@@ -16,10 +16,10 @@ Here at Loxone we suggest using 24V spots when it comes to retrofit as the perf
 
 | 24V Downlights |
 | --- |
-| *[Loxone Spotlight (in situ)]* |
+| ![Loxone Spotlight (in situ)](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/Loxone-Spotlight-in-situ.jpg) |
 
 ## OTHER OPTIONS
 
 | 230V Dimmed | 230V Switched |
 | --- | --- |
-| *[3rd Party Spotlight (in situ)]* | *[3rd Party Spotlight 2 (in situ)]* |
+| ![3rd Party Spotlight (in situ)](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/12/3rd-Party-Spotlight-in-situ.jpg) | ![3rd Party Spotlight 2 (in situ)](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/12/3rd-Party-Spotlight-2-in-situ.jpg) |

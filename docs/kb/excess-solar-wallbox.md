@@ -16,7 +16,13 @@ In one scenario, drivers that do this might only be charging their car for an ho
 
 With all this in mind, let’s introduce a third hypothetical calculation. The average electric car battery on the market is around 40kWh. Let’s say 3 trips will use up 75% of this capacity, leaving approximately 8kWh, and will require charging. If the goal is to maintain 80% (32kWh) of 40kWh, then the charge will use 24kWh worth of energy to get us back to this goal. This from the grid will cost £2.40 a day if the energy is pulled at a higher rate during the day (£0.30/kWh), such as from 6pm after work. Maintaining this every 3 days will cost £7.20/week. Choosing a different time of day, or in this case, the night time to start the actual charging will reduce this. If your customer has solar panels, or is a commercial premises, we can also look at the benefit of using surplus solar to mitigate the cost of recharging even more.
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-UseCase-Wallbox-App.png) [*[]* ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-UseCase-Wallbox-App-1.png)[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-UseCase-Wallbox-App-2.png)
+[
+![PH EN UseCase Wallbox App 394x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-UseCase-Wallbox-App.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-UseCase-Wallbox-App.png) [
+![PH EN UseCase Wallbox App 1 408x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-UseCase-Wallbox-App-1.png)
+ ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-UseCase-Wallbox-App-1.png)[
+![PH EN UseCase Wallbox App 2 396x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-UseCase-Wallbox-App-2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-UseCase-Wallbox-App-2.png)
 
 *Click to enlarge images*
 
@@ -40,7 +46,9 @@ Included electricity meter
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/How-to-use-excess-solar-with-the-Wallbox-and-charge-EVs-at-a-cheaper-rate.png)
+[
+![How to use excess solar with the Wallbox and charge EVs at a cheaper rate 800x289](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/How-to-use-excess-solar-with-the-Wallbox-and-charge-EVs-at-a-cheaper-rate.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/How-to-use-excess-solar-with-the-Wallbox-and-charge-EVs-at-a-cheaper-rate.png)
 
 *Click to enlarge images*
 

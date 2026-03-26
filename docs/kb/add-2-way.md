@@ -12,6 +12,11 @@ Adds two or more analog values and makes the result available at output (O).
 
 
 
+![MIM Add](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/MIM_Add.png)
+
+
+
+
 ## Table of Contents
 - [Outputs](#Output)
 - [Parameters](#Parameter)

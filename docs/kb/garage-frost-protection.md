@@ -25,7 +25,9 @@ In this example, we assume that there is an electric heating system in the garag
 
 ### Configuration:
 
-[*[Garage Frost Protection - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-18-Frost-Protection-Garage.png)
+[
+![Garage Frost Protection - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-18-Frost-Protection-Garage.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-18-Frost-Protection-Garage.png)
 
 ### Download the sample file:
 

@@ -39,21 +39,21 @@ Source: https://www.loxone.com/enen/kb/modbus-energy-meter/
 
 #### SINGLE PHASE
 
-*[Single Phase Wiring Modbus ]*
+![Single Phase Wiring Modbus ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Diagram_Mod_Bus_Single_Phase_Wiring.jpg)
 
 #### 3 PHASE
 
-*[Three Phase Wiring Modbus ]*
+![Three Phase Wiring Modbus ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Diagram_Mod_Bus_Three_Phase_Wiring.jpg)
 
 ## DIMENSIONS
 
 #### SINGLE PHASE
 
-*[Single Phase Dimensions Modbus ]*
+![Single Phase Dimensions Modbus ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Diagram_Mod_Bus_Single_Phase_Dimensions.png)
 
 #### 3 PHASE
 
-*[Three Phase Dimensions Modbus ]*
+![Three Phase Dimensions Modbus ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Diagram_Mod_Bus_Three_Phase_Dimensions.png)
 
 ## BASIC SETUP
 
@@ -61,15 +61,16 @@ In Loxone Config, there is a template for the Loxone Modbus Electricity Meter.
 
 To add the template highlight your Modbus Extension in the Periphery window, click on the drop-down menu “Sensors and Actuators” and under “Predefinded devices” you will find the Loxone Modbus Electricity meter.
 
-*[]*
+![modbus image 1 678x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/modbus-image-1.png)
 
 The device is now listed in the Periphery tree with all the predefined sensors. If needed, you can find some more information in the datasheet.
 
 If you use more than one Loxone Modbus Electricity meter, the Modbus address has to be adjusted. The default address is 1.
 
-*[]*
+![Screenshot 6 800x625](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Screenshot_6.png)
 
-*[Icon Exclamation Mark Loxone]*If you want to create any other sensors (see datasheet), choose the following settings in the Properties of the sensor:
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+If you want to create any other sensors (see datasheet), choose the following settings in the Properties of the sensor:
 
 **IO address:** depends on data point, see datasheet
 
@@ -79,7 +80,7 @@ If you use more than one Loxone Modbus Electricity meter, the Modbus address has
 
 #### POTENTIAL INSTALLATION
 
-*[Modbus Example Instaliation Setup Diagram]*
+![Modbus Example Instaliation Setup Diagram](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Diagram_Modbus_Energy_Meter_Inverter_Distribution.png)
 
 ## FIND OUT MORE
 

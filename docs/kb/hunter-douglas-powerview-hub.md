@@ -12,11 +12,11 @@ The shades and scenes can be controlled by the Miniserver.
 
 
 
-|  | Controlling shades is only supported by the PowerView Gen.3! |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Controlling shades is only supported by the PowerView Gen.3! |
 | --- | --- |
 
 
-|  | The Miniserver Gen. 1 does not support control of the PowerView Hub! |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The Miniserver Gen. 1 does not support control of the PowerView Hub! |
 | --- | --- |
 
 
@@ -48,7 +48,17 @@ The individual blinds are programmed and configured via the PowerView App.
 
 
 
+
+![PowerViewAppScenes](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PowerViewAppScenes.png)
+
+
+
     Then a network periphery search is started in Loxone Config, and once the PowerView Hub is found it will be listed in the search results:
+
+
+
+
+![PowerViewHubNetworkSearch](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PowerViewHubNetworkSearch.png)
 
 
 
@@ -63,7 +73,17 @@ You can then search for available scenes by clicking on the **Find periphery** b
 
 
 
+
+![PowerViewHubFindPeriphery](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PowerViewHubFindPeriphery.png)
+
+
+
     Now the available scenes are listed in the Periphery tree and ready for use in configuration:
+
+
+
+
+![PowerViewHubScenesConfig](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PowerViewHubScenesConfig.png)
 
 
 

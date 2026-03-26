@@ -127,3 +127,8 @@ For the operating modes either corresponding operating times must be created or 
 
 
     With the green cross or eraser, alarm times can be added and removed. The alarm time can be defined directly in the settings menu, but also in the user interface.
+
+
+
+
+![AlarmClock TimeConfig](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AlarmClock_TimeConfig.jpg)

@@ -16,7 +16,7 @@ The facilities manager of a large office building needs a way of automatically t
 
 ### Related Use Case
 
-| *[]* | Use Case: Emergency Light Testing In this automation use case, we will look at an example of how Loxone can be used to regularly test emergency lighting in a commercial space. View Use Case >> |
+| ![IC miniserver](https://www.loxone.com/enen/wp-content/uploads/sites/3/2019/09/IC_miniserver.png) | Use Case: Emergency Light Testing In this automation use case, we will look at an example of how Loxone can be used to regularly test emergency lighting in a commercial space. View Use Case >> |
 | --- | --- |
 
 [<< Back to the Config Challenges Video Tutorials](https://www.loxone.com/enen/kb-cat/config-challenges/)

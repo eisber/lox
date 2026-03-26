@@ -30,9 +30,13 @@ For example, we can wake up in the morning with a subtly blue lighting mood that
 
 ### Configuration:
 
-[*[Circadian Rhythm Light - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-69-Improve-My-Sleep-House.png)
+[
+![Circadian Rhythm Light - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-69-Improve-My-Sleep-House.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-69-Improve-My-Sleep-House.png)
 
-[*[Circadian Rhythm Light - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-69-Improve-My-Sleep-Bedroom.png)
+[
+![Circadian Rhythm Light - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-69-Improve-My-Sleep-Bedroom.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-69-Improve-My-Sleep-Bedroom.png)
 
 ### Download the sample file:
 

@@ -80,3 +80,8 @@ On the comparator the output (De) is activated as soon as the difference of the 
 
 
 ## Timing Diagram
+
+
+
+
+![Comparator timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Comparator-timediag.png)

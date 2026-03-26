@@ -39,7 +39,9 @@ With the activation of the ventilation system, an air exchange takes place and t
 
 ### Configuration:
 
-[*[Mould prevention in a Passivhaus - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-49-Prevent-mould-in-energy-efficient-homes.png)
+[
+![Mould prevention in a Passivhaus - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-49-Prevent-mould-in-energy-efficient-homes.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-49-Prevent-mould-in-energy-efficient-homes.png)
 
 ### Download the sample file:
 

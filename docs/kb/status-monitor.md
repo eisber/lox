@@ -114,6 +114,11 @@ The top entry has the highest priority for the user interface and is therefore d
 
 
 
+![StatusMonitor edit](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatusMonitor_edit.png)
+
+
+
+
 ### Assign Status Monitors
 
     Additionally, via "Assign Status Monitors" in the properties window, Status Monitor blocks can be selected and integrated.
@@ -121,8 +126,23 @@ The selected blocks inherit the status settings of this Status Monitor.
 
 
 
+
+![StatusMonitor assign](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatusMonitor_assign.png)
+
+
+
     In this example, the Status Monitor provides an overview of all wallboxes in a multi-level parking garage, indicating which wallboxes are available.
 
+
+
+
+![StatusMonitor example](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatusMonitor_example.png)
+
+
+
+
+
+![StatusMonitor visu](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatusMonitor_visu.png)
 
 
 
@@ -138,6 +158,11 @@ The selected blocks inherit the status settings of this Status Monitor.
 
 
 
+![StatusMonitor statusblock](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatusMonitor_statusblock.png)
+
+
+
+
 ---
 
 
@@ -147,3 +172,8 @@ The selected blocks inherit the status settings of this Status Monitor.
     In the user interface, the history of the function block can be displayed.
 A maximum of 100 entries can be shown.
 When you restart or save to the Miniserver, the history is cleared.
+
+
+
+
+![History StatMon](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/History_StatMon.png)

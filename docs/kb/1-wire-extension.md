@@ -37,6 +37,11 @@ The **1-wire Extension** allows the integration of 1-wire sensors like temperatu
 
 
 
+
+![100014 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100014 install.png)
+
+
+
     Connect the power supply and Link communication to the Miniserver.
 
 
@@ -70,6 +75,11 @@ The shield of the cable must not be connected, and no other data signals should 
 
 
 
+![100014 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100014 install.png)
+
+
+
+
 ---
 
 
@@ -81,10 +91,20 @@ The shield of the cable must not be connected, and no other data signals should 
 
 
 
+
+![1 Wire Learn](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/1-Wire Learn.png)
+
+
+
     The 1-Wire Extension will then search for connected devices and display all detected 1-Wire sensors.
 
 
     Now select the sensor, enter a name, and then click on **+**.
+
+
+
+
+![1 Wire Learn Dialog](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/1-Wire Learn Dialog.png)
 
 
 
@@ -127,10 +147,20 @@ The shield of the cable must not be connected, and no other data signals should 
 
 
 
+
+![wiring iButton reader](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/wiring iButton reader.png)
+
+
+
     To **pair iButtons**, first select the 1-wire Extension in Loxone Config, and then click on **1-Wire Learn**.
 
 
     Then briefly place the iButton on the key reader several times, so that it is displayed in the 1-wire learning window:
+
+
+
+
+![iButton learn](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/iButton_learn.png)
 
 
 

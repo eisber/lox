@@ -88,3 +88,8 @@ If the wind sensor is connected to a Digital Input of the Multi Extension Air, t
 
 
     The wind sensor is connected to a digital input. The input must support frequency counter functionality, which needs to activated in the input's settings:
+
+
+
+
+![Wind Frequency](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Wind_Frequency.jpg)

@@ -14,7 +14,9 @@ The Loxone Power Supply & Backup is a compact solution that manages all the abov
 
 In the screenshot below, we can see an example of the monitoring function of the 7 outputs. Being aware of the power usage on a more granular level better empowers consumers to make informed decisions about their own energy use, and adjusting their behaviours if necessary.
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-PowerSupplyBackup.png)
+[
+![PH EN UseCase PowerSupplyBackup 555x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-PowerSupplyBackup.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-PowerSupplyBackup.png)
 
 ## Solution: The Power Supply & Backup has 7 in-built channels with integrated monitoring and a backup battery to protect against power cuts.
 
@@ -39,7 +41,9 @@ With the 10A outputs, the fuses, the energy monitors and the backup battery fitt
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-PowerSupplyBackup-Config.jpg)
+[
+![PH EN UseCase PowerSupplyBackup Config 800x494](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-PowerSupplyBackup-Config.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-PowerSupplyBackup-Config.jpg)
 
 ### Download the sample Config file:
 

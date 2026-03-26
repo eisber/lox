@@ -60,19 +60,27 @@ If cistern exists:
 
 [
 
-](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-1.png)[*[Automatic sports field watering - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-1.png)[
+![Automatic sports field watering - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-1.png)
 
 [
 
-](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-2.png)[*[Rain detection for sports field watering - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-2.png)[
+![Rain detection for sports field watering - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-2.png)
 
 [
 
-](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-3.png)[*[Smart irrigation for sports fields - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-3.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-3.png)[
+![Smart irrigation for sports fields - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-3.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-3.png)
 
 [
 
-](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-4.png)[*[Watering a sports field - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-4.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-4.png)[
+![Watering a sports field - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-4.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-55-Watering-Sports-Field-4.png)
 
 ### Download the sample file:
 

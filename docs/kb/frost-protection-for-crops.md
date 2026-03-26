@@ -61,7 +61,9 @@ The operating time counter provides information on how long the irrigation syste
 
 ### Configuration:
 
-[*[Frost Protection for Crops - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-89_Frost-Protection-Watering.jpg)
+[
+![Frost Protection for Crops - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-89_Frost-Protection-Watering.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-89_Frost-Protection-Watering.jpg)
 
 ### Download the sample file:
 

@@ -6,7 +6,8 @@ Source: https://www.loxone.com/enen/kb/extension-diagnostics/
 
 ## WIRING TROUBLESHOOTING
 
-*[Icon Exclamation Mark Loxone]*Whenever work is done on the cabling of the Miniserver of any extensions please ensure that power to the installation is removed. Damage to components can occur if this is not observed.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+Whenever work is done on the cabling of the Miniserver of any extensions please ensure that power to the installation is removed. Damage to components can occur if this is not observed.
 
 **NEVER WORK ON A LIVE PANEL**
 

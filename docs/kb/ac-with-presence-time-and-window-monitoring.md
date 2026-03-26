@@ -22,7 +22,9 @@ If a window or door is opened, the air conditioning automatically pauses and rem
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase_Schedule-Presence-Windows-AC-Control.jpg)
+[
+![UseCase Schedule Presence Windows AC Control](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase_Schedule-Presence-Windows-AC-Control.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase_Schedule-Presence-Windows-AC-Control.jpg)
 
 ### Download the sample file
 

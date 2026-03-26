@@ -20,7 +20,7 @@ With a right click on the desired device, device command can be selected and a c
 
 With “call” all supported commands of the selected device are listed in the respective monitor.
 
-*[]*
+![devcom callCom](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/12/devcom_callCom.png)
 
 
 
@@ -31,12 +31,12 @@ With “call” all supported commands of the selected device are listed in the 
 
 **TechReport**: Retrieves the TechReport of the device.
 
-*[]*
+![devcom TechReport](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/12/devcom_TechReport.png)
 
 **Reboot**: Reboots the device. During the reboot, “timeout” is displayed in the monitor.
 
-*[]*
+![devcom Reboot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/12/devcom_Reboot.png)
 
 **ForceUpdate**: Forces a device update.
 
-*[]*
+![devcom ForceUpdate](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/12/devcom_ForceUpdate.png)

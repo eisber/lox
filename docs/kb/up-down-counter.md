@@ -84,3 +84,8 @@ Counting Up/Down with trigger and direction input
 
 
 ## Timing Diagram
+
+
+
+
+![UpDownCounter timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/UpDownCounter-timediag.png)

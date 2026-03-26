@@ -29,9 +29,19 @@ With Operating Modes, functions can be started depending on the date or on speci
 
 
 
+![opm predef](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/opm_predef.png)
+
+
+
+
 ### Activate operating modes via output
 
     To use an operating mode as a digital output, select the mode in the periphery tree, click on "Add Output Reference" in the menu bar and connect it to the desired logic:
+
+
+
+
+![opm output](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/opm_output.png)
 
 
 
@@ -40,9 +50,19 @@ With Operating Modes, functions can be started depending on the date or on speci
 
 
 
+![opm outputExample](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/opm_outputExample.png)
+
+
+
+
 ### Activate operating modes via operating time
 
     We assign the operating mode "Vacation" to the created operating time "Winter Vacation". On the set date, the linked operating mode then becomes active:
+
+
+
+
+![opt editEntry](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/opt_editEntry.png)
 
 
 
@@ -58,6 +78,11 @@ This allows an operating mode to trigger certain actions when it is active.
 
 
 
+![opm inputExample](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/opm_inputExample.png)
+
+
+
+
 ---
 
 
@@ -65,6 +90,11 @@ This allows an operating mode to trigger certain actions when it is active.
 
 
     With "Operating Mode" a user defined Operation Mode can be created:
+
+
+
+
+![opm newMode](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/opm_newMode.png)
 
 
 

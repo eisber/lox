@@ -98,9 +98,19 @@ The output remains off above and below these values:
 
 
 
+
+![DifferentialThresholdSwitch timediag Dpos](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/DifferentialThresholdSwitch-timediag-Dpos.png)
+
+
+
     **Function when differential value is negative:**
 The second threshold value is below parameter T (T-D).
 Output (T) is switched on when the input value exceeds parameter (T) and switched off when the input value drops below (T-D).
 Example: T: 5, D: -2
 When the input value exceeds 5, the output switches on. It remains on above this value.
 If the input value drops below 3, the output switches off. Below that it remains off:
+
+
+
+
+![DifferentialThresholdSwitch timediag Dneg](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/DifferentialThresholdSwitch-timediag-Dneg.png)

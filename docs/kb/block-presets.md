@@ -27,11 +27,15 @@ First, we set all the applicableparameters. Also, block settings, such as light 
 
 Next, we click on **Create new preset** in the block’s properties.
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-create-preset.png)
+[
+![blockpresets create preset](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-create-preset.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-create-preset.png)
 
 Then we assign a name and whether we want to include the parameters, the settings or both in the preset:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-create-preset-2.png)
+[
+![blockpresets create preset 2](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-create-preset-2.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-create-preset-2.png)
 
 The **Create** button will create the preset.
 
@@ -41,7 +45,9 @@ Now we can add more Lighting Controllers and apply the newly created preset incl
 
 We select a block and chose the previously created preset from the drop-down list in the block preset properties:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-choose-preset.png)
+[
+![blockpresets choose preset](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-choose-preset.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-choose-preset.png)
 
 The block then adopts the values from the preset.
 
@@ -51,21 +57,29 @@ Using the same method, we can assign the preset to other blocks.
 
 You can also **Manage:** the presets from the block’s presets.
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-open-manage.png)
+[
+![blockpresets open manage](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-open-manage.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-open-manage.png)
 
 In the following window, presets can be renamed and deleted, or the assigned blocks can be reset to the default preset:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-manage-presets.png)
+[
+![blockpresets manage presets](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-manage-presets.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-manage-presets.png)
 
 **Assign blocks** allows you to assign presets to multiple function blocks with one click:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-select-multiple-blocks.png)
+[
+![blockpresets select multiple blocks](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-select-multiple-blocks.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-select-multiple-blocks.png)
 
 If you change settings of a block that has a preset assigned to it, you can apply those changes to the assigned preset.
 
 To do this, click on **Update preset** in the block properties:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-update-preset.png)
+[
+![blockpresets update preset](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-update-preset.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-update-preset.png)
 
 A click on **Restore preset** will reset the block to its default values as specified by the assigned preset.
 
@@ -75,7 +89,9 @@ A click on **Restore preset** will reset the block to its default values as spec
 
 Supported blocks have a **RtD input** that can reset the block to its preset in case the any of the settings have been changed by the user:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-reset-to-preset.png)
+[
+![blockpresets reset to preset](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-reset-to-preset.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/blockpresets-reset-to-preset.png)
 
 Use case hotel room: Guests have adjusted the light control or temperature control to their liking. The block can be reset to its default values as per the preset via the RtD input before the next guest checks in.
 

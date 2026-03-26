@@ -124,6 +124,11 @@ By activating remanence (battery symbol), the previous state is restored after a
 
 
 
+![DayTimer Analog Digital](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/DayTimer_Analog_Digital.jpg)
+
+
+
+
 ---
 
 
@@ -131,6 +136,11 @@ By activating remanence (battery symbol), the previous state is restored after a
 
 
     If the checkbox (activation required) is activated, an additional pulse must be applied to the (Act) input within the switching time to activate (O). If a pulse is applied to the input (Off) within the switching time, the output (O) is deactivated prematurely.
+
+
+
+
+![DayTimer activation](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/DayTimer_activation.jpg)
 
 
 
@@ -149,3 +159,8 @@ By activating remanence (battery symbol), the previous state is restored after a
 
 
 ## Timing Diagram
+
+
+
+
+![Schedule timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Schedule-timediag.png)

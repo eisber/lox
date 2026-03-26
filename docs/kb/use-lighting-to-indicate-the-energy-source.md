@@ -29,7 +29,9 @@ Hardware:
 
 ### Configuration:
 
-[*[Use lighting to indicate the energy source - Loxone config screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-42-Intelligent-Energy-Use-1.png)
+[
+![Use lighting to indicate the energy source - Loxone config screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-42-Intelligent-Energy-Use-1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-42-Intelligent-Energy-Use-1.png)
 
 
 

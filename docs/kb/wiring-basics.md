@@ -54,9 +54,9 @@ Outputs such as lighting circuits and control for blinds are centrally wired in 
 
 When considering sensors and switches (and indeed heating actuators) these can be wired using the [Loxone Tree](https://www.loxone.com/enen/kb/wiring-loxone-tree/) technology in tandem with the [Tree cable](https://www.loxone.com/enen/kb/loxone-tree-cable/). This enables the wiring to be done in a much more efficient and flexible way. In essence, any Tree device can be connected to any other in order to get its control and communication.  If this Tree “network” is at some point connected back to the Tree Extension ALL Tree devices will then be connected. This can reduce cabling up to 80% over traditional STAR wired systems and gives huge flexibility in upgrading and updating in the future. True future-proof wiring for the Smart Home. In the below diagrams you can see some examples of wiring Loxone Tree.
 
-*[]*
+![IG tree wiring overview](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/IG_tree-wiring-overview.png)
 
-*[]*
+![IG tree wiring sensors](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/IG_tree-wiring-sensors.png)
 
 #### IMPORTANT FACTS:
 - Wire back to a central point for non-Tree products.
@@ -72,7 +72,7 @@ Alongside the Loxone Touch and Touch Pure switches you can also make any convent
 
 In the diagram below you can see how you can optimally arrange a mains distribution board and a sub-distribution board. In each cabinet there are separate power supplies for the Loxone equipment. We also recommend using additional power supplies for sensors such as presence detectors, as well as for powering LED tape. This is to improve the reliability of your system.
 
-*[Icon Exclamation Mark Loxone]*
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 
 Please note that all power supplies for the Loxone equipment must have their GNDs commoned. To do this you can use spare pairs in the CAT cable for the Loxone Link between the two boards.
 
@@ -88,7 +88,7 @@ Blue / White for the Loxone Link
 
 Green / White for Loxone Tree
 
-*[Example Of Loxone Inside a Cabinet or Enclosure]*
+![Example Of Loxone Inside a Cabinet or Enclosure](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Wiring_Cabinet_Layout.png)
 
 Make sure to use a cabinet large enough to hold all the equipment with space to spare for future expansion. Future Automation has designed a range of cabinets specifically for Loxone hardware, you can view their range of Loxone products [here](http://www.futureautomation.co.uk/Enclosure/Loxone-Lighting-Enclosure).
 
@@ -96,11 +96,11 @@ Make sure to use a cabinet large enough to hold all the equipment with space to 
 
 At Loxone we’ve provided some peripheral devices to make product selection even easier. For switches, there is both the Touch and Touch Pure range that comes in both wired and wireless versions. They allow for easy control of the key smart home functions. In addition, they supply temperature and humidity sensing.
 
-*[]*
+![EN Graphics the switch standard single click](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_Graphics_the_switch_standard_single_click.png)
 
 With Loxone you can make any conventional switches become much more useful and multi-functional. As long as the switch provides a contact closure it can be wired into the system and then in software can have as many functions as you want it to. We recommend using retractive switches due to the ability to cycle through clicks, double click etc.
 
-*[Diagram of Loxone Switch Standard Showing Lighting, Music and Shades]*
+![Diagram of Loxone Switch Standard Showing Lighting, Music and Shades](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Wiring_Switch_Standard.png)
 
 ### WIRING WITH CAT7 CABLES
 
@@ -108,7 +108,7 @@ With Loxone you can make any conventional switches become much more useful and m
 
 It’s not about data rate. Although this is a fantastic feature and gives us plenty of room for expansion in the future it is not the primary reason for using CAT7. We reccomend using CAT7 for all data communications in a Loxone smart home due to shielding.
 
-*[Loxone CAT 7 cable]*
+![Loxone CAT 7 cable](https://www.loxone.com/enen/wp-content/uploads/sites/3/2014/07/cable-cat7-blindado.png)
 
 In addition to the external braid commonly found on CAT6 cables a CAT7 also has individually shielded pairs, this allows us to run different data and power signals down different pairs with minimal interference that is not possible with other cables. This also has the added benefit of any times where Electromagnetic Interference (EMI) is particularly high the additional means there is more protection against this affecting the data signals contained within.
 
@@ -116,7 +116,7 @@ In addition to this shielding and the high data rates with an AWG23 core thickne
 
 In essence, all Loxone systems should use CAT7 for maximum functionality and to be future-ready.
 
-*[Loxone Standard Colour Coding With CAT7]*
+![Loxone Standard Colour Coding With CAT7](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Wiring_CAT7_Colours.png)
 
 ## CONNECTING THE MINISERVER TO A POWER SUPPLY
 
@@ -128,7 +128,7 @@ This video shows you how to quickly and easily wire the Loxone Miniserver and an
 
 Whenever work is done on the cabling of the Miniserver please ensure that power to the Miniserver is removed. Damaged components can occur if this is not observed.
 
-*[Loxone Miniserver Being Connected To A 24V Power Supply]*
+![Loxone Miniserver Being Connected To A 24V Power Supply](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Wiring_Miniserver_PSU-1.png)
 
 ## CONNECTING THE MINISERVER TO SEVERAL POWER SUPPLIES
 
@@ -136,7 +136,7 @@ Wiring example for connecting the Miniserver to several power supplies.
 
 You must connect all the power supply GND’s together. Otherwise problems may occur due to difference in potential.
 
-*[Loxone Miniserver Being Connected To Multiple 24V Power Supply]*
+![Loxone Miniserver Being Connected To Multiple 24V Power Supply](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Wiring_Miniserver_Multiple_PSU.png)
 
 ## CONNECTING ONE OR MORE EXTENSIONS TO THE MINISERVER
 - Connect the power terminals of the Miniserver to the power terminals on the Extensions.
@@ -145,7 +145,7 @@ You must connect all the power supply GND’s together. Otherwise problems may o
 
 **Note:** If no Extension is connected there is no need to use a 120 Ohm resistor.
 
-*[Loxone Miniserver Being Connected To An Extension]*
+![Loxone Miniserver Being Connected To An Extension](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Wiring_Miniserver_Extensions.png)
 
 ## CONNECTING ONE OR MORE EXTENSIONS TO THE MINISERVER GO
 - Connect the Ground terminal of the Miniserver Go to the power terminals on the Extensions.
@@ -154,6 +154,6 @@ You must connect all the power supply GND’s together. Otherwise problems may o
 
 **Note:** If no Extension is connected there is no need to use a 120 Ohm resistor.
 
-*[Wiring A Miniserver Go To A Loxone Extension ]*
+![Wiring A Miniserver Go To A Loxone Extension ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Wiring_Miniserver_Go_PSU_Link.gif)
 
 The power should be removed whenever working on the installation, but that if this is not possible then ensure that the blue Link connector is **always** unplugged before the power connector to prevent damage to the communication circuitry.

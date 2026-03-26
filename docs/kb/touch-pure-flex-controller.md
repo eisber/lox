@@ -140,6 +140,11 @@ Controls the brightness levels of Touch Pure Flex Air and Tree.
 
 
 
+
+![TPFC Lico Integration](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TPFC_Lico_Integration.gif)
+
+
+
     If a Lighting Controller is connected via the API Connector, the inputs L, Br and the parameter Brt of the Touch Pure Flex Controller are not used.
 
 
@@ -152,10 +157,20 @@ Controls the brightness levels of Touch Pure Flex Air and Tree.
 
 
 
+![TPFC dark,light,daylight](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TPFC-dark,light,daylight.png)
+
+
+
+
 ---
 
 
 ## Timing Diagram
+
+
+
+
+![TPFC timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TPFC-timediag.png)
 
 
 

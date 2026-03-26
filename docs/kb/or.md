@@ -10,6 +10,11 @@ Multiple signals connected to the same input will also be OR-linked.
 
 
 
+![Or table](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Or_table.png)
+
+
+
+
 ## Table of Contents
 - [Inputs](#Input)
 - [Outputs](#Output)
@@ -64,3 +69,8 @@ Multiple signals connected to the same input will also be OR-linked.
 
 
     Logical OR operation based on a truth table.
+
+
+
+
+![Or timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Or-timediag.png)

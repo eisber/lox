@@ -27,7 +27,9 @@ Remove the front cover from the Texecom panel so that the board can be accessed.
 
 Connect the Com lead to one of the Com Ports of the panel. Com Port 2 is recommended as Com Port 1 is typically used by the alarm engineer. The rest of this document will assume Com Port 2 is used.
 
-[*[Texecom Panel]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/04/Texecom-Panel.jpeg)
+[
+![Texecom Panel](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/04/Texecom-Panel.jpeg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/04/Texecom-Panel.jpeg)
 
 **If using a second serial lead:
 
@@ -41,7 +43,9 @@ Cut off one end of the second lead (assuring you leave an end with a male plug i
 
 Connect the cat cable and the Texecom Com lead to the adaptor, then terminate the appropriate wires from the cat cable to the RS232 Extension.
 
-[*[RJ45 Female Graphic]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/04/2.png)
+[
+![RJ45 Female Graphic](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/04/2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/04/2.png)
 
 **IMPORTANT:** The above is for guidance only, pin assignment may differ between adaptor manufacturers.
 
@@ -57,19 +61,19 @@ Connect the cat cable and the Texecom Com lead to the adaptor, then terminate th
 The alarm panel needs to be configured so that Com Port 2 is set to the correct Baud rate and communication type to allow it to work with Loxone. The instructions below are to do this through the keypad, however this can also be done through Wintex software if you are familiar with this.
 - Enter the engineer code, press key 7 to go to UDL/Digi Options and press Yes
 
-*[]*
+![3 1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/04/3-1.jpeg)
 - Select option 7 to go to Setup Modules and Press Yes
 
-*[]*
+![4 1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/04/4-1.jpeg)
 - Navigate to Modem Speed, and change this to your required value (this is the baud rate of Com Port 2). The longer the cable from the alarm panel to the Loxone hardware, then the lower the baud rate should be. For this example, we have set it to 19200 Baud
 
-*[]*
+![5 1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/04/5-1.jpeg)
 - Press Menu until you return to the UDL/Digi Options, then select option 8 Com Port Setup and press Yes
 
-*[]*
+![6 1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/04/6-1.jpeg)
 - Navigate to Com Port 2, and change this to Crestron System (Choose No to edit the selection)
 
-*[]*
+![7 1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/04/7-1.jpeg)
 
 ### Software Setup:
 
@@ -79,17 +83,19 @@ As mentioned earlier, this guide assumes familiarity with commissioning and conf
 - Navigate to [https://library.loxone.com/detail/texecom-premier-elite-48-48/overview](https://library.loxone.com/detail/texecom-premier-elite-48-48/overview), and click the Download button in the top-right to download the template
 - In Loxone Config, select the RS232 Extension, and in the top toolbar, click the drop-down beneath Device Templates, and then select Import Template
 
-*[]*
-- In the window that pops up, navigate to and open the file you just downloaded from the Loxone Library. You should then receive the following message: *[Texecom Loxone Integration ]*
+![Import Template 558x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/04/Import-Template.png)
+- In the window that pops up, navigate to and open the file you just downloaded from the Loxone Library. You should then receive the following message:
+![Texecom Loxone Integration ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/04/9.png)
 - Click the drop-down beneath Device Templates again, and select Texecom Premier Elite 48 from the list
 
-*[]*
+![Texecom Template Import 535x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/04/Texecom-Template-Import.png)
 - In the parameters of the RS232 Extension, set the correct Baud Rate of the device to the same as configured on the alarm control panel earlier**:
 
-*[]***
+![Baud Rate](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/04/Baud-Rate.png)
+**
 - Re-name the sensors to match the zone names configured on the alarm panel
 
-*[]*
+![Renaming Sensors](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/04/Renaming-Sensors.png)
 
 
 
@@ -99,11 +105,11 @@ As mentioned earlier, this guide assumes familiarity with commissioning and conf
 
 Areas are the areas of the alarm that can be armed or disarmed. The default Area in use is A. Using these outputs, we can arm and disarm the Loxone Burglar Alarm block based on the state of the building alarm.
 
-*[]*
+![Burglar Alarm Function Block 800x250](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/04/Burglar-Alarm-Function-Block.png)
 
 Add in the zones as inputs – These will then inform us in the Burglar Alarm block if a zone activates when the alarm is armed.
 
-*[]*
+![Burglar Alarm Function Block Inputs 800x664](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/04/Burglar-Alarm-Function-Block-Inputs.png)
 
 ### **Additional Functionality**
 

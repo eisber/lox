@@ -16,7 +16,7 @@ Using the manual adjustment function, you are able to adjust the current value b
 
 When Liveview is active clicking on an input, output, or function block brings up a green pin icon in the upper left corner. When this icon has been clicked, you will see all of the relevant information about that input, output or function block
 
-*[]*
+![LiveView Simulate Measure 800x138](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/07/LiveView_Simulate-Measure.png)
 
 ## Simulation
 

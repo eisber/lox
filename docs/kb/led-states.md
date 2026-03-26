@@ -25,23 +25,23 @@ Below you can find several lists of possible LED states and their associated sta
 
 | Left LED | Right LED | Meaning |
 | --- | --- | --- |
-| *[]* | *[]* | Everything OK, device is online. |
-| *[]* | *[]* | One or more System Status messages are active. |
-| *[]* | *[]* | Device was selected in Loxone Config and is identifying. |
-| *[]* | *[]* | Update is in progress. |
+| ![Gruen blinkend](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/Gruen-blinkend.gif) | ![Aus](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/Aus.png) | Everything OK, device is online. |
+| ![Gruen blinkend](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/Gruen-blinkend.gif) | ![LED MS greenorangered update](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/LED_MS_greenorangered_update.png) | One or more System Status messages are active. |
+| ![LED MS redgreenorange identify](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/LED_MS_redgreenorange_identify.gif) | ![Aus](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/Aus.png) | Device was selected in Loxone Config and is identifying. |
+| ![LED MS red flashing update](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/LED_MS_red_flashing_update.gif) | ![LED MS offorangered update](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/LED_MS_offorangered_update.png) | Update is in progress. |
 
 **Boot Phase:**
 
 | Left LED | Right LED | Meaning |
 | --- | --- | --- |
-| *[]* | *[]* | Miniserver is booting. |
-| *[]* | *[]* | Miniserver is loading the bootloader image from the SD card. |
-| *[]* | *[]* | Miniserver has successfully loaded the image and will unpack it as the next step. |
-| *[]* | *[]* | Miniserver has successfully unpacked the image. |
-| *[]* | *[]* | Operating system is started. |
-| *[]* | *[]* | Miniserver is loading the program file. |
-| *[]* | *[]* | SD card cannot be read. Check SD card. |
-| *[]* | *[]* | No compatible operating system on the SD card. |
+| ![LED orange](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/LED_orange.png) | ![LED orange](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/LED_orange.png) | Miniserver is booting. |
+| ![LED MS orange flickering loadImage](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/LED_MS_orange_flickering_loadImage.gif) | ![Gruen leuchtend](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/Gruen-leuchtend.png) | Miniserver is loading the bootloader image from the SD card. |
+| ![Gruen leuchtend](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/Gruen-leuchtend.png) | ![Aus](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/Aus.png) | Miniserver has successfully loaded the image and will unpack it as the next step. |
+| ![Gruen leuchtend](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/Gruen-leuchtend.png) | ![LED orange](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/LED_orange.png) | Miniserver has successfully unpacked the image. |
+| ![LED orange](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/LED_orange.png) | ![Aus](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/Aus.png) | Operating system is started. |
+| ![LED MS orange flashing loadFile](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/LED_MS_orange_flashing_loadFile.gif) | ![Aus](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/Aus.png) | Miniserver is loading the program file. |
+| ![Rot leuchtend](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/Rot-leuchtend.png) | ![Aus](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/Aus.png) | SD card cannot be read. Check SD card. |
+| ![LED MS orangered docerror](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/LED_MS_orangered_docerror.gif) | ![LED MS green docerror](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/LED_MS_green_docerror.gif) | No compatible operating system on the SD card. |
 
 ## LED STATES FOR EXTENSIONS
 
@@ -49,12 +49,12 @@ Loxone extensions share similar LED states as the Miniserver but with different 
 
 | Left LED | Right LED | Meaning | Solution (if required) |
 | --- | --- | --- | --- |
-| *[]* | *[]* | Extension is operating fine | N/A |
-| *[]* | *[]* | Can communicate to a Miniserver just not leared in yet. | Learn the device in via Loxone Config. |
-| *[]* | *[]* | Extension cannot communicate to a Miniserver. | Extension cannot communicate to a Miniserver. Check Loxone Link connection. |
-| *[]* | *[]* | Device was selected in Loxone Config and is identifying. |  |
-| *[]* | *[]* | Extension is updating | Please wait for the Extension to finish updating. |
-| *[]* | *[]* | Miniserver includes a programming error | Please address the Miniserver using the table above. |
+| ![Gruen blinkend](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/Gruen-blinkend.gif) | ![Aus](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/Aus.png) | Extension is operating fine | N/A |
+| ![LED MS orange flashing loadFile](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/LED_MS_orange_flashing_loadFile.gif) | ![Aus](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/Aus.png) | Can communicate to a Miniserver just not leared in yet. | Learn the device in via Loxone Config. |
+| ![LED MS red flashing update](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/LED_MS_red_flashing_update.gif) | ![Aus](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/Aus.png) | Extension cannot communicate to a Miniserver. | Extension cannot communicate to a Miniserver. Check Loxone Link connection. |
+| ![LED MS redgreenorange identify](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/LED_MS_redgreenorange_identify.gif) | ![Aus](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/Aus.png) | Device was selected in Loxone Config and is identifying. |  |
+| ![LED MS orangered update 1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/LED_MS_orangered_update-1.gif) | ![Aus](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/Aus.png) | Extension is updating | Please wait for the Extension to finish updating. |
+| ![LED MS orangered docerror](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/LED_MS_orangered_docerror.gif) | ![Aus](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/Aus.png) | Miniserver includes a programming error | Please address the Miniserver using the table above. |
 
 ## LED STATES FOR THE DIMMER EXTENSION
 
@@ -68,15 +68,15 @@ On top of the above set of LED states, the Dimmer Extension has an extra LED sta
 
 | LED State | Meaning |
 | --- | --- |
-| *[]* | No communication to Miniserver possible. Please check the wiring. |
-| *[]* | Tree Device was detected on Tree bus, but is not paired with Miniserver. |
-| *[]* | 3 short flashes Communication OK, device paired. |
-| *[]* | Device is in pairing mode, ready for pairing. |
-| *[]* | Device was selected in Loxone Config and is identifying. |
-| *[]* | Online, valve open more than 90%. |
-| *[]* | Online, valve open between 10% – 90%. |
-| *[]* | Online, valve less than 10% open. |
-| *[]* | The error “valve stuck” or “no valve detected” is present. Please check the valve pin, it should be easily movable. |
+|  | No communication to Miniserver possible. Please check the wiring. |
+|  | Tree Device was detected on Tree bus, but is not paired with Miniserver. |
+|  | 3 short flashes Communication OK, device paired. |
+|  | Device is in pairing mode, ready for pairing. |
+|  | Device was selected in Loxone Config and is identifying. |
+|  | Online, valve open more than 90%. |
+|  | Online, valve open between 10% – 90%. |
+|  | Online, valve less than 10% open. |
+|  | The error “valve stuck” or “no valve detected” is present. Please check the valve pin, it should be easily movable. |
 
 ## LED STATES FOR AIR DEVICES
 

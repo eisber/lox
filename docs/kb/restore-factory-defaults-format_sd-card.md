@@ -39,7 +39,7 @@ If you are connected to the Miniserver in Loxone Config, you can reset the SD ca
 
 In the following window you can select whether the network settings should be kept.
 
-*[]*
+![ms ResetSettings](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/ms_ResetSettings.png)
 
 Once the SD card has been reset, you can connect to the Miniserver again.
 
@@ -53,7 +53,7 @@ Alternatively, you can use a new SD card, which you can prepare while the Server
 
 This way you can minimize downtime when swapping out the card.
 
-*[]*
+![ms sdcard](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/ms_sdcard.jpg)
 
 [**SD card Audioserver**](https://www.loxone.com/enen/kb/audioserver/#Commissioning)
 
@@ -65,11 +65,15 @@ This way you can minimize downtime when swapping out the card.
 
 Then click on “Format SD Card”:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/07/format-sd-periphery.png)
+[
+![format sd periphery](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/07/format-sd-periphery.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/07/format-sd-periphery.png)
 
 The following window will open:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/07/11.1-sd-format-dialogue.png)
+[
+![11.1 sd format dialogue](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/07/11.1-sd-format-dialogue.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/07/11.1-sd-format-dialogue.png)
 
 **3.** Select the drive that contains the SD card.
 
@@ -85,7 +89,9 @@ The following window will open:
 
 **9.** If the SD card already contains a Loxone file system, the following warning will be displayed:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/07/11.1-sd-format-q.png)
+[
+![sd format](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/08/sd-format.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/07/11.1-sd-format-q.png)
 
 Select “No” to create a card with factory settings or to restore a backup.
 
@@ -111,25 +117,35 @@ Please note that the Miniserver’s firmware on the card must also be on version
 
 Then click on “Reset password”:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/01/resetpassword-open.png)
+[
+![resetpassword open](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/01/resetpassword-open.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/01/resetpassword-open.png)
 
 					 You can also find this feature on the [start page](https://www.loxone.com/enen/kb/project-management/) or by hitting
 **F5** and searching for “**password**“
 **3.** A window will open, that will guide you through the reset process step by step:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/01/resetpassword-intro.png)
+[
+![resetpassword intro](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/01/resetpassword-intro.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/01/resetpassword-intro.png)
 
 **4.** Select the drive that contains the SD card.
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/01/resetpassword-selectsd.png)
+[
+![resetpassword selectsd](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/01/resetpassword-selectsd.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/01/resetpassword-selectsd.png)
 
 **5.** Enter a new password for the user admin:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/01/resetpassword-newpwd.png)
+[
+![resetpassword newpwd](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/01/resetpassword-newpwd.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/01/resetpassword-newpwd.png)
 
 **6.** The new password will be saved to the SD card and the windows can be closed.
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/01/resetpassword-final.png)
+[
+![resetpassword final](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/01/resetpassword-final.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/01/resetpassword-final.png)
 
 **7.** Remove the SD card from the computer and place it into the Server.
 
@@ -147,10 +163,10 @@ Generally, this is not necessary. Always create a [**backup**](https://www.loxon
 
 Select the **SD Card** in the Periphery Tree and then click on **Manage SD Card**.
 
-*[sd_karte_verwalten_01]*
+![sd_karte_verwalten_01](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/07/sd_Karte_verwalten_01.png)
 
 A window opens listing all files that can be removed.
 
 Select the files you want to delete and click on Delete.
 
-*[sd_karte_verwalten_02]*
+![sd_karte_verwalten_02](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/07/sd_Karte_verwalten_02.png)

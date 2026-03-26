@@ -28,8 +28,13 @@ The Door Lock Air Inductive is a wireless door lock based on Loxone Air technolo
 
 
 
-|  | Ensure the inductive station in the door frame is precisely aligned with the inductive component of the door lock. Proper alignment is critical for optimal performance and reliable charging. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Ensure the inductive station in the door frame is precisely aligned with the inductive component of the door lock. Proper alignment is critical for optimal performance and reliable charging. |
 | --- | --- |
+
+
+
+![mounting lock door example](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mounting_lock_door_example.png)
+
 
 
     Link to PDF, created from Südmetal document.
@@ -46,7 +51,7 @@ The Door Lock Air Inductive is a wireless door lock based on Loxone Air technolo
 
 
 
-|  | Because the device requires the door to be closed for power, the LED may be difficult to see during the process. Ensure the door is fully shut to maintain a continuous power supply during pairing. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Because the device requires the door to be closed for power, the LED may be difficult to see during the process. Ensure the door is fully shut to maintain a continuous power supply during pairing. |
 | --- | --- |
 
     **[Then follow the pairing procedure on the Air Interface.](https://www.loxone.com/help/air-interface#AirPair)**
@@ -57,7 +62,12 @@ The Door Lock Air Inductive is a wireless door lock based on Loxone Air technolo
 
 
 
-|  | After pressing the pairing button, the door must be closed immediately. The Door Lock is powered by the inductive station only when the door is closed. If the door remains open, the device will run out of power and the pairing process cannot be completed. |
+![commissioning lock door example](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/commissioning_lock_door_example.png)
+
+
+
+
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | After pressing the pairing button, the door must be closed immediately. The Door Lock is powered by the inductive station only when the door is closed. If the door remains open, the device will run out of power and the pairing process cannot be completed. |
 | --- | --- |
 
 

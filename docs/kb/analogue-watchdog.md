@@ -83,3 +83,8 @@ The tolerance range is defined by the parameter inputs upper threshold (TU) and 
 
 
 ## Timing Diagram
+
+
+
+
+![AnalogValueMonitor timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AnalogValueMonitor-timediag.png)

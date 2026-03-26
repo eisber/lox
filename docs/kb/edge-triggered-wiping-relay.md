@@ -82,3 +82,8 @@ Provides a fixed number of adjustable pulses at the output for every pulse on in
 
 
 ## Timing Diagram
+
+
+
+
+![EdgeTriggeredWipingRelay timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/EdgeTriggeredWipingRelay-timediag.png)

@@ -15,7 +15,7 @@ Home Connect allows integration of compatible household appliances. Statuses can
 
 
 
-|  | A Home Connect account is required for use! The Miniserver Gen. 1 is not supported. The Home Connect devices and the Miniserver must have an active internet connection. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | A Home Connect account is required for use! The Miniserver Gen. 1 is not supported. The Home Connect devices and the Miniserver must have an active internet connection. |
 | --- | --- |
 
 
@@ -123,7 +123,7 @@ Home Connect allows integration of compatible household appliances. Statuses can
 
 
 
-|  | Avoid configuration that frequently operates outputs. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Avoid configuration that frequently operates outputs. |
 | --- | --- |
 
 
@@ -146,7 +146,7 @@ Home Connect allows integration of compatible household appliances. Statuses can
 
 
 
-|  | Avoid programming that frequently operates outputs. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Avoid programming that frequently operates outputs. |
 | --- | --- |
 
 

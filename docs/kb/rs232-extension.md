@@ -41,6 +41,11 @@ The **RS232 Extension** is designed to integrate devices with RS232 interface.
 
 
 
+
+![100013 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100013 install.png)
+
+
+
     Connect the power supply and Link communication to the Miniserver.
 
 

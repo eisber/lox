@@ -80,3 +80,8 @@ The analog value on the input is placed at the output upon trigger and will be h
 
 
 ## Timing Diagram
+
+
+
+
+![AMemory Table](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AMemory_Table.jpg)

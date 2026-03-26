@@ -49,6 +49,11 @@ The **DALI Extension** is designed to integrate lighting devices with DALI inter
 
 
 
+
+![100200 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100200 install.png)
+
+
+
     Connect the power supply, Link communication to the Miniserver and the DALI data lines.
 
 
@@ -61,7 +66,7 @@ The maximum voltage drop must not exceed 2V.
 
 
 
-|  | The DALI Extension is equipped with a power supply for the DALI bus. If an external power supply is used, it is imperative that the correct polarity of the bus lines is observed. Also the supply of the DALI bus has to be deactivated in the properties of the DALI Extension in Loxone Config. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | The DALI Extension is equipped with a power supply for the DALI bus. If an external power supply is used, it is imperative that the correct polarity of the bus lines is observed. Also the supply of the DALI bus has to be deactivated in the properties of the DALI Extension in Loxone Config. |
 | --- | --- |
 
     The Extension starts after switching on the power supply, and the status LED will flash orange after a short time when the connection to the Miniserver is established.
@@ -94,6 +99,11 @@ If a DALI device is added to an existing installation, a normal search is also s
 
 
 
+
+![dali DeviceSearchActive](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/dali_DeviceSearchActive.png)
+
+
+
     If the search was completed and you select a device here, it will identify itself, as all the outputs of the device start pulsing. This allows you to assign and name the devices correctly.
 
 
@@ -117,6 +127,11 @@ If a DALI device is added to an existing installation, a normal search is also s
 
 
     If an **address conflict** is detected, e.g. if two or more devices have the same address, the function "Resolve Address Conflict" can be used:
+
+
+
+
+![dali AddressConflict](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/dali_AddressConflict.png)
 
 
 
@@ -170,6 +185,11 @@ This offers the advantage that the programming is simpler and there is no time d
 
 
 
+![DALIExtID5Report](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/DALIExtID5Report.png)
+
+
+
+
 ---
 
 
@@ -177,6 +197,11 @@ This offers the advantage that the programming is simpler and there is no time d
 
 
     With the function "Activate all" all connected DALI lights are set to full brightness, so the wiring can be checked.
+
+
+
+
+![dali ActivateAll](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/dali_ActivateAll.png)
 
 
 

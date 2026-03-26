@@ -92,6 +92,11 @@ Before the output is deactivated again, a short switch off prewarning (on / off)
 
 
 
+![MultifunctionSwitch timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/MultifunctionSwitch-timediag.png)
+
+
+
+
 ---
 
 
@@ -100,3 +105,8 @@ Before the output is deactivated again, a short switch off prewarning (on / off)
 
     This function block has a presence simulation.
 Activate and define the presence simulation in the properties window:
+
+
+
+
+![PresenceSimulation ComfortSwitch](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PresenceSimulation_ComfortSwitch.png)

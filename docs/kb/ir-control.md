@@ -134,6 +134,11 @@ In order to be able to understand the structure of this command, it is recommend
 
 
 
+![InfraredData](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/InfraredData.png)
+
+
+
+
 ---
 
 
@@ -148,7 +153,22 @@ In order to be able to understand the structure of this command, it is recommend
 
 
 
+![IR hitachi](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/IR_hitachi.png)
+
+
+
+
+
+![IR hitachi example](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/IR_hitachi_example.png)
+
+
+
 
 ### Mitsubishi air conditioner
 
     The command sequence for the Mitsubishi air conditioner is entered in the properties window of the IR controller:
+
+
+
+
+![IR mitsubishi](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/IR_mitsubishi.png)

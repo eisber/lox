@@ -24,7 +24,9 @@ In addition to the automatic animal feeder, automated monitoring can also be se
 
 ### Configuration:
 
-[*[Automatic Animal Feeder - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-17-Automated-Feeding.png)
+[
+![Automatic Animal Feeder - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-17-Automated-Feeding.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-17-Automated-Feeding.png)
 
 ### Download the sample file:
 

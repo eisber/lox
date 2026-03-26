@@ -38,6 +38,11 @@ The Loxone LED Ceiling Spot WW Tree provides warm white light. It is controlled 
 
 
 
+
+![treespot cabling](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/treespot cabling.png)
+
+
+
     Then place the lamp on the base plate. Make sure that the magnets are positioned correctly and that no wires are jammed.
 
 
@@ -53,6 +58,11 @@ The Loxone LED Ceiling Spot WW Tree provides warm white light. It is controlled 
 
     For lights, a commissioning mode is active when the devices are supplied with power and have not yet been paired.
 In this mode, the device indicates whether it has been connected correctly and, if the connection is successful, provides lighting until it has been paired.
+
+
+
+
+![Tree CommissioningMode SpotWW](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Tree_CommissioningMode_SpotWW.png)
 
 
 

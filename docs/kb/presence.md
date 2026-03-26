@@ -131,6 +131,11 @@ A window that lists all compatible devices can be found in the settings, or by d
 
 
 
+
+![presenceblock deviceselection](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/presenceblock-deviceselection.png)
+
+
+
     All devices that are to be used for presence detection in this room are selected here.
 
 
@@ -140,6 +145,11 @@ A window that lists all compatible devices can be found in the settings, or by d
     Other objects or additional logic can be used for presence detection via the block inputs.
 E.g. pushbuttons, motion detectors, sensors, or other devices that are operated or triggered when a room is occupied.
 The presence information is then transferred from the (Pc) output to the (P) input of a function block, e.g. the Lighting Controller:
+
+
+
+
+![presenceblock inputs lightcontroller](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/presenceblock-inputs-lightcontroller.png)
 
 
 
@@ -204,9 +214,19 @@ Here you can select which room is to be used for presence detection:
 
 
 
+
+![presence menu comp](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/presence menu comp.png)
+
+
+
     Selects the room in which the computer is located.
 Each room that is to be used with this function requires a Presence block.
 This allows you to change the room being used, e.g. if a notebook is used in different rooms.
 
 
     You can find and change the room being used by clicking on the App icon in the taskbar or menu bar of your computer:
+
+
+
+
+![presence taskbar](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/presence taskbar.png)

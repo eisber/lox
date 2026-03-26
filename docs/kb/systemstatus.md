@@ -23,7 +23,7 @@ The individual messages provide information on the cause and the nature of the i
 
 In the Loxone App, System Status is only actively visible when active message are present. If this is the case, a coloured heart symbol appears in the title bar, alongside a bar of the same colour. Tapping on the bar or the heart symbol takes you to a detailed view of the System Status. If no messages are currently active, System Status can be found in the Miniserver settings on the App.
 
-*[App System Status]*
+![App System Status](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/07/Loxone-App.png)
 
 ### System Status in Loxone Config
 
@@ -31,7 +31,7 @@ In Loxone Config, System Status becomes visible as soon as a connection to a Min
 
 On the right-hand side of the status bar, an area appears, which describes the current state of the System. Clicking on the area takes you to a detailed view.
 
-*[]*
+![Unbenannt](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/07/Unbenannt.jpg)
 
 ## Messages
 

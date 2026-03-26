@@ -11,7 +11,7 @@ The Loxone Presence Sensor Tree is used to detect presence, motion and brightnes
 
 
 
-|  | The Presence Sensor can also detect some pets. Although the sensitivity of the sensor can be reduced, there is no dedicated technology that excludes the detection of pets. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The Presence Sensor can also detect some pets. Although the sensitivity of the sensor can be reduced, there is no dedicated technology that excludes the detection of pets. |
 | --- | --- |
 
 
@@ -48,11 +48,21 @@ The Loxone Presence Sensor Tree is used to detect presence, motion and brightnes
 
 
 
+
+![100223 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100223 install.png)
+
+
+
     Connect the power supply (orange/white terminal) and Tree communication wires (green/white terminals).
 Then attach the Presence Sensor to the mounting ring.
 
 
     **Flush-mounted Presence Sensor Tree:**
+
+
+
+
+![100466 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100466 install.png)
 
 
 
@@ -63,12 +73,22 @@ Then attach the Presence Sensor to the mounting ring.
 
 
 
-|  | For motion to be detected accurately, correct placement of the Presence Sensor on the ceiling is essential. The following drawings can assist with this: |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | For motion to be detected accurately, correct placement of the Presence Sensor on the ceiling is essential. The following drawings can assist with this: |
 | --- | --- |
 
 
-|  | Sensitivity does not create a strict cutoff for the detection range; instead, it adjusts internal parameters that influence the range. To create blind spots or define specific detection zones, please use the stickers provided in the package. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Sensitivity does not create a strict cutoff for the detection range; instead, it adjusts internal parameters that influence the range. To create blind spots or define specific detection zones, please use the stickers provided in the package. |
 | --- | --- |
+
+
+
+![motiondetector range1](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/motiondetector_range1.jpg)
+
+
+
+
+
+![motiondetector range2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/motiondetector_range2.jpg)
 
 
 
@@ -106,6 +126,11 @@ Then attach the Presence Sensor to the mounting ring.
 
 
     From the Presence Sensor's properties you can open a diagram for setting the volume thresholds:
+
+
+
+
+![PresenceSensor SetVolumeThresholds](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PresenceSensor_SetVolumeThresholds.png)
 
 
 

@@ -44,6 +44,11 @@ The **AI Extension** features 4 inputs for analogue voltage signals like 0-10V o
 
 
 
+
+![100471 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100471 install.png)
+
+
+
     Connect the power supply and the link data lines to the Miniserver.
 
 
@@ -74,13 +79,28 @@ The **AI Extension** features 4 inputs for analogue voltage signals like 0-10V o
 
 
 
+![conex AnalogIn471 2x0 10](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/conex_AnalogIn471_2x0-10.png)
+
+
+
+
 ### Connection examples 4-20mA
 
     **Active 4-20mA transmitter:**
 
 
 
+
+![conex AnalogIn471 4 20 active](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/conex_AnalogIn471_4-20-active.png)
+
+
+
     **Passive 4-20mA transmitter:**
+
+
+
+
+![conex AnalogIn471 4 20 passive](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/conex_AnalogIn471_4-20-passive.png)
 
 
 

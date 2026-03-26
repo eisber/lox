@@ -47,6 +47,11 @@ The NFC Code Touch provides access control via encrypted or unencrypted NFC tags
 
 
 
+![100300 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100300 install.png)
+
+
+
+
 ---
 
 

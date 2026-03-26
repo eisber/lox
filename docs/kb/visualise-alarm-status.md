@@ -43,7 +43,9 @@ Thus the following colour codes were defined:
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-85-Alarm-Status-via-NFC-Code-Touch.png)
+[
+![Use Case 85 Alarm Status via NFC Code Touch](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-85-Alarm-Status-via-NFC-Code-Touch.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-85-Alarm-Status-via-NFC-Code-Touch.png)
 
 ### Download the sample file:
 

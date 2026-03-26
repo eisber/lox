@@ -39,7 +39,7 @@ Start Loxone Config and connect to your Miniserver.
 
 Then open **Configure Miniserver**, and activate **Manual external access:**
 
-*[]*
+![MS ManualExternalAccess](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/MS_ManualExternalAccess.png)
 
 Enter the external port for the connection in **HTTP Port**.
 
@@ -116,7 +116,7 @@ After enabling the port on your router, you can already access your Miniserver w
 
 [Click here](http://checkip.dyndns.com/) to view your current IP address.
 
-*[port-forward-beispiel]*
+![port-forward-beispiel](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/port-forward-beispiel.png)
 
 After configuring and saving in the router, your Miniserver can be reached at your Internet IP address.
 
@@ -161,7 +161,7 @@ Both PEM and DER format are supported.
 
 The key must not be password protected.
 
-*[]*
+![MS CustomCertificate](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/MS_CustomCertificate.png)
 
 The Miniserver will inform you via system message, a few days before the certificate is expiring, so that you have enough time to update it.
 

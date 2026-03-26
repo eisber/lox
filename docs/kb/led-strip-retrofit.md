@@ -39,20 +39,21 @@ The RGBW 24V Dimmer Air can be used in two forms to allow it to control either 
 
 In the diagram below we can see an example of the “RGBW dimming”.
 
-*[RGBW Dimmer Air Wiring]*
+![RGBW Dimmer Air Wiring](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Diagram_RGBW_Dimmer_Air.png)
 
 *Please note that the lamp icons represent light outputs and in this case are representing LED strip tape.
 
 If you are wanting to use single channels and use the device as “Individual dimming channels” function, you would need to common the + 24V to each + 24V cable on each individual strip and then the remaining colour cable will have their own separate channel.
 
-*[Icon Exclamation Mark Loxone]*If you are unsure at any point when wiring up any of our devices, please contact a suitably qualified electrician. Alternatively you can [contact us](https://www.loxone.com/enen/about-us/contact/) for more technical data if required.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+If you are unsure at any point when wiring up any of our devices, please contact a suitably qualified electrician. Alternatively you can [contact us](https://www.loxone.com/enen/about-us/contact/) for more technical data if required.
 
 ## CONFIGURE AIR DEVICE
-
-*[IC_loxone-air@2x-1]*
 
 [Click here to see documentation on how to learn a Loxone Air Device in to Loxone config](https://www.loxone.com/enen/kb/setting-up-air-devices/).
 
 ## CONFIGURE LIGHTING CONTROLLER
 
-[*[FS_notebook-on-table-loxone-config]*](https://www.loxone.com/enen/kb/lighting-solutions-config/)
+[
+![FS_notebook-on-table-loxone-config](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/FS_notebook-on-table-loxone-config.jpg)
+](https://www.loxone.com/enen/kb/lighting-solutions-config/)

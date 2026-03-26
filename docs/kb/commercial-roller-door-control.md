@@ -29,7 +29,9 @@ All you need to do is connect the door to the [Nano IO Air](https://shop.loxone.
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-90-Open-Doors-in-a-Warehouse.png)
+[
+![Use Case 90 Open Doors in a Warehouse](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-90-Open-Doors-in-a-Warehouse.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-90-Open-Doors-in-a-Warehouse.png)
 
 
 

@@ -52,6 +52,11 @@ The logger writes events to a log file.
 
 
 
+
+![logger new](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/logger_new.png)
+
+
+
     In the following example we give the logger the name "Access House" and drag the object onto the programming page.
 
 
@@ -71,6 +76,16 @@ The data is stored on the SD card and can be retrieved from the Miniserver via t
 
 
 
+![logger example](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/logger_example.png)
+
+
+
+
+
+![logger webservice](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/logger_webservice.png)
+
+
+
 
 ---
 
@@ -81,3 +96,8 @@ The data is stored on the SD card and can be retrieved from the Miniserver via t
     Alternatively, in the properties window of various blocks, logger, mailer, caller and tracker can be assigned.
 For this, the respective message must only be created and the recipient defined.
 The text or value defined in the block is output.
+
+
+
+
+![message aal linked](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/message_aal_linked.png)

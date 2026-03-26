@@ -50,9 +50,13 @@ If the alarms are acknowledged, the lighting is centrally set to 100%. This is i
 
 ### Configuration:
 
-[*[Alarm for Deaf People - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-70-lights-to-flash-for-deaf-people_1.png)
+[
+![Alarm for Deaf People - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-70-lights-to-flash-for-deaf-people_1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-70-lights-to-flash-for-deaf-people_1.png)
 
-[*[Alarm for Deaf People - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-70-lights-to-flash-for-deaf-people.png)
+[
+![Alarm for Deaf People - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-70-lights-to-flash-for-deaf-people.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-70-lights-to-flash-for-deaf-people.png)
 
 ### Download the sample file:
 

@@ -43,6 +43,26 @@ Make sure that the mounting frame rests flush on the surface without any gaps.
 
 
 
+![wb mount base 22kW32A tree](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/wb_mount_base_22kW32A_tree.png)
+
+
+
+
+
+![wb connect meter 22kW32A tree](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/wb_connect_meter_22kW32A_tree.png)
+
+
+
+
+
+![wb mount 22kW32A touch tree](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/wb_mount_22kW32A_touch_tree.png)
+
+
+
+
+
+![wb mount 22kW32A frontcovers](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/wb_mount_22kW32A_frontcovers.png)
+
 
 
     After mounting, the supply voltage (mains voltage and 24V) is switched on, the Wallbox flashes orange after a short time if the connection to the Miniserver is successful and is ready for pairing.
@@ -65,6 +85,11 @@ Make sure that the mounting frame rests flush on the surface without any gaps.
 
 
 
+
+![wb show installed meter 22kW32A](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/wb_show_installed_meter_22kW32A.png)
+
+
+
     The pre-installed energy meter can now be paired via **[serial number](https://www.loxone.com/help/tree-interface#TreePairSN)** or **[Tree device search](https://www.loxone.com/help/tree-interface#TreePair)**.
 
 
@@ -79,8 +104,18 @@ Make sure that the mounting frame rests flush on the surface without any gaps.
 
 
 
+
+![wb 22kW programming](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/wb_22kW_programming.gif)
+
+
+
     After pairing the meter, the Meter Type "Wallbox" and the Wiring direction "Inverted (Top = Out)" must be selected.
 The meter can then be dragged onto the Wallbox function block to link it:
+
+
+
+
+![wb 22kW em programming](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/wb_22kW_em_programming.gif)
 
 
 
@@ -94,13 +129,13 @@ The meter can then be dragged onto the Wallbox function block to link it:
 
 | Status LED | Description |
 | --- | --- |
-|  | Device has just been paired or has restarted and is now online. |
-|  | Connection to the Miniserver is okay, but the device has not been paired. |
-|  | Device cannot connect to the Miniserver via the Tree interface. |
-|  | Device was selected in Loxone Config and is identifying. |
-|  | Charging started. |
-|  | Charging paused. |
-|  | Charging Error. |
+| ![WB green flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WB_green_flashing.gif) | Device has just been paired or has restarted and is now online. |
+| ![WB orange flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WB_orange_flashing.gif) | Connection to the Miniserver is okay, but the device has not been paired. |
+| ![WB red flashing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WB_red_flashing.gif) | Device cannot connect to the Miniserver via the Tree interface. |
+| ![WB redgreen identify](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WB_redgreen_identify.gif) | Device was selected in Loxone Config and is identifying. |
+| ![WB blue fading](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WB_blue_fading.gif) | Charging started. |
+| ![WB orange fading](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WB_orange_fading.gif) | Charging paused. |
+| ![WB red fading](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WB_red_fading.gif) | Charging Error. |
 
 
 ---
@@ -123,6 +158,11 @@ Extending the charging cable in any other way is not permitted.
 
     The Loxone Wallbox is able to limit the charging power by transmitting the permitted maximum current to the vehicle.
 
+
+
+
+
+![wb power diagram  22kW32A](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/wb_power_diagram_ 22kW32A.png)
 
 
 

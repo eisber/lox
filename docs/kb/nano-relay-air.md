@@ -36,10 +36,20 @@ The Loxone Nano Relay Air features a latching relay output, for installation in 
 
 
 
+
+![100426 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100426 install.png)
+
+
+
     The power is supplied by mains voltage, the integrated relay can directly switch mains voltage loads.
 
 
     The status LED, the pairing button and the connector for the optional Touch for Nano plug-on module are located on the front:
+
+
+
+
+![100426 front](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100426 front.png)
 
 
 
@@ -73,11 +83,16 @@ The Loxone Nano Relay Air features a latching relay output, for installation in 
 
 
 
+
+![TouchForNanoUS PlugOn](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TouchForNanoUS-PlugOn.png)
+
+
+
     When using the Touch for Nano plug-on module, it must be activated in the properties of the Nano Relay Air in Loxone Config. The combined button input T5 will then be available in the peripheral tree.
 
 
 
-|  | The Touch for Nano's large centre touch zone is ideal for controlling the lighting, while the corner zones are suitable for controlling music and shading. It is based on the Loxone switch standard. The buttons can also be freely used for other applications. To use the individual buttons as inputs, activate the checkboxes in the Properties window. The audible confirmation can also be disabled here. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The Touch for Nano's large centre touch zone is ideal for controlling the lighting, while the corner zones are suitable for controlling music and shading. It is based on the Loxone switch standard. The buttons can also be freely used for other applications. To use the individual buttons as inputs, activate the checkboxes in the Properties window. The audible confirmation can also be disabled here. |
 | --- | --- |
 
 

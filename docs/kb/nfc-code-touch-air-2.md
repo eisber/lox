@@ -8,6 +8,11 @@ The Loxone NFC Code Touch Air is used for access control and features an NFC rea
 
 
 
+
+![nfc front variants rendering](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/nfc_front_variants_rendering.png)
+
+
+
     Access control solution via NFC tags, available as key fobs, stickers or cards. Alternatively, a numeric code can be entered on the keypad.
 
 
@@ -58,12 +63,22 @@ Optionally, a small power supply unit can be installed in the box.
 
 
 
+
+![NfcAir2 back mounting wiring](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/NfcAir2_back_mounting-wiring.png)
+
+
+
     Connect the power supply (orange/white plug-in terminal).
 For battery operation, remove the orange/white plug-in terminal and insert two AAA batteries.
 
 
     A self-adhesive cover is included in the delivery to protect against water. It must be attached above the terminals once connected.
 Two markings at the top edge of the housing help with positioning:
+
+
+
+
+![nfc backflapair](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/nfc_backflapair.png)
 
 
 
@@ -217,14 +232,39 @@ A realistic and recommended range for these values is 15 to 30, depending on the
 
 
 
+
+![Device Command](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Device Command.png)
+
+
+
     Example for button 3:
 To retrieve the current value of this button, send the following command: **get/TH6**. The response might be 25, for example.
 
 
 
 
+![get TH6](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/get_TH6.png)
+
+
+
+
+
+![result 25](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/result_25.png)
+
+
+
     You can now reduce the sensitivity by assigning a higher value. For example, you can send the following command: **store/TH6/26**.
 
+
+
+
+![store to 26](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/store_to_26.png)
+
+
+
+
+
+![store var to 26](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/store_var_to_26.png)
 
 
 
@@ -234,6 +274,16 @@ Numbers below 10 do not need a leading zero.
 
     Finally, the change must be accepted by restarting the device with a **Reboot** command. You will see a timeout in the monitor, confirming the reboot.
 
+
+
+
+![NFC Reboot](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/NFC_Reboot.png)
+
+
+
+
+
+![NFC timeout](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/NFC_timeout.png)
 
 
 

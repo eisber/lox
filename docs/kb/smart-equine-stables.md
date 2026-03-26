@@ -53,7 +53,9 @@ Normally only the owner himself has access to the stable. If someone else enters
 
 ### Configuration:
 
-[*[Smart Equine Stables - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-10-Smart-Stables.png)
+[
+![Smart Equine Stables - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-10-Smart-Stables.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-10-Smart-Stables.png)
 
 ### Download the sample file:
 

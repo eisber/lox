@@ -36,6 +36,11 @@ The Paketsafe allows the safe deposit of packages delivered in your absence. Via
 
 
 
+
+![100444 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100444 install.png)
+
+
+
     Finally, connect the power supply (orange/white terminal) or insert the two AA batteries.
 
 

@@ -23,7 +23,9 @@ A [Door & Window Contact Air](https://shop.loxone.com/enuk/door-window-contact-a
 
 ### Configuration:
 
-[*[Fire Door Monitoring - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-51-Fire-Protection-Doors.png)
+[
+![Fire Door Monitoring - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-51-Fire-Protection-Doors.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-51-Fire-Protection-Doors.png)
 
 ### Download the sample file:
 

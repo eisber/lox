@@ -225,13 +225,28 @@ In cases where the number of Wallboxes is limited, opting for a higher hourly co
 
 
 
+
+![wb properties](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/wb_properties.png)
+
+
+
     Double click on the block to open the configuration window, here up to 5 charging modes can be created:
+
+
+
+
+![wb chargingModes](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/wb_chargingModes.png)
 
 
 
     With additional logic at the input (Ec), charging is enabled when a user is successfully authenticated via the NFC Code Touch and the vehicle is connected.
 An energy meter supplies the current charging power and meter reading to the function block.
 The ID of the authenticated user is transferred at the "Uid" input.
+
+
+
+
+![wb example](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/wb_example.png)
 
 
 

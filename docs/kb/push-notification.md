@@ -13,7 +13,7 @@ The Miniserver must be registered and connected to the Internet for this feature
 
 
 
-|  | Push notifications are not available on new Huawei smartphones/tablets, as these depend on Google services, which are no longer included in Huawei devices due to the US embargo. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Push notifications are not available on new Huawei smartphones/tablets, as these depend on Google services, which are no longer included in Huawei devices due to the US embargo. |
 | --- | --- |
 
 
@@ -36,11 +36,21 @@ The Miniserver must be registered and connected to the Internet for this feature
 
 
 
+
+![messages add pushnotification](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/messages_add_pushnotification.png)
+
+
+
     In the following example we name the notification Garage, and drag the object to the programming page.
 We can now connect this output connector to the output Op of the Garage/ Gate function block.
 Then we define the text in the settings of the output connector, which will be sent when the input value is 1.
 We can select which users or groups receive the notification by setting the appropriate permissions.
 In this example, the selected users will receive a notification every time the gate is opened:
+
+
+
+
+![pushnotification setup](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/pushnotification_setup.png)
 
 
 
@@ -55,7 +65,17 @@ In this example, the selected users will receive a notification every time the g
 
 
 
+
+![notification inapp](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/notification_inapp.png)
+
+
+
     Outside of the App, the notification is displayed as a push notification, the following example shows it on an Android device:
+
+
+
+
+![notification push](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/notification_push.png)
 
 
 
@@ -74,6 +94,11 @@ It is also possible to enable or disable receiving notifications in the App's se
 
 
     Devices that no longer exist can be removed using the button "Unregister device":
+
+
+
+
+![PushNotification UnregDev](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PushNotification_UnregDev.png)
 
 
 
@@ -97,6 +122,11 @@ It is also possible to enable or disable receiving notifications in the App's se
 
 
 
+
+![AndroidNotification](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AndroidNotification.png)
+
+
+
     **Note:** If you don't see the option "Notification Categories", please follow [this](https://www.androidpolice.com/samsung-disables-notification-channels-on-all-one-ui-61-devices/) guide.
 
 
@@ -104,7 +134,17 @@ It is also possible to enable or disable receiving notifications in the App's se
 
 
 
+
+![AndroidNotificationDoorbell](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AndroidNotificationDoorbell.png)
+
+
+
     **iOS:**
 
 
     Navigate to Settings - Notifications - Loxone.
+
+
+
+
+![IOSNotification](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/IOSNotification.png)

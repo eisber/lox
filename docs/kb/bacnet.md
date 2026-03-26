@@ -21,7 +21,12 @@ B-GW (BACnet Gateway)
 
 
 
-|  | BACnet requires the current Miniserver, the Miniserver Gen. 1 is not supported! |
+![BACnetBTL logo](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/BACnetBTL-logo.png)
+
+
+
+
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | BACnet requires the current Miniserver, the Miniserver Gen. 1 is not supported! |
 | --- | --- |
 
     **Explanation of BACnet Server and Client in the context of the Loxone Miniserver**

@@ -37,6 +37,11 @@ The LED Spot RGBW Tree is a LED spot with warm white and colored light for 24VDC
 
 
 
+
+![LEDspotRGBW planning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LEDspotRGBW planning.png)
+
+
+
     Switch off the supply voltage before installation.
 
 
@@ -44,6 +49,11 @@ The LED Spot RGBW Tree is a LED spot with warm white and colored light for 24VDC
 
 
     Flip the spring clips back and snap the spotlight into the mounting hole. Make sure that no wires are jammed.
+
+
+
+
+![treespot cabling](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/treespot cabling.png)
 
 
 
@@ -56,6 +66,11 @@ The LED Spot RGBW Tree is a LED spot with warm white and colored light for 24VDC
 
     For lights, a commissioning mode is active when the devices are supplied with power and have not yet been paired.
 In this mode, the device indicates whether it has been connected correctly and, if the connection is successful, provides lighting until it has been paired.
+
+
+
+
+![Tree CommissioningMode SpotRGBW](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Tree_CommissioningMode_SpotRGBW.png)
 
 
 

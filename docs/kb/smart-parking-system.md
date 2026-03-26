@@ -29,7 +29,9 @@ To detect how many parking spaces are occupied, a seven-segment display visually
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-24-Parking-Garage.png)
+[
+![Use Case 24 Parking Garage](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-24-Parking-Garage.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-24-Parking-Garage.png)
 
 ### Download the sample file:
 

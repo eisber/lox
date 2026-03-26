@@ -42,20 +42,35 @@ This active loudspeaker features a woofer with a coaxially integrated tweeter.
 
 
 
+![InstSpkClientPCB](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/InstSpkClientPCB.png)
+
+
+
+
 Via the Master-Client Interface (MCI), the Client Speaker is connected in a line comprising one Master Speaker and up to 20 Client Speakers:
 
 
 
 
-|  | The audio signal is transmitted digitally from speaker to speaker. The system compensates for differences in signal transit time and therefore only works with the wiring shown in a linear configuration.On the MCI data lines, there must be no branching or parallel connection to additional speakers! |
+![MCISystemWiring](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/MCISystemWiring.png)
+
+
+
+
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The audio signal is transmitted digitally from speaker to speaker. The system compensates for differences in signal transit time and therefore only works with the wiring shown in a linear configuration.On the MCI data lines, there must be no branching or parallel connection to additional speakers! |
 | --- | --- |
 
 
-|  | When only a few speakers are used, the power lines can also be run in a linear fashion.When using many speakers in a line, voltage drop becomes the limiting factor. This can be addressed by using wires with a larger cross-section, shorter cables, or additional 24V power lines. It is essential to always connect the grounds of different power lines. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | When only a few speakers are used, the power lines can also be run in a linear fashion.When using many speakers in a line, voltage drop becomes the limiting factor. This can be addressed by using wires with a larger cross-section, shorter cables, or additional 24V power lines. It is essential to always connect the grounds of different power lines. |
 | --- | --- |
 
 
 The connection cable must be secured to the metal bridge of the speaker basket with the cable tie for strain relief:
+
+
+
+
+![InstSpkStrainRelief](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/InstSpkStrainRelief.png)
 
 
 
@@ -82,12 +97,17 @@ Attach the front grille, which is held magnetically.
 
 
 
+
+![ClientSpkSearch](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ClientSpkSearch.png)
+
+
+
     When you click on one of the found speakers, it will identify itself with an acoustic signal. This allows you to assign and name them.
 By clicking on the right arrow, the Client Speakers are added to the programming. They are then available in the peripheral tree and ready for use in the programming after being saved to the Miniserver.
 
 
 
-|  | The Clients are automatically indexed according to the order of connection before pairing. This only takes a few seconds and is necessary for synchronizing the speakers. The order of connection must not be changed after pairing, as this would require re-pairing. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The Clients are automatically indexed according to the order of connection before pairing. This only takes a few seconds and is necessary for synchronizing the speakers. The order of connection must not be changed after pairing, as this would require re-pairing. |
 | --- | --- |
 
 
@@ -104,6 +124,11 @@ By clicking on the right arrow, the Client Speakers are added to the programming
 
 
     Suitable **[mounting enclosures for drywall or concrete installation](https://shop.loxone.com/enus/audio.html/?c=install-box)** are available in the Loxone Shop.
+
+
+
+
+![PH Loxone Installation recommendations table](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PH-Loxone-Installation-recommendations-table.png)
 
 
 
@@ -128,6 +153,11 @@ By clicking on the right arrow, the Client Speakers are added to the programming
 
     In main living areas, at least two speakers should be used to achieve good sound quality. For small rooms or ancillary spaces, a single speaker is usually sufficient.
 Depending on the room size, we recommend planning the following number of speakers per room:
+
+
+
+
+![RoomsizeSpkrCountChart](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/RoomsizeSpkrCountChart.png)
 
 
 
@@ -173,6 +203,11 @@ A room with limited space
 
 
 
+
+![ori ex1](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ori_ex1.png)
+
+
+
     **Result:**
 The speakers always behave identically in terms of selected source and volume.
 
@@ -193,6 +228,11 @@ Small restaurant with a bar, the two areas are acoustically adjacent
 
     **Programming:**
 2 Audio Player function blocks, 1x for restaurant, 1x for bar, both combined in a fixed group:
+
+
+
+
+![ori ex2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ori_ex2.png)
 
 
 
@@ -222,6 +262,11 @@ One Client Speaker is connected to each respective Master Speaker per room and p
 
 
 
+
+![ori ex3](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ori_ex3.png)
+
+
+
     **Result:**
 Both rooms can be operated completely independently in terms of source and volume.
 
@@ -236,12 +281,12 @@ Both rooms can be operated completely independently in terms of source and volum
 
 | Status LED | Description |
 | --- | --- |
-|  | Device is in pairing mode. |
-|  | Device was selected in Loxone Config and is identifying. |
-|  | After switching on the power supply: Client waits until it receives data from the MasterDuring operation: Client is not paired or Master is not online |
-|  | Device operational, paired and online. |
-|  | Error initializing DSPError loading firmware or update |
-|  | StandbyThe Client switches to standby if no data is received from the Master for 10 seconds.Every 55 minutes, it is briefly activated by the Master for checking purposes and displays its status for 10 seconds. |
+| ![StateLEDDotRedOrangeGreenPairing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StateLEDDotRedOrangeGreenPairing.gif) | Device is in pairing mode. |
+| ![StatLedDotRedGreenIdentify](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedDotRedGreenIdentify.gif) | Device was selected in Loxone Config and is identifying. |
+| ![StatLedDotOrangeFlashOffline](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedDotOrangeFlashOffline.gif) | After switching on the power supply: Client waits until it receives data from the MasterDuring operation: Client is not paired or Master is not online |
+| ![StatLedDotGreenFlashOnlineConstant](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedDotGreenFlashOnlineConstant.gif) | Device operational, paired and online. |
+| ![StatLedDotRedFlashErrDSP](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedDotRedFlashErrDSP.gif) | Error initializing DSPError loading firmware or update |
+| ![StatLedDotGreyStandby](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/StatLedDotGreyStandby.gif) | StandbyThe Client switches to standby if no data is received from the Master for 10 seconds.Every 55 minutes, it is briefly activated by the Master for checking purposes and displays its status for 10 seconds. |
 
 
 ---

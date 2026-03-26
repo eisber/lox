@@ -141,7 +141,17 @@ The function block is then created automatically when the NFC Code Touch is drag
 
 
 
+
+![AuthNFC blockiosbasic](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AuthNFC-blockiosbasic.png)
+
+
+
     The outputs names used in the user interface can be set the double-clicking the block or in the settings of the block:
+
+
+
+
+![AuthNFC nameoutputs](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AuthNFC-nameoutputs.png)
 
 
 
@@ -163,16 +173,26 @@ To do so, the users must first be created in the [User and Rights Management](ht
 
 
 
+
+![AuthNFC startlearn](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AuthNFC-startlearn.png)
+
+
+
     This will open the Learn NFC Tag window, and a cyan-colored running light on the selected NFC Code Touch lets you know that the device is in NFC learning mode.
 Hold the NFC tag directly to the reader, which is marked by the circle symbol at the bottom of the device.
 
 
 
-|  | In battery operation, an NFC Code Touch Air must be woken up, before the learning process is started, e.g. by pressing a key. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | In battery operation, an NFC Code Touch Air must be woken up, before the learning process is started, e.g. by pressing a key. |
 | --- | --- |
 
     The status LEDs on the device briefly light up green once the NFC tag is recognised and the tag is displayed in the monitor.
 Select the entry in the monitor, name the tag and assign it to a user:
+
+
+
+
+![AuthNFC learnusertag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AuthNFC-learnusertag.png)
 
 
 
@@ -181,7 +201,7 @@ Repeat this process for the NFC tags of the other users.
 
 
 
-|  | Only use encrypted NFC/RFID tags for access control.These tags, e.g. the Loxone Smart Tags and Key Fobs are equipped with a MIFARE® DESFire® chip. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Only use encrypted NFC/RFID tags for access control.These tags, e.g. the Loxone Smart Tags and Key Fobs are equipped with a MIFARE® DESFire® chip. |
 | --- | --- |
 
     In addition, users need to have the right for the Authentication NFC Code Touch block in order to gain access.
@@ -206,12 +226,22 @@ Repeat this process for the NFC tags of the other users.
 
 
 
+
+![AuthNFC learndevicetag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AuthNFC-learndevicetag.png)
+
+
+
     This option can be used to grant temporary or permanent access to visitors.
 Once learned, these tags will be listed in the NFC tags tab of the function block.
 
 
     You can define which output is to be activated by default and set a validity period.
 Authorization can also be limited to certain outputs via the tick boxes:
+
+
+
+
+![AuthNFC devicetagslist](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AuthNFC-devicetagslist.png)
 
 
 
@@ -233,6 +263,16 @@ Tag 2 activates output O2 by default. When preselecting the number 3, output (O3
 
 
 
+![AuthNFC learninputtag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AuthNFC-learninputtag.png)
+
+
+
+
+
+![AuthNFC displayinputtag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AuthNFC-displayinputtag.png)
+
+
+
     The Authentication NFC Code Touch block is not required to use these inputs.
 This configuration is not recommended for access control.
 
@@ -249,6 +289,11 @@ This configuration is not recommended for access control.
 
 
 
+![Tags ReadFormat](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Tags_ReadFormat.png)
+
+
+
+
 ### Reading NFC Tags
 
     When reading NFC Tags, you can view the Tag name, the assigned user, and the NFC ID of the Tag.
@@ -258,6 +303,11 @@ This configuration is not recommended for access control.
 
 
     If there are any errors related to the NFC Tag, they will also be displayed on this screen.
+
+
+
+
+![Read NFCTag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Read_NFCTag.png)
 
 
 
@@ -318,7 +368,17 @@ To do so, open the Authentication dialog in the properties of a user under Secur
 
 
 
+
+![AuthNFC openuserauth](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AuthNFC-openuserauth.png)
+
+
+
     In the New... field under Key Code enter a code for the user and confirm with OK:
+
+
+
+
+![AuthNFC setuserkey](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AuthNFC-setuserkey.png)
 
 
 
@@ -327,7 +387,7 @@ Repeat this process for the codes of the other users.
 
 
 
-|  | The same rules that apply to passwords also apply to access codes: as long as possible, as difficult to guess as possible. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The same rules that apply to passwords also apply to access codes: as long as possible, as difficult to guess as possible. |
 | --- | --- |
 
     In addition, users need to have the right for the Authentication NFC Code Touch block in order to gain access.
@@ -357,6 +417,11 @@ Click on the Add button and enter the code:
 
 
 
+
+![AuthNFC devicecodelist](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AuthNFC-devicecodelist.png)
+
+
+
     The default output, authorisation for specific outputs and the validity period can also be set here, as previously described for the NFC tags.
 
 
@@ -373,6 +438,11 @@ Click on the Add button and enter the code:
 ### Numeric code used as input
 
     Numeric codes can also be used directly as a digital input. They are created in the peripheral tree of the NFC Code Touch and can be used for any application:
+
+
+
+
+![AuthNFC setupinputcode](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AuthNFC-setupinputcode.png)
 
 
 

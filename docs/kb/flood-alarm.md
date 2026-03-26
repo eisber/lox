@@ -24,7 +24,7 @@ In the properties of the virtual HTTP input, the address of the web page from wh
 
 To be able to read out the water level, you have to insert a virtual HTTP command. The correct command recognition is crucial here. Before you can properly configure command recognition, you must know how the web page is structured.
 
-*[Water Level for Flood Alarm]*
+![Water Level for Flood Alarm](https://www.loxone.com/dede/wp-content/uploads/sites/2/2020/04/IG_Landesamt-Bayern.png)
 
 To do this, look at the source code of the page and find the value to be read.
 
@@ -53,9 +53,13 @@ If the website no longer provides data, this can be detected via the error outpu
 
 ### Configuration:
 
-[*[Flood Alarm - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-107-flood-alarm_1.png)
+[
+![Flood Alarm - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-107-flood-alarm_1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-107-flood-alarm_1.png)
 
-[*[Flood Alarm - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-107-flood-alarm.png)
+[
+![Flood Alarm - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-107-flood-alarm.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-107-flood-alarm.png)
 
 ### Download the sample file:
 

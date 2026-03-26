@@ -92,6 +92,16 @@ The slope of the heating curve determines how the system responds to changes in 
 
 
 
+![heatcurve formula](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/heatcurve_formula.png)
+
+
+
+
+
+![heatcurve curve](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/heatcurve_curve.jpg)
+
+
+
     Image source: http://de.wikipedia.org/wiki/Heizkurve
 
 

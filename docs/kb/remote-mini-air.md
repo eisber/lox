@@ -33,6 +33,11 @@ The Remote Mini Air is a compact wireless remote control with 5 buttons based on
 
 
 
+![100140 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100140 install.png)
+
+
+
+
 ---
 
 
@@ -68,10 +73,20 @@ The functions of the buttons are as follows:
 
 
 
+![remotebutton standard](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/remotebutton standard.png)
+
+
+
+
 ### Buttons as separate inputs
 
     If the buttons are to be used freely in programming, activate the individual inputs by ticking the checkboxes in the settings of the Remote.
 The inputs are assigned as follows:
+
+
+
+
+![remotebutton single](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/remotebutton single.png)
 
 
 

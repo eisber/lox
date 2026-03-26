@@ -37,7 +37,7 @@ Each unit gets its own Miniserver including user interface.
 
 
 
-|  | Current Miniserver / Go / Compact required, not supported by Gen. 1 variants!Only Miniservers of the same type can be used in a Multiplicator Project. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Current Miniserver / Go / Compact required, not supported by Gen. 1 variants!Only Miniservers of the same type can be used in a Multiplicator Project. |
 | --- | --- |
 
     To create a project, select the "Convert to Multiplicator Project" button, and confirm:
@@ -45,8 +45,23 @@ Each unit gets its own Miniserver including user interface.
 
 
 
+![mpk create](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mpk_create.png)
+
+
+
+
+
+![mpk convert](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mpk_convert.png)
+
+
+
 
 The desired Miniservers can now be added via "Miniserver Search":
+
+
+
+
+![mpk searchMS](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mpk_searchMS.png)
 
 
 
@@ -61,8 +76,23 @@ These are later overwritten by the Multiplicator Project:
 
 
 
+
+![mpk searchMS2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mpk_searchMS2.png)
+
+
+
     In the "Manage Miniservers" dialog, the current project is saved on all Miniservers and, if necessary, the firmware is updated.
 
+
+
+
+![mpk manageMS](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mpk_manageMS.png)
+
+
+
+
+
+![mpk manageMS2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mpk_manageMS2.png)
 
 
 
@@ -83,10 +113,20 @@ These are later overwritten by the Multiplicator Project:
 
 
 
+
+![mpk BasicProgramming](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mpk_BasicProgramming.png)
+
+
+
     Usually, the same devices are used on each Miniserver in a project of this type. Therefore, placeholders are inserted via "Add Device" for the time being. Later, these devices are paired at the respective Miniservers with their serial number and the placeholders are replaced.
 
 
     Individual pages or devices can also be transferred to certain Miniservers:
+
+
+
+
+![mpk deselect](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mpk_deselect.png)
 
 
 
@@ -102,7 +142,17 @@ These are later overwritten by the Multiplicator Project:
 
 
 
+![mpk connectMS](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mpk_connectMS.png)
+
+
+
+
 The Miniserver's project is then opened on a new page:
+
+
+
+
+![mpk banner](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mpk_banner.png)
 
 
 
@@ -117,8 +167,23 @@ The Miniserver's project is then opened on a new page:
 
 
 
+![mpk pairedDevice](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mpk_pairedDevice.png)
+
+
+
+
 The deviations to the Multiplicator Project can be displayed in a window:
 
+
+
+
+![mpk bannerDeviations](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mpk_bannerDeviations.png)
+
+
+
+
+
+![mpk bannerDeviationsWindow](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mpk_bannerDeviationsWindow.png)
 
 
 
@@ -129,7 +194,17 @@ The deviations to the Multiplicator Project can be displayed in a window:
 
 
 
+
+![mpk bannerDetach](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mpk_bannerDetach.png)
+
+
+
     After detaching, this Miniserver must also be deleted in the Multiplicator Project!
+
+
+
+
+![mpk applyChanges](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mpk_applyChanges.png)
 
 
 

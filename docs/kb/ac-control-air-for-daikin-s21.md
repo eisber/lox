@@ -53,11 +53,26 @@ For this reason, original remote controls of the AC unit (also IR) can no longer
 
 
 
+
+![AcCont Connect S21](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AcCont_Connect-S21.png)
+
+
+
     In some air conditioners, the S21 connector on the circuit board is in a smaller format. In this case, the AC Control Air is connected to a short adapter cable (EKRS21), which is often already plugged in on the circuit board of the indoor unit. If not, the EKRS21 adapter cable is available from Daikin:
 
 
 
+
+![AcCont Connect S21 B](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AcCont_Connect-S21-B.png)
+
+
+
     Some air conditioners are not equipped with an S21 connector. In this case, an additional adapter board (KRP980B1 or KRP067A41 depending on AC unit type) from Daikin is required, which provides the S21 connector:
+
+
+
+
+![AcCont Connect S21 C](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AcCont_Connect-S21-C.png)
 
 
 
@@ -103,6 +118,11 @@ The AC Control Air is now supplied with voltage from the air conditioner and can
 
 
 
+![AcCont dragdrop block](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AcCont_dragdrop_block.gif)
+
+
+
+
 ---
 
 
@@ -114,9 +134,24 @@ The AC Control Air is now supplied with voltage from the air conditioner and can
 
 
 
+![AcCont DiagStart](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AcCont_DiagStart.png)
+
+
+
+
+
+![ACCont Diagnostics2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ACCont_Diagnostics2.png)
+
+
+
 
 Additionally, you can also start the AC Control Monitor for diagnostic purposes.
 1) Activate the AC Control Monitor. 2) Turn the AC unit off. 3) Turn the AC unit on. 4) Cycle through the non-working functions. The recording needs to be at least five minutes. 5) Save the AC Control Monitor data and have them ready for transmission to Loxone.
+
+
+
+
+![AC Control Monitor](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AC_Control_Monitor.png)
 
 
 

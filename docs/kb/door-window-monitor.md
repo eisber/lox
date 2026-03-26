@@ -117,4 +117,9 @@ Additional window contacts and window handles can be connected to the block inpu
 
 
 
+
+![WindowsMonitor Basic](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WindowsMonitor_Basic.png)
+
+
+
     Of course, other window contacts and window handles can be used. The contacts are connected to the inputs (Dwco) or (Dwct). If the window contacts are normally closed contacts, the inputs (Dwco), (Dwct) must be inverted. Window handles are connected to the input (Hpos). The number of open, tilted, and closed windows is output at the outputs (Open), (Tilt), and (Closed). Output (Txlt) displays the name of the last triggered sensor.

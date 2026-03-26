@@ -79,3 +79,8 @@ Pulse width modulator to convert analog values into digital signals.
 
 
 ## Timing Diagram
+
+
+
+
+![PWM timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PWM-timediag.png)

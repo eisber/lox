@@ -36,13 +36,19 @@ The [Intelligent Room Controller](https://www.loxone.com/enen/kb/intelligent-roo
 
 The [Climate Controller](https://www.loxone.com/enen/kb/climate-controller/) then takes these values as well as the room size into consideration when determining the overall demand for heat in the building.
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-Use-Case-Heat-Pumps-App3.png)
+[
+![PH EN Use Case Heat Pumps App3 644x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-Use-Case-Heat-Pumps-App3.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-Use-Case-Heat-Pumps-App3.png)
 
 If your customer has an air source heat pump, we can further optimise that based on the information given from the Loxone system. For example, we can set the target flow temperatures of the hot water and the target temperature of the buffer tank based on the demand of the system and outside weather temperature to make the pump run more efficiently. Essentially, it is being able to read all of these data points (temperature and size of each room, the outside temperature, the flow temperature) that allows a system like Loxone to truly manage a zoned heating system in the most energy-efficient way. It is the power of the software and the calculations that are happening behind the scenes that deliver the most optimal solution for zoned heating control.
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-Use-Case-Heat-Pumps-App2.png)
+[
+![PH EN Use Case Heat Pumps App2 683x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-Use-Case-Heat-Pumps-App2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-Use-Case-Heat-Pumps-App2.png)
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-Use-Case-Heat-Pumps-App-1.png)
+[
+![PH EN Use Case Heat Pumps App 1 800x324](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-Use-Case-Heat-Pumps-App-1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-Use-Case-Heat-Pumps-App-1.png)
 
 ### Hardware:
 - Miniserver (can be [Miniserver](https://shop.loxone.com/enuk/miniserver.html), [Miniserver Compact](https://shop.loxone.com/enuk/miniserver-compact.html) or [Miniserver Go](https://shop.loxone.com/enuk/miniserver-go.html))
@@ -53,7 +59,9 @@ If your customer has an air source heat pump, we can further optimise that based
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-Use-Case-Heat-Pumps-Config.jpg)
+[
+![PH EN Use Case Heat Pumps Config 800x614](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-Use-Case-Heat-Pumps-Config.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-Use-Case-Heat-Pumps-Config.jpg)
 
 ### Download the sample Config file:
 

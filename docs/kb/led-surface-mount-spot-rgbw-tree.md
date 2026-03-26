@@ -39,6 +39,11 @@ The Loxone LED Ceiling Spot RGBW Tree is a warm white and coloured fitting. It i
 
 
 
+
+![treespot cabling](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/treespot cabling.png)
+
+
+
     Then place the lamp on the base plate. Make sure that the magnets are positioned correctly and that no wires are jammed.
 
 

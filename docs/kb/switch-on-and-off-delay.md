@@ -81,3 +81,8 @@ Delayed ON and OFF switching of the output
 
 
 ## Timing Diagram
+
+
+
+
+![SwitchOnOffDelay timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/SwitchOnOffDelay-timediag.png)

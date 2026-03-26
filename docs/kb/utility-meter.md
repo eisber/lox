@@ -12,7 +12,7 @@ Only one input can be used at a time.
 
 
 
-|  | This function block is no longer being developed and has been replaced by the Meter blocks. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | This function block is no longer being developed and has been replaced by the Meter blocks. |
 | --- | --- |
 
 
@@ -114,6 +114,11 @@ Only one input can be used at a time.
 
 
 
+![Energy SOCounter](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Energy_SOCounter.jpg)
+
+
+
+
 ---
 
 
@@ -125,6 +130,11 @@ Only one input can be used at a time.
 
 
 
+![Energy SOFrequency](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Energy_SOFrequency.jpg)
+
+
+
+
 ---
 
 
@@ -132,3 +142,8 @@ Only one input can be used at a time.
 
 
     To record the energy measured by the Smart Socket Air, connect the energy and power inputs of the Smart Socket Air to the (C) and (Pf) inputs. Parameter (Abs) is set to 0.
+
+
+
+
+![Energy SmartSocket](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Energy_SmartSocket.jpg)

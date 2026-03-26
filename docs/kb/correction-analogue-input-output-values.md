@@ -12,7 +12,7 @@ All analogue inputs and outputs in the Loxone Config have got a correction secti
 
 The sensor used in this example has a measuring range of -30°C to 70°C. The analogue input however provides a signal from 0-10V. You can scale this in the software so that the 0-10V signal is displaying the temperature range, not the voltage. This is done in the properties of the analogue input, so click on the input and look down to the Correction section.
 
-*[]*
+![EN KB Config Correction 2 1024x586](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Correction_2.png)
 
 For this sensor you would put the following values in the correction as displayed in the screenshot.
 
@@ -22,7 +22,7 @@ For this sensor you would put the following values in the correction as displaye
 
 The signal is now adjusted in this linear graph:
 
-*[Correction Graph]*
+![Correction Graph](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Diagram_Correction-1.png)
 
 ## SENSOR CORRECTION VALUES
 

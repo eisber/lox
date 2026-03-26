@@ -10,6 +10,11 @@ It can be controlled by a pushbutton or other logic, and via the user interface.
 
 
 
+![switch config visu](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/switch-config-visu.png)
+
+
+
+
 ## Table of Contents
 - [Inputs](#Input)
 - [Outputs](#Output)
@@ -91,6 +96,11 @@ It can be controlled by a pushbutton or other logic, and via the user interface.
 
 
 
+![switch timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/switch-timediag.png)
+
+
+
+
 ---
 
 
@@ -99,3 +109,8 @@ It can be controlled by a pushbutton or other logic, and via the user interface.
 
     This function block has a presence simulation.
 Activate and define the presence simulation in the properties window:
+
+
+
+
+![PresenceSimulation Switch](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PresenceSimulation_Switch.png)

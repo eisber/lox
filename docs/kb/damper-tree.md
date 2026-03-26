@@ -23,7 +23,7 @@ Source: https://www.loxone.com/enen/kb/damper-tree/
 
 The installation of this device must be carried out by a qualified technician. When installed, the device must follow building regulations for electrical and fire safety. If the device is not installed according to manufacturer’s guidelines, the warranty of the device may be affected. Install the damper between the ventilation ducts and fix them with a foil tape that is certified to in that kind of installation.
 
-*[]*
+![Damper Tree Drawing](https://www.loxone.com/enus/wp-content/uploads/sites/13/2018/01/Damper-Tree-Drawing.png)
 
 ## SETUP
 
@@ -40,7 +40,7 @@ The following outputs for available for troubleshooting:
 
 The Damper can be connected directly to the HC output of the Intelligent Room Controller function block.
 
-*[]*
+![loxone damper tree irc config 800x156](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/02/loxone-damper-tree-irc-config.png)
 
 ## LED STATES
 

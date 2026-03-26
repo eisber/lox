@@ -54,7 +54,9 @@ The complexity of the overall system increases with its size.Careful planning an
 
 Since the Miniserver communicates via the local network, the network setup becomes a key part of the overall system.
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-MSinLAN.png)
+[
+![gwcl MSinLAN](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-MSinLAN.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-MSinLAN.png)
 
 Ideally, an address range should be reserved for building automation devices, and static IP addresses should be assigned in a logical order when configuring the Miniservers.
 
@@ -74,7 +76,9 @@ Perform the initial setup of the Miniservers and assign **static IP addresses**.
 
 In the Miniserver Settings of each project, the **local address** must be set to the **IP address** of the respective Miniserver:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-setLocaliP.png)
+[
+![gwcl setLocaliP](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-setLocaliP.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-setLocaliP.png)
 
 					** ****Hostnames are not supported in this place!**
 
@@ -89,21 +93,29 @@ There are **2 ways** to add a Client Miniserver to the Gateway:
 
 In the periphery tree, right-click on the Miniserver and select “**Add Miniserver as Client…**” from the context menu:
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/Add_Miniserver_As_Client.png)
+[
+![Add Miniserver As Client](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/Add_Miniserver_As_Client.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/Add_Miniserver_As_Client.png)
 
 A screen will appear showing all available Miniservers that can be added to the Gateway Miniserver.
 
 Select the desired Miniserver(s) to be added as a client and click on the “+” button.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/Client_Search.png)
+[
+![Client Search](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/Client_Search.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/Client_Search.png)
 
 A new pop-up window will open, prompting the user to enter the credentials for the selected Miniserver.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/Connect_To_Miniserver.png)
+[
+![Connect To Miniserver](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/Connect_To_Miniserver.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/Connect_To_Miniserver.png)
 
 Once the credentials are entered correctly, another screen will appear, allowing the process to continue by clicking “OK.”
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/Client_Merging_Projects.png)
+[
+![Client Merging Projects](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/Client_Merging_Projects.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/Client_Merging_Projects.png)
 
 To finalize the setup, save the configuration in the Gateway Miniserver.
 
@@ -118,15 +130,19 @@ Finally, save the merged project under a new name on the computer.
 
 In the Periphery Tree, right-click on the Miniserver and select “Add Project as a Client…” from the context menu.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/Add_Project_As_Client.png)
+[
+![Add Project As Client](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/Add_Project_As_Client.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/Add_Project_As_Client.png)
 
 Then select the previously saved project of another Miniserver:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-addFileClientProject.png)
+[
+![gwcl addFileClientProject](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-addFileClientProject.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-addFileClientProject.png)
 
 After that, a message will be displayed indicating the peculiarities of merging the projects. Confirm with OK.
 
-*[]*
+![GatewayClient MergeProjects](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/02/GatewayClient_MergeProjects.png)
 
 The selected project will now be merged in Loxone Config with the project of the already opened Miniserver. This is automatically created as a gateway.
 
@@ -144,11 +160,13 @@ All Miniserver are displayed together with their periphery in one project.
 
 Each miniserver is also assigned program pages in the same color:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-projectsMergedc.png)
+[
+![gwcl projectsMergedc](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-projectsMergedc.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-projectsMergedc.png)
 
 
 
-| *[]* | In the Periphery Tree, above the Miniserver, all objects that are shared by all Miniservers are now displayed.When the Gateway Client project was created, these shared objects were automatically combined from all connected Miniservers. Below are the miniserver objects, first the gateway, then the client miniserver. Each miniserver is assigned its peripheral objects such as inputs, outputs, interfaces and extensions. |
+| ![gwcl peripheryColored](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-peripheryColored.png) | In the Periphery Tree, above the Miniserver, all objects that are shared by all Miniservers are now displayed.When the Gateway Client project was created, these shared objects were automatically combined from all connected Miniservers. Below are the miniserver objects, first the gateway, then the client miniserver. Each miniserver is assigned its peripheral objects such as inputs, outputs, interfaces and extensions. |
 | --- | --- |
 
 
@@ -159,13 +177,17 @@ The sensors and actuators for the two rooms are therefore connected to different
 
 The light control for the kitchen is added on the program page of Miniserver A:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-pageA.png)
+[
+![gwcl pageA](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-pageA.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-pageA.png)
 
 
 
 For the bedroom, the program page of Miniserver B is used:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-pageB.png)
+[
+![gwcl pageB](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-pageB.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-pageB.png)
 
 Now, when the lighting in a room is switched on by button press or movement, only the associated miniserver is involved.
 

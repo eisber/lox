@@ -24,7 +24,9 @@ We have used a “Switch-On Delay” block, to ensure that the air con is only t
 
 ### Configuration:
 
-[*[Smart Air Conditioner Control - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-71-Turn-Off-Office-Aircon-2.png)
+[
+![Smart Air Conditioner Control - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-71-Turn-Off-Office-Aircon-2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-71-Turn-Off-Office-Aircon-2.png)
 
 ### Download the sample file:
 

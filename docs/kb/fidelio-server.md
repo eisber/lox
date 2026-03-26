@@ -26,17 +26,18 @@ Some information about Client-Gateways (with concentrators) can be found here:
 
 In order to setup the Gateway part of our Client-Gateway you have to navigate to the periphery tree and on the “Miniserver communication” tab select “Fidelio server” from the ribbon.
 
-*[]*
+![gateway 101x300](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/06/gateway.png)
 
 Once the Fidelio server has been added, ensure that the correct address has been set in the property tab on the far left. This has to be the Fidelio server’s IP.#
 
-*[]*
+![Address of gateway 300x267](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/06/Address-of-gateway.png)
 
 In the Periphery tab, under the Fidelio server, another item would have appeared: Miniserver-gateway. Clicking on that will allow you to search for Miniservers on the left-hand side to add as a client into your Client-Gateway structure. This will list all Miniservers currently connected to the network. You can set the room number they are in here as well as the program type they will be using (set via a number). In the screenshot below I have set room 45 to use program 3 which could be for single bed rooms.
 
-*[]*
+![adding servers 300x221](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/06/adding-servers.png)
 
-*[Icon Exclamation Mark Loxone]*It is important to note that on the client side of things, you can only have 1 of each extension type. This is because serial numbers can’t be stored and so if you were to use two of the same then the server won’t be able to distinguish and it will cause problems. When naming your Miniserver try to give it an obvious name such as Room 1, Suite 103 etc.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+It is important to note that on the client side of things, you can only have 1 of each extension type. This is because serial numbers can’t be stored and so if you were to use two of the same then the server won’t be able to distinguish and it will cause problems. When naming your Miniserver try to give it an obvious name such as Room 1, Suite 103 etc.
 
 #### Distributing the programs
 
@@ -44,7 +45,7 @@ The program each client will be running has to be imported to the servers at lea
 
 Under the “Miniserver communication” tab in the periphery tree, you will have a button named “Gateway Client Update” that can be used to state when the client servers will receive their updates/config files. In order for this to actually work, the files have to be stored on the Gateway server. On top of this, this can also start a firmware update of all the Miniservers, updating them to the latest firmware versions.
 
-*[]*
+![0oiuytredszxcvbhjk 300x228](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/06/0oiuytredszxcvbhjk.png)
 
 ###
 

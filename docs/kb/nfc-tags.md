@@ -19,13 +19,15 @@ Via the settings you can select the menu item “NFC Smart Tags”.
 
 In the following window you can define the desired function for the NFC Tag.
 
-*[]*
+![NFCTags menu](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/NFCTags_menu.png)
 
 Now execute the switching operation or navigate to the desired position in the App.
 
 The  position is saved by clicking on the Tag icon (bottom right) and can be written to the NFC Tag in the next step.
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/NFCTags_save.jpg)
+[
+![NFCTags save](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/NFCTags_save.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/NFCTags_save.jpg)
 
 In order to perform an action, hold the smartphone to the NFC Tag.
 

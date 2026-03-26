@@ -11,6 +11,11 @@ The integrated lighting makes the Touch Pure Flex ideal for operation in low-lig
 
 
 
+![tflx variants rendering front](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflx_variants_rendering_front.png)
+
+
+
+
         [**Datasheet Touch Pure Flex 24V IP44 Air**](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Documents/Datasheet_TouchPureFlexIP44Air_100610,100611.pdf)
 
 
@@ -53,13 +58,28 @@ The integrated lighting makes the Touch Pure Flex ideal for operation in low-lig
 
 
 
+
+![tflxair conndia](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflxair_conndia.png)
+
+
+
     Connect the power supply (orange/white plug-in terminal).
 Gen.1: For battery operation, remove the orange/white plug-in terminal and insert two AAA batteries.
 
 
 
+
+![tflxairgen1 conndia](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflxairgen1_conndia.png)
+
+
+
     A self-adhesive cover is included in the delivery to protect against water. It must be attached above the terminals once connected.
 Two markings at the top edge of the housing help with positioning:
+
+
+
+
+![tflxair foil](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflxair_foil.png)
 
 
 
@@ -101,6 +121,16 @@ If the supply method is changed later, the device must be deleted from the progr
 
 
 
+![tflx edit](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflx_edit.png)
+
+
+
+
+
+![tflx configID](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflx_configID.png)
+
+
+
 
 After that, the Touch Pure Flex configuration is downloaded from Loxone and the button icons are visible in the dialog.
 If commands were defined in the Online Configurator, these are now also assigned to the device.
@@ -111,8 +141,23 @@ Alternatively, the individual button inputs are available after downloading the 
 
 
 
+
+![tflx settings](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflx_settings.png)
+
+
+
     In the following example, we select a lighting controller and the input for selecting the mood. The "MENU" command then enables a menu selection of the moods on the Touch Pure Flex via the display and the arrow keys.
 
+
+
+
+![tflx APICommandGenerator](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflx_APICommandGenerator.png)
+
+
+
+
+
+![tflx settings command](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflx_settings_command.png)
 
 
 
@@ -122,8 +167,18 @@ The Touch Pure Flex can now be dropped on the desired Lighting Controller; the A
 
 
 
+![tflx API](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflx_API.png)
+
+
+
+
 In the Simulation/Liveview a representation of the Touch Pure Flex can be opened.
 This way the created commands can be tested:
+
+
+
+
+![tflx testing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflx_testing.png)
 
 
 
@@ -154,6 +209,11 @@ When battery powered, the display and status LEDs cannot be controlled because t
 
     If the buttons on the Touch Pure Flex are unresponsive or not functioning correctly, execute the [device command](https://www.loxone.com/help/device-command/) **TouchForceUpdate**. After sending the command, wait a few seconds and check if the buttons are functioning properly.
 For battery-operated Touch Pure Flex Air devices, ensure the device is [awake](https://www.loxone.com/help/air/#AirWake) before sending the command.
+
+
+
+
+![TouchForceUpdate](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TouchForceUpdate.png)
 
 
 

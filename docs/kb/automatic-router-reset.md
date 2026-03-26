@@ -30,7 +30,9 @@ To avoid always having to make the trip to where the router is situated you can 
 
 [
 
-](//www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-14-Internet-connection-monitoring-2.png)[*[Automatic Router Reset - Loxone Config Screenshot]*](//www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-14-Internet-connection-monitoring-2.png)
+](//www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-14-Internet-connection-monitoring-2.png)[
+![Automatic Router Reset - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-14-Internet-connection-monitoring-2.png)
+](//www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-14-Internet-connection-monitoring-2.png)
 
 ### Download the sample file:
 
@@ -44,7 +46,7 @@ To avoid always having to make the trip to where the router is situated you can 
 
 
 
-| *[]* | Focus Series: Automatic Router Reboot Learn how to check if a router is connected to the internet and if it is not, then how to automatically reboot it… View Video >> |
+| ![IC play button CTA](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/06/IC_play-button-CTA.png) | Focus Series: Automatic Router Reboot Learn how to check if a router is connected to the internet and if it is not, then how to automatically reboot it… View Video >> |
 | --- | --- |
 
 

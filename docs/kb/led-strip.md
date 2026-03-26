@@ -16,4 +16,4 @@ Depending on the type of project you are looking at the best products to use wil
 
 | New Build | Retrofit |
 | --- | --- |
-| *[Example New Build House]* | *[Example Retrofit House]* |
+| ![Example New Build House](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/Example-New-Build-House.jpg) | ![Example Retrofit House](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/Example-Retrofit-House.jpg) |

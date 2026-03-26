@@ -38,6 +38,11 @@ The **Extension** features 8 potential free relay outputs, 12 digital inputs, 4 
 
 
 
+
+![100002 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100002 install.png)
+
+
+
     Connect the power supply and Link communication to the Miniserver.
 
 
@@ -45,7 +50,7 @@ The **Extension** features 8 potential free relay outputs, 12 digital inputs, 4 
 
 
 
-|  | Many electronic loads such as ballasts, power supplies, LED drivers and high voltage LED lamps can draw high inrush currents of over 20A. Use inrush current limiters or a coupling relay with the necessary current rating for such cases. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Many electronic loads such as ballasts, power supplies, LED drivers and high voltage LED lamps can draw high inrush currents of over 20A. Use inrush current limiters or a coupling relay with the necessary current rating for such cases. |
 | --- | --- |
 
     If the devices are connected to different power supplies, it is essential that the GNDs are interconnected.

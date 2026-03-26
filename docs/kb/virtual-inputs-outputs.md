@@ -18,19 +18,21 @@ Virtual inputs can either be digital or analog, this is set in the Properties wi
 
 Applications: control of lighting, blinds, music, etc. The virtual equivalent of a single retractive switch on the wall.
 
-*[Loxone Config Digital Virtual Output Properties ]*
+![Loxone Config Digital Virtual Output Properties ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Virtual_Output_Digital.png)
 
 #### Display
 
 Under the properties section Display for **both** digital and analogue virtual inputs, you can enter the desired digits, input type and unit for displaying and setting the value. Please always the use the help window in Loxone Config, as shown below:
 
-## *[Loxone Config Digital Virtual Output Properties Display]*
+##
+![Loxone Config Digital Virtual Output Properties Display](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Virtual_Output_Digital_Display.png)
 
 #### OPTION 2: USE AS AN ANALOGUE INPUT
 
 Unticking the ‘Use as digital input’ box means the virtual input will be used as an analogue input. You can set a minimum and maximum value and select the default value (the value on startup). This is useful for editing run times of fans, target flow temperatures etc on the user interface.
 
-## *[Loxone Config Analogue Virtual Output Properties ]*
+##
+![Loxone Config Analogue Virtual Output Properties ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Virtual_Output_Analogue.png)
 
 #### Validation
 
@@ -58,15 +60,16 @@ In the periphery window click on virtual outputs and then from the drop down lis
 
 In the Properties window of the virtual output connector the protocol, address and port of the device to be controlled can be entered. For http, tcp and udp you need to include the protocol before the address is entered (e.g. tcp://192.168.1.199:23).
 
-*[Virtual Output Connector Loxone Config]*
+![Virtual Output Connector Loxone Config](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Virtual_Output_Connector.png)
 
-*[Icon Exclamation Mark Loxone]*Please note that Telnet connections that require authentication are not supported.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+Please note that Telnet connections that require authentication are not supported.
 
 #### STEP 2: VIRTUAL OUTPUT CONNECTOR FOR UDP
 
 If UDP capable devices are being controlled, the protocol must be entered into the address box in the Properties window. See our documentation on [communication with UDP](https://www.loxone.com/enen/kb/communication-with-udp/) for more information.
 
-*[]*
+![Screenshot 2](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/Screenshot_2.png)
 
 #### STEP 3: ADD VIRTUAL OUTPUT COMMAND
 
@@ -74,23 +77,24 @@ Now you can add virtual output commands to the virtual output connector you just
 
 In the properties of the command you will see several fields for the command. Where you enter information depends on the device you are trying to control.
 
-*[Loxone Config Virtual Output UDP Properties]*
+![Loxone Config Virtual Output UDP Properties](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Virtual_Output_UDP_Properties.png)
 
-*[Icon Exclamation Mark Loxone]*Tip: You can use the program [Hercules](http://www.hw-group.com/products/hercules/index_en.html) to mimic a device receiving commands so you can check the command you are sending from Loxone is sending the correct information.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+Tip: You can use the program [Hercules](http://www.hw-group.com/products/hercules/index_en.html) to mimic a device receiving commands so you can check the command you are sending from Loxone is sending the correct information.
 
 #### EXAMPLE 1: WAKE ON LAN
 
 With the Miniserver, you can also start your computer using Wake on LAN. To do this, create a virtual output connector with the address ‘wol://’.
 
-*[Loxone Config Wake On Lan UDP]*
+![Loxone Config Wake On Lan UDP](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Virtual_Wake_On_Lan_1.png)
 
 Now create a virtual command for the output connector and enter the MAC address of your network interface in the ‘Command when ON’ section.
 
-*[Loxone Config Wake On Lan UDP 2]*
+![Loxone Config Wake On Lan UDP 2](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Virtual_Wake_On_Lan_2.png)
 
 Before the computer using Wake on LAN can be started, this function must be set in the bios of the computer or enabled in the driver properties:
 
-*[Computer LAN Card Properties Wake On Lan]*
+![Computer LAN Card Properties Wake On Lan](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Computer_Wake_On_Lan.png)
 
 #### EXAMPLE 2: SNMP TRAPS
 
@@ -104,4 +108,5 @@ Then use a virtual output command to specify the particular notification you wan
 
 Please note that receiving SNMP messages is not currently supported.
 
-*[Icon Exclamation Mark Loxone]*You can find out more about SNMP on [this Wikipedia page](https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol).
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+You can find out more about SNMP on [this Wikipedia page](https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol).

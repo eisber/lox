@@ -130,8 +130,18 @@ This block can be used to track and display sessions in an Exosphere database, s
 
 
 
+
+![Exo DbConSAPI](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_DbConSAPI.png)
+
+
+
     Double-clicking on the block opens the "Database Connector Configuration". Here, the contents of the columns can be defined.
 If an option is grayed out, the datatype is not compatible with it.
+
+
+
+
+![Exo DbConSColumns](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_DbConSColumns.png)
 
 
 
@@ -139,7 +149,17 @@ If an option is grayed out, the datatype is not compatible with it.
 
 
 
+
+![Exo DbConSUI](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_DbConSUI.png)
+
+
+
     The start and end of a charging session are transferred to the inputs "SStart" and "SEnd". The charging user is forwarded to the block via the "Uid" input.
 
 
     The price of the charging session is transmitted to the input "CI1."
+
+
+
+
+![Exo DbConSExample](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_DbConSExample.png)

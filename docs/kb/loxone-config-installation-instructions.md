@@ -24,37 +24,37 @@ The first thing you need to do is to download the Loxone Config program. You can
 
 Once you have downloaded Loxone Config the next step is to go into your downloads and double click on the executable file (ends with .exe). Click Yes when Windows asks if you would like to run the file to start the install wizard.
 
-*[Config Run EXE File]*
+![Config Run EXE File](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Computer_Run_Exe.png)
 
 #### STEP 3: CHOOSE LANGUAGE AND START WIZARD
 
 The next step is to choose the language for the Config software. If you choose English then the default is ENG UK English. Click OK and then choose Next in the window after that.
 
-*[Config Install Select Language]*
+![Config Install Select Language](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Computer_Setup_Language.png)
 
 #### STEP 4: LOCATION FOR FILES
 
 Choose a location for the program files to be saved. You can also rename the folder which is how you install multiple versions, see further down the page for information on how to do this.
 
-*[Setup File Destination]*
+![Setup File Destination](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Computer_Setup_Destination.png)
 
 #### STEP 5: LOCATION FOR SHORTCUTS
 
 Next choose where the program’s shortcuts are saved. Again you can rename the folder for when installing multiple versions.
 
-*[Setup Select Start Menu Folder]*
+![Setup Select Start Menu Folder](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Computer_Setup_Start_Menu_Folder.png)
 
 #### STEP 6: DESKTOP ICON
 
 This step allows you to say whether you want the wizard to place a shortcut on your desktop or not.
 
-*[Setup Select Desktop Icon]*
+![Setup Select Desktop Icon](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Computer_Setup_Desktop_Icon.png)
 
 #### STEP 7: INSTALL
 
 Finally you can now see an overview of the folder locations and any additional tasks. Click the Install button to finish the wizard.
 
-*[Loxone Config Installation]*
+![Loxone Config Installation](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Computer_Setup_Install.png)
 
 ## APPLE MACBOOK
 

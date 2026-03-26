@@ -18,7 +18,9 @@ A Loxone Smart Socket Air allows you to monitor the actual power consumption of 
 
 ### Configuration:
 
-[*[Notification when washing machine is done - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Full-Config.png)
+[
+![Notification when washing machine is done - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Full-Config.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Full-Config.png)
 
 ### Download the sample file:
 

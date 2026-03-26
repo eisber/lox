@@ -20,19 +20,20 @@ In the central block you can see all the lighting controllers and automatic blin
 
 It is very simple to start using the Central block to implement global functions. Simply connect the virtual inputs that you would have connected to memory flags to all the different inputs to the Central block.
 
-*[]*
+![Replacement Basic setup 300x160](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/Replacement-Basic-setup.png)
 
 Then double click on the block and choose which blocks you would like to control through the Central block by ticking Output. If you want to use a block as an input to the Central block, for example triple clicking on a Lighting controller turns all the lights off, tick Input.
 
-*[Example Screenshot Of The Inputs and Outputs Of Central Function Block In Loxone Config]*
+![Example Screenshot Of The Inputs and Outputs Of Central Function Block In Loxone Config](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Central_Block_Inputs_Outputs.png)
 
 For example the virtual input All blinds up now triggers the central block which will then tell all the Automatic blinds to go to up position (output Cu on the Central block). Any Automatic blind blocks that are not ticked in the Central block will not be affected by the All blinds up virtual input. This is useful because if you wanted to turn all the lights off but perhaps wanted to leave a night light lamp on in a nursery.
 
 Once you have ticked a function block in the Central block that function block will have a small “plus” mark and when hovering over the mark a small tool tip appears telling you that it’s linked to a Central block.
 
-*[]*
+![Being controlled by the central block 1 300x139](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/Being-controlled-by-the-central-block-1.png)
 
-*[Icon Exclamation Mark Loxone]*Inputs that come from the central block are not prevented from working by the Dis input on the block. For example, if the Dis input is active on the Lighting controller block, an all lights off command sent from the Central block would still work.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+Inputs that come from the central block are not prevented from working by the Dis input on the block. For example, if the Dis input is active on the Lighting controller block, an all lights off command sent from the Central block would still work.
 
 ## SUPPORTED FUNCTION BLOCKS
 

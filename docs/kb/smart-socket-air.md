@@ -40,6 +40,11 @@ The Smart Socket Air is a switchable socket with measurement of temperature, pow
 
 
 
+![100115 learnbutton](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100115 learnbutton.png)
+
+
+
+
 ---
 
 
@@ -175,7 +180,7 @@ The Smart Socket Air is a switchable socket with measurement of temperature, pow
 
 
 
-|  | Warning! Before using the product, please follow the safety instructions below. These serve to prevent hazards and personal injury and property damage. |
+| ![critical](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/critical.png) | Warning! Before using the product, please follow the safety instructions below. These serve to prevent hazards and personal injury and property damage. |
 | --- | --- |
 - If the case or the power contacts are damaged, do not operate the Smart Socket Air.
 - The Smart Socket Air may only be operated in closed, dry rooms.

@@ -45,6 +45,11 @@ For installation in the UK, please refer to the use of the EU back box for mount
 
 
 
+![100155 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100155 install.png)
+
+
+
+
 ---
 
 
@@ -71,8 +76,13 @@ For installation in the UK, please refer to the use of the EU back box for mount
 
 
 
-|  | Please only use the lithium battery provided by Loxone, as these will ensure an exact fit! |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Please only use the lithium battery provided by Loxone, as these will ensure an exact fit! |
 | --- | --- |
+
+
+
+![100155 batt](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100155 batt.png)
+
 
 
 
@@ -182,4 +192,6 @@ The Loxone Touch is a slimline product, as such it should be mounted on a Europe
 
 Additionally for the Touch Air please do not use metal back boxes as these can cause communication issues on the Air signal which may cause excess data package retries. This could lead to higher energy consumption than normal requiring more frequent battery replacements.
 
-[*[European Dry Lining Backbox]*](https://shop.loxone.com/enuk/circular-dry-lining-box.html)
+[
+![European Dry Lining Backbox](https://www.loxone.com/enen/wp-content/uploads/sites/3/2021/04/Orange-circular-back-box-300x300-1.jpg)
+](https://shop.loxone.com/enuk/circular-dry-lining-box.html)

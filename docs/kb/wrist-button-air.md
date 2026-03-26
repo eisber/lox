@@ -36,7 +36,17 @@ Make sure that the top and bottom are correctly aligned with each other, as show
 
 
 
+
+![100496 insertbatt](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100496 insertbatt.png)
+
+
+
     Then fix the lower part to the upper part with the enclosed screws:
+
+
+
+
+![100496 bottomscrews](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100496 bottomscrews.png)
 
 
 
@@ -90,6 +100,11 @@ In order to control the LED without delay, the wake-up function is activated in 
 
     To replace the battery, open the unit by removing the four screws (Torx 5) on the bottom.
 Remove the top section from the bottom and insert a new CR2032 battery in the bottom.
+
+
+
+
+![100496 insertbatt](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100496 insertbatt.png)
 
 
 

@@ -16,7 +16,7 @@ Source: https://www.loxone.com/enen/kb/inrush-current/
 
 Inrush current, sometimes also referred to as input surge current, start-up current or switch-on surge, is the maximum current drawn for the instant when an electrical device is switched on. Devices such as transformers may draw several times their normal working current when first powered up. This will last for only a short period of time but it is nevertheless an important effect that needs to be considered.
 
-*[]*
+![cached](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/01/cached.jpeg)
 
 **source: www.eldoled.com*
 

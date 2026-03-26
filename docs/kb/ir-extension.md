@@ -32,6 +32,16 @@ The **IR Extension** is designed to control up to 8 IR modules and is used to co
 
 
 
+![100022 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100022 install.png)
+
+
+
+
+
+![100023 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100023 install.png)
+
+
+
     Connect the power supply, Link communication to the Miniserver and the data lines connecting the IR Modules.
 
 

@@ -37,7 +37,9 @@ An effective emergency exit monitoring system enables the caretaker, for example
 
 ### Configuration:
 
-[*[Emergency Exit Monitoring - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-50-Keep-Emergency-Ways-Free.png)
+[
+![Emergency Exit Monitoring - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-50-Keep-Emergency-Ways-Free.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-50-Keep-Emergency-Ways-Free.png)
 
 ### Download the sample file:
 

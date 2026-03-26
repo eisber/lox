@@ -21,7 +21,7 @@ Source: https://www.loxone.com/enen/kb/enocean/
 - Protection: IP20
 - Ambient temperature: 0 to 50°C
 
-*[EnOcean Extension Layout]*
+![EnOcean Extension Layout](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Diagram_EnOcean_Extension_Layout.png)
 
 					**Please note:** The repeater function of the EnOcean protocol is not supported.
 
@@ -39,7 +39,7 @@ Source: https://www.loxone.com/enen/kb/enocean/
 
 ## DIMENSIONS
 
-*[EnOcean Extension Layout]*
+![EnOcean Extension Layout](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Diagram_EnOcean_Extension_Dimensions.png)
 
 ## ENOCEAN DEVICES
 

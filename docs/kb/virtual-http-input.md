@@ -14,7 +14,7 @@ With the Virtual HTTP Input, values can be read from a web page. This facilitate
 
 
 
-|  | Automated extraction of data from websites (Web scraping) and any subsequent use of the extracted data should be conducted in accordance with the website's terms of service, local regulations and applicable standards.Loxone does not assume liability for any consequences arising from non-compliance. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Automated extraction of data from websites (Web scraping) and any subsequent use of the extracted data should be conducted in accordance with the website's terms of service, local regulations and applicable standards.Loxone does not assume liability for any consequences arising from non-compliance. |
 | --- | --- |
 
 
@@ -58,9 +58,19 @@ With the Virtual HTTP Input, values can be read from a web page. This facilitate
 
 
 
+
+![httpInput Add](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/httpInput_Add.png)
+
+
+
     The web address, a suitable polling cycle, timeout and the number of permitted timeouts are defined in the properties window.
 In this example, the value of the "Temperature" input is retrieved from the Miniserver using a web service command.
 If user authentication is required, the user name and password can be entered as follows: http://User:Password@IP-address
+
+
+
+
+![httpInput properties](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/httpInput_properties.png)
 
 
 
@@ -72,7 +82,17 @@ Any number of commands can be created to retrieve values.
 
 
 
+
+![httpInput AddCommand](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/httpInput_AddCommand.png)
+
+
+
     The search pattern is defined in the settings. Therefore, an editing window can be opened, here the source code of the website is displayed to make it easier to navigate to the desired value.
+
+
+
+
+![httpInput CommRec](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/httpInput_CommRec.png)
 
 
 
@@ -160,6 +180,11 @@ Any number of commands can be created to retrieve values.
 
 
 
+
+![commrec priceoverview](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/commrec_priceoverview.png)
+
+
+
     Since the text "Natural Gas" is constant, we can jump to this position in the text. To extract the current price, we have to skip the time indication. There are several options to do so:
 
 
@@ -168,10 +193,25 @@ With \d single digits and with \a single characters can be skipped:
 
 
 
+
+![commrec var1](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/commrec_var1.png)
+
+
+
     **Variant 2 via \#\w**
 With \# a number and with \w any word can be skipped:
 
 
 
+
+![commrec var2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/commrec_var2.png)
+
+
+
     **Variant 3 via \s8**
 Since in this example the time will always have the same number of digits and characters, they can be skipped with \s8:
+
+
+
+
+![commrec var3](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/commrec_var3.png)

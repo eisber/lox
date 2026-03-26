@@ -8,7 +8,7 @@ Source: https://www.loxone.com/enen/kb/configuring-extensions/
 
 To add one or more extensions to the program, first ensure that the Extensions are correctly wired to the Miniserver, [click here](https://www.loxone.com/enen/kb/wiring-basics/) to find out how. Then conduct a search in Loxone Config by pressing the button “Extension Search”, which will list all of the connected extensions. You can highlight a single extension, give it a name and then click Create device which will add it to your configuration. Alternatively, you can click on ‘Create all Devices’ which will add all the connected extensions in to the program with the correct serial numbers.
 
-*[Extension Search]*
+![Extension Search](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Extension_Search.png)
 
 #### IDENTIFY DEVICE
 
@@ -20,17 +20,18 @@ If there is no physical connection to the Miniserver then it cannot be found in 
 
 Select the ‘Add Extension’ drop-down menu on the Miniserver tab and select the required extension, then fill in the serial number in the properties.
 
-*[Add Extension Manually]*
+![Add Extension Manually](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Add_Extension_Manually.png)
 
 #### EXTENSION REPLACEMENT
 
 If an extension has been replaced you need to add the serial number in the properties. Click on the extension in the periphery tree. Enter the serial number of the extension in the properties section.
 
-*[Icon Exclamation Mark Loxone]***Serial number**
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+**Serial number**
 
 The serial number is on the back of your extension. You can find the number just below the barcode (see picture).
 
-*[Extension Barcode]*
+![Extension Barcode](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Diagram_Extension_Barcode.jpg)
 
 An Extension can also be replaced in the Extension Search.
 
@@ -38,4 +39,4 @@ Install the new Extension and run the Extension Search. Highlight the Extension 
 
 Finally press “OK” and save your program into the Miniserver. The Extension has now been replaced.
 
-*[Replace Extension]*
+![Replace Extension](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Replace_Extension.png)

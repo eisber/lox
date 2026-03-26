@@ -33,7 +33,9 @@ Hardware:
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase-AC-ChildMode.jpg)
+[
+![UseCase AC ChildMode](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase-AC-ChildMode.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase-AC-ChildMode.jpg)
 
 ### Download the sample file
 

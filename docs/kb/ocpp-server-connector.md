@@ -52,7 +52,17 @@ OCPP (Open Charge Point Protocol) enables integration with public charging stati
 
 
 
+
+![ocpp add](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ocpp_add.png)
+
+
+
     Specify settings for OCPP Server Connector plugin and Charging Point. Add a separate Charging Point for each Wallbox:
+
+
+
+
+![ocpp settings](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ocpp_settings.png)
 
 
 
@@ -71,6 +81,11 @@ OCPP (Open Charge Point Protocol) enables integration with public charging stati
 
 
 
+![ocpp example wallbox](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ocpp_example_wallbox.png)
+
+
+
+
 ### Wallbox with Wallbox Manager
 
     Connect the NFC Code Touch Blocks outputs to either "Ec" or "Ecp" of the Wallbox function block, depending on if Eco or Prio Mode – or both should be usable.
@@ -78,7 +93,12 @@ OCPP (Open Charge Point Protocol) enables integration with public charging stati
 
 
 
-|  | Connecting a charging station (NFC/wallbox) to multiple backends simultaneously is not supported. |
+![ocpp example wallboxmanager](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ocpp_example_wallboxmanager.png)
+
+
+
+
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Connecting a charging station (NFC/wallbox) to multiple backends simultaneously is not supported. |
 | --- | --- |
 
 
@@ -176,6 +196,11 @@ The charging station checks for device errors on startup and reports a 'faulted'
 
 
 
+![ocpp nfchistory](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ocpp_nfchistory.png)
+
+
+
+
 ---
 
 
@@ -189,6 +214,11 @@ The charging station checks for device errors on startup and reports a 'faulted'
 
 
     Standalone (no Wallbox Manager):
+
+
+
+
+![ocpp wallbox](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ocpp_wallbox.png)
 
 
 

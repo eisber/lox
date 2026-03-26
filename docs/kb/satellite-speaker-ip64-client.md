@@ -37,20 +37,35 @@ This active 2-way satellite loudspeaker can be placed in almost any location.
 
 
 
+![Sat64ClientTerminals](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Sat64ClientTerminals.png)
+
+
+
+
 Via the Master-Client Interface (MCI), the Client Speaker is connected in a line comprising one Master Speaker and up to 20 Client Speakers:
 
 
 
 
-|  | The audio signal is transmitted digitally from speaker to speaker. The system compensates for differences in signal transit time and therefore only works with the wiring shown in a linear configuration.On the MCI data lines, there must be no branching or parallel connection to additional speakers! |
+![MCISystemWiring](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/MCISystemWiring.png)
+
+
+
+
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The audio signal is transmitted digitally from speaker to speaker. The system compensates for differences in signal transit time and therefore only works with the wiring shown in a linear configuration.On the MCI data lines, there must be no branching or parallel connection to additional speakers! |
 | --- | --- |
 
 
-|  | When only a few speakers are used, the power lines can also be run in a linear fashion.When using many speakers in a line, voltage drop becomes the limiting factor. This can be addressed by using wires with a larger cross-section, shorter cables, or additional 24V power lines. It is essential to always connect the grounds of different power lines. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | When only a few speakers are used, the power lines can also be run in a linear fashion.When using many speakers in a line, voltage drop becomes the limiting factor. This can be addressed by using wires with a larger cross-section, shorter cables, or additional 24V power lines. It is essential to always connect the grounds of different power lines. |
 | --- | --- |
 
 
 The connection cable must be fixed for strain relief:
+
+
+
+
+![SatSpkStrainRelief](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/SatSpkStrainRelief.png)
 
 
 
@@ -68,12 +83,17 @@ The connection cable must be fixed for strain relief:
 
 
 
+
+![ClientSpkSearch](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ClientSpkSearch.png)
+
+
+
     When you click on one of the found speakers, it will identify itself with an acoustic signal. This allows you to assign and name them.
 By clicking on the right arrow, the Client Speakers are added to the programming. They are then available in the peripheral tree and ready for use in the programming after being saved to the Miniserver.
 
 
 
-|  | The Clients are automatically indexed according to the order of connection before pairing. This only takes a few seconds and is necessary for synchronizing the speakers. The order of connection must not be changed after pairing, as this would require re-pairing. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The Clients are automatically indexed according to the order of connection before pairing. This only takes a few seconds and is necessary for synchronizing the speakers. The order of connection must not be changed after pairing, as this would require re-pairing. |
 | --- | --- |
 
 
@@ -102,6 +122,11 @@ A room with limited space
 
 
 
+
+![ori ex1](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ori_ex1.png)
+
+
+
     **Result:**
 The speakers always behave identically in terms of selected source and volume.
 
@@ -122,6 +147,11 @@ Small restaurant with a bar, the two areas are acoustically adjacent
 
     **Programming:**
 2 Audio Player function blocks, 1x for restaurant, 1x for bar, both combined in a fixed group:
+
+
+
+
+![ori ex2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ori_ex2.png)
 
 
 
@@ -148,6 +178,11 @@ One Client Speaker is connected to each respective Master Speaker per room and p
 
     **Programming:**
 1 Audio Player function block per room:
+
+
+
+
+![ori ex3](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ori_ex3.png)
 
 
 

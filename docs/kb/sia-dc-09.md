@@ -11,7 +11,7 @@ Using the SIA DC-09 protocol, the Miniserver can send a predefined message to a 
 
 
 
-|  | The Miniserver Gen. 1 does not support the SIA DC-09 protocol! |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The Miniserver Gen. 1 does not support the SIA DC-09 protocol! |
 | --- | --- |
 
 
@@ -63,8 +63,18 @@ Using the SIA DC-09 protocol, the Miniserver can send a predefined message to a 
 
 
 
+
+![SIAcreatevo](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/SIAcreatevo.png)
+
+
+
     Now the SIA server address must be specified in the settings.
 The output can then be used, for example, on the text output of an alarm block:
+
+
+
+
+![SIAconfig](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/SIAconfig.png)
 
 
 

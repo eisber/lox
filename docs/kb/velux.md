@@ -34,11 +34,15 @@ Connect the common wire(s) to one contact of both relays, and then the “up” 
 
 **Velux KLF 050**
 
-[*[Velux-KLF-200]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Velux-KLF-200.png)
+[
+![Velux-KLF-200](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Velux-KLF-200.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Velux-KLF-200.png)
 
 **Velux KLF 200**
 
-[*[Velux-KLF-050]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Velux-KLF-050.png)
+[
+![Velux-KLF-050](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Velux-KLF-050.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Velux-KLF-050.png)
 
 **Important: **For the Velux KLF 200, the 5 input channels (labelled A to E) are related to the 5 devices/groups which have been programmed into the device. The image above shows the correct wiring for input A. Repeat this for the other inputs with additional relays as required.
 
@@ -46,21 +50,23 @@ Connect the common wire(s) to one contact of both relays, and then the “up” 
 
 In Config, rename the relay outputs, and assign them an appropriate room and category:
 
-*[]*
+![Naming Relay Outputs](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Naming-Relay-Outputs.png)
 
 Create a “Skylight” block, name it and ensure it is in the appropriate room and category. Attach the “Open” relay output to “Qo”, and the “Close” relay output to “Qc”. You can also attach the relevant inputs to trigger the block if required – in this example we are using the top-left and bottom-left touch points on a Touch Pure:
 
-*[]*
+![Skylight Function Block](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Skylight-Function-Block.png)
 
 Please be aware that, by default, the Skylight block outputs 5s long pulses on “Qo” and “Qc”. However, the Velux hardware requires an input pulse shorter than 1s in order to fully open or fully close the window. As such, ensure you adjust the “To” and “Tc” parameters accordingly:
 
-***[]***
+**
+![Parameters](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Parameters.png)
+**
 
 ### **Additional Functionality**
 
 As described earlier, integrating your Velux roof windows into Loxone can give a range of other benefits. In this example, we’re using the shading output of the Intelligent Room Controller – “Qs” – to trigger the roof windows to open if the temperature in the room rises above the shading setpoint, and to close when the temperature falls back down again. We’re also forcing the windows to close whenever it rains (as detected by a Weather Station Tree) or when the burglar alarm is armed. The “Wp” input on the Skylight block ensures that, once they are closed, nothing else other than manual interaction with the app can open them.
 
-*[]*
+![Additional Functionality Velux Intergration](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Additional-Functionality-Velux-Intergration.png)
 
 ### Download the example Config file:
 

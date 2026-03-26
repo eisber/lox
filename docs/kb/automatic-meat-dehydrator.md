@@ -29,7 +29,9 @@ If a measured value is outside the desired range, a push notification will be se
 
 ### Configuration:
 
-[*[Automatic Meat Dehydrator - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-94-DIY-Draying-Champer.png)
+[
+![Automatic Meat Dehydrator - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-94-DIY-Draying-Champer.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-94-DIY-Draying-Champer.png)
 
 ### Download the sample file:
 

@@ -89,3 +89,8 @@ Multiple function push-button with up to four functions, pulse after click
 
 
 ## Timing Diagram
+
+
+
+
+![LongClick timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/LongClick-timediag.png)

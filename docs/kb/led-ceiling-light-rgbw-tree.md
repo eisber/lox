@@ -39,6 +39,11 @@ The Loxone LED Ceiling Light RGBW Tree is a surface mounted 24VDC fixture with w
 
 
 
+
+![100288 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100288 install.png)
+
+
+
     Then place the lamp on the base plate. Make sure that the magnets are positioned correctly and that no wires are jammed.
 
 
@@ -57,6 +62,11 @@ The Loxone LED Ceiling Light RGBW Tree is a surface mounted 24VDC fixture with w
 
     For lights, a commissioning mode is active when the devices are supplied with power and have not yet been paired.
 In this mode, the device indicates whether it has been connected correctly and, if the connection is successful, provides lighting until it has been paired.
+
+
+
+
+![Tree CommissioningMode CeilingLightRGBW](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Tree_CommissioningMode_CeilingLightRGBW.png)
 
 
 

@@ -38,6 +38,11 @@ The Room Comfort Sensor Air is used to measure temperature and humidity in rooms
 
 
 
+
+![100264 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100264 install.png)
+
+
+
     The available functions differ depending on whether the device is battery operated or connected to an external power supply. This is determined during pairing. The device must therefore be paired in the same supply method in which it is to be operated later.
 If the supply method is changed later, the device must be deleted from the configuration and paired again.
 

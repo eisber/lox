@@ -25,7 +25,9 @@ Two [Presence Sensors](https://shop.loxone.com/enuk/presence-sensor-tree.html) a
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Nr.-101-Running-Stairway-Light-New.jpg)
+[
+![Nr. 101 Running Stairway Light New](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Nr.-101-Running-Stairway-Light-New.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Nr.-101-Running-Stairway-Light-New.jpg)
 
 ### Download the sample file:
 

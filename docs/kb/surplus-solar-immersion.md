@@ -47,7 +47,9 @@ Due to this all being controlled from the heart of the installation – the Mini
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-UseCase-Immersion-Config.jpg)
+[
+![PH EN UseCase Immersion Config 800x355](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-UseCase-Immersion-Config.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-UseCase-Immersion-Config.jpg)
 
 ### Download the sample Config file:
 

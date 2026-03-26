@@ -154,7 +154,17 @@ Only when this minimum state of charge is reached or more power than the maximum
 
 
 
+
+![EnergyManager properties](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/EnergyManager_properties.png)
+
+
+
     Double click on the block to open the configuration window, here the preparation time, minimum run-time, switch-on power and the rated power of the loads must be specified:
+
+
+
+
+![EnergyManager edit](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/EnergyManager_edit.png)
 
 
 
@@ -173,3 +183,8 @@ Thereby, loads are only switched off after their minimum run-time has elapsed.
 
 
     If a daily minimum run-time has been defined and not reached, loads are activated even without a current energy surplus in order to reach the minimum run-time/day by the defined time.
+
+
+
+
+![EnergyManager example](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/EnergyManager_example.png)

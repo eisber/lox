@@ -68,4 +68,14 @@ The Virtual Status is used to display values in the user interface.
 
 
 
+![vstate config](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/vstate_config.png)
+
+
+
+
+
+![vstate app](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/vstate_app.png)
+
+
+
     Activating the statistics in the Virtual Status has the advantage that the data remains saved if a sensor or the logic before the block is changed.

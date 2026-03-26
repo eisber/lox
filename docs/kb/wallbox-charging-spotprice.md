@@ -26,7 +26,9 @@ This means that the car can be connected in the evening, the “Comfort” charg
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/Use-Case-110-Wallbox-Charging-Spotprice.jpg)
+[
+![Use Case 110 Wallbox Charging Spotprice](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/Use-Case-110-Wallbox-Charging-Spotprice.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/Use-Case-110-Wallbox-Charging-Spotprice.jpg)
 
 ### Download the sample file:
 

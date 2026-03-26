@@ -26,7 +26,9 @@ With the [NFC Code Touch](https://shop.loxone.com/enuk/nfc-code-touch.html), any
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-8-Stats-and-Data-Analysis.png)
+[
+![Use Case 8 Stats and Data Analysis](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-8-Stats-and-Data-Analysis.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-8-Stats-and-Data-Analysis.png)
 
 ### Download the sample file:
 

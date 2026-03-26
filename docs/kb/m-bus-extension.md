@@ -8,7 +8,7 @@ The M-Bus Extension serves as an M-Bus master, allowing for the integration of u
 
 
 
-|  | Several electric utility company meters work as M-Bus master, like the M-Bus Extension.Meters of this type are not compatible, because only one master is allowed at the M-Bus. Also the M-Bus Extension does not support encryption. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Several electric utility company meters work as M-Bus master, like the M-Bus Extension.Meters of this type are not compatible, because only one master is allowed at the M-Bus. Also the M-Bus Extension does not support encryption. |
 | --- | --- |
 
 
@@ -38,6 +38,11 @@ The M-Bus Extension serves as an M-Bus master, allowing for the integration of u
 
     The M-Bus Extension is installed on a DIN rail in a suitable enclosure.
 Connect the M-Bus Extension to the 24V supply and Loxone Link, as well as the devices to the M-Bus.
+
+
+
+
+![mbus connect](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mbus_connect.png)
 
 
 
@@ -72,6 +77,11 @@ Shielding is not necessary in common installations and can even have negative ef
 
 
     To search for M-Bus devices, first click on the M-Bus Extension in Loxone Config, and then activate **M-Bus search**:
+
+
+
+
+![mbus search](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mbus_search.png)
 
 
 
@@ -142,6 +152,11 @@ Then [assign a different baud rate](#baudrate) to the device. Repeat this step b
 
     Even if M-Bus devices work with different baud rates, they can be operated together.
 If necessary, the baud rate of M-Bus devices can be changed in Loxone Config:
+
+
+
+
+![mbus baudrate](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/mbus_baudrate.png)
 
 
 

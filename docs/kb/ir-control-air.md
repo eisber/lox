@@ -8,7 +8,7 @@ The Loxone IR Control Air can be used to control infrared-capable devices such a
 
 
 
-|  | Bang & Olufsen and Daikin remote controls are not compatible with IR Control Air. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Bang & Olufsen and Daikin remote controls are not compatible with IR Control Air. |
 | --- | --- |
 
 
@@ -48,6 +48,11 @@ The Loxone IR Control Air can be used to control infrared-capable devices such a
 
 
 
+![100141 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100141 install.png)
+
+
+
+
 ---
 
 
@@ -77,6 +82,11 @@ The Loxone IR Control Air can be used to control infrared-capable devices such a
 
 
 
+
+![100141 10.3 remote templates](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100141 10.3 remote templates.png)
+
+
+
     **Pair remote control:** If there is no template for the remote control, it must be paired manually. Select the IR Control Air in the peripheral tree and then click on "Learn button". Please read and confirm the information displayed in the window.
 
 
@@ -102,7 +112,7 @@ The Loxone IR Control Air can be used to control infrared-capable devices such a
 
 
 
-|  | Beware of possible interference from monitors, bright lighting, fluorescent lamps or direct sunlight. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Beware of possible interference from monitors, bright lighting, fluorescent lamps or direct sunlight. |
 | --- | --- |
 
 

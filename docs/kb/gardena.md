@@ -8,7 +8,7 @@ The Gardena plugin allows the integration of compatible devices connected via a 
 
 
 
-|  | A Gardena account is required for use! Please note the Miniserver Gen. 1 is not supported. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | A Gardena account is required for use! Please note the Miniserver Gen. 1 is not supported. |
 | --- | --- |
 
 
@@ -65,7 +65,7 @@ The Gardena plugin allows the integration of compatible devices connected via a 
 
 
 
-|  | Avoid configuration that changes actuator state frequently. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Avoid configuration that changes actuator state frequently. |
 | --- | --- |
 
 

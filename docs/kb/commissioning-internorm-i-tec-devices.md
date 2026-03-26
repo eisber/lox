@@ -55,7 +55,7 @@ Furthermore, diagnostic inputs can be activated in the properties of the device,
 - Error codes
 - Filter change
 
-*[EN_KB_Config_i-tec_Ventilation]*
+![EN_KB_Config_i-tec_Ventilation](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/03/EN_KB_Config_i-tec_Ventilation.png)
 
 If the fan does not react to control but the sensor values are showing, please check the error output. If the code shows ‘100’ then an update of the fan will be required by your Loxone Partner.
 
@@ -86,7 +86,7 @@ Details on how to learn in the I-tec shading can be found [here](https://www.lo
 
 In the Loxone Config, I-tec shading is controlled by the Integrated Blinds function block.
 
-*[EN_KB_Config_i-tec_Blinds]*
+![EN_KB_Config_i-tec_Blinds](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/03/EN_KB_Config_i-tec_Blinds.png)
 
 Simply drag the inserted Internorm i-tec shading onto the desired program page.
 
@@ -112,7 +112,7 @@ After you have learned the hand-held transmitter, the touch points in the Loxone
 
 The channel can be changed via the third button.
 
-*[EN_KB_Config_i-tec_Remote]*
+![EN_KB_Config_i-tec_Remote](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/03/EN_KB_Config_i-tec_Remote.png)
 
 
 
@@ -124,7 +124,7 @@ Details on how to learn in the I-tec window contact can be found [here](https:/
 
 After you have entered the window contact, the following inputs are available:
 
-*[EN_KB_Config_i-tec_Window_Contact]*
+![EN_KB_Config_i-tec_Window_Contact](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/03/EN_KB_Config_i-tec_Window_Contact.png)
 
 ## Using the Window Contact
 

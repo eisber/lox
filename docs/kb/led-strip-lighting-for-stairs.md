@@ -28,11 +28,17 @@ The example can, of course, be refined further. For example, the lighting times 
 
 ### Configuration:
 
-[*[LED strip lighting for stairs - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-87-Lighting-Stairway-01.png)
+[
+![LED strip lighting for stairs - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-87-Lighting-Stairway-01.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-87-Lighting-Stairway-01.png)
 
-[*[LED strip lighting for stairs - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-87-Lighting-Stairway-02.png)
+[
+![LED strip lighting for stairs - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-87-Lighting-Stairway-02.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-87-Lighting-Stairway-02.png)
 
-[*[LED strip lighting for stairs - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-87-Lighting-Stairway-03.png)
+[
+![LED strip lighting for stairs - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-87-Lighting-Stairway-03.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-87-Lighting-Stairway-03.png)
 
 ### Download the sample file:
 

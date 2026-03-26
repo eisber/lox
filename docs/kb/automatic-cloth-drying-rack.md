@@ -38,7 +38,9 @@ Hardware:
 
 ### Configuration:
 
-[*[Automatic Cloth Drying Rack - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-91-Drying-Rack.png)
+[
+![Automatic Cloth Drying Rack - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-91-Drying-Rack.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-91-Drying-Rack.png)
 
 ### Download the sample file:
 

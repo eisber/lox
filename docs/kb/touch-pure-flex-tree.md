@@ -11,6 +11,11 @@ The integrated lighting makes the Touch Pure Flex ideal for operation in low-lig
 
 
 
+![tflx variants rendering front](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflx_variants_rendering_front.png)
+
+
+
+
         [**Datasheet Touch Pure Flex IP44 Tree**](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Documents/Datasheet_TouchPureFlexIP44Tree_100608,100609.pdf)
 
 
@@ -52,11 +57,21 @@ The integrated lighting makes the Touch Pure Flex ideal for operation in low-lig
 
 
 
+
+![tflxtree conndia](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflxtree_conndia.png)
+
+
+
     Connect the power supply (orange/white plug-in terminal) and the tree data lines (green/white plug-in terminal).
 
 
     A self-adhesive cover is included in the delivery to protect against water. It must be attached above the terminals once connected.
 Two markings at the top edge of the housing help with positioning:
+
+
+
+
+![tflxtree foil](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflxtree_foil.png)
 
 
 
@@ -91,6 +106,16 @@ Two markings at the top edge of the housing help with positioning:
 
 
 
+![tflx edit](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflx_edit.png)
+
+
+
+
+
+![tflx configID](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflx_configID.png)
+
+
+
 
 After that, the Touch Pure Flex configuration is downloaded from Loxone and the button icons are visible in the dialog.
 If commands were defined in the Online Configurator, these are now also assigned to the device.
@@ -101,8 +126,23 @@ Alternatively, the individual button inputs are available after downloading the 
 
 
 
+
+![tflx settings](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflx_settings.png)
+
+
+
     In the following example, we select a lighting controller and the input for selecting the mood. The "MENU" command then enables a menu selection of the moods on the Touch Pure Flex via the display and the arrow keys.
 
+
+
+
+![tflx APICommandGenerator](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflx_APICommandGenerator.png)
+
+
+
+
+
+![tflx settings command](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflx_settings_command.png)
 
 
 
@@ -112,8 +152,18 @@ The Touch Pure Flex can now be dropped on the desired Lighting Controller; the A
 
 
 
+![tflx API](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflx_API.png)
+
+
+
+
 In the Simulation/Liveview a representation of the Touch Pure Flex can be opened.
 This way the created commands can be tested:
+
+
+
+
+![tflx testing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/tflx_testing.png)
 
 
 
@@ -132,6 +182,11 @@ This way the created commands can be tested:
 
 
     If the buttons on the Touch Pure Flex are unresponsive or not functioning correctly, execute the [device command](https://www.loxone.com/help/device-command/) **TouchForceUpdate**. After sending the command, wait a few seconds and check if the buttons are functioning properly.
+
+
+
+
+![TouchForceUpdate](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/TouchForceUpdate.png)
 
 
 

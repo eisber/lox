@@ -49,7 +49,12 @@ The Loxone Touch Pure Air features five touch points on a glass surface to contr
 
 
 
-|  | When powering the Touch Pure Air with 24V (via Flush-Mounted Power Supply, Nano IO Air, ...), ensure the system is a PELV installation with GND connected to PE. Otherwise, the internal transformer may disturb the touch sensitivity, especially with short cables. |
+![100399 install lrg](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100399 install lrg.png)
+
+
+
+
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | When powering the Touch Pure Air with 24V (via Flush-Mounted Power Supply, Nano IO Air, ...), ensure the system is a PELV installation with GND connected to PE. Otherwise, the internal transformer may disturb the touch sensitivity, especially with short cables. |
 | --- | --- |
 
 

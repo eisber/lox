@@ -39,11 +39,16 @@ The Loxone Multi Extension Air features 8 dry contact latching relay outputs, 12
 
 
 
-|  | For thermal reasons the total load rating must not exceed 48A (IEC) or 45A (UL). |
+![100116 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100116 install.png)
+
+
+
+
+| ![critical](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/critical.png) | For thermal reasons the total load rating must not exceed 48A (IEC) or 45A (UL). |
 | --- | --- |
 
 
-|  | The Multi Extension Air uses latching relays. Relays of this type can remain in the ON position even when the device is disconnected from power. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | The Multi Extension Air uses latching relays. Relays of this type can remain in the ON position even when the device is disconnected from power. |
 | --- | --- |
 
 
@@ -78,6 +83,11 @@ Alternatively, the outputs can be used for a PWM control signal with adjustable 
 
 
 
+![multi rgbw](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/multi_rgbw.png)
+
+
+
+
 ### Tunable White
 
     Tunable White (TW) refers to lighting with white light that is adjustable in color temperature.
@@ -86,6 +96,11 @@ The color temperature can be adjusted from warm white to cool white by mixing th
 
 
     For this purpose, Loxone Devices with RGBW Dimming outputs support the actuator type Smart Tunable White:
+
+
+
+
+![stw actorselect](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/stw_actorselect.png)
 
 
 
@@ -98,7 +113,17 @@ The assignment of the connections is as follows:
 
 
 
+
+![multi smart tw](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/multi_smart_tw.png)
+
+
+
     In the settings of the Smart TW actuator, the color temperature of the light source is set for warm white and cool white:
+
+
+
+
+![stw colorselect](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/stw_colorselect.png)
 
 
 

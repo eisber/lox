@@ -34,7 +34,9 @@ In Loxone Config, a user is created for each person and an NFC Key Fob or a Smar
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-39-Locker-management-with-NFC-Code-Touch.png)
+[
+![Use Case 39 Locker management with NFC Code Touch](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-39-Locker-management-with-NFC-Code-Touch.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-39-Locker-management-with-NFC-Code-Touch.png)
 
 ### Download the sample file:
 

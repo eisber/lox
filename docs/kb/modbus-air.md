@@ -34,7 +34,17 @@ The Loxone Modbus Air is designed to integrate a device with Modbus RTU interfac
 
 
 
+
+![ModbusAir Connect](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ModbusAir_Connect.png)
+
+
+
     If the Modbus device to be connected provides a suitable voltage output, no separate power supply is required:
+
+
+
+
+![ModbusAir Connect2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ModbusAir_Connect2.png)
 
 
 

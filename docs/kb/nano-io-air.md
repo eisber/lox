@@ -35,6 +35,11 @@ The Loxone Nano IO Air has 2 relay outputs and 6 digital inputs (24VDC), for ins
 
 
 
+
+![100153 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100153 install.png)
+
+
+
     In this operating mode power is supplied via mains voltage (110-230V AC) and the outputs of the Nano IO then also supply mains voltage. In this case, they are not suitable for DC or low voltages. Mains voltage loads can be connected directly.
 
 
@@ -65,6 +70,11 @@ The Loxone Nano IO Air has 2 relay outputs and 6 digital inputs (24VDC), for ins
 
 
 
+
+![100153 install24V](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100153 install24V.png)
+
+
+
     In this operating mode the Nano IO is supplied by an external 24VDC power supply via the 24V in and GND terminals. In this case, the Nano IO must not be connected to mains voltage.
 
 
@@ -79,6 +89,11 @@ The Loxone Nano IO Air has 2 relay outputs and 6 digital inputs (24VDC), for ins
 
 
     6 digital inputs are available. The 24V of the Nano IO are switched for example via push buttons and connected to the digital inputs:
+
+
+
+
+![100153 install inputs](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100153 install inputs.png)
 
 
 
@@ -99,11 +114,16 @@ The Loxone Nano IO Air has 2 relay outputs and 6 digital inputs (24VDC), for ins
 
 
 
+
+![100154 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100154 install.png)
+
+
+
     When using the Touch for Nano or NFC Code Touch for Nano plug-on module, it must be activated in the properties of the Nano IO Air in Loxone Config. The inputs will then be available in the peripheral tree.
 
 
 
-|  | The Touch for Nano's large centre touch zone is ideal for controlling the lighting, while the corner zones are suitable for controlling music and shading. It is based on the Loxone switch standard. The buttons can also be freely used for other applications. To use the individual buttons as inputs, activate the checkboxes in the Properties window. The audible confirmation can also be disabled here. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The Touch for Nano's large centre touch zone is ideal for controlling the lighting, while the corner zones are suitable for controlling music and shading. It is based on the Loxone switch standard. The buttons can also be freely used for other applications. To use the individual buttons as inputs, activate the checkboxes in the Properties window. The audible confirmation can also be disabled here. |
 | --- | --- |
 
 

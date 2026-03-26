@@ -118,8 +118,18 @@ Each of these zones can control valves or valve groups via a separate output:
 
 
 
+
+![irrigation config](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/irrigation-config.png)
+
+
+
     In this example, there are four irrigation zones that cover two lawns, one flower bed and a hedge. Up to 8 zones can be configured in the function block.
 Next, the inputs and outputs of the function block are connected in programming:
+
+
+
+
+![irrigation blockios](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/irrigation-blockios.png)
 
 
 
@@ -144,7 +154,17 @@ Alternatively, a specific valve output can be selected by an analog value via in
 
 
 
+
+![irrigation visu](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/irrigation-visu.png)
+
+
+
     Unlike activation by logic via the function block input (Act), activating the irrigation manually in the user interface will start the irrigation in any case, even if there was sufficient rain or it is expected.
 
 
     A history of recent activities is also available:
+
+
+
+
+![irrigation tracker](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/irrigation-tracker.png)

@@ -26,7 +26,9 @@ In order to configure a visual doorbell which is done by flashing the lights, th
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-83-Silent-Doorbell.png)
+[
+![Use Case 83 Silent Doorbell](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-83-Silent-Doorbell.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-83-Silent-Doorbell.png)
 
 ### Download the sample file:
 

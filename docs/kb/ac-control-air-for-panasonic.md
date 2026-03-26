@@ -50,10 +50,15 @@ For this reason, original remote controls of the AC unit (also IR) can no longer
 
 
 
-|  | Every Panasonic AC with a CN-CNT connector will work.There may be limitations in certain features, depending on the type of AC Unit – you can find the list of supported features here.To identify if your model can be supported:- Check the Wiring Diagram or the Service Manual of the unit.- Some units have a CN-CNT connector on the main board, for those CN-CNT will show up in the Wiring Diagram.- Units without CN-CNT on the main board, may still be supportable, please also check the Service Manual of the unit for CN-CNT availability. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | Every Panasonic AC with a CN-CNT connector will work.There may be limitations in certain features, depending on the type of AC Unit – you can find the list of supported features here.To identify if your model can be supported:- Check the Wiring Diagram or the Service Manual of the unit.- Some units have a CN-CNT connector on the main board, for those CN-CNT will show up in the Wiring Diagram.- Units without CN-CNT on the main board, may still be supportable, please also check the Service Manual of the unit for CN-CNT availability. |
 | --- | --- |
 
     Connect the AC Control Air to the terminals with the enclosed connecting cable as follows:
+
+
+
+
+![AcCont Connect CN CNT](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AcCont_Connect-CN-CNT.png)
 
 
 
@@ -95,6 +100,11 @@ The AC Control Air is now supplied with voltage from the air conditioner and can
 
 
     Loxone AC Control Air is programmed and set up using the [AC Control function block](https://www.loxone.com/help/AC-Control-block) in Loxone Config:
+
+
+
+
+![AcCont dragdrop block](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AcCont_dragdrop_block.gif)
 
 
 
@@ -143,9 +153,24 @@ The AC Control Air is now supplied with voltage from the air conditioner and can
 
 
 
+![AcCont DiagStart](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AcCont_DiagStart.png)
+
+
+
+
+
+![ACCont Diagnostics2](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/ACCont_Diagnostics2.png)
+
+
+
 
 Additionally, you can also start the AC Control Monitor for diagnostic purposes.
 1) Activate the AC Control Monitor. 2) Turn the AC unit off. 3) Turn the AC unit on. 4) Cycle through the non-working functions. The recording needs to be at least five minutes. 5) Save the AC Control Monitor data and have them ready for transmission to Loxone.
+
+
+
+
+![AC Control Monitor](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AC_Control_Monitor.png)
 
 
 

@@ -22,7 +22,9 @@ You simply need a hidden storage solution which has a motorised lock which is th
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-82-Secret-Compartment-Control.png)
+[
+![Use Case 82 Secret Compartment Control](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-82-Secret-Compartment-Control.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-82-Secret-Compartment-Control.png)
 
 ### Download the sample file:
 

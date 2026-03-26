@@ -22,7 +22,8 @@ Setting always launch app in Ambient Mode
 - Open Default screen of Ambient mode
 - Weather, time and current date (Weather data only available with active [Weather service](https://shop.loxone.com/enen/search-result?query=Weather+service))
 - All components of selected Default screen
-- Quick navigation through Loxone App*[]*
+- Quick navigation through Loxone App
+![Ambient mode 3](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/08/Ambient-mode-3.jpg)
 
 ## Requirements:
 - Ensure your Loxone App and Loxone Config are updated to version 14.x or later, where Ambient Mode first became available.

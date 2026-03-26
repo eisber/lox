@@ -26,7 +26,9 @@ If it’s about to get dark and the Miniserver detects that a door is open, then
 
 ### Configuration:
 
-[*[Open Door Monitoring - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-72-AAL-Identify-Potential-Risks.png)
+[
+![Open Door Monitoring - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-72-AAL-Identify-Potential-Risks.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-72-AAL-Identify-Potential-Risks.png)
 
 ### Download the sample file:
 

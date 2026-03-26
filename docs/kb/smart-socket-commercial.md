@@ -20,7 +20,9 @@ Proactive monitoring can lead to reduced overall energy consumption and a reduce
 
 With our office as an example, we can cut more than 8kWh a day on weekdays and over 12kWh a day on the weekends. Screenshot below from the Loxone App shows us the possibilities of breaking down the level of energy monitoring with Loxone.
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/known-loads-in-Loxone-UK-office-for-smart-socket-UC-2.png)
+[
+![known loads in Loxone UK office for smart socket UC 2 389x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/known-loads-in-Loxone-UK-office-for-smart-socket-UC-2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/known-loads-in-Loxone-UK-office-for-smart-socket-UC-2.png)
 
 ### Hardware:
 - Miniserver (can be [Miniserver](https://shop.loxone.com/enuk/miniserver.html), [Miniserver Compact](https://shop.loxone.com/enuk/miniserver-compact.html) or [Miniserver Go](https://shop.loxone.com/enuk/miniserver-go.html))
@@ -29,9 +31,13 @@ With our office as an example, we can cut more than 8kWh a day on weekdays and o
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/Smart-Socket-for-Commercial-Use-Case-Room.png)
+[
+![Smart Socket for Commercial Use Case Room 800x443](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/Smart-Socket-for-Commercial-Use-Case-Room.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/Smart-Socket-for-Commercial-Use-Case-Room.png)
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/Smart-Socket-for-Commercial-Use-Case-Monitoring.jpg)
+[
+![Smart Socket for Commercial Use Case Monitoring 800x421](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/Smart-Socket-for-Commercial-Use-Case-Monitoring.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/Smart-Socket-for-Commercial-Use-Case-Monitoring.jpg)
 
 ###
 

@@ -17,7 +17,9 @@ This way, **up to 50 Miniservers** can be connected.
 
 The following picture illustrates an example of how tree intercommunication can be wired:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/01/Tree-intercommunication-wiring.jpg)
+[
+![Tree intercommunication wiring](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/01/Tree-intercommunication-wiring.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/01/Tree-intercommunication-wiring.jpg)
 
 **Tree Extensions** shipped before the end of October 2020 had a permanent, built-in termination. Only two of these Extensions can be used for Intercommunication and only at the data line end-points.
 
@@ -25,7 +27,9 @@ Since the end of October 2020, a new version of the Tree Extension is being ship
 
 The new version can be identified by the following symbol on the label:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2019/12/tree-ext-ic-label.png)
+[
+![tree ext ic label](https://www.loxone.com/dede/wp-content/uploads/sites/2/2019/12/tree-ext-ic-label.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2019/12/tree-ext-ic-label.png)
 
 The **transmission capacity** varies depending on the application, the following guidelines apply:
 
@@ -59,7 +63,7 @@ The maximum length of the ID is limited to 8 characters.
 
 In the following example we will use the ID MS_A for our Miniserver:
 
-*[]*
+![setup tree ic 1](https://www.loxone.com/dede/wp-content/uploads/sites/2/2019/12/setup-tree-ic-1.png)
 
 ### **Create Remote System**
 
@@ -71,7 +75,7 @@ To accept packets from all Intercommunication members or to send packets to all 
 
 In the following example we only want to send to a specific Remote System, the Miniserver with the ID MS_B:
 
-*[]*
+![setup tree ic 2](https://www.loxone.com/dede/wp-content/uploads/sites/2/2019/12/setup-tree-ic-2.png)
 
 Activate **Use encryption** and set a secure password so that other Tree Intercommunication members cannot view or manipulate any data.
 
@@ -113,7 +117,9 @@ Finally, save the program to the Miniserver, the sent value is now visible in th
 
 In the following example we send a temperature value with the Packet ID Temp1 from Miniserver MS_A to Miniserver MS_B:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2019/12/setup-tree-ic-3-send.png)
+[
+![setup tree ic 3 send](https://www.loxone.com/dede/wp-content/uploads/sites/2/2019/12/setup-tree-ic-3-send.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2019/12/setup-tree-ic-3-send.png)
 
 
 
@@ -137,10 +143,14 @@ For **Data type** we again select Analog, since it is a simple analog value.
 
 After the program is saved in the Miniserver, we can receive the value and use it in the programming:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2019/12/setup-tree-ic-4-receive.png)
+[
+![setup tree ic 4 receive](https://www.loxone.com/dede/wp-content/uploads/sites/2/2019/12/setup-tree-ic-4-receive.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2019/12/setup-tree-ic-4-receive.png)
 
 ### **Example of use**
 
 The following picture shows an example of how tree intercommunication can be used in practice:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/01/Tree-intercomunication-usecase.png)
+[
+![Tree intercomunication usecase](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/01/Tree-intercomunication-usecase.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/01/Tree-intercomunication-usecase.png)

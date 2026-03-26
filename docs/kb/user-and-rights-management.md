@@ -40,19 +40,27 @@ The following information refers to the User Management in Loxone Config. The sa
 
 First, create the required users and user groups using the buttons in the menu bar, as shown in the example below.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/User_Permissions.png)
+[
+![User Permissions](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/User_Permissions.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/User_Permissions.png)
 
 Users can be assigned to the appropriate user groups in multiple ways. The simplest method is to drag and drop a user onto a user group.
 
 Alternatively, you can select a user and click ‘Manage Permissions.’ This will open the User Management screen, where you can add the user to a group via the ‘Groups’ tab.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Manage_Permissions.png)
+[
+![Manage Permissions](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Manage_Permissions.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Manage_Permissions.png)
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Add_User_To_Group.png)
+[
+![Add User To Group](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Add_User_To_Group.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Add_User_To_Group.png)
 
 Another option is to navigate to the user group and select ‘Manage Permissions.’ Here, you can add members to the group and view existing users. To remove a user from the group, simply uncheck the corresponding box.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Members.png)
+[
+![Members](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Members.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Members.png)
 
 Additionally, other user groups can be added to a user group, as shown in the image above. The added group will inherit the same rights as the parent group.
 
@@ -64,19 +72,27 @@ User-specific settings can be configured in the user properties:
 
 **Permissions:** View or manage the user’s permissions.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/User_Properties.png)
+[
+![User Properties](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/User_Properties.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/User_Properties.png)
 
 **Status:** Enable or disable the user and define whether their access should be limited to a specific time period.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/User_Status.png)
+[
+![User Status](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/User_Status.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/User_Status.png)
 
 **Authentication:** Configure user access via NFC tags, access codes, iButtons, or external IDs (e.g., fingerprint scanners).
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/User_Authentication.png)
+[
+![User Authentication](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/User_Authentication.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/User_Authentication.png)
 
 **Password: **Set a **[secure password](https://www.loxone.com/enen/kb/password-security/)** for the user.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Edit_Password.png)
+[
+![Edit Password](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Edit_Password.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Edit_Password.png)
 
 **User Interface Password:** Protect specific functions in the user interface/app with an additional password. Once entered in the visualization, the password remains valid for one minute before requiring re-entry.
 
@@ -90,7 +106,9 @@ In this window, you can assign permissions to individual users or entire user gr
 
 The **“Rights”** tab contains general permissions for managing the system, customizing settings, and accessing the web interface or app.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Rights.png)
+[
+![Rights](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Rights.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Rights.png)
 
 **Automatic Designer and Scenes:** Grants ability to create and edit Automatic Rules and Scenes directly in the Loxone Apps and the Loxone Web Interface.
 
@@ -116,31 +134,45 @@ Example:
 
 A user has access to the **Web Interface** and the ability to **change their own password.**
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/User_Rights.png)
+[
+![User Rights](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/User_Rights.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/User_Rights.png)
 
 It is also possible to explicitly deny rights. The exact handling of this process is explained in the Permission Handling Logic section
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Grant_Rights.png)
+[
+![Grant Rights](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Grant_Rights.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Grant_Rights.png)
 
 In the **“Rooms”** tab, you can define which rooms a **User/User Group** has access to.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Rooms.png)
+[
+![Rooms](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Rooms.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Rooms.png)
 
 The **“Categories”** tab functions similarly, allowing selection of accessible categories.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Categories.png)
+[
+![Categories](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Categories.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Categories.png)
 
 The **“Functions”** tab enables the selection of specific system functions on a per-user basis. Here, you can also find a list of [Trusted](https://www.loxone.com/enen/kb/trust/) IO functions.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Functions.png)
+[
+![Functions](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Functions.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Functions.png)
 
 In the **“Access”** tab, you can manage permissions for **NFC Code Touch devices** and assign Custom **Access Schedules** if required.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Access.png)
+[
+![Access](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Access.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Access.png)
 
 In the **“Devices”** tab, you can manage the Intercom. This option is only visible for User Groups or [Trusted](https://www.loxone.com/enen/kb/trust/) Miniservers.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Devices_Tab.png)
+[
+![Devices Tab](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Devices_Tab.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Devices_Tab.png)
 
 ## Permission Handling Logic
 
@@ -161,11 +193,15 @@ The following function provides an overview of the rights assigned to a user or 
 
 To view this information, select a **User** or **User Group** and click on **“Show All Permissions**
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Show_All_Permissions.png)
+[
+![Show All Permissions](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Show_All_Permissions.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Show_All_Permissions.png)
 
 For example, for the user “admin”:
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/All_Permissions.png)
+[
+![All Permissions](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/All_Permissions.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/All_Permissions.png)
 
 You can clearly see which rights, rooms, categories, and objects the user has access to. Additionally, it indicates whether the access is internal, external, or both, along with the corresponding path.
 
@@ -179,21 +215,31 @@ By default, there are two access schedules: Always and Never.
 
 To create a custom access schedule, click on “Create new access schedule…”.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Access_Schedule.png)
+[
+![Access Schedule](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Access_Schedule.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Access_Schedule.png)
 
 Give the access schedule a name, such as “Office Hours”, to define specific access times.
 
+![Office Hours](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Office_Hours.png)
+
 Next, you can define a custom schedule based on your specific access requirements.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Edit_Schedule.png)
+[
+![Edit Schedule](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Edit_Schedule.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Edit_Schedule.png)
 
 If the access schedule is changed to the custom schedule, the user will only have access during the specified times.
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Access_Office_Hours.png)
+[
+![Access Office Hours](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Access_Office_Hours.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Access_Office_Hours.png)
 
 The created access times will then be listed in the Periphery tree under **Access** **Schedules** and can also be edited there:
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Access_Schedules.png)
+[
+![Access Schedules](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Access_Schedules.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Access_Schedules.png)
 
 ## Import/Export users from/to CSV file
 
@@ -207,11 +253,15 @@ The template file is provided in Loxone Config.
 
 Click on “User” in the Periphery , then on the “Import Users From CSV” button in the menu bar at the top.
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/csvimport-importbutton.png)
+[
+![csvimport importbutton](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/csvimport-importbutton.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/csvimport-importbutton.png)
 
 In the following window, click on “Download template file…”:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/csvimport-templatelinksdown.png)
+[
+![csvimport templatelinksdown](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/csvimport-templatelinksdown.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/csvimport-templatelinksdown.png)
 
 The *.csv file is saved on the computer.
 
@@ -219,7 +269,9 @@ This template can now be opened and edited with a compatible program (e.g. Excel
 
 The users along with the relevant data can now be added:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/csvimport-editcsvexcel.png)
+[
+![csvimport editcsvexcel](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/csvimport-editcsvexcel.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/csvimport-editcsvexcel.png)
 
 After adding the users, the list must again be saved on the PC as a *.csv file.
 
@@ -229,20 +281,28 @@ As before, first click on “User”, then on “Import Users From CSV”.
 
 Then click on “Open CSV file” in the following window:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/csvimport-templatelinksopen.png)
+[
+![csvimport templatelinksopen](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/csvimport-templatelinksopen.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/csvimport-templatelinksopen.png)
 
 Next, select the prepared file containing the user data, and they will be displayed in the next window.
 
 Users can now be added to the program individually or all together:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/csvimport-adduser.png)
+[
+![csvimport adduser](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/csvimport-adduser.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/csvimport-adduser.png)
 
 The added users are then listed in the Periphery tree:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/csvimport-listusersperiphery.png)
+[
+![csvimport listusersperiphery](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/csvimport-listusersperiphery.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/csvimport-listusersperiphery.png)
 
 Finally, the program must be saved to the Miniserver.
 
 Additionally, users can be exported to a CSV file by clicking on “Export Users to CSV.”
 
-[](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Export_User.png)
+[
+![Export User](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Export_User.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/03/Export_User.png)

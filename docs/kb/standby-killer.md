@@ -24,7 +24,9 @@ Hardware:
 
 ### Configuration:
 
-[*[Standby killer for electrical devices - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-59-Standby-Killer-1.png)
+[
+![Standby killer for electrical devices - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-59-Standby-Killer-1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-59-Standby-Killer-1.png)
 
 
 

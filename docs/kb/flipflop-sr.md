@@ -80,3 +80,8 @@ Flipflop with toggle input. Set is dominant.
 
 
 ## Timing Diagram
+
+
+
+
+![SRFlipFlop timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/SRFlipFlop-timediag.png)

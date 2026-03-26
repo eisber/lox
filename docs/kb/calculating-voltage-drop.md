@@ -10,7 +10,8 @@ When selecting a cable for a application it is important to consider what effect
 
 ## CALCULATING VOLTAGE DROP
 
-*[Icon Exclamation Mark Loxone]*Voltage drop is not the only factor in deciding cable core thickness. You must also consider the load carrying capacity of the cable. Please refer to the standards of installation in which you operate under to select the correct cable for this in conjunction with that of voltage drop.
+![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
+Voltage drop is not the only factor in deciding cable core thickness. You must also consider the load carrying capacity of the cable. Please refer to the standards of installation in which you operate under to select the correct cable for this in conjunction with that of voltage drop.
 
 The voltage drop can be calculated using the following formula:
 

@@ -28,7 +28,11 @@ This TV unit has a smart socket added to monitor the standby power to see how mu
 
 However, we can see from the screenshots that the standby power of the TV unit is 24Wh, and we can see that the user is only actually using these devices for 4 hours in the evening. This means that for 20 hours every weekday, 24W is being wasted every hour and this is costing the user approximately £50 a year. Considering this is a one-bedroom bachelor flat, this is a significant portion of the user’s energy bill. This is a great example of how a smart socket can eliminate that wastage straightaway.
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Smart-Socket-Residential-TV-1.png) [*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Smart-Socket-Residential-TV-2.png)[ ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Smart-Socket-Residential-TV-3.png)
+[
+![PH EN Use Case Smart Socket Residential TV 1 369x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Smart-Socket-Residential-TV-1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Smart-Socket-Residential-TV-1.png) [
+![PH EN Use Case Smart Socket Residential TV 2 369x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Smart-Socket-Residential-TV-2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Smart-Socket-Residential-TV-2.png)[ ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Smart-Socket-Residential-TV-3.png)
 
 *Note: Many household consumer devices have an internal shutdown process that they should follow before they can be switched off at the socket, for example, smart TVs, gaming consoles, etc. Therefore, user behaviour should still include turning these devices off via the remote, for example, and not completely rely on the killing of power by the Smart Socket Air.*
 
@@ -39,7 +43,9 @@ However, we can see from the screenshots that the standby power of the TV unit i
 
 ### Configuration:
 
-### [*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Smart-Socket-Residential-Config.png)
+### [
+![PH EN Use Case Smart Socket Residential Config 800x514](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Smart-Socket-Residential-Config.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/12/PH-EN-Use-Case-Smart-Socket-Residential-Config.png)
 
 ### Download the sample Config file:
 

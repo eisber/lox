@@ -197,7 +197,17 @@ The parameter (Type) defines the type of shading device.
 
 
 
+
+![10.5 autoblinds basic](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5 autoblinds basic.png)
+
+
+
     In addition, the compass direction is specified in parameter (Dir), to ensure that the sun position automatic is only activated when the sun is actually shining on the window. On demand, the Intelligent Room Controller requests shading via the output (Shd) to the input (Sps) of the Automatic Shading block.
+
+
+
+
+![10.5 autoblinds irc](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/10.5 autoblinds irc.png)
 
 
 
@@ -230,7 +240,7 @@ The parameter (Type) defines the type of shading device.
 
 
 
-|  | When the sun position automatic is activated, the blinds may not adjust immediately. Shading only starts based on the position of the sun and the related parameters. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | When the sun position automatic is activated, the blinds may not adjust immediately. Shading only starts based on the position of the sun and the related parameters. |
 | --- | --- |
 
     Output (Sp) indicates whether the sun position automatic is active.
@@ -247,6 +257,11 @@ The parameter (Type) defines the type of shading device.
 
 
 ## Direction parameters
+
+
+
+
+![Autojalousie Parameter D DT DTe](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Autojalousie_Parameter_D_DT_DTe.jpg)
 
 
 
@@ -359,6 +374,11 @@ This function is comparable to commercially available setting cables, and requir
 
 
 
+![autoblinds setlimits](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/autoblinds-setlimits.png)
+
+
+
+
 ---
 
 
@@ -370,10 +390,20 @@ This function is comparable to commercially available setting cables, and requir
 
 
 
+![AutomaticShading tilted](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AutomaticShading_tilted.png)
+
+
+
+
 ---
 
 
 ## Timing Diagram
+
+
+
+
+![AutomaticShading timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/AutomaticShading-timediag.png)
 
 
 
@@ -387,3 +417,8 @@ This function is comparable to commercially available setting cables, and requir
     In the user interface, the history of the function block can be displayed.
 A maximum of 100 entries can be shown.
 When you restart or save to the Miniserver, the history is cleared.
+
+
+
+
+![History AutoShade](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/History_AutoShade.png)

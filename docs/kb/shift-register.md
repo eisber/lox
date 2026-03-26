@@ -83,3 +83,8 @@ Delay of digital pulses
 
 
     For each pulse at (Tr), the value of the data input (D) is stored in accordance with the shift direction (Dir) and the register contents are shifted in the corresponding direction beforehand. Parameter (Rb) is used to select the register bit whose value is passed on to the output (O).
+
+
+
+
+![Shift TimeTable](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Shift_TimeTable.jpg)

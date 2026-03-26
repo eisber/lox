@@ -27,7 +27,9 @@ Threshold values are used to be able to observe specific behaviour patterns. The
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-74-Lifestyle-Monitoring-for-Assisted-Living.png)
+[
+![Use Case 74 Lifestyle Monitoring for Assisted Living](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-74-Lifestyle-Monitoring-for-Assisted-Living.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-74-Lifestyle-Monitoring-for-Assisted-Living.png)
 
 ### Download the sample file:
 

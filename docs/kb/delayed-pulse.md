@@ -81,3 +81,8 @@ Provides a delayed pulse at the output (delay adjustable)
 
 
 ## Timing Diagram
+
+
+
+
+![DelayedPulse timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/DelayedPulse-timediag.png)

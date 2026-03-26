@@ -122,6 +122,11 @@ The function block Media Control allows for different devices to be controlled v
 
 
 
+
+![Media Main](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Media_Main.jpg)
+
+
+
     Now switch to the Configuration tab.
 
 
@@ -129,5 +134,15 @@ The function block Media Control allows for different devices to be controlled v
 
 
 
+
+![Media config](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Media_config.jpg)
+
+
+
     In the Configuration dialog, 3 trees are displayed on the left side:
 - System outputs such as device outputs - Block outputs O1-26 - Functions
+
+
+
+
+![Media Edit](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Media_Edit.jpg)

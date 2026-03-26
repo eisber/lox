@@ -130,7 +130,17 @@ Shows an overview of the energy distribution with status and power of the linked
 
 
 
+
+![WBM ConfigStrands](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WBM-ConfigStrands.png)
+
+
+
     As soon as a Wallbox block has been added, only two fixed charging modes (Eco and Priority) are available. The energy distribution is controlled by the Wallbox Manager.
 
 
     The maximum power and the surplus power available for Eco charging must be specified at the inputs of the Wallbox Manager:
+
+
+
+
+![WBM ConfigInputs](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/WBM-ConfigInputs.png)

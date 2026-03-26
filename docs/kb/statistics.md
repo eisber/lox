@@ -26,7 +26,9 @@ To activate the recording of statistics for an object,
 
 check **Statistics** and set an **Interval**:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-activate-12.0.png)
+[
+![stats activate 12.0](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-activate-12.0.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-activate-12.0.png)
 
 The current value is written to the statistics based on the set interval of one hour.
 
@@ -36,7 +38,9 @@ Average value statistics are no longer available as of Loxone Config 12.0.
 
 An **average value** can be set for an input under Sensitivity if required:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/input-setaverage-12.0.png)
+[
+![input setaverage 12.0](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/input-setaverage-12.0.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/input-setaverage-12.0.png)
 
 For other objects, the [Moving Average](https://www.loxone.com/enen/kb/moving-average/) block can be used.
 
@@ -44,7 +48,9 @@ For other objects, the [Moving Average](https://www.loxone.com/enen/kb/moving-av
 
 In order to send statistics by email, set an interval for sending in the properties, and assign a [Mailer](https://www.loxone.com/enen/kb/mailer-service/):
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-setmailer.png)
+[
+![stats setmailer](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-setmailer.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-setmailer.png)
 
 A .csv file containing the statistics is sent by mail at the set interval.
 
@@ -54,7 +60,9 @@ The email’s subject line includes the word “Statistic” and the name of the
 
 For values that are increasing continuously, the **Differential recording** checkbox can be activated:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-setdifferential.png)
+[
+![stats setdifferential](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-setdifferential.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-setdifferential.png)
 
 This way, the difference between two consecutive values is recorded instead of the absolute value.
 
@@ -68,13 +76,17 @@ The recorded statistics can be retrieved and viewed in Loxone Config.
 
 To do so, select the Miniserver in the periphery tree, and click on **Download Statistics**:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/downloadstatsconfig-12.0.png)
+[
+![downloadstatsconfig 12.0](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/downloadstatsconfig-12.0.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/downloadstatsconfig-12.0.png)
 
 
 
 The statistics window will be opened with the following functions:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/statswindow-labeled.png)
+[
+![statswindow labeled](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/statswindow-labeled.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/statswindow-labeled.png)
 
 **1. **Select the starting date for statistics to download.
 
@@ -102,7 +114,9 @@ All objects that are used in the user interface and have statistics enabled can 
 
 Example for statistic of the outdoor humidity in the user interface:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-visu-humidity.png)
+[
+![stats visu humidity](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-visu-humidity.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-visu-humidity.png)
 
 
 
@@ -112,11 +126,15 @@ In order to retrieve statistics using a browser, enter the following URL: **http
 
 The user is asked to log in, and a list of available statistics is displayed:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-showinbrowser.png)
+[
+![stats showinbrowser](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-showinbrowser.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-showinbrowser.png)
 
 By clicking on a statistic, the data can be displayed in an .xml file:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-showxml.png)
+[
+![stats showxml](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-showxml.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-showxml.png)
 
 
 
@@ -134,7 +152,9 @@ A separate file is created each month for each statistic.
 
 To delete files, select the checkbox for the statistics to delete and click on **Delete**:
 
-[*[]*](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/delete-stats.png)
+[
+![delete stats](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/delete-stats.png)
+](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/delete-stats.png)
 
 Statistics of the current month are not displayed and cannot be deleted.
 

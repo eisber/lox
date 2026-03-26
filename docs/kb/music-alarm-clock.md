@@ -28,11 +28,17 @@ After the “Alarm Clock” Function Block has triggered the alarm, a pre-set pl
 
 ### Configuration:
 
-[*[Music Alarm Clock - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-99-Alarm-Clock-Favourite_2.png)
+[
+![Music Alarm Clock - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-99-Alarm-Clock-Favourite_2.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-99-Alarm-Clock-Favourite_2.png)
 
-[*[Music Alarm Clock - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-99-Alarm-Clock-Favourite_1.png)
+[
+![Music Alarm Clock - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-99-Alarm-Clock-Favourite_1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-99-Alarm-Clock-Favourite_1.png)
 
-[*[Music Alarm Clock - Loxone Config Screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-99-Alarm-Clock-Favourite.png)
+[
+![Music Alarm Clock - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-99-Alarm-Clock-Favourite.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-99-Alarm-Clock-Favourite.png)
 
 ### Download the sample file:
 

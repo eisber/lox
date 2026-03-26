@@ -8,6 +8,11 @@ The Loxone Intercom is a compact video door station featuring a glass finish, il
 
 
 
+
+![intercom front variants rendering](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/intercom_front_variants_rendering.png)
+
+
+
     The microphone is embedded into the front panel, the concealed speakers are located on unit's left side.
 The device is connected to the network and powered via PoE (Power over Ethernet).
 
@@ -66,6 +71,11 @@ Care must be taken not to cover the speaker openings on the left side of the fra
 
 
 
+
+![intercom mount frame](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/intercom_mount_frame.png)
+
+
+
     Standard solid core network cable, CAT5 and up, can be used to connect to the local network. Remove about 5 cm of the cable jacket and prepare the orange/white and green/white cores for connection. The other two twisted pairs are not needed and must be made safe.
 
 
@@ -74,11 +84,16 @@ Care must be taken not to cover the speaker openings on the left side of the fra
 
 
 
-|  | Do not connect any power supply other than PoE to the device! |
+![intercom connect back](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/intercom_connect_back.png)
+
+
+
+
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Do not connect any power supply other than PoE to the device! |
 | --- | --- |
 
 
-|  | Power Supply: Power over Ethernet (PoE), typ. 48VDC IEEE 802.3af Mode A, power class 0 |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Power Supply: Power over Ethernet (PoE), typ. 48VDC IEEE 802.3af Mode A, power class 0 |
 | --- | --- |
 
     The core assignment in the colour shown corresponds to T568B termination. In a network wired according to T568A, the green and orange pairs are swapped.
@@ -91,6 +106,11 @@ For a compliant connection according to T568A, the orange and green terminal pai
 
     A self-adhesive cover is included in the delivery to protect against water. It must be attached above the terminals once connected.
 Two markings at the top edge of the housing help with positioning:
+
+
+
+
+![intercom backflap](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/intercom_backflap.png)
 
 
 
@@ -126,6 +146,11 @@ Wait until the Intercom is fully operational.
 
 
     After a few moments, the Intercom should be listed among the network devices in the search window:
+
+
+
+
+![intercom pairing](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/intercom_pairing.png)
 
 
 
@@ -166,12 +191,17 @@ Drag the Intercom from the periphery tree to the programming page to create the 
 
 
 
+
+![intercom combined nfcnew](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/intercom_combined_nfcnew.png)
+
+
+
     When mounting in the double bracket, vertical positioning of the bracket is preferred and the intercom must be inserted at the top as shown.
 When using the double bracket horizontally, the intercom can be inserted on the left, but audio quality is impaired in this case as there are no openings for the speakers in the bracket at this position.
 
 
 
-|  | The devices connected to the 24V power output and the Tree interface of the Intercom must remain independent of the rest of the installation. No connection to other Tree branches, power supplies or devices may be established, not even via a common GND. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | The devices connected to the 24V power output and the Tree interface of the Intercom must remain independent of the rest of the installation. No connection to other Tree branches, power supplies or devices may be established, not even via a common GND. |
 | --- | --- |
 
     To [pair connected Tree devices](https://www.loxone.com/help/tree#desc2) select the Intercom's Tree interface in the periphery tree in Loxone Config, and start the Tree device search.
@@ -269,6 +299,11 @@ Avoid getting any dirt into the openings for the microphone and speaker.
 
 
     The Micro SD card, located at the bottom edge of the back of the Loxone Intercom, contains the operating system and settings. The SD card slot is protected by a sticker.
+
+
+
+
+![intercom sd location](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/intercom_sd_location.png)
 
 
 

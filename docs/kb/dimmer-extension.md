@@ -52,7 +52,17 @@ The **Dimmer Extension** features 4 Output channels for dimming suitable mains v
 
 
 
+
+![Dimmer Extension 1 phase](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Dimmer Extension 1-phase.png)
+
+
+
     **Example 2:** 3-phase connection
+
+
+
+
+![Dimmer Extension 3 phase](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Dimmer Extension 3-phase.png)
 
 
 
@@ -60,11 +70,16 @@ The **Dimmer Extension** features 4 Output channels for dimming suitable mains v
 
 
 
+
+![Dimmer Extension 2 circuits](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Dimmer Extension 2 circuits.png)
+
+
+
     In case of large loads or multiple dimmers, it is advisable to spread the load across several phases as shown in the wiring example. However, a single-phase supply is also possible.
 
 
 
-|  | Ensure sufficient air circulation to allow the generated waste heat to dissipate, especially at high workloads. |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Ensure sufficient air circulation to allow the generated waste heat to dissipate, especially at high workloads. |
 | --- | --- |
 
     The Extension starts after switching on the power supply, and the status LED will flash orange after a short time when the connection to the Miniserver is established.
@@ -81,11 +96,11 @@ The **Dimmer Extension** features 4 Output channels for dimming suitable mains v
 
 
 
-|  | Please observe the recommended dimming type and load limits! |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Please observe the recommended dimming type and load limits! |
 | --- | --- |
 
 
-|  | Only use luminaires that marked as dimmable! |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Only use luminaires that marked as dimmable! |
 | --- | --- |
 
 
@@ -100,19 +115,19 @@ The **Dimmer Extension** features 4 Output channels for dimming suitable mains v
 | Low voltage lamps with magnetic transformer (MLV) | Leading edge | 400VA** | 200VA** | 50VA |
 
 
-|  | *The sum of the nominal load of the ballasts, LED drivers or transformers is relevant, not the nominal load of the actual light. |
+| ![critical](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/critical.png) | *The sum of the nominal load of the ballasts, LED drivers or transformers is relevant, not the nominal load of the actual light. |
 | --- | --- |
 
 
-|  | **A magnetic transformer must be loaded with at least 80% of it's capacity! |
+| ![critical](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/critical.png) | **A magnetic transformer must be loaded with at least 80% of it's capacity! |
 | --- | --- |
 
 
-|  | The ballasts, LED drivers, electronic transformers etc. used must be mains voltage dimmable! |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | The ballasts, LED drivers, electronic transformers etc. used must be mains voltage dimmable! |
 | --- | --- |
 
 
-|  | If in doubt, the manufacturer of the luminaire can provide information on the load characteristics (whether inductive or capacitive) and the recommended dimming method. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | If in doubt, the manufacturer of the luminaire can provide information on the load characteristics (whether inductive or capacitive) and the recommended dimming method. |
 | --- | --- |
 
 
@@ -123,11 +138,11 @@ The **Dimmer Extension** features 4 Output channels for dimming suitable mains v
 
 
 
-|  | Please observe the recommended dimming type and load limits! |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Please observe the recommended dimming type and load limits! |
 | --- | --- |
 
 
-|  | Only use luminaires that marked as dimmable! |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | Only use luminaires that marked as dimmable! |
 | --- | --- |
 
 
@@ -142,19 +157,19 @@ The **Dimmer Extension** features 4 Output channels for dimming suitable mains v
 | Low voltage lamps with magnetic transformer (MLV) | Leading edge | 200VA** | 50VA |
 
 
-|  | *The sum of the nominal load of the ballasts, LED drivers or transformers is relevant, not the nominal load of the actual light. |
+| ![critical](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/critical.png) | *The sum of the nominal load of the ballasts, LED drivers or transformers is relevant, not the nominal load of the actual light. |
 | --- | --- |
 
 
-|  | **A magnetic transformer must be loaded with at least 80% of it's capacity! |
+| ![critical](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/critical.png) | **A magnetic transformer must be loaded with at least 80% of it's capacity! |
 | --- | --- |
 
 
-|  | The ballasts, LED drivers, electronic transformers etc. used must be mains voltage dimmable! |
+| ![warning](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/warning.png) | The ballasts, LED drivers, electronic transformers etc. used must be mains voltage dimmable! |
 | --- | --- |
 
 
-|  | If in doubt, the manufacturer of the luminaire can provide information on the load characteristics (whether inductive or capacitive) and the recommended dimming method. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | If in doubt, the manufacturer of the luminaire can provide information on the load characteristics (whether inductive or capacitive) and the recommended dimming method. |
 | --- | --- |
 
 
@@ -230,6 +245,11 @@ Such damage is not covered by warranty.
 
 
     For example, with a 50Hz line frequency, setting the value to 50 results in a modulation period of 1.0 second. A dim level of 30% would then result in a periodic modulation of 0.3 seconds on and 0.7 seconds off.
+
+
+
+
+![Wave packet control](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Wave_packet_control.png)
 
 
 

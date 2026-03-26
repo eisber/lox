@@ -83,3 +83,8 @@ By using the input (Off) the output is deactivated.
 
 
 ## Timing Diagram
+
+
+
+
+![SwitchOnOff timediag](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/SwitchOnOff-timediag.png)

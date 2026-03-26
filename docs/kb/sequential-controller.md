@@ -108,9 +108,19 @@ The heater, pumps and valves are controlled via the outputs:
 
 
 
+
+![SeqCtrl Ex1 IOs](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/SeqCtrl-Ex1-IOs.png)
+
+
+
     Double-click on the function block to open the programming window.
 The library on the left side of the window lists the available inputs, outputs, commands and variables.
 Double-clicking on one of these objects will insert it into the editor window on the right where it can be further customized:
+
+
+
+
+![SeqCtrl Ex1 sequence](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/SeqCtrl-Ex1-sequence.png)
 
 
 

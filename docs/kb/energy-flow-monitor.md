@@ -19,7 +19,12 @@ The meters used and their purpose can be specified in the function block.
 
 
 
-|  | The energy flow monitor can display up to 6 objects like meters or groups in a star shape. If there are more than 6 objects (including residual value) in the upper level, they are displayed in a list. |
+![Efmo visuexample](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Efmo_visuexample.png)
+
+
+
+
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | The energy flow monitor can display up to 6 objects like meters or groups in a star shape. If there are more than 6 objects (including residual value) in the upper level, they are displayed in a list. |
 | --- | --- |
 
 
@@ -138,6 +143,11 @@ The meters used and their purpose can be specified in the function block.
 
 
 
+
+![efmo energy produced](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/efmo_energy_produced.png)
+
+
+
     The displayed percentage (86%) shows energy consumed from own sources, not the grid.
 
 
@@ -145,10 +155,20 @@ The meters used and their purpose can be specified in the function block.
 
 
 
+
+![efmo co2 emission saved](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/efmo_co2_emission_saved.png)
+
+
+
     The "Equivalent to trees" value is derived from the saved CO2-emissions (1.28kg) via a [fixed calculation](https://www.epa.gov/energy/greenhouse-gas-equivalencies-calculator).
 
 
     **Money saved**
+
+
+
+
+![efmo money saved](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/efmo_money_saved.png)
 
 
 
@@ -167,6 +187,11 @@ If available, create a [meter block for the storage](https://www.loxone.com/help
 
 
     The created meter blocks can then be added and set via the setup dialog (double-click on the function block):
+
+
+
+
+![Efmo configexample](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Efmo_configexample.png)
 
 
 

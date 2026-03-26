@@ -23,7 +23,9 @@ This status change is also clearly displayed **directly in the visualization** o
 
 ### Configuration:
 
-[*[]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase-AC-SpotPrice.jpg)
+[
+![UseCase AC SpotPrice](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase-AC-SpotPrice.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/05/UseCase-AC-SpotPrice.jpg)
 
 ### Download the sample file
 

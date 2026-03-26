@@ -34,7 +34,9 @@ The Touch and Grill is also a control point however we also have two temperature
 
 ### Configuration:
 
-[*[Smart kitchen cabinet lighting - Loxone config screenshot]*](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Use-Case-32-Smart-Kitchen-Cabinet-Lighting-1.png)
+[
+![Smart kitchen cabinet lighting - Loxone config screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Use-Case-32-Smart-Kitchen-Cabinet-Lighting-1.png)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Use-Case-32-Smart-Kitchen-Cabinet-Lighting-1.png)
 
 
 

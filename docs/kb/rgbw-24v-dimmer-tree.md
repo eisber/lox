@@ -39,6 +39,11 @@ With the RGBW Dimmer Tree, extra low-voltage LED fittings and LED strips can be 
 
 
 
+
+![100239 install](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/100239 install.png)
+
+
+
     The RGBW Dimmers is installed on a DIN rail in a suitable enclosure. The Compact Dimmer can be used without a separate enclosure. The cable should be kept as short as possible to reduce voltage drop.
 
 
@@ -79,6 +84,11 @@ With the RGBW Dimmer Tree, extra low-voltage LED fittings and LED strips can be 
 
 
 
+![RGBW 24V Dimmer Tree WW](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/RGBW_24V_Dimmer_Tree_WW.png)
+
+
+
+
 ---
 
 
@@ -94,6 +104,11 @@ The color temperature can be adjusted from warm white to cool white by mixing th
 
 
 
+
+![stw actorselect](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/stw_actorselect.png)
+
+
+
     Two outputs of the dimmer for cool white (CW) and warm white (WW) are combined per actuator.
 Smart Tunable White actuators are supported by the Lighting Control block.
 
@@ -103,7 +118,17 @@ The assignment of the connections is as follows:
 
 
 
+
+![stw channelconnect](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/stw_channelconnect.png)
+
+
+
     In the settings of the Smart TW actuator, the color temperature of the light source is set for warm white and cool white:
+
+
+
+
+![stw colorselect](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/stw_colorselect.png)
 
 
 

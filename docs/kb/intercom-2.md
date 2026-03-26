@@ -127,6 +127,11 @@ The Intercom function block is used to integrate and program the [Loxone Interco
 
 
 
+
+![intercomblock blockios](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/intercomblock-blockios.png)
+
+
+
     The doorbell button input of the Intercom is connected to the block's (Bell) input.
 
 
@@ -134,6 +139,11 @@ The Intercom function block is used to integrate and program the [Loxone Interco
 
 
     A double-clicking on the block allows you to select [Audio Player blocks](https://www.loxone.com/help/audioplayer). These will then play the doorbell sound when the doorbell is rung.
+
+
+
+
+![intercomblock bellout](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/intercomblock-bellout.png)
 
 
 
@@ -152,15 +162,20 @@ The video image can be viewed, calls can be accepted, and programmed functions, 
 
 
 
+
+![intercomblock app](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/intercomblock-app.jpg)
+
+
+
     When the bell button on the Intercom in pressed, a notification with an image of the visitor is displayed on mobile devices. From the notification, you can accept the call or open the App.
 
 
 
-|  | These notifications may be restricted on some iOS devices if the "Private Relay" service is active.If this is the case, the notification will not display an image. Instead, the Loxone App is opened to access the functions of the notification and to display the image. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | These notifications may be restricted on some iOS devices if the "Private Relay" service is active.If this is the case, the notification will not display an image. Instead, the Loxone App is opened to access the functions of the notification and to display the image. |
 | --- | --- |
 
 
-|  | On iOS 15 devices, the connection to the Miniserver may be interrupted when establishing the video connection.The following steps may help in some cases:- Close the video view and try again- Use a different network (WiFi / mobile network).Apple is aware of this issues and will provide a fix with a future iOS update. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | On iOS 15 devices, the connection to the Miniserver may be interrupted when establishing the video connection.The following steps may help in some cases:- Close the video view and try again- Use a different network (WiFi / mobile network).Apple is aware of this issues and will provide a fix with a future iOS update. |
 | --- | --- |
 
     Video and audio connection are not supported in the web interface of the Miniserver Gen. 1.
@@ -179,5 +194,5 @@ To achieve this, a text is input to the function block (TTS) input, which is the
 
 
 
-|  | An Internet connection is required for the TTS function.Texts of up to 300 characters each (including spaces) are supported. |
+| ![info](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Resources/info.png) | An Internet connection is required for the TTS function.Texts of up to 300 characters each (including spaces) are supported. |
 | --- | --- |

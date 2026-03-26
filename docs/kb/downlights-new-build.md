@@ -14,7 +14,7 @@ Here at Loxone we suggest using 24V DC spots when it comes to new build as the h
 
 | 24 Volt Downlighting |
 | --- |
-| *[Loxone Spotlight (in situ)]* |
+| ![Loxone Spotlight (in situ)](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/Loxone-Spotlight-in-situ.jpg) |
 
 ## OTHER OPTIONS
 
@@ -22,4 +22,4 @@ It is not always possible to take the 24V DC route, when that is the case there 
 
 | 230V Dimmed Lighting | 230V Switched Lighting |
 | --- | --- |
-| *[3rd Party Spotlight (in situ)]* | *[3rd Party Spotlight 2 (in situ)]* |
+| ![3rd Party Spotlight (in situ)](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/12/3rd-Party-Spotlight-in-situ.jpg) | ![3rd Party Spotlight 2 (in situ)](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/12/3rd-Party-Spotlight-2-in-situ.jpg) |

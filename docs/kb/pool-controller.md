@@ -243,6 +243,11 @@ In addition, the block also allows the ability to give pool temperature control.
 
 
 
+
+![PoolController Clean](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/PoolController_Clean.jpg)
+
+
+
     Filter:
 
 
