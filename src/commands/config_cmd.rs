@@ -944,6 +944,113 @@ pub fn cmd_config(ctx: &RunContext, action: ConfigCmd) -> Result<()> {
                 println!("Reboot the Miniserver to apply: lox reboot --yes");
             }
         }
+        ConfigCmd::Add {
+            file,
+            control_type,
+            title,
+            room,
+            category,
+            parent,
+            topic,
+            save_as,
+        } => {
+            let (xml_type, default_parent) = match control_type.as_str() {
+                "light" => ("LightController2", None),
+                "switch" => ("Switch", None),
+                "presence" => ("PresenceDetector", None),
+                "alarm-clock" => ("AlarmClock", None),
+                "memory" => ("Memory", None),
+                "timer" => ("SwitchingTimer", None),
+                "mqtt-sub" => ("GenTSensor", Some("gid:Mqtt")),
+                "mqtt-pub" => ("GenTActor", Some("gid:Mqtt")),
+                "calendar" => ("Calendar", None),
+                "autopilot" => ("AutoPilot", None),
+                other => bail!("Unknown control type '{}'. Valid: light, switch, presence, alarm-clock, memory, timer, mqtt-sub, mqtt-pub, calendar, autopilot", other),
+            };
+
+            let parent_sel = parent.as_deref().or(default_parent);
+            let needs_parent = matches!(control_type.as_str(), "mqtt-sub" | "mqtt-pub");
+            if needs_parent && parent_sel.is_none() {
+                bail!("--parent is required for {}", control_type);
+            }
+
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+
+            let room_uuid = if let Some(ref r) = room {
+                Some(editor.find_room_uuid(r)?)
+            } else {
+                None
+            };
+            let cat_uuid = if let Some(ref c) = category {
+                Some(editor.find_category_uuid(c)?)
+            } else {
+                None
+            };
+
+            let mut props: Vec<(&str, &str, &str)> = Vec::new();
+            if let Some(ref t) = topic {
+                props.push(("mqtt_topic", t.as_str(), "11"));
+            }
+
+            if let Some(actual_parent) = parent_sel {
+                let uuid = editor.add_element(
+                    actual_parent,
+                    xml_type,
+                    &title,
+                    None,
+                    room_uuid.as_deref(),
+                    cat_uuid.as_deref(),
+                    &props,
+                )?;
+                println!("✓ Added {} '{}' (UUID: {})", xml_type, title, uuid);
+            } else {
+                let uuid = editor.add_element_to_root(
+                    xml_type,
+                    &title,
+                    room_uuid.as_deref(),
+                    cat_uuid.as_deref(),
+                    &props,
+                )?;
+                println!("✓ Added {} '{}' (UUID: {})", xml_type, title, uuid);
+            }
+            save_edited(&editor, &file, save_as.as_deref())?;
+        }
+        ConfigCmd::Validate { file } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let editor = ConfigEditor::load(&data)?;
+            let results = editor.validate_config();
+
+            for r in &results {
+                println!("{}", r);
+            }
+            let ok = results.iter().filter(|r| r.starts_with('✓')).count();
+            let warn = results.iter().filter(|r| r.starts_with('⚠')).count();
+            let err = results.iter().filter(|r| r.starts_with('✗')).count();
+            println!("\n{} passed, {} warnings, {} errors", ok, warn, err);
+        }
+        ConfigCmd::UserAdd {
+            file,
+            name,
+            save_as,
+        } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+            let uuid = editor.add_user(&name)?;
+            println!("✓ Added user '{}' (UUID: {})", name, uuid);
+            save_edited(&editor, &file, save_as.as_deref())?;
+        }
+        ConfigCmd::UserRemove {
+            file,
+            name,
+            save_as,
+        } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+            let uuid = editor.remove_user(&name)?;
+            println!("✓ Removed user '{}' (UUID: {})", name, uuid);
+            save_edited(&editor, &file, save_as.as_deref())?;
+        }
         ConfigCmd::Room(action) => cmd_room(ctx, action)?,
         ConfigCmd::Control(action) => cmd_control(ctx, action)?,
         ConfigCmd::Mqtt(action) => cmd_mqtt_config(ctx, action)?,

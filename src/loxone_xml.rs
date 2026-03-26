@@ -50,6 +50,8 @@ pub struct ConfigSummary {
 pub struct ControlEntry {
     pub name: String,
     pub control_type: String,
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub room_uuid: String,
 }
 
 // ── Helpers ──
@@ -237,6 +239,8 @@ pub fn parse_config_summary(xml: &[u8]) -> Result<ConfigSummary> {
     let mut rooms: HashMap<String, String> = HashMap::new();
     let mut categories: HashMap<String, String> = HashMap::new();
     let mut users: Vec<String> = Vec::new();
+    // Track the last control UUID we saw so we can attach IoData Pr= to it
+    let mut last_control_uuid: Option<String> = None;
 
     loop {
         match reader.read_event_into(&mut buf) {
@@ -244,6 +248,14 @@ pub fn parse_config_summary(xml: &[u8]) -> Result<ConfigSummary> {
                 let tag = e.name();
                 if tag.as_ref() == b"ControlList" {
                     version = attr_value_or(e, b"Version", "");
+                } else if tag.as_ref() == b"IoData" {
+                    if let Some(ref uuid) = last_control_uuid {
+                        if let Some(pr) = attr_value(e, b"Pr") {
+                            if let Some(entry) = controls.get_mut(uuid) {
+                                entry.room_uuid = pr;
+                            }
+                        }
+                    }
                 } else if tag.as_ref() == b"C" {
                     let type_val = attr_value(e, b"Type");
                     match type_val.as_deref() {
@@ -273,13 +285,14 @@ pub fn parse_config_summary(xml: &[u8]) -> Result<ConfigSummary> {
                             if let (Some(u), Some(t)) =
                                 (attr_value(e, b"U"), attr_value(e, b"Title"))
                             {
-                                // Only include elements with a Title (real controls)
                                 if !t.is_empty() {
+                                    last_control_uuid = Some(u.clone());
                                     controls.insert(
                                         u,
                                         ControlEntry {
                                             name: t,
                                             control_type: typ.to_string(),
+                                            room_uuid: String::new(),
                                         },
                                     );
                                 }
@@ -577,6 +590,22 @@ pub fn diff_configs(old: &ConfigSummary, new: &ConfigSummary) -> ConfigDiff {
                         new_value: entry.control_type.clone(),
                     });
                 }
+                if old_entry.room_uuid != entry.room_uuid
+                    && !(old_entry.room_uuid.is_empty() && entry.room_uuid.is_empty())
+                {
+                    let old_room = old.rooms.get(&old_entry.room_uuid)
+                        .cloned()
+                        .unwrap_or_else(|| if old_entry.room_uuid.is_empty() { "(none)".to_string() } else { old_entry.room_uuid.clone() });
+                    let new_room = new.rooms.get(&entry.room_uuid)
+                        .cloned()
+                        .unwrap_or_else(|| if entry.room_uuid.is_empty() { "(none)".to_string() } else { entry.room_uuid.clone() });
+                    diff.controls_changed.push(ControlChange {
+                        name: entry.name.clone(),
+                        field: "room".to_string(),
+                        old_value: old_room,
+                        new_value: new_room,
+                    });
+                }
             }
         }
     }
@@ -746,6 +775,7 @@ mod tests {
                     ControlEntry {
                         name: "Light".into(),
                         control_type: "Switch".into(),
+                        room_uuid: "r1".into(),
                     },
                 ),
                 (
@@ -753,6 +783,7 @@ mod tests {
                     ControlEntry {
                         name: "Blind".into(),
                         control_type: "Jalousie".into(),
+                        room_uuid: String::new(),
                     },
                 ),
             ]),
@@ -769,6 +800,7 @@ mod tests {
                     ControlEntry {
                         name: "Light Renamed".into(),
                         control_type: "Switch".into(),
+                        room_uuid: "r1".into(),
                     },
                 ),
                 (
@@ -776,6 +808,7 @@ mod tests {
                     ControlEntry {
                         name: "Outlet".into(),
                         control_type: "Switch".into(),
+                        room_uuid: String::new(),
                     },
                 ),
             ]),

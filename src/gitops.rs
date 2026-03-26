@@ -444,6 +444,7 @@ mod tests {
             controls_added: vec![loxone_xml::ControlEntry {
                 name: "Garage Light".into(),
                 control_type: "Switch".into(),
+                room_uuid: String::new(),
             }],
             controls_removed: vec![],
             controls_changed: vec![],

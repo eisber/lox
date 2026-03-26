@@ -284,6 +284,45 @@ impl ConfigEditor {
         }
     }
 
+    pub fn find_category_uuid(&self, cat_name: &str) -> Result<String> {
+        let lower = cat_name.to_lowercase();
+        let mut found = Vec::new();
+        self.walk_categories(&self.root, &lower, &mut found);
+        match found.len() {
+            0 => bail!("Category '{}' not found in config", cat_name),
+            1 => Ok(found.into_iter().next().unwrap().0),
+            _ => {
+                let exact: Vec<_> = found.iter().filter(|(_uuid, name)| name.to_lowercase() == lower).collect();
+                if exact.len() == 1 {
+                    Ok(exact[0].0.clone())
+                } else {
+                    bail!("Multiple categories match '{}': {:?}", cat_name, found.iter().map(|(_, n)| n.as_str()).collect::<Vec<_>>())
+                }
+            }
+        }
+    }
+
+    fn walk_categories(&self, elem: &Element, name_lower: &str, found: &mut Vec<(String, String)>) {
+        if elem.name == "C" {
+            if let Some(t) = elem.attributes.get("Type") {
+                if t == "Category" {
+                    if let (Some(uuid), Some(title)) =
+                        (elem.attributes.get("U"), elem.attributes.get("Title"))
+                    {
+                        if title.to_lowercase().contains(name_lower) {
+                            found.push((uuid.clone(), title.clone()));
+                        }
+                    }
+                }
+            }
+        }
+        for child in &elem.children {
+            if let Some(child_elem) = child.as_element() {
+                self.walk_categories(child_elem, name_lower, found);
+            }
+        }
+    }
+
     fn collect_typed_with_iodata(
         &self,
         elem: &Element,
@@ -481,6 +520,254 @@ impl ConfigEditor {
         Ok(uuid)
     }
 
+    /// Add a new user account.
+    pub fn add_user(&mut self, name: &str) -> Result<String> {
+        // Check if user already exists
+        let mut exists = false;
+        self.walk_users(&self.root, &mut |title| {
+            if title.eq_ignore_ascii_case(name) {
+                exists = true;
+            }
+        });
+        if exists {
+            bail!("User '{}' already exists", name);
+        }
+
+        let uuid = format!(
+            "{:08x}-{:04x}-{:04x}-ffff000000000000",
+            rand::random::<u32>(),
+            rand::random::<u16>(),
+            rand::random::<u16>()
+        );
+
+        let mut user = Element::new("C");
+        user.attributes.insert("Type".to_string(), "User".to_string());
+        user.attributes.insert("V".to_string(), "175".to_string());
+        user.attributes.insert("U".to_string(), uuid.clone());
+        user.attributes.insert("Title".to_string(), name.to_string());
+        user.attributes.insert("NFCArr".to_string(), String::new());
+        user.attributes.insert("Desc".to_string(), String::new());
+
+        // Find UserCaption to insert under, or insert at root
+        if let Some(caption_path) = self.find_user_caption() {
+            let caption = self.get_element_mut(&caption_path);
+            caption.children.push(xmltree::XMLNode::Element(user));
+        } else {
+            self.root.children.push(xmltree::XMLNode::Element(user));
+        }
+
+        Ok(uuid)
+    }
+
+    /// Remove a user account by name. Returns the UUID.
+    pub fn remove_user(&mut self, name: &str) -> Result<String> {
+        let lower = name.to_lowercase();
+        // Find and remove the user
+        if let Some(uuid) = self.find_and_remove_user(&lower) {
+            Ok(uuid)
+        } else {
+            bail!("User '{}' not found", name)
+        }
+    }
+
+    fn walk_users(&self, elem: &Element, cb: &mut dyn FnMut(&str)) {
+        if elem.name == "C" {
+            if let Some(t) = elem.attributes.get("Type") {
+                if t == "User" {
+                    if let Some(title) = elem.attributes.get("Title") {
+                        cb(title);
+                    }
+                }
+            }
+        }
+        for child in &elem.children {
+            if let Some(child_elem) = child.as_element() {
+                self.walk_users(child_elem, cb);
+            }
+        }
+    }
+
+    fn find_user_caption(&self) -> Option<Vec<usize>> {
+        self.find_user_caption_recursive(&self.root, &mut Vec::new())
+    }
+
+    fn find_user_caption_recursive(&self, elem: &Element, path: &mut Vec<usize>) -> Option<Vec<usize>> {
+        if elem.name == "C" {
+            if let Some(t) = elem.attributes.get("Type") {
+                if t == "UserCaption" {
+                    return Some(path.clone());
+                }
+            }
+        }
+        for (i, child) in elem.children.iter().enumerate() {
+            if let Some(child_elem) = child.as_element() {
+                path.push(i);
+                if let Some(result) = self.find_user_caption_recursive(child_elem, path) {
+                    return Some(result);
+                }
+                path.pop();
+            }
+        }
+        None
+    }
+
+    fn find_and_remove_user(&mut self, name_lower: &str) -> Option<String> {
+        Self::remove_user_recursive(&mut self.root.children, name_lower)
+    }
+
+    fn remove_user_recursive(children: &mut Vec<xmltree::XMLNode>, name_lower: &str) -> Option<String> {
+        for i in 0..children.len() {
+            if let Some(elem) = children[i].as_element() {
+                if elem.name == "C" {
+                    if let Some(t) = elem.attributes.get("Type") {
+                        if t == "User" {
+                            if let Some(title) = elem.attributes.get("Title") {
+                                if title.to_lowercase() == name_lower {
+                                    let uuid = elem.attributes.get("U").cloned().unwrap_or_default();
+                                    children.remove(i);
+                                    return Some(uuid);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        for child in children.iter_mut() {
+            if let Some(elem) = child.as_mut_element() {
+                if let Some(uuid) = Self::remove_user_recursive(&mut elem.children, name_lower) {
+                    return Some(uuid);
+                }
+            }
+        }
+        None
+    }
+
+    /// Validate config for common issues.
+    pub fn validate_config(&self) -> Vec<String> {
+        let mut results = Vec::new();
+
+        // Collect all Place UUIDs
+        let mut place_uuids = std::collections::HashSet::new();
+        self.collect_typed_uuids(&self.root, "Place", &mut place_uuids);
+
+        // Collect all Category UUIDs
+        let mut category_uuids = std::collections::HashSet::new();
+        self.collect_typed_uuids(&self.root, "Category", &mut category_uuids);
+
+        // Check IoData references
+        let mut bad_rooms = Vec::new();
+        let mut bad_cats = Vec::new();
+        let mut unconnected = Vec::new();
+        self.validate_recursive(&self.root, &place_uuids, &category_uuids, &mut bad_rooms, &mut bad_cats, &mut unconnected);
+
+        // Room references
+        if bad_rooms.is_empty() {
+            results.push("✓ All IoData room references (Pr=) point to existing rooms".to_string());
+        } else {
+            for r in &bad_rooms {
+                results.push(format!("✗ IoData Pr='{}' references non-existent room", r));
+            }
+        }
+
+        // Category references
+        if bad_cats.is_empty() {
+            results.push("✓ All IoData category references (Cr=) point to existing categories".to_string());
+        } else {
+            for c in &bad_cats {
+                results.push(format!("✗ IoData Cr='{}' references non-existent category", c));
+            }
+        }
+
+        // Unconnected connectors
+        if unconnected.is_empty() {
+            results.push("✓ All connectors are wired".to_string());
+        } else {
+            results.push(format!("⚠ {} connectors are unconnected", unconnected.len()));
+        }
+
+        // MQTT broker check
+        let mqtt_elements = self.find_elements("gid:Mqtt");
+        if !mqtt_elements.is_empty() {
+            let mqtt_elem = self.get_element(mqtt_elements[0].as_slice());
+            let mut has_broker = false;
+            for child in &mqtt_elem.children {
+                if let Some(set) = child.as_element() {
+                    if set.name == "SET" {
+                        for prop in &set.children {
+                            if let Some(p) = prop.as_element() {
+                                if p.name == "mqtt_broker_address" {
+                                    let v = p.attributes.get("v").cloned().unwrap_or_default();
+                                    has_broker = !v.is_empty();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            if has_broker {
+                results.push("✓ MQTT broker address is configured".to_string());
+            } else {
+                results.push("✗ MQTT plugin found but broker address is not set".to_string());
+            }
+        }
+
+        results
+    }
+
+    fn collect_typed_uuids(&self, elem: &Element, type_name: &str, uuids: &mut std::collections::HashSet<String>) {
+        if elem.name == "C" {
+            if let Some(t) = elem.attributes.get("Type") {
+                if t == type_name {
+                    if let Some(u) = elem.attributes.get("U") {
+                        uuids.insert(u.clone());
+                    }
+                }
+            }
+        }
+        for child in &elem.children {
+            if let Some(child_elem) = child.as_element() {
+                self.collect_typed_uuids(child_elem, type_name, uuids);
+            }
+        }
+    }
+
+    fn validate_recursive(
+        &self,
+        elem: &Element,
+        places: &std::collections::HashSet<String>,
+        categories: &std::collections::HashSet<String>,
+        bad_rooms: &mut Vec<String>,
+        bad_cats: &mut Vec<String>,
+        unconnected: &mut Vec<String>,
+    ) {
+        if elem.name == "IoData" {
+            if let Some(pr) = elem.attributes.get("Pr") {
+                if !pr.is_empty() && !places.contains(pr) {
+                    bad_rooms.push(pr.clone());
+                }
+            }
+            if let Some(cr) = elem.attributes.get("Cr") {
+                if !cr.is_empty() && !categories.contains(cr) {
+                    bad_cats.push(cr.clone());
+                }
+            }
+        }
+        if elem.name == "Co" {
+            if let Some(u) = elem.attributes.get("U") {
+                if u.is_empty() {
+                    let kind = elem.attributes.get("K").cloned().unwrap_or_default();
+                    unconnected.push(kind);
+                }
+            }
+        }
+        for child in &elem.children {
+            if let Some(child_elem) = child.as_element() {
+                self.validate_recursive(child_elem, places, categories, bad_rooms, bad_cats, unconnected);
+            }
+        }
+    }
+
     /// Add a child element under a parent. Returns the generated UUID.
     pub fn add_element(
         &mut self,
@@ -546,6 +833,54 @@ impl ConfigEditor {
             .children
             .push(xmltree::XMLNode::Element(elem));
 
+        Ok(uuid)
+    }
+
+    /// Add an element directly to the root. Returns the generated UUID.
+    pub fn add_element_to_root(
+        &mut self,
+        element_type: &str,
+        title: &str,
+        room_uuid: Option<&str>,
+        category_uuid: Option<&str>,
+        properties: &[(&str, &str, &str)],
+    ) -> Result<String> {
+        let uuid = format!(
+            "{:08x}-{:04x}-{:04x}-ffff000000000000",
+            rand::random::<u32>(),
+            rand::random::<u16>(),
+            rand::random::<u16>()
+        );
+
+        let mut elem = Element::new("C");
+        elem.attributes.insert("Type".to_string(), element_type.to_string());
+        elem.attributes.insert("V".to_string(), "175".to_string());
+        elem.attributes.insert("U".to_string(), uuid.clone());
+        elem.attributes.insert("Title".to_string(), title.to_string());
+
+        if room_uuid.is_some() || category_uuid.is_some() {
+            let mut iodata = Element::new("IoData");
+            if let Some(r) = room_uuid {
+                iodata.attributes.insert("Pr".to_string(), r.to_string());
+            }
+            if let Some(c) = category_uuid {
+                iodata.attributes.insert("Cr".to_string(), c.to_string());
+            }
+            elem.children.push(xmltree::XMLNode::Element(iodata));
+        }
+
+        if !properties.is_empty() {
+            let mut set = Element::new("SET");
+            for (name, value, type_code) in properties {
+                let mut prop = Element::new(*name);
+                prop.attributes.insert("t".to_string(), type_code.to_string());
+                prop.attributes.insert("v".to_string(), value.to_string());
+                set.children.push(xmltree::XMLNode::Element(prop));
+            }
+            elem.children.push(xmltree::XMLNode::Element(set));
+        }
+
+        self.root.children.push(xmltree::XMLNode::Element(elem));
         Ok(uuid)
     }
 

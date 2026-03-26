@@ -1332,6 +1332,46 @@ pub(crate) enum ConfigCmd {
     /// Manage MQTT plugin configuration
     #[command(subcommand)]
     Mqtt(MqttConfigCmd),
+    /// Add a control element with type-aware defaults
+    Add {
+        file: String,
+        /// Control type: light, switch, presence, alarm-clock, memory, timer, mqtt-sub, mqtt-pub, calendar, autopilot
+        #[arg(long = "type")]
+        control_type: String,
+        /// Element title
+        #[arg(long)]
+        title: String,
+        /// Room name
+        #[arg(long)]
+        room: Option<String>,
+        /// Category name
+        #[arg(long)]
+        category: Option<String>,
+        /// Parent selector (required for mqtt-sub, mqtt-pub)
+        #[arg(long)]
+        parent: Option<String>,
+        /// MQTT topic (for mqtt-sub, mqtt-pub)
+        #[arg(long)]
+        topic: Option<String>,
+        #[arg(long)]
+        save_as: Option<String>,
+    },
+    /// Validate a .Loxone config file for common issues
+    Validate { file: String },
+    /// Add a user account to a .Loxone config file
+    UserAdd {
+        file: String,
+        name: String,
+        #[arg(long)]
+        save_as: Option<String>,
+    },
+    /// Remove a user account from a .Loxone config file
+    UserRemove {
+        file: String,
+        name: String,
+        #[arg(long)]
+        save_as: Option<String>,
+    },
     /// Low-level XML editing operations (power users)
     #[command(subcommand)]
     Xml(XmlEditCmd),
