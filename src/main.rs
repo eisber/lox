@@ -2,6 +2,7 @@ mod client;
 mod commands;
 mod config;
 mod config_edit;
+mod errors;
 mod ftp;
 mod gitops;
 mod loxcc;
