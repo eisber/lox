@@ -920,3 +920,54 @@ pub fn cmd_autopilot(ctx: &RunContext, action: AutopilotCmd) -> Result<()> {
     }
     Ok(())
 }
+
+/// Monitor specific connector UUIDs via WebSocket (real-time state events).
+pub fn cmd_ws_monitor(_ctx: &RunContext, uuids_csv: String, timeout: u64) -> Result<()> {
+    let cfg = Config::load()?;
+    let watch_set: std::collections::HashSet<String> = uuids_csv
+        .split(',')
+        .map(|s| s.trim().to_string())
+        .collect();
+
+    let rt = tokio::runtime::Runtime::new()?;
+    rt.block_on(async {
+        let start = std::time::Instant::now();
+        let timeout_dur = if timeout > 0 {
+            Some(std::time::Duration::from_secs(timeout))
+        } else {
+            None
+        };
+
+        crate::stream::stream_events(&cfg, |events| {
+            for event in &events {
+                match event {
+                    crate::stream::StateEvent::ValueState { uuid, value } => {
+                        if watch_set.contains(uuid) {
+                            println!("{}\t{}", uuid, value);
+                        }
+                    }
+                    crate::stream::StateEvent::TextState { uuid, text, .. } => {
+                        if watch_set.contains(uuid) {
+                            println!("{}\t{}", uuid, text);
+                        }
+                    }
+                    _ => {}
+                }
+            }
+            if let Some(dur) = timeout_dur {
+                if start.elapsed() >= dur {
+                    anyhow::bail!("timeout");
+                }
+            }
+            Ok(())
+        })
+        .await
+        .or_else(|e| {
+            if e.to_string().contains("timeout") {
+                Ok(())
+            } else {
+                Err(e)
+            }
+        })
+    })
+}

@@ -1129,6 +1129,56 @@ pub fn cmd_config(ctx: &RunContext, action: ConfigCmd) -> Result<()> {
                 println!("\n{} operating modes", controls.len());
             }
         }
+        ConfigCmd::AddVirtualIn {
+            file,
+            title,
+            analog,
+            parent,
+            save_as,
+        } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+
+            let parent_sel = parent.as_deref().unwrap_or("type:VirtualInCaption");
+            let uuid = editor.add_virtual_in(&title, analog, parent_sel)?;
+            // Find the AQ/Q connector UUID
+            let conn_key = if analog { "AQ" } else { "Q" };
+            let conn_uuid = editor.find_connector_uuid(&title, conn_key)?;
+            if ctx.json {
+                println!(
+                    "{}",
+                    serde_json::json!({
+                        "uuid": uuid,
+                        "connector_key": conn_key,
+                        "connector_uuid": conn_uuid,
+                        "title": title,
+                    })
+                );
+            } else {
+                println!("✓ Created VirtualIn \"{}\" (UUID: {})", title, uuid);
+                println!("  {} connector: {}", conn_key, conn_uuid);
+            }
+            save_edited(&editor, &file, save_as.as_deref())?;
+        }
+        ConfigCmd::WireConnector {
+            file,
+            target,
+            source_uuid,
+            save_as,
+        } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+
+            // Parse target as "BlockTitle.ConnectorKey"
+            let (block_title, conn_key) = target
+                .rsplit_once('.')
+                .ok_or_else(|| anyhow::anyhow!("Target must be 'BlockTitle.ConnectorKey'"))?;
+            editor.wire_connector(block_title, conn_key, &source_uuid)?;
+            if !ctx.quiet {
+                println!("✓ Wired {}.{} ← {}", block_title, conn_key, source_uuid);
+            }
+            save_edited(&editor, &file, save_as.as_deref())?;
+        }
         ConfigCmd::Room(action) => cmd_room(ctx, action)?,
         ConfigCmd::Control(action) => cmd_control(ctx, action)?,
         ConfigCmd::Mqtt(action) => cmd_mqtt_config(ctx, action)?,

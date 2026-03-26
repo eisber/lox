@@ -881,6 +881,44 @@ pub(crate) enum Cmd {
         /// Show schema for a specific command (e.g. "blind", "light")
         command: Option<String>,
     },
+
+    // ── Low-level tools ─────────────────────────────────────────────────────
+    /// Monitor specific connector UUIDs via WebSocket (real-time state events)
+    #[command(name = "ws-monitor")]
+    WsMonitor {
+        /// Comma-separated list of connector UUIDs to monitor
+        uuids: String,
+        /// Timeout in seconds (0 = run forever until Ctrl+C)
+        #[arg(long, short = 't', default_value = "0")]
+        timeout: u64,
+    },
+    /// Send/receive UDP packets
+    Udp {
+        #[command(subcommand)]
+        action: UdpCmd,
+    },
+}
+
+#[derive(Subcommand)]
+pub(crate) enum UdpCmd {
+    /// Send a UDP packet
+    Send {
+        /// Target as host:port (e.g. 192.168.68.72:7000)
+        target: String,
+        /// Message to send
+        message: String,
+    },
+    /// Listen for UDP packets on a port
+    Listen {
+        /// Port to listen on
+        port: u16,
+        /// Timeout in seconds (0 = run forever)
+        #[arg(long, short = 't', default_value = "5")]
+        timeout: u64,
+        /// Stop after receiving N packets
+        #[arg(long, short = 'n', default_value = "0")]
+        count: u64,
+    },
 }
 
 #[derive(Subcommand)]
@@ -1426,6 +1464,32 @@ pub(crate) enum ConfigCmd {
     },
     /// List operating modes from a .Loxone config file
     ModeList { file: String },
+    /// Create a VirtualIn element in a config file (returns connector UUID)
+    AddVirtualIn {
+        /// Path to a .Loxone XML file
+        file: String,
+        /// Title for the VirtualIn
+        title: String,
+        /// Use analog mode (default: digital)
+        #[arg(long)]
+        analog: bool,
+        /// Parent element selector (default: VirtualInCaption)
+        #[arg(long)]
+        parent: Option<String>,
+        #[arg(long)]
+        save_as: Option<String>,
+    },
+    /// Wire a connector: add <In Input="source-uuid"/> to target connector
+    WireConnector {
+        /// Path to a .Loxone XML file
+        file: String,
+        /// Target: "BlockTitle.ConnectorKey" (e.g. "CatA_And.I1")
+        target: String,
+        /// Source connector UUID to wire from
+        source_uuid: String,
+        #[arg(long)]
+        save_as: Option<String>,
+    },
     /// Low-level XML editing operations (power users)
     #[command(subcommand)]
     Xml(XmlEditCmd),
@@ -1879,6 +1943,12 @@ fn run(cli: Cli) -> Result<()> {
             commands::config_cmd::cmd_completions(&ctx, shell, install)
         }
         Cmd::Schema { command } => commands::config_cmd::cmd_schema(&ctx, command),
+
+        // ── Low-level tools ──────────────────────────────────────────
+        Cmd::WsMonitor { uuids, timeout } => {
+            commands::inspect::cmd_ws_monitor(&ctx, uuids, timeout)
+        }
+        Cmd::Udp { action } => commands::system::cmd_udp(&ctx, action),
     }
 }
 

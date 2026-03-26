@@ -1117,9 +1117,121 @@ impl ConfigEditor {
             }
         }
     }
-}
 
-/// Remove an element by UUID from a children list (recursive standalone function).
+    /// Create a VirtualIn element under the given parent. Returns the block UUID.
+    pub fn add_virtual_in(
+        &mut self,
+        title: &str,
+        analog: bool,
+        parent_selector: &str,
+    ) -> Result<String> {
+        let parent_path = self.require_one(parent_selector)?;
+        let block_uuid = uuid::Uuid::new_v4().to_string();
+        let conn_uuid = uuid::Uuid::new_v4().to_string();
+
+        let mut elem = Element::new("C");
+        elem.attributes
+            .insert("Type".to_string(), "VirtualIn".to_string());
+        elem.attributes.insert("V".to_string(), "175".to_string());
+        elem.attributes
+            .insert("U".to_string(), block_uuid.clone());
+        elem.attributes
+            .insert("Title".to_string(), title.to_string());
+        elem.attributes
+            .insert("Analog".to_string(), analog.to_string());
+        elem.attributes.insert("Nio".to_string(), "1".to_string());
+        elem.attributes
+            .insert("WF".to_string(), "16384".to_string());
+        elem.attributes
+            .insert("ValOT".to_string(), "1".to_string());
+
+        // Add the output connector (AQ for analog, Q for digital)
+        let mut co = Element::new("Co");
+        let conn_key = if analog { "AQ" } else { "Q" };
+        co.attributes
+            .insert("K".to_string(), conn_key.to_string());
+        co.attributes
+            .insert("U".to_string(), conn_uuid.to_string());
+        elem.children.push(xmltree::XMLNode::Element(co));
+
+        // Add IoData
+        let iodata = Element::new("IoData");
+        elem.children.push(xmltree::XMLNode::Element(iodata));
+
+        // Add Display
+        let mut display = Element::new("Display");
+        display
+            .attributes
+            .insert("Unit".to_string(), "<v>".to_string());
+        display
+            .attributes
+            .insert("StateOnly".to_string(), "true".to_string());
+        elem.children.push(xmltree::XMLNode::Element(display));
+
+        let parent = self.get_element_mut(&parent_path);
+        parent.children.push(xmltree::XMLNode::Element(elem));
+
+        Ok(block_uuid)
+    }
+
+    /// Find a connector UUID by block title and connector key.
+    pub fn find_connector_uuid(&self, block_title: &str, conn_key: &str) -> Result<String> {
+        let path = self.require_one(&format!("title:{}", block_title))?;
+        let elem = self.get_element(&path);
+        elem.children
+            .iter()
+            .find_map(|c| {
+                c.as_element().and_then(|e| {
+                    if e.name == "Co"
+                        && e.attributes.get("K").map(|k| k == conn_key).unwrap_or(false)
+                    {
+                        e.attributes.get("U").cloned()
+                    } else {
+                        None
+                    }
+                })
+            })
+            .ok_or_else(|| anyhow::anyhow!("Connector '{}' not found on '{}'", conn_key, block_title))
+    }
+
+    /// Wire a connector by adding `<In Input="source_uuid"/>` to target connector.
+    pub fn wire_connector(
+        &mut self,
+        block_title: &str,
+        conn_key: &str,
+        source_uuid: &str,
+    ) -> Result<()> {
+        let path = self.require_one(&format!("title:{}", block_title))?;
+        let elem = self.get_element_mut(&path);
+
+        let co = elem
+            .children
+            .iter_mut()
+            .find_map(|c| {
+                c.as_mut_element().and_then(|e| {
+                    if e.name == "Co"
+                        && e.attributes.get("K").map(|k| k == conn_key).unwrap_or(false)
+                    {
+                        Some(e)
+                    } else {
+                        None
+                    }
+                })
+            })
+            .ok_or_else(|| {
+                anyhow::anyhow!("Connector '{}' not found on '{}'", conn_key, block_title)
+            })?;
+
+        // Add <In Input="source_uuid"/> child
+        let mut in_elem = Element::new("In");
+        in_elem
+            .attributes
+            .insert("Input".to_string(), source_uuid.to_string());
+        co.children.push(xmltree::XMLNode::Element(in_elem));
+
+        Ok(())
+    }
+}
 fn remove_by_uuid(children: &mut Vec<xmltree::XMLNode>, uuid: &str) -> Result<String> {
     for i in 0..children.len() {
         if let Some(elem) = children[i].as_element()

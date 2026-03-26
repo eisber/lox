@@ -7,7 +7,7 @@ use crate::client::LoxClient;
 use crate::commands::RunContext;
 use crate::config::Config;
 use crate::otel;
-use crate::{FilesCmd, OtelCmd, UpdateCmd, abs_path, bar, kb_fmt, xml_attr};
+use crate::{FilesCmd, OtelCmd, UdpCmd, UpdateCmd, abs_path, bar, kb_fmt, xml_attr};
 
 /// Extract the `value` attribute, returning `"—"` for missing or empty values.
 fn nonempty_attr(s: &str) -> &str {
@@ -1108,6 +1108,46 @@ pub(crate) fn parse_sdtest(raw: &str) -> SdTestResult {
     }
 
     result
+}
+
+/// Handle UDP send/listen commands.
+pub fn cmd_udp(_ctx: &RunContext, action: UdpCmd) -> Result<()> {
+    match action {
+        UdpCmd::Send { target, message } => {
+            let sock = UdpSocket::bind("0.0.0.0:0")?;
+            let sent = sock.send_to(message.as_bytes(), &target)?;
+            println!("Sent {} bytes to {}", sent, target);
+        }
+        UdpCmd::Listen {
+            port,
+            timeout,
+            count,
+        } => {
+            let sock = UdpSocket::bind(format!("0.0.0.0:{}", port))?;
+            if timeout > 0 {
+                sock.set_read_timeout(Some(Duration::from_secs(timeout)))?;
+            }
+            let mut buf = [0u8; 4096];
+            let mut received = 0u64;
+            loop {
+                match sock.recv_from(&mut buf) {
+                    Ok((n, addr)) => {
+                        let msg = String::from_utf8_lossy(&buf[..n]);
+                        println!("{}\t{}", addr, msg);
+                        received += 1;
+                        if count > 0 && received >= count {
+                            break;
+                        }
+                    }
+                    Err(e) if e.kind() == std::io::ErrorKind::WouldBlock => {
+                        break; // timeout
+                    }
+                    Err(e) => return Err(e.into()),
+                }
+            }
+        }
+    }
+    Ok(())
 }
 
 #[cfg(test)]
