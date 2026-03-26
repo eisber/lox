@@ -1372,6 +1372,44 @@ pub(crate) enum ConfigCmd {
         #[arg(long)]
         save_as: Option<String>,
     },
+    /// Wire a physical device/sensor to a logical control
+    DeviceBind {
+        file: String,
+        /// Source element selector (e.g. physical device/sensor)
+        source: String,
+        /// Source connector name
+        source_connector: String,
+        /// Target element selector (e.g. logical control)
+        target: String,
+        /// Target connector name
+        target_connector: String,
+        #[arg(long)]
+        save_as: Option<String>,
+    },
+    /// List automation/autopilot rules from a .Loxone config file
+    AutopilotList { file: String },
+    /// Add an autopilot rule to a .Loxone config file
+    AutopilotAdd {
+        file: String,
+        /// Rule name
+        name: String,
+        /// Room name
+        #[arg(long)]
+        room: Option<String>,
+        #[arg(long)]
+        save_as: Option<String>,
+    },
+    /// Add a calendar/schedule element to a .Loxone config file
+    CalendarAdd {
+        file: String,
+        name: String,
+        #[arg(long)]
+        room: Option<String>,
+        #[arg(long)]
+        save_as: Option<String>,
+    },
+    /// List operating modes from a .Loxone config file
+    ModeList { file: String },
     /// Low-level XML editing operations (power users)
     #[command(subcommand)]
     Xml(XmlEditCmd),

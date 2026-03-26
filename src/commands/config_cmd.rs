@@ -1051,6 +1051,94 @@ pub fn cmd_config(ctx: &RunContext, action: ConfigCmd) -> Result<()> {
             println!("✓ Removed user '{}' (UUID: {})", name, uuid);
             save_edited(&editor, &file, save_as.as_deref())?;
         }
+        ConfigCmd::DeviceBind {
+            file,
+            source,
+            source_connector,
+            target,
+            target_connector,
+            save_as,
+        } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+            let msg = editor.wire(&source, &source_connector, &target, &target_connector)?;
+            println!("✓ {}", msg);
+            save_edited(&editor, &file, save_as.as_deref())?;
+        }
+        ConfigCmd::AutopilotList { file } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let controls = loxone_xml::parse_controls(&data, Some("AutoPilot"), None)?;
+            if ctx.json {
+                println!("{}", serde_json::to_string_pretty(&controls)?);
+            } else {
+                println!("  {:<30} {:<20} UUID", "Title", "Room");
+                println!("  {:<30} {:<20} {}", "─".repeat(30), "─".repeat(20), "─".repeat(36));
+                for c in &controls {
+                    println!("  {:<30} {:<20} {}", c.title, c.room, c.uuid);
+                }
+                println!("\n{} autopilot rules", controls.len());
+            }
+        }
+        ConfigCmd::AutopilotAdd {
+            file,
+            name,
+            room,
+            save_as,
+        } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+            let room_uuid = if let Some(ref r) = room {
+                Some(editor.find_room_uuid(r)?)
+            } else {
+                None
+            };
+            let uuid = editor.add_element_to_root(
+                "AutoPilot",
+                &name,
+                room_uuid.as_deref(),
+                None,
+                &[],
+            )?;
+            println!("✓ Added AutoPilot '{}' (UUID: {})", name, uuid);
+            save_edited(&editor, &file, save_as.as_deref())?;
+        }
+        ConfigCmd::CalendarAdd {
+            file,
+            name,
+            room,
+            save_as,
+        } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+            let room_uuid = if let Some(ref r) = room {
+                Some(editor.find_room_uuid(r)?)
+            } else {
+                None
+            };
+            let uuid = editor.add_element_to_root(
+                "Calendar",
+                &name,
+                room_uuid.as_deref(),
+                None,
+                &[],
+            )?;
+            println!("✓ Added Calendar '{}' (UUID: {})", name, uuid);
+            save_edited(&editor, &file, save_as.as_deref())?;
+        }
+        ConfigCmd::ModeList { file } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let controls = loxone_xml::parse_controls(&data, Some("Mode"), None)?;
+            if ctx.json {
+                println!("{}", serde_json::to_string_pretty(&controls)?);
+            } else {
+                println!("  {:<30} UUID", "Title");
+                println!("  {:<30} {}", "─".repeat(30), "─".repeat(36));
+                for c in &controls {
+                    println!("  {:<30} {}", c.title, c.uuid);
+                }
+                println!("\n{} operating modes", controls.len());
+            }
+        }
         ConfigCmd::Room(action) => cmd_room(ctx, action)?,
         ConfigCmd::Control(action) => cmd_control(ctx, action)?,
         ConfigCmd::Mqtt(action) => cmd_mqtt_config(ctx, action)?,
