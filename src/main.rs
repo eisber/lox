@@ -741,6 +741,19 @@ pub(crate) enum Cmd {
         action: AutopilotCmd,
     },
 
+    // ── Documentation ────────────────────────────────────────────────────────
+    /// Browse Loxone KB articles, datasheets, and technical documentation
+    Docs {
+        /// Search term or article slug (e.g. "lighting-controller", "mqtt", "nano")
+        query: Option<String>,
+        /// Show datasheets instead of KB articles
+        #[arg(long)]
+        datasheet: bool,
+        /// List all available articles
+        #[arg(long)]
+        list: bool,
+    },
+
     // ── System ───────────────────────────────────────────────────────────────
     /// Miniserver health
     Status {
@@ -1799,6 +1812,11 @@ fn run(cli: Cli) -> Result<()> {
             }
         }
         Cmd::Stats => commands::inspect::cmd_stats(&ctx),
+        Cmd::Docs {
+            query,
+            datasheet,
+            list,
+        } => cmd_docs(&ctx, query, datasheet, list),
         Cmd::History {
             name_or_uuid,
             month,
@@ -2242,6 +2260,221 @@ pub(crate) fn encode_path_value(s: &str) -> String {
             c => vec![c],
         })
         .collect()
+}
+
+// ── Documentation command ────────────────────────────────────────────────────
+
+fn cmd_docs(
+    ctx: &commands::RunContext,
+    query: Option<String>,
+    datasheet: bool,
+    list: bool,
+) -> Result<()> {
+    // Find docs directory: try repo-relative first, then ~/.lox/docs/
+    let docs_dir = find_docs_dir()?;
+
+    if datasheet {
+        let index_path = docs_dir.join("docs").join("datasheets").join("index.json");
+        let index: std::collections::HashMap<String, serde_json::Value> = if index_path.exists() {
+            serde_json::from_str(&std::fs::read_to_string(&index_path)?)?
+        } else {
+            bail!("Datasheet index not found. Run: python3 scripts/fetch-datasheets.py");
+        };
+
+        if list || query.is_none() {
+            let mut entries: Vec<_> = index
+                .iter()
+                .filter_map(|(k, v)| {
+                    let name = v.get("name")?.as_str()?;
+                    Some((k.as_str(), name))
+                })
+                .collect();
+            entries.sort_by_key(|(_, n)| n.to_lowercase());
+
+            if ctx.json {
+                let arr: Vec<_> = entries
+                    .iter()
+                    .map(|(k, n)| serde_json::json!({"filename": k, "name": n}))
+                    .collect();
+                println!("{}", serde_json::to_string_pretty(&arr)?);
+            } else {
+                for (fname, name) in &entries {
+                    println!("  {:<50} {}", name, fname);
+                }
+                println!("\n{} datasheets", entries.len());
+            }
+            return Ok(());
+        }
+
+        // Search and display
+        let q = query.unwrap();
+        let q_lower = q.to_lowercase();
+        let matches: Vec<_> = index
+            .iter()
+            .filter(|(k, v)| {
+                let name = v.get("name").and_then(|n| n.as_str()).unwrap_or("");
+                k.to_lowercase().contains(&q_lower) || name.to_lowercase().contains(&q_lower)
+            })
+            .collect();
+
+        if matches.is_empty() {
+            bail!(
+                "No datasheet matching '{}'. Run: lox docs --datasheet --list",
+                q
+            );
+        }
+
+        for (_, v) in &matches {
+            if let Some(path) = v.get("extracted_path").and_then(|p| p.as_str()) {
+                let full = docs_dir.join("docs").join(path);
+                if full.exists() {
+                    let content = std::fs::read_to_string(&full)?;
+                    println!("{}", content);
+                    return Ok(());
+                }
+            }
+        }
+        bail!("Datasheet found but extracted content not available.");
+    }
+
+    // KB articles
+    let index_path = docs_dir.join("docs").join("kb").join("index.json");
+    let index: std::collections::HashMap<String, serde_json::Value> = if index_path.exists() {
+        serde_json::from_str(&std::fs::read_to_string(&index_path)?)?
+    } else {
+        bail!("KB index not found. Run: python3 scripts/scrape-docs.py");
+    };
+
+    if list {
+        let mut entries: Vec<_> = index
+            .iter()
+            .filter_map(|(k, v)| {
+                let title = v.get("title")?.as_str()?;
+                Some((k.as_str(), title))
+            })
+            .collect();
+        entries.sort_by_key(|(_, t)| t.to_lowercase());
+
+        if ctx.json {
+            let arr: Vec<_> = entries
+                .iter()
+                .map(|(k, t)| serde_json::json!({"slug": k, "title": t}))
+                .collect();
+            println!("{}", serde_json::to_string_pretty(&arr)?);
+        } else {
+            for (slug, title) in &entries {
+                println!("  {:<50} {}", title, slug);
+            }
+            println!("\n{} articles", entries.len());
+        }
+        return Ok(());
+    }
+
+    let q = query.unwrap_or_default();
+    if q.is_empty() {
+        println!("Usage: lox docs <search-term>");
+        println!("       lox docs --list              # list all articles");
+        println!("       lox docs --datasheet <term>  # search datasheets");
+        println!("\nExamples:");
+        println!("  lox docs lighting-controller");
+        println!("  lox docs mqtt");
+        println!("  lox docs switch");
+        println!("  lox docs --datasheet nano");
+        return Ok(());
+    }
+
+    let q_lower = q.to_lowercase();
+
+    // Exact slug match first
+    if let Some(entry) = index.get(&q) {
+        let path = entry.get("path").and_then(|p| p.as_str()).unwrap_or("");
+        let full = docs_dir.join("docs").join(path);
+        if full.exists() {
+            println!("{}", std::fs::read_to_string(&full)?);
+            return Ok(());
+        }
+    }
+
+    // Fuzzy search
+    let matches: Vec<_> = index
+        .iter()
+        .filter(|(k, v)| {
+            let title = v.get("title").and_then(|t| t.as_str()).unwrap_or("");
+            k.to_lowercase().contains(&q_lower) || title.to_lowercase().contains(&q_lower)
+        })
+        .collect();
+
+    match matches.len() {
+        0 => {
+            // Suggest closest match
+            let slugs: Vec<String> = index.keys().cloned().collect();
+            let suggestion = errors::suggest(&q, &slugs);
+            let mut msg = format!("No article matching '{}'.", q);
+            if let Some(s) = suggestion {
+                msg.push_str(&format!("\n  Did you mean '{}'?", s));
+            }
+            msg.push_str("\n  Run: lox docs --list");
+            bail!(msg);
+        }
+        1 => {
+            let (_, entry) = matches[0];
+            let path = entry.get("path").and_then(|p| p.as_str()).unwrap_or("");
+            let full = docs_dir.join("docs").join(path);
+            if full.exists() {
+                println!("{}", std::fs::read_to_string(&full)?);
+            } else {
+                bail!("Article file not found: {}", path);
+            }
+        }
+        n if n <= 20 => {
+            println!("Found {} articles matching '{}':\n", n, q);
+            for (slug, v) in &matches {
+                let title = v.get("title").and_then(|t| t.as_str()).unwrap_or(slug);
+                println!("  lox docs {:<40} # {}", slug, title);
+            }
+        }
+        n => {
+            println!("{} articles match '{}'. Showing first 20:\n", n, q);
+            for (slug, v) in matches.iter().take(20) {
+                let title = v.get("title").and_then(|t| t.as_str()).unwrap_or(slug);
+                println!("  lox docs {:<40} # {}", slug, title);
+            }
+            println!("\n  Narrow your search or run: lox docs --list");
+        }
+    }
+
+    Ok(())
+}
+
+/// Find the base directory containing `docs/` — try cwd, binary dir, then ~/.lox/
+fn find_docs_dir() -> Result<std::path::PathBuf> {
+    // 1. Current directory (running from repo root where docs/ exists)
+    let cwd = std::path::PathBuf::from(".");
+    if cwd.join("docs").join("kb").exists() {
+        return Ok(cwd);
+    }
+
+    // 2. Binary-relative (docs installed alongside the binary)
+    if let Some(dir) = std::env::current_exe()
+        .ok()
+        .and_then(|e| e.parent().map(|p| p.to_path_buf()))
+        .filter(|d| d.join("docs").join("kb").exists())
+    {
+        return Ok(dir);
+    }
+
+    // 3. ~/.lox/ (docs copied to ~/.lox/docs/)
+    if let Some(home) = dirs::home_dir() {
+        let lox_dir = home.join(".lox");
+        if lox_dir.join("docs").join("kb").exists() {
+            return Ok(lox_dir);
+        }
+    }
+
+    bail!(
+        "Documentation not found. Install docs to ~/.lox/docs/ or run from the repo root.\n\
+         To install: cp -r docs ~/.lox/"
+    );
 }
 
 #[cfg(test)]
