@@ -480,6 +480,170 @@ impl ConfigEditor {
 
         Ok(uuid)
     }
+
+    /// Add a child element under a parent. Returns the generated UUID.
+    pub fn add_element(
+        &mut self,
+        parent_selector: &str,
+        element_type: &str,
+        title: &str,
+        gid: Option<&str>,
+        room_uuid: Option<&str>,
+        category_uuid: Option<&str>,
+        properties: &[(&str, &str, &str)], // (name, value, type_code)
+    ) -> Result<String> {
+        let parent_path = self.require_one(parent_selector)?;
+        let uuid = format!(
+            "{:08x}-{:04x}-{:04x}-ffff000000000000",
+            rand::random::<u32>(),
+            rand::random::<u16>(),
+            rand::random::<u16>()
+        );
+
+        let mut elem = Element::new("C");
+        elem.attributes
+            .insert("Type".to_string(), element_type.to_string());
+        elem.attributes
+            .insert("V".to_string(), "175".to_string());
+        elem.attributes.insert("U".to_string(), uuid.clone());
+        elem.attributes
+            .insert("Title".to_string(), title.to_string());
+        if let Some(g) = gid {
+            elem.attributes.insert("gid".to_string(), g.to_string());
+        }
+
+        // Add IoData if room or category specified
+        if room_uuid.is_some() || category_uuid.is_some() {
+            let mut iodata = Element::new("IoData");
+            if let Some(r) = room_uuid {
+                iodata.attributes.insert("Pr".to_string(), r.to_string());
+            }
+            if let Some(c) = category_uuid {
+                iodata.attributes.insert("Cr".to_string(), c.to_string());
+            }
+            elem.children
+                .push(xmltree::XMLNode::Element(iodata));
+        }
+
+        // Add properties
+        if !properties.is_empty() {
+            let mut set = Element::new("SET");
+            for (name, value, type_code) in properties {
+                let mut prop = Element::new(*name);
+                prop.attributes
+                    .insert("t".to_string(), type_code.to_string());
+                prop.attributes
+                    .insert("v".to_string(), value.to_string());
+                set.children
+                    .push(xmltree::XMLNode::Element(prop));
+            }
+            elem.children
+                .push(xmltree::XMLNode::Element(set));
+        }
+
+        let parent = self.get_element_mut(&parent_path);
+        parent
+            .children
+            .push(xmltree::XMLNode::Element(elem));
+
+        Ok(uuid)
+    }
+
+    /// Remove an element by UUID.
+    pub fn remove_element(&mut self, uuid: &str) -> Result<String> {
+        remove_by_uuid(&mut self.root.children, uuid)
+    }
+
+    /// List all MQTT topics (GenTSensor subscriptions + GenTActor publishes).
+    pub fn list_mqtt_topics(&self) -> Vec<MqttTopic> {
+        let mut topics = Vec::new();
+        self.collect_mqtt_topics(&self.root, &mut topics);
+        topics
+    }
+
+    fn collect_mqtt_topics(&self, elem: &Element, topics: &mut Vec<MqttTopic>) {
+        if elem.name == "C" {
+            if let Some(t) = elem.attributes.get("Type") {
+                if t == "GenTSensor" || t == "GenTActor" {
+                    let title = elem
+                        .attributes
+                        .get("Title")
+                        .cloned()
+                        .unwrap_or_default();
+                    let direction = if t == "GenTSensor" {
+                        "subscribe"
+                    } else {
+                        "publish"
+                    };
+
+                    // Get topic from SET properties
+                    let mut topic = String::new();
+                    let mut qos = String::new();
+                    for child in &elem.children {
+                        if let Some(set) = child.as_element() {
+                            if set.name == "SET" {
+                                for prop in &set.children {
+                                    if let Some(p) = prop.as_element() {
+                                        if p.name == "mqtt_topic" {
+                                            topic = p
+                                                .attributes
+                                                .get("v")
+                                                .cloned()
+                                                .unwrap_or_default();
+                                        }
+                                        if p.name == "mqtt_qos" {
+                                            qos = p
+                                                .attributes
+                                                .get("v")
+                                                .cloned()
+                                                .unwrap_or_default();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    topics.push(MqttTopic {
+                        title,
+                        direction: direction.to_string(),
+                        topic,
+                        qos,
+                    });
+                }
+            }
+        }
+        for child in &elem.children {
+            if let Some(child_elem) = child.as_element() {
+                self.collect_mqtt_topics(child_elem, topics);
+            }
+        }
+    }
+}
+
+/// Remove an element by UUID from a children list (recursive standalone function).
+fn remove_by_uuid(children: &mut Vec<xmltree::XMLNode>, uuid: &str) -> Result<String> {
+    for i in 0..children.len() {
+        if let Some(elem) = children[i].as_element() {
+            if elem.attributes.get("U").map(|u| u == uuid).unwrap_or(false) {
+                let title = elem
+                    .attributes
+                    .get("Title")
+                    .cloned()
+                    .unwrap_or_default();
+                children.remove(i);
+                return Ok(title);
+            }
+        }
+    }
+    for child in children.iter_mut() {
+        if let Some(elem) = child.as_mut_element() {
+            if let Ok(title) = remove_by_uuid(&mut elem.children, uuid) {
+                return Ok(title);
+            }
+        }
+    }
+    bail!("Element with UUID '{}' not found", uuid)
 }
 
 /// Check if an element matches a selector string.
@@ -538,6 +702,14 @@ pub struct ElementDescription {
     pub properties: HashMap<String, PropertyValue>,
     pub connectors: Vec<ConnectorInfo>,
     pub children: Vec<String>,
+}
+
+#[derive(Debug, serde::Serialize)]
+pub struct MqttTopic {
+    pub title: String,
+    pub direction: String,
+    pub topic: String,
+    pub qos: String,
 }
 
 // ── Tests ────────────────────────────────────────────────────────────────────
@@ -710,5 +882,70 @@ mod tests {
 
         let matches = check.find_elements("NewTemp");
         assert_eq!(matches.len(), 1);
+    }
+
+    #[test]
+    fn test_add_element() {
+        let mut editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        let uuid = editor
+            .add_element(
+                "gid:Mqtt",
+                "GenTSensor",
+                "New Sensor",
+                Some("Mqtt.subt"),
+                Some("room-2"),
+                Some("cat-1"),
+                &[("mqtt_topic", "test/topic", "11")],
+            )
+            .unwrap();
+        assert!(!uuid.is_empty());
+
+        let desc = editor.describe(&format!("uuid:{}", uuid)).unwrap();
+        assert_eq!(desc.element_type, "GenTSensor");
+        assert_eq!(desc.title, "New Sensor");
+        assert_eq!(desc.properties["mqtt_topic"].value, "test/topic");
+    }
+
+    #[test]
+    fn test_remove_element() {
+        let mut editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        assert_eq!(editor.find_elements("uuid:wd-2").len(), 1);
+        let title = editor.remove_element("wd-2").unwrap();
+        assert_eq!(title, "Wind");
+        assert_eq!(editor.find_elements("uuid:wd-2").len(), 0);
+    }
+
+    #[test]
+    fn test_remove_nonexistent_fails() {
+        let mut editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        let result = editor.remove_element("nonexistent-uuid");
+        assert!(result.is_err());
+    }
+
+    #[test]
+    fn test_list_mqtt_topics() {
+        let mut editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        // The sample has one GenTSensor but no mqtt_topic property set
+        let topics = editor.list_mqtt_topics();
+        assert_eq!(topics.len(), 1);
+        assert_eq!(topics[0].direction, "subscribe");
+        assert_eq!(topics[0].title, "Temp Sub");
+
+        // Add one with a topic
+        editor
+            .add_element(
+                "gid:Mqtt",
+                "GenTActor",
+                "Publisher",
+                Some("Mqtt.pubt"),
+                None,
+                None,
+                &[("mqtt_topic", "home/status", "11")],
+            )
+            .unwrap();
+        let topics = editor.list_mqtt_topics();
+        assert_eq!(topics.len(), 2);
+        let pub_topic = topics.iter().find(|t| t.direction == "publish").unwrap();
+        assert_eq!(pub_topic.topic, "home/status");
     }
 }

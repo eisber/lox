@@ -1424,6 +1424,10 @@ pub(crate) enum MqttConfigCmd {
     List {
         file: String,
     },
+    /// List all MQTT topic bindings (GenTSensor/GenTActor)
+    Topics {
+        file: String,
+    },
 }
 
 #[derive(clap::Subcommand, Debug)]
@@ -1461,6 +1465,42 @@ pub(crate) enum XmlEditCmd {
         /// Target room name
         #[arg(long)]
         to_room: String,
+        #[arg(long)]
+        save_as: Option<String>,
+    },
+    /// Add a child element under a parent
+    Add {
+        file: String,
+        /// Parent selector (e.g. gid:Mqtt)
+        #[arg(long)]
+        parent: String,
+        /// Element type (e.g. GenTSensor, Switch)
+        #[arg(long = "type")]
+        element_type: String,
+        /// Element title
+        #[arg(long)]
+        title: String,
+        /// Optional gid
+        #[arg(long)]
+        gid: Option<String>,
+        /// Room name
+        #[arg(long)]
+        room: Option<String>,
+        /// Category name
+        #[arg(long)]
+        category: Option<String>,
+        /// Properties as NAME:TYPE=VALUE (can repeat)
+        #[arg(long, action = clap::ArgAction::Append)]
+        property: Vec<String>,
+        #[arg(long)]
+        save_as: Option<String>,
+    },
+    /// Remove an element by UUID
+    Remove {
+        file: String,
+        /// UUID of the element to remove
+        #[arg(long)]
+        uuid: String,
         #[arg(long)]
         save_as: Option<String>,
     },

@@ -1163,6 +1163,46 @@ fn cmd_mqtt_config(ctx: &RunContext, action: MqttConfigCmd) -> Result<()> {
                 }
             }
         }
+        MqttConfigCmd::Topics { file } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let editor = ConfigEditor::load(&data)?;
+            let topics = editor.list_mqtt_topics();
+
+            if ctx.json {
+                println!("{}", serde_json::to_string_pretty(&topics)?);
+            } else {
+                println!(
+                    "  {:<12} {:<30} {:<40} QoS",
+                    "Direction", "Title", "Topic"
+                );
+                println!(
+                    "  {:<12} {:<30} {:<40} {}",
+                    "─".repeat(12),
+                    "─".repeat(30),
+                    "─".repeat(40),
+                    "─".repeat(4)
+                );
+                for t in &topics {
+                    println!(
+                        "  {:<12} {:<30} {:<40} {}",
+                        t.direction,
+                        t.title,
+                        if t.topic.is_empty() {
+                            "(not set)"
+                        } else {
+                            &t.topic
+                        },
+                        if t.qos.is_empty() { "-" } else { &t.qos }
+                    );
+                }
+                println!(
+                    "\n{} topics ({} subscribe, {} publish)",
+                    topics.len(),
+                    topics.iter().filter(|t| t.direction == "subscribe").count(),
+                    topics.iter().filter(|t| t.direction == "publish").count()
+                );
+            }
+        }
     }
     Ok(())
 }
@@ -1206,6 +1246,62 @@ fn cmd_xml_edit(_ctx: &RunContext, action: XmlEditCmd) -> Result<()> {
             let mut editor = ConfigEditor::load(&data)?;
             let (count, uuid) = editor.move_to_room(&type_filter, &to_room, &[])?;
             println!("✓ Moved {} {} items to '{}' ({})", count, type_filter, to_room, uuid);
+            save_edited(&editor, &file, save_as.as_deref())?;
+        }
+        XmlEditCmd::Add {
+            file,
+            parent,
+            element_type,
+            title,
+            gid,
+            room,
+            category,
+            property,
+            save_as,
+        } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+
+            // Resolve room/category names to UUIDs if provided
+            let room_uuid = if let Some(ref r) = room {
+                Some(editor.find_room_uuid(r)?)
+            } else {
+                None
+            };
+            // Category UUID lookup would be similar, but for now pass as-is
+            let cat_uuid = category.as_deref();
+
+            // Parse properties: "name:type=value"
+            let props: Vec<(&str, &str, &str)> = property
+                .iter()
+                .filter_map(|p| {
+                    let (name_type, value) = p.split_once('=')?;
+                    let (name, type_code) = name_type.split_once(':')?;
+                    Some((name, value, type_code))
+                })
+                .collect();
+
+            let uuid = editor.add_element(
+                &parent,
+                &element_type,
+                &title,
+                gid.as_deref(),
+                room_uuid.as_deref(),
+                cat_uuid,
+                &props,
+            )?;
+            println!("✓ Added {} '{}' (UUID: {})", element_type, title, uuid);
+            save_edited(&editor, &file, save_as.as_deref())?;
+        }
+        XmlEditCmd::Remove {
+            file,
+            uuid,
+            save_as,
+        } => {
+            let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let mut editor = ConfigEditor::load(&data)?;
+            let title = editor.remove_element(&uuid)?;
+            println!("✓ Removed '{}' (UUID: {})", title, uuid);
             save_edited(&editor, &file, save_as.as_deref())?;
         }
     }
