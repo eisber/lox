@@ -735,6 +735,172 @@ pub fn cmd_config(ctx: &RunContext, action: ConfigCmd) -> Result<()> {
                 .context("No config repo configured. Run `lox config init <path>` first.")?;
             gitops::restore(std::path::Path::new(repo_path), &cfg, &commit, force)?;
         }
+        ConfigCmd::Compress { file, save_as } => {
+            let xml = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let loxcc_data = loxcc::compress_loxcc(&xml);
+            let out_path = save_as.unwrap_or_else(|| {
+                file.strip_suffix(".Loxone")
+                    .or_else(|| file.strip_suffix(".loxone"))
+                    .unwrap_or(&file)
+                    .to_string()
+                    + ".LoxCC"
+            });
+            fs::write(&out_path, &loxcc_data)?;
+            println!(
+                "Compressed {} KB → {} KB → {}",
+                xml.len() / 1024,
+                loxcc_data.len() / 1024,
+                out_path
+            );
+        }
+        ConfigCmd::Rooms { file } => {
+            if file.ends_with(".zip") {
+                bail!(
+                    "Expected a .Loxone XML file. Run `lox config extract {}` first.",
+                    file
+                );
+            }
+            let xml = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let rooms = loxone_xml::parse_rooms(&xml)?;
+            if ctx.json {
+                println!("{}", serde_json::to_string_pretty(&rooms)?);
+            } else {
+                println!("  {:<30} {:<6} UUID", "Room", "Items");
+                println!(
+                    "  {:<30} {:<6} {}",
+                    "─".repeat(30),
+                    "─".repeat(6),
+                    "─".repeat(36)
+                );
+                for r in &rooms {
+                    println!("  {:<30} {:<6} {}", r.name, r.item_count, r.uuid);
+                }
+                let total: usize = rooms.iter().map(|r| r.item_count).sum();
+                println!("\n{} rooms, {} items total", rooms.len(), total);
+            }
+        }
+        ConfigCmd::Controls {
+            file,
+            r#type,
+            room,
+        } => {
+            if file.ends_with(".zip") {
+                bail!(
+                    "Expected a .Loxone XML file. Run `lox config extract {}` first.",
+                    file
+                );
+            }
+            let xml = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            let controls = loxone_xml::parse_controls(
+                &xml,
+                r#type.as_deref(),
+                room.as_deref(),
+            )?;
+            if ctx.json {
+                println!("{}", serde_json::to_string_pretty(&controls)?);
+            } else {
+                println!(
+                    "  {:<20} {:<30} {:<20} {:<20} UUID",
+                    "Type", "Title", "Room", "Category"
+                );
+                println!(
+                    "  {:<20} {:<30} {:<20} {:<20} {}",
+                    "─".repeat(20),
+                    "─".repeat(30),
+                    "─".repeat(20),
+                    "─".repeat(20),
+                    "─".repeat(36)
+                );
+                for c in &controls {
+                    println!(
+                        "  {:<20} {:<30} {:<20} {:<20} {}",
+                        c.control_type, c.title, c.room, c.category, c.uuid
+                    );
+                }
+                println!("\n{} controls", controls.len());
+            }
+        }
+        ConfigCmd::Patch {
+            replace,
+            reboot,
+            force,
+        } => {
+            if !force {
+                eprintln!(
+                    "⚠  WARNING: This will modify the live Miniserver configuration.\n\
+                     \n\
+                     \x20  Use --force to proceed."
+                );
+                std::process::exit(1);
+            }
+            if replace.len() % 2 != 0 {
+                bail!("--replace requires pairs of OLD NEW values");
+            }
+            let cfg = Config::load()?;
+
+            // Download current config
+            let backups = ftp::list_backups(&cfg)?;
+            if backups.is_empty() {
+                bail!("No configs found on the Miniserver.");
+            }
+            let newest = &backups[0];
+            eprintln!("Downloading {}...", newest.filename);
+            let zip_data = ftp::download_backup(&cfg, &newest.filename)?;
+
+            // Extract XML
+            let xml = loxcc::extract_and_decompress(&zip_data)?;
+            let mut patched = xml.clone();
+
+            // Apply replacements
+            for pair in replace.chunks(2) {
+                let old = pair[0].as_bytes();
+                let new = pair[1].as_bytes();
+                let count = patched
+                    .windows(old.len())
+                    .filter(|w| *w == old)
+                    .count();
+                if count == 0 {
+                    eprintln!("  ⚠ Pattern '{}' not found in config", pair[0]);
+                } else {
+                    eprintln!("  ✓ Replacing '{}' → '{}' ({} occurrences)", pair[0], pair[1], count);
+                    // Byte-level replacement
+                    let mut result = Vec::with_capacity(patched.len());
+                    let mut pos = 0;
+                    while pos < patched.len() {
+                        if pos + old.len() <= patched.len() && &patched[pos..pos + old.len()] == old
+                        {
+                            result.extend_from_slice(new);
+                            pos += old.len();
+                        } else {
+                            result.push(patched[pos]);
+                            pos += 1;
+                        }
+                    }
+                    patched = result;
+                }
+            }
+
+            if patched == xml {
+                println!("No changes made.");
+                return Ok(());
+            }
+
+            // Repack and upload
+            let new_zip = loxcc::repack_zip(&zip_data, &patched)?;
+            let upload_name = &newest.filename;
+            eprintln!("Uploading patched config as {}...", upload_name);
+            ftp::upload_backup(&cfg, upload_name, &new_zip)?;
+            println!("✓ Patched config uploaded.");
+
+            if reboot {
+                eprintln!("Rebooting Miniserver...");
+                let lox = crate::client::LoxClient::new(cfg)?;
+                lox.get_text("/dev/sys/reboot")?;
+                println!("✓ Reboot initiated.");
+            } else {
+                println!("Reboot the Miniserver to apply: lox reboot --yes");
+            }
+        }
     }
     Ok(())
 }

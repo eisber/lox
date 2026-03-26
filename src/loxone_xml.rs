@@ -357,6 +357,186 @@ impl ConfigDiff {
     }
 }
 
+// ── Rooms ──
+
+#[derive(Debug, Serialize)]
+pub struct RoomInfo {
+    pub uuid: String,
+    pub name: String,
+    pub item_count: usize,
+}
+
+/// Parse rooms from a .Loxone XML, counting items assigned to each room via IoData Pr=.
+pub fn parse_rooms(xml: &[u8]) -> Result<Vec<RoomInfo>> {
+    let mut reader = Reader::from_reader(xml);
+    reader.config_mut().trim_text(true);
+    let mut buf = Vec::new();
+
+    let mut rooms: HashMap<String, String> = HashMap::new();
+    let mut room_counts: HashMap<String, usize> = HashMap::new();
+
+    loop {
+        match reader.read_event_into(&mut buf) {
+            Ok(Event::Start(ref e) | Event::Empty(ref e)) => {
+                let tag = e.name();
+                if tag.as_ref() == b"C" {
+                    if let Some(t) = attr_value(e, b"Type") {
+                        if t == "Place" {
+                            if let (Some(u), Some(name)) =
+                                (attr_value(e, b"U"), attr_value(e, b"Title"))
+                            {
+                                rooms.insert(u.clone(), name);
+                                room_counts.entry(u).or_insert(0);
+                            }
+                        }
+                    }
+                } else if tag.as_ref() == b"IoData" {
+                    if let Some(pr) = attr_value(e, b"Pr") {
+                        *room_counts.entry(pr).or_insert(0) += 1;
+                    }
+                }
+            }
+            Ok(Event::Eof) => break,
+            Err(e) => return Err(e.into()),
+            _ => {}
+        }
+        buf.clear();
+    }
+
+    let mut result: Vec<RoomInfo> = rooms
+        .into_iter()
+        .map(|(uuid, name)| RoomInfo {
+            item_count: room_counts.get(&uuid).copied().unwrap_or(0),
+            uuid,
+            name,
+        })
+        .collect();
+    result.sort_by(|a, b| a.name.cmp(&b.name));
+    Ok(result)
+}
+
+// ── Controls ──
+
+#[derive(Debug, Serialize)]
+pub struct ControlInfo {
+    pub control_type: String,
+    pub title: String,
+    pub uuid: String,
+    pub room: String,
+    pub category: String,
+}
+
+/// Parse controls from a .Loxone XML with their room and category names.
+pub fn parse_controls(
+    xml: &[u8],
+    type_filter: Option<&str>,
+    room_filter: Option<&str>,
+) -> Result<Vec<ControlInfo>> {
+    let mut reader = Reader::from_reader(xml);
+    reader.config_mut().trim_text(true);
+    let mut buf = Vec::new();
+
+    let mut rooms: HashMap<String, String> = HashMap::new();
+    let mut categories: HashMap<String, String> = HashMap::new();
+
+    struct RawControl {
+        control_type: String,
+        title: String,
+        uuid: String,
+        room_uuid: String,
+        cat_uuid: String,
+    }
+
+    let mut controls: Vec<RawControl> = Vec::new();
+    let mut current_uuid: Option<String> = None;
+    let mut current_type: Option<String> = None;
+    let mut current_title: Option<String> = None;
+
+    loop {
+        match reader.read_event_into(&mut buf) {
+            Ok(Event::Start(ref e) | Event::Empty(ref e)) => {
+                let tag = e.name();
+                if tag.as_ref() == b"C" {
+                    if let Some(t) = attr_value(e, b"Type") {
+                        match t.as_str() {
+                            "Place" => {
+                                if let (Some(u), Some(name)) =
+                                    (attr_value(e, b"U"), attr_value(e, b"Title"))
+                                {
+                                    rooms.insert(u, name);
+                                }
+                            }
+                            "Category" => {
+                                if let (Some(u), Some(name)) =
+                                    (attr_value(e, b"U"), attr_value(e, b"Title"))
+                                {
+                                    categories.insert(u, name);
+                                }
+                            }
+                            _ => {
+                                // Track any element with a Type, Title, and UUID
+                                if type_filter
+                                    .map(|f| t.eq_ignore_ascii_case(f))
+                                    .unwrap_or(true)
+                                {
+                                    if let Some(uuid) = attr_value(e, b"U") {
+                                        current_uuid = Some(uuid);
+                                        current_type = Some(t);
+                                        current_title = attr_value(e, b"Title");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else if tag.as_ref() == b"IoData" {
+                    if let (Some(uuid), Some(ctype), Some(title)) =
+                        (&current_uuid, &current_type, &current_title)
+                    {
+                        let room_uuid = attr_value(e, b"Pr").unwrap_or_default();
+                        let cat_uuid = attr_value(e, b"Cr").unwrap_or_default();
+                        controls.push(RawControl {
+                            control_type: ctype.clone(),
+                            title: title.clone(),
+                            uuid: uuid.clone(),
+                            room_uuid,
+                            cat_uuid,
+                        });
+                        current_uuid = None;
+                        current_type = None;
+                        current_title = None;
+                    }
+                }
+            }
+            Ok(Event::Eof) => break,
+            Err(e) => return Err(e.into()),
+            _ => {}
+        }
+        buf.clear();
+    }
+
+    let mut result: Vec<ControlInfo> = controls
+        .into_iter()
+        .map(|c| ControlInfo {
+            control_type: c.control_type,
+            title: c.title,
+            uuid: c.uuid,
+            room: rooms.get(&c.room_uuid).cloned().unwrap_or(c.room_uuid),
+            category: categories
+                .get(&c.cat_uuid)
+                .cloned()
+                .unwrap_or(c.cat_uuid),
+        })
+        .collect();
+
+    if let Some(rf) = room_filter {
+        let rf_lower = rf.to_lowercase();
+        result.retain(|c| c.room.to_lowercase().contains(&rf_lower));
+    }
+
+    result.sort_by(|a, b| a.control_type.cmp(&b.control_type).then(a.title.cmp(&b.title)));
+    Ok(result)
+}
+
 pub fn diff_configs(old: &ConfigSummary, new: &ConfigSummary) -> ConfigDiff {
     let mut diff = ConfigDiff {
         version_old: old.version.clone(),

@@ -254,10 +254,17 @@ lox config download --save-as config.zip  # custom output filename
 lox config ls                          # list all configs on the Miniserver
 lox config extract config.zip          # decompress LoxCC → .Loxone XML
 lox config extract config.zip --save-as out.Loxone
+lox config compress file.Loxone        # compress .Loxone XML → .LoxCC (with CRC32)
 lox config upload config.zip --force   # upload to Miniserver (dangerous)
 lox config users file.Loxone           # list user accounts from config XML
 lox config devices file.Loxone         # list hardware devices (Tree/Air/Network)
+lox config rooms file.Loxone           # list rooms with item counts
+lox config controls file.Loxone        # list controls with type/room/category
+lox config controls file.Loxone -t WeatherData  # filter by type
+lox config controls file.Loxone -r "Zentral"    # filter by room
 lox config diff old.Loxone new.Loxone  # compare two configs (accepts .zip or .Loxone)
+lox config patch --replace OLD NEW --force       # download, patch, upload config
+lox config patch --replace OLD NEW --reboot --force  # ...and reboot
 
 # Git-based config versioning
 lox config init ~/loxone-config        # initialize a git repo for config tracking
@@ -270,6 +277,8 @@ lox config restore abc123 --force      # restore config from git history & uploa
 
 The `pull` workflow: FTP download → LoxCC decompress → semantic diff → git commit with meaningful message.
 Multi-Miniserver: each serial gets its own subdirectory in the repo.
+
+The `patch` command enables headless config editing: download → extract → byte-replace → recompress (with CRC32) → upload. Supports `t="11"` plaintext password fields.
 
 ---
 

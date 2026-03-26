@@ -1271,6 +1271,42 @@ pub(crate) enum ConfigCmd {
         #[arg(long)]
         force: bool,
     },
+    /// Compress a .Loxone XML file into LoxCC format (with correct CRC32)
+    Compress {
+        /// Path to a .Loxone XML file
+        file: String,
+        /// Custom output filename
+        #[arg(long, value_name = "PATH")]
+        save_as: Option<String>,
+    },
+    /// List rooms and item counts from a .Loxone config file
+    Rooms {
+        /// Path to a .Loxone XML file (from `lox config extract`)
+        file: String,
+    },
+    /// List controls with type, title, room, and category from a .Loxone config
+    Controls {
+        /// Path to a .Loxone XML file (from `lox config extract`)
+        file: String,
+        /// Filter by control type (e.g. WeatherData, SysVar)
+        #[arg(short = 't', long)]
+        r#type: Option<String>,
+        /// Filter by room name
+        #[arg(short, long)]
+        room: Option<String>,
+    },
+    /// Download, patch, recompress, and upload a config in one step
+    Patch {
+        /// Replacement pairs: --replace OLD NEW (can repeat)
+        #[arg(long, num_args = 2, action = clap::ArgAction::Append)]
+        replace: Vec<String>,
+        /// Reboot the Miniserver after upload
+        #[arg(long)]
+        reboot: bool,
+        /// Confirm the operation (required — modifies live config)
+        #[arg(long)]
+        force: bool,
+    },
 }
 
 // ── Error envelope ────────────────────────────────────────────────────────────
