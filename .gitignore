@@ -16,3 +16,7 @@ sps_*.zip
 # lox CLI config (contains credentials)
 .lox/
 config.yaml
+
+# Generated docs and i18n (re-generate with scripts/)
+i18n/
+
