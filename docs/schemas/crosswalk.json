@@ -395,6 +395,117 @@
           "desc": "API Connector"
         }
       }
+    },
+    "PresenceDetector": {
+      "kb_slug": "presence",
+      "ux_validated": false,
+      "xml_validated": true,
+      "connectors": {
+        "InputActivate": {
+          "ux": "Act",
+          "dir": "input",
+          "desc": "Activates presence on rising edge"
+        },
+        "InputExtend": {
+          "ux": "Ext",
+          "dir": "input",
+          "desc": "Extends active presence"
+        },
+        "InputTrigger": {
+          "ux": "AE",
+          "dir": "input",
+          "desc": "Activates/extends on any change"
+        },
+        "InputReset": {
+          "ux": "Off",
+          "dir": "input",
+          "desc": "Reset/switch off, lock when ON"
+        },
+        "DeviceActivate": {
+          "ux": "DAct",
+          "dir": "input",
+          "desc": "Device-level activate",
+          "inferred": true
+        },
+        "DeviceExtend": {
+          "ux": "DExt",
+          "dir": "input",
+          "desc": "Device-level extend",
+          "inferred": true
+        },
+        "DeviceTrigger": {
+          "ux": "DAE",
+          "dir": "input",
+          "desc": "Device-level trigger",
+          "inferred": true
+        },
+        "ControlInput": {
+          "ux": "Ctrl",
+          "dir": "input",
+          "desc": "Control input",
+          "inferred": true
+        },
+        "ParamTOn": {
+          "ux": "Pet",
+          "dir": "parameter",
+          "desc": "Presence extend time"
+        },
+        "ParamTWarn": {
+          "ux": "Tw",
+          "dir": "parameter",
+          "desc": "Warning time before end"
+        },
+        "OutputPresence": {
+          "ux": "Pc",
+          "dir": "output",
+          "desc": "Combined presence output"
+        },
+        "OutputActive": {
+          "ux": "Pa",
+          "dir": "output",
+          "desc": "Active state",
+          "inferred": true
+        },
+        "OutputOn": {
+          "ux": "On",
+          "dir": "output",
+          "desc": "On output",
+          "inferred": true
+        },
+        "OutputOff": {
+          "ux": "Off_o",
+          "dir": "output",
+          "desc": "Off output",
+          "inferred": true
+        },
+        "OutputOnTime": {
+          "ux": "Pd",
+          "dir": "output",
+          "desc": "Duration of presence period"
+        },
+        "OutputWarn": {
+          "ux": "Warn",
+          "dir": "output",
+          "desc": "Warning before end of presence"
+        },
+        "OutputDevOnTime": {
+          "ux": "DPd",
+          "dir": "output",
+          "desc": "Device on time",
+          "inferred": true
+        },
+        "OutputDevActiveTime": {
+          "ux": "DPa_t",
+          "dir": "output",
+          "desc": "Device active time",
+          "inferred": true
+        },
+        "OutputAPI": {
+          "ux": "API",
+          "dir": "output",
+          "desc": "API connector"
+        }
+      }
     }
   }
 }
