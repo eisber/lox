@@ -55,7 +55,7 @@
   "energy-manager-2": "EnergyManager2",
   "energy-monitor": "EnergyMonitor",
   "event-database-connector": "EventDBConnector",
-  "exclusive-or": "ExclusiveOr",
+  "exclusive-or": "Xor",
   "fire-water-alarm": "FireWaterAlarm",
   "fixed-value-meter": "FixedValueMeter",
   "flipflop-rs": "FlipFlopRS",

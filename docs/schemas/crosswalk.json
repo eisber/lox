@@ -146,7 +146,8 @@
           "dir": "output",
           "desc": "API Connector"
         }
-      }
+      },
+      "slug": "alarm-clock"
     },
     "LightController2": {
       "kb_slug": "lighting-controller",
@@ -357,7 +358,8 @@
           "dir": "parameter",
           "desc": "Fading time buzzer"
         }
-      }
+      },
+      "slug": "lighting-controller"
     },
     "Memory": {
       "kb_slug": "analogue-memory",
@@ -378,7 +380,8 @@
           "dir": "output",
           "desc": "Digital output"
         }
-      }
+      },
+      "slug": "analogue-memory"
     },
     "AutoPilot": {
       "kb_slug": "automatic-rule",
@@ -394,7 +397,8 @@
           "dir": "output",
           "desc": "API Connector"
         }
-      }
+      },
+      "slug": "automatic-rule"
     },
     "PresenceDetector": {
       "kb_slug": "presence",
@@ -504,6 +508,1020 @@
           "ux": "API",
           "dir": "output",
           "desc": "API connector"
+        }
+      },
+      "slug": "presence-detector"
+    },
+    "And": {
+      "slug": "and",
+      "connectors": {
+        "I1": {
+          "ux_name": "I1",
+          "direction": "input"
+        },
+        "I2": {
+          "ux_name": "I2",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "Or": {
+      "slug": "or",
+      "connectors": {
+        "I1": {
+          "ux_name": "I1",
+          "direction": "input"
+        },
+        "I2": {
+          "ux_name": "I2",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "Not": {
+      "slug": "not",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "Xor": {
+      "slug": "exclusive-or",
+      "connectors": {
+        "I1": {
+          "ux_name": "I1",
+          "direction": "input"
+        },
+        "I2": {
+          "ux_name": "I2",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "Add2": {
+      "slug": "add-2-way",
+      "connectors": {
+        "I1": {
+          "ux_name": "I1",
+          "direction": "input"
+        },
+        "I2": {
+          "ux_name": "I2",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "Add4": {
+      "slug": "add-4-way",
+      "connectors": {
+        "I1": {
+          "ux_name": "I1",
+          "direction": "input"
+        },
+        "I2": {
+          "ux_name": "I2",
+          "direction": "input"
+        },
+        "I3": {
+          "ux_name": "I3",
+          "direction": "input"
+        },
+        "I4": {
+          "ux_name": "I4",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "Subtract": {
+      "slug": "subtract",
+      "connectors": {
+        "I1": {
+          "ux_name": "I1",
+          "direction": "input"
+        },
+        "I2": {
+          "ux_name": "I2",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "Multiply": {
+      "slug": "multiply",
+      "connectors": {
+        "I1": {
+          "ux_name": "I1",
+          "direction": "input"
+        },
+        "I2": {
+          "ux_name": "I2",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "Divide": {
+      "slug": "divide",
+      "connectors": {
+        "I1": {
+          "ux_name": "I1",
+          "direction": "input"
+        },
+        "I2": {
+          "ux_name": "I2",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "Qr": {
+          "ux_name": "Or",
+          "direction": "output"
+        }
+      }
+    },
+    "Modulo": {
+      "slug": "modulo",
+      "connectors": {
+        "I1": {
+          "ux_name": "I1",
+          "direction": "input"
+        },
+        "I2": {
+          "ux_name": "I2",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "Qr": {
+          "ux_name": "Or",
+          "direction": "output"
+        }
+      }
+    },
+    "Formula": {
+      "slug": "formula",
+      "connectors": {
+        "I1": {
+          "ux_name": "I1",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "Average": {
+      "slug": "average",
+      "connectors": {
+        "I1": {
+          "ux_name": "I1",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "MovingAverage": {
+      "slug": "moving-average",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "R": {
+          "ux_name": "R",
+          "direction": "input"
+        },
+        "PT": {
+          "ux_name": "PT",
+          "direction": "parameter"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "Max": {
+          "ux_name": "Max",
+          "direction": "input"
+        },
+        "Min": {
+          "ux_name": "Min",
+          "direction": "input"
+        }
+      }
+    },
+    "Integer": {
+      "slug": "integer",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "Qr": {
+          "ux_name": "Or",
+          "direction": "output"
+        }
+      }
+    },
+    "BinaryDecoder": {
+      "slug": "binary-decoder",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "BinaryDecoder2": {
+      "slug": "binary-decoder-2",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "BinaryEncoder": {
+      "slug": "binary-encoder",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "AnalogMultiplexer2": {
+      "slug": "analogue-multiplexer-2-way",
+      "connectors": {
+        "S": {
+          "ux_name": "S",
+          "direction": "input"
+        },
+        "I1": {
+          "ux_name": "I1",
+          "direction": "input"
+        },
+        "I2": {
+          "ux_name": "I2",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "AnalogMultiplexer4": {
+      "slug": "analogue-multiplexer-4-way",
+      "connectors": {
+        "S": {
+          "ux_name": "S",
+          "direction": "input"
+        },
+        "I1": {
+          "ux_name": "I1",
+          "direction": "input"
+        },
+        "I2": {
+          "ux_name": "I2",
+          "direction": "input"
+        },
+        "I3": {
+          "ux_name": "I3",
+          "direction": "input"
+        },
+        "I4": {
+          "ux_name": "I4",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "Comparator": {
+      "slug": "comparator",
+      "connectors": {
+        "I1": {
+          "ux_name": "I1",
+          "direction": "input"
+        },
+        "I2": {
+          "ux_name": "I2",
+          "direction": "input"
+        },
+        "GT": {
+          "ux_name": "GT",
+          "direction": "output"
+        },
+        "EQ": {
+          "ux_name": "EQ",
+          "direction": "output"
+        },
+        "LT": {
+          "ux_name": "LT",
+          "direction": "output"
+        }
+      }
+    },
+    "ThresholdSwitch": {
+      "slug": "threshold-switch",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "On": {
+          "ux_name": "On",
+          "direction": "input"
+        },
+        "Off": {
+          "ux_name": "Off",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "AQ": {
+          "ux_name": "AQ",
+          "direction": "output"
+        }
+      }
+    },
+    "DiffThresholdSwitch": {
+      "slug": "differential-threshold-switch",
+      "connectors": {
+        "I1": {
+          "ux_name": "I1",
+          "direction": "input"
+        },
+        "I2": {
+          "ux_name": "I2",
+          "direction": "input"
+        },
+        "On": {
+          "ux_name": "On",
+          "direction": "input"
+        },
+        "Off": {
+          "ux_name": "Off",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "MinMax": {
+      "slug": "minmax",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "Min": {
+          "ux_name": "Min",
+          "direction": "output"
+        },
+        "Max": {
+          "ux_name": "Max",
+          "direction": "output"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "MinMaxReset": {
+      "slug": "minmax-since-reset",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "R": {
+          "ux_name": "R",
+          "direction": "input"
+        },
+        "Min": {
+          "ux_name": "Min",
+          "direction": "output"
+        },
+        "Max": {
+          "ux_name": "Max",
+          "direction": "output"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "AnalogLimiter": {
+      "slug": "analogue-min-max-limiter",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "Min": {
+          "ux_name": "Min",
+          "direction": "input"
+        },
+        "Max": {
+          "ux_name": "Max",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "AnalogWatchdog": {
+      "slug": "analogue-watchdog",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "AQ": {
+          "ux_name": "AQ",
+          "direction": "output"
+        }
+      }
+    },
+    "ValueValidator": {
+      "slug": "value-validator",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "Min": {
+          "ux_name": "Min",
+          "direction": "input"
+        },
+        "Max": {
+          "ux_name": "Max",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "Qerr": {
+          "ux_name": "Oerr",
+          "direction": "output"
+        },
+        "AQ": {
+          "ux_name": "AQ",
+          "direction": "output"
+        },
+        "R": {
+          "ux_name": "R",
+          "direction": "input"
+        },
+        "En": {
+          "ux_name": "En",
+          "direction": "input"
+        }
+      }
+    },
+    "MemoryFlags": {
+      "slug": "memory-flags",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        }
+      }
+    },
+    "FlipFlopRS": {
+      "slug": "flipflop-rs",
+      "connectors": {
+        "R": {
+          "ux_name": "R",
+          "direction": "input"
+        },
+        "S": {
+          "ux_name": "S",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "Qn": {
+          "ux_name": "On",
+          "direction": "output"
+        },
+        "Trg": {
+          "ux_name": "Trg",
+          "direction": "input"
+        }
+      }
+    },
+    "FlipFlopSR": {
+      "slug": "flipflop-sr",
+      "connectors": {
+        "S": {
+          "ux_name": "S",
+          "direction": "input"
+        },
+        "R": {
+          "ux_name": "R",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "Qn": {
+          "ux_name": "On",
+          "direction": "output"
+        },
+        "Trg": {
+          "ux_name": "Trg",
+          "direction": "input"
+        }
+      }
+    },
+    "Counter": {
+      "slug": "counter",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "R": {
+          "ux_name": "R",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "Qmax": {
+          "ux_name": "Omax",
+          "direction": "output"
+        },
+        "Qmin": {
+          "ux_name": "Omin",
+          "direction": "output"
+        }
+      }
+    },
+    "UpDownCounter": {
+      "slug": "up-down-counter",
+      "connectors": {
+        "Up": {
+          "ux_name": "Up",
+          "direction": "input"
+        },
+        "Dn": {
+          "ux_name": "Dn",
+          "direction": "input"
+        },
+        "R": {
+          "ux_name": "R",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "Qmax": {
+          "ux_name": "Omax",
+          "direction": "output"
+        },
+        "Qmin": {
+          "ux_name": "Omin",
+          "direction": "output"
+        }
+      }
+    },
+    "Stepper": {
+      "slug": "stepper",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "R": {
+          "ux_name": "R",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "Qmax": {
+          "ux_name": "Omax",
+          "direction": "output"
+        },
+        "Qmin": {
+          "ux_name": "Omin",
+          "direction": "output"
+        }
+      }
+    },
+    "ShiftRegister": {
+      "slug": "shift-register",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "Clk": {
+          "ux_name": "Clk",
+          "direction": "input"
+        },
+        "R": {
+          "ux_name": "R",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "Qn": {
+          "ux_name": "On",
+          "direction": "output"
+        }
+      }
+    },
+    "EdgeDetection": {
+      "slug": "edge-detection",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "Pos": {
+          "ux_name": "Pos",
+          "direction": "output"
+        },
+        "Neg": {
+          "ux_name": "Neg",
+          "direction": "output"
+        },
+        "Chg": {
+          "ux_name": "Chg",
+          "direction": "output"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "Status": {
+      "slug": "status",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "AQ": {
+          "ux_name": "AQ",
+          "direction": "output"
+        }
+      }
+    },
+    "StatusMonitor": {
+      "slug": "status-monitor",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "AQ": {
+          "ux_name": "AQ",
+          "direction": "output"
+        },
+        "R": {
+          "ux_name": "R",
+          "direction": "input"
+        },
+        "En": {
+          "ux_name": "En",
+          "direction": "input"
+        }
+      }
+    },
+    "Monoflop": {
+      "slug": "monoflop",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "R": {
+          "ux_name": "R",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "PT": {
+          "ux_name": "PT",
+          "direction": "parameter"
+        }
+      }
+    },
+    "PulseGenerator": {
+      "slug": "pulse-generator",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "R": {
+          "ux_name": "R",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "PT": {
+          "ux_name": "PT",
+          "direction": "parameter"
+        }
+      }
+    },
+    "PulseAt": {
+      "slug": "pulse-at",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "R": {
+          "ux_name": "R",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "PT": {
+          "ux_name": "PT",
+          "direction": "parameter"
+        }
+      }
+    },
+    "PulseBy": {
+      "slug": "pulse-by",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        }
+      }
+    },
+    "DelayedPulse": {
+      "slug": "delayed-pulse",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "PT": {
+          "ux_name": "PT",
+          "direction": "parameter"
+        }
+      }
+    },
+    "SwitchOnDelay": {
+      "slug": "switch-on-delay",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "R": {
+          "ux_name": "R",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "PT": {
+          "ux_name": "PT",
+          "direction": "parameter"
+        }
+      }
+    },
+    "SwitchOnOffDelay": {
+      "slug": "switch-on-and-off-delay",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "R": {
+          "ux_name": "R",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "PTon": {
+          "ux_name": "PTon",
+          "direction": "parameter"
+        },
+        "PToff": {
+          "ux_name": "PToff",
+          "direction": "parameter"
+        }
+      }
+    },
+    "SavingSwitchOnDelay": {
+      "slug": "saving-switch-on-delay",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "R": {
+          "ux_name": "R",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "PT": {
+          "ux_name": "PT",
+          "direction": "parameter"
+        }
+      }
+    },
+    "PWM": {
+      "slug": "pulse-width-modulation",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "PT": {
+          "ux_name": "PT",
+          "direction": "parameter"
+        }
+      }
+    },
+    "WipingRelay": {
+      "slug": "edge-triggered-wiping-relay",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "R": {
+          "ux_name": "R",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "QT": {
+          "ux_name": "OT",
+          "direction": "output"
+        }
+      }
+    },
+    "RandomGenerator": {
+      "slug": "random-number-generator",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "R": {
+          "ux_name": "R",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "Min": {
+          "ux_name": "Min",
+          "direction": "input"
+        }
+      }
+    },
+    "RandomController": {
+      "slug": "random-controller",
+      "connectors": {
+        "I": {
+          "ux_name": "I",
+          "direction": "input"
+        },
+        "R": {
+          "ux_name": "R",
+          "direction": "input"
+        },
+        "Q": {
+          "ux_name": "O",
+          "direction": "output"
+        },
+        "Min": {
+          "ux_name": "Min",
+          "direction": "input"
+        },
+        "Max": {
+          "ux_name": "Max",
+          "direction": "input"
         }
       }
     }
