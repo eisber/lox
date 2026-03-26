@@ -199,4 +199,146 @@ mod tests {
         assert_eq!(type_to_doc_slug("Switch"), Some("switch"));
         assert_eq!(type_to_doc_slug("UnknownType"), None);
     }
+
+    // ── Additional error edge case tests ─────────────────────────────────
+
+    #[test]
+    fn test_levenshtein_empty_strings() {
+        assert_eq!(levenshtein("", ""), 0);
+        assert_eq!(levenshtein("abc", ""), 3);
+        assert_eq!(levenshtein("", "xyz"), 3);
+    }
+
+    #[test]
+    fn test_levenshtein_unicode() {
+        assert_eq!(levenshtein("Küche", "Küche"), 0);
+        assert_eq!(levenshtein("Küche", "Kuche"), 1);
+    }
+
+    #[test]
+    fn test_levenshtein_completely_different() {
+        assert_eq!(levenshtein("abc", "xyz"), 3);
+    }
+
+    #[test]
+    fn test_fuzzy_match_empty_candidates() {
+        let candidates: Vec<String> = vec![];
+        assert!(fuzzy_match("query", &candidates).is_none());
+    }
+
+    #[test]
+    fn test_fuzzy_match_exact() {
+        let candidates = vec!["Kitchen".to_string(), "Bedroom".to_string()];
+        let (best, dist) = fuzzy_match("Kitchen", &candidates).unwrap();
+        assert_eq!(best, "Kitchen");
+        assert_eq!(dist, 0);
+    }
+
+    #[test]
+    fn test_fuzzy_match_single_candidate() {
+        let candidates = vec!["Hello".to_string()];
+        let (best, _) = fuzzy_match("World", &candidates).unwrap();
+        assert_eq!(best, "Hello");
+    }
+
+    #[test]
+    fn test_suggest_exact_match() {
+        let candidates = vec!["Kitchen".to_string()];
+        assert_eq!(suggest("Kitchen", &candidates), Some("Kitchen".to_string()));
+    }
+
+    #[test]
+    fn test_suggest_empty_candidates() {
+        let candidates: Vec<String> = vec![];
+        assert_eq!(suggest("query", &candidates), None);
+    }
+
+    #[test]
+    fn test_not_found_error_no_suggestion() {
+        let candidates = vec!["Kitchen".to_string()];
+        let err = not_found_error("Room", "ZZZZZZZZZ", &candidates, "lox config room list");
+        let msg = err.to_string();
+        assert!(msg.contains("not found"));
+        assert!(msg.contains("Available"));
+    }
+
+    #[test]
+    fn test_not_found_error_many_candidates() {
+        let candidates: Vec<String> = (0..25).map(|i| format!("Room{}", i)).collect();
+        let err = not_found_error("Room", "ZZZZ", &candidates, "lox config room list");
+        let msg = err.to_string();
+        assert!(msg.contains("25 options available"));
+        assert!(msg.contains("lox config room list"));
+        // Should NOT list all items
+        assert!(!msg.contains("Room24"));
+    }
+
+    #[test]
+    fn test_ambiguous_error() {
+        let matches = vec!["Kitchen Light".to_string(), "Kitchen Fan".to_string()];
+        let err = ambiguous_error("Control", "Kitchen", &matches);
+        let msg = err.to_string();
+        assert!(msg.contains("ambiguous"));
+        assert!(msg.contains("2 items"));
+        assert!(msg.contains("Kitchen Light"));
+        assert!(msg.contains("Kitchen Fan"));
+    }
+
+    #[test]
+    fn test_ambiguous_error_many_matches() {
+        let matches: Vec<String> = (0..10).map(|i| format!("Item{}", i)).collect();
+        let err = ambiguous_error("Control", "Item", &matches);
+        let msg = err.to_string();
+        assert!(msg.contains("10 items"));
+        // Only first 5 should be shown
+        assert!(msg.contains("Item4"));
+        assert!(!msg.contains("Item5"));
+    }
+
+    #[test]
+    fn test_type_mismatch_error() {
+        let err = type_mismatch_error("LightSwitch", "DimmerInput", "digital", "analog");
+        let msg = err.to_string();
+        assert!(msg.contains("Cannot wire"));
+        assert!(msg.contains("LightSwitch"));
+        assert!(msg.contains("DimmerInput"));
+        assert!(msg.contains("digital"));
+        assert!(msg.contains("analog"));
+    }
+
+    #[test]
+    fn test_doc_url() {
+        let url = doc_url("switch");
+        assert_eq!(url, "https://www.loxone.com/enen/kb/switch/");
+    }
+
+    #[test]
+    fn test_type_to_doc_slug_all_known() {
+        assert_eq!(type_to_doc_slug("Dimmer"), Some("dimmer"));
+        assert_eq!(type_to_doc_slug("Jalousie"), Some("automated-blinds"));
+        assert_eq!(
+            type_to_doc_slug("CentralJalousie"),
+            Some("automated-blinds")
+        );
+        assert_eq!(type_to_doc_slug("Gate"), Some("gate"));
+        assert_eq!(type_to_doc_slug("CentralGate"), Some("gate"));
+        assert_eq!(type_to_doc_slug("AlarmClock"), Some("alarm-clock"));
+        assert_eq!(
+            type_to_doc_slug("PresenceDetector"),
+            Some("presence-detector")
+        );
+        assert_eq!(
+            type_to_doc_slug("IRoomControllerV2"),
+            Some("intelligent-room-controller")
+        );
+        assert_eq!(type_to_doc_slug("Alarm"), Some("alarm-system"));
+        assert_eq!(type_to_doc_slug("WeatherData"), Some("weather-service"));
+        assert_eq!(type_to_doc_slug("WeatherServer"), Some("weather-service"));
+        assert_eq!(type_to_doc_slug("Plugin"), Some("mqtt"));
+        assert_eq!(type_to_doc_slug("GenTSensor"), Some("mqtt"));
+        assert_eq!(type_to_doc_slug("GenTActor"), Some("mqtt"));
+        assert_eq!(type_to_doc_slug("Sauna"), Some("sauna"));
+        assert_eq!(type_to_doc_slug("Fronius"), Some("fronius"));
+        assert_eq!(type_to_doc_slug("AudioZone"), Some("audioserver"));
+    }
 }

@@ -1495,4 +1495,356 @@ mod tests {
         let text_co = wires.iter().find(|w| w.connector == "Text").unwrap();
         assert!(!text_co.connected);
     }
+
+    // ── validate_config tests ─────────────────────────────────────────────
+
+    #[test]
+    fn test_validate_config_all_ok() {
+        let editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        let results = editor.validate_config();
+        // Room and category refs are valid in SAMPLE_XML
+        assert!(
+            results
+                .iter()
+                .any(|r| r.contains("✓") && r.contains("room"))
+        );
+        assert!(
+            results
+                .iter()
+                .any(|r| r.contains("✓") && r.contains("category"))
+        );
+        assert!(
+            results
+                .iter()
+                .any(|r| r.contains("✓") && r.contains("MQTT broker"))
+        );
+    }
+
+    #[test]
+    fn test_validate_config_bad_room_ref() {
+        let xml = br#"<?xml version="1.0" encoding="utf-8"?>
+<ControlList Version="267">
+  <C Type="Place" U="room-1" Title="Kitchen"/>
+  <C Type="Category" U="cat-1" Title="Wetter"/>
+  <C Type="WeatherData" U="wd-1" Title="Temperatur">
+    <IoData Cr="cat-1" Pr="nonexistent-room"/>
+  </C>
+</ControlList>"#;
+        let editor = ConfigEditor::load(xml).unwrap();
+        let results = editor.validate_config();
+        assert!(
+            results
+                .iter()
+                .any(|r| r.contains("✗") && r.contains("nonexistent-room"))
+        );
+    }
+
+    #[test]
+    fn test_validate_config_bad_category_ref() {
+        let xml = br#"<?xml version="1.0" encoding="utf-8"?>
+<ControlList Version="267">
+  <C Type="Place" U="room-1" Title="Kitchen"/>
+  <C Type="WeatherData" U="wd-1" Title="Temperatur">
+    <IoData Cr="nonexistent-cat" Pr="room-1"/>
+  </C>
+</ControlList>"#;
+        let editor = ConfigEditor::load(xml).unwrap();
+        let results = editor.validate_config();
+        assert!(
+            results
+                .iter()
+                .any(|r| r.contains("✗") && r.contains("nonexistent-cat"))
+        );
+    }
+
+    #[test]
+    fn test_validate_config_mqtt_no_broker() {
+        let xml = br#"<?xml version="1.0" encoding="utf-8"?>
+<ControlList Version="267">
+  <C Type="Plugin" gid="Mqtt" U="mqtt-1" Title="MQTT">
+    <SET>
+      <mqtt_broker_address t="11" v=""/>
+    </SET>
+  </C>
+</ControlList>"#;
+        let editor = ConfigEditor::load(xml).unwrap();
+        let results = editor.validate_config();
+        assert!(
+            results
+                .iter()
+                .any(|r| r.contains("✗") && r.contains("broker address is not set"))
+        );
+    }
+
+    #[test]
+    fn test_validate_config_empty() {
+        let xml = br#"<?xml version="1.0" encoding="utf-8"?>
+<ControlList Version="267">
+</ControlList>"#;
+        let editor = ConfigEditor::load(xml).unwrap();
+        let results = editor.validate_config();
+        // Should report all OK (no refs to check)
+        assert!(results.iter().all(|r| !r.contains("✗")));
+    }
+
+    // ── User CRUD tests ──────────────────────────────────────────────────
+
+    #[test]
+    fn test_add_user() {
+        let mut editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        let uuid = editor.add_user("TestUser").unwrap();
+        assert!(!uuid.is_empty());
+        let matches = editor.find_elements("TestUser");
+        assert_eq!(matches.len(), 1);
+    }
+
+    #[test]
+    fn test_add_user_duplicate_fails() {
+        // Add a user first, then try to add the same one
+        let xml = br#"<?xml version="1.0" encoding="utf-8"?>
+<ControlList Version="267">
+  <C Type="User" V="175" U="user-1" Title="admin"/>
+</ControlList>"#;
+        let mut editor = ConfigEditor::load(xml).unwrap();
+        let result = editor.add_user("admin");
+        assert!(result.is_err());
+        assert!(result.unwrap_err().to_string().contains("already exists"));
+    }
+
+    #[test]
+    fn test_add_user_case_insensitive_duplicate() {
+        let xml = br#"<?xml version="1.0" encoding="utf-8"?>
+<ControlList Version="267">
+  <C Type="User" V="175" U="user-1" Title="Admin"/>
+</ControlList>"#;
+        let mut editor = ConfigEditor::load(xml).unwrap();
+        let result = editor.add_user("admin");
+        assert!(result.is_err());
+    }
+
+    #[test]
+    fn test_remove_user() {
+        let xml = br#"<?xml version="1.0" encoding="utf-8"?>
+<ControlList Version="267">
+  <C Type="User" V="175" U="user-1" Title="admin"/>
+  <C Type="User" V="175" U="user-2" Title="chris"/>
+</ControlList>"#;
+        let mut editor = ConfigEditor::load(xml).unwrap();
+        let uuid = editor.remove_user("chris").unwrap();
+        assert_eq!(uuid, "user-2");
+        // Verify chris is gone
+        let matches = editor.find_elements("chris");
+        assert_eq!(matches.len(), 0);
+    }
+
+    #[test]
+    fn test_remove_user_nonexistent() {
+        let editor_result = ConfigEditor::load(SAMPLE_XML);
+        let mut editor = editor_result.unwrap();
+        let result = editor.remove_user("nonexistent");
+        assert!(result.is_err());
+        assert!(result.unwrap_err().to_string().contains("not found"));
+    }
+
+    #[test]
+    fn test_remove_user_case_insensitive() {
+        let xml = br#"<?xml version="1.0" encoding="utf-8"?>
+<ControlList Version="267">
+  <C Type="User" V="175" U="user-1" Title="Admin"/>
+</ControlList>"#;
+        let mut editor = ConfigEditor::load(xml).unwrap();
+        let uuid = editor.remove_user("admin").unwrap();
+        assert_eq!(uuid, "user-1");
+    }
+
+    // ── find_category_uuid tests ──────────────────────────────────────────
+
+    #[test]
+    fn test_find_category_uuid() {
+        let editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        let uuid = editor.find_category_uuid("Wetter").unwrap();
+        assert_eq!(uuid, "cat-1");
+    }
+
+    #[test]
+    fn test_find_category_uuid_not_found() {
+        let editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        let result = editor.find_category_uuid("Nonexistent");
+        assert!(result.is_err());
+        assert!(result.unwrap_err().to_string().contains("not found"));
+    }
+
+    #[test]
+    fn test_find_category_uuid_partial_match() {
+        let editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        // "Wett" is a substring of "Wetter"
+        let uuid = editor.find_category_uuid("Wett").unwrap();
+        assert_eq!(uuid, "cat-1");
+    }
+
+    // ── find_room_uuid tests ─────────────────────────────────────────────
+
+    #[test]
+    fn test_find_room_uuid() {
+        let editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        let uuid = editor.find_room_uuid("Kitchen").unwrap();
+        assert_eq!(uuid, "room-1");
+    }
+
+    #[test]
+    fn test_find_room_uuid_not_found() {
+        let editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        let result = editor.find_room_uuid("Nonexistent");
+        assert!(result.is_err());
+    }
+
+    // ── describe with IoData fields ──────────────────────────────────────
+
+    #[test]
+    fn test_describe_with_iodata() {
+        let editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        let desc = editor.describe("uuid:wd-1").unwrap();
+        assert_eq!(desc.element_type, "WeatherData");
+        assert_eq!(desc.title, "Temperatur");
+        assert_eq!(desc.uuid, "wd-1");
+        assert_eq!(desc.room_uuid, "room-1");
+        assert_eq!(desc.category_uuid, "cat-1");
+        assert_eq!(desc.connectors.len(), 1);
+        assert_eq!(desc.connectors[0].kind, "AQ");
+    }
+
+    #[test]
+    fn test_describe_sysvar_connectors() {
+        let editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        let desc = editor.describe("uuid:sv-1").unwrap();
+        assert_eq!(desc.element_type, "SysVar");
+        assert_eq!(desc.connectors.len(), 3);
+        let kinds: Vec<&str> = desc.connectors.iter().map(|c| c.kind.as_str()).collect();
+        assert!(kinds.contains(&"AQ"));
+        assert!(kinds.contains(&"AI"));
+        assert!(kinds.contains(&"Q"));
+    }
+
+    #[test]
+    fn test_describe_nonexistent_fails() {
+        let editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        let result = editor.describe("uuid:nonexistent");
+        assert!(result.is_err());
+    }
+
+    // ── add_element_to_root tests ────────────────────────────────────────
+
+    #[test]
+    fn test_add_element_to_root() {
+        let mut editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        let uuid = editor
+            .add_element_to_root("Switch", "TestLight", Some("room-1"), Some("cat-1"), &[])
+            .unwrap();
+        assert!(!uuid.is_empty());
+
+        let desc = editor.describe(&format!("uuid:{}", uuid)).unwrap();
+        assert_eq!(desc.element_type, "Switch");
+        assert_eq!(desc.title, "TestLight");
+        assert_eq!(desc.room_uuid, "room-1");
+        assert_eq!(desc.category_uuid, "cat-1");
+    }
+
+    #[test]
+    fn test_add_element_to_root_with_properties() {
+        let mut editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        let uuid = editor
+            .add_element_to_root(
+                "Switch",
+                "MySwitch",
+                None,
+                None,
+                &[("my_prop", "my_value", "11")],
+            )
+            .unwrap();
+
+        let desc = editor.describe(&format!("uuid:{}", uuid)).unwrap();
+        assert_eq!(desc.properties["my_prop"].value, "my_value");
+        assert_eq!(desc.properties["my_prop"].type_code, "11");
+    }
+
+    #[test]
+    fn test_add_element_to_root_no_iodata() {
+        let mut editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        let uuid = editor
+            .add_element_to_root("Switch", "NoRoom", None, None, &[])
+            .unwrap();
+
+        let desc = editor.describe(&format!("uuid:{}", uuid)).unwrap();
+        assert_eq!(desc.room_uuid, "");
+        assert_eq!(desc.category_uuid, "");
+    }
+
+    // ── Selector edge cases ──────────────────────────────────────────────
+
+    #[test]
+    fn test_find_elements_no_match() {
+        let editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        let matches = editor.find_elements("CompletelyNonexistent");
+        assert_eq!(matches.len(), 0);
+    }
+
+    #[test]
+    fn test_find_elements_case_insensitive_title() {
+        let editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        let matches = editor.find_elements("kitchen");
+        assert_eq!(matches.len(), 1);
+    }
+
+    #[test]
+    fn test_find_elements_partial_title() {
+        let editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        // "Temp" matches "Temp Sub", "Temperatur", and "Aussentemp"
+        let matches = editor.find_elements("Temp");
+        assert_eq!(matches.len(), 3);
+    }
+
+    #[test]
+    fn test_require_one_ambiguous() {
+        let editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        // "Type:WeatherData" matches 2 elements
+        let result = editor.require_one("Type:WeatherData");
+        assert!(result.is_err());
+        assert!(result.unwrap_err().to_string().contains("matches 2"));
+    }
+
+    #[test]
+    fn test_require_one_no_match() {
+        let editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        let result = editor.require_one("uuid:nonexistent");
+        assert!(result.is_err());
+        assert!(result.unwrap_err().to_string().contains("No element"));
+    }
+
+    // ── CRLF line endings ────────────────────────────────────────────────
+
+    #[test]
+    fn test_crlf_preservation() {
+        let xml_str = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<ControlList Version=\"267\">\r\n  <C Type=\"Place\" U=\"r-1\" Title=\"Room1\"/>\r\n</ControlList>";
+        let editor = ConfigEditor::load(xml_str.as_bytes()).unwrap();
+        assert!(editor.had_crlf);
+        let output = editor.to_bytes().unwrap();
+        let output_str = String::from_utf8(output).unwrap();
+        assert!(output_str.contains("\r\n"));
+    }
+
+    // ── Wire edge cases ──────────────────────────────────────────────────
+
+    #[test]
+    fn test_wire_nonexistent_connector() {
+        let mut editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        let result = editor.wire("uuid:sensor-1", "NonexistentCo", "uuid:wd-1", "AQ");
+        assert!(result.is_err());
+    }
+
+    #[test]
+    fn test_unwire_nonexistent_connector() {
+        let mut editor = ConfigEditor::load(SAMPLE_XML).unwrap();
+        let result = editor.unwire("uuid:wd-1", "NonexistentCo");
+        assert!(result.is_err());
+    }
 }

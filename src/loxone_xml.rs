@@ -942,4 +942,248 @@ mod tests {
         assert_eq!(controls.len(), 1);
         assert_eq!(controls[0].title, "Temperatur");
     }
+
+    // ── Additional loxone_xml tests ──────────────────────────────────────
+
+    #[test]
+    fn test_parse_controls_type_and_room_combined() {
+        let xml = br#"<?xml version="1.0" encoding="utf-8"?>
+<ControlList>
+  <C Type="Place" U="room-1" Title="Kitchen"/>
+  <C Type="Place" U="room-2" Title="Zentral"/>
+  <C Type="Category" U="cat-1" Title="Wetter"/>
+  <C Type="WeatherData" U="wd-1" Title="Temperatur">
+    <IoData Cr="cat-1" Pr="room-1"/>
+  </C>
+  <C Type="WeatherData" U="wd-2" Title="Wind">
+    <IoData Cr="cat-1" Pr="room-2"/>
+  </C>
+  <C Type="Switch" U="sw-1" Title="Light">
+    <IoData Cr="cat-1" Pr="room-1"/>
+  </C>
+</ControlList>"#;
+        // Filter both by type AND room
+        let controls = parse_controls(xml, Some("WeatherData"), Some("Kitchen")).unwrap();
+        assert_eq!(controls.len(), 1);
+        assert_eq!(controls[0].title, "Temperatur");
+        assert_eq!(controls[0].room, "Kitchen");
+    }
+
+    #[test]
+    fn test_parse_controls_type_and_room_no_match() {
+        let xml = br#"<?xml version="1.0" encoding="utf-8"?>
+<ControlList>
+  <C Type="Place" U="room-1" Title="Kitchen"/>
+  <C Type="Category" U="cat-1" Title="Wetter"/>
+  <C Type="WeatherData" U="wd-1" Title="Temperatur">
+    <IoData Cr="cat-1" Pr="room-1"/>
+  </C>
+</ControlList>"#;
+        let controls = parse_controls(xml, Some("Switch"), Some("Kitchen")).unwrap();
+        assert_eq!(controls.len(), 0);
+    }
+
+    #[test]
+    fn test_parse_rooms_no_items() {
+        // Room with no IoData references should have 0 items
+        let xml = br#"<?xml version="1.0" encoding="utf-8"?>
+<ControlList>
+  <C Type="Place" U="room-1" Title="Kitchen"/>
+  <C Type="Place" U="room-2" Title="Bedroom"/>
+  <C Type="Switch" U="sw-1" Title="Light">
+    <IoData Cr="cat-1" Pr="room-1"/>
+  </C>
+</ControlList>"#;
+        let rooms = parse_rooms(xml).unwrap();
+        assert_eq!(rooms.len(), 2);
+        let bedroom = rooms.iter().find(|r| r.name == "Bedroom").unwrap();
+        assert_eq!(bedroom.item_count, 0);
+        let kitchen = rooms.iter().find(|r| r.name == "Kitchen").unwrap();
+        assert_eq!(kitchen.item_count, 1);
+    }
+
+    #[test]
+    fn test_parse_rooms_sorted_by_name() {
+        let xml = br#"<?xml version="1.0" encoding="utf-8"?>
+<ControlList>
+  <C Type="Place" U="room-3" Title="Zentral"/>
+  <C Type="Place" U="room-1" Title="Bathroom"/>
+  <C Type="Place" U="room-2" Title="Kitchen"/>
+</ControlList>"#;
+        let rooms = parse_rooms(xml).unwrap();
+        assert_eq!(rooms[0].name, "Bathroom");
+        assert_eq!(rooms[1].name, "Kitchen");
+        assert_eq!(rooms[2].name, "Zentral");
+    }
+
+    #[test]
+    fn test_diff_configs_no_changes() {
+        let config = ConfigSummary {
+            version: "1".into(),
+            date: "2026-01-01".into(),
+            controls: HashMap::new(),
+            rooms: HashMap::new(),
+            categories: HashMap::new(),
+            users: vec!["admin".into()],
+        };
+        let diff = diff_configs(&config, &config);
+        assert!(!diff.has_changes());
+    }
+
+    #[test]
+    fn test_diff_configs_category_changes() {
+        let old = ConfigSummary {
+            version: "1".into(),
+            date: "2026-01-01".into(),
+            controls: HashMap::new(),
+            rooms: HashMap::new(),
+            categories: HashMap::from([
+                ("c1".into(), "Lighting".into()),
+                ("c2".into(), "Heating".into()),
+            ]),
+            users: vec![],
+        };
+        let new = ConfigSummary {
+            version: "2".into(),
+            date: "2026-02-01".into(),
+            controls: HashMap::new(),
+            rooms: HashMap::new(),
+            categories: HashMap::from([
+                ("c1".into(), "Beleuchtung".into()), // renamed
+                ("c3".into(), "Cooling".into()),     // added
+            ]),
+            users: vec![],
+        };
+        let diff = diff_configs(&old, &new);
+        assert!(diff.has_changes());
+        assert_eq!(diff.categories_added.len(), 1);
+        assert_eq!(diff.categories_added[0], "Cooling");
+        assert_eq!(diff.categories_removed.len(), 1);
+        assert_eq!(diff.categories_removed[0], "Heating");
+        assert_eq!(diff.categories_renamed.len(), 1);
+        assert_eq!(diff.categories_renamed[0].old, "Lighting");
+        assert_eq!(diff.categories_renamed[0].new, "Beleuchtung");
+    }
+
+    #[test]
+    fn test_diff_configs_room_changes_with_control_room_move() {
+        let old = ConfigSummary {
+            version: "1".into(),
+            date: "2026-01-01".into(),
+            controls: HashMap::from([(
+                "sw-1".into(),
+                ControlEntry {
+                    name: "Light".into(),
+                    control_type: "Switch".into(),
+                    room_uuid: "r1".into(),
+                },
+            )]),
+            rooms: HashMap::from([
+                ("r1".into(), "Kitchen".into()),
+                ("r2".into(), "Bedroom".into()),
+            ]),
+            categories: HashMap::new(),
+            users: vec![],
+        };
+        let new = ConfigSummary {
+            version: "2".into(),
+            date: "2026-02-01".into(),
+            controls: HashMap::from([(
+                "sw-1".into(),
+                ControlEntry {
+                    name: "Light".into(),
+                    control_type: "Switch".into(),
+                    room_uuid: "r2".into(), // moved to Bedroom
+                },
+            )]),
+            rooms: HashMap::from([
+                ("r1".into(), "Kitchen".into()),
+                ("r2".into(), "Bedroom".into()),
+            ]),
+            categories: HashMap::new(),
+            users: vec![],
+        };
+        let diff = diff_configs(&old, &new);
+        assert!(diff.has_changes());
+        assert_eq!(diff.controls_changed.len(), 1);
+        assert_eq!(diff.controls_changed[0].field, "room");
+        assert_eq!(diff.controls_changed[0].old_value, "Kitchen");
+        assert_eq!(diff.controls_changed[0].new_value, "Bedroom");
+    }
+
+    #[test]
+    fn test_parse_config_summary_empty() {
+        let xml = br#"<?xml version="1.0"?><ControlList Version="99"/>"#;
+        let s = parse_config_summary(xml).unwrap();
+        assert_eq!(s.version, "99");
+        assert!(s.controls.is_empty());
+        assert!(s.rooms.is_empty());
+        assert!(s.categories.is_empty());
+        assert!(s.users.is_empty());
+    }
+
+    #[test]
+    fn test_parse_config_summary_with_iodata() {
+        let xml = br#"<?xml version="1.0"?>
+<ControlList Version="42">
+  <C Type="Place" U="room-1" Title="Kitchen"/>
+  <C Type="Switch" U="sw-1" Title="Light">
+    <IoData Pr="room-1"/>
+  </C>
+</ControlList>"#;
+        let s = parse_config_summary(xml).unwrap();
+        assert_eq!(s.controls["sw-1"].room_uuid, "room-1");
+    }
+
+    #[test]
+    fn test_parse_users_empty() {
+        let xml = br#"<?xml version="1.0"?><ControlList Version="1"/>"#;
+        let users = parse_users(xml).unwrap();
+        assert!(users.is_empty());
+    }
+
+    #[test]
+    fn test_parse_devices_empty() {
+        let xml = br#"<?xml version="1.0"?><ControlList Version="1"/>"#;
+        let devices = parse_devices(xml).unwrap();
+        assert!(devices.is_empty());
+    }
+
+    #[test]
+    fn test_is_control_type_filters() {
+        // Structural types should be filtered out
+        assert!(!is_control_type("Document"));
+        assert!(!is_control_type("Place"));
+        assert!(!is_control_type("Category"));
+        assert!(!is_control_type("User"));
+        assert!(!is_control_type("TreeDevice"));
+        assert!(!is_control_type("LoxAIRDevice"));
+        assert!(!is_control_type("Co"));
+        assert!(!is_control_type("IoData"));
+        // Control types should pass
+        assert!(is_control_type("Switch"));
+        assert!(is_control_type("Dimmer"));
+        assert!(is_control_type("WeatherData"));
+        assert!(is_control_type("GenTSensor"));
+    }
+
+    #[test]
+    fn test_subtype_label_all_known() {
+        assert_eq!(subtype_label(7), "Nano IO Air");
+        assert_eq!(subtype_label(32), "Water sensor");
+        assert_eq!(subtype_label(37), "Smartaktor");
+        assert_eq!(subtype_label(48), "Room climate sensor");
+        assert_eq!(subtype_label(32780), "Dimmer");
+        assert_eq!(subtype_label(32794), "Presence sensor");
+        assert_eq!(subtype_label(32796), "Code Touch keypad");
+        assert_eq!(subtype_label(32797), "LoxAIR Bridge");
+        assert_eq!(subtype_label(32799), "Flex connector");
+    }
+
+    #[test]
+    fn test_parse_controls_empty_xml() {
+        let xml = br#"<?xml version="1.0"?><ControlList/>"#;
+        let controls = parse_controls(xml, None, None).unwrap();
+        assert!(controls.is_empty());
+    }
 }

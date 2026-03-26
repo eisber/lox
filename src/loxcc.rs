@@ -398,4 +398,128 @@ mod tests {
         json_file.read_to_end(&mut json_data).unwrap();
         assert_eq!(json_data, b"{\"test\": true}");
     }
+
+    // ── Additional LoxCC edge case tests ─────────────────────────────────
+
+    #[test]
+    fn test_compress_with_bom_prefix() {
+        let mut data = Vec::new();
+        data.extend_from_slice(&[0xEF, 0xBB, 0xBF]); // UTF-8 BOM
+        data.extend_from_slice(b"<?xml version=\"1.0\" encoding=\"utf-8\"?><Config/>");
+        let blob = compress_loxcc(&data);
+        let result = decompress_loxcc(&blob).unwrap();
+        assert_eq!(result, data);
+        // Verify BOM is preserved
+        assert_eq!(&result[..3], &[0xEF, 0xBB, 0xBF]);
+    }
+
+    #[test]
+    fn test_compress_empty_xml() {
+        let xml = b"";
+        let blob = compress_loxcc(xml);
+        let result = decompress_loxcc(&blob).unwrap();
+        assert_eq!(result, xml.as_slice());
+    }
+
+    #[test]
+    fn test_compress_single_byte() {
+        let xml = b"X";
+        let blob = compress_loxcc(xml);
+        let result = decompress_loxcc(&blob).unwrap();
+        assert_eq!(result, xml.as_slice());
+    }
+
+    #[test]
+    fn test_compress_64kb_data() {
+        // Test multi-byte length encoding with >64KB data
+        let xml: Vec<u8> = (0..65536).map(|i| b"ABCDEFGHIJ"[i % 10]).collect();
+        let blob = compress_loxcc(&xml);
+        let result = decompress_loxcc(&blob).unwrap();
+        assert_eq!(result, xml);
+    }
+
+    #[test]
+    fn test_crc32_verification() {
+        let xml = b"<Config>test data</Config>";
+        let blob = compress_loxcc(xml);
+
+        // Read back the CRC32 from the header
+        let stored_crc = u32::from_le_bytes([blob[12], blob[13], blob[14], blob[15]]);
+
+        // Compute expected CRC32
+        let mut hasher = Crc32Hasher::new();
+        hasher.update(xml);
+        let expected_crc = hasher.finalize();
+
+        assert_eq!(stored_crc, expected_crc);
+        assert_ne!(stored_crc, 0); // CRC32 should never be zero for non-empty data
+    }
+
+    #[test]
+    fn test_header_sizes_correct() {
+        let xml = b"Hello World XML";
+        let blob = compress_loxcc(xml);
+
+        let compressed_size = u32::from_le_bytes([blob[4], blob[5], blob[6], blob[7]]) as usize;
+        let uncompressed_size = u32::from_le_bytes([blob[8], blob[9], blob[10], blob[11]]) as usize;
+
+        assert_eq!(uncompressed_size, xml.len());
+        assert_eq!(compressed_size, blob.len() - 16); // payload = total - header
+    }
+
+    #[test]
+    fn test_compress_exactly_15_bytes() {
+        // Edge case: exactly 15 bytes triggers the boundary between nibble and extended length
+        let xml = b"123456789012345";
+        assert_eq!(xml.len(), 15);
+        let blob = compress_loxcc(xml);
+        let result = decompress_loxcc(&blob).unwrap();
+        assert_eq!(result, xml.as_slice());
+    }
+
+    #[test]
+    fn test_compress_exactly_14_bytes() {
+        let xml = b"12345678901234";
+        assert_eq!(xml.len(), 14);
+        let blob = compress_loxcc(xml);
+        let result = decompress_loxcc(&blob).unwrap();
+        assert_eq!(result, xml.as_slice());
+    }
+
+    #[test]
+    fn test_decompress_bad_offset() {
+        // Construct a blob with a back-reference pointing beyond output
+        let mut compressed = Vec::new();
+        compressed.push(0x31); // 3 literals, match_len - 4 = 1 (match_len=5)
+        compressed.extend_from_slice(b"ABC");
+        compressed.extend_from_slice(&100u16.to_le_bytes()); // offset=100 > output(3)
+
+        let mut blob = Vec::new();
+        blob.extend_from_slice(&LOXCC_MAGIC.to_le_bytes());
+        blob.extend_from_slice(&(compressed.len() as u32).to_le_bytes());
+        blob.extend_from_slice(&100u32.to_le_bytes());
+        blob.extend_from_slice(&0u32.to_le_bytes());
+        blob.extend_from_slice(&compressed);
+
+        let err = decompress_loxcc(&blob).unwrap_err();
+        assert!(err.to_string().contains("back-reference offset"));
+    }
+
+    #[test]
+    fn test_decompress_zero_offset() {
+        let mut compressed = Vec::new();
+        compressed.push(0x31); // 3 literals, match_len - 4 = 1
+        compressed.extend_from_slice(b"ABC");
+        compressed.extend_from_slice(&0u16.to_le_bytes()); // offset=0
+
+        let mut blob = Vec::new();
+        blob.extend_from_slice(&LOXCC_MAGIC.to_le_bytes());
+        blob.extend_from_slice(&(compressed.len() as u32).to_le_bytes());
+        blob.extend_from_slice(&100u32.to_le_bytes());
+        blob.extend_from_slice(&0u32.to_le_bytes());
+        blob.extend_from_slice(&compressed);
+
+        let err = decompress_loxcc(&blob).unwrap_err();
+        assert!(err.to_string().contains("zero back-reference"));
+    }
 }
