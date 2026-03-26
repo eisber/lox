@@ -1626,6 +1626,7 @@ dependencies = [
  "chrono",
  "clap",
  "clap_complete",
+ "crc32fast",
  "dirs",
  "futures-util",
  "hex",

@@ -1,23 +1,58 @@
-//! LoxCC decompression — extract Loxone config XML from backup archives
+//! LoxCC compression and decompression — Loxone Miniserver config archives
 //!
 //! Backup ZIPs contain `sps0.LoxCC`, a custom LZ-compressed binary.
-//! This module decompresses it to the original XML.
+//! This module can decompress it to XML and compress XML back to LoxCC.
 //!
-//! Reference: <https://gist.github.com/sarnau/e14ff9fe081611782a3f3cb2e2c2bacd>
+//! ## Binary format
+//!
+//! ```text
+//!   [0..4]   u32_le  magic (0xaabbccee)
+//!   [4..8]   u32_le  compressed payload size
+//!   [8..12]  u32_le  uncompressed size
+//!   [12..16] u32_le  CRC32 of uncompressed data
+//!   [16..]   compressed data (LZ4-style tokens)
+//! ```
+//!
+//! The CRC32 field (offset 12) is **required** for the Miniserver to trust
+//! encrypted config fields (e.g. `t="15"` password hashes). A zero CRC32
+//! causes the Miniserver to load the structure but ignore sensitive fields.
+//!
+//! ## Compression tokens
+//!
+//! Each token byte encodes: `high nibble = literal count`, `low nibble =
+//! match_length - 4`. If a nibble is 15, additional bytes follow (each 0–255,
+//! stop at <255). After the literal bytes, a 2-byte LE back-reference offset
+//! follows. The last block in the stream may omit the back-reference.
+//!
+//! ## Config load priority on Miniserver
+//!
+//! 1. `/prog/Emergency.LoxCC` (crash recovery only)
+//! 2. `/prog/sps_new.zip` or `.LoxCC`
+//! 3. `/prog/sps_<vers>_<timestamp>.zip` or `.LoxCC` (latest wins)
+//! 4. `/prog/sps.zip`, `/prog/sps_old.zip`
+//! 5. `/prog/Default.Loxone` or `/prog/DefaultGo.Loxone`
+//!
+//! ## Password fields
+//!
+//! Config XML fields with `t="15"` are encrypted by the Miniserver firmware.
+//! Fields with `t="11"` contain plaintext strings. The Miniserver accepts
+//! `t="11"` for password fields (e.g. `mqtt_auth_pwd`), using the value
+//! directly — no encryption needed.
+//!
+//! ## References
+//!
+//! - <https://github.com/sarnau/Inside-The-Loxone-Miniserver>
+//! - CRC32 discovery and `t="11"` plaintext trick from eisber/lox contributors
 
 use anyhow::{Context, Result, bail};
-use std::io::{Cursor, Read};
+use crc32fast::Hasher as Crc32Hasher;
+use std::io::{Cursor, Read, Write};
 
 const LOXCC_MAGIC: u32 = 0xaabbccee;
 
 /// Decompress a `sps0.LoxCC` binary blob into XML bytes.
 ///
-/// Format:
-///   [0..4]  u32_le magic (0xaabbccee)
-///   [4..8]  u32_le compressed payload size
-///   [8..12] u32_le uncompressed size hint (for pre-allocation)
-///   [12..16] u32_le reserved/checksum
-///   [16..]  compressed data (LZ4-style)
+/// See module docs for the binary format specification.
 pub fn decompress_loxcc(data: &[u8]) -> Result<Vec<u8>> {
     if data.len() < 16 {
         bail!("LoxCC data too short ({} bytes)", data.len());
@@ -138,10 +173,88 @@ pub fn extract_and_decompress(zip_data: &[u8]) -> Result<Vec<u8>> {
     decompress_loxcc(&data)
 }
 
+/// Compress raw XML bytes into LoxCC format.
+///
+/// Uses a literals-only encoding (no back-references) which produces larger
+/// but perfectly valid LoxCC output. The Miniserver accepts this format and
+/// loads it identically to the optimized compression used by Loxone Config.
+///
+/// The CRC32 of the uncompressed data is written into the header at offset 12,
+/// which is required for the Miniserver to honour encrypted fields.
+pub fn compress_loxcc(data: &[u8]) -> Vec<u8> {
+    // Encode as a single literal block — the last block needs no back-reference.
+    let mut payload = Vec::with_capacity(data.len() + 10);
+    let lit_len = data.len();
+    if lit_len < 15 {
+        payload.push((lit_len as u8) << 4);
+    } else {
+        payload.push(0xF0); // high nibble = 15, low nibble = 0
+        let mut remaining = lit_len - 15;
+        while remaining >= 255 {
+            payload.push(255);
+            remaining -= 255;
+        }
+        payload.push(remaining as u8);
+    }
+    payload.extend_from_slice(data);
+
+    // CRC32 of uncompressed data
+    let mut hasher = Crc32Hasher::new();
+    hasher.update(data);
+    let checksum = hasher.finalize();
+
+    // Build header: magic + payload_size + uncompressed_size + crc32
+    let mut blob = Vec::with_capacity(16 + payload.len());
+    blob.extend_from_slice(&LOXCC_MAGIC.to_le_bytes());
+    blob.extend_from_slice(&(payload.len() as u32).to_le_bytes());
+    blob.extend_from_slice(&(data.len() as u32).to_le_bytes());
+    blob.extend_from_slice(&checksum.to_le_bytes());
+    blob.extend_from_slice(&payload);
+    blob
+}
+
+/// Repack a backup ZIP, replacing `sps0.LoxCC` with recompressed XML.
+///
+/// All other entries (LoxAPP3.json, permissions.bin, etc.) are preserved
+/// from the source ZIP.
+pub fn repack_zip(src_zip: &[u8], xml: &[u8]) -> Result<Vec<u8>> {
+    let new_loxcc = compress_loxcc(xml);
+    let cursor = Cursor::new(src_zip);
+    let mut archive = zip::ZipArchive::new(cursor).context("Invalid source ZIP")?;
+
+    let buf = Vec::new();
+    let out = Cursor::new(buf);
+    let mut writer = zip::ZipWriter::new(out);
+
+    for i in 0..archive.len() {
+        let mut file = archive.by_index(i)?;
+        let name = file.name().to_string();
+        let options = zip::write::SimpleFileOptions::default()
+            .compression_method(zip::CompressionMethod::Deflated);
+
+        writer.start_file(&name, options)?;
+        if name.to_lowercase() == "sps0.loxcc" {
+            writer.write_all(&new_loxcc)?;
+        } else {
+            let mut data = Vec::new();
+            file.read_to_end(&mut data)?;
+            writer.write_all(&data)?;
+        }
+    }
+
+    let out = writer.finish()?;
+    Ok(out.into_inner())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
     use std::io::Write;
+
+    /// Helper: build a LoxCC blob from raw XML using compress_loxcc.
+    fn make_loxcc(xml: &[u8]) -> Vec<u8> {
+        compress_loxcc(xml)
+    }
 
     #[test]
     fn test_bad_magic() {
@@ -158,36 +271,58 @@ mod tests {
     }
 
     #[test]
-    fn test_decompress_literals_only() {
-        // Build a minimal LoxCC with only literal data (no back-references)
+    fn test_compress_small() {
         let xml = b"<Config>Hello</Config>";
-        let mut compressed = Vec::new();
+        let blob = compress_loxcc(xml);
 
-        // Encode as a single literal block: high nibble = len (or 15+extra)
-        let lit_len = xml.len();
-        if lit_len < 15 {
-            compressed.push((lit_len as u8) << 4); // high nibble = lit_len, low = 0
-        } else {
-            compressed.push(0xF0); // high nibble = 15
-            let mut remaining = lit_len - 15;
-            while remaining >= 255 {
-                compressed.push(255);
-                remaining -= 255;
-            }
-            compressed.push(remaining as u8);
-        }
-        compressed.extend_from_slice(xml);
+        // Verify header
+        let magic = u32::from_le_bytes([blob[0], blob[1], blob[2], blob[3]]);
+        assert_eq!(magic, LOXCC_MAGIC);
 
-        // Build full LoxCC blob
-        let mut blob = Vec::new();
-        blob.extend_from_slice(&LOXCC_MAGIC.to_le_bytes());
-        blob.extend_from_slice(&(compressed.len() as u32).to_le_bytes());
-        blob.extend_from_slice(&(xml.len() as u32).to_le_bytes());
-        blob.extend_from_slice(&0u32.to_le_bytes()); // checksum placeholder
-        blob.extend_from_slice(&compressed);
+        // Verify CRC32 is set (not zero)
+        let crc = u32::from_le_bytes([blob[12], blob[13], blob[14], blob[15]]);
+        let mut hasher = Crc32Hasher::new();
+        hasher.update(xml);
+        assert_eq!(crc, hasher.finalize());
 
+        // Verify roundtrip
         let result = decompress_loxcc(&blob).unwrap();
         assert_eq!(result, xml);
+    }
+
+    #[test]
+    fn test_compress_large() {
+        // Test with data > 15 bytes (triggers variable-length literal encoding)
+        let xml = b"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ControlList Version=\"267\"/>";
+        let blob = compress_loxcc(xml);
+        let result = decompress_loxcc(&blob).unwrap();
+        assert_eq!(result, xml);
+    }
+
+    #[test]
+    fn test_compress_very_large() {
+        // Test with data > 255+15 bytes (triggers multi-byte length encoding)
+        let xml: Vec<u8> = std::iter::repeat(b'X').take(1000).collect();
+        let blob = compress_loxcc(&xml);
+        let result = decompress_loxcc(&blob).unwrap();
+        assert_eq!(result, xml);
+    }
+
+    #[test]
+    fn test_roundtrip_realistic_xml() {
+        let xml = br#"<?xml version="1.0" encoding="utf-8"?>
+<ControlList Version="267" LxAV="84">
+  <C Type="Document" Title="TestProject">
+    <C Type="Place" U="aaaa-bbbb" Title="Room1"/>
+    <C Type="Plugin" gid="Mqtt" Title="MQTT">
+      <mqtt_broker_address t="11" v="192.168.1.100"/>
+      <mqtt_auth_pwd t="11" v="testpassword"/>
+    </C>
+  </C>
+</ControlList>"#;
+        let blob = compress_loxcc(xml);
+        let result = decompress_loxcc(&blob).unwrap();
+        assert_eq!(result, xml.as_slice());
     }
 
     #[test]
@@ -198,13 +333,13 @@ mod tests {
         // Token: 3 literals, match_len - 4 = 2 (i.e., match_len = 6)
         compressed.push(0x32); // high=3 (literals), low=2 (match_extra)
         compressed.extend_from_slice(b"ABC"); // 3 literal bytes
-        compressed.extend_from_slice(&3u16.to_le_bytes()); // offset = 3 (back to start of "ABC")
+        compressed.extend_from_slice(&3u16.to_le_bytes()); // offset = 3
 
         let mut blob = Vec::new();
         blob.extend_from_slice(&LOXCC_MAGIC.to_le_bytes());
         blob.extend_from_slice(&(compressed.len() as u32).to_le_bytes());
         blob.extend_from_slice(&9u32.to_le_bytes()); // uncompressed hint
-        blob.extend_from_slice(&0u32.to_le_bytes());
+        blob.extend_from_slice(&0u32.to_le_bytes()); // CRC32 (not checked by decompress)
         blob.extend_from_slice(&compressed);
 
         let result = decompress_loxcc(&blob).unwrap();
@@ -213,7 +348,6 @@ mod tests {
 
     #[test]
     fn test_extract_missing_loxcc() {
-        // Create a ZIP without sps0.LoxCC
         let buf = Vec::new();
         let cursor = std::io::Cursor::new(buf);
         let mut zip_writer = zip::ZipWriter::new(cursor);
@@ -229,43 +363,39 @@ mod tests {
     }
 
     #[test]
-    fn test_extract_and_decompress_roundtrip() {
-        // Build a LoxCC blob with literal XML
+    fn test_repack_zip_roundtrip() {
         let xml = b"<?xml version=\"1.0\"?><LoxoneProject/>";
-        let mut compressed = Vec::new();
-        let lit_len = xml.len();
-        if lit_len < 15 {
-            compressed.push((lit_len as u8) << 4);
-        } else {
-            compressed.push(0xF0);
-            let mut remaining = lit_len - 15;
-            while remaining >= 255 {
-                compressed.push(255);
-                remaining -= 255;
-            }
-            compressed.push(remaining as u8);
-        }
-        compressed.extend_from_slice(xml);
 
-        let mut loxcc_blob = Vec::new();
-        loxcc_blob.extend_from_slice(&LOXCC_MAGIC.to_le_bytes());
-        loxcc_blob.extend_from_slice(&(compressed.len() as u32).to_le_bytes());
-        loxcc_blob.extend_from_slice(&(xml.len() as u32).to_le_bytes());
-        loxcc_blob.extend_from_slice(&0u32.to_le_bytes());
-        loxcc_blob.extend_from_slice(&compressed);
-
-        // Pack into a ZIP as sps0.LoxCC
+        // Build a source ZIP with sps0.LoxCC + another file
         let buf = Vec::new();
         let cursor = std::io::Cursor::new(buf);
         let mut zip_writer = zip::ZipWriter::new(cursor);
         let options = zip::write::SimpleFileOptions::default()
             .compression_method(zip::CompressionMethod::Stored);
-        zip_writer.start_file("sps0.LoxCC", options).unwrap();
-        zip_writer.write_all(&loxcc_blob).unwrap();
-        let cursor = zip_writer.finish().unwrap();
-        let zip_data = cursor.into_inner();
 
-        let result = extract_and_decompress(&zip_data).unwrap();
-        assert_eq!(result, xml);
+        zip_writer.start_file("sps0.LoxCC", options).unwrap();
+        zip_writer.write_all(&compress_loxcc(xml)).unwrap();
+
+        zip_writer.start_file("LoxAPP3.json", options).unwrap();
+        zip_writer.write_all(b"{\"test\": true}").unwrap();
+
+        let cursor = zip_writer.finish().unwrap();
+        let src_zip = cursor.into_inner();
+
+        // Repack with modified XML
+        let new_xml = b"<?xml version=\"1.0\"?><LoxoneProject modified=\"true\"/>";
+        let repacked = repack_zip(&src_zip, new_xml).unwrap();
+
+        // Verify the repacked ZIP contains the new XML
+        let result = extract_and_decompress(&repacked).unwrap();
+        assert_eq!(result, new_xml.as_slice());
+
+        // Verify other entries are preserved
+        let cursor = Cursor::new(&repacked);
+        let mut archive = zip::ZipArchive::new(cursor).unwrap();
+        let mut json_file = archive.by_name("LoxAPP3.json").unwrap();
+        let mut json_data = Vec::new();
+        json_file.read_to_end(&mut json_data).unwrap();
+        assert_eq!(json_data, b"{\"test\": true}");
     }
 }
