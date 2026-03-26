@@ -4,9 +4,8 @@
 //! provide actionable feedback with "did you mean?" suggestions, available
 //! options, and links to relevant documentation.
 
-use anyhow::Result;
-
 /// Compute Levenshtein distance between two strings (case-insensitive).
+#[allow(clippy::needless_range_loop)]
 pub fn levenshtein(a: &str, b: &str) -> usize {
     let a = a.to_lowercase();
     let b = b.to_lowercase();
@@ -15,8 +14,8 @@ pub fn levenshtein(a: &str, b: &str) -> usize {
     let n = a.len();
     let m = b.len();
     let mut dp = vec![vec![0usize; m + 1]; n + 1];
-    for i in 0..=n {
-        dp[i][0] = i;
+    for (i, row) in dp.iter_mut().enumerate().take(n + 1) {
+        row[0] = i;
     }
     for j in 0..=m {
         dp[0][j] = j;
@@ -66,10 +65,7 @@ pub fn not_found_error(
     }
 
     if candidates.len() <= 20 {
-        msg.push_str(&format!(
-            "\n  Available: {}",
-            candidates.join(", ")
-        ));
+        msg.push_str(&format!("\n  Available: {}", candidates.join(", ")));
     } else {
         msg.push_str(&format!(
             "\n  {} options available. Run: {}",
@@ -82,21 +78,24 @@ pub fn not_found_error(
 }
 
 /// Format an ambiguous match error.
-pub fn ambiguous_error(
-    entity: &str,
-    query: &str,
-    matches: &[String],
-) -> anyhow::Error {
+#[allow(dead_code)]
+pub fn ambiguous_error(entity: &str, query: &str, matches: &[String]) -> anyhow::Error {
     anyhow::anyhow!(
         "{} '{}' is ambiguous — matches {} items: {}\n  Use a more specific selector (uuid:X or Type:X)",
         entity,
         query,
         matches.len(),
-        matches.iter().take(5).cloned().collect::<Vec<_>>().join(", "),
+        matches
+            .iter()
+            .take(5)
+            .cloned()
+            .collect::<Vec<_>>()
+            .join(", "),
     )
 }
 
 /// Format a type mismatch error for connector wiring.
+#[allow(dead_code)]
 pub fn type_mismatch_error(
     source: &str,
     target: &str,
@@ -115,11 +114,13 @@ pub fn type_mismatch_error(
 }
 
 /// Doc reference for a control type.
+#[allow(dead_code)]
 pub fn doc_url(type_slug: &str) -> String {
     format!("https://www.loxone.com/enen/kb/{}/", type_slug)
 }
 
 /// Map a Loxone control type to its doc slug.
+#[allow(dead_code)]
 pub fn type_to_doc_slug(control_type: &str) -> Option<&'static str> {
     match control_type {
         "LightController2" => Some("lighting-controller"),
@@ -165,7 +166,11 @@ mod tests {
 
     #[test]
     fn test_suggest_close_match() {
-        let candidates = vec!["Kitchen".to_string(), "Bedroom".to_string(), "Zentral".to_string()];
+        let candidates = vec![
+            "Kitchen".to_string(),
+            "Bedroom".to_string(),
+            "Zentral".to_string(),
+        ];
         assert_eq!(suggest("Kichen", &candidates), Some("Kitchen".to_string()));
         assert_eq!(suggest("Znetral", &candidates), Some("Zentral".to_string()));
     }
@@ -187,7 +192,10 @@ mod tests {
 
     #[test]
     fn test_type_to_doc_slug() {
-        assert_eq!(type_to_doc_slug("LightController2"), Some("lighting-controller"));
+        assert_eq!(
+            type_to_doc_slug("LightController2"),
+            Some("lighting-controller")
+        );
         assert_eq!(type_to_doc_slug("Switch"), Some("switch"));
         assert_eq!(type_to_doc_slug("UnknownType"), None);
     }

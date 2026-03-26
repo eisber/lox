@@ -648,6 +648,7 @@ pub async fn ws_authenticate(
 /// `jdev/sys/enc/<base64(AES_CBC(salt/<salt_hex>/<command>))>`
 ///
 /// This prevents eavesdropping on the WebSocket connection.
+#[allow(dead_code)]
 pub struct AesSession {
     key: [u8; 32],
     iv: [u8; 16],
@@ -657,6 +658,7 @@ pub struct AesSession {
 
 impl AesSession {
     /// Create a new AES session with random key and IV.
+    #[allow(dead_code)]
     pub fn new() -> Self {
         let mut key = [0u8; 32];
         let mut iv = [0u8; 16];
@@ -672,6 +674,7 @@ impl AesSession {
     }
 
     /// Get the key:iv string for RSA key exchange.
+    #[allow(dead_code)]
     pub fn key_info(&self) -> String {
         format!("{}:{}", hex::encode(self.key), hex::encode(self.iv))
     }
@@ -680,13 +683,14 @@ impl AesSession {
     ///
     /// Format: `jdev/sys/enc/<base64(AES_CBC_encrypt(salt/<salt>/<command>))>`
     /// Salt rotates every 20 uses (per Loxone protocol).
+    #[allow(dead_code)]
     pub fn encrypt_command(&mut self, command: &str) -> Result<String> {
         use aes::cipher::{BlockEncryptMut, KeyIvInit};
         type Aes256CbcEnc = cbc::Encryptor<aes::Aes256>;
 
         // Rotate salt every 20 uses
         self.salt_counter += 1;
-        let plaintext = if self.salt_counter > 1 && self.salt_counter % 20 == 0 {
+        let plaintext = if self.salt_counter > 1 && self.salt_counter.is_multiple_of(20) {
             let new_salt = hex::encode(rand::random::<[u8; 8]>());
             let msg = format!("nextSalt/{}/{}/{}\0", self.salt, new_salt, command);
             self.salt = new_salt;
@@ -703,7 +707,8 @@ impl AesSession {
         // AES-256-CBC encrypt
         let cipher = Aes256CbcEnc::new(&self.key.into(), &self.iv.into());
         let data_len = data.len();
-        let ct = cipher.encrypt_padded_mut::<aes::cipher::block_padding::NoPadding>(&mut data, data_len)
+        let ct = cipher
+            .encrypt_padded_mut::<aes::cipher::block_padding::NoPadding>(&mut data, data_len)
             .map_err(|e| anyhow::anyhow!("AES encrypt error: {}", e))?;
 
         let b64 = base64::Engine::encode(&base64::engine::general_purpose::STANDARD, ct);
@@ -1226,11 +1231,8 @@ mod tests {
         assert!(encrypted.starts_with("jdev/sys/enc/"));
         // Should be valid base64 after the prefix
         let b64 = &encrypted["jdev/sys/enc/".len()..];
-        let decoded = base64::Engine::decode(
-            &base64::engine::general_purpose::STANDARD,
-            b64,
-        )
-        .unwrap();
+        let decoded =
+            base64::Engine::decode(&base64::engine::general_purpose::STANDARD, b64).unwrap();
         // Should be a multiple of 16 (AES block size)
         assert_eq!(decoded.len() % 16, 0);
         assert!(decoded.len() >= 16);

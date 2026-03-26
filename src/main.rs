@@ -1527,13 +1527,9 @@ pub(crate) enum MqttConfigCmd {
         save_as: Option<String>,
     },
     /// List MQTT subscriptions and publishes
-    List {
-        file: String,
-    },
+    List { file: String },
     /// List all MQTT topic bindings (GenTSensor/GenTActor)
-    Topics {
-        file: String,
-    },
+    Topics { file: String },
 }
 
 #[derive(clap::Subcommand, Debug)]

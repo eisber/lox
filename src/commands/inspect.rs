@@ -668,7 +668,7 @@ pub fn cmd_weather_stream(ctx: &RunContext) -> Result<()> {
                 if json {
                     for e in entries {
                         let val = serde_json::json!({
-                            "timestamp": (*&epoch + chrono::Duration::seconds(e.timestamp as i64))
+                            "timestamp": (epoch + chrono::Duration::seconds(e.timestamp as i64))
                                 .format("%Y-%m-%d %H:%M").to_string(),
                             "temperature": e.temperature,
                             "felt_temperature": e.perceived_temperature,

@@ -249,12 +249,11 @@ pub fn parse_config_summary(xml: &[u8]) -> Result<ConfigSummary> {
                 if tag.as_ref() == b"ControlList" {
                     version = attr_value_or(e, b"Version", "");
                 } else if tag.as_ref() == b"IoData" {
-                    if let Some(ref uuid) = last_control_uuid {
-                        if let Some(pr) = attr_value(e, b"Pr") {
-                            if let Some(entry) = controls.get_mut(uuid) {
-                                entry.room_uuid = pr;
-                            }
-                        }
+                    if let Some(ref uuid) = last_control_uuid
+                        && let Some(pr) = attr_value(e, b"Pr")
+                        && let Some(entry) = controls.get_mut(uuid)
+                    {
+                        entry.room_uuid = pr;
                     }
                 } else if tag.as_ref() == b"C" {
                     let type_val = attr_value(e, b"Type");
@@ -284,18 +283,17 @@ pub fn parse_config_summary(xml: &[u8]) -> Result<ConfigSummary> {
                         Some(typ) if is_control_type(typ) => {
                             if let (Some(u), Some(t)) =
                                 (attr_value(e, b"U"), attr_value(e, b"Title"))
+                                && !t.is_empty()
                             {
-                                if !t.is_empty() {
-                                    last_control_uuid = Some(u.clone());
-                                    controls.insert(
-                                        u,
-                                        ControlEntry {
-                                            name: t,
-                                            control_type: typ.to_string(),
-                                            room_uuid: String::new(),
-                                        },
-                                    );
-                                }
+                                last_control_uuid = Some(u.clone());
+                                controls.insert(
+                                    u,
+                                    ControlEntry {
+                                        name: t,
+                                        control_type: typ.to_string(),
+                                        room_uuid: String::new(),
+                                    },
+                                );
                             }
                         }
                         _ => {}
@@ -393,20 +391,18 @@ pub fn parse_rooms(xml: &[u8]) -> Result<Vec<RoomInfo>> {
             Ok(Event::Start(ref e) | Event::Empty(ref e)) => {
                 let tag = e.name();
                 if tag.as_ref() == b"C" {
-                    if let Some(t) = attr_value(e, b"Type") {
-                        if t == "Place" {
-                            if let (Some(u), Some(name)) =
-                                (attr_value(e, b"U"), attr_value(e, b"Title"))
-                            {
-                                rooms.insert(u.clone(), name);
-                                room_counts.entry(u).or_insert(0);
-                            }
-                        }
+                    if let Some(t) = attr_value(e, b"Type")
+                        && t == "Place"
+                        && let (Some(u), Some(name)) =
+                            (attr_value(e, b"U"), attr_value(e, b"Title"))
+                    {
+                        rooms.insert(u.clone(), name);
+                        room_counts.entry(u).or_insert(0);
                     }
-                } else if tag.as_ref() == b"IoData" {
-                    if let Some(pr) = attr_value(e, b"Pr") {
-                        *room_counts.entry(pr).or_insert(0) += 1;
-                    }
+                } else if tag.as_ref() == b"IoData"
+                    && let Some(pr) = attr_value(e, b"Pr")
+                {
+                    *room_counts.entry(pr).or_insert(0) += 1;
                 }
             }
             Ok(Event::Eof) => break,
@@ -491,33 +487,31 @@ pub fn parse_controls(
                                 if type_filter
                                     .map(|f| t.eq_ignore_ascii_case(f))
                                     .unwrap_or(true)
+                                    && let Some(uuid) = attr_value(e, b"U")
                                 {
-                                    if let Some(uuid) = attr_value(e, b"U") {
-                                        current_uuid = Some(uuid);
-                                        current_type = Some(t);
-                                        current_title = attr_value(e, b"Title");
-                                    }
+                                    current_uuid = Some(uuid);
+                                    current_type = Some(t);
+                                    current_title = attr_value(e, b"Title");
                                 }
                             }
                         }
                     }
-                } else if tag.as_ref() == b"IoData" {
-                    if let (Some(uuid), Some(ctype), Some(title)) =
+                } else if tag.as_ref() == b"IoData"
+                    && let (Some(uuid), Some(ctype), Some(title)) =
                         (&current_uuid, &current_type, &current_title)
-                    {
-                        let room_uuid = attr_value(e, b"Pr").unwrap_or_default();
-                        let cat_uuid = attr_value(e, b"Cr").unwrap_or_default();
-                        controls.push(RawControl {
-                            control_type: ctype.clone(),
-                            title: title.clone(),
-                            uuid: uuid.clone(),
-                            room_uuid,
-                            cat_uuid,
-                        });
-                        current_uuid = None;
-                        current_type = None;
-                        current_title = None;
-                    }
+                {
+                    let room_uuid = attr_value(e, b"Pr").unwrap_or_default();
+                    let cat_uuid = attr_value(e, b"Cr").unwrap_or_default();
+                    controls.push(RawControl {
+                        control_type: ctype.clone(),
+                        title: title.clone(),
+                        uuid: uuid.clone(),
+                        room_uuid,
+                        cat_uuid,
+                    });
+                    current_uuid = None;
+                    current_type = None;
+                    current_title = None;
                 }
             }
             Ok(Event::Eof) => break,
@@ -534,10 +528,7 @@ pub fn parse_controls(
             title: c.title,
             uuid: c.uuid,
             room: rooms.get(&c.room_uuid).cloned().unwrap_or(c.room_uuid),
-            category: categories
-                .get(&c.cat_uuid)
-                .cloned()
-                .unwrap_or(c.cat_uuid),
+            category: categories.get(&c.cat_uuid).cloned().unwrap_or(c.cat_uuid),
         })
         .collect();
 
@@ -546,7 +537,11 @@ pub fn parse_controls(
         result.retain(|c| c.room.to_lowercase().contains(&rf_lower));
     }
 
-    result.sort_by(|a, b| a.control_type.cmp(&b.control_type).then(a.title.cmp(&b.title)));
+    result.sort_by(|a, b| {
+        a.control_type
+            .cmp(&b.control_type)
+            .then(a.title.cmp(&b.title))
+    });
     Ok(result)
 }
 
@@ -593,12 +588,24 @@ pub fn diff_configs(old: &ConfigSummary, new: &ConfigSummary) -> ConfigDiff {
                 if old_entry.room_uuid != entry.room_uuid
                     && !(old_entry.room_uuid.is_empty() && entry.room_uuid.is_empty())
                 {
-                    let old_room = old.rooms.get(&old_entry.room_uuid)
-                        .cloned()
-                        .unwrap_or_else(|| if old_entry.room_uuid.is_empty() { "(none)".to_string() } else { old_entry.room_uuid.clone() });
-                    let new_room = new.rooms.get(&entry.room_uuid)
-                        .cloned()
-                        .unwrap_or_else(|| if entry.room_uuid.is_empty() { "(none)".to_string() } else { entry.room_uuid.clone() });
+                    let old_room =
+                        old.rooms
+                            .get(&old_entry.room_uuid)
+                            .cloned()
+                            .unwrap_or_else(|| {
+                                if old_entry.room_uuid.is_empty() {
+                                    "(none)".to_string()
+                                } else {
+                                    old_entry.room_uuid.clone()
+                                }
+                            });
+                    let new_room = new.rooms.get(&entry.room_uuid).cloned().unwrap_or_else(|| {
+                        if entry.room_uuid.is_empty() {
+                            "(none)".to_string()
+                        } else {
+                            entry.room_uuid.clone()
+                        }
+                    });
                     diff.controls_changed.push(ControlChange {
                         name: entry.name.clone(),
                         field: "room".to_string(),

@@ -8,6 +8,7 @@ use std::time::Duration;
 use crate::client::{LOXONE_EPOCH_SECS, LoxClient, USER_AGENT};
 use crate::commands::RunContext;
 use crate::config::Config;
+use crate::config_edit::ConfigEditor;
 use crate::scene::Scene;
 use crate::token;
 use crate::{
@@ -15,7 +16,6 @@ use crate::{
     TokenCmd, XmlEditCmd, build_schema, detect_shell, ftp, gitops, install_completions,
     json_val_str, load_config_xml, loxcc, loxone_xml,
 };
-use crate::config_edit::ConfigEditor;
 
 pub fn cmd_setup(ctx: &RunContext, action: SetupCmd) -> Result<()> {
     match action {
@@ -781,11 +781,7 @@ pub fn cmd_config(ctx: &RunContext, action: ConfigCmd) -> Result<()> {
                 println!("\n{} rooms, {} items total", rooms.len(), total);
             }
         }
-        ConfigCmd::Controls {
-            file,
-            r#type,
-            room,
-        } => {
+        ConfigCmd::Controls { file, r#type, room } => {
             if file.ends_with(".zip") {
                 bail!(
                     "Expected a .Loxone XML file. Run `lox config extract {}` first.",
@@ -793,11 +789,7 @@ pub fn cmd_config(ctx: &RunContext, action: ConfigCmd) -> Result<()> {
                 );
             }
             let xml = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
-            let controls = loxone_xml::parse_controls(
-                &xml,
-                r#type.as_deref(),
-                room.as_deref(),
-            )?;
+            let controls = loxone_xml::parse_controls(&xml, r#type.as_deref(), room.as_deref())?;
             if ctx.json {
                 println!("{}", serde_json::to_string_pretty(&controls)?);
             } else {
@@ -857,14 +849,14 @@ pub fn cmd_config(ctx: &RunContext, action: ConfigCmd) -> Result<()> {
             for pair in replace.chunks(2) {
                 let old = pair[0].as_bytes();
                 let new = pair[1].as_bytes();
-                let count = patched
-                    .windows(old.len())
-                    .filter(|w| *w == old)
-                    .count();
+                let count = patched.windows(old.len()).filter(|w| *w == old).count();
                 if count == 0 {
                     eprintln!("  ⚠ Pattern '{}' not found in config", pair[0]);
                 } else {
-                    eprintln!("  ✓ Replacing '{}' → '{}' ({} occurrences)", pair[0], pair[1], count);
+                    eprintln!(
+                        "  ✓ Replacing '{}' → '{}' ({} occurrences)",
+                        pair[0], pair[1], count
+                    );
                     // Byte-level replacement
                     let mut result = Vec::with_capacity(patched.len());
                     let mut pos = 0;
@@ -965,7 +957,10 @@ pub fn cmd_config(ctx: &RunContext, action: ConfigCmd) -> Result<()> {
                 "mqtt-pub" => ("GenTActor", Some("gid:Mqtt")),
                 "calendar" => ("Calendar", None),
                 "autopilot" => ("AutoPilot", None),
-                other => bail!("Unknown control type '{}'. Valid: light, switch, presence, alarm-clock, memory, timer, mqtt-sub, mqtt-pub, calendar, autopilot", other),
+                other => bail!(
+                    "Unknown control type '{}'. Valid: light, switch, presence, alarm-clock, memory, timer, mqtt-sub, mqtt-pub, calendar, autopilot",
+                    other
+                ),
             };
 
             let parent_sel = parent.as_deref().or(default_parent);
@@ -1072,7 +1067,12 @@ pub fn cmd_config(ctx: &RunContext, action: ConfigCmd) -> Result<()> {
                 println!("{}", serde_json::to_string_pretty(&controls)?);
             } else {
                 println!("  {:<30} {:<20} UUID", "Title", "Room");
-                println!("  {:<30} {:<20} {}", "─".repeat(30), "─".repeat(20), "─".repeat(36));
+                println!(
+                    "  {:<30} {:<20} {}",
+                    "─".repeat(30),
+                    "─".repeat(20),
+                    "─".repeat(36)
+                );
                 for c in &controls {
                     println!("  {:<30} {:<20} {}", c.title, c.room, c.uuid);
                 }
@@ -1092,13 +1092,8 @@ pub fn cmd_config(ctx: &RunContext, action: ConfigCmd) -> Result<()> {
             } else {
                 None
             };
-            let uuid = editor.add_element_to_root(
-                "AutoPilot",
-                &name,
-                room_uuid.as_deref(),
-                None,
-                &[],
-            )?;
+            let uuid =
+                editor.add_element_to_root("AutoPilot", &name, room_uuid.as_deref(), None, &[])?;
             println!("✓ Added AutoPilot '{}' (UUID: {})", name, uuid);
             save_edited(&editor, &file, save_as.as_deref())?;
         }
@@ -1115,13 +1110,8 @@ pub fn cmd_config(ctx: &RunContext, action: ConfigCmd) -> Result<()> {
             } else {
                 None
             };
-            let uuid = editor.add_element_to_root(
-                "Calendar",
-                &name,
-                room_uuid.as_deref(),
-                None,
-                &[],
-            )?;
+            let uuid =
+                editor.add_element_to_root("Calendar", &name, room_uuid.as_deref(), None, &[])?;
             println!("✓ Added Calendar '{}' (UUID: {})", name, uuid);
             save_edited(&editor, &file, save_as.as_deref())?;
         }
@@ -1178,19 +1168,23 @@ fn cmd_room(_ctx: &RunContext, action: RoomCmd) -> Result<()> {
             let mut editor = ConfigEditor::load(&data)?;
             // Find the room by title and rename
             let _path = editor.require_one(&old_name)?;
-            let msg = editor.set_attribute(&format!("uuid:{}", {
-                let elem = editor.find_elements(&old_name);
-                if elem.is_empty() {
-                    bail!("Room '{}' not found", old_name);
-                }
-                // Get UUID from the element
-                let p = &elem[0];
-                let mut current = &editor.root;
-                for &idx in p {
-                    current = current.children[idx].as_element().unwrap();
-                }
-                current.attributes.get("U").cloned().unwrap_or_default()
-            }), "Title", &new_name)?;
+            let msg = editor.set_attribute(
+                &format!("uuid:{}", {
+                    let elem = editor.find_elements(&old_name);
+                    if elem.is_empty() {
+                        bail!("Room '{}' not found", old_name);
+                    }
+                    // Get UUID from the element
+                    let p = &elem[0];
+                    let mut current = &editor.root;
+                    for &idx in p {
+                        current = current.children[idx].as_element().unwrap();
+                    }
+                    current.attributes.get("U").cloned().unwrap_or_default()
+                }),
+                "Title",
+                &new_name,
+            )?;
             println!("✓ {}", msg);
             save_edited(&editor, &file, save_as.as_deref())?;
         }
@@ -1214,8 +1208,7 @@ fn cmd_control(ctx: &RunContext, action: ControlCmd) -> Result<()> {
             let exclude_refs: Vec<&str> = exclude.iter().map(|s| s.as_str()).collect();
 
             if let Some(ref tf) = type_filter {
-                let (count, room_uuid) =
-                    editor.move_to_room(tf, &to_room, &exclude_refs)?;
+                let (count, room_uuid) = editor.move_to_room(tf, &to_room, &exclude_refs)?;
                 println!(
                     "✓ Moved {} {} items to '{}' ({})",
                     count, tf, to_room, room_uuid
@@ -1226,12 +1219,12 @@ fn cmd_control(ctx: &RunContext, action: ControlCmd) -> Result<()> {
                 let room_uuid = editor.find_room_uuid(&to_room)?;
                 let elem = editor.get_element_mut(&path);
                 for child in &mut elem.children {
-                    if let Some(iodata) = child.as_mut_element() {
-                        if iodata.name == "IoData" {
-                            iodata
-                                .attributes
-                                .insert("Pr".to_string(), room_uuid.clone());
-                        }
+                    if let Some(iodata) = child.as_mut_element()
+                        && iodata.name == "IoData"
+                    {
+                        iodata
+                            .attributes
+                            .insert("Pr".to_string(), room_uuid.clone());
                     }
                 }
                 println!("✓ Moved '{}' to '{}' ({})", t, to_room, room_uuid);
@@ -1304,10 +1297,16 @@ fn cmd_control(ctx: &RunContext, action: ControlCmd) -> Result<()> {
 
             // Parse "Selector.Connector" format
             let (src_sel, src_co) = source.rsplit_once('.').ok_or_else(|| {
-                anyhow::anyhow!("Source must be 'ElementSelector.ConnectorName', got '{}'", source)
+                anyhow::anyhow!(
+                    "Source must be 'ElementSelector.ConnectorName', got '{}'",
+                    source
+                )
             })?;
             let (tgt_sel, tgt_co) = target.rsplit_once('.').ok_or_else(|| {
-                anyhow::anyhow!("Target must be 'ElementSelector.ConnectorName', got '{}'", target)
+                anyhow::anyhow!(
+                    "Target must be 'ElementSelector.ConnectorName', got '{}'",
+                    target
+                )
             })?;
 
             let msg = editor.wire(src_sel, src_co, tgt_sel, tgt_co)?;
@@ -1323,7 +1322,10 @@ fn cmd_control(ctx: &RunContext, action: ControlCmd) -> Result<()> {
             let mut editor = ConfigEditor::load(&data)?;
 
             let (sel, co_name) = connector.rsplit_once('.').ok_or_else(|| {
-                anyhow::anyhow!("Must be 'ElementSelector.ConnectorName', got '{}'", connector)
+                anyhow::anyhow!(
+                    "Must be 'ElementSelector.ConnectorName', got '{}'",
+                    connector
+                )
             })?;
 
             let msg = editor.unwire(sel, co_name)?;
@@ -1340,26 +1342,41 @@ fn cmd_control(ctx: &RunContext, action: ControlCmd) -> Result<()> {
             } else {
                 let inputs: Vec<_> = wires.iter().filter(|w| w.direction == "input").collect();
                 let outputs: Vec<_> = wires.iter().filter(|w| w.direction == "output").collect();
-                let params: Vec<_> = wires.iter().filter(|w| w.direction == "parameter").collect();
+                let params: Vec<_> = wires
+                    .iter()
+                    .filter(|w| w.direction == "parameter")
+                    .collect();
 
                 if !inputs.is_empty() {
                     println!("  Inputs:");
                     for w in &inputs {
-                        let status = if w.connected { &w.target_uuid } else { "(unconnected)" };
+                        let status = if w.connected {
+                            &w.target_uuid
+                        } else {
+                            "(unconnected)"
+                        };
                         println!("    {:<20} ← {}", w.connector, status);
                     }
                 }
                 if !outputs.is_empty() {
                     println!("  Outputs:");
                     for w in &outputs {
-                        let status = if w.connected { &w.target_uuid } else { "(unconnected)" };
+                        let status = if w.connected {
+                            &w.target_uuid
+                        } else {
+                            "(unconnected)"
+                        };
                         println!("    {:<20} → {}", w.connector, status);
                     }
                 }
                 if !params.is_empty() {
                     println!("  Parameters:");
                     for w in &params {
-                        let status = if w.connected { &w.target_uuid } else { "(unconnected)" };
+                        let status = if w.connected {
+                            &w.target_uuid
+                        } else {
+                            "(unconnected)"
+                        };
                         println!("    {:<20}   {}", w.connector, status);
                     }
                 }
@@ -1444,10 +1461,7 @@ fn cmd_mqtt_config(ctx: &RunContext, action: MqttConfigCmd) -> Result<()> {
             if ctx.json {
                 println!("{}", serde_json::to_string_pretty(&topics)?);
             } else {
-                println!(
-                    "  {:<12} {:<30} {:<40} QoS",
-                    "Direction", "Title", "Topic"
-                );
+                println!("  {:<12} {:<30} {:<40} QoS", "Direction", "Title", "Topic");
                 println!(
                     "  {:<12} {:<30} {:<40} {}",
                     "─".repeat(12),
@@ -1518,7 +1532,10 @@ fn cmd_xml_edit(_ctx: &RunContext, action: XmlEditCmd) -> Result<()> {
             let data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
             let mut editor = ConfigEditor::load(&data)?;
             let (count, uuid) = editor.move_to_room(&type_filter, &to_room, &[])?;
-            println!("✓ Moved {} {} items to '{}' ({})", count, type_filter, to_room, uuid);
+            println!(
+                "✓ Moved {} {} items to '{}' ({})",
+                count, type_filter, to_room, uuid
+            );
             save_edited(&editor, &file, save_as.as_deref())?;
         }
         XmlEditCmd::Add {

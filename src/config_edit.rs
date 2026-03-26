@@ -155,8 +155,7 @@ impl ConfigEditor {
             elem.children[idx].as_mut_element().unwrap()
         } else {
             let set = Element::new("SET");
-            elem.children
-                .push(xmltree::XMLNode::Element(set));
+            elem.children.push(xmltree::XMLNode::Element(set));
             let last = elem.children.len() - 1;
             elem.children[last].as_mut_element().unwrap()
         };
@@ -170,7 +169,8 @@ impl ConfigEditor {
         if let Some(idx) = prop_idx {
             let prop = set_elem.children[idx].as_mut_element().unwrap();
             let old_val = prop.attributes.get("v").cloned().unwrap_or_default();
-            prop.attributes.insert("t".to_string(), type_code.to_string());
+            prop.attributes
+                .insert("t".to_string(), type_code.to_string());
             prop.attributes.insert("v".to_string(), value.to_string());
             Ok(format!(
                 "Updated {}.{}: '{}' → '{}'",
@@ -180,11 +180,8 @@ impl ConfigEditor {
             let mut prop = Element::new(prop_name);
             prop.attributes
                 .insert("t".to_string(), type_code.to_string());
-            prop.attributes
-                .insert("v".to_string(), value.to_string());
-            set_elem
-                .children
-                .push(xmltree::XMLNode::Element(prop));
+            prop.attributes.insert("v".to_string(), value.to_string());
+            set_elem.children.push(xmltree::XMLNode::Element(prop));
             Ok(format!("Created {}.{} = '{}'", title, prop_name, value))
         }
     }
@@ -224,19 +221,25 @@ impl ConfigEditor {
 
         // Collect paths to matching elements
         let mut paths = Vec::new();
-        self.collect_typed_with_iodata(&self.root, type_filter, exclude_types, &mut Vec::new(), &mut paths);
+        self.collect_typed_with_iodata(
+            &self.root,
+            type_filter,
+            exclude_types,
+            &mut Vec::new(),
+            &mut paths,
+        );
 
         let count = paths.len();
         for path in &paths {
             let elem = self.get_element_mut(path);
             // Find IoData child and update Pr attribute
             for child in &mut elem.children {
-                if let Some(iodata) = child.as_mut_element() {
-                    if iodata.name == "IoData" {
-                        iodata
-                            .attributes
-                            .insert("Pr".to_string(), room_uuid.clone());
-                    }
+                if let Some(iodata) = child.as_mut_element()
+                    && iodata.name == "IoData"
+                {
+                    iodata
+                        .attributes
+                        .insert("Pr".to_string(), room_uuid.clone());
                 }
             }
         }
@@ -253,29 +256,32 @@ impl ConfigEditor {
             1 => Ok(found.into_iter().next().unwrap().0),
             _ => {
                 // Try exact match
-                let exact: Vec<_> = found.iter().filter(|(_uuid, name)| name.to_lowercase() == lower).collect();
+                let exact: Vec<_> = found
+                    .iter()
+                    .filter(|(_uuid, name)| name.to_lowercase() == lower)
+                    .collect();
                 if exact.len() == 1 {
                     Ok(exact[0].0.clone())
                 } else {
-                    bail!("Multiple rooms match '{}': {:?}", room_name, found.iter().map(|(_, n)| n.as_str()).collect::<Vec<_>>())
+                    bail!(
+                        "Multiple rooms match '{}': {:?}",
+                        room_name,
+                        found.iter().map(|(_, n)| n.as_str()).collect::<Vec<_>>()
+                    )
                 }
             }
         }
     }
 
     fn walk_rooms(&self, elem: &Element, name_lower: &str, found: &mut Vec<(String, String)>) {
-        if elem.name == "C" {
-            if let Some(t) = elem.attributes.get("Type") {
-                if t == "Place" {
-                    if let (Some(uuid), Some(title)) =
-                        (elem.attributes.get("U"), elem.attributes.get("Title"))
-                    {
-                        if title.to_lowercase().contains(name_lower) {
-                            found.push((uuid.clone(), title.clone()));
-                        }
-                    }
-                }
-            }
+        if elem.name == "C"
+            && let Some(t) = elem.attributes.get("Type")
+            && t == "Place"
+            && let (Some(uuid), Some(title)) =
+                (elem.attributes.get("U"), elem.attributes.get("Title"))
+            && title.to_lowercase().contains(name_lower)
+        {
+            found.push((uuid.clone(), title.clone()));
         }
         for child in &elem.children {
             if let Some(child_elem) = child.as_element() {
@@ -292,29 +298,32 @@ impl ConfigEditor {
             0 => bail!("Category '{}' not found in config", cat_name),
             1 => Ok(found.into_iter().next().unwrap().0),
             _ => {
-                let exact: Vec<_> = found.iter().filter(|(_uuid, name)| name.to_lowercase() == lower).collect();
+                let exact: Vec<_> = found
+                    .iter()
+                    .filter(|(_uuid, name)| name.to_lowercase() == lower)
+                    .collect();
                 if exact.len() == 1 {
                     Ok(exact[0].0.clone())
                 } else {
-                    bail!("Multiple categories match '{}': {:?}", cat_name, found.iter().map(|(_, n)| n.as_str()).collect::<Vec<_>>())
+                    bail!(
+                        "Multiple categories match '{}': {:?}",
+                        cat_name,
+                        found.iter().map(|(_, n)| n.as_str()).collect::<Vec<_>>()
+                    )
                 }
             }
         }
     }
 
     fn walk_categories(&self, elem: &Element, name_lower: &str, found: &mut Vec<(String, String)>) {
-        if elem.name == "C" {
-            if let Some(t) = elem.attributes.get("Type") {
-                if t == "Category" {
-                    if let (Some(uuid), Some(title)) =
-                        (elem.attributes.get("U"), elem.attributes.get("Title"))
-                    {
-                        if title.to_lowercase().contains(name_lower) {
-                            found.push((uuid.clone(), title.clone()));
-                        }
-                    }
-                }
-            }
+        if elem.name == "C"
+            && let Some(t) = elem.attributes.get("Type")
+            && t == "Category"
+            && let (Some(uuid), Some(title)) =
+                (elem.attributes.get("U"), elem.attributes.get("Title"))
+            && title.to_lowercase().contains(name_lower)
+        {
+            found.push((uuid.clone(), title.clone()));
         }
         for child in &elem.children {
             if let Some(child_elem) = child.as_element() {
@@ -331,26 +340,30 @@ impl ConfigEditor {
         path: &mut Vec<usize>,
         results: &mut Vec<Vec<usize>>,
     ) {
-        if elem.name == "C" {
-            if let Some(t) = elem.attributes.get("Type") {
-                if t.eq_ignore_ascii_case(type_filter)
-                    && !exclude_types.iter().any(|ex| t.eq_ignore_ascii_case(ex))
-                {
-                    // Check if has IoData child
-                    if elem
-                        .children
-                        .iter()
-                        .any(|c| c.as_element().map(|e| e.name == "IoData").unwrap_or(false))
-                    {
-                        results.push(path.clone());
-                    }
-                }
+        if elem.name == "C"
+            && let Some(t) = elem.attributes.get("Type")
+            && t.eq_ignore_ascii_case(type_filter)
+            && !exclude_types.iter().any(|ex| t.eq_ignore_ascii_case(ex))
+        {
+            // Check if has IoData child
+            if elem
+                .children
+                .iter()
+                .any(|c| c.as_element().map(|e| e.name == "IoData").unwrap_or(false))
+            {
+                results.push(path.clone());
             }
         }
         for (i, child) in elem.children.iter().enumerate() {
             if let Some(child_elem) = child.as_element() {
                 path.push(i);
-                self.collect_typed_with_iodata(child_elem, type_filter, exclude_types, path, results);
+                self.collect_typed_with_iodata(
+                    child_elem,
+                    type_filter,
+                    exclude_types,
+                    path,
+                    results,
+                );
                 path.pop();
             }
         }
@@ -376,16 +389,8 @@ impl ConfigEditor {
                     "SET" => {
                         for prop_node in &child_elem.children {
                             if let Some(prop) = prop_node.as_element() {
-                                let val = prop
-                                    .attributes
-                                    .get("v")
-                                    .cloned()
-                                    .unwrap_or_default();
-                                let t = prop
-                                    .attributes
-                                    .get("t")
-                                    .cloned()
-                                    .unwrap_or_default();
+                                let val = prop.attributes.get("v").cloned().unwrap_or_default();
+                                let t = prop.attributes.get("t").cloned().unwrap_or_default();
                                 properties.insert(
                                     prop.name.clone(),
                                     PropertyValue {
@@ -398,29 +403,13 @@ impl ConfigEditor {
                     }
                     "Co" => {
                         connectors.push(ConnectorInfo {
-                            kind: child_elem
-                                .attributes
-                                .get("K")
-                                .cloned()
-                                .unwrap_or_default(),
-                            target: child_elem
-                                .attributes
-                                .get("U")
-                                .cloned()
-                                .unwrap_or_default(),
+                            kind: child_elem.attributes.get("K").cloned().unwrap_or_default(),
+                            target: child_elem.attributes.get("U").cloned().unwrap_or_default(),
                         });
                     }
                     "IoData" => {
-                        room = child_elem
-                            .attributes
-                            .get("Pr")
-                            .cloned()
-                            .unwrap_or_default();
-                        category = child_elem
-                            .attributes
-                            .get("Cr")
-                            .cloned()
-                            .unwrap_or_default();
+                        room = child_elem.attributes.get("Pr").cloned().unwrap_or_default();
+                        category = child_elem.attributes.get("Cr").cloned().unwrap_or_default();
                     }
                     "C" => {
                         let ct = child_elem
@@ -441,16 +430,8 @@ impl ConfigEditor {
         }
 
         Ok(ElementDescription {
-            element_type: elem
-                .attributes
-                .get("Type")
-                .cloned()
-                .unwrap_or_default(),
-            title: elem
-                .attributes
-                .get("Title")
-                .cloned()
-                .unwrap_or_default(),
+            element_type: elem.attributes.get("Type").cloned().unwrap_or_default(),
+            title: elem.attributes.get("Title").cloned().unwrap_or_default(),
             uuid: elem.attributes.get("U").cloned().unwrap_or_default(),
             gid: elem.attributes.get("gid").cloned().unwrap_or_default(),
             room_uuid: room,
@@ -481,14 +462,12 @@ impl ConfigEditor {
         // Find PlaceCaption or first Place and insert after
         let mut insert_path = None;
         for (i, child) in self.root.children.iter().enumerate() {
-            if let Some(elem) = child.as_element() {
-                if elem.name == "C" {
-                    if let Some(t) = elem.attributes.get("Type") {
-                        if t == "Place" || t == "PlaceCaption" {
-                            insert_path = Some(i);
-                        }
-                    }
-                }
+            if let Some(elem) = child.as_element()
+                && elem.name == "C"
+                && let Some(t) = elem.attributes.get("Type")
+                && (t == "Place" || t == "PlaceCaption")
+            {
+                insert_path = Some(i);
             }
         }
 
@@ -496,9 +475,7 @@ impl ConfigEditor {
         place
             .attributes
             .insert("Type".to_string(), "Place".to_string());
-        place
-            .attributes
-            .insert("V".to_string(), "175".to_string());
+        place.attributes.insert("V".to_string(), "175".to_string());
         place.attributes.insert("U".to_string(), uuid.clone());
         place
             .attributes
@@ -512,9 +489,7 @@ impl ConfigEditor {
                 .children
                 .insert(idx + 1, xmltree::XMLNode::Element(place));
         } else {
-            self.root
-                .children
-                .push(xmltree::XMLNode::Element(place));
+            self.root.children.push(xmltree::XMLNode::Element(place));
         }
 
         Ok(uuid)
@@ -541,10 +516,12 @@ impl ConfigEditor {
         );
 
         let mut user = Element::new("C");
-        user.attributes.insert("Type".to_string(), "User".to_string());
+        user.attributes
+            .insert("Type".to_string(), "User".to_string());
         user.attributes.insert("V".to_string(), "175".to_string());
         user.attributes.insert("U".to_string(), uuid.clone());
-        user.attributes.insert("Title".to_string(), name.to_string());
+        user.attributes
+            .insert("Title".to_string(), name.to_string());
         user.attributes.insert("NFCArr".to_string(), String::new());
         user.attributes.insert("Desc".to_string(), String::new());
 
@@ -571,14 +548,12 @@ impl ConfigEditor {
     }
 
     fn walk_users(&self, elem: &Element, cb: &mut dyn FnMut(&str)) {
-        if elem.name == "C" {
-            if let Some(t) = elem.attributes.get("Type") {
-                if t == "User" {
-                    if let Some(title) = elem.attributes.get("Title") {
-                        cb(title);
-                    }
-                }
-            }
+        if elem.name == "C"
+            && let Some(t) = elem.attributes.get("Type")
+            && t == "User"
+            && let Some(title) = elem.attributes.get("Title")
+        {
+            cb(title);
         }
         for child in &elem.children {
             if let Some(child_elem) = child.as_element() {
@@ -591,13 +566,16 @@ impl ConfigEditor {
         self.find_user_caption_recursive(&self.root, &mut Vec::new())
     }
 
-    fn find_user_caption_recursive(&self, elem: &Element, path: &mut Vec<usize>) -> Option<Vec<usize>> {
-        if elem.name == "C" {
-            if let Some(t) = elem.attributes.get("Type") {
-                if t == "UserCaption" {
-                    return Some(path.clone());
-                }
-            }
+    fn find_user_caption_recursive(
+        &self,
+        elem: &Element,
+        path: &mut Vec<usize>,
+    ) -> Option<Vec<usize>> {
+        if elem.name == "C"
+            && let Some(t) = elem.attributes.get("Type")
+            && t == "UserCaption"
+        {
+            return Some(path.clone());
         }
         for (i, child) in elem.children.iter().enumerate() {
             if let Some(child_elem) = child.as_element() {
@@ -615,29 +593,28 @@ impl ConfigEditor {
         Self::remove_user_recursive(&mut self.root.children, name_lower)
     }
 
-    fn remove_user_recursive(children: &mut Vec<xmltree::XMLNode>, name_lower: &str) -> Option<String> {
+    fn remove_user_recursive(
+        children: &mut Vec<xmltree::XMLNode>,
+        name_lower: &str,
+    ) -> Option<String> {
         for i in 0..children.len() {
-            if let Some(elem) = children[i].as_element() {
-                if elem.name == "C" {
-                    if let Some(t) = elem.attributes.get("Type") {
-                        if t == "User" {
-                            if let Some(title) = elem.attributes.get("Title") {
-                                if title.to_lowercase() == name_lower {
-                                    let uuid = elem.attributes.get("U").cloned().unwrap_or_default();
-                                    children.remove(i);
-                                    return Some(uuid);
-                                }
-                            }
-                        }
-                    }
-                }
+            if let Some(elem) = children[i].as_element()
+                && elem.name == "C"
+                && let Some(t) = elem.attributes.get("Type")
+                && t == "User"
+                && let Some(title) = elem.attributes.get("Title")
+                && title.to_lowercase() == name_lower
+            {
+                let uuid = elem.attributes.get("U").cloned().unwrap_or_default();
+                children.remove(i);
+                return Some(uuid);
             }
         }
         for child in children.iter_mut() {
-            if let Some(elem) = child.as_mut_element() {
-                if let Some(uuid) = Self::remove_user_recursive(&mut elem.children, name_lower) {
-                    return Some(uuid);
-                }
+            if let Some(elem) = child.as_mut_element()
+                && let Some(uuid) = Self::remove_user_recursive(&mut elem.children, name_lower)
+            {
+                return Some(uuid);
             }
         }
         None
@@ -659,7 +636,14 @@ impl ConfigEditor {
         let mut bad_rooms = Vec::new();
         let mut bad_cats = Vec::new();
         let mut unconnected = Vec::new();
-        self.validate_recursive(&self.root, &place_uuids, &category_uuids, &mut bad_rooms, &mut bad_cats, &mut unconnected);
+        self.validate_recursive(
+            &self.root,
+            &place_uuids,
+            &category_uuids,
+            &mut bad_rooms,
+            &mut bad_cats,
+            &mut unconnected,
+        );
 
         // Room references
         if bad_rooms.is_empty() {
@@ -672,10 +656,15 @@ impl ConfigEditor {
 
         // Category references
         if bad_cats.is_empty() {
-            results.push("✓ All IoData category references (Cr=) point to existing categories".to_string());
+            results.push(
+                "✓ All IoData category references (Cr=) point to existing categories".to_string(),
+            );
         } else {
             for c in &bad_cats {
-                results.push(format!("✗ IoData Cr='{}' references non-existent category", c));
+                results.push(format!(
+                    "✗ IoData Cr='{}' references non-existent category",
+                    c
+                ));
             }
         }
 
@@ -683,7 +672,10 @@ impl ConfigEditor {
         if unconnected.is_empty() {
             results.push("✓ All connectors are wired".to_string());
         } else {
-            results.push(format!("⚠ {} connectors are unconnected", unconnected.len()));
+            results.push(format!(
+                "⚠ {} connectors are unconnected",
+                unconnected.len()
+            ));
         }
 
         // MQTT broker check
@@ -692,15 +684,15 @@ impl ConfigEditor {
             let mqtt_elem = self.get_element(mqtt_elements[0].as_slice());
             let mut has_broker = false;
             for child in &mqtt_elem.children {
-                if let Some(set) = child.as_element() {
-                    if set.name == "SET" {
-                        for prop in &set.children {
-                            if let Some(p) = prop.as_element() {
-                                if p.name == "mqtt_broker_address" {
-                                    let v = p.attributes.get("v").cloned().unwrap_or_default();
-                                    has_broker = !v.is_empty();
-                                }
-                            }
+                if let Some(set) = child.as_element()
+                    && set.name == "SET"
+                {
+                    for prop in &set.children {
+                        if let Some(p) = prop.as_element()
+                            && p.name == "mqtt_broker_address"
+                        {
+                            let v = p.attributes.get("v").cloned().unwrap_or_default();
+                            has_broker = !v.is_empty();
                         }
                     }
                 }
@@ -715,15 +707,18 @@ impl ConfigEditor {
         results
     }
 
-    fn collect_typed_uuids(&self, elem: &Element, type_name: &str, uuids: &mut std::collections::HashSet<String>) {
-        if elem.name == "C" {
-            if let Some(t) = elem.attributes.get("Type") {
-                if t == type_name {
-                    if let Some(u) = elem.attributes.get("U") {
-                        uuids.insert(u.clone());
-                    }
-                }
-            }
+    fn collect_typed_uuids(
+        &self,
+        elem: &Element,
+        type_name: &str,
+        uuids: &mut std::collections::HashSet<String>,
+    ) {
+        if elem.name == "C"
+            && let Some(t) = elem.attributes.get("Type")
+            && t == type_name
+            && let Some(u) = elem.attributes.get("U")
+        {
+            uuids.insert(u.clone());
         }
         for child in &elem.children {
             if let Some(child_elem) = child.as_element() {
@@ -742,33 +737,42 @@ impl ConfigEditor {
         unconnected: &mut Vec<String>,
     ) {
         if elem.name == "IoData" {
-            if let Some(pr) = elem.attributes.get("Pr") {
-                if !pr.is_empty() && !places.contains(pr) {
-                    bad_rooms.push(pr.clone());
-                }
+            if let Some(pr) = elem.attributes.get("Pr")
+                && !pr.is_empty()
+                && !places.contains(pr)
+            {
+                bad_rooms.push(pr.clone());
             }
-            if let Some(cr) = elem.attributes.get("Cr") {
-                if !cr.is_empty() && !categories.contains(cr) {
-                    bad_cats.push(cr.clone());
-                }
+            if let Some(cr) = elem.attributes.get("Cr")
+                && !cr.is_empty()
+                && !categories.contains(cr)
+            {
+                bad_cats.push(cr.clone());
             }
         }
-        if elem.name == "Co" {
-            if let Some(u) = elem.attributes.get("U") {
-                if u.is_empty() {
-                    let kind = elem.attributes.get("K").cloned().unwrap_or_default();
-                    unconnected.push(kind);
-                }
-            }
+        if elem.name == "Co"
+            && let Some(u) = elem.attributes.get("U")
+            && u.is_empty()
+        {
+            let kind = elem.attributes.get("K").cloned().unwrap_or_default();
+            unconnected.push(kind);
         }
         for child in &elem.children {
             if let Some(child_elem) = child.as_element() {
-                self.validate_recursive(child_elem, places, categories, bad_rooms, bad_cats, unconnected);
+                self.validate_recursive(
+                    child_elem,
+                    places,
+                    categories,
+                    bad_rooms,
+                    bad_cats,
+                    unconnected,
+                );
             }
         }
     }
 
     /// Add a child element under a parent. Returns the generated UUID.
+    #[allow(clippy::too_many_arguments)]
     pub fn add_element(
         &mut self,
         parent_selector: &str,
@@ -790,8 +794,7 @@ impl ConfigEditor {
         let mut elem = Element::new("C");
         elem.attributes
             .insert("Type".to_string(), element_type.to_string());
-        elem.attributes
-            .insert("V".to_string(), "175".to_string());
+        elem.attributes.insert("V".to_string(), "175".to_string());
         elem.attributes.insert("U".to_string(), uuid.clone());
         elem.attributes
             .insert("Title".to_string(), title.to_string());
@@ -808,30 +811,24 @@ impl ConfigEditor {
             if let Some(c) = category_uuid {
                 iodata.attributes.insert("Cr".to_string(), c.to_string());
             }
-            elem.children
-                .push(xmltree::XMLNode::Element(iodata));
+            elem.children.push(xmltree::XMLNode::Element(iodata));
         }
 
         // Add properties
         if !properties.is_empty() {
             let mut set = Element::new("SET");
             for (name, value, type_code) in properties {
-                let mut prop = Element::new(*name);
+                let mut prop = Element::new(name);
                 prop.attributes
                     .insert("t".to_string(), type_code.to_string());
-                prop.attributes
-                    .insert("v".to_string(), value.to_string());
-                set.children
-                    .push(xmltree::XMLNode::Element(prop));
+                prop.attributes.insert("v".to_string(), value.to_string());
+                set.children.push(xmltree::XMLNode::Element(prop));
             }
-            elem.children
-                .push(xmltree::XMLNode::Element(set));
+            elem.children.push(xmltree::XMLNode::Element(set));
         }
 
         let parent = self.get_element_mut(&parent_path);
-        parent
-            .children
-            .push(xmltree::XMLNode::Element(elem));
+        parent.children.push(xmltree::XMLNode::Element(elem));
 
         Ok(uuid)
     }
@@ -853,10 +850,12 @@ impl ConfigEditor {
         );
 
         let mut elem = Element::new("C");
-        elem.attributes.insert("Type".to_string(), element_type.to_string());
+        elem.attributes
+            .insert("Type".to_string(), element_type.to_string());
         elem.attributes.insert("V".to_string(), "175".to_string());
         elem.attributes.insert("U".to_string(), uuid.clone());
-        elem.attributes.insert("Title".to_string(), title.to_string());
+        elem.attributes
+            .insert("Title".to_string(), title.to_string());
 
         if room_uuid.is_some() || category_uuid.is_some() {
             let mut iodata = Element::new("IoData");
@@ -872,8 +871,9 @@ impl ConfigEditor {
         if !properties.is_empty() {
             let mut set = Element::new("SET");
             for (name, value, type_code) in properties {
-                let mut prop = Element::new(*name);
-                prop.attributes.insert("t".to_string(), type_code.to_string());
+                let mut prop = Element::new(name);
+                prop.attributes
+                    .insert("t".to_string(), type_code.to_string());
                 prop.attributes.insert("v".to_string(), value.to_string());
                 set.children.push(xmltree::XMLNode::Element(prop));
             }
@@ -905,14 +905,23 @@ impl ConfigEditor {
         // Find target element and its connector UUID
         let target_path = self.require_one(target)?;
         let target_elem = self.get_element(&target_path);
-        let target_title = target_elem.attributes.get("Title").cloned().unwrap_or_default();
+        let target_title = target_elem
+            .attributes
+            .get("Title")
+            .cloned()
+            .unwrap_or_default();
 
         let target_co_uuid = target_elem
             .children
             .iter()
             .find_map(|c| {
                 c.as_element().and_then(|e| {
-                    if e.name == "Co" && e.attributes.get("K").map(|k| k == target_connector).unwrap_or(false) {
+                    if e.name == "Co"
+                        && e.attributes
+                            .get("K")
+                            .map(|k| k == target_connector)
+                            .unwrap_or(false)
+                    {
                         e.attributes.get("U").cloned()
                     } else {
                         None
@@ -938,14 +947,23 @@ impl ConfigEditor {
         // Find source element and update its connector
         let source_path = self.require_one(source)?;
         let source_elem = self.get_element_mut(&source_path);
-        let source_title = source_elem.attributes.get("Title").cloned().unwrap_or_default();
+        let source_title = source_elem
+            .attributes
+            .get("Title")
+            .cloned()
+            .unwrap_or_default();
 
         let source_co = source_elem
             .children
             .iter_mut()
             .find_map(|c| {
                 c.as_mut_element().and_then(|e| {
-                    if e.name == "Co" && e.attributes.get("K").map(|k| k == source_connector).unwrap_or(false) {
+                    if e.name == "Co"
+                        && e.attributes
+                            .get("K")
+                            .map(|k| k == source_connector)
+                            .unwrap_or(false)
+                    {
                         Some(e)
                     } else {
                         None
@@ -960,7 +978,7 @@ impl ConfigEditor {
                 )
             })?;
 
-        let old_target = source_co.attributes.get("U").cloned().unwrap_or_default();
+        let _old_target = source_co.attributes.get("U").cloned().unwrap_or_default();
         source_co
             .attributes
             .insert("U".to_string(), target_co_uuid.clone());
@@ -982,19 +1000,29 @@ impl ConfigEditor {
             .iter_mut()
             .find_map(|c| {
                 c.as_mut_element().and_then(|e| {
-                    if e.name == "Co" && e.attributes.get("K").map(|k| k == connector_name).unwrap_or(false) {
+                    if e.name == "Co"
+                        && e.attributes
+                            .get("K")
+                            .map(|k| k == connector_name)
+                            .unwrap_or(false)
+                    {
                         Some(e)
                     } else {
                         None
                     }
                 })
             })
-            .ok_or_else(|| anyhow::anyhow!("Connector '{}' not found on '{}'", connector_name, title))?;
+            .ok_or_else(|| {
+                anyhow::anyhow!("Connector '{}' not found on '{}'", connector_name, title)
+            })?;
 
         let old = co.attributes.get("U").cloned().unwrap_or_default();
         co.attributes.remove("U");
 
-        Ok(format!("Unwired {}.{} (was {})", title, connector_name, old))
+        Ok(format!(
+            "Unwired {}.{} (was {})",
+            title, connector_name, old
+        ))
     }
 
     /// List all connectors and their wiring for an element.
@@ -1004,30 +1032,34 @@ impl ConfigEditor {
 
         let mut wires = Vec::new();
         for child in &elem.children {
-            if let Some(co) = child.as_element() {
-                if co.name == "Co" {
-                    let name = co.attributes.get("K").cloned().unwrap_or_default();
-                    let target_uuid = co.attributes.get("U").cloned().unwrap_or_default();
+            if let Some(co) = child.as_element()
+                && co.name == "Co"
+            {
+                let name = co.attributes.get("K").cloned().unwrap_or_default();
+                let target_uuid = co.attributes.get("U").cloned().unwrap_or_default();
 
-                    // Classify direction
-                    let direction = if name.starts_with('I') || name.starts_with("AI") || name == "Input" {
+                // Classify direction
+                let direction =
+                    if name.starts_with('I') || name.starts_with("AI") || name == "Input" {
                         "input"
-                    } else if name.starts_with('Q') || name.starts_with("AQ") || name.starts_with("Output") {
+                    } else if name.starts_with('Q')
+                        || name.starts_with("AQ")
+                        || name.starts_with("Output")
+                    {
                         "output"
                     } else {
                         "parameter"
                     };
 
-                    let connected = !target_uuid.is_empty()
-                        && target_uuid != "00000000-0000-0000-0000000000000000";
+                let connected =
+                    !target_uuid.is_empty() && target_uuid != "00000000-0000-0000-0000000000000000";
 
-                    wires.push(WireInfo {
-                        connector: name,
-                        direction: direction.to_string(),
-                        target_uuid,
-                        connected,
-                    });
-                }
+                wires.push(WireInfo {
+                    connector: name,
+                    direction: direction.to_string(),
+                    target_uuid,
+                    connected,
+                });
             }
         }
         Ok(wires)
@@ -1041,56 +1073,43 @@ impl ConfigEditor {
     }
 
     fn collect_mqtt_topics(&self, elem: &Element, topics: &mut Vec<MqttTopic>) {
-        if elem.name == "C" {
-            if let Some(t) = elem.attributes.get("Type") {
-                if t == "GenTSensor" || t == "GenTActor" {
-                    let title = elem
-                        .attributes
-                        .get("Title")
-                        .cloned()
-                        .unwrap_or_default();
-                    let direction = if t == "GenTSensor" {
-                        "subscribe"
-                    } else {
-                        "publish"
-                    };
+        if elem.name == "C"
+            && let Some(t) = elem.attributes.get("Type")
+            && (t == "GenTSensor" || t == "GenTActor")
+        {
+            let title = elem.attributes.get("Title").cloned().unwrap_or_default();
+            let direction = if t == "GenTSensor" {
+                "subscribe"
+            } else {
+                "publish"
+            };
 
-                    // Get topic from SET properties
-                    let mut topic = String::new();
-                    let mut qos = String::new();
-                    for child in &elem.children {
-                        if let Some(set) = child.as_element() {
-                            if set.name == "SET" {
-                                for prop in &set.children {
-                                    if let Some(p) = prop.as_element() {
-                                        if p.name == "mqtt_topic" {
-                                            topic = p
-                                                .attributes
-                                                .get("v")
-                                                .cloned()
-                                                .unwrap_or_default();
-                                        }
-                                        if p.name == "mqtt_qos" {
-                                            qos = p
-                                                .attributes
-                                                .get("v")
-                                                .cloned()
-                                                .unwrap_or_default();
-                                        }
-                                    }
-                                }
+            // Get topic from SET properties
+            let mut topic = String::new();
+            let mut qos = String::new();
+            for child in &elem.children {
+                if let Some(set) = child.as_element()
+                    && set.name == "SET"
+                {
+                    for prop in &set.children {
+                        if let Some(p) = prop.as_element() {
+                            if p.name == "mqtt_topic" {
+                                topic = p.attributes.get("v").cloned().unwrap_or_default();
+                            }
+                            if p.name == "mqtt_qos" {
+                                qos = p.attributes.get("v").cloned().unwrap_or_default();
                             }
                         }
                     }
-
-                    topics.push(MqttTopic {
-                        title,
-                        direction: direction.to_string(),
-                        topic,
-                        qos,
-                    });
                 }
             }
+
+            topics.push(MqttTopic {
+                title,
+                direction: direction.to_string(),
+                topic,
+                qos,
+            });
         }
         for child in &elem.children {
             if let Some(child_elem) = child.as_element() {
@@ -1103,23 +1122,19 @@ impl ConfigEditor {
 /// Remove an element by UUID from a children list (recursive standalone function).
 fn remove_by_uuid(children: &mut Vec<xmltree::XMLNode>, uuid: &str) -> Result<String> {
     for i in 0..children.len() {
-        if let Some(elem) = children[i].as_element() {
-            if elem.attributes.get("U").map(|u| u == uuid).unwrap_or(false) {
-                let title = elem
-                    .attributes
-                    .get("Title")
-                    .cloned()
-                    .unwrap_or_default();
-                children.remove(i);
-                return Ok(title);
-            }
+        if let Some(elem) = children[i].as_element()
+            && elem.attributes.get("U").map(|u| u == uuid).unwrap_or(false)
+        {
+            let title = elem.attributes.get("Title").cloned().unwrap_or_default();
+            children.remove(i);
+            return Ok(title);
         }
     }
     for child in children.iter_mut() {
-        if let Some(elem) = child.as_mut_element() {
-            if let Ok(title) = remove_by_uuid(&mut elem.children, uuid) {
-                return Ok(title);
-            }
+        if let Some(elem) = child.as_mut_element()
+            && let Ok(title) = remove_by_uuid(&mut elem.children, uuid)
+        {
+            return Ok(title);
         }
     }
     bail!("Element with UUID '{}' not found", uuid)
@@ -1362,8 +1377,12 @@ mod tests {
     #[test]
     fn test_roundtrip_write_read() {
         let mut editor = ConfigEditor::load(SAMPLE_XML).unwrap();
-        editor.set_property("gid:Mqtt", "mqtt_broker_address", "10.0.0.1", "11").unwrap();
-        editor.set_attribute("uuid:wd-1", "Title", "NewTemp").unwrap();
+        editor
+            .set_property("gid:Mqtt", "mqtt_broker_address", "10.0.0.1", "11")
+            .unwrap();
+        editor
+            .set_attribute("uuid:wd-1", "Title", "NewTemp")
+            .unwrap();
         let (count, _) = editor.move_to_room("WeatherData", "Zentral", &[]).unwrap();
         assert_eq!(count, 2);
 
@@ -1457,7 +1476,9 @@ mod tests {
 
         // Wire WeatherData.AQ → SysVar (but SysVar has no Co in sample, so wire to sensor)
         // Wire sensor.Text → WeatherData.AQ
-        let msg = editor.wire("uuid:sensor-1", "Text", "uuid:wd-1", "AQ").unwrap();
+        let msg = editor
+            .wire("uuid:sensor-1", "Text", "uuid:wd-1", "AQ")
+            .unwrap();
         assert!(msg.contains("Wired"));
 
         // Verify it's connected
