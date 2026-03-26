@@ -811,20 +811,41 @@ where
     // 1. A binary header (8 bytes) telling us the type and size of the next payload
     // 2. The payload (binary or text)
     let mut pending_header: Option<BinHeader> = None;
+    let debug = std::env::var("LOX_WS_DEBUG").is_ok();
 
     while let Some(msg) = ws_stream.next().await {
         let msg = msg?;
         match msg {
             Message::Binary(data) => {
+                if debug {
+                    eprintln!(
+                        "[ws] bin {} bytes, first={}",
+                        data.len(),
+                        data.iter()
+                            .take(16)
+                            .map(|b| format!("{:02x}", b))
+                            .collect::<Vec<_>>()
+                            .join("")
+                    );
+                }
                 if let Some(header) = pending_header.take() {
                     // This is the payload for the previous header
                     let events = parse_binary_payload(header.msg_type, &data)?;
+                    if debug {
+                        eprintln!("[ws] payload for type={}: {} events", header.msg_type, events.len());
+                    }
                     if !events.is_empty() {
                         handler(events)?;
                     }
                 } else if data.len() >= 8 && data[0] == 0x03 {
                     // This is a binary header
                     let header = parse_header(&data)?;
+                    if debug {
+                        eprintln!(
+                            "[ws] header: type={} payload_len={} estimated={}",
+                            header.msg_type, header.payload_len, header.estimated
+                        );
+                    }
                     if header.estimated {
                         // Estimated header — wait for the exact header that follows
                         continue;
@@ -844,10 +865,23 @@ where
                     } else {
                         pending_header = Some(header);
                     }
+                } else if debug {
+                    eprintln!("[ws] unexpected binary frame (not header, no pending)");
                 }
             }
-            Message::Text(_) => {
-                // Text responses (command ACKs, etc.) — skip for streaming
+            Message::Text(text) => {
+                if debug {
+                    eprintln!("[ws] text: {}",
+                        if text.len() > 100 { &text[..100] } else { &text }
+                    );
+                }
+                // Text message arrived — if we had a pending header expecting a
+                // text payload (type 0), consume it; otherwise the pending header
+                // was for a binary payload that hasn't arrived yet, but text
+                // frames from the Miniserver always pair with their own header.
+                if pending_header.as_ref().is_some_and(|h| h.msg_type == MSG_TEXT) {
+                    pending_header.take();
+                }
             }
             Message::Ping(data) => {
                 ws_stream.send(Message::Pong(data)).await?;
