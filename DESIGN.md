@@ -214,3 +214,60 @@ UUID binary → string:
   bytes[8..16] → raw       → 16 hex chars (part 4)
   → "{p1}-{p2}-{p3}-{p4}"
 ```
+
+---
+
+## LoxCC Binary Format
+
+The Miniserver stores its configuration in `sps0.LoxCC` files inside backup ZIPs.
+This is a custom LZ4-style compression format:
+
+```
+Header (16 bytes):
+  [0..4]   u32_le  magic = 0xAABBCCEE
+  [4..8]   u32_le  compressed payload size
+  [8..12]  u32_le  uncompressed size
+  [12..16] u32_le  CRC32 of uncompressed data
+
+Payload: LZ4-style token-based compression
+  Token byte: high nibble = literal count, low nibble = match_length - 4
+  If nibble == 15: read additional bytes (0-255 each, stop at <255)
+  After literals: 2-byte LE back-reference offset
+  Last block: no back-reference needed (pure literals valid)
+```
+
+### CRC32 field
+
+The CRC32 at offset 12 is `zlib::crc32()` of the uncompressed XML data.
+It is **required** for the Miniserver to trust encrypted config fields.
+A zero CRC32 causes the Miniserver to load structure but ignore `t="15"`
+password hashes.
+
+### Password fields
+
+Config XML uses `t="15"` for encrypted passwords and `t="11"` for plaintext
+strings. The Miniserver accepts `t="11"` for password fields (e.g.
+`mqtt_auth_pwd`), using the value directly — no firmware encryption key needed.
+
+### Config load priority
+
+On boot, the Miniserver loads the first valid config found:
+
+1. `/prog/Emergency.LoxCC` (crash recovery only)
+2. `/prog/sps_new.zip` or `.LoxCC`
+3. `/prog/sps_<vers>_<timestamp>.zip` or `.LoxCC` (latest wins)
+4. `/prog/sps.zip`, `/prog/sps_old.zip`
+5. `/prog/Default.Loxone` or `/prog/DefaultGo.Loxone`
+
+---
+
+## References
+
+Community projects that document the Loxone Miniserver internals:
+
+| Project | What it provides |
+|---------|------------------|
+| [sarnau/Inside-The-Loxone-Miniserver](https://github.com/sarnau/Inside-The-Loxone-Miniserver) | LoxCC format, config load priority, AES key extraction, weather codes, networking protocol |
+| [JoDehli/PyLoxone](https://github.com/JoDehli/PyLoxone) | WebSocket auth protocol (RSA+AES+HMAC), token management, Home Assistant integration |
+| [alladdin/node-lox-ws-api](https://github.com/alladdin/node-lox-ws-api) | Binary event table parsing, 3 auth methods (Token/AES/Hash), salt rotation |
+| [codmpm/node-red-contrib-loxone](https://github.com/codmpm/node-red-contrib-loxone) | Node-RED integration, auth method selection by firmware version |

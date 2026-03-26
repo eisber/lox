@@ -796,4 +796,110 @@ mod tests {
         assert_eq!(diff.users_added, vec!["newuser"]);
         assert_eq!(diff.users_removed, vec!["chris"]);
     }
+
+    #[test]
+    fn test_parse_rooms() {
+        let xml = br#"<?xml version="1.0" encoding="utf-8"?>
+<ControlList>
+  <C Type="Place" U="room-1" Title="Kitchen"/>
+  <C Type="Place" U="room-2" Title="Bedroom"/>
+  <C Type="Place" U="room-3" Title="Zentral"/>
+  <C Type="WeatherData" U="wd-1" Title="Temperatur">
+    <IoData Cr="cat-1" Pr="room-3"/>
+  </C>
+  <C Type="SysVar" U="sv-1" Title="Aussentemperatur">
+    <IoData Cr="cat-1" Pr="room-3"/>
+  </C>
+  <C Type="Switch" U="sw-1" Title="Light">
+    <IoData Cr="cat-2" Pr="room-1"/>
+  </C>
+  <C Type="IntercomDevice" U="ic-1" Title="Intercom">
+    <IoData Cr="cat-3" Pr="room-2"/>
+  </C>
+</ControlList>"#;
+        let rooms = parse_rooms(xml).unwrap();
+        assert_eq!(rooms.len(), 3);
+
+        let kitchen = rooms.iter().find(|r| r.name == "Kitchen").unwrap();
+        assert_eq!(kitchen.item_count, 1);
+
+        let bedroom = rooms.iter().find(|r| r.name == "Bedroom").unwrap();
+        assert_eq!(bedroom.item_count, 1);
+
+        let zentral = rooms.iter().find(|r| r.name == "Zentral").unwrap();
+        assert_eq!(zentral.item_count, 2);
+    }
+
+    #[test]
+    fn test_parse_rooms_empty() {
+        let xml = br#"<?xml version="1.0"?><ControlList/>"#;
+        let rooms = parse_rooms(xml).unwrap();
+        assert!(rooms.is_empty());
+    }
+
+    #[test]
+    fn test_parse_controls_all() {
+        let xml = br#"<?xml version="1.0" encoding="utf-8"?>
+<ControlList>
+  <C Type="Place" U="room-1" Title="Kitchen"/>
+  <C Type="Place" U="room-2" Title="Zentral"/>
+  <C Type="Category" U="cat-1" Title="Wetter"/>
+  <C Type="Category" U="cat-2" Title="Beleuchtung"/>
+  <C Type="WeatherData" U="wd-1" Title="Temperatur">
+    <IoData Cr="cat-1" Pr="room-2"/>
+  </C>
+  <C Type="SysVar" U="sv-1" Title="Wind">
+    <IoData Cr="cat-1" Pr="room-2"/>
+  </C>
+  <C Type="Switch" U="sw-1" Title="Light">
+    <IoData Cr="cat-2" Pr="room-1"/>
+  </C>
+</ControlList>"#;
+        let controls = parse_controls(xml, None, None).unwrap();
+        assert_eq!(controls.len(), 3);
+        // Sorted by type then title
+        assert_eq!(controls[0].control_type, "Switch");
+        assert_eq!(controls[0].room, "Kitchen");
+        assert_eq!(controls[1].control_type, "SysVar");
+        assert_eq!(controls[2].control_type, "WeatherData");
+        assert_eq!(controls[2].room, "Zentral");
+        assert_eq!(controls[2].category, "Wetter");
+    }
+
+    #[test]
+    fn test_parse_controls_type_filter() {
+        let xml = br#"<?xml version="1.0" encoding="utf-8"?>
+<ControlList>
+  <C Type="Place" U="room-1" Title="Kitchen"/>
+  <C Type="Category" U="cat-1" Title="Wetter"/>
+  <C Type="WeatherData" U="wd-1" Title="Temperatur">
+    <IoData Cr="cat-1" Pr="room-1"/>
+  </C>
+  <C Type="SysVar" U="sv-1" Title="Wind">
+    <IoData Cr="cat-1" Pr="room-1"/>
+  </C>
+</ControlList>"#;
+        let controls = parse_controls(xml, Some("WeatherData"), None).unwrap();
+        assert_eq!(controls.len(), 1);
+        assert_eq!(controls[0].title, "Temperatur");
+    }
+
+    #[test]
+    fn test_parse_controls_room_filter() {
+        let xml = br#"<?xml version="1.0" encoding="utf-8"?>
+<ControlList>
+  <C Type="Place" U="room-1" Title="Kitchen"/>
+  <C Type="Place" U="room-2" Title="Zentral"/>
+  <C Type="Category" U="cat-1" Title="Wetter"/>
+  <C Type="WeatherData" U="wd-1" Title="Temperatur">
+    <IoData Cr="cat-1" Pr="room-2"/>
+  </C>
+  <C Type="Switch" U="sw-1" Title="Light">
+    <IoData Cr="cat-1" Pr="room-1"/>
+  </C>
+</ControlList>"#;
+        let controls = parse_controls(xml, None, Some("Zentral")).unwrap();
+        assert_eq!(controls.len(), 1);
+        assert_eq!(controls[0].title, "Temperatur");
+    }
 }
