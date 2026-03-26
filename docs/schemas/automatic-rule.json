@@ -8,7 +8,8 @@
       "abbreviation": "Tg",
       "summary": "Toggle",
       "description": "Enable / disable automatic rule",
-      "value_range": "0/1"
+      "value_range": "0/1",
+      "xml_key": "Input"
     }
   ],
   "outputs": [
@@ -16,7 +17,8 @@
       "abbreviation": "API",
       "summary": "API Connector",
       "description": "Intelligent API based connector. API Commands",
-      "value_range": "-"
+      "value_range": "-",
+      "xml_key": "output"
     }
   ],
   "parameters": [],

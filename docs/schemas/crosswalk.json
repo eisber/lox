@@ -1,0 +1,400 @@
+{
+  "_description": "Maps XML connector keys to UX abbreviations for Loxone function block types",
+  "_sources": {
+    "xml": "Live config XML and templates.json",
+    "ux": "Validated via Loxone Config UX (Anschluss anzeigen popup + block labels)",
+    "kb": "KB articles parsed into docs/schemas/*.json"
+  },
+  "types": {
+    "AlarmClock": {
+      "kb_slug": "alarm-clock",
+      "ux_validated": true,
+      "connectors": {
+        "Acknowledge": {
+          "ux": "Ca",
+          "dir": "input",
+          "desc": "Confirm alarm"
+        },
+        "Snooze": {
+          "ux": "S",
+          "dir": "input",
+          "desc": "Start snooze timer"
+        },
+        "Deactivate": {
+          "ux": "DisA",
+          "dir": "input",
+          "desc": "Disable alarm entries"
+        },
+        "TgMe": {
+          "ux": "Tg",
+          "dir": "input",
+          "desc": "Toggle"
+        },
+        "TMe": {
+          "ux": "Set",
+          "dir": "input",
+          "desc": "Set alarm time"
+        },
+        "RtD": {
+          "ux": "Rtd",
+          "dir": "input",
+          "desc": "Reset to default"
+        },
+        "Reset": {
+          "ux": "Off",
+          "dir": "input",
+          "desc": "Off"
+        },
+        "VIN1": {
+          "ux": "VIN1",
+          "dir": "input",
+          "desc": "Virtual input (internal)"
+        },
+        "Remanence": {
+          "ux": "Aus",
+          "dir": "remanence",
+          "desc": "Remanence input"
+        },
+        "AlarmTime": {
+          "ux": "MaxA",
+          "dir": "parameter",
+          "desc": "Max alarm duration",
+          "default": "120"
+        },
+        "PrepTime": {
+          "ux": "Pat",
+          "dir": "parameter",
+          "desc": "Pre-alarm time",
+          "default": "180"
+        },
+        "SnoozeTime": {
+          "ux": "Sd",
+          "dir": "parameter",
+          "desc": "Snooze duration",
+          "default": "300"
+        },
+        "BrightInact": {
+          "ux": "Bi",
+          "dir": "parameter",
+          "desc": "Brightness inactive"
+        },
+        "BrightAct": {
+          "ux": "Ba",
+          "dir": "parameter",
+          "desc": "Brightness active",
+          "default": "50"
+        },
+        "ParWakeAlarmSound": {
+          "ux": "As",
+          "dir": "parameter",
+          "desc": "Alarm sound",
+          "default": "1"
+        },
+        "ParWakeAlarmVolume": {
+          "ux": "Asv",
+          "dir": "parameter",
+          "desc": "Alarm volume",
+          "default": "100"
+        },
+        "ParWakeAlarmSloping": {
+          "ux": "Asf",
+          "dir": "parameter",
+          "desc": "Alarm fade-in"
+        },
+        "QTa": {
+          "ux": "A",
+          "dir": "output",
+          "desc": "Alarm active"
+        },
+        "QTe": {
+          "ux": "Da",
+          "dir": "output",
+          "desc": "Default alarm state"
+        },
+        "Qa": {
+          "ux": "Buzzer",
+          "dir": "output",
+          "desc": "Buzzer"
+        },
+        "Qat": {
+          "ux": "Pa",
+          "dir": "output",
+          "desc": "Pre-alarm"
+        },
+        "QTp": {
+          "ux": "Tna",
+          "dir": "output",
+          "desc": "Time until next alarm"
+        },
+        "QMe": {
+          "ux": "QMe",
+          "dir": "output",
+          "desc": "Current mode"
+        },
+        "AQs": {
+          "ux": "AQs",
+          "dir": "output",
+          "desc": "Alarm sound output"
+        },
+        "QTna": {
+          "ux": "QTna",
+          "dir": "output",
+          "desc": "Next alarm time"
+        },
+        "OutputAPI": {
+          "ux": "API",
+          "dir": "output",
+          "desc": "API Connector"
+        }
+      }
+    },
+    "LightController2": {
+      "kb_slug": "lighting-controller",
+      "ux_validated": true,
+      "connectors": {
+        "I1": {
+          "ux": "Lc1",
+          "dir": "input",
+          "desc": "Light circuit 1"
+        },
+        "I2": {
+          "ux": "Lc2",
+          "dir": "input",
+          "desc": "Light circuit 2"
+        },
+        "I3": {
+          "ux": "Lc3",
+          "dir": "input",
+          "desc": "Light circuit 3"
+        },
+        "I4": {
+          "ux": "Lc4",
+          "dir": "input",
+          "desc": "Light circuit 4"
+        },
+        "Step": {
+          "ux": "M+",
+          "dir": "input",
+          "desc": "Next mood"
+        },
+        "Move": {
+          "ux": "M-",
+          "dir": "input",
+          "desc": "Previous mood"
+        },
+        "Select": {
+          "ux": "Mood",
+          "dir": "input",
+          "desc": "Select mood by ID"
+        },
+        "On": {
+          "ux": "Off",
+          "dir": "input",
+          "desc": "Off"
+        },
+        "Sel1": {
+          "ux": "T5/1",
+          "dir": "input",
+          "desc": "Trigger Mood 1"
+        },
+        "Sel2": {
+          "ux": "T5/2",
+          "dir": "input",
+          "desc": "Trigger Mood 2"
+        },
+        "Sel3": {
+          "ux": "T5/3",
+          "dir": "input",
+          "desc": "Trigger Mood 3"
+        },
+        "Sel4": {
+          "ux": "T5/4",
+          "dir": "input",
+          "desc": "Trigger Mood 4"
+        },
+        "Sel5": {
+          "ux": "T5/5",
+          "dir": "input",
+          "desc": "Trigger Mood 5"
+        },
+        "Sel6": {
+          "ux": "T5/6",
+          "dir": "input",
+          "desc": "Trigger Mood 6"
+        },
+        "Sel7": {
+          "ux": "T5/7",
+          "dir": "input",
+          "desc": "Trigger Mood 7"
+        },
+        "Sel8": {
+          "ux": "T5/8",
+          "dir": "input",
+          "desc": "Trigger Mood 8"
+        },
+        "InputDisable": {
+          "ux": "DisP",
+          "dir": "input",
+          "desc": "Disable presence/motion"
+        },
+        "EnMove": {
+          "ux": "Mo",
+          "dir": "input",
+          "desc": "Motion"
+        },
+        "MoveOn": {
+          "ux": "On",
+          "dir": "output",
+          "desc": "All on"
+        },
+        "Alarm": {
+          "ux": "Alarm",
+          "dir": "output",
+          "desc": "Alarm"
+        },
+        "AlarmClock": {
+          "ux": "Buzzer",
+          "dir": "output",
+          "desc": "Buzzer"
+        },
+        "Brightness": {
+          "ux": "Br",
+          "dir": "output",
+          "desc": "Current brightness"
+        },
+        "Presence": {
+          "ux": "P",
+          "dir": "output",
+          "desc": "Presence"
+        },
+        "RtD": {
+          "ux": "Rtd",
+          "dir": "output",
+          "desc": "Reset to default"
+        },
+        "MasterBr": {
+          "ux": "MBr",
+          "dir": "output",
+          "desc": "Master Brightness"
+        },
+        "InputTriggerDown": {
+          "ux": "DisPc",
+          "dir": "output",
+          "desc": "Disable periphery control"
+        },
+        "Scene": {
+          "ux": "M",
+          "dir": "output",
+          "desc": "Current mood"
+        },
+        "OutputAPI": {
+          "ux": "API",
+          "dir": "output",
+          "desc": "API Connector"
+        },
+        "OutputReset": {
+          "ux": "2C",
+          "dir": "output",
+          "desc": "Pulse on double-click"
+        },
+        "OutputResetAll": {
+          "ux": "3C",
+          "dir": "output",
+          "desc": "Pulse on triple-click"
+        },
+        "AQ1": {
+          "ux": "AQ1",
+          "dir": "output",
+          "desc": "Analog output 1"
+        },
+        "Remanence": {
+          "ux": "Rem",
+          "dir": "parameter",
+          "desc": "Remanence input"
+        },
+        "Steptime": {
+          "ux": "Str",
+          "dir": "parameter",
+          "desc": "Step rate brightness"
+        },
+        "Min": {
+          "ux": "MinBr",
+          "dir": "parameter",
+          "desc": "Minimum brightness"
+        },
+        "Max": {
+          "ux": "MaxBr",
+          "dir": "parameter",
+          "desc": "Maximum brightness"
+        },
+        "MoveTimeout": {
+          "ux": "Moet",
+          "dir": "parameter",
+          "desc": "Motion extend time"
+        },
+        "AlarmPeriod": {
+          "ux": "Afi",
+          "dir": "parameter",
+          "desc": "Alarm flashing interval"
+        },
+        "FadingTime": {
+          "ux": "Ft",
+          "dir": "parameter",
+          "desc": "Fading time"
+        },
+        "BrightnessLimit": {
+          "ux": "Brt",
+          "dir": "parameter",
+          "desc": "Brightness threshold"
+        },
+        "SceneMixTime": {
+          "ux": "Mmd",
+          "dir": "parameter",
+          "desc": "Mixing moods duration"
+        },
+        "AlarmClockPeriod": {
+          "ux": "Fbu",
+          "dir": "parameter",
+          "desc": "Fading time buzzer"
+        }
+      }
+    },
+    "Memory": {
+      "kb_slug": "analogue-memory",
+      "ux_validated": false,
+      "connectors": {
+        "Input": {
+          "ux": "Set",
+          "dir": "input",
+          "desc": "Set value"
+        },
+        "AQ": {
+          "ux": "V",
+          "dir": "output",
+          "desc": "Analog output (stored value)"
+        },
+        "Q": {
+          "ux": "Q",
+          "dir": "output",
+          "desc": "Digital output"
+        }
+      }
+    },
+    "AutoPilot": {
+      "kb_slug": "automatic-rule",
+      "ux_validated": false,
+      "connectors": {
+        "Input": {
+          "ux": "Tg",
+          "dir": "input",
+          "desc": "Toggle"
+        },
+        "output": {
+          "ux": "API",
+          "dir": "output",
+          "desc": "API Connector"
+        }
+      }
+    }
+  }
+}

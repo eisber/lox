@@ -8,7 +8,8 @@
       "abbreviation": "Set",
       "summary": "Set value to output (V)",
       "description": "On rising edge.",
-      "value_range": "0/1"
+      "value_range": "0/1",
+      "xml_key": "Input"
     },
     {
       "abbreviation": "Off",
@@ -21,14 +22,15 @@
     {
       "abbreviation": "V",
       "summary": "Value",
-      "value_range": "\u221e"
+      "value_range": "∞",
+      "xml_key": "AQ"
     }
   ],
   "parameters": [
     {
       "abbreviation": "Rem",
       "summary": "Remanence input",
-      "description": "Remanence input: If active, the function block retains its previous state after a Miniserver reboot. The state of the function block is saved: \u2013 When saving to the Miniserver \u2013 At a planned reboot \u2013 Before a backup \u2013 Once per hour The data is saved on the SD card.",
+      "description": "Remanence input: If active, the function block retains its previous state after a Miniserver reboot. The state of the function block is saved: – When saving to the Miniserver – At a planned reboot – Before a backup – Once per hour The data is saved on the SD card.",
       "value_range": "0/1",
       "default_value": "0"
     }
