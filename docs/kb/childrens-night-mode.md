@@ -48,8 +48,6 @@ When the children’s night mode is activated, the lights, music and Motion/[Pre
 
 A children’s Night Mode is very practical as it works independently of the main Night Mode. This allows the little ones to sleep peacefully without being disturbed by bright lights, loud music or the doorbell ringing. However, nothing changes in the rest of the house and parents can enjoy the time together in peace. When the parents go to sleep later, they simply need to activate the main Night Mode in their bedroom and the rest of the house will join the children’s room.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

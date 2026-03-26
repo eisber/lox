@@ -6,22 +6,13 @@ Source: https://www.loxone.com/enen/kb/webpage/
 
 Opens the specified website in the web browser
 
-
-
 ## Table of Contents
 - [Properties](#Property)
 - [Set URL](#)
 
-
-
-
 ---
 
-
 ## Properties
-
-
-
 
 | Summary | Description | Default Value |
 | --- | --- | --- |
@@ -32,47 +23,26 @@ Opens the specified website in the web browser
 | Icon | Specifies the icon displayed in the user interface (app and web interface) | - |
 | Symbol color | Color of the symbol in the user interface | - |
 
-
-
-
-
-
-
-
 ---
-
 
 ## Set URL
 
-
-
-
 ![Webpage Url](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Webpage_Url.jpg)
 
+URL (intern low res):
 
+Address when connecting via the local address to Miniserver, low resolution
 
-    URL (intern low res):
+URL (intern high res):
 
+Address when connecting via the local address to Miniserver, high resolution
 
-    Address when connecting via the local address to Miniserver, low resolution
+URL(extern low res):
 
+Address when connecting via the external address to the miniserver, low resolution
 
-    URL (intern high res):
+URL(extern high res):
 
+Address when connecting via the external address to the miniserver, high resolution
 
-    Address when connecting via the local address to Miniserver, high resolution
-
-
-    URL(extern low res):
-
-
-    Address when connecting via the external address to the miniserver, low resolution
-
-
-    URL(extern high res):
-
-
-    Address when connecting via the external address to the miniserver, high resolution
-
-
-    The address must be in the following format: http://www.mypage.com
+The address must be in the following format: http://www.mypage.com

@@ -45,8 +45,6 @@ Behaviour monitoring provides insights into the slow change of behaviour in ever
 
 The goal of behaviour monitoring in assisted living is to use technology to improve the quality of life of elderly people. At the same time, they should be enabled to live an independent life, even if they are mentally or physically impaired. With Loxone technology, the wishes and demands of the residents and carers can be taken into account and individually adapted for each resident. The system can be expanded with additional functions at any time.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

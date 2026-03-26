@@ -36,8 +36,6 @@ To monitor the weight of snow on the roof with the Miniserver, a 0-10V sensor is
 
 With intelligent snow load monitoring, you can monitor the weight of snow and be sent an early warning about excessive loads on the roof. This allows you to remove the snow from the roof and prevent massive damage or even collapse.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

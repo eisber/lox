@@ -8,8 +8,8 @@ lso auduble if a ungrounded If you hear a buzzing sound from the speakers, you 
 
 ## Please ensure the following in advance
 - The amplification level directly on the channel of the amplifier should be set as low as possible. If this is turned too high, this can cause a buzz. The dial to adjust this can be found on the back of the amplifier at the respective channel (small potentiometer).
-- If you have installed the amplifier and the Musicserver in a rack, make sure that the chassis is not grounded. It is best to place the Musicserver on the amplifier so that the housings do not touch.
-- The musicserver and amplifier should be on the same circuit.
+If you have installed the amplifier and the Musicserver in a rack, make sure that the chassis is not grounded. It is best to place the Musicserver on the amplifier so that the housings do not touch.
+The musicserver and amplifier should be on the same circuit.
 
 ## Hum can be heard in all zones
 - Please replace L and N of the power supply of the amplifier or the Musicserver.

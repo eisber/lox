@@ -20,8 +20,6 @@ You can combine EIB with Loxone to benefit from the flexibility and power of the
 ![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 The Loxone Miniserver Gen. 1  also has a full IP Gateway, which can be useful when programming directly on the network with ETS.
 
-
-
 #### CONTENTS FOR EIB DOCUMENTATION
 
 In these pages you will find our recommendations and guidelines for using EIB with Loxone.

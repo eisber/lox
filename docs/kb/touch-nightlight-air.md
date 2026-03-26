@@ -6,12 +6,11 @@ Source: https://www.loxone.com/enen/kb/touch-nightlight-air/
 
 ## Contents
 - [Technical Data](#TechData)
-- [Power Supply](#PoweSupp)
-- [Commissioning Air](#CommAir)
-- [Programming](#Prog)
-- [Functions](#Func)
-
-[Alarm clock](#AlarCloc)
+[Power Supply](#PoweSupp)
+[Commissioning Air](#CommAir)
+[Programming](#Prog)
+[Functions](#Func)
+- [Alarm clock](#AlarCloc)
 - [Set alarm time](#SetAlarTime)
 - [Time format](#TimeForm)
 - [Display brightness](#DispBrig)
@@ -52,7 +51,7 @@ To activate the pairing mode, hold down the pairing button for at least 5 second
 
 | Name | Description | Type | Values |
 | --- | --- | --- | --- |
-| Smart Actuator RGBW | RGBW Lighting output for the Backlight on the Touch Nightlight Air. This is a standard Smart Actuator output to be used with a Lighting controller. | Smart Actuator | – |
+| Smart Actuator RGBW | RGBW Lighting output for the Backlight on the Touch Nightlight Air. This is a standard Smart Actuator output to be used with a Lighting controller. | Smart Actuator | – |
 | Dimmer RGB | Combined RGB output. This only appears if the device is set to “standard” type. | RGB | – |
 | Dimmer WW | WW output. This only appears if the device is set to “standard” type. | Analog | 0…100 |
 | Temperature | Displays the temperature from different sensors. If used it will swap between it every 5 seconds. | Analogue | ∞ |
@@ -61,8 +60,6 @@ To activate the pairing mode, hold down the pairing button for at least 5 second
 ## Functions
 
 ![PH Nightlight Hand.min  3 800x450](https://www.loxone.com/enen/wp-content/uploads/sites/3/2019/03/PH_Nightlight-Hand.min_-3.png)
-
-
 
 ![TouchNightlightAir KeyAssignment](https://www.loxone.com/enen/wp-content/uploads/sites/3/2019/03/TouchNightlightAir_KeyAssignment.png)
 

@@ -47,8 +47,6 @@ We have to admit that this Use Case is one for true enthusiasts. However, it sti
 
 Good luck with the production of your own dried meat!
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

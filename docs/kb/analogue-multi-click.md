@@ -16,20 +16,12 @@ A pulse on input R will set AQ to 0.
 
 #### INPUTS
 
-| Tr | Trigger |
-| --- | --- |
-| R | Reset |
+> **ℹ️ Note:** Trigger
 
 #### PARAMETERS
 
-| M | Maximum time span between two pulses (s) |
-| --- | --- |
-| V1 | The value set on AQ for a single click. |
-| V2 | The value set on AQ for a double click. |
-| V3 | The value set on AQ for a triple click. |
-| V4 | The value set on AQ for a quadruple click. |
+> **ℹ️ Note:** Maximum time span between two pulses (s)
 
 #### OUTPUTS
 
-| AQ | Analogue output depending on the click. |
-| --- | --- |
+> **ℹ️ Note:** Analogue output depending on the click.

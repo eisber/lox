@@ -33,8 +33,6 @@ All you need to do is connect the door to the [Nano IO Air](https://shop.loxone.
 ![Use Case 90 Open Doors in a Warehouse](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-90-Open-Doors-in-a-Warehouse.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-90-Open-Doors-in-a-Warehouse.png)
 
-
-
 ### Download the sample file:
 
 ### Open Gates
@@ -54,8 +52,6 @@ For the sake of simplicity, let us assume 10 seconds for the entire manual openi
 10 sec x 10 openings/h x 8h x 5 employees = 4,000 sec.
 
 This corresponds to a waiting time of more than one hour per day or more than 5 hours per week. This time can be greatly reduced by implementing wireless commercial roller door control.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

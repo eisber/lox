@@ -35,8 +35,6 @@ If a new employee starts, an additional Key Fob with authorisation can be easily
 ![Use Case 37 Billingsystem with NFC Code Touch](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-37-Billingsystem-with-NFC-Code-Touch.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-37-Billingsystem-with-NFC-Code-Touch.png)
 
-
-
 ### Download the sample file:
 
 ### Billingsystem with NFC Code Touch
@@ -54,8 +52,6 @@ The employer knows which employee has consumed what and at what time. If the emp
 The personal NFC Key Fob does not only have to be used for cashless payments. It can also be used to gain access to the building or to start or stop time recording. The employer equips each employee with only 1 Key Fob, which can be used for various functions.
 
 Adding or removing NFC Key Fobs can easily be done with the Loxone App. This can be done directly by the employer. Should an employee lose their Key Fob, it can be deleted and replaced. This is not only much easier from an administrative point of view than with other systems but also far cheaper.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

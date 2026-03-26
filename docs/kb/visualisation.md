@@ -42,8 +42,6 @@ loxone://ms?mac=<MAC>&loc=category%2F<categoryUUID>
 
 loxone://ms?mac=<MAC>&loc=control%2F<controlUUID>
 
-
-
 ms?host=<HOST>
 
 ms?mac=<MAC> (User+PW is not necessary!)
@@ -60,8 +58,7 @@ ms?mac=<MAC>&loc=<LOCATION>
 
 <MAC> MAC Adress of Miniserver (Miniserver must be stored in the App!)
 - Attention: the parameters (URIComponents) (<HOST>, <MAC>, <USER>, <PASSWORD>, <LOCATION>) must be URL-Encoded
-
-http://en.wikipedia.org/wiki/URL-Encoding
+- http://en.wikipedia.org/wiki/URL-Encoding
 - http://www.w3schools.com/jsref/jsref_encodeURIComponent.asp
 
 #### App-Navigation Informations:
@@ -75,14 +72,7 @@ ms?host=<HOST>&loc=<LOCATION>
 
 **
 
-| home | Home-Screen |
-| --- | --- |
-| weather | Weather |
-| favourites | Favorites |
-| room | Room-Selection |
-| category | Category-Selection |
-| menu | Menu Page |
-| taskrecorder | Task Recorder |
+> **ℹ️ Note:** Home-Screen
 
 navigate to a room:
 

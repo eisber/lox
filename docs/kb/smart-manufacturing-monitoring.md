@@ -42,8 +42,6 @@ Hardware:
 ![Smart manufacturing monitoring - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-65-Smart-Manufacturing-Process-2.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-65-Smart-Manufacturing-Process-2.png)
 
-
-
 ### Sample file:
 
 ### Smart Manufacturing Process
@@ -59,8 +57,6 @@ Time is money! Mass production is the production of large quantities of standard
 Mass production is capital intensive because it requires a relatively large number of machines per employee. This also means that there must be a large sales market for a product in order to make mass production worthwhile in the first place and to recoup the large investments in machinery.
 
 So when a conveyor belt blocks and the technician isn’t immediately informed, a manufacturing company can very quickly incur a loss. For this reason, monitoring a production line can be invaluable.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

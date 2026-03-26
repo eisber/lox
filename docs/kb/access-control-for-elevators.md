@@ -45,8 +45,6 @@ The versatility of Loxone can also give you additional functionality. We can giv
 
 When it comes to access control to a flat directly from an elevator, there are not a lot of solutions which are flexible and adaptable. Loxone provides a perfect solution here, especially in the area of holiday rentals. The owner can have all the information on their smartphone via the Loxone App – allowing them to offer a more secure service and giving them a greater level of control.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

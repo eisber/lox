@@ -9,11 +9,11 @@ Congratulations on purchasing your new Loxone Demo Case, a fully contained Loxon
 
 ## CONTENTS
 - [Case Contents](#CASE CONTENTS)
-- [Connect with the Loxone App](#CONNECT WITH THE LOXONE APP)
-- [First steps in Loxone Config](#FIRST STEPS IN LOXONE CONFIG)
-- [Enabling online services](#ENABLING ONLINE SERVICES)
-- [VIDEO: Loxone Demo Case: An Overview](#video)
-- [More Information](#MORE INFO)
+[Connect with the Loxone App](#CONNECT WITH THE LOXONE APP)
+[First steps in Loxone Config](#FIRST STEPS IN LOXONE CONFIG)
+[Enabling online services](#ENABLING ONLINE SERVICES)
+[VIDEO: Loxone Demo Case: An Overview](#video)
+[More Information](#MORE INFO)
 
 ## CASE CONTENTS
 
@@ -56,7 +56,7 @@ Username – admin
 #### APP First Look
 
 ![functions 800x428](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/functions.png)
- 1. Miniserver Settings 2. Loxone Functions page 3. Loxone Central page 4. Rooms 5. Categories
+1. Miniserver Settings 2. Loxone Functions page 3. Loxone Central page 4. Rooms 5. Categories
 
 #### Rooms & Categories First Look
 
@@ -64,7 +64,7 @@ Username – admin
 ![Rooms 800x431](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Rooms.png)
 ** By tapping ‘ROOM’ at the bottom of the screen, you will see each individual room available to you on the screen. You will be able to view all available functions and features of that room after selecting it here. **2.  Categories**
 ![Category 800x432](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Category.png)
- By tapping ‘CATEGORY’ at the bottom of the screen, you will see each individual category type. By selecting any of the categories, i.e Lighting; the screen will change to show you all available Lighting functions in the house. [Application Downloads](https://www.loxone.com/enen/support/downloads/)
+By tapping ‘CATEGORY’ at the bottom of the screen, you will see each individual category type. By selecting any of the categories, i.e Lighting; the screen will change to show you all available Lighting functions in the house. [Application Downloads](https://www.loxone.com/enen/support/downloads/)
 
 ## FIRST STEPS IN LOXONE CONFIG
 
@@ -81,18 +81,18 @@ If you are using an Apple Mac computer & the Parallels virtual machine software,
 
 Now open the Loxone Config software and click on ‘Search’ under ‘**Miniserver**’ in the left-hand sidebar. The Miniserver in your Demo Case will be listed in the search results.
 ![MS serach in CFG 800x258](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/MS-serach-in-CFG.png)
- Select the Miniserver by clicking it in the search results and then type in the username and password. The username and password are both “admin”.
+Select the Miniserver by clicking it in the search results and then type in the username and password. The username and password are both “admin”.
 ![Windows 8 1 1 2 1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Windows_8_1_1-2-1.png)
- After connecting, the status bar (the yellow bar that stretches across the screen) in your Config software will show a green highlighted “i” on the far left, state the software is connected and the file to your Config program will be loaded out and available on your screen.
+After connecting, the status bar (the yellow bar that stretches across the screen) in your Config software will show a green highlighted “i” on the far left, state the software is connected and the file to your Config program will be loaded out and available on your screen.
 ![Screenshot 1 800x481](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Screenshot_1.png)
- If you are unable to connect please read through our troubleshooting guide on our [Miniserver Diagnostics](https://www.loxone.com/enen/kb/miniserver-diagnostics/) documentation page or contact support on [[email protected]](/cdn-cgi/l/email-protection). Now you can make changes to the existing configuration. For further information on using Loxone Config have a look at our documentation pages “[Auto Configuration](https://www.loxone.com/enen/kb/auto-configuration/)” and “[How to create logic in Loxone Config](https://www.loxone.com/enen/kb/starting-a-configuration/)” Once you’ve tested your configuration, you can upload it onto your Demo Case Miniserver, by clicking ‘Save in Miniserver’ in the ribbon at the top.
+If you are unable to connect please read through our troubleshooting guide on our [Miniserver Diagnostics](https://www.loxone.com/enen/kb/miniserver-diagnostics/) documentation page or contact support on [[email protected]](/cdn-cgi/l/email-protection). Now you can make changes to the existing configuration. For further information on using Loxone Config have a look at our documentation pages “[Auto Configuration](https://www.loxone.com/enen/kb/auto-configuration/)” and “[How to create logic in Loxone Config](https://www.loxone.com/enen/kb/starting-a-configuration/)” Once you’ve tested your configuration, you can upload it onto your Demo Case Miniserver, by clicking ‘Save in Miniserver’ in the ribbon at the top.
 ![Save in Miniserver Icon](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Save_In_Miniserver_Icon.png)
 
 ## ENABLING ONLINE SERVICES
 
 If you wish to use your Miniserver online you will need to connect it to a network that has an active internet connection.The easiest way to do this is take an ethernet cable plug one end into one of the ethernet ports on the router and the other end replaces the ethernet cable that is already plugged into the top left corner of the Miniserver. Once connected to the internet you must register your Miniserver at www.loxone.com. This will allow you to use the DNS server for remote access and test the Weather Service and Caller Service for 30 Days free and without obligation. Check out the “[My Products](https://www.loxone.com/enen/id/product-registration/)” section of your account on our website for the information on the Weather/Caller Service free trial.
 ![Product online 800x674](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/Product-online.png)
- For more information regarding our online services, see our documentation links: **[Caller Service ](https://www.loxone.com/enen/kb/caller-service/)****[Weather Service](https://www.loxone.com/enen/kb/weather-service/)**
+For more information regarding our online services, see our documentation links: **[Caller Service ](https://www.loxone.com/enen/kb/caller-service/)****[Weather Service](https://www.loxone.com/enen/kb/weather-service/)**
 
 ## VIDEO
 

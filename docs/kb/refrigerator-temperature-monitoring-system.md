@@ -41,8 +41,6 @@ If the temperature deviates for more than 3 minutes, then a phone call will be m
 
 In the hospitality sector, cold rooms, refrigerators and freezers often contain significant amounts of food – costing significant amounts of money. Hence, it’s crucially important that the temperature is constantly monitored. Furthermore, an intelligent refrigerator temperature monitoring system will alert your customers should the temperature deviate from a certain range.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

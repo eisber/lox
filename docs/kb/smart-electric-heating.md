@@ -50,10 +50,7 @@ What you get: Perfect temperature in every room which can be adjusted through th
 
 Especially for electrical heating which is fast reacting, you can reduce energy usage and ultimately heating bills with proper regulation and heating times
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
-
 
 #### More Use Cases in this series
 -  [AC Control Air for Panasonic](https://www.loxone.com/enen/kb/ac-control-air-for-panasonic/)

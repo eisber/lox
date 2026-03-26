@@ -33,8 +33,7 @@ In order to perform an action, hold the smartphone to the NFC Tag.
 
 ### GENERAL INFORMATION FOR USING NFC TAGS
 - The NFC Tags should not be:
-
-mounted in direct sunlight.
+- mounted in direct sunlight.
 - exposed to water in any way.
 - Keep the Tags away from magnets or power sources (e.g. Power Supplies).
 - Blocking of an NFC Tag is possible.

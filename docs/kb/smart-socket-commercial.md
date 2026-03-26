@@ -51,8 +51,4 @@ With our office as an example, we can cut more than 8kWh a day on weekdays and o
 
 ## Video:
 
-
-
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.

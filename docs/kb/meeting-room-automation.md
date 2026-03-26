@@ -34,8 +34,6 @@ As soon as the “Conference Mode” is activated, either through a tap on a [To
 ![Meeting Room Automation - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-79-Automated-Conference-Room.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-79-Automated-Conference-Room.png)
 
-
-
 ### Download the sample file:
 
 ### Automated Conference Room
@@ -49,8 +47,6 @@ As soon as the “Conference Mode” is activated, either through a tap on a [To
 Wouldn’t it be great if you could implement meeting room automation and all the steps necessary for a meeting were done automatically? Time is money, especially in business and meeting room automation is a time saver.
 
 Start projectors, close blinds and curtains, dim lights and much more. All the small steps that add up and cost valuable time.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

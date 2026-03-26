@@ -10,29 +10,22 @@ Using various Web Service commands, you can retrieve information from the [Minis
 
 ## GENERAL
 - Web service commands support both internal and external access.
-- The current Miniserver also supports HTTPS.
+The current Miniserver also supports HTTPS.
 
 The structure of a Web Service command is as follows:
-
 http://user:password@IPAddressMiniserver/command/control/value
 
 					When using HTTP, the access credentials in the URL are transmitted in plain text!
 For security reasons, when using HTTP (Miniserver Gen.1), it is recommended to omit the access credentials when entering a command in the address bar. Instead, the browser will prompt you for login details in a separate window.
-
 [
 ![commandlogin](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/commandlogin.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/commandlogin.png)
-
 Some commands require a [user with full access](https://www.loxone.com/enen/kb/user-and-rights-management/).
-
 Once the command is executed, the result is displayed in the browser.
-
 For example, the following command retrieves the current software version of the Miniserver:
-
 [
 ![browserversioncommand](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/browserversioncommand.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/browserversioncommand.png)
-
 If the command is successful, the response will include the status code **“200”**, indicating that the request was accepted and processed.
 
 ### Structure in detail
@@ -48,15 +41,13 @@ The following values are allowed for digital values:
 | --- | --- | --- | --- |
 | PlusEin PlusAus | UpOn UpOff | AufEin AufAus | OpenOn OpenOff |
 | MinusEin MinusAus | DownOn DownOff | AbEin AbAus | CloseOff CloseOff |
-
-**The following values are allowed for analog inputs:**
+- **The following values are allowed for analog inputs:**
 
 (0-10V) inputs operate within a range of **0** to **10.00**.
 - There is no formal limit (e.g., **temperatures** of **21.5** or **-5.2** are valid).
 - A dot (`.`) is used as the decimal separator.
 - **The following values are allowed for text inputs:**
-
-The **Miniserver** operates using **UTF-8**, so any character supported by UTF-8 should work correctly.
+- The **Miniserver** operates using **UTF-8**, so any character supported by UTF-8 should work correctly.
 
 #### Example – Pulse Input
 
@@ -88,16 +79,16 @@ You will also see in Loxone Config the Virtual Input light up for a split second
 | Command | http://miniserver/dev/sps/io/LivingroomLight/state |
 | --- | --- |
 | Function | Returns the status at the input |
-| Answer | <LL control=”dev/sps/io/LivingroomLight” value=”0″ Code=”200″/> |
+| Answer |  |
 | Command | http://miniserver/dev/sps/io/LivingroomLight/astate |
 | Function | Returns the value at the requested outputs (either a unique value for all – or a ? for different values. |
-| Answer | <LL control=”dev/sps/io/LivingroomLight” value=”1″ Code=”200″/> |
+| Answer |  |
 | Command | http://miniserver/dev/sps/io/LivingroomLight/all |
 | Function | Returns the number of requested outputs and a list of the values at those outputs |
-| Answer | <LL control=”dev/sps/io/LivingroomLight/all” value=”8″ Code=”200″ n1=”Aktor (Relais) Q1″ u1=”68347a0e-3bfc-11df-85f6ea34eeb9b08a” v1=”0″ n2=”Aktor (Relais) Q2″ u2=”68347a0e-3bfc-11df-85f6ea34eeb9b08a” v2=”0″ n3=”Aktor (Relais) Q3″ u3=”68347a0e-3bfc-11df-85f6ea34eeb9b08a” v3=”0″ n4=”Aktor (Relais) Q4″ u4=”68347a0e-3bfc-11df-85f6ea34eeb9b08a” v4=”0″ n5=”Aktor (Relais) Q5″ u5=”68347a0e-3bfc-11df-85f6ea34eeb9b08a” v5=”0″ n6=”Aktor (Relais) Q6″ u6=”68347a0e-3bfc-11df-85f6ea34eeb9b08a” v6=”1″ n7=”Aktor (Relais) Q7″ u7=”68347a0e-3bfc-11df-85f6ea34eeb9b08a” v7=”0″ n8=”Aktor (Relais) Q8″ u8=”68347a0e-3bfc-11df-85f6ea34eeb9b08a” v8=”0″/> |
+| Answer |  |
 | Command | http://miniserver/status |
 | Function | Lists all the devices that are connected to the Miniserver, along with status |
-| Answer | <Status Modified=” “> <Miniserver Name=”LoxMiniserver” Internalname=” ” IP=” ” Mask=” ” Gateway=” ” DHCP=” ” DNS1=” ” DNS2=” ” MAC=” ” Device=” ” Version=” “><Extension Name=” ” Internalname=” ” Serial=” ” Version=” ” Online=” “/></Miniserver></Status> |
+| Answer |   |
 
 ![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 Status requests via web service are only possible with inputs and outputs and are not possible with function blocks.
@@ -107,7 +98,7 @@ Status requests via web service are only possible with inputs and outputs and ar
 | Command | http://miniserver/dev/sps/io/PushbuttonLivingRoomLight/On |
 | --- | --- |
 | Function | Control the analogue or digital input |
-| Answer | <LL control=”dev/sps/io/PushbuttonLivingRoomLight” value=”1″ Code=”200″/> |
+| Answer |  |
 
 #### Example – Push Button
 
@@ -154,17 +145,17 @@ These commands allow you to monitor and control the PLC system.
 
 | Command | Function |
 | --- | --- |
-| http://<miniserver-ip>/dev/sps/state | Retrieve PLC status (0-8 states) 0 – No status 1 – PLC booting 2 – PLC program is loaded 3 – PLC has started 4 – Loxone Link has started 5 – PLC running 6 – PLC change 7 – PLC error 8 – Update is occuring |
-| http://<miniserver-ip>/dev/sps/status | Retrieve current PLC frequency |
-| http://<miniserver-ip>/dev/sps/restart | Restart the PLC |
-| http://<miniserver-ip>/dev/sps/stop | Stop the PLC |
-| http://<miniserver-ip>/dev/sps/run | Resume PLC execution |
-| http://<miniserver-ip>/dev/sps/log/ip | Enable logging to a specific IP |
-| http://<miniserver-ip>/dev/sps/log | Stop logging |
-| http://<miniserver-ip>/dev/sps/enumdev | List all PLC devices (Miniserver & extensions) |
-| http://<miniserver-ip>/dev/sps/enumin | List all PLC inputs |
-| http://<miniserver-ip>/dev/sps/enumout | List all PLC outputs |
-| http://<miniserver-ip>/dev/sps/identify | Identify the Miniserver or extensions (Requires serial number) |
+| http:///dev/sps/state | Retrieve PLC status (0-8 states) 0 – No status 1 – PLC booting 2 – PLC program is loaded 3 – PLC has started 4 – Loxone Link has started 5 – PLC running 6 – PLC change 7 – PLC error 8 – Update is occuring |
+| http:///dev/sps/status | Retrieve current PLC frequency |
+| http:///dev/sps/restart | Restart the PLC |
+| http:///dev/sps/stop | Stop the PLC |
+| http:///dev/sps/run | Resume PLC execution |
+| http:///dev/sps/log/ip | Enable logging to a specific IP |
+| http:///dev/sps/log | Stop logging |
+| http:///dev/sps/enumdev | List all PLC devices (Miniserver & extensions) |
+| http:///dev/sps/enumin | List all PLC inputs |
+| http:///dev/sps/enumout | List all PLC outputs |
+| http:///dev/sps/identify | Identify the Miniserver or extensions (Requires serial number) |
 
 ---
 
@@ -174,21 +165,21 @@ These commands allow you to retrieve or modify Miniserver settings.
 
 | Command | Function |
 | --- | --- |
-| http://<miniserver-ip>/dev/cfg/mac | Retrieve MAC address |
-| http://<miniserver-ip>/dev/cfg/version | Retrieve firmware version |
-| http://<miniserver-ip>/dev/cfg/versiondate | Retrieve firmware production date |
-| http://<miniserver-ip>/dev/cfg/dhcp | Retrieve or set DHCP configuration |
-| http://<miniserver-ip>/dev/cfg/ip | Retrieve or set IP address |
-| http://<miniserver-ip>/dev/cfg/mask | Retrieve or set IP mask |
-| http://<miniserver-ip>/dev/cfg/gateway | Retrieve or set Gateway address |
-| http://<miniserver-ip>/dev/cfg/device | Retrieve or set Miniserver device name |
-| http://<miniserver-ip>/dev/cfg/dns1 | Retrieve or set DNS address 1 |
-| http://<miniserver-ip>/dev/cfg/dns2 | Retrieve or set DNS address 2 |
-| http://<miniserver-ip>/dev/cfg/ntp | Retrieve or set NTP address |
-| http://<miniserver-ip>/dev/cfg/timezoneoffset | Retrieve or set time zone offset |
-| http://<miniserver-ip>/dev/cfg/http | Retrieve or set HTTP port |
-| http://<miniserver-ip>/dev/cfg/ftp | Retrieve or set FTP port |
-| http://<miniserver-ip>/dev/cfg/ftllocalonly | Retrieve or set local access to “FTP, Telnet and local software” |
+| http:///dev/cfg/mac | Retrieve MAC address |
+| http:///dev/cfg/version | Retrieve firmware version |
+| http:///dev/cfg/versiondate | Retrieve firmware production date |
+| http:///dev/cfg/dhcp | Retrieve or set DHCP configuration |
+| http:///dev/cfg/ip | Retrieve or set IP address |
+| http:///dev/cfg/mask | Retrieve or set IP mask |
+| http:///dev/cfg/gateway | Retrieve or set Gateway address |
+| http:///dev/cfg/device | Retrieve or set Miniserver device name |
+| http:///dev/cfg/dns1 | Retrieve or set DNS address 1 |
+| http:///dev/cfg/dns2 | Retrieve or set DNS address 2 |
+| http:///dev/cfg/ntp | Retrieve or set NTP address |
+| http:///dev/cfg/timezoneoffset | Retrieve or set time zone offset |
+| http:///dev/cfg/http | Retrieve or set HTTP port |
+| http:///dev/cfg/ftp | Retrieve or set FTP port |
+| http:///dev/cfg/ftllocalonly | Retrieve or set local access to “FTP, Telnet and local software” |
 
 ---
 
@@ -198,10 +189,10 @@ These commands provide information about system performance and statistics.
 
 | Command | Function |
 | --- | --- |
-| http://<miniserver-ip>/dev/sys/numtasks | Retrieve number of tasks |
-| http://<miniserver-ip>/dev/sys/cpu | Retrieve CPU load |
-| http://<miniserver-ip>/dev/sys/heap | Retrieve memory usage |
-| http://<miniserver-ip>/dev/sys/ints | Retrieve number of system interrupts |
+| http:///dev/sys/numtasks | Retrieve number of tasks |
+| http:///dev/sys/cpu | Retrieve CPU load |
+| http:///dev/sys/heap | Retrieve memory usage |
+| http:///dev/sys/ints | Retrieve number of system interrupts |
 
 ---
 
@@ -211,10 +202,10 @@ Manage system date and time settings.
 
 | Command | Function |
 | --- | --- |
-| http://<miniserver-ip>/dev/sys/date | Retrieve local date |
-| http://<miniserver-ip>/dev/sys/time | Retrieve local time |
-| http://<miniserver-ip>/dev/sys/setdatetime | Set system date & time (Format: YYYY-MM-DD HH:MM:SS or DD/MM/YYYY HH:MM:SS) |
-| http://<miniserver-ip>/dev/sys/ntp | Force NTP request |
+| http:///dev/sys/date | Retrieve local date |
+| http:///dev/sys/time | Retrieve local time |
+| http:///dev/sys/setdatetime | Set system date & time (Format: YYYY-MM-DD HH:MM:SS or DD/MM/YYYY HH:MM:SS) |
+| http:///dev/sys/ntp | Force NTP request |
 
 ---
 
@@ -224,12 +215,12 @@ Retrieve status and properties of system tasks.
 
 | Command | Function |
 | --- | --- |
-| http://<miniserver-ip>/dev/task0/name | Retrieve Task 0 name |
-| http://<miniserver-ip>/dev/task0/priority | Retrieve Task 0 priority |
-| http://<miniserver-ip>/dev/task0/stack | Retrieve Task 0 stack usage |
-| http://<miniserver-ip>/dev/task0/contextswitches | Retrieve amount of Task 0 context switches |
-| http://<miniserver-ip>/dev/task0/waittimeout | Retrieve Task 0 wait time (ms) |
-| http://<miniserver-ip>/dev/task0/state | Retrieve Task 0 status |
+| http:///dev/task0/name | Retrieve Task 0 name |
+| http:///dev/task0/priority | Retrieve Task 0 priority |
+| http:///dev/task0/stack | Retrieve Task 0 stack usage |
+| http:///dev/task0/contextswitches | Retrieve amount of Task 0 context switches |
+| http:///dev/task0/waittimeout | Retrieve Task 0 wait time (ms) |
+| http:///dev/task0/state | Retrieve Task 0 status |
 
 ---
 
@@ -239,15 +230,15 @@ These commands allow rebooting the Miniserver and managing system files.
 
 | Command | Function |
 | --- | --- |
-| http://<miniserver-ip>/dev/sys/reboot | Reboot Miniserver |
-| http://<miniserver-ip>/dev/sys/wsextension/<serial>/Reboot | Reboot a specific extension |
-| http://<miniserver-ip>/dev/sys/check | Check active connections |
-| http://<miniserver-ip>/dev/sys/logoff | Log out all connections |
-| http://<miniserver-ip>/dev/sys/sdtest | Test SD card |
-| http://<miniserver-ip>/dev/fslist/ | List root directory of SD card |
-| http://<miniserver-ip>/dev/fslist/path/ | List specific directory path |
-| http://<miniserver-ip>/dev/fsget/filepath/ | Retrieve a file from SD card |
-| http://<miniserver-ip>/dev/fsdel/filepath/ | Delete a file from SD card |
+| http:///dev/sys/reboot | Reboot Miniserver |
+| http:///dev/sys/wsextension//Reboot | Reboot a specific extension |
+| http:///dev/sys/check | Check active connections |
+| http:///dev/sys/logoff | Log out all connections |
+| http:///dev/sys/sdtest | Test SD card |
+| http:///dev/fslist/ | List root directory of SD card |
+| http:///dev/fslist/path/ | List specific directory path |
+| http:///dev/fsget/filepath/ | Retrieve a file from SD card |
+| http:///dev/fsdel/filepath/ | Delete a file from SD card |
 
 ---
 
@@ -257,10 +248,10 @@ Retrieve logs and system data.
 
 | Command | Function |
 | --- | --- |
-| http://<miniserver-ip>/data/status | Output system state in XML |
-| http://<miniserver-ip>/stats | Show system statistics |
-| http://<miniserver-ip>/dev/fsget/log/def.log | Retrieve log file |
-| http://<miniserver-ip>/dev/sys/updatetolatestrelease | Update Miniserver to latest firmware |
+| http:///data/status | Output system state in XML |
+| http:///stats | Show system statistics |
+| http:///dev/fsget/log/def.log | Retrieve log file |
+| http:///dev/sys/updatetolatestrelease | Update Miniserver to latest firmware |
 
 ---
 
@@ -270,7 +261,7 @@ Send web service requests to external devices.
 
 | Command | Function |
 | --- | --- |
-| http://<miniserver-ip>/jdev/sys/sendwebservice?json={"address":"192.168.1.70", "webservice":"/monitor/logs/lwsd"} | Send web service request to another device in network from the Miniserver |
+| http:///jdev/sys/sendwebservice?json={"address":"192.168.1.70", "webservice":"/monitor/logs/lwsd"} | Send web service request to another device in network from the Miniserver |
 
 ###
 
@@ -282,9 +273,9 @@ The following commands apply to **Extensions**.
 
 To execute them, a user with full access rights is required.
 
-| http://<miniserver-ip>/dev/sys/wsextension/<serial>/ForceUpdate/0C000001/DeviceIndex | Forces a firmware update for a specific device. |
+| http:///dev/sys/wsextension//ForceUpdate/0C000001/DeviceIndex | Forces a firmware update for a specific device. |
 | --- | --- |
-| http://<miniserver-ip>/dev/sys/wsextension/<serial>/Reboot | Restarts the specified device. |
+| http:///dev/sys/wsextension//Reboot | Restarts the specified device. |
 
 ### **Tree and Air Devices**
 
@@ -292,9 +283,9 @@ The following commands apply to **specific Air or Tree devices**.
 
 To execute them, a user with full access rights is required.
 
-| http://<miniserver-ip>/dev/sys/wsdevice/<serial>/ForceUpdate/0C000001/DeviceIndex | Force firmware update for a specific device |
+| http:///dev/sys/wsdevice//ForceUpdate/0C000001/DeviceIndex | Force firmware update for a specific device |
 | --- | --- |
-| http://<miniserver-ip>/dev/sys/wsdevice/<serial>/Reboot | Restart the specified device |
+| http:///dev/sys/wsdevice//Reboot | Restart the specified device |
 
 					The device serial number (without colons) must be used in place of <serial>.
 Alternatively, the device name from Loxone Config can be used.

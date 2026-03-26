@@ -8,6 +8,6 @@ Take a look at the basics of Loxone Config and get more familiar with things suc
 
 | View Webinar Slides |
 | --- |
-| Next Episode |   |
+| Next Episode |  |
 
 [<< Back to the Foundation Series Video Tutorials](https://www.loxone.com/enen/kb-cat/foundation-series/)

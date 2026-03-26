@@ -28,8 +28,6 @@ To reduce this risk, we can configure the backlight to only come on when a visit
 ![Use Case 86 Secure your NFC Code Touch](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-86-Secure-your-NFC-Code-Touch.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-86-Secure-your-NFC-Code-Touch.png)
 
-
-
 ### Download the sample file:
 
 ### Secure your NFC Code Touch
@@ -43,8 +41,6 @@ To reduce this risk, we can configure the backlight to only come on when a visit
 Vandalism affects all kinds of buildings – commercial and residential alike. Implementing presence-based backlighting on an NFC Code Touch can prevent it from being seen. Passer-by won’t even see it and, in the unfortunate even on an attack, this little tip might stop the NFC Code Touch being noticed.
 
 Plus, if a building already has an external Presence Sensor (to control any exterior lighting, for example) then no additional hardware is required.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

@@ -61,8 +61,6 @@ Especially in a Passivhaus or in energy-saving houses it is often unclear how t
 
 The comfort level in the house can be increased even further if a decentralised ventilation system is installed instead of a central one. In our application example, the ventilation system is activated when the humidity in the bathroom is too high. This also affects all the other rooms. However, with a decentralized ventilation system, your customers can control the ventilation room by room, so it only comes on in the rooms it’s needed in.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

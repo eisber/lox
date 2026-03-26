@@ -46,10 +46,6 @@ Sunshine Detection
 ![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 For information on how to use the Sunshine Detection, please see [here](https://www.loxone.com/enen/kb/sunshine-brightness-thresholds/).
 
-
-
-
-
 1 = Clear
 
 2 = Bright

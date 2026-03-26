@@ -29,13 +29,11 @@ In a Gateway-Client System, programming and visualization are combined into a si
 Examples:
 
 A Gateway-Client System used in a single-family home.
-
-Gateway Miniserver on the first floor, Client Miniserver on the upper floor.
+- Gateway Miniserver on the first floor, Client Miniserver on the upper floor.
 - Gateway Miniserver in the main building, Client Miniserver in the annex.
 
 A Gateway-Client System used in larger commercial buildings
-
-Gateway Miniserver in the technical room / main distribution,
+- Gateway Miniserver in the technical room / main distribution,
 - A Client Miniserver in each part of the building, such as office, production, shipping, warehouse, etc.
 
 For projects that involve many similar units—such as hotel rooms, apartments, or even entire groups of houses—each unit can be equipped with its own Miniserver, including a dedicated user interface. In this case, the [Multiplicator](https://www.loxone.com/enus/kb/multiplicator-project/) option can be used to simplify project setup and management.
@@ -81,7 +79,6 @@ In the Miniserver Settings of each project, the **local address** must be set to
 ](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-setLocaliP.png)
 
 					** ****Hostnames are not supported in this place!**
-
 
 Afterwards, save the programs to the respective Miniservers and also save the projects on the computer.
 
@@ -164,12 +161,7 @@ Each miniserver is also assigned program pages in the same color:
 ![gwcl projectsMergedc](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-projectsMergedc.png)
 ](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-projectsMergedc.png)
 
-
-
-| ![gwcl peripheryColored](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-peripheryColored.png) | In the Periphery Tree, above the Miniserver, all objects that are shared by all Miniservers are now displayed.When the Gateway Client project was created, these shared objects were automatically combined from all connected Miniservers. Below are the miniserver objects, first the gateway, then the client miniserver. Each miniserver is assigned its peripheral objects such as inputs, outputs, interfaces and extensions. |
-| --- | --- |
-
-
+> **ℹ️ Note:** In the Periphery Tree, above the Miniserver, all objects that are shared by all Miniservers are now displayed.When the Gateway Client project was created, these shared objects were automatically combined from all connected Miniservers. Below are the miniserver objects, first the gateway, then the client miniserver. Each miniserver is assigned its peripheral objects such as inputs, outputs, interfaces and extensions.
 
 A simple example will demonstrate programming the lighting in two rooms.Miniserver A controls the kitchen on the first floor, and Miniserver B controls the bedroom on the second floor.
 
@@ -180,8 +172,6 @@ The light control for the kitchen is added on the program page of Miniserver A:
 [
 ![gwcl pageA](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-pageA.png)
 ](https://www.loxone.com/dede/wp-content/uploads/sites/2/2021/10/gwcl-pageA.png)
-
-
 
 For the bedroom, the program page of Miniserver B is used:
 
@@ -202,7 +192,5 @@ The following number of Miniservers is supported for a Gateway-Client system:
 | --- | --- | --- |
 | Miniserver/Miniserver Compact/Miniserver Go | Up to 9 Miniserver or Miniserver Gen. 1 | 10 |
 | Miniserver Gen.1/Miniserver Go Gen.1 | Up to 4 Miniserver Gen.1 | 5 |
-
-
 
 [Back to the Top](#toc)

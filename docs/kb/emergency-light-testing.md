@@ -37,8 +37,6 @@ Since the emergency lighting tests are carried out and recorded automatically, 
 
 ### Configuration:
 
-
-
 [
 ![Use Case 1 Emergency Lighting Test](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-1-Emergency-Lighting-Test.jpg)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/05/Use-Case-1-Emergency-Lighting-Test.jpg)
@@ -53,10 +51,7 @@ Since the emergency lighting tests are carried out and recorded automatically, 
 
 ### Related Video Tutorial
 
-| ![IC play button CTA](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/06/IC_play-button-CTA.png) | Config Challenge: Automated Emergency Light Testing The facilities manager of a large office building needs a way of automatically testing the emergency lights in the building View Video >> |
-| --- | --- |
-
-
+> **ℹ️ Note:** Config Challenge: Automated Emergency Light Testing The facilities manager of a large office building needs a way of automatically testing the emergency lights in the building View Video >>
 
 ## Why you and your customer should consider automating emergency light testing?
 
@@ -73,8 +68,6 @@ In the case of abnormalities, the responsible person is informed about any probl
 In order not to impair employees and visitors, the test is carried out fully automatically outside of opening hours.
 
 The reliable, automated maintenance of emergency lighting makes it unnecessary to outsource the test to third parties.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

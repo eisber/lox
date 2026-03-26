@@ -45,8 +45,6 @@ Tip: You have to be careful about where you install the Motion Sensors. This is 
 
 That is a very easy and useful feature that you can offer to a customer if you think that the project could benefit from using the existing smart lighting as an occupancy indicator. The programming can be done in a few minutes with the hardware that a basic project already likely has installed. That can be useful especially in offices for meetings rooms or single person work cubicles, for example.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

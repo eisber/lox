@@ -16,8 +16,6 @@ A schematic diagram will help create a simple visual representation of a complex
 
 **The “System Schematic” Function Block is only available in[ Version 11 of Loxone Config](https://www.loxone.com/enen/support/downloads/).**
 
-
-
 ### Configuration:
 
 [
@@ -26,16 +24,11 @@ A schematic diagram will help create a simple visual representation of a complex
 
 ### Related Video Tutorial
 
-| ![IC play button CTA](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/06/IC_play-button-CTA.png) | Focus Series: System Schematic Take a look at the new System Schematic Function Block within Loxone Config which allows the graphical visualisation of systems, floor plans and more in the Loxone App. View Video >> |
-| --- | --- |
-
-
+> **ℹ️ Note:** Focus Series: System Schematic Take a look at the new System Schematic Function Block within Loxone Config which allows the graphical visualisation of systems, floor plans and more in the Loxone App. View Video >>
 
 ## Why you and your customer should consider implementing schematic diagrams?
 
 By visually displaying multiple Function Blocks in one location, you can create a holistic overview of complex systems and logic. A schematics diagram would be perfect for helping a facilities manager, for example.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

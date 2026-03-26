@@ -39,8 +39,6 @@ Additionally, if there’s a risk of frost, the water in the pipes is blown out 
 ![Smart Garden Watering System - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-15-Garden-Watering-EN-1_V2.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/06/Use-Case-15-Garden-Watering-EN-1_V2.png)
 
-
-
 ### Download the sample file:
 
 ### Smart Garden Watering
@@ -52,8 +50,6 @@ Additionally, if there’s a risk of frost, the water in the pipes is blown out 
 ## Why you and your customer should consider having a smart garden watering system?
 
 We recommend implementing a smart garden watering system to ensure that your garden or the garden of your customers is always sufficiently and regularly watered. Intelligent watering with Loxone can also be used perfectly in large greenhouses and fields.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

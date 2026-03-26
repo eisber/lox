@@ -38,8 +38,6 @@ The Touch and Grill is also a control point however we also have two temperature
 ![Smart kitchen cabinet lighting - Loxone config screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Use-Case-32-Smart-Kitchen-Cabinet-Lighting-1.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Use-Case-32-Smart-Kitchen-Cabinet-Lighting-1.png)
 
-
-
 ### Download the sample file:
 
 ### Smart Kitchen Cabinet Lighting
@@ -53,8 +51,6 @@ The Touch and Grill is also a control point however we also have two temperature
 Traditional kitchen cabinet lighting can be tedious to use, with the switches often tucked away. How often do we go out of the room, flick the switch and see that the light over the sink is still on so we have to go back and turn it off? Imagine if you could simply double-tap one switch and everything turns off without you having to worry about it.
 
 However, with Loxone we believe in automation and therefore our solution inherently minimised the number of switched needed. With a Loxone system, the building will work around you most of the time limiting the amount of manual interaction needed.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

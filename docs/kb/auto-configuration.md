@@ -26,10 +26,6 @@ Settings for digital/analog outputs: Room & Category are mandatory to fill in so
 ![AutoConfig RoomCategory 1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/AutoConfig_RoomCategory-1.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/AutoConfig_RoomCategory-1.png)
 
-
-
-
-
 ## USING AUTO CONFIG
 
 Once the basic setup is complete, you’ve completed 80% of the work for Auto Config. You can now navigate to the **My Projects** tab at the top and click the **Auto Configuration** button.

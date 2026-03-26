@@ -48,8 +48,6 @@ You can apply ratings not just to inputs, outputs and functional blocks, but als
 ![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 On the home screen of the user interface, the 6 highest rated entries in room and category, as well as the 8 highest rated entries out of the inputs, outputs and functional blocks will be displayed.
 
-
-
 ![EN KB Config Configuration Rating 1024x599](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_Configuration_Rating.png)
 
 ## SET PASSWORDS ON UI
@@ -62,8 +60,6 @@ Then in a block’s Properties check the tickbox next to “User interface passw
 
 ![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 So you can, for example protect the control of the garage door or electric front door lock by adding password protection to the blocks to stop accidental opening or operation.
-
-
 
 ![EN KB Config Configuration UI Password 1024x599](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Config_Configuration_UI_Password.png)
 

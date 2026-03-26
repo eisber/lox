@@ -79,8 +79,6 @@ Farmers are dependent on the yield of their harvests. If the crop is damaged, th
 
 The more information the farmer gets about temperature and weather, the better – automated notifications make this easier. Automatic antifreeze irrigation not only relieves them of physical tasks but also helps them save time and get more sleep – knowing that the plants are safe.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

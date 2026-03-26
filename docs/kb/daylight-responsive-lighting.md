@@ -35,8 +35,6 @@ In order to avoid excessively unsteady lighting conditions (even flickering), th
 ![Daylight responsive lighting - Loxone config screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Config-Use-Case-36-Constant-Light-Control.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Config-Use-Case-36-Constant-Light-Control.png)
 
-
-
 ### Download the sample file:
 
 ### Constant Light Control
@@ -52,8 +50,6 @@ Light influences many facets of our lives, especially in the workplace therefore
 Constant lighting control not only creates ideal working conditions – because only the amount of artificial light actually required is added, constant lighting control also helps save energy.
 
 So, maintaining constant light levels in office spaces by commissioning daylight responsive lighting has a lot of advantages for employees and their productivity.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

@@ -40,8 +40,6 @@ In addition to the automatic animal feeder, automated monitoring can also be se
 
 With very little hardware you can quickly install an automatic animal feeder for your customers. The feeding system coupled with the level detection will save any farmer a significant amount of time and effort – meaning that they can focus on other areas of their business.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

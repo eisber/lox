@@ -10,8 +10,8 @@ This page is no longer updated. The information on this page was created for the
 
 ## Content:
 - [Technical specification](#tek)
-- [Wiring the Loxone Speaker](#Wyre)
-- [Basic diagnosis](#diag)
+[Wiring the Loxone Speaker](#Wyre)
+[Basic diagnosis](#diag)
 
 ## Technical Specification
 
@@ -34,7 +34,6 @@ This page is no longer updated. The information on this page was created for the
 
 ![Icon To Represent Downloading Files For Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Download.png)
 [Datasheet for the Loxone Speaker](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/10/EN_KB_Diagram_Loxone_Speaker_Datasheet.pdf)
-
 [Datasheet for the Loxone Wall Speaker](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/200153-Loxone-Wall-Speaker.pdf?x16511)
 
 ##
@@ -58,19 +57,13 @@ If you are encountering hum from one or more speakers, then please follow the ba
 - If you have installed the amplifier and the music server in a rack, make sure that the housings of the devices are not grounded. It is best to place the music server on the amplifier so that the case does not touch.
 - The Music server and amplifier are on the same circuit.
 
-
-
 #### Hum is audible in all zones
 - Is there a Sat or DVBT cable near the amp / music server? Keep them away as far as possible, as otherwise disturbing influences can occur.
 - Is the noise also to be heard if you connect headphones directly to the output of the Music Server? If yes, please contact support.
-
-
 
 #### Hum is only audible in one or more zones
 - Is the humming also present if, for example, a cell phone (ungrounded device) on the Line In of the amplifier?
 
 If so, please check the cabling of the speakers. A 230V cable in the immediate vicinity of an inferior speaker cable can also induce interference voltages.
-
-
 
 Once you have checked all the tips that we have described in your system, there is still the possibility to place a mass separation filter between amplifier and music server, which can filter out the interference voltages.

@@ -56,8 +56,6 @@ By creating artificial circadian rhythm light, we can benefit from these effects
 
 For example, light with a high blue concentration in the morning ensures that the production of melatonin is effectively suppressed allowing cortisol to wake us up. Evening light with more of a red/orange tint, on the other hand, promotes the production of melatonin. It makes us tired and decelerates the bodily functions in order to promote a good night’s sleep.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

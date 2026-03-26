@@ -33,8 +33,6 @@ Hardware:
 ![Use lighting to indicate the energy source - Loxone config screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-42-Intelligent-Energy-Use-1.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-42-Intelligent-Energy-Use-1.png)
 
-
-
 ### Download the sample file:
 
 ### Intelligent Energy Use
@@ -50,8 +48,6 @@ Knowing whether the energy you are currently using was produced by yourself or p
 You can see by the colour of LED Strip if the currently required energy is the self-produced (green light) or the purchased energy (orange light). With this information, you can decide when you want to run devices with high consumption.
 
 Another advantage is the possibility to record statistics of electricity consumption and electricity production. The data that you can gather will help you again to increase your energy-saving potential.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

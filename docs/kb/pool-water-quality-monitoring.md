@@ -49,8 +49,6 @@ Via 2 temperature sensors (1x in the pool and 1x in the filter pump) the tempera
 
 Automating a pool not only saves valuable time but also ensures excellent water quality – resulting in a safer pool which they’ll be more time to enjoy.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

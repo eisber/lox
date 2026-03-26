@@ -13,32 +13,23 @@ The new protocol I-tec 2.0 is not supported!
 
 Learn more about the supported I-tec I-tec devices with Loxone, currently the following I-tec devices can be used on Internorm Extension:
 - I-tec Ventilation
-- I-tec Shading
-- I-tec Hand transmitter
-- I-tec Window Contact
+I-tec Shading
+I-tec Hand transmitter
+I-tec Window Contact
 
 As soon as a device is integrated into the Internorm Extension, all previous assignments of the device are deleted.
 
 ## I-TEC VENTILATION
 
 In order to be able to control your I-tec ventilation with the Miniserver, the device must be learnt into the Internorm Extension.
-
 Details on how to learn in the I-tec ventilation can be found [here.](https://www.loxone.com/enen/kb/internorm/)
-
 If the fan has already been taught in, it must first be unlocked.
-
 To unlock the fan, proceed as follows:
-
 Standby mode:
-
 Press the + button and the Auto button for 10 seconds -> All the LEDs flash ->
-
 Button – Press within 15 seconds -> Fan is unlocked.
-
 **Instruction manual for i-tec Ventilation**
-
 The device will now be listed in the Periphery Tree of Loxone Config.
-
 The following objects are available in the programming:
 - Temperature extract air = temperature of the air sucked into the room
 - Temperature Fresh air = temperature of the outside air sucked in
@@ -76,8 +67,6 @@ If the fan does not react to control but the sensor values are showing, please c
 | 114 | Error: Temp Sensor over/under limits | Temperature sensor has reported a value outside its limits. Contact your Internorm Partner. |
 | 115 | Error: WRM Communication | Ventilation unit has lost connection to wireless module. Check that the control panel is correctly mounted on the fan. If there are no visible problems, contact your Internorm partner. |
 
-
-
 ## I-TEC SHADING
 
 In order to be able to control your I-tec shading with the Miniserver, the device must be learnt into the Internorm Extension.
@@ -100,8 +89,6 @@ NB: The I-Tec shading can be learnt in even when it has a very low battery level
 
 Details of the block can be found [here](https://www.loxone.com/enen/kb/automatic-blinds-integrated/).
 
-
-
 ## I-TEC REMOTE
 
 In order to be able to control your I-tec remote with the Miniserver, the device must be learnt into the Internorm Extension.
@@ -113,8 +100,6 @@ After you have learned the hand-held transmitter, the touch points in the Loxone
 The channel can be changed via the third button.
 
 ![EN_KB_Config_i-tec_Remote](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/03/EN_KB_Config_i-tec_Remote.png)
-
-
 
 ## I-TEC WINDOW CONTACT
 
@@ -142,8 +127,6 @@ The analogue input “position” works in the same way as the analogue input of
 
 3: Open: Window not locked. Tilting windows are are also detected as open.
 
-
-
 ### Digital Input “Closed”
 
 Indicates that the window is locked. When ON, the window is locked
@@ -151,8 +134,6 @@ Indicates that the window is locked. When ON, the window is locked
 ### Digital Input “Tilted”
 
 Indicates whether the window is tilted. If ON, the window is tilted.
-
-
 
 ## Diagnostics Inputs
 

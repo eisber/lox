@@ -6,8 +6,6 @@ Source: https://www.loxone.com/enen/kb/heating-with-loxone-2/
 
 Take a look at the basics of heating control with Loxone – learn more about the Function Blocks used and the important parameters.
 
-
-
 | View Webinar Slides | Download Config File |
 | --- | --- |
 

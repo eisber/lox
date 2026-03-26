@@ -32,8 +32,6 @@ In case of a blown fuse, the Power Supply & Backup’s design prevents damage to
 
 With the 10A outputs, the fuses, the energy monitors and the backup battery fitted into one device, this single unit efficiently manages power supply monitors 7 groups of peripheral devices, offering a space-saving and energy-efficient solution compared to traditional systems with multiple extensions and meters.
 
-
-
 ### Hardware:
 - Miniserver (can be [Miniserver](https://shop.loxone.com/enuk/miniserver.html), [Miniserver Compact](https://shop.loxone.com/enuk/miniserver-compact.html) or [Miniserver Go](https://shop.loxone.com/enuk/miniserver-go.html))
 - [Power Supply & Backup](https://shop.loxone.com/enuk/power-supply-backup.html)
@@ -54,7 +52,5 @@ With the 10A outputs, the fuses, the energy monitors and the backup battery fitt
 			[Download Config](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/Using-the-Power-Supply-Backup-to-monitor-usage-and-as-a-UPS.loxone)
 
 ## Video:
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.

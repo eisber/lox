@@ -51,8 +51,6 @@ Hardware:
 
 Implementing an electronic in out board, is not about actively monitoring employees. Of course, it’s good to know who is and isn’t in. However, it really comes in handy in the event of a fire alarm – giving quick information to the relevant parties to allow them to see if everyone has been successfully evacuated from the building.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

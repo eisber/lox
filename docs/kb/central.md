@@ -77,14 +77,12 @@ The following function blocks are controllable with the Central block:
 | lc | Reserved for future use. | N/A | N/A | – |
 | Dis | Disables all inputs | When on disables all inputs for the block. | 0/1 | – |
 
-
-
 ### OUTPUTS
 
 | Name | Function | Explanation | Values | Unit |
 | --- | --- | --- | --- | --- |
 | QLoff | Triggers when all lights are OFF | Outputs a pulse when all the lights are off. | 0/1 | – |
-| QLon | Triggers when all lights are ON | Outputs a pulse when all the lights are on. | 0/1 | – |
+| QLon | Triggers when all lights are ON | Outputs a pulse when all the lights are on. | 0/1 | – |
 | QLa | When visual alarm is triggered gives a pulse | Outputs a pulse when the visual (lights) alarm is triggered on lighting controllers. | 0/1 | – |
 | QJa | Outputs when the binds are in alarm mode. | Outputs a pulse when the blinds are in their alarm configuration. | 0/1 | – |
 | QCu | Outputs when the blinds are up | Outputs a pulse when the blinds are completely up. | 0/1 |  |

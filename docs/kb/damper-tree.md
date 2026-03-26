@@ -17,8 +17,6 @@ Source: https://www.loxone.com/enen/kb/damper-tree/
 - Wire stripping length: 5mm / 13/64”
 - No maintenance required
 
-
-
 ## INSTALLATION
 
 The installation of this device must be carried out by a qualified technician. When installed, the device must follow building regulations for electrical and fire safety. If the device is not installed according to manufacturer’s guidelines, the warranty of the device may be affected. Install the damper between the ventilation ducts and fix them with a foil tape that is certified to in that kind of installation.
@@ -27,7 +25,7 @@ The installation of this device must be carried out by a qualified technician. W
 
 ## SETUP
 
- Connect the power supply and Tree communication to the Damper Tree. Once connected, power up the device and configure it using Loxone Config.
+Connect the power supply and Tree communication to the Damper Tree. Once connected, power up the device and configure it using Loxone Config.
 
 [Click here to learn to how to pair Tree devices.](https://www.loxone.com/enen/kb/tree-cabling-setup/)
 
@@ -48,6 +46,6 @@ The Damper can be connected directly to the HC output of the Intelligent Room Co
 | --- | --- |
 | ORANGE steady blinking (ca. 0.5s on; 0.5s off) | Device is connected properly, but not paired with the Miniserver. |
 | GREEN 3x short flashes | Device is paired, communication OK. |
-| RED flashing (ca. 1Hz) | Online, Damper >75% open |
-| ORANGE flashing (ca. 1Hz) | Online, Damper between 25% – 75% |
-| GREEN flashing (ca. 1Hz) | Online, Damper < 25% open |
+| RED flashing (ca. 1Hz) | Online, Damper >75% open |
+| ORANGE flashing (ca. 1Hz) | Online, Damper between 25% – 75% |
+| GREEN flashing (ca. 1Hz) | Online, Damper < 25% open |

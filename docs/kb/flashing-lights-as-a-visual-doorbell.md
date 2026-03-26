@@ -42,8 +42,6 @@ In order to configure a visual doorbell which is done by flashing the lights, th
 
 With Loxone Config you can tailor an automated building exactly to the needs of your customers. This Use Case shows how the living comfort of your customers can be increased with a few simple steps. Whether that’s for a customer who is hard of hearing or customers who simply do not want their children being woken when they’re sleeping.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

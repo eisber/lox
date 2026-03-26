@@ -47,8 +47,6 @@ With very little hardware you can implement a smart parking system for all of yo
 
 Thanks to the Loxone Miniserver, your customers will always know the status of their car park. They can also instantly be informed about any issues.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

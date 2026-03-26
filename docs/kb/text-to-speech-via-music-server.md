@@ -18,21 +18,13 @@ By then using the TQ output (dedicated text output), you can then forward the te
 
 ![tts 2 300x60](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/02/tts-2.png)
 
-
-
 You can also use memory flags to transfer this same text signal across multiple pages.
-
-
 
 ![tts3 300x157](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/02/tts3.png)
 
 The final edit that needs to be made is in the Music Server block itself. There is a parameter called Vt and this is the %age volume that TTS will play at. By setting this to a number you want (0-100), the TTS will play at that volume and so it does not adopt the volume of the zone, it has its own volume.
 
 ![tts4 300x104](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/02/tts4.png)
-
-
-
-
 
 ## FINAL CONSIDERATIONS
 

@@ -19,8 +19,6 @@ Our software is designed to map control tasks for the Miniserver in the form of 
 
 The size of a Loxone Config file must not exceed 5 MB.
 
-
-
 #### SYSTEM REQUIREMENTS
 
 The configuration software is designed for use with the operating systems Windows XP, Windows Vista, Windows 7 and 8. Program settings like window positions and the like can be saved when you exit the application in the registry of your computer. The software can also be run on a Mac by having multiple operating systems using programs such as Parallels or Bootcamp.
@@ -39,14 +37,6 @@ The Object Help window can be moved around the screen or pinned to the side as d
 You may also find our [example configurations](https://www.loxone.com/enen/kb/videos-sample-files/) useful.
 
 ![Loxone Config Information Button](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_Information_Popout.png)
-
-
-
-
-
-
-
-
 
 In Windows Explorer folder options select “Hidden files, folders and drives show”. This will make the folder ProgramData visible so you can save templates to Loxone Config so they show in the pre-defined devices menu. Select C:/ProgramData/Loxone/Loxone Config current version/ENG. The templates for RS485, RS232 and Modbus are saved in the Comm folder and virtual outputs are saved in the folder VirtualOut. Remote control templates are saved in the RC folder.
 

@@ -8,11 +8,7 @@ The Loxone Smart Home protects the occupants of the house from dangers such as f
 
 In detail, we summarise the different security packages as follows:
 
-| ![IC Burglar 50x50 black](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/01/IC_Burglar-50x50-black.png) | Protection against burglary |
-| --- | --- |
-| ![IC Resident 50x50 black](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/01/IC_Resident-50x50-black.png) | Protecting the occupants |
-| ![IC House 50x50 black](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/03/IC_House-50x50-black.png) | Protecting the building |
-| ![IC Plug 50x50 black](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/02/IC_Plug-50x50-black.png) | Reliable installations |
+> **ℹ️ Note:** Protection against burglary
 
 ## Protection against burglary in a Loxone Smart Home
 
@@ -41,8 +37,6 @@ The alarm system module can be used to implement extensive alarm functions. When
 
 In order to be reliably informed of a burglary, we recommend using the Caller Service
 - [Caller Service](https://www.loxone.com/enen/kb/caller-service/)
-
-
 
 [**Back to overview**](https://www.loxone.com/enen/kb/security/#overview)
 
@@ -74,12 +68,8 @@ The Loxone Touch and the Loxone Touch Pure have an in-built temperature sensor t
 With the Fire and Water Alarm block, extensive functions can be implemented around the protection of occupants in a Loxone Smart Home. If an imminent fire is detected via the Loxone Touch or Smoke Detector Air, the fire alarm is triggered. The alarm is triggered in two stages (preliminary alarm / main alarm). In an installation completed to the Loxone Standard, all of the shading in the house opens during the alarm, the lighting flashes and an alarm tone sounds over the Music Server. Thus, a Loxone Smart Home generates maximum attention to alert the occupants.
 - [Fire and Water Alarm](https://www.loxone.com/enen/kb/fire-water-alarm/)
 
-
-
 In order to be reliably informed in case of imminent fire, we recommend to use the Caller Service.
 - [Caller Service](https://www.loxone.com/enen/kb/caller-service/)
-
-
 
 [**Back to overview**](https://www.loxone.com/enen/kb/security/#overview)
 
@@ -101,13 +91,7 @@ With the Fire and Water Alarm block, the Loxone Smart Home can protect itself fr
 
 In addition to the unwanted ingress of water, a building can also be damaged by frost and wind. In contrast, a Loxone Smart Home is protected by the Loxone Weather Station. Part of the Loxone [Auto Configuration](https://www.loxone.com/enen/kb/auto-configuration/) feature is the automatic configuration of frost and storm protection modes. The [Auto Configuration](https://www.loxone.com/enen/kb/auto-configuration/) implements the frost protection and storm protection as follows:
 
-| ![APP Frost Protec](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/03/APP_Frost_Protec.png) | Frost Protection If the outside temperature falls below 1°C and precipitation is detected by the Loxone Weather Station, a Loxone Smart Home prevents damage caused by ice. All shading elements are stopped immediately and are locked for safety reasons. The Frost Protection mode can either be canceled manually in the app or deactivated automatically when an outside temperature of more than 10°C is reached. |
-| --- | --- |
-| ![APP Storm Protec.](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/03/APP_Storm_Protec..png) | Storm Protection If the Loxone Weather Station detects a wind speed that could damage the shading, Storm Protection becomes active. This means that all shading elements move to the safety position and operation is locked. Storm Protection mode can either be disabled manually in the app or automatically when the wind speed drops below the specified threshold. |
-
-
-
-
+> **ℹ️ Note:** Frost Protection If the outside temperature falls below 1°C and precipitation is detected by the Loxone Weather Station, a Loxone Smart Home prevents damage caused by ice. All shading elements are stopped immediately and are locked for safety reasons. The Frost Protection mode can either be canceled manually in the app or deactivated automatically when an outside temperature of more than 10°C is reached.
 
 [**Back to overview**](https://www.loxone.com/enen/kb/security/#overview)
 
@@ -121,15 +105,11 @@ Safety and security features in a Loxone Smart Home don’t only mean protecting
 
 All Loxone products are designed to last. The devices in a Loxone Smart Home are not like many other general consumer goods you can buy off the shelf that will likely need replacing after a few years as they become outdated or even obsolete. Loxone components are intended to last as long as the electrical installation of a home, if not longer. To ensure this level of reliability, our products include a number of safety features:
 
-
-
 | Reverse polarity protection The majority of hardwired Loxone products work off 24VDC SELV. In order for you, as a Loxone Partner, to be able to guarantee a reliable and error-free installation, we’ve put a lot of thought into reducing room for error in the installation itself. Each hardwired Loxone peripheral device is equipped with reverse polarity protection so that if you accidentally swap the 24V and Ground pole, you don’t risk damaging the actual device. |
 | --- |
 | Short-circuit protection Another way in which using Loxone components offers a reliable and safe installation is that our power supplies have short-circuit protection. This means that if you were to accidentally switch the plus and minus connection, neither the Loxone device or the power supply itself will be damaged – this is because the power supply itself automatically shuts off in the event of a fault. |
 | Temperature management As we develop all Loxone lighting products in-house, we’re able to give more attention to individual elements such as a built-in temperature management system. This feature plays a very important role on several fronts. Firstly, it aids a long lifespan of the LEDs – which is a very important part when it comes to our Partners delivering a reliable installation for their customers. If the temperature of an LED bulb is too high, this not only hinders the life of the LED, but also affects the colour of the light it produces. That’s not a worry though, as this will not happen with Loxone lighting products. |
-| Built-in voltage regulators The Loxone lighting products can all be operated in so-called wide voltage range. This means that variances in the supply voltage of between -10%  and 5% will not affect the quality of light or the lifespan of the LED itself. |
-
-
+| Built-in voltage regulators The Loxone lighting products can all be operated in so-called wide voltage range. This means that variances in the supply voltage of between -10% and 5% will not affect the quality of light or the lifespan of the LED itself. |
 
 ### How do you make the smart home installation even safer?
 
@@ -143,9 +123,5 @@ The following tips and products contribute to the safety of a Loxone installatio
 | Fire protection switch In compliance with wiring regulations, all circuits must be protected by an RCD and appropriately rated MCB. However, this protective measure on it’s own won’t be able to identify fault arcs. Fault arcs can be caused by unsafe or exposed contacts or damaged wiring or cable insulation. We therefore recommend that the electrical installation in a Loxone Smart Home also has external electrical fault detection equipment (e.g. arc fault detectors). As Loxone, we don’t sell Arc Fault Detection Devices (AFDD) but using such a component in a Loxone Smart Home is best practice. |
 | Tree sensors The way our Tree Technology has been designed allows for Loxone Partners to easily connect sensory peripheral devices in a Loxone Smart Home. All communication between security-sensitive Tree products is fully encrypted – offering peace of mind for both you and your customers. For more information about Tree wiring, please click here. |
 | CAT 7 Cable We recommend that all Loxone Smart Homes installations are done with CAT7 for maximum functionality and in the interest of future-proofing. The CAT7 cable is ideal for Loxone Tree devices. With four pairs, each of which is double-shielded, better protection from sources of interference is afforded, and with the thicker cores of a CAT7 less volt-drop will be experienced. It is typical that the requirements of a customer and the way they use the different rooms in their home will change over time. This, as it gives greater flexibility for programmable changes in the future, is another reason why you should be using CAT7. Buy CAT7 cable. |
-
-
-
-
 
 [**Back to overview**](https://www.loxone.com/enen/kb/security/#overview)

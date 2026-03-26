@@ -52,8 +52,6 @@ Highlight the detector, enter a ‘Name’ and its ‘Type’, then click ‘Cre
 
 ![EnOcean Motion Sensor](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_EnOcean_Learn_Motion.png)
 
-
-
 ## ADDING NEW ACTUATORS
 
 #### CONFIGURE THE ACTUATOR
@@ -121,8 +119,6 @@ From this we can now identify which bits here responsive when switching
 In this case, we can use either the 4.5 or 6 bits for the digital actuator. (least significant bit = 0 Index)
 
 For analog sensors, a range of values must be defined. This must be in the datasheet of the sensor.
-
-
 
 ## COMPATIBLE ENOCEAN DEVICES
 

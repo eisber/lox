@@ -21,8 +21,6 @@ If the push button is configured as described, you can use the Loxone Miniserver
 ![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 If your EIB push button does not support this, use the ‘EIB Extended Sensor’.
 
-
-
 ![EIB Sensor Properties KNX](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Config_EIB_Sensor_Properties.jpg)
 
 In your configuration, use the function blocks found in the configuration software as you would normally. For the function blocks, it is irrelevant if the input is connected to an EIB sensor or a conventional switch (digital input).

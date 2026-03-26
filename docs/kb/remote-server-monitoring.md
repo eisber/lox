@@ -34,15 +34,11 @@ Hardware:
 ![Rremote server ping sequence - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Cases-57-Server-Monitoring-2.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Cases-57-Server-Monitoring-2.png)
 
-
-
 [
 
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Cases-57-Server-Monitoring-3.png)[
 ![Remote server monitoring - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Cases-57-Server-Monitoring-3.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Cases-57-Server-Monitoring-3.png)
-
-
 
 ### Download the sample file:
 
@@ -57,8 +53,6 @@ Hardware:
 The outage of a server can cost your customer a lot of money and trouble. To mitigate the effect of a server outage remote server monitoring should be paired with a series of notifications so that your customer will be notified in an emergency. This way, your customer can make sure that in case of an outage, the responsible employees can react immediately.
 
 If Loxone has already been installed in the building, then you can monitor a server using the existing hardware already in place, reducing the overall cost of setting up remote server monitoring while enhancing functionality.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

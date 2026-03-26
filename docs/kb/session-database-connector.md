@@ -6,8 +6,6 @@ Source: https://www.loxone.com/enen/kb/session-database-connector/
 
 This block can be used to track and display sessions in an Exosphere database, such as wallbox charging.
 
-
-
 ## Table of Contents
 - [Inputs](#Input)
 - [Outputs](#Output)
@@ -15,16 +13,9 @@ This block can be used to track and display sessions in an Exosphere database, s
 - [Properties](#Property)
 - [Programming example](#baseconf)
 
-
-
-
 ---
 
-
 ## Inputs
-
-
-
 
 | Abbreviation | Summary | Description | Value Range |
 | --- | --- | --- | --- |
@@ -48,118 +39,55 @@ This block can be used to track and display sessions in an Exosphere database, s
 | CI15 | Custom input 15 | Additional custom input 15 | - |
 | CI16 | Custom input 16 | Additional custom input 16 | - |
 
-
-
-
-
-
-
-
 ---
 
-
 ## Outputs
-
-
-
 
 | Abbreviation | Summary | Description | Value Range |
 | --- | --- | --- | --- |
 | Log | Log output | Log output on every write operation to the database | - |
 | Sa | Session active | Active when a session is currently active | 0/1 |
-| API | API Connector | Intelligent API based connector.API Commands | - |
-
-
-
-
-
-
-
+| API | API Connector | Intelligent API based connector. API Commands | - |
 
 ---
 
-
 ## Parameters
-
-
-
 
 | Abbreviation | Summary | Description | Unit | Value Range | Default Value |
 | --- | --- | --- | --- | --- | --- |
 | Td | Trigger Delay | Delays writing to database after trigger to make sure all inputs are set | ms | ∞ | 0 |
 
-
-
-
-
-
-
-
 ---
 
-
 ## Properties
-
-
-
 
 | Summary | Description | Default Value |
 | --- | --- | --- |
 | Column content | Edit column content. Specify the data that should be written to the database columns. | - |
 
-
-
-
-
-
-
-
 ---
-
 
 ## Programming example
 
+In this example, a Wallbox charging billing is recorded in an Exosphere database.
 
-    In this example, a Wallbox charging billing is recorded in an Exosphere database.
+A database must be created in [Exosphere](https://www.loxone.com/help/exosphere/) and integrated into the configuration using the "Database".
 
-
-    A database must be created in [Exosphere](https://www.loxone.com/help/exosphere/) and integrated into the configuration using the "Database".
-
-
-    With the "Session Database Connector" block, the database can now be populated with data.
-
-
-
+With the "Session Database Connector" block, the database can now be populated with data.
 
 ![Exo DbConSAPI](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_DbConSAPI.png)
 
-
-
-    Double-clicking on the block opens the "Database Connector Configuration". Here, the contents of the columns can be defined.
+Double-clicking on the block opens the "Database Connector Configuration". Here, the contents of the columns can be defined.
 If an option is grayed out, the datatype is not compatible with it.
-
-
-
 
 ![Exo DbConSColumns](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_DbConSColumns.png)
 
-
-
-    Additionally, the block inputs "CI1-CI16" can be named. These will be displayed in the configuration but not in the Exosphere database.
-
-
-
+Additionally, the block inputs "CI1-CI16" can be named. These will be displayed in the configuration but not in the Exosphere database.
 
 ![Exo DbConSUI](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_DbConSUI.png)
 
+The start and end of a charging session are transferred to the inputs "SStart" and "SEnd". The charging user is forwarded to the block via the "Uid" input.
 
-
-    The start and end of a charging session are transferred to the inputs "SStart" and "SEnd". The charging user is forwarded to the block via the "Uid" input.
-
-
-    The price of the charging session is transmitted to the input "CI1."
-
-
-
+The price of the charging session is transmitted to the input "CI1."
 
 ![Exo DbConSExample](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_DbConSExample.png)

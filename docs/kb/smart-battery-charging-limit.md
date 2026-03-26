@@ -36,8 +36,6 @@ At the same time, you can switch the charger on and off manually using a physica
 
 With Loxone, a smart battery charging limit can be put into place to avoid permanent charging of the battery and therefore increase the lifespan of the battery. This programming can be used for many different devices: smartphones, e-bikes, cordless screwdrivers, tablets, headphones, etc. This solution is thus applicable in many areas of life from smart homes to workshops, offices, building yards, etc.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

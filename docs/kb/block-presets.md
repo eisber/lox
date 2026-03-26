@@ -83,8 +83,6 @@ To do this, click on **Update preset** in the block properties:
 
 A click on **Restore preset** will reset the block to its default values as specified by the assigned preset.
 
-
-
 ## Resetting a function block
 
 Supported blocks have a **RtD input** that can reset the block to its preset in case the any of the settings have been changed by the user:

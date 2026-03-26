@@ -28,8 +28,6 @@ In the example, we have used the current precipitation to send a notification (u
 ![Open window alert if it rains - Loxone config screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-34-Open-Window-Alarm.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-34-Open-Window-Alarm.png)
 
-
-
 ### Download the sample file:
 
 ### Open Window Alarm
@@ -41,8 +39,6 @@ In the example, we have used the current precipitation to send a notification (u
 ## Why you and your customer should consider an alert for open windows when it starts to rain?
 
 It may sound like just nice-to-have feature until you experience the damage that having an open window during a downpour can do. Especially in summer, where unexpected heavy rains are not uncommon – having an open window alert if it rains can mitigate a lot of trouble and damage. When it starts to rain, instead of thinking “did I leave that window open?” or “I wonder if the kids closed their window?” or physically going to check the windows throughout the house, you can simply rely on an ‘open window’ alert if it rains This would certainly go a long way in not only reducing damage and nuisance but probably saving a fair bit of sanity.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

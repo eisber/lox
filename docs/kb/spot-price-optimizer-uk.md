@@ -43,8 +43,6 @@ We’ve prepared this walkthrough video showing you the setup documented below.
 
 ![SPO Formula Spot Price Optimizer UK EPEX 800x79](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/SPO-Formula-Spot-Price-Optimizer-UK-EPEX.png)
 
-
-
 ## Formula
 
 **Step 3. Enter the formula for calculating your energy price**
@@ -54,8 +52,6 @@ We’ve prepared this walkthrough video showing you the setup documented below.
 ![SPO Formula Spot Price Optimizer 30 minute UK C 1 800x450](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/SPO-Formula-Spot-Price-Optimizer-30-minute-UK-C-1.png)
 
 ![Loxone Loxone Spot Price Optimizer Epex Octopus Formula](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/SPO-Formula-Spot-Price-Optimizer-UK-Formula.png)
-
-
 
 **What does each part of the formula do?**
 
@@ -138,10 +134,8 @@ Based on the region, refer to this Octopus’ “Agile pricing explained” blog
 
 View the Spot Price Optimizer within the Loxone App, and enjoy!
 
-| ![Loxone Spot Price Optimizer Epex Octopus Mobile App](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/iPhone-Spot-Price-Optimizer-30-minute-UK-C.png) | ![Loxone Spot Price Optimizer Epex Octopus Tablet](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/iPad-Spot-Price-Optimizer-30-minute-UK-C.png) | ![Loxone Spot Price Optimizer Epex Octopus Laptop](https://www.loxone.com/enen/wp-content/uploads/sites/3/2024/08/Mac-SPO-Spot-Price-Optimizer-30-minute-UK-C.png) |
+|  |  |  |
 | --- | --- | --- |
-
-
 
 					Note: As the Spot market data is based on CET, pricing data for 23:00 & 23:30 is released with the pricing data for the following day. You can expect to see data for the 23:00 – 23:30 and 23:30 – 00:00 periods between 17:00 and 21:00.
 For further information about the Spot Price Optimizer Function Block – including a **programming example** for a heat to only run during the 4 cheapest hours – visit the dedicated documentation page [here](https://www.loxone.com/enen/kb/spot-price-optimizer/).

@@ -28,8 +28,6 @@ Hardware:
 ![Standby killer for electrical devices - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-59-Standby-Killer-1.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-59-Standby-Killer-1.png)
 
-
-
 ### Download the sample file:
 
 ### Standby Killer
@@ -41,8 +39,6 @@ Hardware:
 ## Why you and your customer should consider using Loxone as a standby eliminator.
 
 Overall, setting up the standby killer feature with Loxone – in a residential or commercial setting – can reduce energy usage, make a building more energy-efficient, and potentially prolong the lifespan of the device. Having this feature in a second home is an excellent way to ensure non-essential devices are not left on when the property is not in use. Likewise, a standby killer for an office environment saves energy in the evening and throughout the weekend when staff are not in the building.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

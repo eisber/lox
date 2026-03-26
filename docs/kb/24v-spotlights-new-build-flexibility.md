@@ -47,8 +47,6 @@ The RGBW Dimmer Tree, Motion Sensor Tree and Touch/Touch Pure Tree all simply n
 ![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 If you are unsure at any point when wiring up any of our devices, please contact a suitably qualified electrician. Alternatively you can [contact us](https://www.loxone.com/enen/about-us/contact/) for more technical data if required.
 
-
-
 ## DESIGN CONSIDERATIONS
 
 The Loxone Touch, Touch Pure and Motion sensor Tree are very slimline, as such we recommend using/specifying European style circular back-boxes for the best fitment and finish. An example of this can be seen below, [click on the image to purchase them.](https://shop.loxone.com/enuk/circular-dry-lining-box.html)
@@ -62,8 +60,6 @@ The Loxone Touch, Touch Pure and Motion sensor Tree are very slimline, as such w
 [
 ![IC_loxone-tree@2x-1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/IC_loxone-tree@2x-1.png)
 ](https://www.loxone.com/enen/kb/tree-cabling-setup/)For information on how to connect your Tree Device with Loxone config then [click here!](https://www.loxone.com/enen/kb/tree-cabling-setup/)
-
-
 
 ## CONFIGURE LIGHTING CONTROLLER
 

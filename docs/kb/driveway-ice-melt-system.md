@@ -40,8 +40,6 @@ If the system was activated manually, it will be automatically switched off afte
 ![Driveway Ice Melt System - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-80-Snow-Melt-System.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Use-Case-80-Snow-Melt-System.png)
 
-
-
 ### Download the sample file:
 
 ### Snow Melt System
@@ -55,8 +53,6 @@ If the system was activated manually, it will be automatically switched off afte
 An automated driveway ice melt system reduces the risk of slipping on snow/ice. It will automatically ensure that the worries that come along with snow are a thing of the past. It will also reduce the time and effort of manually scraping the snow up.
 
 In a commercial environment, where you have a duty-of-care a driveway ice melt system can automatically take away one of your worries. It could also save you the costs of paying someone to removed the snow/ice for you.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

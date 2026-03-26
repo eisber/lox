@@ -194,7 +194,14 @@ def html_to_markdown(html_content: str, download_images: bool = False,
     # Convert links (strip empty ones)
     c = re.sub(r'<a[^>]*href="([^"]+)"[^>]*>(.*?)</a>', r'[\2](\1)', c, flags=re.DOTALL)
 
-    # Convert lists
+    # Convert lists — handle nesting
+    # First convert nested <ul> inside <li> to indented sub-items
+    c = re.sub(r'<li[^>]*>\s*(.*?)\s*<ul[^>]*>(.*?)</ul>\s*</li>',
+               lambda m: '- ' + re.sub(r'<[^>]+>', '', m.group(1)).strip() + '\n' +
+               re.sub(r'<li[^>]*>\s*(.*?)\s*</li>',
+                      lambda m2: '  - ' + re.sub(r'<[^>]+>', '', m2.group(1)).strip() + '\n',
+                      m.group(2), flags=re.DOTALL),
+               c, flags=re.DOTALL)
     c = re.sub(r'<li[^>]*>\s*(.*?)\s*</li>', r'- \1\n', c, flags=re.DOTALL)
     c = re.sub(r'<[ou]l[^>]*>', '\n', c)
     c = re.sub(r'</[ou]l>', '\n', c)
@@ -220,9 +227,24 @@ def html_to_markdown(html_content: str, download_images: bool = False,
     c = re.sub(r'\n- \n', '\n', c)  # remove empty list items
     # Clean up ToC-style lists (indented items with just links)
     c = re.sub(r'\n\s+- ', '\n- ', c)  # normalize list indentation
-    c = re.sub(r'\n\n\n+', '\n\n', c)  # re-collapse after cleanup
-    lines = [line.rstrip() for line in c.split('\n')]
+    # Remove leading whitespace on content lines (from HTML indentation)
+    lines = []
+    for line in c.split('\n'):
+        stripped = line.rstrip()
+        # Remove leading whitespace unless it's a list item or table/heading
+        if stripped and stripped[0] == ' ':
+            content = stripped.lstrip()
+            # Only preserve indentation for sub-list items (  - item)
+            if content.startswith('- ') and stripped.startswith('  - '):
+                lines.append(stripped)
+            elif content.startswith(('|', '#', '>', '!')):
+                lines.append(stripped)
+            else:
+                lines.append(content)
+        else:
+            lines.append(stripped)
     c = '\n'.join(lines)
+    c = re.sub(r'\n\n\n+', '\n\n', c)  # re-collapse after cleanup
     c = c.strip()
 
     return c
@@ -237,14 +259,45 @@ def _convert_tables(html: str) -> str:
             return ''
 
         md_rows = []
+        is_info_box = False
+
         for i, row in enumerate(rows):
             cells = re.findall(r'<t[hd][^>]*>(.*?)</t[hd]>', row, re.DOTALL)
-            cells = [re.sub(r'<[^>]+>', '', c).strip().replace('\n', ' ') for c in cells]
-            if not cells:
+            # Clean cell content: strip tags but preserve list items
+            clean_cells = []
+            for cell in cells:
+                # Convert <li> to inline markers before stripping
+                cell = re.sub(r'<li[^>]*>\s*', '• ', cell, flags=re.DOTALL)
+                cell = re.sub(r'</li>', '', cell)
+                cell = re.sub(r'<br\s*/?>', ' ', cell)
+                cell = re.sub(r'<[^>]+>', '', cell)
+                # Also strip markdown image syntax (from earlier image conversion)
+                cell = re.sub(r'!\[[^\]]*\]\([^)]*\)', '', cell)
+                cell = htmlmod.unescape(cell).strip().replace('\n', ' ')
+                # Collapse multiple spaces
+                cell = re.sub(r'\s+', ' ', cell)
+                clean_cells.append(cell)
+
+            if not clean_cells:
                 continue
-            md_rows.append('| ' + ' | '.join(cells) + ' |')
+
+            # Detect info-box pattern: 2 cells where first contains an icon image
+            if len(clean_cells) == 2 and (
+                len(clean_cells[0]) < 5 or
+                'info' in clean_cells[0].lower() or
+                'exclamation' in clean_cells[0].lower() or
+                clean_cells[0].startswith('!') or
+                clean_cells[0] == ''
+            ):
+                is_info_box = True
+
+            if is_info_box and len(clean_cells) == 2:
+                # Render as blockquote instead of table
+                return '\n> **ℹ️ Note:** ' + clean_cells[1] + '\n'
+
+            md_rows.append('| ' + ' | '.join(clean_cells) + ' |')
             if i == 0:
-                md_rows.append('| ' + ' | '.join(['---'] * len(cells)) + ' |')
+                md_rows.append('| ' + ' | '.join(['---'] * len(clean_cells)) + ' |')
 
         return '\n' + '\n'.join(md_rows) + '\n'
 

@@ -18,11 +18,10 @@ After the “Alarm Clock” Function Block has triggered the alarm, a pre-set pl
 
 ### Hardware:
 - [Loxone Miniserver](https://shop.loxone.com/enuk/miniserver.html)
-- [Music Server](https://shop.loxone.com/enuk/loxone-music-server.html)
-- [12 Channel Amplifier](https://shop.loxone.com/enuk/loxone-12-channel-amp.html) (optional)
-- [Speaker](https://shop.loxone.com/enuk/speaker.html) (optional)
-
-[Speaker Built-in box](https://shop.loxone.com/enuk/speaker-back-box.html)
+[Music Server](https://shop.loxone.com/enuk/loxone-music-server.html)
+[12 Channel Amplifier](https://shop.loxone.com/enuk/loxone-12-channel-amp.html) (optional)
+[Speaker](https://shop.loxone.com/enuk/speaker.html) (optional)
+- [Speaker Built-in box](https://shop.loxone.com/enuk/speaker-back-box.html)
 - [Speaker Back Box for Suspended Ceilings](https://shop.loxone.com/enuk/speaker-back-box-mdf.html)
 - [Wall speaker](http://shop.loxone.com/enuk/wall-speaker.html) (optional)
 
@@ -53,8 +52,6 @@ After the “Alarm Clock” Function Block has triggered the alarm, a pre-set pl
 Let’s face it, being woken up isn’t one of the nicest things in the world. However, it can be far more pleasurable if it’s done in a gentle and considered way – as it is with a music alarm clock. No more being ripped out of your sleep by a dreaded alarm tone.
 
 To make it an, almost, enjoyable experience – you can combine a music alarm clock with a light-based alarm clock (either natural or artificial) for the perfect start to the day.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

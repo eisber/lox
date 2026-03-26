@@ -54,8 +54,6 @@ If cistern exists:
 - [Ultrasonic Sensor](https://shop.loxone.com/enuk/ultrasonic-sensor.html)
 - Suction pump
 
-
-
 ### Configuration:
 
 [
@@ -97,8 +95,6 @@ The amount of water on the surface of a football field can considerably affect c
 Hence, watering a sports field with intelligent automation from Loxone is a sensible investment for the sports club in order to optimally irrigate the playing field and to avoid over or under-watering the sports facility. Another advantage of an intelligent system is that it requires very little personnel expenses, which is very important nowadays.
 
 Overall, the costs for the care of the football field can be greatly reduced by automating the irrigation with Loxone – in particular by reducing the water requirement, through the targeted and properly timed use of the water. And while it might not prevent Oscar-worthy performances from some players, precise irrigation improves conditions that encourage a safer playing environment and less injury due to poor conditions of the pitch.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

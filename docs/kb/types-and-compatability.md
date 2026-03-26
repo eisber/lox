@@ -15,8 +15,6 @@ Source: https://www.loxone.com/enen/kb/types-and-compatability/
 ![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 The Android mobile browser currently does not support WebSockets. Support will come probably in a future version of the Android operating system.
 
-
-
 ## ACTIVATION OF WEBSOCKETS IN MOZILLA FIREFOX 4 AND OPERA 11
 
 In Firefox 4 and Opera 11, you must activate the WebSockets before being able to use the WebSocket client:

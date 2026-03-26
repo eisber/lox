@@ -59,8 +59,6 @@ Owners of an office building, for example, are therefore obliged to keep escape 
 
 A comparatively small investment in an emergency exist monitoring system can help to reliably achieve this goal and save human lives in an emergency.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

@@ -47,10 +47,6 @@ Hardware:
 ![Nr. 56 Smart Outdoor Lighting](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Nr.-56-Smart-Outdoor-Lighting.jpg)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Nr.-56-Smart-Outdoor-Lighting.jpg)
 
-
-
-
-
 ### Download the sample file:
 
 ### Smart Outdoor Lighting
@@ -68,8 +64,6 @@ Outdoor lighting often used by landscape designers, with smart outdoor lighting 
 With the addition of time control – these varying lighting moods are only activated when it makes sense to do so. This ensures lighting is not left on during the day or when natural lighting is sufficient, which would waste energy.
 
 Overall, having smart lighting in the garden with different lighting moods can offer practical task lighting, focus lighting for landscaping and architectural features, and a creative source of lighting for entertaining.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

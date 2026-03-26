@@ -75,8 +75,6 @@ Being able to also have some automatic heating in the outbuilding makes it a bit
 
 For a considerable amount of convenience and peace of mind, the limited amount of Loxone hardware and installation cost is worth it.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

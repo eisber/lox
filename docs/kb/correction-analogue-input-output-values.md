@@ -46,8 +46,6 @@ The signal is now adjusted in this linear graph:
 
 [Enocean](#Enocean)
 
-
-
 #### BRIGHTNESS SENSOR
 
 Product code: 200032

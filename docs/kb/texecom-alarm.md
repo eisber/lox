@@ -54,8 +54,6 @@ Connect the cat cable and the Texecom Com lead to the adaptor, then terminate th
 - As RS232 is a send and receive signal, then for correct communications the Rx and Tx wires need to be reversed between devices.
 - Ensure you also connect the GNDs between the Loxone RS232 Extension and Texecom Com Lead to account for potential differences
 
-
-
 **Configuration of the Texecom Panel**
 
 The alarm panel needs to be configured so that Com Port 2 is set to the correct Baud rate and communication type to allow it to work with Loxone. The instructions below are to do this through the keypad, however this can also be done through Wintex software if you are familiar with this.
@@ -96,8 +94,6 @@ As mentioned earlier, this guide assumes familiarity with commissioning and conf
 - Re-name the sensors to match the zone names configured on the alarm panel
 
 ![Renaming Sensors](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/04/Renaming-Sensors.png)
-
-
 
 **Configuring the Zones in Loxone Config**
 

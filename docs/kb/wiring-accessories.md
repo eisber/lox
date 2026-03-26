@@ -38,8 +38,6 @@ Source: https://www.loxone.com/enen/kb/wiring-accessories/
 
 [Connecting 1-Wire sensors](#1-WIRE SENSORS)
 
-
-
 ## WIRING TREE DEVICES
 
 Connecting Tree devices couldn’t be simpler, just connect the Tree (Green and White) and the 24V DC Power (Orange and White)

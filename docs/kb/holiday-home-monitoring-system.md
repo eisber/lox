@@ -66,8 +66,6 @@ In addition, there are ten predefined operating modes in Loxone. One operating m
 
 The listed functions combine to give your customers an effective holiday home monitoring system which can be used from a distance. The owner is informed about the different statuses in the Loxone App and, thanks to the Caller Service, receives an immediate notification in case of an alarm. So no one has to physically check in on the second home, because the owner has everything in view.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

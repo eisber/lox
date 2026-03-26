@@ -6,8 +6,6 @@ Source: https://www.loxone.com/enen/kb/shading-with-loxone-2/
 
 Take a look at the basics of automating and controlling shading with Loxone.
 
-
-
 | View Webinar Slides | Download Config File |
 | --- | --- |
 

@@ -13,8 +13,6 @@ The LED Spot WW PWM is available in different variants:
 ![spots back combined](https://www.loxone.com/dede/wp-content/uploads/sites/2/2023/01/spots_back_combined.png)
 ](https://www.loxone.com/dede/wp-content/uploads/sites/2/2023/01/spots_back_combined.png)
 
-
-
 These spots are supplied with a nominal voltage of 24V DC and can be dimmed by PWM.
 
 Loxone devices with RGBW or PWM outputs are suitable for this:

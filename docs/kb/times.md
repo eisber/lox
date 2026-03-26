@@ -22,38 +22,7 @@ The Time objects can be found in the Periphery tree under Times.
 
 ### **OVERVIEW**
 
-| Name | Description |
-| --- | --- |
-| Active Operating Time | This input shows the active operating mode as used in the timer. 0 = Public Holiday, 1 = Vacation, 2 = School Holidays/Day off, 3 = Monday, 4 = Tuesday, … |
-| Day | Current day of the month 1 to 31 |
-| Daylight | Value on by daylight (sunrise til sunset) |
-| Daylight 30min | Value on by daylight (30 minutes after sunrise til 30 minutes before sunset) |
-| Days Since 2009 | Number of days that have passed since 1/1/2009 |
-| Hour | Current Hour (0 – 23) |
-| Minutes | Current Minute (0 – 59) |
-| Minutes Past Midnight | Number of minutes from midnight until this moment |
-| Month | Current Month (1 – 12) |
-| Night | Period between Dusk and Dawn |
-| Pulse at Dawn | Pulse at the beginning of civil dawn. End of darkness, sun 6° below the horizon. |
-| Pulse at Day Change | Pulse at day change |
-| Pulse at Dusk | Pulse at the end of civil dusk. Beginning of darkness, sun 6° below the horizon. |
-| Pulse at Hour Change | Pulse at hour change |
-| Pulse at Minute Change | Pulse at minute change |
-| Pulse at Month Change | Pulse at month change |
-| Pulse at Second Change | Pulse at second change |
-| Pulse at Sunrise | Pulse at sunrise |
-| Pulse at Sunset | Pulse at sunset |
-| Pulse at Year Change | Pulse at year change |
-| Seconds | Current second (0 – 59) |
-| Seconds Since Boot | Number of seconds since last start |
-| Start Pulse | Pulse at the start of the program |
-| Sun Direction | Sun direction in ° (0 = north, 90 = east, 180 = south, 270 = west) |
-| Sun Elevation | Sun elevation in ° |
-| Time of Dawn | Time of dawn in minutes from midnight |
-| Time of Sunrise | Time of sunrise in minutes from midnight |
-| Time of Sunset | Time of sunset in minutes from midnight |
-| Unix Timestamp | Current date + time in Unix timestamp format (UTC) |
-| Year | Current calendar year |
+> **ℹ️ Note:** Description
 
 ##
 

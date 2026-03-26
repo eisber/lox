@@ -13,12 +13,8 @@ Pendants are not always a simple plain fitting as they can take many forms and 
 ![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 This section will also apply if looking to control most other types of light fitting such as **Wall Lights** or **Outside Lights.**
 
-
-
 ## PROJECT
 
 Depending on the type of project you are looking at the best products to use will vary, please select below weather it is a retrofit or a new build.
 
-| New Build | Retrofit |
-| --- | --- |
-| ![Example New Build House](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/Example-New-Build-House.jpg) | ![Example Retrofit House](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/Example-Retrofit-House.jpg) |
+> **ℹ️ Note:**

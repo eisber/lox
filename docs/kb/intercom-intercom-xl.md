@@ -41,14 +41,12 @@ The Intercom XL will not have this change and the product itself is being phased
 
 It is recommended that you mount the intercom with the top edge being 170cm above the ground (67 inches)
 - Connect an RJ45 ethernet cable from to your home network to the “Data/LAN In” port of the supplied PoE Injector (PoE = Power over Ethernet).
-- Connect an RJ45 ethernet cable from the “Power+Data Out” port of the PoE Injector to the Loxone Intercom.
-- Provide power to the POE Injector.
+Connect an RJ45 ethernet cable from the “Power+Data Out” port of the PoE Injector to the Loxone Intercom.
+Provide power to the POE Injector.
 - The recommended maximum length for an ethernet connection is ca. 100m. It is recommended to place the PoE adapter in close proximity to the intercom.
 - For ethernet connections of over 100 meters, a different connection must be used, e.g. fibre optic.
 - A data rate of 2 MBit minimum is required for adequate audio communication.
 - A data rate of 10 MBit is required for adequate video connections.
-
-
 
 ## Step 2: Intercom Search
 
@@ -88,8 +86,6 @@ If the Intercom video module was found as described in [Step 2](#Step2), it can 
 - Assign a static IP address to the module.
 - Check and, if necessary, adjust the network settings.
 - Then click on “Next”
-
-
 
 ![Netzwerk Video](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Netzwerk-Video.png)
 
@@ -141,13 +137,9 @@ If the Intercom audio module was found as described in [ Step 2](#Schritt2), it 
 - Check and, if necessary, adjust the network settings.
 - Then click on “Next”
 
-
-
 ![Netzwerk Audio](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Netzwerk-Audio.png)
 - The selected network settings must match the existing network (network mask, default gateway, etc.).
 - The selected IP address must not be in use yet.
-
-
 
 In the following dialog, enter the login details for the audio module.
 - Username (internal) is not required.
@@ -160,7 +152,6 @@ In the following dialog, enter the login details for the audio module.
 
 					The audio module applies the configuration and restarts.
 [Continue with step 6.](#Schritt6)
-
 
 ## Step 6: Add module configuration to existing network device
 
@@ -319,8 +310,6 @@ Download latest firmware](https://www.loxone.com/dede/wp-content/uploads/sites/2
 - The default port 4000 does not need to be changed.
 - By default, the update file from the extracted folder is used. If necessary, this can be changed via Select File.
 
-
-
 					During the update, the user settings are reset to factory settings. The user data must be reconfigured after the update.
 [Find more detailed information about customizing the user data here](#VideoPasswort).
 
@@ -413,8 +402,6 @@ For this the MAC address of the audio module is required. It can be found on the
 - Open Loxone Config
 - Select “Network Periphery”.
 - Select “Configure Device” from the menu.
-
-
 
 ![Loxone Config Gerät konfigurieren](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Loxone-Config-Gerät-konfigurieren.png)
 - Select Intercom Audio
@@ -523,27 +510,25 @@ The password for the audio module must be entered in Config in the properties of
 
 ![SIPswitch](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/SIPswitch.png)
 The image shows the normal state (OFF) of the DIP switch. (right position [->]).
-
-Restore the power supply to the Intercom.
+- Restore the power supply to the Intercom.
 - Once the module restarted, you can return the DIP switch to the normal state (OFF).
 - The audio module is now accessible at the IP address 192.168.1.98.
 - Now connect to the web interface of the audio module (address: 192.168.1.98) [Detailed information can be found here](#Audio).
 - Now configure the new network settings for the audio module. [Detailed information can be found here](#AudioNetzwerk).
 - Please note that the network settings must match your home network (subnet mask, default gateway, etc.).
-- The entered IP address must not yet be assigned.
+The entered IP address must not yet be assigned.
 
 					After booting successfully, the Loxone Intercom is reachable at the new IP address.
 
 ### Intercom Gen. 1 Audio Module after 10/2020
 
 **This Version is reset by pressing the doorbell button as follows:**
-- While pressing the button, power up the station by connecting to a PoE switch
-- Hold the button until the station audio starts counting, and release the button on **count 1**
-- Press and hold the button on **count 3** and release on **count 0**
+
+While pressing the button, power up the station by connecting to a PoE switch
+Hold the button until the station audio starts counting, and release the button on **count 1**
+Press and hold the button on **count 3** and release on **count 0**
 - If there is no 0 count, the procedure has failed and you have to start again
 - Press the **button**, and the station will speak its IP address
-
-
 
 # Intercom XL
 
@@ -556,7 +541,7 @@ Restore the power supply to the Intercom.
 			Call buttons are only available on the Intercom XL!
 
 To configure the call buttons, open the web interface of the audio module ([Detailed information can be found here](#Ruftasten)).
--  Select the “Advanced” button.
+- Select the “Advanced” button.
 - Open the “Directory”.
 
 ![Intercom XL Verzeichnis 1013x1024](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/10/Intercom-XL-Verzeichnis.png)
@@ -593,8 +578,7 @@ Enter a name for the device
 
 					The iButton can now be used as an input in Loxone Config
 - **Assign the iButton to a user**
-
-Select the user
+- Select the user
 - Confirm with “Assign user”
 
 					The [Access Controller ](https://www.loxone.com/enen/kb/access-controller/)is used for further programming
@@ -603,12 +587,12 @@ Select the user
 
 ### Inhalt
 - [Status messages for failed audio connections](#DiagnoseErrorMeldungen)
-- [LED States](#DiagnoseLEDs)
-- [No sound during audio connection](#DiagnoseTon)
-- [No sound on Android devices](#DiagnoseTonAndroid)
-- [No image with Internet Explorer](#DiagnoseBildInternetExplorer)
-- [No image with Google Chrome](#DiagnoseBildGoogleChrome)
-- [Intercom cannot be found on the network](#DiagnoseNetzwerk)
+[LED States](#DiagnoseLEDs)
+[No sound during audio connection](#DiagnoseTon)
+[No sound on Android devices](#DiagnoseTonAndroid)
+[No image with Internet Explorer](#DiagnoseBildInternetExplorer)
+[No image with Google Chrome](#DiagnoseBildGoogleChrome)
+[Intercom cannot be found on the network](#DiagnoseNetzwerk)
 
 ## Status messages for failed audio connections
 
@@ -618,7 +602,6 @@ Select the user
 | “The party is (temporarily) unavailable” | Code 480 The system is currently unreachable. Possible causes: |
 - SIP account is set up incorrectly. Check the settings in the Intercom and Loxone Config.
 - SIP server is not available, check if the system is reachable.
-
 For external connection, check whether the server of the SIP provider can be reached.
 
 “An error was received while establishing the voice connection: <error code>”[List of Sip Status Codes](https://en.wikipedia.org/wiki/List_of_SIP_response_codes)“”The other party (__host__) has rejected the call.” Please check the configuration.
@@ -741,8 +724,6 @@ If the default addresses are not reachable:
 [Dimensions Loxone Intercom](https://www.loxone.com/dede/wp-content/uploads/sites/2/2017/02/DOC_measures-intercom.pdf)
 
 The front plate of both the Loxone Intercom and Intercom XL is made of anodized aluminum.
-
-
 
 Instruction Manual Loxone Intercom / Intercom XL (German, pdf)
 

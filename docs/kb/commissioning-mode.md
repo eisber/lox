@@ -45,8 +45,6 @@ This section shows you an overview of all the available inputs and outputs and t
 
 The tracker information is the test report that is generated as a .txt file at the end of the commissioning from Loxone Config.
 
-
-
 Input/Output Testing
 This section has all the available inputs and outputs listed with a confirm button under each input or output.
 

@@ -47,8 +47,6 @@ An automatic safety shutdown not only increases energy efficiency but it can als
 
 This Use Case is just one example of an automatic safety shutdown in action. However, this functionality is very versatile and can be applied in a variety of scenarios.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

@@ -40,8 +40,6 @@ By setting up an intelligent hidden storage solution, you can safely store impor
 
 Burglars are, unfortunately, constantly developing their skills – which may result in them being able to find a way into a traditional safe. However, with a secret compartment, they will never even find your items.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

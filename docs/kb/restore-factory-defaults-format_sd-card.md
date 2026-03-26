@@ -59,8 +59,6 @@ This way you can minimize downtime when swapping out the card.
 
 [**SD card Intercom**](https://www.loxone.com/enen/kb/intercom/#sdcard)
 
-
-
 **2.** Open Loxone Config and select either the Miniserver or Audioserver’s “SD Card” in the Periphery Tree.
 
 Then click on “Format SD Card”:
@@ -102,8 +100,6 @@ If you click on “Yes”, only the firmware of the Miniserver on the SD card wi
 Formatting with factory settings will also reset the network settings. The Miniserver will either obtain an IP address from the DHCP server or, if not available, the IP address will default to 192.168.1.77.
 
 Then proceed with the [inital setup.](https://www.loxone.com/enen/kb/miniserver-setup/)
-
-
 
 ### Resetting the password
 

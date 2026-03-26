@@ -30,8 +30,6 @@ If no movement is detected for more than 5 minutes, the refill can run again if 
 ![Motion sensor water valve - Loxone config screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-40-Smart-Water-Supply.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-40-Smart-Water-Supply.png)
 
-
-
 ### Download the sample file:
 
 ### Smart Water Supply
@@ -43,8 +41,6 @@ If no movement is detected for more than 5 minutes, the refill can run again if 
 ## Why you and your customer should consider a motion sensor water valve setup for pet drinking water?
 
 If a dog does not have enough fresh water available, this has negative health effects therefore they must have a continuous supply of fresh water. In the summer month, dogs need an even greater amount of water per day. After drinking, the body temperature drops which has a positive effect on the dog’s circulation. That is why it is so important that your dog is always supplied with fresh water, especially in summer. The smart automatic water supply ensures that your dog is constantly supplied with fresh water as soon as he approaches the bowl. Furthermore, it is also guaranteed that if the dog stays in front of the drinking bowl, it will not be constantly refilled.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

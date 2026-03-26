@@ -105,8 +105,6 @@ Features:
 
 9. Search for a value
 
-
-
 **Data:**
 
 ![CAN_Merr](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/05/CAN_Merr.png)

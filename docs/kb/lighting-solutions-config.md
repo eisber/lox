@@ -82,8 +82,6 @@ Save this into your Miniserver and then check out how the user interface will lo
 
 ![en_kb_ui_dimmed_output_lighiting_controller](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/12/EN_KB_UI_Dimmed_Output_Lighiting_Controller.png)
 
-
-
 #### Multiple Outputs (Switched & Dimmed)
 
 ![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
@@ -126,8 +124,6 @@ Click ‘Ok’, save this into your Miniserver and then check out how the user i
 ![en_kb_ui_multiple_output_lighiting_controller](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/12/EN_KB_UI_Multiple_Output_Lighiting_Controller.png)
 
 Now you can create some incredible [scenes](#Scenes) with your multiple outputs!
-
-
 
 #### Scenes
 

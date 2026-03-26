@@ -96,8 +96,6 @@ User-specific settings can be configured in the user properties:
 
 **User Interface Password:** Protect specific functions in the user interface/app with an additional password. Once entered in the visualization, the password remains valid for one minute before requiring re-entry.
 
-
-
 ## User Management
 
 Clicking on **“Manage Permissions”** for a **User** or **User Group** opens the **User Management** window.

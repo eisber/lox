@@ -55,8 +55,6 @@ This value can, of course, be adjusted at any time by consulting the documentati
 ![Change light colour based on the weather - Loxone config screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-41-Smart-Weather-Forecast-2.jpg)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-41-Smart-Weather-Forecast-2.jpg)
 
-
-
 ### Download the sample file:
 
 ### Smart Weather Forecast
@@ -70,8 +68,6 @@ This value can, of course, be adjusted at any time by consulting the documentati
 It is a comfort and time-saving function to know about the weather as soon as you get up. If your home can change the light colour based on the weather, then this will be especially useful if you have children. I can dress myself or my children according to the forecast, get the raincoats out and choose the right shoes without having to Google what the weather is like and if it might rain during the day. I am reminded via text-to-speech not to forget the umbrella if rain is predicted in the next 12 hours. It’s one thing being able to look outside and see what the weather is like, but it’s another feature altogether having your home let you know what the weather will be like later in the day, too.
 
 Very practical also on the weekend, when you see that it is raining, you can easily get a few more minutes of sleep.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

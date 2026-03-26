@@ -36,8 +36,6 @@ At Loxone we suggest leaving the Miniserver on it’s default internal port of 8
 ![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 We strongly advise against using Port 80 externally as there are many malicious internet programs that simply spam this port and this can cause communication errors with the Miniserver.
 
-
-
 ## CONCLUSION
 
 This is all the steps to port forwarding for a Miniserver. Once this is done the port forwarding is complete and please refer back to the [Remote Access](https://www.loxone.com/enen/kb/remote-access/) documentation to complete the process.

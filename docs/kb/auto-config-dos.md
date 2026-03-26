@@ -22,8 +22,6 @@ Ticking this To-Do box will recolour the note to orange so it is more obvious an
 ![To Do Example](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/To-Do_Example.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/01/To-Do_Example.png)
 
-
-
 ## FINDING TO-DOS
 
 There are two ways to locate and manage To-dos. One method is to use the ‘Show To-Do’s’ button in the top ribbon under the ‘My Project’ tab. This will display a list of your To-dos along with the corresponding pages they are on.

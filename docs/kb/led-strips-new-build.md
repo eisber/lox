@@ -14,8 +14,7 @@ This information is in relation to the Loxone articles [200043](https://shop.lox
 
 ## REQUIRED PRODUCTS
 - [Warm White LED Strip](http://shop.loxone.com/enuk/led-strip-ww.html?___SID=U) or [RGBW LED Strip](http://shop.loxone.com/enuk/led-strip-rgbw.html?___SID=U)
-
-This information is in relation to the Loxone articles [200043](https://shop.loxone.com/enuk/led-strip-warm-white-ip20.html), [200061](https://shop.loxone.com/enuk/led-strip-warm-white-ip65.html), [200092.](https://shop.loxone.com/enuk/led-strip-warm-white-ip68.html)
+- This information is in relation to the Loxone articles [200043](https://shop.loxone.com/enuk/led-strip-warm-white-ip20.html), [200061](https://shop.loxone.com/enuk/led-strip-warm-white-ip65.html), [200092.](https://shop.loxone.com/enuk/led-strip-warm-white-ip68.html)
 - [View Datasheet >>](https://www.loxone.com/wp-content/uploads/datasheets/Datasheet_LEDStrip_WW_200043,200061,200092.pdf)
 - RGBW 24V Dimmer Tree
 - [Tree Extension](http://shop.loxone.com/enuk/tree-extension.html)
@@ -76,8 +75,6 @@ If you are unsure at any point when wiring up any of our devices, please contact
 ## DESIGN CONSIDERATIONS
 
 When designing a key thing to consider is the overall loading for the system. This effects how many RGBW Dimmers required, how many and of what type power supply is required and as per above what cable thickness will be needed to cope with the load.
-
-
 
 ## CONFIGURE TREE DEVICE
 

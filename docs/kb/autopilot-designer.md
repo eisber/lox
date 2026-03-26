@@ -60,8 +60,6 @@ Once you have created Autopilots, they will then be added into the Config file. 
 
 It is crucial you load-from a Miniserver if Autopilots have been used. Failing to do so will result in loss of any Autopilots that have been set up.
 
-
-
 ![autopilotConfig 300x256](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/10/autopilotConfig.jpg)
 
 Once you have created Autopilots within the Loxone App or web interface, a new page will appear if you load from the Miniserver in config. This page will house all Autopilots that have been set up, naming them via their description.
@@ -73,8 +71,6 @@ Double-clicking on an Autopilot block will open up a window that shows you the l
 ![autopilotDoubleclick 300x270](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/10/autopilotDoubleclick.jpg)
 
 Here you can see that this is the logic from the previous example. Here you can see the added details, such as the time = <value>, the lighting controller in use and whether or not it’s enabled (not currently active, but will become active if it’s criteria is met).
-
-
 
 #### INPUTS
 

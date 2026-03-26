@@ -52,8 +52,6 @@ A high CO concentration = unconsciousness, cardiac arrest, respiratory arrest an
 
 Which means that a garage carbon monoxide detector system can save lives in both private and public garages.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

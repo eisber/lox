@@ -39,13 +39,4 @@ The network device iRoom Controller contains a series of sensors and actuators (
 
 In the iDock, Relay, Mute, Play / Pause actuators, there are commands for ON, OFF and Toggle (Toggle = Change state)
 
-| Beep | Output the sound signal on the bracket |
-| --- | --- |
-| IDock (close / open / toggle) | Commands to control the iDock |
-| Relay (close / open / toggle) | Commands to control the relay mounted on the wall bracket |
-| Mute / Unmute / Toggle Mute | Commands to control the mute state of the mount |
-| Play / Pause / Toggle Play / Pause | Command to play / stop media |
-| Volume | Analogue volume output |
-| Volume down | Audio output |
-| Volume up | Audio output |
-| Text Command | User-defined text commands can be used by “;” Separately. |
+> **ℹ️ Note:** Output the sound signal on the bracket

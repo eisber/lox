@@ -79,8 +79,6 @@ This will add a virtual output for QMotion blinds, which contains four example o
 
 ![Virtual Outputs](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/05/Virtual-Outputs.jpg)
 
-
-
 **Note: **If you have multiple devices/groups, we would recommend fully configuring and testing one device first. Once it is working as expected, you can create additional outputs, copy and paste the relevant fields across, adjust the settings to match, and just change the relevant IDs.****
 
 Now we need to adjust the commands in the template to match your groups and devices, as well as to include your authorisation token. For each of the four outputs, you will need to alter the following fields:****

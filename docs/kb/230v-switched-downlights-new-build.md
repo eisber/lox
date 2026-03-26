@@ -56,8 +56,6 @@ The Loxone Touch, Touch Pure and Motion sensor Tree are very slimline, as such w
 ![IC_loxone-tree@2x-1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/11/IC_loxone-tree@2x-1.png)
 ](https://www.loxone.com/enen/kb/tree-cabling-setup/)For information on how to connect your Tree Device with Loxone config then [click here!](https://www.loxone.com/enen/kb/tree-cabling-setup/)
 
-
-
 ## CONFIGURE LIGHTING CONTROLLER
 
 The next stage in the process is to configure the Lighting Controller in Loxone config, click on the image below to see how:

@@ -14,17 +14,16 @@ For information on specifying and designing Loxone lighting take a look at our l
 
 ## TECHNICAL DATA
 - LED Type: RGBW LED
-- Colour Temperature: 3000 Kelvin Warm White
-- Light Output: 410 Lumen
-- Dimming: 1 – 100% PWM
-- PWM Signal: 125 – 500Hz
-- Beam Angle 120°
-- Tilt Angle: 30°
-- LED count: 12 Multichips for RGBW & 4 High-Powered for WW
-- Power Supply: 24VDC SELV(-10%…+5%)
-- Power Consumption:
-
-Red: 2.0W
+Colour Temperature: 3000 Kelvin Warm White
+Light Output: 410 Lumen
+Dimming: 1 – 100% PWM
+PWM Signal: 125 – 500Hz
+Beam Angle 120°
+Tilt Angle: 30°
+LED count: 12 Multichips for RGBW & 4 High-Powered for WW
+Power Supply: 24VDC SELV(-10%…+5%)
+Power Consumption:
+- Red: 2.0W
 - Green: 1.7W
 - Blue: 1.7W
 - Warm White: 5.0W
@@ -34,8 +33,6 @@ Red: 2.0W
 - Surface Temperature: <45°C (at room temperature)
 - Depth: 60mm
 - Mounting Diameter: 68-72mm
-
-
 
 ## WIRING
 

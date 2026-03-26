@@ -44,8 +44,6 @@ Getting old is just a part of life. However, automation allows people to stay in
 
 Open door monitoring is a great example of how automation can be used to identify a potential risk before it becomes problematic. An open door through the night is essentially an invitation to a burglar. However, with our gentle reminder to shut the door before bed the danger is avoided.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

@@ -14,10 +14,10 @@ The individual messages provide information on the cause and the nature of the i
 
 ## Glossary
 - [System Status in App](#app)
-- [System Status in Config](#config)
-- [Message Types](#messages)
-- [Potential Messages](#potential-messages)
-- [Notifications](#notifications)
+[System Status in Config](#config)
+[Message Types](#messages)
+[Potential Messages](#potential-messages)
+[Notifications](#notifications)
 
 ### System Status in The Loxone App
 
@@ -28,7 +28,6 @@ In the Loxone App, System Status is only actively visible when active message ar
 ### System Status in Loxone Config
 
 In Loxone Config, System Status becomes visible as soon as a connection to a Miniserver has been established.
-
 On the right-hand side of the status bar, an area appears, which describes the current state of the System. Clicking on the area takes you to a detailed view.
 
 ![Unbenannt](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/07/Unbenannt.jpg)
@@ -41,8 +40,6 @@ There are 2 important distinguishing features for individual messages. One is th
 - **Important Message** – E.g. Air Device Offline
 - **Critical Message** – E.g. Extension Offline
 
-
-
 ### Potential Messages
 - SD Card Diagnostics
 
@@ -50,33 +47,26 @@ There are 2 important distinguishing features for individual messages. One is th
 - [SD Card Defective](https://www.loxone.com/enen/kb/sd-card-diagnostics/#broken)
 - [SD Card High Write Load](https://www.loxone.com/enen/kb/sd-card-diagnostics/#writeload)
 - Shading Diagnostics
-
-[Obstacle Detected](https://www.loxone.com/enen/kb/shading-diagnostics/#obstacle-detected)
+- [Obstacle Detected](https://www.loxone.com/enen/kb/shading-diagnostics/#obstacle-detected)
 - [Motor Blocked](https://www.loxone.com/enen/kb/shading-diagnostics/#motor-blocked)
 - Valve Actuator Diagnostics
-
-[Valve Stuck](https://www.loxone.com/enen/kb/valve-diagnostics/#valve-stuck)
+- [Valve Stuck](https://www.loxone.com/enen/kb/valve-diagnostics/#valve-stuck)
 - [No Valve Detected](https://www.loxone.com/enen/kb/valve-diagnostics/#no-valve)
 - [Mechanical Defect](https://www.loxone.com/enen/kb/valve-diagnostics/#valve-hardware)
 - Ventilation Diagnostics
-
-Filter Change Due [[Internorm](https://www.loxone.com/enen/kb/internorm-ventilation/#filter) & [Leaf](https://www.loxone.com/enen/kb/leaf-air-tree/#maintenance)]
+- Filter Change Due [[Internorm](https://www.loxone.com/enen/kb/internorm-ventilation/#filter) & [Leaf](https://www.loxone.com/enen/kb/leaf-air-tree/#maintenance)]
 - Ventilation Error (Mechanical or Electrical) [[Internorm](https://www.loxone.com/enen/kb/commissioning-internorm-i-tec-devices/#error-codes) & [Leaf](https://www.loxone.com/enen/kb/leaf-air-tree/#diagnostics)]
 - Gate Diagnostics
-
-[Gate Stopped by Safety Mechanism](#gate-safety)
+- [Gate Stopped by Safety Mechanism](#gate-safety)
 - [Gate Not Closed](#gate-object)
 - Sauna Diagnostics
-
-[Sauna Exceeded Maximum Operating Time](#operating-time)
+- [Sauna Exceeded Maximum Operating Time](#operating-time)
 - [Sauna Exceeded Maximum Operating Temperature](#operating-temperature)
 - Pool Diagnostics
-
-[Pool Control Suspended](#pool-control)
+- [Pool Control Suspended](#pool-control)
 - [Pool Out of Order](#pool-offline)
 - Miscellaneous
-
-[Air Channel Occupied](https://www.loxone.com/enen/kb/loxone-air/#frequency-change) — Advanced Issue – Consult Loxone Partner
+- [Air Channel Occupied](https://www.loxone.com/enen/kb/loxone-air/#frequency-change) — Advanced Issue – Consult Loxone Partner
 - [Device Offline](https://www.loxone.com/enen/kb/device-offline-diagnostics/)
 - [Insecure User](https://www.loxone.com/enen/kb/password-security/)
 - [Insecure Admin](https://www.loxone.com/enen/kb/password-security/)
@@ -134,8 +124,7 @@ In the event of the Miniserver being restarted as a result of power failure, you
 ## Notifications
 
 The residents in the Smart Home are informed of new events from the System Status in the following ways:
-
-Push Notifications
+- Push Notifications
 - Emails
 - Daily Report
 - Miniserver LED
@@ -155,7 +144,7 @@ All messages that do not trigger either a direct push notification or a direct e
 
 ### Miniserver LED
 
- If a message is, at least, visible to all administrators, the secondary LED of the Miniserver will light up in the message’s corresponding colour, analogous to the coloured displayed in the app.
+If a message is, at least, visible to all administrators, the secondary LED of the Miniserver will light up in the message’s corresponding colour, analogous to the coloured displayed in the app.
 
 ### Log File
 

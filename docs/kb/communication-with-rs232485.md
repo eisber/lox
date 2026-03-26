@@ -20,7 +20,7 @@ The following settings for the RS-232 and RS-485 extensions can be modified in t
 | Stop bits | 1-2 |
 | Parity | None, Even, Odd, Always 0, Always 1 |
 | End-of-frame symbol | The use of an end-of-frame symbol is optional. The symbol must be a hexadecimal character (i.e., 0x0A). When the RS-232/RS-485 extension detects the end-of-frame symbol, it recognises that the received frame is complete and forwards the frame to the Miniserver. If no end-of frame symbol is specified, a 32 bit period timeout is used to signal end-of-frame. This means that if nothing is received for a period of 32 bits, then the RS-232/RS-485 extension assumes a complete frame has been received and forwards the frame to the Miniserver. |
-| Checksum | The use of check summing is optional. The following checksums can be used: XOR byte, byte-sum, CRC byte, Modbus CRC Checksum Fronius. When transmitting over an RS-232/RS-485 relay, the appropriate checksum is calculated and inserted into the data stream. When receiving with an RS-232/RS-485 sensor, command recognition occurs only when the corresponding checksum has been correctly received. The checksum may not be used for command recognition. |
+| Checksum | The use of check summing is optional. The following checksums can be used: XOR byte, byte-sum, CRC byte, Modbus CRC Checksum Fronius. When transmitting over an RS-232/RS-485 relay, the appropriate checksum is calculated and inserted into the data stream. When receiving with an RS-232/RS-485 sensor, command recognition occurs only when the corresponding checksum has been correctly received. The checksum may not be used for command recognition. |
 
 ![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 All RS-232 and RS-485 communication will be transported via the RS-485 bus to the Loxone Miniserver. Frequent queries of data (more than several times per second) can lead to an overload of information where command execution could be delayed. Please therefore check with the device information whether data must be queried at a high frequency or whether several queries per second are sensible.
@@ -45,28 +45,11 @@ If checksum is used, command recognition works only if the corresponding checksu
 
 #### SPECIAL CHARACTERS FOR COMMAND RECOGNITION WHEN USING DIGITAL AND ANALOGUE INPUT
 
-| \x | Hexadecimal i.e., \x09 for 0x09 or \x01\x02\x03\x04 for 0x01020304 |
-| --- | --- |
-| \\ | \ |
-| \. | Any sign |
-| \w | Any word |
-| \# | Any number |
-| \t | Tab (0x09) |
-| \b | Tab (0x09) or space (0x20) |
-| \r | Carriage return (0x0D) |
-| \n | Line feed (0x0A) |
-| \d | Any digit (0-9) |
-| \a | Any letter (A-Z, a-z) |
-| \m | Any letter (A-Z, a-z) or any digit (0-9) |
+> **ℹ️ Note:** Hexadecimal i.e., \x09 for 0x09 or \x01\x02\x03\x04 for 0x01020304
 
 #### SPECIAL CHARACTERS FOR COMMAND RECOGNITION WHEN USING A ANALOGUE INPUT
 
-| \v | The value is accepted as an ASCII string. Decimal points must be separated by a comma or a dot. |
-| --- | --- |
-| \1 | The numeric value of the received bytes is placed in the least significant byte (LSB) of the output (bits 0 – 7). |
-| \2 | The numeric value of the received byte is placed in bits 8-15 at the output. |
-| \3 | The numeric value of the received byte received is placed in bits 16-23 at the output. |
-| \4 | The numeric value of the received byte is placed in most significant byte (MSB) at the output (bits 24 – 31). |
+> **ℹ️ Note:** The value is accepted as an ASCII string. Decimal points must be separated by a comma or a dot.
 
 #### EXAMPLES WITH DIGITAL INPUT
 
@@ -104,21 +87,11 @@ If checksum is used, the appropriate checksum is calculated and inserted into th
 
 #### SPECIAL CHARACTERS FOR DIGITAL AND ANALOGUE OUTPUT
 
-| \x | Hexadecimal as \ x09 for 0x09 or \ x01 \ x02 \ x03 \ x04 for 0x01020304 |
-| --- | --- |
-| \\ | \ |
-| \t | Tab (0x09) |
-| \r | Carriage return (0x0D) |
-| \n | Line feed (0x0A) |
+> **ℹ️ Note:** Hexadecimal as \ x09 for 0x09 or \ x01 \ x02 \ x03 \ x04 for 0x01020304
 
 #### SPECIAL CHARACTERS FOR THE ANALOGUE OUTPUT
 
-| <v> | The value found at the relay input is sent from the RS232 interface (without a decimal point). |
-| --- | --- |
-| <v.1> | The value found at the relay input is sent from the RS232 interface using a decimal point. |
-| <v.2> | The value found at the relay input is sent from the RS232 interface using two decimal places. |
-| <v.3> | The value found at the relay input is sent from the RS232 interface using three decimal places. |
-| <v.t> | The value found at the relay input (time in seconds), is formatted and sent from the RS232 interface. |
+> **ℹ️ Note:** The value found at the relay input is sent from the RS232 interface (without a decimal point).
 
 #### EXAMPLES OF DIGITAL OUTPUT
 
@@ -131,12 +104,12 @@ If checksum is used, the appropriate checksum is calculated and inserted into th
 
 | Input | Command when ON | Transmitted Data Stream |
 | --- | --- | --- |
-| 36 | CMD03 <v> | CMD03 36 |
-| 36.1 | CMD03 <v.1> | CMD03 36.1 |
-| 36.123 | CMD03 <v.3> | CMD03 36.123 |
-| 59 | Time: <v.t> | Time: 0:00:59 |
-| 100 | Time: <v.t> | Time: 0:01:40 |
-| 3600 | Time: <v.t> | Time: 1:00:00 |
-| 36000 | Time: <v.t> | Time: 10:00:00 |
-| 86400 | Time: <v.t> | Time: 1 day, 00:00:00 |
-| 400000 | Time: <v.t> | Time: 4 days, 15:06:40 |
+| 36 | CMD03  | CMD03 36 |
+| 36.1 | CMD03  | CMD03 36.1 |
+| 36.123 | CMD03  | CMD03 36.123 |
+| 59 | Time:  | Time: 0:00:59 |
+| 100 | Time:  | Time: 0:01:40 |
+| 3600 | Time:  | Time: 1:00:00 |
+| 36000 | Time:  | Time: 10:00:00 |
+| 86400 | Time:  | Time: 1 day, 00:00:00 |
+| 400000 | Time:  | Time: 4 days, 15:06:40 |

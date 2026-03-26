@@ -16,24 +16,15 @@ If this is not the case refer to the following table for the solution:
 
 | LED status | Reason | Solution |
 | --- | --- | --- |
-| Flashing yellow | The Miniserver is in pause mode. | 1. Reboot the Miniserver and extensions (by turning the power supply off for about 10 seconds until rebooting). The green connector power plug should NOT be removed if the power supply is on. 2. If the behaviour remains the same then format the SD card to factory defaults according to the instructions. |
-| Flashing red / yellow | The Miniserver does not recognise the SD card or cannot access the card. | 1. Check that the SD card is inserted correctly. 2. Reboot the Miniserver and extensions (by turning the power supply off for about 10 seconds until rebooting). The green connector power plug should NOT be removed if the power supply is on. 3. If the behaviour remains the same then format the SD card to factory defaults according to the instructions. |
-| Flashing red / red / yellow | There is a faulty PLC program in the Miniserver. | 1. Reboot the Miniserver and extensions (by turning the power supply off for about 10 seconds until rebooting). The green connector power plug should NOT be removed if the power supply is on. 2. If the behaviour remains the same then format the SD card to factory defaults according to the instructions. |
+| Flashing yellow | The Miniserver is in pause mode. | 1. Reboot the Miniserver and extensions (by turning the power supply off for about 10 seconds until rebooting). The green connector power plug should NOT be removed if the power supply is on. 2. If the behaviour remains the same then format the SD card to factory defaults according to the instructions. |
+| Flashing red / yellow | The Miniserver does not recognise the SD card or cannot access the card. | 1. Check that the SD card is inserted correctly. 2. Reboot the Miniserver and extensions (by turning the power supply off for about 10 seconds until rebooting). The green connector power plug should NOT be removed if the power supply is on. 3. If the behaviour remains the same then format the SD card to factory defaults according to the instructions. |
+| Flashing red / red / yellow | There is a faulty PLC program in the Miniserver. | 1. Reboot the Miniserver and extensions (by turning the power supply off for about 10 seconds until rebooting). The green connector power plug should NOT be removed if the power supply is on. 2. If the behaviour remains the same then format the SD card to factory defaults according to the instructions. |
 
 ## PROBLEMS WITH CONNECTING
 
 If the Miniserver is flashing green but you cannot connect to it in Loxone Config use the following table to resolve the issue:
 
-| Step | Solution should be: |
-| --- | --- |
-| 1. Verify that the status LEDs on the network (LAN) port of the flash or are lit up. | 1.1 The green LED should be lit constantly, the amber LED should flash. If this is all correct continue to step 2. 1.2 If both or one LED is not flashing/not lit up then check first that the network cable is connected correctly and the cable has been tested or replaced. If the LEDs stay the same pleasecontact support. 1.3 If both LEDs are on constantly, with or without a cable connected please contact support. |
-| 2. The Miniserver status LEDs should be flashing green and the network socket LEDs should be green on and amber flashing. Open Loxone Config and search for the Miniserver. The Miniserver should show up in the search results and you can connect to it by double clicking on it. | If no Miniserver is listed in the search results continue to step 3. |
-| 3. Check again that the network cable is connected correctly. Test and replace the LAN cable. | You can now connect to the Miniserver, if not please go to step 4. |
-| 4. Check whether you have not made an exception for Loxone Config in your firewall or antivirus software. Some antivirus software will still block outgoing traffic with Loxone Config even if you have done this so it is best to temporarily disable antivirus programs when using Loxone Config. | You can now connect to the Miniserver, if not please go to step 5. |
-| 5. If you are using Parallels software on a Macbook make sure that your network is bridged not shared! | You can now connect to the Miniserver, if not please go to step 6. |
-| 6. Check the network configuration. How are you connected to the Miniserver? Important: The network must be classified as a home or workplace network on your Windows PC! | If connected to router see step 7. If connected directly see step 8. |
-| 7. Miniserver is connected to a router. Follow these steps to setup and ping the Miniserver. | 7.1 Setup is successful and the Miniserver is on the same subnet as your router. The ping should be successful and you should be able to connect to the Miniserver. If not please recheck steps 3 and 4. 7.2 If the ping failed then it is likely the network settings haven’t been setup correctly as long as you have checked steps 3 and 4. Please contact support if you are still having problems. |
-| 8. The Miniserver is directly connected to your laptop or computer. Please make sure that you have assigned a static IP address to your laptop. | If you have followed all the steps in the getting started section about connecting directly and still cannot connect please contact support. |
+> **ℹ️ Note:** Solution should be:
 
 ## COMISSIONING CHECKLIST
 

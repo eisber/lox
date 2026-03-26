@@ -39,8 +39,6 @@ A [Door & Window Contact Air](https://shop.loxone.com/enuk/door-window-contact-a
 
 In case of fire, it is essential that all fire doors are closed to prevent the fire from spreading through the building. Loxone offers the possibility to optimally monitor the open status of fire doors and to notify the relevant parties in if one is left open.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

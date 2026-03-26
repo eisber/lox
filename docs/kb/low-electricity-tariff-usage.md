@@ -60,8 +60,6 @@ In the UK, if you have a swimming pool it’s not uncommon for it to be an indoo
 - [Smart Socket Air](https://shop.loxone.com/enuk/smart-socket-air.html) (optional)
 - [AquaStar Air](https://shop.loxone.com/enuk/aquastar-air.html) (optional)
 
-
-
 ### Download the sample file:
 
 ### Low Electricity Tariff
@@ -75,8 +73,6 @@ In the UK, if you have a swimming pool it’s not uncommon for it to be an indoo
 ## Why you and your customer should consider setting up low electricity tariff usage for some appliances?
 
 This feature can be a big money and worries saver. No one will have to check the time whenever they want to use the dishwasher, washing machine, oven etc.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

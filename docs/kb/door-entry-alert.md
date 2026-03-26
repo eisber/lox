@@ -45,8 +45,6 @@ Nobody wants to wait. Every minute that a potential customer spends in the store
 
 Thanks to our intelligent door entry alert, visitors are guaranteed to be noticed, as owners and staff are informed of the incoming customers through the flashing lights. They can react immediately, take care of the customers and drastically reduce their waiting time. At the same time, a reliable door entry alert provides a reassuring feeling should owners and employees be out of sight.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

@@ -10,24 +10,22 @@ The [LED Spot RGBW Tree White (UK)](https://shop.loxone.com/enuk/led-spot-rgbw-t
 
 ## TECHNICAL DATA
 - LED Type: RGBW LED
-- Colour Temperature: 3000 Kelvin Warm White
-- Light Output: 741.5Lumen
-- Dimming: 1 – 100% PWM
-- PWM Signal: 125 – 500Hz
-- Beam Angle 120°
-- Power Supply: 24VDC SELV(-10%…+5%)
-- Power Consumption:
-
-Red: 4.8W
+Colour Temperature: 3000 Kelvin Warm White
+Light Output: 741.5Lumen
+Dimming: 1 – 100% PWM
+PWM Signal: 125 – 500Hz
+Beam Angle 120°
+Power Supply: 24VDC SELV(-10%…+5%)
+Power Consumption:
+- Red: 4.8W
 - Green: 2.0W
 - Blue: 3.2W
 - Warm White: 9.4W
 - Operating Temperature: 0° – 50°C
-- Protection: IP 20
-- Colour Rendering Index (CRI): Ra: 80 (Typically 82)
-- Surface Temperature: 60°C (at room temperature)
-
-Dimensions:
+Protection: IP 20
+Colour Rendering Index (CRI): Ra: 80 (Typically 82)
+Surface Temperature: 60°C (at room temperature)
+- Dimensions:
 
 Diameter: 80mm
 - Height: 70mm

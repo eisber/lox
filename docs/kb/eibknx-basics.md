@@ -132,8 +132,6 @@ For example if this push-button is pressed, the value ‘**9**‘ is sent to gro
 | EIB addresses Off | 14/1/5:0 |
 | EIB addresses Pulse | 14/1/4:1 |
 
-
-
 #### EIB PUSH-BUTTON CONFIGURATION WITH EXTENDED SENSOR
 
 In the following example we focus in detail on an EIB push-button that was configured for dimming and has only limited settings in ETS.

@@ -52,8 +52,6 @@ Then in a block’s Properties check the tick box next to “User interface pass
 ![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 So you can, for example, protect the control of the garage door or electric front door lock by adding password protection to the blocks to stop accidental opening or operation.
 
-
-
 #### SAVE TO THE MINISERVER
 
 Finally, following the above settings save the program to the Miniserver. If there are any changes to your the settings you must save the program in the Miniserver again for changes to have an effect on the visualisation.

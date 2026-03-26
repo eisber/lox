@@ -6,8 +6,6 @@ Source: https://www.loxone.com/enen/kb/event-database-connector/
 
 This block can be used to transfer and display events, such as billing, in an Exosphere database.
 
-
-
 ## Table of Contents
 - [Inputs](#Input)
 - [Outputs](#Output)
@@ -15,16 +13,9 @@ This block can be used to transfer and display events, such as billing, in an Ex
 - [Properties](#Property)
 - [Programming example](#baseconf)
 
-
-
-
 ---
 
-
 ## Inputs
-
-
-
 
 | Abbreviation | Summary | Description | Value Range |
 | --- | --- | --- | --- |
@@ -47,117 +38,54 @@ This block can be used to transfer and display events, such as billing, in an Ex
 | CI15 | Custom input 15 | Additional custom input 15 | - |
 | CI16 | Custom input 16 | Additional custom input 16 | - |
 
-
-
-
-
-
-
-
 ---
 
-
 ## Outputs
-
-
-
 
 | Abbreviation | Summary | Description |
 | --- | --- | --- |
 | Log | Log output | Log output on every write operation to the database |
-| API | API Connector | Intelligent API based connector.API Commands |
-
-
-
-
-
-
-
+| API | API Connector | Intelligent API based connector. API Commands |
 
 ---
 
-
 ## Parameters
-
-
-
 
 | Abbreviation | Summary | Description | Unit | Value Range | Default Value |
 | --- | --- | --- | --- | --- | --- |
 | Td | Trigger Delay | Delays writing to database after trigger to make sure all inputs are set | ms | ∞ | 0 |
 
-
-
-
-
-
-
-
 ---
 
-
 ## Properties
-
-
-
 
 | Summary | Description | Default Value |
 | --- | --- | --- |
 | Column content | Edit column content. Specify the data that should be written to the database columns. | - |
 
-
-
-
-
-
-
-
 ---
-
 
 ## Programming example
 
+In this example, a food and beverage billing for employees is recorded in a database.
 
-    In this example, a food and beverage billing for employees is recorded in a database.
+A database must be created in [Exosphere](https://www.loxone.com/help/exosphere/) and integrated into the configuration using the "Database".
 
-
-    A database must be created in [Exosphere](https://www.loxone.com/help/exosphere/) and integrated into the configuration using the "Database".
-
-
-    With the "Event Database Connector" block, the database can now be populated with data.
-
-
-
+With the "Event Database Connector" block, the database can now be populated with data.
 
 ![Exo DbConEAPI](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_DbConEAPI.png)
 
-
-
-    Double-clicking on the block opens the "Database Connector Configuration". Here, the contents of the columns can be defined.
+Double-clicking on the block opens the "Database Connector Configuration". Here, the contents of the columns can be defined.
 If an option is grayed out, the datatype is not compatible with it.
-
-
-
 
 ![Exo DbConEColumns](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_DbConEColumns.png)
 
-
-
-    Additionally, the block inputs "CI1-CI16" can be named. These will be displayed in the configuration but not in the Exosphere database.
-
-
-
+Additionally, the block inputs "CI1-CI16" can be named. These will be displayed in the configuration but not in the Exosphere database.
 
 ![Exo DbConEUI](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_DbConEUI.png)
 
+The input "ETr" is triggered when a user is successfully authenticated via the NFC Code Touch. On every rising edge of this input, data is written to the database.
 
-
-    The input "ETr" is triggered when a user is successfully authenticated via the NFC Code Touch. On every rising edge of this input, data is written to the database.
-
-
-    The ID of the authenticated user is transferred to the "Uid" input, and with additional logic on "CI1" and "CI2", the food and beverage type as well as the respective price are transferred.
-
-
-
+The ID of the authenticated user is transferred to the "Uid" input, and with additional logic on "CI1" and "CI2", the food and beverage type as well as the respective price are transferred.
 
 ![Exo DbConEExample](http://updatefiles.loxone.com/KnowledgeBase/Online/Common/Images/Exo_DbConEExample.png)

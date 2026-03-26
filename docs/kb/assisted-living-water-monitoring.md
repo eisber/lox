@@ -45,8 +45,6 @@ Although water leaks can affect everyone, reducing risks in an Ambient Assisted 
 
 By setting up assisted living water monitoring and an emergency shut-off, you not only reduce the risk of danger, you give everyone involved greater peace of mind knowing that this is now one less thing they need to worry about.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

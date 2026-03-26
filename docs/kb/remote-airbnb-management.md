@@ -46,8 +46,6 @@ In our example, we assume that the Airbnb is occupied from Friday 11 am to Sunda
 
 The automatic activation of Away Mode ensures that the empty AirBnB is protected as the alarm is set. The owner does not need to worry about their property from afar. Also, electrical devices are turned off and the heating is lowered – saving money and essentially increasing profit margins.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

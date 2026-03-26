@@ -52,8 +52,6 @@ Research has shown that the elderly often fear the loss of their independence an
 
 Passive control is only part of the functionality offered by a Loxone system for ambient assisted living purposes. Thanks to the far-reaching automation, potential risks can be identified, visual and/or acoustic messages can be provided, fall prevention can be further developed and lifestyle monitoring can be integrated. What’s more, everything happens automatically so that the residents do not have to do a thing.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

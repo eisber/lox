@@ -22,10 +22,7 @@ With “call” all supported commands of the selected device are listed in the 
 
 ![devcom callCom](https://www.loxone.com/enen/wp-content/uploads/sites/3/2022/12/devcom_callCom.png)
 
-
-
 					Only apply commands whose purpose and effects are fully known or if you are prompted to do so by Loxone, for example for diagnostics. Many commands are only intended for experienced developers. Some commands may have a negative effect on the product life or lead to a defect of the device and the expiration of the warranty.
-
 
 ## Examples
 

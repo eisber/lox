@@ -50,8 +50,6 @@ In Loxone Config, a user is created for each person and an NFC Key Fob or a Smar
 
 A locker management system with authorization via NFC tags is a simple and expandable solution. Creating, deleting or changing users can be done directly in the Loxone App. Your customer can also pair and assign new NFC tags directly in the Loxone App. There is no need to change the configuration. In addition, the Key Fob or the Smart Tag can also be used for access to the building or other areas.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

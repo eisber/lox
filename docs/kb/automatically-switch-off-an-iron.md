@@ -50,8 +50,6 @@ The automatic switch-off serves to protect both the occupants and the building. 
 
 However, as we mentioned earlier, it’s not only elderly people who leave the iron on. People of all ages find themselves thinking “did I definitely turn the iron off?” – especially when they’ve just left the house. With this automatic switch-off, you can give your customers more security and peace of mind.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

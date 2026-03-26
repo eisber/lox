@@ -42,8 +42,6 @@ After a successful filter change, the interval can start again from the beginnin
 
 By implementing automatic maintenance reminders as part of a wider fault monitoring system, you heavily reduce the risk of components malfunctioning. In commercial buildings, it is especially helpful if all messages converge in one overall fault monitoring system. This way, problems can be solved before they even become noticeable. It also saves the caretakers a lot of organisational work. This, in turn, reduces repair costs and creates a structured overview of all areas of the building. The investment costs for the implementation of a Loxone-based fault monitoring system are kept within limits, as no additional hardware is required.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

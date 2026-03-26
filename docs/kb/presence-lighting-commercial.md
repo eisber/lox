@@ -50,28 +50,22 @@ In the sample Config file attached, all of the above 3 features are demonstrated
 
 Reducing power consumption is not only beneficial in terms of cost but also supports environmental sustainability. By using energy more efficiently and reducing waste and carbon emissions, Loxone systems can contribute to greener operations.
 
-
-
 ### Hardware:
 - Miniserver (can be [Miniserver](https://shop.loxone.com/enuk/miniserver.html), [Miniserver Compact](https://shop.loxone.com/enuk/miniserver-compact.html) or [Miniserver Go](https://shop.loxone.com/enuk/miniserver-go.html))
-- Sensor options:
-
-Flush-mounted Presence Sensor Tree (can be [White](https://shop.loxone.com/enuk/flush-mounted-presence-sensor-tree-white.html) or [Anthracite](https://shop.loxone.com/enuk/flush-mounted-presence-sensor-tree-anthracite.html))
+Sensor options:
+- Flush-mounted Presence Sensor Tree (can be [White](https://shop.loxone.com/enuk/flush-mounted-presence-sensor-tree-white.html) or [Anthracite](https://shop.loxone.com/enuk/flush-mounted-presence-sensor-tree-anthracite.html))
 - Presence Sensor Tree (can be [White](https://shop.loxone.com/enuk/presence-sensor-tree-white.html) or [Anthracite](https://shop.loxone.com/enuk/presence-sensor-tree-anthracite.html))
 - Presence Sensor Air (can be [White](https://shop.loxone.com/enuk/presence-sensor-air-white.html) or [Anthracite](https://shop.loxone.com/enuk/presence-sensor-air-anthracite.html))
 - 230V Dimming:
-
-[Dimmer Extension](https://shop.loxone.com/enuk/dimmer-extension.html)
+- [Dimmer Extension](https://shop.loxone.com/enuk/dimmer-extension.html)
 - [Nano Dimmer](https://shop.loxone.com/enuk/nano-dimmer-air.html)
 - 24V/12V Dimming:
-
-[RGBW 24V Dimmer Tree](https://shop.loxone.com/enuk/rgbw-24v-dimmer-tree.html)
+- [RGBW 24V Dimmer Tree](https://shop.loxone.com/enuk/rgbw-24v-dimmer-tree.html)
 - [RGBW 24V Dimmer Air](https://shop.loxone.com/enuk/rgbw-24v-dimmer-air.html)
 - [RGBW 24V Compact Dimmer Air](https://shop.loxone.com/enuk/rgbw-24v-compact-dimmer-air.html)
 - [RGBW 24V Compact Dimmer Tree](https://shop.loxone.com/enuk/rgbw-24v-compact-dimmer-tree.html)
 - Light options:
-
-LED Ceiling Light RGBW Tree (can be [White](https://shop.loxone.com/enuk/led-ceiling-light-rgbw-tree-white.html) or [Anthracite](https://shop.loxone.com/enuk/led-ceiling-light-rgbw-tree-anthrazit.html))
+- LED Ceiling Light RGBW Tree (can be [White](https://shop.loxone.com/enuk/led-ceiling-light-rgbw-tree-white.html) or [Anthracite](https://shop.loxone.com/enuk/led-ceiling-light-rgbw-tree-anthrazit.html))
 - LED Ceiling Light RGBW Air (can be [White](https://shop.loxone.com/enuk/led-ceiling-light-rgbw-air-white.html) or [Anthracite](https://shop.loxone.com/enuk/led-ceiling-light-rgbw-air-anthrazit.html))
 - LED Spot RGBW Tree (can be [White](https://shop.loxone.com/enuk/led-spot-rgbw-tree-white-v2.html) or [Anthracite](https://shop.loxone.com/enuk/led-spot-rgbw-tree-athracite-v2.html))
 - LED Spot WW PWM (can be [White](https://shop.loxone.com/enuk/led-spot-ww-white.html) or [Anthracite](https://shop.loxone.com/enuk/led-spot-ww-anthracite-v2.html))
@@ -85,7 +79,7 @@ LED Ceiling Light RGBW Tree (can be [White](https://shop.loxone.com/enuk/led-cei
 
 ### [
 ![PH EN UseCase Presence Based Lighting Config 1 800x472](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-Presence-Based-Lighting-Config-1.jpg)
- ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-Presence-Based-Lighting-Config-1.jpg)
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/PH-EN-UseCase-Presence-Based-Lighting-Config-1.jpg)
 
 ###
 
@@ -102,7 +96,5 @@ LED Ceiling Light RGBW Tree (can be [White](https://shop.loxone.com/enuk/led-cei
 			[Download Config](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/11/Presence-based-lighting-in-commercial-buildings.loxone)
 
 ## Video:
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.

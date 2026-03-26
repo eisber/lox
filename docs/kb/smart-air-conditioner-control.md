@@ -38,8 +38,6 @@ When it is cold, the hypothalamus and thyroid gland are stimulated to increase m
 
 The result, however, is anything but complicated; windows are opened. In combination with an active air conditioning system, this leads to unnecessary costs. This Use Case can help to minimize these costs.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

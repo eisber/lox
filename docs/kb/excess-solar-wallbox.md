@@ -20,7 +20,7 @@ With all this in mind, let’s introduce a third hypothetical calculation. The a
 ![PH EN UseCase Wallbox App 394x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-UseCase-Wallbox-App.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-UseCase-Wallbox-App.png) [
 ![PH EN UseCase Wallbox App 1 408x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-UseCase-Wallbox-App-1.png)
- ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-UseCase-Wallbox-App-1.png)[
+](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-UseCase-Wallbox-App-1.png)[
 ![PH EN UseCase Wallbox App 2 396x800](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-UseCase-Wallbox-App-2.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2023/10/PH-EN-UseCase-Wallbox-App-2.png)
 
@@ -38,9 +38,8 @@ If the selected tariff is Economy 7, a schedule defining the 7-hour period will 
 
 ### Hardware:
 - Miniserver (can be [Miniserver](https://shop.loxone.com/enuk/miniserver.html), [Miniserver Compact](https://shop.loxone.com/enuk/miniserver-compact.html) or [Miniserver Go](https://shop.loxone.com/enuk/miniserver-go.html))
-- Wallbox (can be 7.4kW [Tree](https://shop.loxone.com/enuk/wallbox-tree.html)/[Air](https://shop.loxone.com/enuk/wallbox-air.html) or 11kW [Tree](https://shop.loxone.com/enuk/wallbox-tree-16a.html)/[Air](https://shop.loxone.com/enuk/wallbox-air-16a.html))
-
-Included electricity meter
+Wallbox (can be 7.4kW [Tree](https://shop.loxone.com/enuk/wallbox-tree.html)/[Air](https://shop.loxone.com/enuk/wallbox-air.html) or 11kW [Tree](https://shop.loxone.com/enuk/wallbox-tree-16a.html)/[Air](https://shop.loxone.com/enuk/wallbox-air-16a.html))
+- Included electricity meter
 
 ###
 
@@ -65,7 +64,5 @@ For this specific configuration, go to the ‘Energy’ page within the sample f
 ##
 
 ## Video:
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation and electricity cost assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.

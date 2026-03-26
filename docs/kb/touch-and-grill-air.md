@@ -6,12 +6,11 @@ Source: https://www.loxone.com/enen/kb/touch-and-grill-air/
 
 ## Contents
 - [Technical Data](#TechData)
-- [Power Supply](#PoweSupp)
-- [Commissioning Air](#CommAir)
-- [Programming](#Prog)
-- [Functions](#Func)
-
-[Keys ](#keys)
+[Power Supply](#PoweSupp)
+[Commissioning Air](#CommAir)
+[Programming](#Prog)
+[Functions](#Func)
+- [Keys ](#keys)
 - [Temperature Sensor](#TempSens)
 - [Temperature Monitor](#TempMoni)
 - [Timer function](#TimeFunc)
@@ -79,8 +78,6 @@ Different temperature thresholds can be defined for both temperature sensors. As
 ### Timer Function
 
 A timer can be started via the timer button (middle bottom of the device). To change the duration, hold down the toggle button until the display shows the current set duration. The duration can now be set using the left and right buttons. Press the timer button again to finalise and confirm the timer. Press and hold the toggle button again to cancel the active timer.
-
-
 
 ![IG Touch and Grill Tastenstandard 01 1024x451](https://www.loxone.com/dede/wp-content/uploads/sites/2/2019/03/IG_Touch-and-Grill-Tastenstandard-01.png)
 

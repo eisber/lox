@@ -18,8 +18,6 @@ To do so, please select your DMX extension in the periphery tree and then hit t
 
 Once you have found your DMX device in the search, simply name it and create the device and it will appear in your periphery tree for use within Loxone Config.
 
-
-
 ## ADDING 3rd PARTY DMX DEVICES
 
 If you are not using a Loxone RGBW 24v DMX driver, but a different, 3rd party driver that isn’t an RGBW driver, you can add devices manually and also specify their channels.
@@ -30,8 +28,6 @@ Here you can see the numerous actuator types that are on offer. You would pick w
 - Your type of driver – an RGBW one would warrant the use of an RGB and W actuator if you want the coloured lighting
 - Your Driver’s channels – what if I have a driver with just 4 channels? Then you can use the DMX 4 actuators.
 - How you want to control the channels – Say if you have an RGBW driver, but only controlling white lights off of it, that’s effectively 4 channels, so you would use a DMX 4 actuator instead.
-
-
 
 When adding them manually, it is key that you take into consideration – the available channels and what is being controlled off of them as mismatching driver and actuator type would result in odd behaviour.
 

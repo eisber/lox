@@ -10,8 +10,6 @@ Source: https://www.loxone.com/enen/kb/project-planning/
 
 With the new version of Loxone Config, we’re introducing the next level of our project planning tool. We’ve introduced a number of new features for this release to make your planning stage that much easier. The video at the bottom of this page covers all of the existing functionality within the Project Planning Tool.
 
-
-
 ## Project Planning
 
 ---
@@ -88,10 +86,10 @@ Default Specification per Room Type
 
 | Calculation Typm | Description | Examples |
 | --- | --- | --- |
-| Heating | 1 Valve Actuator every 13m2 | 26m2 = 2 Actuators 27m2 = 3 Actuators |
-| Speaker | Room Size / 15 = No. of Speakers [Rounded Up] | 15m2 = 1 Speaker 23m2  = 2 Speakers 38m2 = 3 Speakers |
-| Lighting (Ceiling Spot) | LED Ceiling Spot RGBW = Room Size / 3 [Rounded Up]  LED Ceiling Spot WW = Room Size / 4 [Rounded Up] | 13m2 = 4 Spots 14m2 = 5 Spots  12m2 = 3 Spots 14m2 = 4 Spots |
-| Lighting (Recessed Spot) | LED Spot RGBW = Room Size / 2 [Rounded Up]  LED Spot WW = Room Size / 3 [Rounded Up] | 10m2 = 5 Spots 11m2 = 6 Spots  15m2 = 5 Spots 17m2 = 6 Spots |
+| Heating | 1 Valve Actuator every 13m2 | 26m2 = 2 Actuators 27m2 = 3 Actuators |
+| Speaker | Room Size / 15 = No. of Speakers [Rounded Up] | 15m2 = 1 Speaker 23m2 = 2 Speakers 38m2 = 3 Speakers |
+| Lighting (Ceiling Spot) | LED Ceiling Spot RGBW = Room Size / 3 [Rounded Up] LED Ceiling Spot WW = Room Size / 4 [Rounded Up] | 13m2 = 4 Spots 14m2 = 5 Spots 12m2 = 3 Spots 14m2 = 4 Spots |
+| Lighting (Recessed Spot) | LED Spot RGBW = Room Size / 2 [Rounded Up] LED Spot WW = Room Size / 3 [Rounded Up] | 10m2 = 5 Spots 11m2 = 6 Spots 15m2 = 5 Spots 17m2 = 6 Spots |
 
 **4**: This is where you input the number of external Windows/Doors. This directly correlates with the number of Door & Window contacts and Shading Actuator Air devices specified for that room. (I.e. 4 Windows & External Doors = 4 Door & Window Contacts and 4 Shading Actuator Air Devices)
 

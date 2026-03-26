@@ -36,14 +36,12 @@ If the alarms are acknowledged, the lighting is centrally set to 100%. This is i
 
 ### Hardware:
 - [Loxone Miniserver](https://shop.loxone.com/enuk/miniserver.html)
-- [RGBW lighting controlled by the Miniserver](https://shop.loxone.com/enuk/accessories.html?c=lighting#content)
-
-[LED Spots RGBW Tree](https://shop.loxone.com/enuk/led-spot-rgbw-tree-white-uk.html)
+[RGBW lighting controlled by the Miniserver](https://shop.loxone.com/enuk/accessories.html?c=lighting#content)
+- [LED Spots RGBW Tree](https://shop.loxone.com/enuk/led-spot-rgbw-tree-white-uk.html)
 - [LED Ceiling Light RGBW](https://shop.loxone.com/enuk/led-ceiling-light-rgbw.html)
 - [RGBW 24V Compact Dimmer](https://shop.loxone.com/enuk/rgbw-24v-compact-dimmer.html) + [LED Strip](https://shop.loxone.com/enuk/led-strip-rgbw.html)
 - Doorbell
-
-[Intercom](https://shop.loxone.com/enuk/intercom.html)
+- [Intercom](https://shop.loxone.com/enuk/intercom.html)
 - [NFC Code Touch](https://shop.loxone.com/enuk/nfc-code-touch.html)
 - [Smoke Detector Air](https://shop.loxone.com/enuk/smoke-detector-air.html)
 - [Water Sensor Air](https://shop.loxone.com/enuk/water-sensor-air.html)
@@ -71,8 +69,6 @@ If the alarms are acknowledged, the lighting is centrally set to 100%. This is i
 The aim of this intelligent solution is to give people with a hearing impairment more independence and above all more security in everyday life. Automation technology can make an important contribution to enabling people with hearing impairments to live more independently and safely in their own homes.
 
 Unlike cameras, GPS trackers or similar, Loxone works discreetly in the background. Thus, it not only provides a higher level of security but also creates a good feeling!
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

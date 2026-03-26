@@ -121,8 +121,6 @@ In the following example we send a temperature value with the Packet ID Temp1 fr
 ![setup tree ic 3 send](https://www.loxone.com/dede/wp-content/uploads/sites/2/2019/12/setup-tree-ic-3-send.png)
 ](https://www.loxone.com/dede/wp-content/uploads/sites/2/2019/12/setup-tree-ic-3-send.png)
 
-
-
 ### **Receiving a Value**
 
 On another Miniserver, also select the option **Tree Intercommunication** in the properties of the Tree branch used for Intercommunication.

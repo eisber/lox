@@ -56,8 +56,6 @@ No business wants to rack up unnecessary energy costs. An automatic cloth drying
 
 Monitoring its consumption is also extremely useful for business owners, as it’s often very difficult to have an overview of how much electricity devices are using. All of this combined makes installing an automatic cloth drying rack a bit of a no brainer.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

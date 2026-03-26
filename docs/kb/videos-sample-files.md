@@ -170,6 +170,6 @@ You can download the file for the three bed room typical UK home that we use in 
 
 Interested in finding out more about what Loxone can offer you? [Contact Us](https://www.loxone.com/enen/about-us/contact/)
 
- Learn more about the applications of Loxone: [Case Studies](https://www.loxone.com/enen/smart-home/case-studies.html)
+Learn more about the applications of Loxone: [Case Studies](https://www.loxone.com/enen/smart-home/case-studies.html)
 
 Find out about the possibilities of Loxone Config: [Documentation](https://www.loxone.com/enen/support/)

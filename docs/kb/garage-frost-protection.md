@@ -41,8 +41,6 @@ In this example, we assume that there is an electric heating system in the garag
 
 Thanks to this simple configuration, the garage heating can be controlled completely automatically – giving you effective garage frost protection. This ensures that the heating only runs when it is too cold in the garage. This means that energy is only consumed when needed. Making frost damage to electric bikes, water pipes etc. a thing of the past.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

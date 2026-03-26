@@ -31,8 +31,6 @@ Hardware:
 
 ### Configuration:
 
-
-
 ### Download the sample file:
 
 ### Smart Cleaning

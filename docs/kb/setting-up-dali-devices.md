@@ -10,8 +10,6 @@ Once you have setup your DALI Extension, ensured that it is online and communica
 
 Once your DALI extension and DALI BUS are online and sound, you can begin the device learn in procedure so that you can then start adding your DALI devices to your config file and then provide DALI Control.
 
-
-
 ## LEARNING IN A DALI DEVICE
 
 Select the DALI extension in the periphery tree and click the ‘DALI search’ button.

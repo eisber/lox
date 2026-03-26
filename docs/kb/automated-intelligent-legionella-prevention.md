@@ -49,8 +49,6 @@ With automatic monitoring of the water outlets, the time required can be drastic
 
 By monitoring the hot water temperatures in the storage tanks, it can be ensured that people in the building are protected from the harmful effects of Legionella.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

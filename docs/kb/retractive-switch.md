@@ -30,7 +30,7 @@ If a signal input is in the input Dis, the other inputs Tr and R are ignored. Ho
 
 | Output | Designation | Description |
 | --- | --- | --- |
-| Q | Digital output | Digital output is activated when the button is pressed and  deactivated when the time T has elapsed |
+| Q | Digital output | Digital output is activated when the button is pressed and deactivated when the time T has elapsed |
 
 ## PARAMETERS
 

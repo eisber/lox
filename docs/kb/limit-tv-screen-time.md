@@ -30,8 +30,6 @@ Hardware:
 ![Limit TV screen time for kids - Loxone config screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-43-Smart-TV-Times-1.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Use-Case-43-Smart-TV-Times-1.png)
 
-
-
 ### Download the sample file:
 
 ### Smart TV Times
@@ -43,8 +41,6 @@ Hardware:
 ## Why you and your customer should consider a smart setup to limit TV screen time?
 
 Adults understand a film from a rational distance, they know that it is a fictional form of presentation. Children under the age of six cannot distinguish between fiction and reality in films. According to the findings of American researchers, the longer toddlers watch television, the more often they notice restlessness and inattentiveness in the first years of school. There are various studies on this subject however, with Loxone it is possible to limit the time your children can watch television easily. After the defined time, the TV goes off and of course cannot be switched on anymore. So even in your absence, the TV time cannot be exceeded. You can check or control the status of the TV at any time via the Loxone App.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

@@ -45,13 +45,7 @@ A user can be added to a user group simply by clicking and dragging the user int
 
 Each user group can now be assigned certain access rights, the users who belong to the group will then be afforded access rights. The level of access is only required in one group the user is a member of to allows them this.
 
-| Web Interface/Apps | Allows users to access the web interface and app based user interfaces. |
-| --- | --- |
-| Loxone Config | Allows users to access the Miniserver directly with Loxone Config. |
-| FTP | Allows users to access the Miniserver back-end over FTP. |
-| Operating Times | Allows users to access the operating times via the user interface. |
-| Autopilot Designer | Allows users to access the Autopilot designer via the user interface. |
-| Interface Settings | Allows users to edit function block’s user interface appearance such as room/category, icons and favourites. |
+> **ℹ️ Note:** Allows users to access the Miniserver back-end over FTP.
 
 NOTE: Previously Expert Mode is as of V9.0 only available to users in the “Administrators” group. “Interface Settings” allows an interface level option to make changes but function block parameters are not available here.
 

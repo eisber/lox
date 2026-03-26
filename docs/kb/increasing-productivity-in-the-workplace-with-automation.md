@@ -73,8 +73,6 @@ Depending on the type of activity, different values for the optimum room climate
 
 Thanks to the automation with Loxone, the Miniserver automatically recognises the values stored within Loxone Config and passes on the necessary information to the individual control elements such as lighting, shading, ventilation and heating. Loxone thus not only provides the perfect climate/lighting but also helps with increasing productivity in the workplace – and all this is done in an environmentally friendly and energy-efficient manner.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

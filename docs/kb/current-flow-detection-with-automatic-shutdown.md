@@ -46,8 +46,6 @@ Current flow detection can be implemented in a private home as well as in commer
 
 The Nano 2 Relay Tree can be used for many applications such as automatic blind control. If you use the Nano 2 Relay Tree for controlling blinds, the end position of the blinds will be automatically detected. For this is a power consumption of >50W is needed.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

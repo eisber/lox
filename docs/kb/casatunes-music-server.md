@@ -170,10 +170,10 @@ The following web commands can be used on a browser to control the Music Server,
 
 | Description | Command |
 | --- | --- |
-| Shutdown the Music Server | http://<IPaddress>:8735/api/v1/system/power/shutdown |
-| Start the Music Server | http://<IPaddress>:8735/api/v1/system/power/restart |
-| Put the Music Server in energy saving mode | http://<IPaddress>:8735/api/v1/system/power/sleep |
-| Put the Music Server into hibernation mode | http://<IPaddress>:8735/api/v1/system/power/hibernate |
+| Shutdown the Music Server | http://:8735/api/v1/system/power/shutdown |
+| Start the Music Server | http://:8735/api/v1/system/power/restart |
+| Put the Music Server in energy saving mode | http://:8735/api/v1/system/power/sleep |
+| Put the Music Server into hibernation mode | http://:8735/api/v1/system/power/hibernate |
 
 ## TROUBLESHOOTING
 

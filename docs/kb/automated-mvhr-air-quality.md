@@ -54,8 +54,6 @@ Sufficient fresh air is essential for well-being and comfort in every building. 
 
 Controlled ventilation ensures that there is sufficient fresh air in new buildings, thus ensuring comfort and well-being. It also helps to prevent the formation of mould. The demand-based activation of ventilation ensures that the system is operated as energy-efficiently as possible.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

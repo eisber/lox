@@ -68,7 +68,6 @@ The further teach-in functions as in the case of the [Remote Air](https://www.lo
 
 After the motor has been connected and learned into the Airbase, the end positions must now be defined.
 
-
 ![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 
 Depending on the installation of the blind drive, the direction of rotation may be different. For this reason, the blinds should be in a central position when teaching the end positions so that the blind can travel in both directions without encountering an obstacle.
@@ -100,8 +99,6 @@ If you want to re-learn the end positions, you can restart the learning process 
 
 No end positions are set in the delivery state!**
 
-
-
 ## Programming in Loxone Config
 
 The programming and actuation of the Venetian Blind Actuator GJ 56 Air is carried out with the Function Block “Automatic Venetian Blind Integrated”.
@@ -121,8 +118,6 @@ The following status outputs of the GJ 56 Air Venetian blind actuator are shown 
 | Automatic status Qa | Analog output | Indicates the automatic status of the shading |
 | Safety shutdown Status Qs | Analog output | Shows whether the safety shutdown is currently active |
 | Lock status Ql | Analog output | Output is active as long as St is On |
-
-
 
 ## Slat adjustment travel correction
 

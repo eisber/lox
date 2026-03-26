@@ -41,8 +41,6 @@ Hardware:
 ![Automatic Blind Control - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-61-Automatic-Blinds-Close-Bedrooms.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/04/Loxone-Use-Case-61-Automatic-Blinds-Close-Bedrooms.png)
 
-
-
 ### Sample file:
 
 ### Automatic Blinds Close
@@ -56,8 +54,6 @@ Hardware:
 The automatic closing or opening of the blinds offers your customers privacy once the sun goes down. Thanks to the geo-coordinates functions, you can automate blinds depending on location and season. The possibility of blind automation on windows and doors in groups increases convenience. The functions such as “Pulse for Sunset” are exactly calculated based on the geo-coordinates – so this feature is exceptionally precise.
 
 Now, you can increase the comfort features in your customer’s home by considering automatic blind control to let some of the morning sun in as a natural way to wake up and heat a room.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

@@ -42,11 +42,7 @@ On the right-hand side of the tabs that appear at the top of this window, there 
 
 The editor looks as follows (also note the import button for importing your own images):
 
-
-
 ![roomsIconsEdit 300x249](https://www.loxone.com/enen/wp-content/uploads/sites/3/2017/10/roomsIconsEdit.jpg)
-
-
 
 #### EDITING CATEGORIES
 

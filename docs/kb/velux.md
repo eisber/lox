@@ -10,9 +10,8 @@ Whether it’s opening them to enjoy the fresh air and help to cool down a room 
 
 ### Hardware:
 - [Loxone Miniserver (any version)](https://shop.loxone.com/enuk/catalogsearch/result/?q=Miniserver)
-- Loxone hardware with relays – you need 2x relays per device/device group you wish to control. These are available on a number of pieces of hardware, such as:
-
-[Miniserver](https://shop.loxone.com/enuk/miniserver.html) (excluding Miniserver Go)
+Loxone hardware with relays – you need 2x relays per device/device group you wish to control. These are available on a number of pieces of hardware, such as:
+- [Miniserver](https://shop.loxone.com/enuk/miniserver.html) (excluding Miniserver Go)
 - [Relay Extension](https://shop.loxone.com/enuk/relay-extension.html)
 - [Multi Extension Air](https://shop.loxone.com/enuk/multi-extension-air.html)
 - [Nano 2 Relay Tree](https://shop.loxone.com/enuk/nano-2-relay-tree.html)

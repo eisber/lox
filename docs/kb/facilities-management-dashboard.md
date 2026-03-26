@@ -49,8 +49,6 @@ Tree Intercommunication has a big advantage over network connections – as netw
 
 The use of Tree Intercommunication creates a reliable basis for a building management system, with a facilities management dashboard, that works in the long term.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

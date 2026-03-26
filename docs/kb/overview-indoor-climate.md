@@ -56,8 +56,6 @@ The highest level of expansion in terms of a perfect room climate is to provide 
 
 ![climate level4 1](https://www.loxone.com/enen/wp-content/uploads/sites/3/2019/09/climate_level4-1.png)
 
-
-
 ![Pro-Tipp](https://www.loxone.com/dede/wp-content/uploads/sites/2/2018/02/IC_Profi-Tipp-Security-DE.png)
 
 **It is important that the necessary [integrations](https://www.loxone.com/enus/products/technology/) are coordinated with the responsible HVAC installer and technician. In this way you achieve the best possible comfort and increase the energy saving potential.**

@@ -30,8 +30,6 @@ Hardware:
 ![Garage Door Notifications - Loxone Config Screenshot](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Config-Use-Case-Garage-Door-Notification.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2020/03/Loxone-Config-Use-Case-Garage-Door-Notification.png)
 
-
-
 ### Download the sample file:
 
 ### Garage Door Notification
@@ -45,8 +43,6 @@ Hardware:
 Overall, having garage door notifications if the garage door is left open can offer peace of mind and, albeit simple, is one of the many smart capabilities of Loxone hardware and software that can improve the way your customer lives at home.
 
 The cost of realising this feature, especially if Loxone is already installed in the house, is near negligible when you consider the benefit of convenience and the added protection it offers by ensuring you don’t leave your garage door open at night inviting opportunistic thieves to help themselves.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

@@ -26,10 +26,6 @@ If you want to use a different name for the user interface, enter this name in �
 ![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 Avoid special characters when choosing a name, as they may not be supported in the web interface.
 
-
-
-
-
 #### INSERTING FUNCTION BLOCKS
 
 You can add inputs and outputs to the configuration pages simply by dragging and dropping them on the page.
@@ -42,8 +38,6 @@ You can now insert function blocks – these can be found in the ribbon. Just cl
 F5 Shortcut
 
 A quick way to add a function block is by pressing ‘F5’, typing its name and pressing enter.
-
-
 
 #### CONNECT INPUTS AND OUTPUTS
 
@@ -161,8 +155,6 @@ It is also possible to save the configuration locally (even whilst still connect
 
 ![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 In the Property field of the document under ‘Auto save’ you can set the time interval for automatic saving.
-
-
 
 ## TESTING WITH LIVEVIEW
 

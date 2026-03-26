@@ -72,8 +72,6 @@ The care of pets takes a lot of time – this is especially true with fish. Fish
 
 By implementing fish tank automation, your customer can save a lot of time and also monitor certain areas at all times. Especially when it comes to commercial fish farming, there is a cost factor that can be saved here.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

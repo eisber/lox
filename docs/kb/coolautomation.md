@@ -10,10 +10,9 @@ If you have an AC or HVAC system that doesn’t have native integration, using t
 
 ### Hardware:
 - [Loxone Miniserver (any version)](https://shop.loxone.com/enuk/catalogsearch/result/?q=Miniserver)
-- [Modbus Extension (Optional)](https://shop.loxone.com/enuk/modbus-extension.html)
-- Loxone hardware with a temperature sensor in each area you are controlling, such as:
-
-[Room Comfort Sensor Tree/Air](https://shop.loxone.com/enuk/catalogsearch/result/?q=room+comfort+sensor)
+[Modbus Extension (Optional)](https://shop.loxone.com/enuk/modbus-extension.html)
+Loxone hardware with a temperature sensor in each area you are controlling, such as:
+- [Room Comfort Sensor Tree/Air](https://shop.loxone.com/enuk/catalogsearch/result/?q=room+comfort+sensor)
 - [Touch Tree/Air](https://shop.loxone.com/enuk/accessories.html?c=touch-switches-controls#content)
 - [Touch Pure Tree/Air](https://shop.loxone.com/enuk/catalogsearch/result/?q=Touch+Pure)
 - [Smart Socket Air](https://shop.loxone.com/enuk/smart-socket-air-typ-g.html)

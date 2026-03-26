@@ -17,8 +17,6 @@ If a push message could not be sent, your Miniserver informs you about a [system
 ![Miniserver Client](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Miniserver_Client.png)
 ](https://www.loxone.com/enen/wp-content/uploads/sites/3/2025/02/Miniserver_Client.png)
 
-
-
 ### Possible solutions
 - Make sure that your miniserver is connected to the Internet. For more information, see [here](https://www.loxone.com/enen/kb/no-internet/).
 - Check the registration of your miniserver and ensure that it is registered.

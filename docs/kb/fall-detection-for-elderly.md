@@ -59,8 +59,6 @@ The aim of Ambient Assisted Living is to improve the quality of life of elderly 
 
 Fall detection for elderly friends or family members is only a part of the possibilities that the Loxone system offers for assisted living. Thanks to the extensive automation, passive control can be implemented, potential risks can be identified, visual and/or acoustic alarms can be provided and lifestyle monitoring can be integrated. In addition, everything happens automatically, so that the residents are relieved of many everyday tasks.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

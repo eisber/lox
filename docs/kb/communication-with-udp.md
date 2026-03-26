@@ -61,22 +61,7 @@ In the UDP Monitor select a packet, then click on ‘Create Digital Sensor’, o
 
 For error recognition, variables can be specified which can make simplify the resolution process.
 
-| Variable | Description |
-| --- | --- |
-| \v | Using the variable\v, the virtual UDP input can take on the value given by the UDP sender |
-| \1 | Byte 1 (lowest) |
-| \2 | Byte 2 |
-| \3 | Byte 3 |
-| \4 | Byte 4 |
-| \x | This variable identifies a dynamic Hex value |
-| \\ | \, |
-| \. | Any sign |
-| \t | Tab (0x09) |
-| \b | 0x0d |
-| \r | 0x0a |
-| \d | 0-9 |
-| \m | A-Z, a-z, 0-9 |
-| \a | A-Z, a-z |
+> **ℹ️ Note:** Using the variable\v, the virtual UDP input can take on the value given by the UDP sender
 
 ## SEND UDP COMMANDS USING THE MINISERVER
 

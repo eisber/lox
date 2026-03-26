@@ -60,8 +60,6 @@ An automated vertical blind system offers a wide variety of functionality – in
 
 With Loxone you can implement vertical blind automation that takes care of all of these requirements.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

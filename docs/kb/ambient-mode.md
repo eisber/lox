@@ -10,10 +10,9 @@ Source: https://www.loxone.com/enen/kb/ambient-mode/
 
 To open Ambient Mode, please open the App menu and select “Ambient Mode”. Here is the Ambient Mode legend:
 - Exit Ambient mode
-- Activate Screensaver
-- Settings
-
-Setting always launch app in Ambient Mode
+Activate Screensaver
+Settings
+- Setting always launch app in Ambient Mode
 - Default Screen (Favourites, Central, Room, Category,…)
 - Choose background image
 - Screensaver

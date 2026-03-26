@@ -44,20 +44,13 @@ To avoid always having to make the trip to where the router is situated you can 
 
 ### Related Video Tutorial
 
-
-
-| ![IC play button CTA](https://www.loxone.com/enen/wp-content/uploads/sites/3/2018/06/IC_play-button-CTA.png) | Focus Series: Automatic Router Reboot Learn how to check if a router is connected to the internet and if it is not, then how to automatically reboot it… View Video >> |
-| --- | --- |
-
-
+> **ℹ️ Note:** Focus Series: Automatic Router Reboot Learn how to check if a router is connected to the internet and if it is not, then how to automatically reboot it… View Video >>
 
 ## Why you and your customer should consider implementing an automatic router reset?
 
 There are few things more frustrating than an unstable internet connection or devices that keep dropping off of the network. This automatic router reset is a great way to solve a lot of network-related problems. Automating this process for your customers (or even in your own home) is a quick and easy way to instantly make life more convenient.
 
 Plus, if you have a customer who is particularly concerned with Wi-Fi signals being transmitted you can offer them a time-based solution as we mentioned before.
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 

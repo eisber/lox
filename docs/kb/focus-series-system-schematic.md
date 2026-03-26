@@ -11,7 +11,6 @@ Take a look at the new System Schematic Function Block within Loxone Config whi
 
 ### Related Use Case
 
-| ![IC miniserver](https://www.loxone.com/enen/wp-content/uploads/sites/3/2019/09/IC_miniserver.png) | Use Case: Schematic Diagrams For Buildings In this automation use case, we will look at an example of how Loxone can be used to create schematic diagrams for buildings. View Use Case >> |
-| --- | --- |
+> **ℹ️ Note:** Use Case: Schematic Diagrams For Buildings In this automation use case, we will look at an example of how Loxone can be used to create schematic diagrams for buildings. View Use Case >>
 
 [<< Back to the Focus Series Video Tutorials](https://www.loxone.com/enen/kb-cat/focus-series/)

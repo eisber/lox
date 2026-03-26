@@ -44,8 +44,6 @@ We’ve all been there. One moment everything is normal and then the next you’
 
 The best bit about this Use Case is that no additional hardware is required – it’s simply extra logic within Loxone Config.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

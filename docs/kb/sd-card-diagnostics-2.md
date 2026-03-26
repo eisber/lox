@@ -23,13 +23,9 @@ If your Miniserver’s SD card is full, the system may experience unpredictable 
 - [SD card nearly full](#nearly-full)
 - [SD card is full](#full)
 
-
-
 ### Use only SD cards from Loxone
 
 The SD cards provided by Loxone for use in the Miniserver undergo several weeks of quality testing. For maximum performance, your Miniserver accesses many low-level features of the SD card. The interaction with Loxone OS – the operating system of the Miniserver – must, therefore, be optimal. Therefore, only use SD cards approved by Loxone! There is no warranty for the use of other SD cards.
-
-
 
 ## SD card high write load
 
@@ -38,8 +34,6 @@ You will receive this message if you are either recording statistics for a very 
 ### Troubleshooting
 
 In order to solve the problem and to acknowledge the message, the number of written statistics entries must be reduced. The [project validation](https://www.loxone.com/enen/kb/project-validation/) in Loxone Config helps you find out exactly which objects generate statistics, so you can disable specific ones. Alternatively, the statistics for the corresponding objects can also be adjusted in the Loxone Smart Home app via the expert mode  (if this is available to your user).
-
-
 
 ## Write cycles almost exhausted
 
@@ -106,8 +100,6 @@ If the problem has not been solved after cleaning up the SD card, it is recommen
 #### Swap SD card
 
 The exchange of the SD card must be done by a system administrator or a Loxone partner. It is also recommended to make a [backup of](https://www.loxone.com/enen/kb/backup-sd-card/) the SD card. This backup can then be [applied when formatting the SD card](https://www.loxone.com/enen/kb/restore-factory-defaults-format_sd-card/)
-
-
 
 ## SD card almost full
 

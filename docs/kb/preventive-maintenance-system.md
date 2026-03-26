@@ -44,8 +44,6 @@ In the event of excessive deviations from the “basic vibration” of engines a
 
 If a machine completely fails, it can result in long and costly downtime. Which, obviously, negatively affects the productiveness of the workplace. However, this can be avoided by using a preventive maintenance system – as “issues” will be detected before they even become issues. Hence maintenance can be carried out and the machines can continue to get on with their job.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

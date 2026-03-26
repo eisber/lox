@@ -28,8 +28,6 @@ If the brightness is above the calculated threshold, the Sunshine input is activ
 | 18° | 14057 lx | Noon in central Europe at winter solstice |
 | 10° | 5753 lx | Sun is low |
 
-
-
 The sensitivity can be adjusted in the properties of the Weather Station under “Sunshine Threshold”.
 
 Default +30% is the lowest sensitivity, the sunshine threshold is increased.
@@ -62,8 +60,6 @@ If the irradiance is above the calculated threshold, the Sunshine input is activ
 | 42° | 343 W/m² | Noon in Central Europe at equinox |
 | 18° | 158 W/m² | Noon in central Europe at winter solstice |
 | 10° | 89 W/m² | Sun is low |
-
-
 
 The sensitivity can be adjusted in the properties of the Weather Service Sunshine input under “Sunshine Threshold”.
 

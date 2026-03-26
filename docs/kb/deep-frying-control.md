@@ -42,8 +42,6 @@ The hot plate is connected to the mains via Smart Socket Air (ensuring amps are 
 
 Intelligent deep frying control will give you perfectly cooked chips, churros or whatever else you want to make. It really is as simple as that.
 
-
-
 					Local regulations and standards need to be observed. The contents of this page make certain installation assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.
 
 #### More Use Cases in this series

@@ -16,8 +16,6 @@ Introducing a Solid State Relay (SSR) can help with this, as it gives control by
 
 The Solar Immersion Diverters currently available on the market can do this, but they are standalone solutions focusing the flow of surplus energy to the immersion heater only.
 
-
-
 ## Solution: Using the hot water tank as energy storage with surplus solar.
 
 Loxone brings logic that tells the SSR how much to use from the produced surplus energy. One RGBW Dimmer channel controlled by the Miniserver informs the SSR how much of the surplus energy is available to send to the immersion.
@@ -64,7 +62,5 @@ For this specific configuration, go to the ‘Energy’ page within the sample f
 ##
 
 ## Video:
-
-
 
 					Local regulations and standards need to be observed. The contents of this page make certain installation and electricity cost assumptions. The information herein does not replace the contextual know-how of a Loxone Partner. As a professionally-installed solution, please consult with a Loxone Partner to realise any of the functionality listed in this Use Case.

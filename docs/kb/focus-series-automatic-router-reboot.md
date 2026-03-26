@@ -11,7 +11,6 @@ Learn how to check if a router is connected to the internet and if it is not, th
 
 ### Related Use Case
 
-| ![IC miniserver](https://www.loxone.com/enen/wp-content/uploads/sites/3/2019/09/IC_miniserver.png) | Use Case: Automatic Router Reset In this automation use case, we will look at an example of how Loxone can be used to set up an automatic router reset when the internet connection is lost. View Use Case >> |
-| --- | --- |
+> **ℹ️ Note:** Use Case: Automatic Router Reset In this automation use case, we will look at an example of how Loxone can be used to set up an automatic router reset when the internet connection is lost. View Use Case >>
 
 [<< Back to the Focus Series Video Tutorials](https://www.loxone.com/enen/kb-cat/focus-series/)

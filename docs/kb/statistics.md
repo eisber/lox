@@ -80,8 +80,6 @@ To do so, select the Miniserver in the periphery tree, and click on **Download S
 ![downloadstatsconfig 12.0](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/downloadstatsconfig-12.0.png)
 ](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/downloadstatsconfig-12.0.png)
 
-
-
 The statistics window will be opened with the following functions:
 
 [
@@ -118,8 +116,6 @@ Example for statistic of the outdoor humidity in the user interface:
 ![stats visu humidity](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-visu-humidity.png)
 ](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-visu-humidity.png)
 
-
-
 ## Retrieve data using a browser
 
 In order to retrieve statistics using a browser, enter the following URL: **http://MiniserverIP/stats/**
@@ -135,8 +131,6 @@ By clicking on a statistic, the data can be displayed in an .xml file:
 [
 ![stats showxml](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-showxml.png)
 ](https://www.loxone.com/dede/wp-content/uploads/sites/2/2016/08/stats-showxml.png)
-
-
 
 ## Delete statistics
 

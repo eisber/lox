@@ -23,8 +23,6 @@ Source: https://www.loxone.com/enen/kb/temperature-humidity-sensor-air/
 ![Icon Exclamation Mark Loxone](https://www.loxone.com/enen/wp-content/uploads/sites/3/2016/09/EN_KB_Icon_Exclamation_Mark.png)
 Being a battery operated device the Temperature and Humidity Sensor Air is only able to act as an end device in the Air mesh and not as a repeater.
 
-
-
 ## SETUP IN LOXONE CONFIG
 
 In order for the Temperature and Humidity Sensor Air to be learned by the Miniserver, it must first be set to learning mode.
