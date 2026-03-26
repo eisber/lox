@@ -7,7 +7,8 @@
 [![codecov](https://codecov.io/gh/discostu105/lox/branch/main/graph/badge.svg)](https://codecov.io/gh/discostu105/lox)
 
 **Fast, scriptable command-line interface for Loxone Miniserver.**
-Single binary. No runtime. No cloud. Works in scripts, cron jobs, and AI agent pipelines.
+Single binary. No runtime. No cloud. Full config editing — no desktop app required.
+Works in scripts, cron jobs, and AI agent pipelines.
 
 ---
 
@@ -18,6 +19,7 @@ The Loxone app is great for everyday use — but it offers no API or scripting s
 `lox` gives you a proper CLI so you can:
 
 - **Script your home** — bash, Python, cron, whatever
+- **Edit config headlessly** — rooms, controls, MQTT, wiring — no desktop app
 - **Connect AI agents** — Claude, GPT, or any LLM tool can control your home via shell commands
 - **Chain commands** — `lox if "Temperatur" gt 25 && lox blind "Südseite" pos 80`
 - **Integrate with anything** — exit codes, JSON output, stdin/stdout
@@ -81,6 +83,12 @@ lox ls -o json                        # discover controls
 lox --dry-run on "Licht" -o json      # preview before executing
 lox --trace-id "run-42" on "Licht"    # execute with tracing
 lox health --problems -o json         # check device health
+
+# Agents can also edit configuration:
+lox config download --extract
+lox config rooms config.Loxone -o json
+lox config add --type mqtt-sub --title "Sensor" --topic "home/temp" config.Loxone
+lox config push --file config.Loxone --reboot --force
 ```
 
 ---
@@ -180,23 +188,71 @@ lox on "Licht Wohnzimmer"              # Turn on
 lox off "Licht Wohnzimmer"             # Turn off
 lox blind "Beschattung Süd" pos 50     # Blind to 50%
 lox light mood "Licht" plus            # Next light mood
-lox light moods "Licht"                # List available moods
 lox thermostat "Heizung" temp 22.5     # Set temperature
 lox alarm "Alarmanlage" arm            # Arm alarm
 lox stream --room "Kitchen" -o json    # Real-time WebSocket state stream
-lox otel serve --endpoint http://..   # Push metrics, logs & traces via OTLP
+lox weather --stream                   # Live weather via WebSocket
 lox if "Temperatur" gt 25 && echo hot  # Conditional logic
 lox status --energy                    # Energy dashboard
-lox config download --extract          # Download & extract Loxone Config
-lox config diff old.Loxone new.Loxone  # Compare two configs
-lox config init ~/loxone-config        # Init git repo for config versioning
-lox config pull                        # Download, diff & git-commit config
-lox config log                         # Show config change history
-lox config restore abc123 --force      # Restore config from git history
-lox run abend                          # Run a scene
 lox health --problems                  # Device health (battery, signal, offline)
+lox run abend                          # Run a scene
 lox schema blind                       # Command schema for AI agent discovery
-lox completions bash                   # Generate shell completions
+```
+
+---
+
+## Config-as-Code
+
+Edit your Miniserver configuration entirely from the command line — no Loxone Config desktop app required.
+
+```bash
+# Download & inspect
+lox config download --extract          # Download & extract Loxone Config XML
+lox config rooms config.Loxone         # List rooms with item counts
+lox config controls config.Loxone      # List all controls with type/room
+lox config controls config.Loxone -t WeatherData -r "Zentral"
+
+# Edit — semantic commands
+lox config room add config.Loxone "Zentral"
+lox config control move config.Loxone --type WeatherData --to-room "Zentral"
+lox config control rename config.Loxone "Old Name" "New Name"
+lox config add --type light --title "Kitchen Light" --room "Kitchen" config.Loxone
+
+# MQTT configuration
+lox config mqtt setup config.Loxone --broker 192.168.1.100 --user loxberry --password secret
+lox config mqtt topics config.Loxone   # List MQTT subscriptions & publishes
+lox config add --type mqtt-sub --title "Temp" --topic "weather/temp" config.Loxone
+
+# Wire controls together
+lox config control wire config.Loxone "Sensor.Q" "Light.On"
+lox config control wires config.Loxone "Kitchen Light"  # Show all connections
+lox config control unwire config.Loxone "Light.AQ1"
+
+# Validate & deploy
+lox config validate config.Loxone      # Check UUID integrity, orphans, MQTT
+lox config push --file config.Loxone --reboot --force  # Upload & reboot
+```
+
+**No desktop app needed.** Download the config XML, edit with any combination of commands, push back to the Miniserver. The CLI handles LoxCC compression with correct CRC32 checksums.
+
+### Password fields
+
+Loxone stores passwords in two formats:
+- `t="15"` — encrypted by Miniserver firmware (opaque)
+- `t="11"` — plaintext string (accepted by Miniserver)
+
+The CLI uses `t="11"` for password fields (e.g. MQTT broker password), so you can set credentials headlessly without the firmware encryption key.
+
+### Low-level XML editing
+
+For advanced users, direct XML operations are available:
+
+```bash
+lox config xml set-property config.Loxone "gid:Mqtt" mqtt_broker_address "10.0.0.1" --type 11
+lox config xml set-attr config.Loxone "uuid:abc-123" Title "New Name"
+lox config xml move config.Loxone --type SysVar --to-room "Zentral"
+lox config xml add config.Loxone --parent "gid:Mqtt" --type GenTSensor --title "Sensor"
+lox config xml remove config.Loxone --uuid "abc-123"
 ```
 
 ---
@@ -283,6 +339,8 @@ Each pull downloads the config via FTP, decompresses the proprietary LoxCC forma
 **Multi-Miniserver:** each Miniserver gets its own subdirectory (by serial number).
 
 **Safe restore:** uploads the original backup ZIP from git history (no risky recompression).
+
+**Config editing:** `lox config push` can also upload edited `.Loxone` XML files — the CLI handles LoxCC recompression with correct CRC32 checksums automatically.
 
 ---
 
