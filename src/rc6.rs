@@ -8,6 +8,8 @@
 //! The client applies RC6 *decryption* to the plaintext before sending;
 //! the server applies RC6 *encryption* to recover the original payload.
 
+#![allow(dead_code)]
+
 const ROUNDS: usize = 16;
 const NUM_SUBKEYS: usize = 2 * ROUNDS + 4; // 36
 
@@ -100,7 +102,7 @@ impl Rc6Key {
 
     /// Encrypt `data` in-place (ECB mode, must be multiple of 16 bytes).
     pub fn encrypt(&self, data: &mut [u8]) {
-        assert!(data.len() % 16 == 0, "data must be a multiple of 16 bytes");
+        assert!(data.len().is_multiple_of(16), "data must be a multiple of 16 bytes");
         for chunk in data.chunks_exact_mut(16) {
             let block: &mut [u8; 16] = chunk.try_into().unwrap();
             self.encrypt_block(block);
@@ -109,7 +111,7 @@ impl Rc6Key {
 
     /// Decrypt `data` in-place (ECB mode, must be multiple of 16 bytes).
     pub fn decrypt(&self, data: &mut [u8]) {
-        assert!(data.len() % 16 == 0, "data must be a multiple of 16 bytes");
+        assert!(data.len().is_multiple_of(16), "data must be a multiple of 16 bytes");
         for chunk in data.chunks_exact_mut(16) {
             let block: &mut [u8; 16] = chunk.try_into().unwrap();
             self.decrypt_block(block);

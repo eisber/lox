@@ -15,6 +15,8 @@
 //! The RC6 key is derived from a millisecond uptime counter whose bytes are
 //! interleaved into the nonce at positions [3], [4], [9], [14].
 
+#![allow(dead_code)]
+
 use crate::rc6::Rc6Key;
 
 const MAGIC_CONTROL: u32 = 0xFEED_BEEF;

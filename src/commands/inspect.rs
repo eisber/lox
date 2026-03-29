@@ -954,11 +954,10 @@ pub fn cmd_ws_monitor(_ctx: &RunContext, uuids_csv: String, timeout: u64) -> Res
                     _ => {}
                 }
             }
-            if let Some(dur) = timeout_dur {
-                if start.elapsed() >= dur {
+            if let Some(dur) = timeout_dur
+                && start.elapsed() >= dur {
                     anyhow::bail!("timeout");
                 }
-            }
             Ok(())
         })
         .await

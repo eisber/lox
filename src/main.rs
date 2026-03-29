@@ -2808,6 +2808,15 @@ mod tests {
     use super::*;
     use client::is_uuid;
 
+    fn run_with_large_stack<F: FnOnce() + Send + 'static>(f: F) {
+        std::thread::Builder::new()
+            .stack_size(8 * 1024 * 1024)
+            .spawn(f)
+            .unwrap()
+            .join()
+            .unwrap();
+    }
+
     // ── json_val_str (Gen2 numeric value handling) ─────────────────────────
 
     #[test]
@@ -3069,7 +3078,9 @@ mod tests {
     #[test]
     fn test_cli_debug_assert() {
         use clap::CommandFactory;
-        Cli::command().debug_assert();
+        run_with_large_stack(|| {
+            Cli::command().debug_assert();
+        });
     }
 
     // ── binary stats header alignment ─────────────────────────────────────
@@ -3554,42 +3565,36 @@ mod tests {
 
     #[test]
     fn test_completions_bash_generates_output() {
-        let mut cmd = Cli::command();
-        let mut buf = Vec::new();
-        generate(Shell::Bash, &mut cmd, "lox", &mut buf);
-        let output = String::from_utf8(buf).unwrap();
-        assert!(
-            output.contains("_lox"),
-            "bash completions should define _lox function"
-        );
-        assert!(
-            output.contains("COMPREPLY"),
-            "bash completions should use COMPREPLY"
-        );
+        run_with_large_stack(|| {
+            let mut cmd = Cli::command();
+            let mut buf = Vec::new();
+            generate(Shell::Bash, &mut cmd, "lox", &mut buf);
+            let output = String::from_utf8(buf).unwrap();
+            assert!(output.contains("_lox"), "bash completions should define _lox function");
+            assert!(output.contains("COMPREPLY"), "bash completions should use COMPREPLY");
+        });
     }
 
     #[test]
     fn test_completions_zsh_generates_output() {
-        let mut cmd = Cli::command();
-        let mut buf = Vec::new();
-        generate(Shell::Zsh, &mut cmd, "lox", &mut buf);
-        let output = String::from_utf8(buf).unwrap();
-        assert!(
-            output.contains("compdef"),
-            "zsh completions should contain compdef"
-        );
+        run_with_large_stack(|| {
+            let mut cmd = Cli::command();
+            let mut buf = Vec::new();
+            generate(Shell::Zsh, &mut cmd, "lox", &mut buf);
+            let output = String::from_utf8(buf).unwrap();
+            assert!(output.contains("compdef"), "zsh completions should contain compdef");
+        });
     }
 
     #[test]
     fn test_completions_fish_generates_output() {
-        let mut cmd = Cli::command();
-        let mut buf = Vec::new();
-        generate(Shell::Fish, &mut cmd, "lox", &mut buf);
-        let output = String::from_utf8(buf).unwrap();
-        assert!(
-            output.contains("complete -c lox"),
-            "fish completions should define completions for lox"
-        );
+        run_with_large_stack(|| {
+            let mut cmd = Cli::command();
+            let mut buf = Vec::new();
+            generate(Shell::Fish, &mut cmd, "lox", &mut buf);
+            let output = String::from_utf8(buf).unwrap();
+            assert!(output.contains("complete -c lox"), "fish completions should define completions for lox");
+        });
     }
 
     #[test]
@@ -3603,43 +3608,29 @@ mod tests {
 
     #[test]
     fn test_install_completions_creates_file() {
-        let tmp = std::env::temp_dir().join("lox_test_completions");
-        let _ = fs::remove_dir_all(&tmp);
-        fs::create_dir_all(&tmp).unwrap();
+        run_with_large_stack(|| {
+            let tmp = std::env::temp_dir().join("lox_test_completions");
+            let _ = fs::remove_dir_all(&tmp);
+            fs::create_dir_all(&tmp).unwrap();
 
-        // Use LOX_HOME to override home directory for the test (works on all platforms)
-        // SAFETY: Test runs serially; no other threads access this env var here.
-        unsafe { std::env::set_var("LOX_HOME", tmp.to_str().unwrap()) };
+            unsafe { std::env::set_var("LOX_HOME", tmp.to_str().unwrap()) };
 
-        let mut cmd = Cli::command();
+            let mut cmd = Cli::command();
 
-        if cfg!(windows) {
-            let result = install_completions(Shell::PowerShell, &mut cmd);
-            assert!(
-                result.is_ok(),
-                "install_completions should succeed for powershell"
-            );
-            let ps_file = tmp.join("Documents/PowerShell/lox_completions.ps1");
-            assert!(
-                ps_file.exists(),
-                "powershell completion file should be created"
-            );
-        } else {
-            let result = install_completions(Shell::Bash, &mut cmd);
-            assert!(
-                result.is_ok(),
-                "install_completions should succeed for bash"
-            );
-            let bash_file = tmp.join(".local/share/bash-completion/completions/lox");
-            assert!(bash_file.exists(), "bash completion file should be created");
-            let content = fs::read_to_string(&bash_file).unwrap();
-            assert!(
-                content.contains("_lox"),
-                "installed file should contain bash completions"
-            );
-        }
+            if cfg!(windows) {
+                let result = install_completions(Shell::PowerShell, &mut cmd);
+                assert!(result.is_ok(), "install_completions should succeed for powershell");
+            } else {
+                let result = install_completions(Shell::Bash, &mut cmd);
+                assert!(result.is_ok(), "install_completions should succeed for bash");
+                let bash_file = tmp.join(".local/share/bash-completion/completions/lox");
+                assert!(bash_file.exists(), "bash completion file should be created");
+                let content = fs::read_to_string(&bash_file).unwrap();
+                assert!(content.contains("_lox"), "installed file should contain bash completions");
+            }
 
-        unsafe { std::env::remove_var("LOX_HOME") };
-        let _ = fs::remove_dir_all(&tmp);
+            unsafe { std::env::remove_var("LOX_HOME") };
+            let _ = fs::remove_dir_all(&tmp);
+        });
     }
 }
