@@ -8,10 +8,12 @@ mod gitops;
 mod loxcc;
 mod loxone_xml;
 mod otel;
+mod rc6;
 mod scene;
 mod stream;
 mod token;
 mod ws;
+mod wsx;
 
 use anyhow::{Context, Result, bail};
 use clap::{ArgAction, CommandFactory, Parser, Subcommand, ValueEnum};
@@ -1374,6 +1376,14 @@ pub(crate) enum ConfigCmd {
         #[arg(long)]
         reboot: bool,
         /// Confirm the operation (required — modifies live config)
+        #[arg(long)]
+        force: bool,
+    },
+    /// Upload a config ZIP to the Miniserver via HTTP POST (fsput)
+    PushHttp {
+        /// Path to a config ZIP file
+        file: String,
+        /// Confirm the upload (required — dangerous operation)
         #[arg(long)]
         force: bool,
     },

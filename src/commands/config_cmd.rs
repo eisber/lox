@@ -936,6 +936,210 @@ pub fn cmd_config(ctx: &RunContext, action: ConfigCmd) -> Result<()> {
                 println!("Reboot the Miniserver to apply: lox reboot --yes");
             }
         }
+        ConfigCmd::PushHttp { file, force } => {
+            if !force {
+                eprintln!(
+                    "⚠  WARNING: This will upload a config ZIP to the live Miniserver via HTTP.\n\
+                     \n\
+                     \x20  The Miniserver will auto-restart after receiving the file.\n\
+                     \x20  Use --force to proceed."
+                );
+                std::process::exit(1);
+            }
+
+            let zip_data = fs::read(&file).with_context(|| format!("Cannot read {}", file))?;
+            eprintln!("Read {} ({} KB)", file, zip_data.len() / 1024);
+
+            let cfg = Config::load()?;
+            let verify_ssl = cfg.verify_ssl.unwrap_or(false);
+
+            // Build a client with cookie store for session persistence across requests.
+            let client = Client::builder()
+                .user_agent(USER_AGENT)
+                .danger_accept_invalid_certs(!verify_ssl)
+                .cookie_store(true)
+                .timeout(Duration::from_secs(120))
+                .build()
+                .context("failed to build HTTP client")?;
+
+            // Use HTTPS for all requests (fsput requires it)
+            let https_host = cfg.host.replace("http://", "https://");
+            eprintln!("Authenticating via HTTPS...");
+            let _pub_key: serde_json::Value = client
+                .get(format!("{}/jdev/sys/getPublicKey", https_host))
+                .send()
+                .context("getPublicKey request failed")?
+                .json()
+                .context("getPublicKey parse failed")?;
+
+            // Step 2: Get key2 (HMAC key + salt + hash algorithm)
+            let key2_resp: serde_json::Value = client
+                .get(format!("{}/jdev/sys/getkey2/{}", https_host, cfg.user))
+                .send()
+                .context("getkey2 request failed")?
+                .json()
+                .context("getkey2 parse failed")?;
+            let key2_val_raw = key2_resp
+                .pointer("/LL/value")
+                .ok_or_else(|| anyhow::anyhow!("getkey2: no value in response"))?;
+            // value can be a JSON string (needs parsing) or already an object
+            let key2_val: serde_json::Value = if let Some(s) = key2_val_raw.as_str() {
+                serde_json::from_str(s).context("getkey2: failed to parse value JSON")?
+            } else {
+                key2_val_raw.clone()
+            };
+            let key_hex = key2_val
+                .get("key")
+                .and_then(|v| v.as_str())
+                .ok_or_else(|| anyhow::anyhow!("getkey2: missing 'key'"))?;
+            let salt_hex = key2_val
+                .get("salt")
+                .and_then(|v| v.as_str())
+                .ok_or_else(|| anyhow::anyhow!("getkey2: missing 'salt'"))?;
+
+            // Step 3: Compute pwHash = SHA256("{pass}:{salt}").toUpperCase()
+            // Note: salt is used as the raw hex string, NOT hex-decoded
+            use hmac::{Hmac, Mac};
+            use sha2::Sha256;
+            let pw_hash = format!(
+                "{:X}",
+                <Sha256 as sha2::Digest>::digest(
+                    format!("{}:{}", cfg.pass, salt_hex).as_bytes()
+                )
+            );
+
+            // Step 4: sig = HMAC-SHA256(hex_decode(key), "{user}:{pwHash}") → lowercase hex
+            let key_bytes =
+                hex::decode(key_hex).context("getkey2: failed to hex-decode key")?;
+            let mut mac =
+                Hmac::<Sha256>::new_from_slice(&key_bytes).context("HMAC key error")?;
+            mac.update(format!("{}:{}", cfg.user, pw_hash).as_bytes());
+            let sig = hex::encode(mac.finalize().into_bytes());
+
+            // Step 5: Get JWT token with permission 8 (CONFIG)
+            let client_uuid = uuid::Uuid::new_v4().to_string();
+            let jwt_resp: serde_json::Value = client
+                .get(format!(
+                    "{}/jdev/sys/getjwt/{}/{}/8/{}/lox-cli",
+                    https_host, sig, cfg.user, client_uuid
+                ))
+                .send()
+                .context("getjwt request failed")?
+                .json()
+                .context("getjwt parse failed")?;
+            let jwt_code = jwt_resp
+                .pointer("/LL/Code")
+                .or_else(|| jwt_resp.pointer("/LL/code"))
+                .and_then(crate::json_val_str)
+                .unwrap_or_default();
+            if jwt_code != "200" {
+                bail!(
+                    "getjwt failed (code {}): {}",
+                    jwt_code,
+                    serde_json::to_string_pretty(&jwt_resp)?
+                );
+            }
+            eprintln!("✓ JWT acquired (permission=CONFIG)");
+
+            // Extract token and key from getjwt response
+            // The key from getjwt can be used like a getkey result for subsequent commands.
+            let jwt_val = jwt_resp
+                .pointer("/LL/value")
+                .and_then(|v| {
+                    if let Some(s) = v.as_str() {
+                        serde_json::from_str::<serde_json::Value>(s).ok()
+                    } else {
+                        Some(v.clone())
+                    }
+                })
+                .ok_or_else(|| anyhow::anyhow!("getjwt: missing value"))?;
+            let jwt_token = jwt_val
+                .get("token")
+                .and_then(|t| t.as_str())
+                .ok_or_else(|| anyhow::anyhow!("getjwt: missing 'token' in response"))?
+                .to_string();
+            let jwt_key_hex = jwt_val
+                .get("key")
+                .and_then(|k| k.as_str())
+                .ok_or_else(|| anyhow::anyhow!("getjwt: missing 'key' in response"))?
+                .to_string();
+
+            // Step 6: autht = HMAC-SHA1(hex_decode_to_ascii(key), token) — no case change
+            // Per official protocol: key from getjwt is hex-decoded to ASCII bytes,
+            // then used as HMAC-SHA1 key with the JWT token as message.
+            use sha1::Sha1;
+            type HmacSha1 = Hmac<Sha1>;
+            let key_ascii_bytes =
+                hex::decode(&jwt_key_hex).context("getjwt: failed to hex-decode key")?;
+            let mut mac_autht =
+                HmacSha1::new_from_slice(&key_ascii_bytes).context("HMAC-SHA1 key error")?;
+            mac_autht.update(jwt_token.as_bytes());
+            let autht = hex::encode(mac_autht.finalize().into_bytes());
+
+            // Step 7: Establish /wsx WebSocket session (required before fsput)
+            eprintln!("Establishing WebSocket session...");
+            let wsx_url = format!(
+                "{}/wsx?autht={}&user={}",
+                https_host.replace("https://", "wss://").replace("http://", "ws://"),
+                autht,
+                cfg.user
+            );
+            let rt = tokio::runtime::Runtime::new()?;
+            let wsx_result = rt.block_on(async {
+                use tokio_tungstenite::connect_async_tls_with_config;
+                use tokio_tungstenite::Connector;
+                let tls_cfg = crate::ws::make_tls_config_pub();
+                let req = tokio_tungstenite::tungstenite::http::Request::builder()
+                    .uri(&wsx_url)
+                    .header("Host", https_host.replace("https://", "").replace("http://", ""))
+                    .header("Connection", "Upgrade")
+                    .header("Upgrade", "websocket")
+                    .header("Sec-WebSocket-Version", "13")
+                    .header("Sec-WebSocket-Key", {
+                        let mut bytes = [0u8; 16];
+                        rand::RngCore::fill_bytes(&mut rand::thread_rng(), &mut bytes);
+                        base64::Engine::encode(&base64::engine::general_purpose::STANDARD, bytes)
+                    })
+                    .body(())?;
+                let (ws, _) = connect_async_tls_with_config(
+                    req, None, false, Some(Connector::Rustls(tls_cfg))
+                ).await?;
+                Ok::<_, anyhow::Error>(ws)
+            });
+            let _wsx = match wsx_result {
+                Ok(ws) => {
+                    eprintln!("✓ WebSocket session established");
+                    Some(ws)
+                }
+                Err(e) => {
+                    eprintln!("⚠ WebSocket /wsx failed ({}), trying fsput anyway...", e);
+                    None
+                }
+            };
+
+            // Step 8: POST the ZIP via fsput
+            eprintln!(
+                "Uploading {} ({} KB) via HTTP POST...",
+                file,
+                zip_data.len() / 1024
+            );
+            let upload_url = format!(
+                "{}/dev/fsput/lx/prog/sps_new.zip?autht={}&user={}",
+                https_host, autht, cfg.user
+            );
+            let resp = client
+                .post(&upload_url)
+                .header("Content-Type", "application/octet-stream")
+                .body(zip_data)
+                .send()
+                .context("fsput POST failed")?;
+            let status = resp.status();
+            let body = resp.text().unwrap_or_default();
+            if !status.is_success() {
+                bail!("fsput failed (HTTP {}): {}", status.as_u16(), body);
+            }
+            println!("✓ Config uploaded via HTTP. Miniserver will auto-restart.");
+        }
         ConfigCmd::Add {
             file,
             control_type,

@@ -13,6 +13,10 @@ use crate::config::Config;
 
 // ── TLS (accept all) ─────────────────────────────────────────────────────────
 
+pub fn make_tls_config_pub() -> Arc<ClientConfig> {
+    make_tls_config()
+}
+
 fn make_tls_config() -> Arc<ClientConfig> {
     let _ = ring::default_provider().install_default();
     let mut root_store = rustls::RootCertStore::empty();
