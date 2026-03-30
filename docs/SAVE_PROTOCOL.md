@@ -90,3 +90,39 @@ autht = HMAC-SHA256(key_ascii.encode(), jwt_token.encode()).hexdigest().upper()
 
 The `/wsx` endpoint uses hixie-76 text framing for text commands.
 Binary messages are sent as raw bytes (no WebSocket framing).
+
+## SPS Compilation (Key Finding)
+
+The SPS is compiled **ON the Miniserver**, not in LoxoneConfig.exe.
+There is NO separate bytecode file — the Miniserver reads the XML config
+from `sps0.LoxCC` and compiles it internally during save/reboot.
+
+**However**, XML-injected blocks MUST have the correct attributes to be
+recognized by the Miniserver's SPS compiler:
+
+### Required XML Attributes for Blocks
+
+| Attribute | Description | Example |
+|-----------|-------------|---------|
+| `V` | Config version number | `"175"` |
+| `Nio` | Number of I/O connectors | `"3"` |
+| `WF` | Wire flags (bitmask) | `"147456"` |
+| `Px`, `Py` | Position in UX canvas | `"4416"`, `"5952"` |
+
+### Required for VirtualIn
+
+| Attribute | Description | Example |
+|-----------|-------------|---------|
+| `IName` | Internal name (NOT VIName) | `"VI1"` |
+| `EnVal` | Enable value setting | `"true"` |
+| `MaxVal` | Maximum value | `"100"` |
+| `<IoData>` | I/O data with room/category refs | Required |
+
+### UUID Format
+Loxone UUIDs use a specific format: `{8hex}-{4hex}-{4hex}-{16hex}`
+Standard UUID4 format works but the suffix encodes object relationships.
+
+### What Doesn't Work
+- Blocks without `V` attribute → ignored by SPS compiler
+- VirtualIn without `IoData` + `Cr`/`Pr` refs → not accessible via HTTP API
+- Standard UUID4 without Loxone suffix encoding → wiring may not work
