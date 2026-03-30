@@ -184,3 +184,26 @@ of EXISTING block types.
 For automated testing, use the 14 block types already compiled on
 the Miniserver (And, Or, Not, Xor, Add, Add4, Memory, LightController2,
 PresenceDetector, etc.). New block types require UX intervention.
+
+## Save Flow Clarification (Definitive)
+
+### What 0x3A → 0x05 Does
+- **Reloads** the existing compiled SPS program from memory/flash
+- Does NOT recompile from XML config on disk
+- Equivalent to `sps/restart` but via /wsx binary protocol
+
+### What fsput Does
+- Uploads new config AND triggers full SPS recompilation
+- This is what creates NEW block types
+- Auth: requires specific autht that we haven't cracked for fsput
+
+### What LoxoneConfig UX Does
+1. Compiles SPS locally (creates the internal SPS program)
+2. Uploads compiled config via fsput (on the SAME /wsx TLS socket)
+3. Sends 0x3A → 0x05 to activate
+
+### Current State
+- /wsx connect + handshake: ✅ WORKING (separate sends key)
+- 0x3A → 0x05 save reload: ✅ WORKING  
+- fsput upload: ❌ BLOCKED (auth returns 404 in save window)
+- FTP upload + reboot: ✅ for existing blocks only
