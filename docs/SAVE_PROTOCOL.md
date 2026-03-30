@@ -126,3 +126,34 @@ Standard UUID4 format works but the suffix encodes object relationships.
 - Blocks without `V` attribute → ignored by SPS compiler
 - VirtualIn without `IoData` + `Cr`/`Pr` refs → not accessible via HTTP API
 - Standard UUID4 without Loxone suffix encoding → wiring may not work
+
+## XML Injection: Correct Tree Structure
+
+Blocks MUST be placed in the correct tree container:
+
+```
+ControlList
+  └─ Document
+       ├─ LoxLIVE
+       │    ├─ VirtualInCaption → VirtualIn elements HERE
+       │    └─ VirtualOutCaption → VirtualOut/StateV elements HERE  
+       └─ Program
+            └─ Page → Logic/Math/Comparison blocks HERE
+```
+
+### VirtualIn Wiring Chain
+VirtualIn does NOT have an AQ connector directly. The wiring uses
+an InputRef converter element:
+
+```
+VirtualIn (Q output)
+    → InputRef (AI input ← Q, AQ output)
+        → Block input (In Input=InputRef.AQ)
+```
+
+The InputRef needs:
+- `Type="InputRef"`
+- `Ref="{VirtualIn UUID}"`
+- `LinkRefType="71"` (VirtualIn reference type)
+- `Analog="true"` (for analog VIs)
+- Connectors: AI (input from VI.Q), I, AQ (output to block), Q
