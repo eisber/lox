@@ -207,3 +207,35 @@ PresenceDetector, etc.). New block types require UX intervention.
 - 0x3A → 0x05 save reload: ✅ WORKING  
 - fsput upload: ❌ BLOCKED (auth returns 404 in save window)
 - FTP upload + reboot: ✅ for existing blocks only
+
+## Final Conclusion: SPS Compilation Architecture
+
+### Confirmed Flow (from comprehensive Frida + FTP analysis)
+
+**LoxoneConfig UX Save:**
+1. UX compiles SPS program locally (in LoxoneConfig.exe)
+2. UX connects to /wsx (upgrade + start + handshake)
+3. UX sends `0x3A` pre-save → `0x05` post-save (32 bytes total)
+4. Miniserver receives 0x05, reloads SPS from its cached compiled program
+5. Miniserver saves a new versioned ZIP to /prog/sps_XXXX.zip
+
+**No fsput upload occurs.** The UX sends zero config data during save.
+The compiled SPS is transferred during an earlier phase (initial connection
+or config sync) that we haven't captured yet.
+
+### What We CAN Do From Linux
+- FTP upload modified config → reboot → existing blocks reload ✅
+- /wsx connect + handshake (RC6) → 0x3A/0x05 → SPS reload ✅
+- Create new block types → ❌ requires UX compilation
+
+### What Needs UX Intervention
+Adding NEW block types (Comparator, Counter, etc.) requires one
+LoxoneConfig UX save to compile the SPS. After that, the blocks
+persist across reboots and can be modified (rewired, renamed) via FTP.
+
+### Reliable /wsx Connection Pattern
+Three SEPARATE SSL_write calls (not bundled):
+1. HTTP upgrade request
+2. `\x00dev/loxone/start\xff` (after 300ms delay)
+3. RC6 handshake (after 100ms delay)
+This consistently produces 0x01 Capabilities (binary mode).
