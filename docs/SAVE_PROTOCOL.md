@@ -157,3 +157,30 @@ The InputRef needs:
 - `LinkRefType="71"` (VirtualIn reference type)
 - `Analog="true"` (for analog VIs)
 - Connectors: AI (input from VI.Q), I, AQ (output to block), Q
+
+## Definitive Finding: SPS Pre-Compiled by LoxoneConfig.exe
+
+**CONFIRMED**: The Miniserver does NOT compile new blocks from XML.
+
+### Evidence
+1. A CLONED working And block (identical XML, new UUID) → 404 after reboot
+2. VirtualIn with correct tree placement, attributes, InputRef → 404
+3. XML with all UX attributes (V, Nio, WF, IoData) → 404
+4. No compiled SPS bytecode found on filesystem (/prog, /sys, /backup)
+
+### Conclusion
+LoxoneConfig.exe compiles the SPS program and uploads it as part of
+the /wsx fsput save flow. The compiled SPS is stored in Miniserver
+RAM or internal flash (not accessible via FTP). On reboot, the
+Miniserver reloads the LAST compiled SPS — it does not recompile
+from the XML config.
+
+### Implication
+Adding new block types REQUIRES one save from LoxoneConfig.exe UX.
+After that initial save, FTP + reboot can modify wiring and settings
+of EXISTING block types.
+
+### Workaround
+For automated testing, use the 14 block types already compiled on
+the Miniserver (And, Or, Not, Xor, Add, Add4, Memory, LightController2,
+PresenceDetector, etc.). New block types require UX intervention.
