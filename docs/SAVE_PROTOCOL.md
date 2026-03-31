@@ -239,3 +239,29 @@ Three SEPARATE SSL_write calls (not bundled):
 2. `\x00dev/loxone/start\xff` (after 300ms delay)
 3. RC6 handshake (after 100ms delay)
 This consistently produces 0x01 Capabilities (binary mode).
+
+## sendfile Endpoint (Key Discovery)
+
+The Miniserver has a `jdev/sys/sendfile` endpoint for file transfer:
+```
+jdev/sys/sendfile/?json={"file":"%s","destination":"%s","address":"%s","crc":%d,"auth":"%s","sk":"%s"}
+```
+
+Parameters:
+- `file`: source filename (e.g., "sps_new.zip")
+- `destination`: target path (e.g., "/prog/")
+- `address`: client IP address (Miniserver connects BACK to client to download)
+- `crc`: CRC32 of file data
+- `auth`: JWT token
+- `sk`: session key (from getjwt response)
+
+The transfer is **pull-based**: the Miniserver initiates an HTTP GET to the
+client's address to download the file.
+
+### fsput Authentication
+LoxoneConfig uses `Authorization: Bearer <jwt>` (not `?autht=` query param).
+Additional headers: `X-Checksum`, `Content-Type: application/octet-stream`.
+
+### SPS Restart After Upload
+After file transfer: `/dev/sps/restartclearu/{serial}` triggers SPS recompilation.
+The `/jdev/sps/restartclear` endpoint also works (returns 200).
