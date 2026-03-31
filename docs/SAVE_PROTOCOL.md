@@ -290,3 +290,21 @@ jdev/sys/sendfile/?json={"file":"%s","destination":"%s","address":"%s","crc":%d,
 `jdev/sps/restartclear` returns 200 and triggers SPS restart.
 `/dev/sps/restartclearu/{serial}` triggers restart with UUID reference.
 Neither recompiles from XML — they reload the cached compiled SPS.
+
+## sendfile sk Parameter (Investigation Status)
+
+Tested sk formats:
+- No sk → "missing parameters" (400)
+- JWT-only auth (no sk) → "transfer failed" (500)
+- RSA-encrypted session key (684 chars) → "missing parameters" (400) — too long
+- getjwt key ASCII (40 chars) → server closes connection — processes but fails
+- getjwt key hex (80 chars) → CONNECTION RESET — crashes server!
+
+The sk is likely 40-char ASCII (decoded getjwt key) but the transfer 
+still fails because the HTTP server wasn't accessible or the pull 
+protocol has additional requirements.
+
+### Next Steps
+1. Hook CHTTPClientQt::SendFile via Frida during UX save to capture exact sk
+2. Or: serve the file on the Windows host and try with a correct sk
+3. Monitor Windows HTTP server logs to see if Miniserver connects back
