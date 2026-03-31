@@ -265,3 +265,28 @@ Additional headers: `X-Checksum`, `Content-Type: application/octet-stream`.
 ### SPS Restart After Upload
 After file transfer: `/dev/sps/restartclearu/{serial}` triggers SPS recompilation.
 The `/jdev/sps/restartclear` endpoint also works (returns 200).
+
+## sendfile Parameter Details (Ongoing Investigation)
+
+The `sendfile` endpoint is confirmed working but parameters need refinement:
+
+### What Works
+- `jdev/sys/sendfile/?json={...}` — endpoint responds (not 404)
+- Without `sk`: returns `{"value": "transfer failed", "Code": "500"}`  
+- With wrong `sk` format: returns `{"value": "missing parameters", "Code": "400"}`
+
+### Parameter Format (from binary strings)
+```
+jdev/sys/sendfile/?json={"file":"%s","destination":"%s","address":"%s","crc":%d,"auth":"%s","sk":"%s","https":true}
+```
+
+### Key Questions
+1. What is `sk`? Likely the RSA-encrypted AES session key from `enc/` auth flow
+2. What is `address`? Client IP where Miniserver pulls the file (pull-based)
+3. Does the Miniserver use HTTP or HTTPS to pull? (`"https":true` flag exists)
+4. What port does it connect to? (Binary doesn't show port in format string)
+
+### Alternative: restartclear
+`jdev/sps/restartclear` returns 200 and triggers SPS restart.
+`/dev/sps/restartclearu/{serial}` triggers restart with UUID reference.
+Neither recompiles from XML — they reload the cached compiled SPS.
