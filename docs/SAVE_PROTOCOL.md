@@ -308,3 +308,55 @@ protocol has additional requirements.
 1. Hook CHTTPClientQt::SendFile via Frida during UX save to capture exact sk
 2. Or: serve the file on the Windows host and try with a correct sk
 3. Monitor Windows HTTP server logs to see if Miniserver connects back
+
+## Save Flow (MITM2 Capture — March 31, 2026)
+
+Definitive connection-tagged MITM capture reveals the complete save architecture:
+
+### Connections
+- **C3**: Plain HTTP (port 80) — health checks (`dev/sys/check`)
+- **C4**: HTTPS (port 443) — enc/ authentication: `getPublicKey` → `enc/getkey2?sk=RSA_ENC` → `enc/getjwt` → `getkey`
+- **C5**: HTTPS (port 443) — `/wsx` WebSocket: handshake, keepalives, 0x71, 0x3A, 0x05
+- **C6**: HTTPS (port 443) — file transfer: fsget, fsput
+
+### Save Sequence
+```
+C4: enc/getkey2?sk={RSA_ENC(aes_key:aes_iv)}  → key, salt
+C4: enc/getjwt/{sig}/admin/8/{uuid}/Loxone Config → JWT
+C4: getkey → one-time key (purpose unknown, connection closes after)
+C5: /wsx?autht={HMAC-SHA256(jwt_key, jwt)} → 101 upgrade
+C5: dev/loxone/start + handshake → 0x01 capabilities
+C6: GET /dev/fsget/lx/prog/sps.LoxCC  [Referrer: {TOKEN}]  → 200 (downloads current config)
+C6: GET /jdev/sys/getkey → fresh key
+C6: GET /dev/fsget/temp/custom?autht={HMAC(key,jwt)} → 200
+C5: 0x71 SAVE-MANIFEST (196B: 16B header + 11 UUIDs)
+C5: 0x3A PRE-SAVE → 0x3A ACK
+C6: GET /jdev/sys/getkey → fresh key
+C6: POST /dev/fsput/lx/prog/sps_new.zip?autht={HMAC(key,jwt)}&user=admin → 200 OK
+C5: 0x05 POST-SAVE → 0x05 ACK (triggers SPS restart)
+```
+
+### Critical: Referrer Header
+The **first request on C6** uses a custom `Referrer` HTTP header (NOT `?autht=`):
+```
+GET /dev/fsget/lx/prog/sps.LoxCC HTTP/1.1
+Content-Type: application/octet-stream
+Referrer: 74094882455171152761
+```
+
+This Referrer value:
+- Is a ~20 digit decimal number (~67 bits, exceeds u64 range)
+- Is CLIENT-GENERATED (not returned by any server API)
+- Is SESSION-SPECIFIC (expired values return 401)
+- Links the HTTP connection (C6) to the enc/ AES session (C4)
+- **Without the correct Referrer, fsput returns 404 on ANY separate connection**
+- The Referrer computation is in `CHTTPClientQt::SendFile` (binary offset 0x10FB6D0)
+- The exact derivation from AES session material remains unknown
+
+### What Works Without Referrer
+- fsget with `?autht=` on any HTTPS connection (200 OK)
+- fsget on the enc/ connection (same conn as `enc/getkey2?sk=`) with `?autht=` (200 OK)
+- /wsx binary protocol: handshake, 0x3A, 0x05 (all work)
+
+### What Requires Referrer
+- fsput on ANY connection: returns 404 without prior Referrer-authenticated request on that connection
