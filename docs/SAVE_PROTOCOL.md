@@ -472,3 +472,35 @@ mechanism. However, the same result can be achieved with a simpler approach:
 - sps_new.zip consumed: ✓ (deleted after loading)
 - Backup created: ✓ (sps_0267_TIMESTAMP.zip)
 - SPS status: Running 100/sec ✓
+
+## FAST SAVE: FTP + /wsx 0x3A→0x05 (SOLVED!)
+
+### 1-second save cycle — bypasses fsput entirely!
+
+```
+1. FTP STOR /prog/sps_new.zip         (~0.5s, upload config ZIP)
+2. /wsx 0x3A pre-save → ACK           (~0.2s, open save window)
+3. /wsx 0x05 post-save → SPS reload   (~0.3s, trigger fast reload)
+Total: ~1.0s (SPS fully running in ~4s)
+```
+
+### Why this works
+- The Miniserver loads config in priority order: Emergency.LoxCC → **sps_new.zip** → ...
+- FTP places the file directly on the filesystem
+- 0x3A opens the save window (same as UX's pre-save)
+- 0x05 triggers a FAST SPS reload (NOT a full reboot)
+- The Miniserver reads sps_new.zip, loads it, creates backup, deletes sps_new.zip
+
+### Comparison
+| Method | Time | Mechanism |
+|--------|------|-----------|
+| UX fsput + 0x05 | ~4s | HTTP POST + /wsx (requires undiscovered session auth) |
+| **FTP + 0x3A/0x05** | **~1s + 4s** | FTP upload + /wsx (WORKING!) |
+| FTP + restartclear | ~100s | FTP upload + full SPS restart (slow) |
+| FTP + reboot | ~60s | FTP upload + full system reboot (slowest) |
+
+### Verified (April 2, 2026)
+- sps_new.zip consumed: ✓
+- Backup created: ✓ (sps_0267_TIMESTAMP.zip)
+- SPS Running 100/sec: ✓
+- Save cycle time: 1.0s ✓
