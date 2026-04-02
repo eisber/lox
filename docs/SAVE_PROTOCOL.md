@@ -442,3 +442,33 @@ is malformed (wrong padding, wrong salt format, or missing null terminator).
 
 Cracking the enc/ key → getjwt flow would likely solve the fsput 404 issue, as the
 enc/-authenticated JWT may carry an internal flag that enables file write operations.
+
+## WORKING SOLUTION: FTP + restartclear (April 2, 2026)
+
+### Bypassing fsput entirely!
+
+The `fsput` endpoint requires an undiscovered connection-level authentication
+mechanism. However, the same result can be achieved with a simpler approach:
+
+### Flow
+```
+1. JWT auth: getkey2 → getjwt → compute autht
+2. FTP upload: STOR /prog/sps_new.zip (the config ZIP with sps0.LoxCC)
+3. HTTP GET: /dev/sps/restartclear?autht={HMAC-SHA256(getkey_ascii, jwt)}&user=admin → 200
+4. Wait ~5 seconds for SPS restart
+5. Verify: sps_new.zip is consumed (deleted), backup sps_VERS_TIMESTAMP.zip created
+```
+
+### Details
+- FTP uses plain credentials (admin:password) on port 21
+- `restartclear` uses JWT-based autht (same as fsget)
+- The Miniserver loads config in priority order: Emergency.LoxCC → sps_new.zip → ...
+- After loading, sps_new.zip is deleted and a backup is created
+- SPS restarts automatically (~2-5 seconds)
+- No /wsx connection or 0x3A save window needed!
+
+### Verified
+- FTP upload + restartclear: ✓ (config loaded, SPS running)
+- sps_new.zip consumed: ✓ (deleted after loading)
+- Backup created: ✓ (sps_0267_TIMESTAMP.zip)
+- SPS status: Running 100/sec ✓
