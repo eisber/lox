@@ -923,17 +923,26 @@ pub fn cmd_config(ctx: &RunContext, action: ConfigCmd) -> Result<()> {
 
             // Repack with our edited XML
             let new_zip = loxcc::repack_zip(&template_zip, &xml)?;
+
+            // Upload as sps_new.zip (consumed by Miniserver on reload)
             eprintln!("Uploading patched config ({} KB)...", new_zip.len() / 1024);
-            ftp::upload_backup(&cfg, &newest.filename, &new_zip)?;
-            println!("✓ Config uploaded.");
+            ftp::upload_backup(&cfg, "sps_new.zip", &new_zip)?;
+            println!("✓ Config uploaded as sps_new.zip");
 
             if reboot {
-                eprintln!("Rebooting Miniserver...");
-                let lox = crate::client::LoxClient::new(cfg)?;
-                lox.get_text("/dev/sys/reboot")?;
-                println!("✓ Reboot initiated.");
+                // Fast reload via /wsx 0x3A → 0x05 (~4s)
+                eprintln!("Triggering fast SPS reload via /wsx...");
+                match crate::ws::trigger_fast_reload(&cfg) {
+                    Ok(()) => println!("✓ SPS reloading (~4s)"),
+                    Err(e) => {
+                        eprintln!("Fast reload failed ({}), falling back to reboot...", e);
+                        let lox = crate::client::LoxClient::new(cfg)?;
+                        lox.get_text("/dev/sys/reboot")?;
+                        println!("✓ Reboot initiated (~60s).");
+                    }
+                }
             } else {
-                println!("Reboot the Miniserver to apply: lox reboot --yes");
+                println!("Apply with: lox config push --file {} --reboot --force", file);
             }
         }
         ConfigCmd::PushHttp { file, force } => {
