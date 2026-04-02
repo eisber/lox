@@ -391,3 +391,54 @@ connection at a level below the HTTP protocol. Possible mechanisms:
 - TLS session parameters (cipher suite, session ticket, client certificate)
 - Internal server-side session state tied to TLS connection identity
 - Undiscovered header or connection setup step
+
+## Comprehensive Investigation (April 2, 2026)
+
+### TLS Stack Elimination
+Tested fsput with EVERY available TLS implementation:
+- Python OpenSSL (TLS 1.2 and 1.3) → 404
+- Python OpenSSL with ALPN h2,http/1.1 → 404
+- Python OpenSSL with Schannel-like cipher suites → 404
+- Windows .NET WebRequest (Schannel TLS 1.2) → 404
+- Windows curl.exe (OpenSSL) → 404
+- Full C# program with .NET connection pooling → 404
+
+**Conclusion: TLS stack is NOT the differentiating factor.**
+
+### fenc/ Discovery
+The `fenc/` endpoint (vs `enc/`) returns AES-encrypted responses:
+- `enc/` = encrypt request, plain response
+- `fenc/` = encrypt request, encrypted response (AES-CBC, same session key)
+
+The key from `enc/getkey2` is stored in a SEPARATE namespace and cannot be used for getjwt (returns 401).
+The key from `fenc/getkey2` CAN be used for `fenc/getjwt` (returns 200 with valid JWT).
+Both JWTs have identical tokenRights=265, but neither enables fsput.
+
+### ALPN Investigation
+The Miniserver does NOT support ALPN negotiation (returns None for all offered protocols).
+This eliminates ALPN as a differentiating factor.
+
+### Exact UX Sequence Replication
+Replicated the EXACT UX startup sequence on ONE connection:
+1. dev/sys/check → 200
+2. dev/cfg/api → 200
+3. getPublicKey → 200
+4. enc/getkey2?sk= → 200 (AES session established)
+5. getjwt (via non-enc key) → 200 (JWT obtained)
+6. getkey → fsget sps.LoxCC → 200
+7. getkey → fsget temp/custom → 200
+8. /wsx 0x3A → ACK
+9. getkey → POST fsput → **404**
+
+**The fsput endpoint remains inaccessible despite matching every known aspect of the UX's behavior.**
+
+### Remaining Hypothesis
+The Miniserver's HTTP server may track connections using an internal identifier derived from
+the specific enc/ AES session. The UX's `enc/getjwt` succeeds with the `enc/` key (not
+`fenc/` key) because the UX's AES padding or command format produces a correctly decryptable
+message. Our AES encryption produces valid enc/getkey2 responses but invalid enc/getjwt
+commands. The 401 from enc/getjwt with enc/-derived keys suggests the decrypted command
+is malformed (wrong padding, wrong salt format, or missing null terminator).
+
+Cracking the enc/ key → getjwt flow would likely solve the fsput 404 issue, as the
+enc/-authenticated JWT may carry an internal flag that enables file write operations.
