@@ -360,3 +360,34 @@ This Referrer value:
 
 ### What Requires Referrer
 - fsput on ANY connection: returns 404 without prior Referrer-authenticated request on that connection
+
+## Final Investigation Status (April 1, 2026)
+
+### What Works Programmatically
+- enc/ AES session establishment (getPublicKey → RSA encrypt → enc/getkey2?sk=) ✓
+- enc/getjwt with NON-enc getkey2 key (sig from plain getkey2, sent via enc/) ✓
+- /wsx handshake (RC6) + 0x3A save window + 0x05 post-save ✓
+- fsget with autht on enc/ connection (200 OK) ✓
+- fsget on separate plain HTTPS connection (200 OK) ✓
+
+### What Fails
+- fsput returns 404 on ALL connections, despite:
+  - Correct autht (HMAC-SHA256 of fresh getkey + JWT)
+  - Active enc/ AES session on same or separate connection
+  - Open save window (0x3A ACK on /wsx)
+  - Prior fsget on same connection
+  - 3-connection UX-matched flow (C4=enc/, C5=/wsx, C6=fsget+fsput)
+  - JWT with tokenRights=265 (same as UX)
+
+### SslEncryptPacket Capture of Successful UX Save
+Confirmed via Frida hook: the UX sends fsput through ncrypt.dll SslEncryptPacket (Schannel).
+The request is identical to our programmatic attempt (same headers, same autht format).
+The UX's connection was established with the full enc/ setup flow, and subsequent saves
+reuse the same connection without re-authentication.
+
+### Remaining Unknown
+The Miniserver differentiates between the UX's HTTPS connection and our programmatic HTTPS
+connection at a level below the HTTP protocol. Possible mechanisms:
+- TLS session parameters (cipher suite, session ticket, client certificate)
+- Internal server-side session state tied to TLS connection identity
+- Undiscovered header or connection setup step
