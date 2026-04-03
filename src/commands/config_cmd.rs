@@ -1914,7 +1914,7 @@ const KNOWN_BLOCK_TYPES: &[&str] = &[
     "Ventilation", "Wallbox", "WallboxBlock", "WallboxManager",
     "WeatherData", "WindGauge", "WindowCentral", "WipingRelay", "Xor",
     // Additional types not in crosswalk but used by CLI aliases
-    "Calendar", "GenTActor", "GenTSensor",
+    "Calendar", "GenTActor", "GenTSensor", "VirtualIn", "VirtualState",
 ];
 
 /// Resolve a user-provided block type name to PascalCase XML type.
