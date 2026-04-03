@@ -1159,22 +1159,8 @@ pub fn cmd_config(ctx: &RunContext, action: ConfigCmd) -> Result<()> {
             topic,
             save_as,
         } => {
-            let (xml_type, default_parent) = match control_type.as_str() {
-                "light" => ("LightController2", None),
-                "switch" => ("Switch", None),
-                "presence" => ("PresenceDetector", None),
-                "alarm-clock" => ("AlarmClock", None),
-                "memory" => ("Memory", None),
-                "timer" => ("SwitchingTimer", None),
-                "mqtt-sub" => ("GenTSensor", Some("gid:Mqtt")),
-                "mqtt-pub" => ("GenTActor", Some("gid:Mqtt")),
-                "calendar" => ("Calendar", None),
-                "autopilot" => ("AutoPilot", None),
-                other => bail!(
-                    "Unknown control type '{}'. Valid: light, switch, presence, alarm-clock, memory, timer, mqtt-sub, mqtt-pub, calendar, autopilot",
-                    other
-                ),
-            };
+            let (xml_type_owned, default_parent) = resolve_block_type(&control_type)?;
+            let xml_type = xml_type_owned.as_str();
 
             let parent_sel = parent.as_deref().or(default_parent);
             let needs_parent = matches!(control_type.as_str(), "mqtt-sub" | "mqtt-pub");
@@ -1883,4 +1869,112 @@ pub fn cmd_schema(_ctx: &RunContext, command: Option<String>) -> Result<()> {
     let schema = build_schema(command.as_deref())?;
     println!("{}", serde_json::to_string_pretty(&schema)?);
     Ok(())
+}
+
+/// All 163 known Loxone block types (PascalCase, from crosswalk.json).
+const KNOWN_BLOCK_TYPES: &[&str] = &[
+    "ACCentral", "ACControl", "AalSmartAlarm", "AccessController",
+    "Add2", "Add4", "Alarm", "AlarmChain", "AlarmClock",
+    "AnalogLimiter", "AnalogMultiplexer2", "AnalogMultiplexer4", "AnalogWatchdog",
+    "And", "AudioCentral", "AudioPlayer", "AudioPlayerFixedGroup", "AutoPilot",
+    "Average", "BinaryDecoder", "BinaryDecoder2", "BinaryEncoder",
+    "CallGenerator", "CentralJalousie", "ClimateController",
+    "CombinedWindowContact", "ComfortSwitch", "CommandRecognition",
+    "Comparator", "Counter", "DaylightControl", "DelayedPulse",
+    "DewpointCalculator", "DiffThresholdSwitch", "Dimmer", "Divide",
+    "DoorController", "DoorWindowMonitor", "EIBDimmer", "EIBJalousie",
+    "EIBPushbutton", "EdgeDetection", "EmergencyAlarm", "EnergyFlowMonitor",
+    "EnergyManager", "EnergyManager2", "EnergyMonitor", "EventDBConnector",
+    "FireWaterAlarm", "FixedValueMeter", "FlipFlopRS", "FlipFlopSR",
+    "FlowTemperature", "Formula", "GateCentral", "GateController",
+    "HVACController", "HeatingCurve", "HotelLightController", "IRController",
+    "IRoomControllerV2", "Integer", "IntercomV2", "InternormVentilation",
+    "Irrigation", "Jalousie", "JalousieCentral", "LeafVentilation",
+    "LightCentral", "LightController2", "LightsceneRGB", "LoadManager",
+    "LongClick", "MailBox", "MailGenerator", "MediaController",
+    "Memory", "MemoryFlags", "Meter", "MeterBidirectional", "MeterStorage",
+    "MinMax", "MinMaxReset", "MixingValve", "Modulo", "Monoflop",
+    "MovingAverage", "MultiClick", "Multiply", "MusicServerZone",
+    "NFCCodeTouch", "Not", "Or", "PIController", "PIDController",
+    "PVForecast", "PWM", "Ping", "PoolController", "PositionController2",
+    "PositionController3", "PowerSupplyBackup", "PresenceDetector",
+    "PulseAt", "PulseBy", "PulseGenerator", "PulseMeter",
+    "PulseMeterBidirectional", "PulseMeterStorage", "PushSwitch", "Pushbutton",
+    "RadioButtons", "RadioButtons16", "RampController", "RandomController",
+    "RandomGenerator", "RuntimeCounter", "Sauna", "SaunaEvaporator",
+    "SavingSwitchOnDelay", "Scaler", "Scene", "Script", "SecurityCentral",
+    "SelectionSwitchOnOff", "SelectionSwitchPlus", "SelectionSwitchPlusMinus",
+    "Sequencer", "SequentialController", "SessionDBConnector", "ShiftRegister",
+    "SkyWindow", "SkyWindowJalousie", "SolarPumpController", "SpotPriceOptimizer",
+    "StairwellLight", "Status", "StatusMonitor", "Stepper", "Subtract",
+    "Switch", "SwitchOnDelay", "SwitchOnOffDelay", "SwitchingTimer",
+    "Tablet", "TextGenerator", "ThresholdSwitch", "TimerScheduler",
+    "ToiletVentilation", "TouchGrillAir", "TouchGrillControl", "TouchNightlight",
+    "TouchPureFlex", "UpDownCounter", "UtilityMeter", "ValueValidator",
+    "Ventilation", "Wallbox", "WallboxBlock", "WallboxManager",
+    "WeatherData", "WindGauge", "WindowCentral", "WipingRelay", "Xor",
+    // Additional types not in crosswalk but used by CLI aliases
+    "Calendar", "GenTActor", "GenTSensor",
+];
+
+/// Resolve a user-provided block type name to PascalCase XML type.
+/// Accepts: PascalCase ("And"), kebab-case ("flip-flop-rs"), lowercase ("and"),
+/// or friendly aliases ("light" → "LightController2").
+fn resolve_block_type(input: &str) -> Result<(String, Option<&'static str>)> {
+    // Friendly aliases (short names → XML types)
+    let (xml_type, parent) = match input {
+        "light" => return Ok(("LightController2".into(), None)),
+        "switch" => return Ok(("Switch".into(), None)),
+        "presence" => return Ok(("PresenceDetector".into(), None)),
+        "alarm-clock" => return Ok(("AlarmClock".into(), None)),
+        "memory" => return Ok(("Memory".into(), None)),
+        "timer" => return Ok(("SwitchingTimer".into(), None)),
+        "mqtt-sub" => return Ok(("GenTSensor".into(), Some("gid:Mqtt"))),
+        "mqtt-pub" => return Ok(("GenTActor".into(), Some("gid:Mqtt"))),
+        "calendar" => return Ok(("Calendar".into(), None)),
+        "autopilot" => return Ok(("AutoPilot".into(), None)),
+        _ => (input, None),
+    };
+
+    // Exact PascalCase match
+    if KNOWN_BLOCK_TYPES.contains(&xml_type) {
+        return Ok((xml_type.to_string(), parent));
+    }
+
+    // Case-insensitive match
+    let lower = xml_type.to_lowercase();
+    if let Some(t) = KNOWN_BLOCK_TYPES.iter().find(|t| t.to_lowercase() == lower) {
+        return Ok((t.to_string(), parent));
+    }
+
+    // Kebab-case → PascalCase conversion
+    let pascal: String = xml_type.split('-')
+        .map(|s| {
+            let mut c = s.chars();
+            match c.next() {
+                None => String::new(),
+                Some(f) => f.to_uppercase().chain(c).collect(),
+            }
+        })
+        .collect();
+    if KNOWN_BLOCK_TYPES.contains(&pascal.as_str()) {
+        return Ok((pascal, parent));
+    }
+    // Case-insensitive on pascal conversion
+    if let Some(t) = KNOWN_BLOCK_TYPES.iter().find(|t| t.to_lowercase() == pascal.to_lowercase()) {
+        return Ok((t.to_string(), parent));
+    }
+
+    // No match — suggest closest
+    let suggestions: Vec<_> = KNOWN_BLOCK_TYPES.iter()
+        .filter(|t| t.to_lowercase().contains(&lower))
+        .take(5)
+        .collect();
+    if suggestions.is_empty() {
+        bail!("Unknown block type '{}'. Use --type to specify one of {} known types.\n\
+               Run: lox config add --help  (or see docs/schemas/crosswalk.json)", input, KNOWN_BLOCK_TYPES.len());
+    } else {
+        bail!("Unknown block type '{}'. Did you mean: {}?",
+              input, suggestions.iter().map(|s| format!("'{}'", s)).collect::<Vec<_>>().join(", "));
+    }
 }
