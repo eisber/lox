@@ -15,7 +15,7 @@ Usage:
   python3 inject_and_test.py --inject-only
 """
 
-import argparse, base64, json, os, re, shutil, subprocess, sys, time, urllib.request
+import argparse, json, os, re, shutil, subprocess, sys, time, urllib.request, hashlib, hmac
 
 HOST = os.environ.get("LOX_HOST", "http://192.168.68.72")
 USER = os.environ.get("LOX_USER", "admin")
@@ -73,13 +73,16 @@ def lox(*args):
 
 
 def http_get(path):
-    """HTTP GET with basic auth. Returns parsed JSON or None."""
-    url = f"{HOST}/{path}"
-    req = urllib.request.Request(url)
-    creds = base64.b64encode(f"{USER}:{PASS}".encode()).decode()
-    req.add_header("Authorization", f"Basic {creds}")
+    """HTTP GET with token auth (respects hashAlg). Returns parsed JSON or None."""
+    global _auth_token
+    if _auth_token is None:
+        _auth_token = _acquire_token()
+        if _auth_token is None:
+            return None
+    
+    url = f"{HOST}/{path}?autht={_auth_token}&user={USER}"
     try:
-        resp = urllib.request.urlopen(req, timeout=10)
+        resp = urllib.request.urlopen(url, timeout=10)
         data = json.loads(resp.read())
         return data
     except urllib.error.HTTPError as e:
@@ -89,8 +92,66 @@ def http_get(path):
             if m:
                 print(f"\n⚠ AUTH LOCKED OUT — {m.group(1)}s remaining. ABORTING.", file=sys.stderr)
                 sys.exit(2)
+        elif e.code == 401:
+            # Token expired, try to reacquire
+            _auth_token = None
+            return None
         return None
     except Exception:
+        return None
+
+_auth_token = None
+
+def _acquire_token():
+    """Get an auth token using the correct hashAlg."""
+    import hashlib, hmac, uuid as uuid_mod
+    try:
+        # getkey2 (no auth needed)
+        resp = urllib.request.urlopen(f"{HOST}/jdev/sys/getkey2/{USER}", timeout=5)
+        gk2 = json.loads(resp.read())
+        val = gk2["LL"]["value"]
+        if isinstance(val, str): val = json.loads(val)
+        key_hex, salt = val["key"], val["salt"]
+        alg = val.get("hashAlg", "SHA1")
+        
+        # Compute pwHash with correct algorithm
+        pw_input = f"{PASS}:{salt}".encode()
+        if alg == "SHA256":
+            pw_hash = hashlib.sha256(pw_input).hexdigest().upper()
+        else:
+            pw_hash = hashlib.sha1(pw_input).hexdigest().upper()
+        
+        # Compute sig with matching HMAC
+        key_bytes = bytes.fromhex(key_hex)
+        msg = f"{USER}:{pw_hash}".encode()
+        if alg == "SHA256":
+            sig = hmac.new(key_bytes, msg, hashlib.sha256).hexdigest()
+        else:
+            sig = hmac.new(key_bytes, msg, hashlib.sha1).hexdigest()
+        
+        # Get token
+        token_url = f"{HOST}/jdev/sys/gettoken/{sig}/{USER}/2/{uuid_mod.uuid4()}/lox-test"
+        tr = json.loads(urllib.request.urlopen(token_url, timeout=5).read())
+        code = str(tr["LL"].get("Code", tr["LL"].get("code", "")))
+        if "200" not in code:
+            print(f"⚠ Token auth failed: {code}", file=sys.stderr)
+            return None
+        
+        tv = tr["LL"]["value"]
+        if isinstance(tv, str): tv = json.loads(tv)
+        token = tv["token"]
+        tk = bytes.fromhex(tv["key"]).decode("ascii")
+        autht = hmac.new(tk.encode(), token.encode(), hashlib.sha256).hexdigest().upper()
+        return autht
+    except urllib.error.HTTPError as e:
+        if e.code == 403:
+            body = e.read().decode()
+            m = re.search(r'remaining.*?(\d+)', body)
+            if m:
+                print(f"⚠ AUTH LOCKED OUT — {m.group(1)}s remaining.", file=sys.stderr)
+        return None
+    except Exception as e:
+        print(f"⚠ Token acquisition failed: {e}", file=sys.stderr)
         return None
 
 

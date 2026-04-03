@@ -166,18 +166,31 @@ pub fn trigger_fast_reload(cfg: &Config) -> Result<()> {
     let key_hex = gk2_val["key"].as_str().ok_or_else(|| anyhow::anyhow!("missing key"))?;
     let salt = gk2_val["salt"].as_str().ok_or_else(|| anyhow::anyhow!("missing salt"))?;
 
-    let pw_hash = {
+    let hash_alg = gk2_val["hashAlg"].as_str().unwrap_or("SHA1");
+
+    let pw_hash = if hash_alg == "SHA256" {
         use sha2::{Sha256, Digest};
         let h = Sha256::digest(format!("{}:{}", cfg.pass, salt).as_bytes());
+        hex::encode_upper(h)
+    } else {
+        use sha1::Digest as _;
+        let h = sha1::Sha1::digest(format!("{}:{}", cfg.pass, salt).as_bytes());
         hex::encode_upper(h)
     };
     let sig = {
         use hmac::{Hmac, Mac};
-        type HmacSha256 = Hmac<sha2::Sha256>;
         let key_bytes = hex::decode(key_hex)?;
-        let mut mac = HmacSha256::new_from_slice(&key_bytes)?;
-        mac.update(format!("{}:{}", cfg.user, pw_hash).as_bytes());
-        hex::encode(mac.finalize().into_bytes())
+        if hash_alg == "SHA256" {
+            type HmacSha256 = Hmac<sha2::Sha256>;
+            let mut mac = HmacSha256::new_from_slice(&key_bytes)?;
+            mac.update(format!("{}:{}", cfg.user, pw_hash).as_bytes());
+            hex::encode(mac.finalize().into_bytes())
+        } else {
+            type HmacSha1 = Hmac<sha1::Sha1>;
+            let mut mac = HmacSha1::new_from_slice(&key_bytes)?;
+            mac.update(format!("{}:{}", cfg.user, pw_hash).as_bytes());
+            hex::encode(mac.finalize().into_bytes())
+        }
     };
     let jwt_resp = client.get_text(&format!(
         "jdev/sys/getjwt/{}/{}/8/{}/lox-cli",
