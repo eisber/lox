@@ -39,7 +39,7 @@ set_vi() {
     local name="$1" value="$2"
     local encoded="${name// /%20}"
     local resp http_code
-    resp=$(curl -sf -w '\n%{http_code}' "$HOST/jdev/sps/io/$encoded/$value" -u "$CREDS" 2>/dev/null)
+    resp=$(curl -s -w '\n%{http_code}' "$HOST/jdev/sps/io/$encoded/$value" -u "$CREDS" 2>/dev/null)
     http_code=$(echo "$resp" | tail -1)
     if [[ "$http_code" == "403" ]]; then
         echo "⚠ AUTH LOCKED OUT — aborting to prevent escalation" >&2
@@ -51,7 +51,7 @@ set_vi() {
 read_sv() {
     local uuid="$1"
     local resp http_code
-    resp=$(curl -sf -w '\n%{http_code}' "$HOST/jdev/sps/io/$uuid/state" -u "$CREDS" 2>/dev/null)
+    resp=$(curl -s -w '\n%{http_code}' "$HOST/jdev/sps/io/$uuid/state" -u "$CREDS" 2>/dev/null)
     http_code=$(echo "$resp" | tail -1)
     if [[ "$http_code" == "403" ]]; then
         echo "⚠ AUTH LOCKED OUT — aborting to prevent escalation" >&2
@@ -74,16 +74,15 @@ check_xml_integrity() {
     local file="$1"
     python3 -c "
 import sys
-data = open('$file','rb').read()
+data = open(sys.argv[1],'rb').read()
 bom = data.startswith(b'\xef\xbb\xbf')
 crlf = data.count(b'\r\n')
 lf = data.count(b'\n') - crlf
 dq = b'version=\"1.0\"' in data[:100]
 print(f'BOM={bom} CRLF={crlf} LF={lf} DblQuote={dq}')
 if not bom: print('WARN: Missing BOM')
-# CRLF vs LF depends on firmware version — both are valid
 print('OK')
-"
+" "$file"
 }
 
 wait_for_reboot() {

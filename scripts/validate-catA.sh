@@ -55,7 +55,8 @@ preflight() {
 
 test_gate() {
     local name=$1 vs=$2 vi1=$3 vi2=$4 v1=$5 v2=$6 expected=$7
-    set_vi "$vi1" "$v1"; set_vi "$vi2" "$v2"
+    set_vi "$vi1" "$v1" || { echo "  ✗ $name: set_vi $vi1 failed"; FAIL_COUNT=$((FAIL_COUNT+1)); return; }
+    set_vi "$vi2" "$v2" || { echo "  ✗ $name: set_vi $vi2 failed"; FAIL_COUNT=$((FAIL_COUNT+1)); return; }
     sleep 0.3
     local actual
     actual=$(read_vs "$vs")

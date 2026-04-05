@@ -1,6 +1,9 @@
 #!/bin/bash
 # validate-catB.sh — Run Cat B math block tests
 #
+# Uses curl with explicit credentials (NOT lox CLI) to control
+# exactly which host gets auth requests.
+#
 # Prerequisites: Run validate-setup.sh first to wire VirtualIns.
 
 set -euo pipefail
@@ -19,19 +22,36 @@ if [ ! -f "$WIRING_FILE" ]; then
   exit 1
 fi
 
+# Preflight: one auth check before any tests
+preflight() {
+    local code
+    code=$(curl -s -o /dev/null -w "%{http_code}" "$HOST/jdev/cfg/api" -u "$CREDS" 2>/dev/null)
+    if [[ "$code" == "403" ]]; then echo "✗ LOCKED OUT (403) — do NOT retry" >&2; exit 2; fi
+    if [[ "$code" != "200" ]]; then echo "✗ Auth failed (HTTP $code)" >&2; exit 1; fi
+    echo "  ✓ Auth OK"
+}
+
 set_input() {
   local vi_name="$1" value="$2"
-  lox input set "$vi_name" "$value" -q 2>/dev/null || true
+  local encoded="${vi_name// /%20}"
+  local resp http_code
+  resp=$(curl -s -w '\n%{http_code}' "$HOST/jdev/sps/io/$encoded/$value" -u "$CREDS" 2>/dev/null)
+  http_code=$(echo "$resp" | tail -1)
+  if [[ "$http_code" == "403" ]]; then echo "⚠ LOCKED OUT — aborting" >&2; exit 2; fi
+  if [[ "$http_code" != "200" ]]; then return 1; fi
 }
 
 read_output() {
   local block="$1"
   local q_uuid
-  q_uuid=$(python3 -c "import json; d=json.load(open('$WIRING_FILE')); print(d['outputs']['$block'])" 2>/dev/null)
+  q_uuid=$(python3 -c "import json,sys; d=json.load(open(sys.argv[1])); print(d['outputs'][sys.argv[2]])" "$WIRING_FILE" "$block" 2>/dev/null)
   if [ -z "$q_uuid" ]; then echo "ERR"; return; fi
-  local val
-  val=$(timeout 3 lox ws-monitor "$q_uuid" --timeout 2 2>/dev/null | tail -1 | awk '{print $2}')
-  echo "${val:-0}"
+  local resp http_code
+  resp=$(curl -s -w '\n%{http_code}' "$HOST/jdev/sps/io/$q_uuid/state" -u "$CREDS" 2>/dev/null)
+  http_code=$(echo "$resp" | tail -1)
+  if [[ "$http_code" == "403" ]]; then echo "⚠ LOCKED OUT — aborting" >&2; exit 2; fi
+  if [[ "$http_code" != "200" ]]; then echo "ERR"; return; fi
+  echo "$resp" | head -1 | python3 -c "import json,sys; print(json.load(sys.stdin)['LL']['value'])" 2>/dev/null
 }
 
 # Test a 2-input math block with tolerance
@@ -56,10 +76,10 @@ print(f'{a:.4f}')
 
   if [ "$verdict" = "PASS" ]; then
     echo "  ✓ ${block}($i1, $i2) = $actual_fmt"
-    ((PASS_COUNT++))
+    PASS_COUNT=$((PASS_COUNT + 1))
   else
     echo "  ✗ ${block}($i1, $i2) = $actual_fmt (expected $expected)"
-    ((FAIL_COUNT++))
+    FAIL_COUNT=$((FAIL_COUNT + 1))
   fi
 }
 
@@ -82,16 +102,19 @@ print(f'{a:.4f}')
 
   if [ "$verdict" = "PASS" ]; then
     echo "  ✓ ${block}($input) = $actual_fmt"
-    ((PASS_COUNT++))
+    PASS_COUNT=$((PASS_COUNT + 1))
   else
     echo "  ✗ ${block}($input) = $actual_fmt (expected $expected)"
-    ((FAIL_COUNT++))
+    FAIL_COUNT=$((FAIL_COUNT + 1))
   fi
 }
 
 echo "═══════════════════════════════════════"
 echo "  Cat B: Math Block Tests"
 echo "═══════════════════════════════════════"
+echo ""
+
+preflight
 echo ""
 
 echo "── Add2 ──"
