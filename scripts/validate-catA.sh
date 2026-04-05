@@ -27,13 +27,15 @@ set_vi() {
     local resp http_code
     resp=$(curl -s -w '\n%{http_code}' "$HOST/jdev/sps/io/Eingang%20VI$1/$2" -u "$CREDS" 2>/dev/null)
     http_code=$(echo "$resp" | tail -1)
-    [[ "$http_code" == "403" ]] && { echo "⚠ LOCKED OUT — aborting" >&2; exit 2; }
+    if [[ "$http_code" == "403" ]]; then echo "⚠ LOCKED OUT — aborting" >&2; exit 2; fi
+    if [[ "$http_code" != "200" ]]; then return 1; fi
 }
 read_vs() {
     local resp http_code
     resp=$(curl -s -w '\n%{http_code}' "$HOST/jdev/sps/io/$1/state" -u "$CREDS" 2>/dev/null)
     http_code=$(echo "$resp" | tail -1)
-    [[ "$http_code" == "403" ]] && { echo "⚠ LOCKED OUT — aborting" >&2; exit 2; }
+    if [[ "$http_code" == "403" ]]; then echo "⚠ LOCKED OUT — aborting" >&2; exit 2; fi
+    if [[ "$http_code" != "200" ]]; then return 1; fi
     echo "$resp" | head -1 | python3 -c "import json,sys; print(int(float(json.load(sys.stdin)['LL']['value'])))" 2>/dev/null
 }
 
@@ -41,8 +43,9 @@ preflight() {
     echo "Pre-flight checks..."
     local code
     code=$(curl -s -o /dev/null -w "%{http_code}" "$HOST/jdev/cfg/api" -u "$CREDS" 2>/dev/null)
-    [[ "$code" == "403" ]] && { echo "  ✗ LOCKED OUT (403) — do NOT retry"; exit 2; }
-    [ "$code" = "200" ] && echo "  ✓ Miniserver reachable" || { echo "  ✗ Miniserver unreachable (HTTP $code)"; exit 1; }
+    if [[ "$code" == "403" ]]; then echo "  ✗ LOCKED OUT (403) — do NOT retry"; exit 2; fi
+    if [[ "$code" != "200" ]]; then echo "  ✗ Miniserver unreachable (HTTP $code)"; exit 1; fi
+    echo "  ✓ Miniserver reachable"
 
     local val
     val=$(read_vs "$AND_VS")
@@ -116,4 +119,4 @@ echo ""
 echo "═══════════════════════════════════════"
 echo "  Results: $PASS_COUNT passed, $FAIL_COUNT failed"
 echo "═══════════════════════════════════════"
-[ "$FAIL" -eq 0 ] && exit 0 || exit 1
+[ "$FAIL_COUNT" -eq 0 ] && exit 0 || exit 1
