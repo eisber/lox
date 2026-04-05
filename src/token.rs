@@ -135,7 +135,8 @@ pub async fn acquire_token(cfg: &Config) -> Result<TokenStore> {
         base64::Engine::encode(&base64::engine::general_purpose::STANDARD, &enc)
     };
 
-    // 4. WS connect + key exchange (retry up to 3 times)
+    // 4. WS connect + key exchange (retry only on connection/network errors,
+    //    NOT on auth errors like 401/403 which would escalate lockout)
     let ws_client = LoxWsClient::new(cfg.clone());
     let mut ws = None;
     for attempt in 0..3 {
@@ -147,8 +148,15 @@ pub async fn acquire_token(cfg: &Config) -> Result<TokenStore> {
                 ws = Some(stream);
                 break;
             }
-            Err(e) if attempt == 2 => return Err(e),
-            Err(_) => continue,
+            Err(e) => {
+                let msg = e.to_string();
+                // Abort immediately on auth errors — do NOT retry
+                if msg.contains("401") || msg.contains("403") || msg.contains("Unauthorized") || msg.contains("Forbidden") {
+                    return Err(e.context("Auth failed on WebSocket connect (not retrying to avoid lockout)"));
+                }
+                if attempt == 2 { return Err(e); }
+                continue;
+            }
         }
     }
     let mut ws = ws.ok_or_else(|| anyhow::anyhow!("WS connect failed after retries"))?;

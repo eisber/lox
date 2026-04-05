@@ -12,8 +12,10 @@
 set -euo pipefail
 
 HOST="${LOX_HOST:-http://192.168.68.72}"
-CREDS="${LOX_CREDS:-admin:admin}"
-PASS=0; FAIL=0
+LOX_USER="${LOX_USER:-admin}"
+LOX_PASS="${LOX_PASS:?ERROR: Set LOX_PASS environment variable}"
+CREDS="${LOX_CREDS:-$LOX_USER:$LOX_PASS}"
+PASS_COUNT=0; FAIL_COUNT=0
 
 # StateV UUIDs (block Q → Virtual Status, readable via /sps/io/{uuid}/state)
 AND_VS="${AND_VS:-20699539-0224-4b37-ffff234d69b98eb1}"
@@ -21,14 +23,26 @@ OR_VS="${OR_VS:-2069954d-01d1-62dd-ffff234d69b98eb1}"
 NOT_VS="${NOT_VS:-20699556-020e-6eb5-ffff234d69b98eb1}"
 XOR_VS="${XOR_VS:-2069955f-038b-7a99-ffff234d69b98eb1}"
 
-set_vi() { curl -sf "$HOST/jdev/sps/io/Eingang%20VI$1/$2" -u "$CREDS" > /dev/null; }
-read_vs() { curl -sf "$HOST/jdev/sps/io/$1/state" -u "$CREDS" | python3 -c "import json,sys; print(int(float(json.load(sys.stdin)['LL']['value'])))" 2>/dev/null; }
+set_vi() {
+    local resp http_code
+    resp=$(curl -s -w '\n%{http_code}' "$HOST/jdev/sps/io/Eingang%20VI$1/$2" -u "$CREDS" 2>/dev/null)
+    http_code=$(echo "$resp" | tail -1)
+    [[ "$http_code" == "403" ]] && { echo "⚠ LOCKED OUT — aborting" >&2; exit 2; }
+}
+read_vs() {
+    local resp http_code
+    resp=$(curl -s -w '\n%{http_code}' "$HOST/jdev/sps/io/$1/state" -u "$CREDS" 2>/dev/null)
+    http_code=$(echo "$resp" | tail -1)
+    [[ "$http_code" == "403" ]] && { echo "⚠ LOCKED OUT — aborting" >&2; exit 2; }
+    echo "$resp" | head -1 | python3 -c "import json,sys; print(int(float(json.load(sys.stdin)['LL']['value'])))" 2>/dev/null
+}
 
 preflight() {
     echo "Pre-flight checks..."
     local code
-    code=$(curl -sf -o /dev/null -w "%{http_code}" "$HOST/jdev/cfg/api" -u "$CREDS" 2>/dev/null)
-    [ "$code" = "200" ] && echo "  ✓ Miniserver reachable" || { echo "  ✗ Miniserver unreachable"; exit 1; }
+    code=$(curl -s -o /dev/null -w "%{http_code}" "$HOST/jdev/cfg/api" -u "$CREDS" 2>/dev/null)
+    [[ "$code" == "403" ]] && { echo "  ✗ LOCKED OUT (403) — do NOT retry"; exit 2; }
+    [ "$code" = "200" ] && echo "  ✓ Miniserver reachable" || { echo "  ✗ Miniserver unreachable (HTTP $code)"; exit 1; }
 
     local val
     val=$(read_vs "$AND_VS")
@@ -44,10 +58,10 @@ test_gate() {
     actual=$(read_vs "$vs")
     if [ "$actual" = "$expected" ]; then
         echo "  ✓ $name($v1,$v2) = $actual"
-        PASS=$((PASS+1))
+        PASS_COUNT=$((PASS_COUNT+1))
     else
         echo "  ✗ $name($v1,$v2) = $actual (expected $expected)"
-        FAIL=$((FAIL+1))
+        FAIL_COUNT=$((FAIL_COUNT+1))
     fi
 }
 
@@ -59,10 +73,10 @@ test_not() {
     actual=$(read_vs "$NOT_VS")
     if [ "$actual" = "$expected" ]; then
         echo "  ✓ NOT($v) = $actual"
-        PASS=$((PASS+1))
+        PASS_COUNT=$((PASS_COUNT+1))
     else
         echo "  ✗ NOT($v) = $actual (expected $expected)"
-        FAIL=$((FAIL+1))
+        FAIL_COUNT=$((FAIL_COUNT+1))
     fi
 }
 
@@ -100,6 +114,6 @@ test_gate XOR "$XOR_VS" 6 7 1 1 0
 
 echo ""
 echo "═══════════════════════════════════════"
-echo "  Results: $PASS passed, $FAIL failed"
+echo "  Results: $PASS_COUNT passed, $FAIL_COUNT failed"
 echo "═══════════════════════════════════════"
 [ "$FAIL" -eq 0 ] && exit 0 || exit 1

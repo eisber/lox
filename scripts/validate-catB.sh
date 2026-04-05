@@ -5,9 +5,14 @@
 
 set -euo pipefail
 
+HOST="${LOX_HOST:-http://192.168.68.72}"
+LOX_USER="${LOX_USER:-admin}"
+LOX_PASS="${LOX_PASS:?ERROR: Set LOX_PASS environment variable}"
+CREDS="${LOX_CREDS:-$LOX_USER:$LOX_PASS}"
+
 WIRING_FILE="/tmp/validate-wiring.json"
-PASS=0
-FAIL=0
+PASS_COUNT=0
+FAIL_COUNT=0
 
 if [ ! -f "$WIRING_FILE" ]; then
   echo "ERROR: $WIRING_FILE not found. Run validate-setup.sh first."
@@ -51,10 +56,10 @@ print(f'{a:.4f}')
 
   if [ "$verdict" = "PASS" ]; then
     echo "  ✓ ${block}($i1, $i2) = $actual_fmt"
-    ((PASS++))
+    ((PASS_COUNT++))
   else
     echo "  ✗ ${block}($i1, $i2) = $actual_fmt (expected $expected)"
-    ((FAIL++))
+    ((FAIL_COUNT++))
   fi
 }
 
@@ -77,10 +82,10 @@ print(f'{a:.4f}')
 
   if [ "$verdict" = "PASS" ]; then
     echo "  ✓ ${block}($input) = $actual_fmt"
-    ((PASS++))
+    ((PASS_COUNT++))
   else
     echo "  ✗ ${block}($input) = $actual_fmt (expected $expected)"
-    ((FAIL++))
+    ((FAIL_COUNT++))
   fi
 }
 
@@ -126,7 +131,7 @@ test_math1 CatB_Integer 0.9 0
 
 echo ""
 echo "═══════════════════════════════════════"
-echo "  Results: $PASS passed, $FAIL failed"
+echo "  Results: $PASS_COUNT passed, $FAIL_COUNT failed"
 echo "═══════════════════════════════════════"
 
 exit $FAIL

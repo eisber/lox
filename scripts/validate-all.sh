@@ -20,13 +20,13 @@
 set -euo pipefail
 
 HOST="${LOX_HOST:-http://192.168.68.72}"
-USER="${LOX_USER:-admin}"
-PASS="${LOX_PASS:-}"
-CREDS="${LOX_CREDS:-$USER:$PASS}"
+LOX_USER="${LOX_USER:-admin}"
+LOX_PASS="${LOX_PASS:-}"
+CREDS="${LOX_CREDS:-$LOX_USER:$LOX_PASS}"
 SETTLE="${LOX_SETTLE:-1.5}"
 REBOOT_WAIT="${LOX_REBOOT_WAIT:-75}"
 
-PASS=0; FAIL=0; SKIP=0
+PASS_COUNT=0; FAIL_COUNT=0; SKIP_COUNT=0
 
 # ── Helpers ─────────────────────────────────────────────────────────
 
@@ -38,21 +38,36 @@ fail() { echo "  ✗ $*"; }
 set_vi() {
     local name="$1" value="$2"
     local encoded="${name// /%20}"
-    local resp
-    resp=$(curl -sf "$HOST/jdev/sps/io/$encoded/$value" -u "$CREDS" 2>/dev/null) || return 1
+    local resp http_code
+    resp=$(curl -sf -w '\n%{http_code}' "$HOST/jdev/sps/io/$encoded/$value" -u "$CREDS" 2>/dev/null)
+    http_code=$(echo "$resp" | tail -1)
+    if [[ "$http_code" == "403" ]]; then
+        echo "⚠ AUTH LOCKED OUT — aborting to prevent escalation" >&2
+        exit 2
+    fi
     echo "$resp" | grep -q '"200"'
 }
 
 read_sv() {
     local uuid="$1"
-    curl -sf "$HOST/jdev/sps/io/$uuid/state" -u "$CREDS" 2>/dev/null \
-        | python3 -c "import json,sys; print(json.load(sys.stdin)['LL']['value'])" 2>/dev/null
+    local resp http_code
+    resp=$(curl -sf -w '\n%{http_code}' "$HOST/jdev/sps/io/$uuid/state" -u "$CREDS" 2>/dev/null)
+    http_code=$(echo "$resp" | tail -1)
+    if [[ "$http_code" == "403" ]]; then
+        echo "⚠ AUTH LOCKED OUT — aborting to prevent escalation" >&2
+        exit 2
+    fi
+    echo "$resp" | head -1 | python3 -c "import json,sys; print(json.load(sys.stdin)['LL']['value'])" 2>/dev/null
 }
 
 check_auth() {
-    local resp
-    resp=$(curl -sf "$HOST/jdev/cfg/api" -u "$CREDS" 2>/dev/null) || die "Cannot reach Miniserver"
-    echo "$resp" | grep -q '"200"' || die "Auth failed (check LOX_PASS)"
+    local resp http_code
+    resp=$(curl -s -w '\n%{http_code}' "$HOST/jdev/cfg/api" -u "$CREDS" 2>/dev/null)
+    http_code=$(echo "$resp" | tail -1)
+    if [[ "$http_code" == "403" ]]; then
+        die "AUTH LOCKED OUT (403) — do NOT retry. Wait for lockout to expire."
+    fi
+    echo "$resp" | grep -q '"200"' || die "Auth failed (HTTP $http_code — check LOX_PASS)"
 }
 
 check_xml_integrity() {
@@ -123,11 +138,11 @@ test_gate() {
 
     if [[ $f -eq 0 ]]; then
         ok "$block: $p/$p PASS"
-        PASS=$((PASS + p))
+        PASS_COUNT=$((PASS_COUNT + p))
     else
         fail "$block: $p/$((p+f)) ($f failures)"
-        PASS=$((PASS + p))
-        FAIL=$((FAIL + f))
+        PASS_COUNT=$((PASS_COUNT + p))
+        FAIL_COUNT=$((FAIL_COUNT + f))
     fi
 }
 
@@ -219,7 +234,7 @@ cmd_test() {
     local category="${1:-logic}"
     echo "=== Testing $category blocks ==="
 
-    [[ -n "$PASS" ]] || die "Set LOX_PASS environment variable"
+    [[ -n "$LOX_PASS" ]] || die "Set LOX_PASS environment variable"
     check_auth
 
     case "$category" in
