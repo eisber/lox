@@ -179,18 +179,12 @@ pub fn trigger_fast_reload(cfg: &Config) -> Result<()> {
     };
     let sig = {
         use hmac::{Hmac, Mac};
+        // Always HMAC-SHA256 for sig (matches token.rs and official protocol)
+        type HmacSha256 = Hmac<sha2::Sha256>;
         let key_bytes = hex::decode(key_hex)?;
-        if hash_alg == "SHA256" {
-            type HmacSha256 = Hmac<sha2::Sha256>;
-            let mut mac = HmacSha256::new_from_slice(&key_bytes)?;
-            mac.update(format!("{}:{}", cfg.user, pw_hash).as_bytes());
-            hex::encode(mac.finalize().into_bytes())
-        } else {
-            type HmacSha1 = Hmac<sha1::Sha1>;
-            let mut mac = HmacSha1::new_from_slice(&key_bytes)?;
-            mac.update(format!("{}:{}", cfg.user, pw_hash).as_bytes());
-            hex::encode(mac.finalize().into_bytes())
-        }
+        let mut mac = HmacSha256::new_from_slice(&key_bytes)?;
+        mac.update(format!("{}:{}", cfg.user, pw_hash).as_bytes());
+        hex::encode(mac.finalize().into_bytes())
     };
     let jwt_resp = client.get_text(&format!(
         "jdev/sys/getjwt/{}/{}/8/{}/lox-cli",
